@@ -13,7 +13,7 @@ const About = () => {
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <div className="bg-white p-6 rounded-sm shadow-sm">
-          <h1 className="text-2xl font-bold mb-4">About BlogDomain</h1>
+          <h1 className="text-2xl font-bold mb-4">About MoneyWorth</h1>
           <div className="prose max-w-none">
             <p className="mb-4">
 MoneyWorth is your go-to platform for financial insights tailored to South Africans. We provide expert advice, practical tools, and the latest updates on personal finance, investments, and economic trends.
