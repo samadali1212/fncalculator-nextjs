@@ -16,12 +16,13 @@ const About = () => {
           <h1 className="text-2xl font-bold mb-4">About BlogDomain</h1>
           <div className="prose max-w-none">
             <p className="mb-4">
-              MoneyWorth is a personal blog focusing on technology, programming, and design topics.
-              The content is curated and written to provide valuable insights and information.
+MoneyWorth is your go-to platform for financial insights tailored to South Africans. We provide expert advice, practical tools, and the latest updates on personal finance, investments, and economic trends.
             </p>
             <p className="mb-4">
-              This blog is inspired by the minimalist design of sites like Hacker News and Discourse,
-              focusing on content readability and easy navigation.
+Our mission is to help individuals and businesses make informed financial decisions. From budgeting and saving to investment strategies and market analysis, we cover essential topics to guide you toward financial success.
+            </p>
+            <p className="mb-4">
+Empower yourself with knowledge—because your money is worth more when managed wisely.
             </p>
             <h2 className="text-xl font-semibold mt-6 mb-3">Contact</h2>
             <p>
