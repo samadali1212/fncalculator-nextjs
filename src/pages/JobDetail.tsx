@@ -1,10 +1,11 @@
+
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import Header from "../components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, Calendar, User, BriefcaseBusiness } from "lucide-react";
+import { ChevronLeft, Calendar, User, BriefcaseBusiness, ArrowRight } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getSalaryData } from "../utils/salaryData";
@@ -12,6 +13,44 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 
 type SalaryPeriod = "weekly" | "monthly" | "yearly" | "hourly";
+
+// Job category mapping
+const jobCategories: Record<string, string[]> = {
+  "Technology": ["software_developer", "web_developer", "data_analyst"],
+  "Finance": ["accountant", "financial_analyst", "bank_teller"],
+  "Healthcare": ["registered_nurse", "pharmacist"],
+  "Education": ["teacher"],
+  "Engineering": ["civil_engineer", "mechanical_engineer"],
+  "Management": ["marketing_manager", "project_manager", "hr_manager"],
+  "Creative": ["graphic_designer"],
+  "Sales": ["sales_representative"],
+  "Legal": ["attorney"],
+  "Service": ["chef", "admin_assistant"],
+  "Trades": ["electrician"]
+};
+
+// Get job category by job ID
+const getJobCategory = (jobId: string): string => {
+  for (const [category, jobs] of Object.entries(jobCategories)) {
+    if (jobs.includes(jobId)) {
+      return category;
+    }
+  }
+  return "Other";
+};
+
+// Get related jobs by category
+const getRelatedJobs = (jobId: string, limit: number = 3): string[] => {
+  const category = getJobCategory(jobId);
+  
+  // Get all jobs in the same category
+  const categoryJobs = jobCategories[category] || [];
+  
+  // Filter out the current job and limit to specified number
+  return categoryJobs
+    .filter(id => id !== jobId)
+    .slice(0, limit);
+};
 
 const JobDetail = () => {
   const { jobId } = useParams<{ jobId: string }>();
@@ -21,6 +60,15 @@ const JobDetail = () => {
   const salaryData = useMemo(() => getSalaryData(), []);
   const jobData = jobId ? salaryData[jobId] : null;
   const jobTitle = jobId ? jobId.replace(/_/g, " ") : "";
+  
+  // Get related jobs
+  const relatedJobIds = jobId ? getRelatedJobs(jobId) : [];
+  const relatedJobs = relatedJobIds.map(id => ({
+    id,
+    title: id.replace(/_/g, " "),
+    salary: salaryData[id].average,
+    experience: salaryData[id].experience
+  }));
   
   const handlePeriodChange = (value: string) => {
     if (value) {
@@ -209,6 +257,48 @@ const JobDetail = () => {
                 </div>
               </div>
             </div>
+            
+            {/* Related Salaries Section */}
+            {relatedJobs.length > 0 && (
+              <div className="mt-8 border-t border-gray-100 pt-8">
+                <h3 className="font-semibold text-lg mb-4">Related Salaries</h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  Explore other {getJobCategory(jobId || "")} jobs with similar skill requirements
+                </p>
+                
+                <div className="grid gap-3">
+                  {relatedJobs.map(job => (
+                    <Link 
+                      key={job.id}
+                      to={`/salaries/${job.id}`}
+                      className="group flex items-center justify-between p-3 rounded-md border border-gray-200 hover:border-primary/50 hover:bg-gray-50 transition-colors"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="bg-gray-100 rounded-full p-2">
+                          <BriefcaseBusiness className="h-5 w-5 text-gray-600" />
+                        </div>
+                        <div>
+                          <h4 className="font-medium capitalize">{job.title}</h4>
+                          <div className="text-xs text-gray-600">
+                            R{job.salary.toLocaleString()} per month • 
+                            <span className="capitalize ml-1">{job.experience} level</span>
+                          </div>
+                        </div>
+                      </div>
+                      <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-primary transition-colors" />
+                    </Link>
+                  ))}
+                </div>
+                
+                <Button 
+                  variant="outline" 
+                  className="w-full mt-4"
+                  onClick={() => navigate('/salaries')}
+                >
+                  View All Jobs
+                </Button>
+              </div>
+            )}
           </div>
           
           <div className="bg-gray-50 p-6 sm:p-8 border-t border-gray-100">
