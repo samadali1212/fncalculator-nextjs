@@ -1,4 +1,3 @@
-
 export interface BlogPost {
   id: string;
   title: string;
@@ -14,6 +13,8 @@ export interface BlogPost {
   category: string;
   featured?: boolean;
   coverImage?: string;
+  views: number;
+  comments: number;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -91,7 +92,9 @@ The key will be balancing the adoption of new technologies with the fundamental 
     readTime: 8,
     category: "Technology",
     featured: true,
-    coverImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
+    coverImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    views: 1000,
+    comments: 50
   },
   {
     id: "2",
@@ -156,7 +159,9 @@ Remember that premature optimization can sometimes lead to more complex code for
     publishedAt: "2023-04-28",
     readTime: 10,
     category: "Programming",
-    coverImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
+    coverImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+    views: 800,
+    comments: 30
   },
   {
     id: "3",
@@ -233,7 +238,9 @@ Building a design system requires significant upfront investment but pays divide
     publishedAt: "2023-04-10",
     readTime: 12,
     category: "Design",
-    coverImage: "https://images.unsplash.com/photo-1518770660439-4636190af475"
+    coverImage: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    views: 1200,
+    comments: 40
   },
   {
     id: "4",
@@ -357,7 +364,9 @@ Start with small, incremental adoption and gradually expand your TypeScript usag
     publishedAt: "2023-03-22",
     readTime: 8,
     category: "Programming",
-    coverImage: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+    coverImage: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    views: 900,
+    comments: 20
   },
   {
     id: "5",
@@ -484,7 +493,9 @@ While WebAssembly won't replace JavaScript, it complements it by providing a hig
     publishedAt: "2023-03-10",
     readTime: 15,
     category: "Technology",
-    coverImage: "https://images.unsplash.com/photo-1531297484001-80022131f5a1"
+    coverImage: "https://images.unsplash.com/photo-1531297484001-80022131f5a1",
+    views: 1100,
+    comments: 35
   }
 ];
 

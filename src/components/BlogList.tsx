@@ -16,11 +16,11 @@ const BlogList = ({ posts, sortBy }: BlogListProps) => {
     if (sortBy === "latest") {
       return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
     } else if (sortBy === "popular") {
-      return b.views - a.views;
+      return (b.views || 0) - (a.views || 0); // Use default 0 if views is undefined
     } else if (sortBy === "trending") {
       // Combine recency and views for "trending"
-      const aScore = a.views * (1 / ((Date.now() - new Date(a.publishedAt).getTime()) / 86400000 + 1));
-      const bScore = b.views * (1 / ((Date.now() - new Date(b.publishedAt).getTime()) / 86400000 + 1));
+      const aScore = (a.views || 0) * (1 / ((Date.now() - new Date(a.publishedAt).getTime()) / 86400000 + 1));
+      const bScore = (b.views || 0) * (1 / ((Date.now() - new Date(b.publishedAt).getTime()) / 86400000 + 1));
       return bScore - aScore;
     }
     return 0;
