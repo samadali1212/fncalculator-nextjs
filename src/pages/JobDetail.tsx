@@ -1,5 +1,5 @@
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Header from "../components/Header";
@@ -11,6 +11,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { getSalaryData } from "../utils/salaryData";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type SalaryPeriod = "weekly" | "monthly" | "yearly" | "hourly";
 
@@ -56,6 +57,7 @@ const JobDetail = () => {
   const { jobId } = useParams<{ jobId: string }>();
   const navigate = useNavigate();
   const [displayPeriod, setDisplayPeriod] = useState<SalaryPeriod>("monthly");
+  const [isLoading, setIsLoading] = useState(true);
   
   const salaryData = useMemo(() => getSalaryData(), []);
   const jobData = jobId ? salaryData[jobId] : null;
@@ -70,6 +72,17 @@ const JobDetail = () => {
     experience: salaryData[id].experience,
     education: salaryData[id].education
   }));
+  
+  // Simulate loading from an API
+  useEffect(() => {
+    setIsLoading(true);
+    // Simulate network delay
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+    
+    return () => clearTimeout(timer);
+  }, [jobId]);
   
   const handlePeriodChange = (value: string) => {
     if (value) {
@@ -133,6 +146,35 @@ const JobDetail = () => {
     return `${article} ${jobTitle} in South Africa earns an average of ${avgSalary} ${periodText}. ${expDesc}. ${locationImpact} The salary range typically falls between ${displayValue(jobData.min)} and ${displayValue(jobData.max)} ${periodText}, depending on skills, certifications, and employer.`;
   };
 
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[#f6f6f0]">
+        <Header />
+        <main className="pt-20 pb-16">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <div className="h-8 mb-6"></div>
+            <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
+              <Skeleton className="h-10 w-3/4 mb-4" />
+              <div className="flex flex-wrap items-center gap-3 mb-6 pb-6 border-b border-gray-200">
+                <Skeleton className="h-5 w-24" />
+                <Skeleton className="h-5 w-20" />
+                <Skeleton className="h-5 w-16" />
+              </div>
+              <Skeleton className="h-24 w-full mb-8" />
+              <div className="space-y-4">
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-5/6" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-4/5" />
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
   if (!jobData) {
     return (
       <div className="min-h-screen bg-[#f6f6f0] flex items-center justify-center">
@@ -152,24 +194,42 @@ const JobDetail = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
       <Header />
       
-      <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <Button 
-          variant="ghost" 
-          className="mb-6" 
-          onClick={() => navigate('/salaries')}
-        >
-          <ChevronLeft className="mr-2 h-4 w-4" />
-          Back to Jobs
-        </Button>
-        
-        {/* Main Job Information Card */}
-        <article className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
-          <div className="p-6 sm:p-8 border-b border-gray-100">
-            <h1 className="text-3xl font-bold mb-4 capitalize">{jobTitle} Salary Information</h1>
+      <main className="pt-20 pb-16">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <Link 
+            to="/salaries"
+            className="inline-flex items-center text-sm text-[#000000] mb-6 hover:underline"
+          >
+            <ChevronLeft className="h-4 w-4 mr-1" />
+            All Salaries
+          </Link>
+          
+          <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4 capitalize">
+              {jobTitle} Salary Information
+            </h1>
+            
+            <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] mb-6 pb-6 border-b border-gray-200">
+              <div className="flex items-center">
+                <Calendar className="h-4 w-4 mr-1 text-[#999]" />
+                Last updated: {new Date().toLocaleDateString()}
+              </div>
+              
+              <div className="flex items-center">
+                <User className="h-4 w-4 mr-1 text-[#999]" />
+                Experience: <span className="capitalize ml-1">{jobData.experience}</span>
+              </div>
+              
+              <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
+                {getJobCategory(jobId || "")}
+              </span>
+            </div>
             
             <div className="bg-gray-50 p-4 rounded-md mb-6">
               <div className="flex justify-center mb-3">
@@ -202,9 +262,7 @@ const JobDetail = () => {
                 </div>
               </div>
             </div>
-          </div>
-          
-          <div className="p-6 sm:p-8">
+            
             <div className="prose prose-sm sm:prose max-w-none mb-8">
               <h2 className="text-xl font-semibold mb-3">Salary Overview</h2>
               <p className="text-gray-700 leading-relaxed">
@@ -259,91 +317,67 @@ const JobDetail = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </article>
           
-          <div className="bg-gray-50 p-6 sm:p-8 border-t border-gray-100">
-            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-              <div>
-                <h3 className="font-medium">About this data</h3>
+          {/* Related Salaries Section */}
+          {relatedJobs.length > 0 && (
+            <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
+              <div className="p-6 sm:p-8 border-b border-gray-100">
+                <h2 className="text-2xl font-bold mb-2">Related Salaries</h2>
                 <p className="text-sm text-gray-600">
-                  Salary information is based on research conducted by MoneyWorth across South Africa.
+                  Explore other {getJobCategory(jobId || "")} jobs with similar skill requirements
                 </p>
               </div>
-              <div className="flex gap-2">
-                <Badge variant="outline" className="bg-white">South Africa</Badge>
-                <Badge variant="outline" className="bg-white capitalize">{jobData.experience}</Badge>
-                <Badge variant="outline" className="bg-white">{displayPeriod}</Badge>
-              </div>
-            </div>
-          </div>
-        </article>
-        
-        {/* Related Salaries Section - Now as a separate card outside the main article */}
-        {relatedJobs.length > 0 && (
-          <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
-            <div className="p-6 sm:p-8 border-b border-gray-100">
-              <h2 className="text-2xl font-bold mb-2">Related Salaries</h2>
-              <p className="text-sm text-gray-600">
-                Explore other {getJobCategory(jobId || "")} jobs with similar skill requirements
-              </p>
-            </div>
-            
-            <div className="divide-y divide-gray-100">
-              {relatedJobs.map((job, index) => (
-                <motion.div 
-                  key={job.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="group px-6 sm:px-8 py-4"
-                >
-                  <div className="flex items-start">
-                    <div className="pr-3 text-center hidden sm:block">
-                      <span className="text-gray-500 text-sm">{index + 1}</span>
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-baseline gap-2 mb-1">
+              
+              <div className="divide-y divide-gray-100">
+                {relatedJobs.map((job, index) => (
+                  <motion.div 
+                    key={job.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    className="group py-3 px-6 sm:px-8"
+                  >
+                    <div className="flex items-center">
+                      <div className="pr-3 text-center hidden sm:block">
+                        <span className="text-gray-500 text-sm">{index + 1}</span>
+                      </div>
+                      <div className="flex-1">
                         <Link 
                           to={`/salaries/${job.id}`}
-                          className="text-[#333] hover:underline text-base sm:text-lg font-medium transition-colors group-hover:text-blog-accent capitalize"
+                          className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent capitalize"
                         >
                           {job.title}
                         </Link>
-                        <ArrowUpRight 
-                          className="h-3.5 w-3.5 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
-                        />
+                        
+                        <div className="flex items-center text-xs text-[#828282]">
+                          <span>R{job.salary.toLocaleString()} per month</span>
+                          <span className="mx-1">•</span>
+                          <span className="font-medium text-[#555] capitalize">{job.experience} level</span>
+                        </div>
                       </div>
-                      
-                      <div className="flex items-center text-xs text-[#828282]">
-                        <span>R{job.salary.toLocaleString()} per month</span>
-                        <span className="mx-1">•</span>
-                        <span className="font-medium text-[#555] capitalize">{job.experience} level</span>
-                        <span className="mx-1">•</span>
-                        <span className="px-1.5 py-0.5 bg-gray-100 rounded text-[#666] text-xs">
-                          {job.education.split(" ")[0]}
-                        </span>
-                      </div>
+                      <ArrowRight className="w-4 h-4 text-[#999] group-hover:text-[#ff6600] transition-colors opacity-0 group-hover:opacity-100" />
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
+              </div>
+              
+              <div className="p-6 sm:p-8 border-t border-gray-100">
+                <Button 
+                  variant="outline" 
+                  className="w-full"
+                  onClick={() => navigate('/salaries')}
+                >
+                  View All Jobs
+                </Button>
+              </div>
             </div>
-            
-            <div className="p-6 sm:p-8 border-t border-gray-100">
-              <Button 
-                variant="outline" 
-                className="w-full"
-                onClick={() => navigate('/salaries')}
-              >
-                View All Jobs
-              </Button>
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </main>
 
-      <footer className="border-t border-gray-300 py-8 bg-white">
-        <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
+      <footer className="border-t border-gray-300 py-6 bg-white">
+        <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
             &copy; {new Date().getFullYear()} MoneyWorth. All rights reserved.
           </p>

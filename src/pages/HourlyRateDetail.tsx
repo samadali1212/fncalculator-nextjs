@@ -1,17 +1,18 @@
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Header from "../components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, Briefcase, Clock, Calendar, ArrowUpRight } from "lucide-react";
+import { ChevronLeft, Briefcase, Clock, Calendar, ArrowUpRight, ArrowRight } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getHourlyRateDetails, convertHourlyRate, generateHourlyRates } from "../utils/hourlyConverter";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Slider } from "@/components/ui/slider";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type DisplayPeriod = "hourly" | "weekly" | "monthly" | "yearly";
 
@@ -21,6 +22,7 @@ const HourlyRateDetail = () => {
   const [displayPeriod, setDisplayPeriod] = useState<DisplayPeriod>("monthly");
   const [hoursPerWeek, setHoursPerWeek] = useState(40);
   const [weeksPerYear, setWeeksPerYear] = useState(48);
+  const [isLoading, setIsLoading] = useState(true);
   
   const hourlyRate = rateId ? parseFloat(rateId) : 0;
   const rateDetails = useMemo(() => 
@@ -38,6 +40,17 @@ const HourlyRateDetail = () => {
       .sort((a, b) => Math.abs(a.hourlyRate - hourlyRate) - Math.abs(b.hourlyRate - hourlyRate))
       .slice(0, 20);
   }, [hourlyRate, allRates]);
+  
+  // Simulate loading from API
+  useEffect(() => {
+    setIsLoading(true);
+    // Simulate network delay
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+    
+    return () => clearTimeout(timer);
+  }, [rateId]);
   
   const handlePeriodChange = (value: string) => {
     if (value) {
@@ -79,6 +92,35 @@ const HourlyRateDetail = () => {
     }
   };
   
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[#f6f6f0]">
+        <Header />
+        <main className="pt-20 pb-16">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <div className="h-8 mb-6"></div>
+            <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
+              <Skeleton className="h-10 w-3/4 mb-4" />
+              <div className="flex flex-wrap items-center gap-3 mb-6 pb-6 border-b border-gray-200">
+                <Skeleton className="h-5 w-24" />
+                <Skeleton className="h-5 w-20" />
+                <Skeleton className="h-5 w-16" />
+              </div>
+              <Skeleton className="h-24 w-full mb-8" />
+              <div className="space-y-4">
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-5/6" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-4/5" />
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
   if (!rateDetails) {
     return (
       <div className="min-h-screen bg-[#f6f6f0] flex items-center justify-center">
@@ -98,24 +140,42 @@ const HourlyRateDetail = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
       <Header />
       
-      <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <Button 
-          variant="ghost" 
-          className="mb-6" 
-          onClick={() => navigate('/hourly-rates')}
-        >
-          <ChevronLeft className="mr-2 h-4 w-4" />
-          Back to Hourly Rates
-        </Button>
-        
-        {/* Main Rate Information Card */}
-        <article className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
-          <div className="p-6 sm:p-8 border-b border-gray-100">
-            <h1 className="text-3xl font-bold mb-4">R{hourlyRate} Per Hour Salary Information</h1>
+      <main className="pt-20 pb-16">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <Link 
+            to="/hourly-rates"
+            className="inline-flex items-center text-sm text-[#000000] mb-6 hover:underline"
+          >
+            <ChevronLeft className="h-4 w-4 mr-1" />
+            All Hourly Rates
+          </Link>
+          
+          <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
+              R{hourlyRate} Per Hour Salary Information
+            </h1>
+            
+            <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] mb-6 pb-6 border-b border-gray-200">
+              <div className="flex items-center">
+                <Calendar className="h-4 w-4 mr-1 text-[#999]" />
+                Last updated: {new Date().toLocaleDateString()}
+              </div>
+              
+              <div className="flex items-center">
+                <Clock className="h-4 w-4 mr-1 text-[#999]" />
+                {hoursPerWeek} hours/week
+              </div>
+              
+              <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
+                South Africa
+              </span>
+            </div>
             
             <div className="bg-gray-50 p-4 rounded-md mb-6">
               <div className="flex justify-center mb-3">
@@ -141,9 +201,7 @@ const HourlyRateDetail = () => {
                 <div className="text-gray-500 text-sm mt-1">Based on {hoursPerWeek} hours per week, {weeksPerYear} weeks per year</div>
               </div>
             </div>
-          </div>
-          
-          <div className="p-6 sm:p-8">
+            
             <div className="prose prose-sm sm:prose max-w-none mb-8">
               <h2 className="text-xl font-semibold mb-3">Calculation Overview</h2>
               <p className="text-gray-700 leading-relaxed">
@@ -251,91 +309,67 @@ const HourlyRateDetail = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </article>
           
-          <div className="bg-gray-50 p-6 sm:p-8 border-t border-gray-100">
-            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-              <div>
-                <h3 className="font-medium">About this calculation</h3>
+          {/* Similar Rates Section */}
+          {nearbyRates.length > 0 && (
+            <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
+              <div className="p-6 sm:p-8 border-b border-gray-100">
+                <h2 className="text-2xl font-bold mb-2">Similar Hourly Rates</h2>
                 <p className="text-sm text-gray-600">
-                  Salary conversions are based on standard work hours and may vary by industry and contract.
+                  Compare nearby hourly rates and their monthly equivalents
                 </p>
               </div>
-              <div className="flex gap-2">
-                <Badge variant="outline" className="bg-white">South Africa</Badge>
-                <Badge variant="outline" className="bg-white">{hoursPerWeek}h/week</Badge>
-                <Badge variant="outline" className="bg-white">{weeksPerYear} weeks/year</Badge>
-              </div>
-            </div>
-          </div>
-        </article>
-        
-        {/* Similar Rates Section */}
-        {nearbyRates.length > 0 && (
-          <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
-            <div className="p-6 sm:p-8 border-b border-gray-100">
-              <h2 className="text-2xl font-bold mb-2">Similar Hourly Rates</h2>
-              <p className="text-sm text-gray-600">
-                Compare nearby hourly rates and their monthly equivalents
-              </p>
-            </div>
-            
-            <div className="divide-y divide-gray-100">
-              {nearbyRates.slice(0, 20).map((rate, index) => (
-                <motion.div 
-                  key={rate.hourlyRate}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="group px-6 sm:px-8 py-4"
-                >
-                  <div className="flex items-start">
-                    <div className="pr-3 text-center hidden sm:block">
-                      <span className="text-gray-500 text-sm">{index + 1}</span>
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-baseline gap-2 mb-1">
+              
+              <div className="divide-y divide-gray-100">
+                {nearbyRates.slice(0, 10).map((rate, index) => (
+                  <motion.div 
+                    key={rate.hourlyRate}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    className="group py-3 px-6 sm:px-8"
+                  >
+                    <div className="flex items-center">
+                      <div className="pr-3 text-center hidden sm:block">
+                        <span className="text-gray-500 text-sm">{index + 1}</span>
+                      </div>
+                      <div className="flex-1">
                         <Link 
                           to={`/hourly-rates/${rate.hourlyRate}`}
-                          className="text-[#333] hover:underline text-base sm:text-lg font-medium transition-colors group-hover:text-blog-accent"
+                          className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent"
                         >
                           R{rate.hourlyRate} per hour
                         </Link>
-                        <ArrowUpRight 
-                          className="h-3.5 w-3.5 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
-                        />
+                        
+                        <div className="flex items-center text-xs text-[#828282]">
+                          <span>R{rate.monthlyEquivalent.toLocaleString()} per month</span>
+                          <span className="mx-1">•</span>
+                          <span>R{rate.yearlySalary.toLocaleString()} per year</span>
+                        </div>
                       </div>
-                      
-                      <div className="flex items-center text-xs text-[#828282]">
-                        <span>R{rate.monthlyEquivalent.toLocaleString()} per month</span>
-                        <span className="mx-1">•</span>
-                        <span>R{rate.yearlySalary.toLocaleString()} per year</span>
-                        <span className="mx-1">•</span>
-                        <span className="px-1.5 py-0.5 bg-gray-100 rounded text-[#666] text-xs">
-                          {rate.workHoursPerWeek}h/week
-                        </span>
-                      </div>
+                      <ArrowRight className="w-4 h-4 text-[#999] group-hover:text-[#ff6600] transition-colors opacity-0 group-hover:opacity-100" />
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
+              </div>
+              
+              <div className="p-6 sm:p-8 border-t border-gray-100">
+                <Button 
+                  variant="outline" 
+                  className="w-full"
+                  onClick={() => navigate('/hourly-rates')}
+                >
+                  View All Hourly Rates
+                </Button>
+              </div>
             </div>
-            
-            <div className="p-6 sm:p-8 border-t border-gray-100">
-              <Button 
-                variant="outline" 
-                className="w-full"
-                onClick={() => navigate('/hourly-rates')}
-              >
-                View All Hourly Rates
-              </Button>
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </main>
 
-      <footer className="border-t border-gray-300 py-8 bg-white">
-        <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
+      <footer className="border-t border-gray-300 py-6 bg-white">
+        <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
             &copy; {new Date().getFullYear()} MoneyWorth. All rights reserved.
           </p>
