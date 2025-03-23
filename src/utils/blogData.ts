@@ -1,4 +1,3 @@
-
 export interface BlogPost {
   id: string;
   title: string;
@@ -14,6 +13,8 @@ export interface BlogPost {
   category: string;
   featured?: boolean;
   coverImage?: string;
+  views?: number;
+  comments?: number;
 }
 
 export const blogPosts: BlogPost[] = [

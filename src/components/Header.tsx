@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import useMobile from "@/hooks/use-mobile";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isMobile = useMobile();
+  const isMobile = useIsMobile();
   const location = useLocation();
   
   // Close mobile menu when route changes
