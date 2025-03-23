@@ -17,6 +17,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Switch } from "@/components/ui/switch";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { 
   getTaxCalculation, 
   formatCurrency, 
@@ -30,6 +32,7 @@ const TaxCalculationDetail = () => {
   const navigate = useNavigate();
   const [ageGroup, setAgeGroup] = useState<AgeGroup>("below65");
   const [isLoading, setIsLoading] = useState(true);
+  const [timeframe, setTimeframe] = useState<"yearly" | "monthly">("yearly");
   
   const income = incomeId ? parseInt(incomeId) : 0;
   const taxDetails = useMemo(() => 
@@ -62,6 +65,18 @@ const TaxCalculationDetail = () => {
   const handleAgeGroupChange = (value: string) => {
     setAgeGroup(value as AgeGroup);
     toast(`Recalculating for ${value === "below65" ? "under 65" : value === "age65to75" ? "65-75" : "over 75"} age group`);
+  };
+
+  const handleTimeframeChange = (value: string) => {
+    if (value === "yearly" || value === "monthly") {
+      setTimeframe(value);
+      toast(`Showing ${value} figures`);
+    }
+  };
+  
+  // Helper function to format values based on selected timeframe
+  const formatTimeframeValue = (value: number): string => {
+    return formatCurrency(timeframe === "yearly" ? value : value / 12, timeframe === "monthly" ? 0 : 0);
   };
   
   if (isLoading) {
@@ -133,12 +148,7 @@ const TaxCalculationDetail = () => {
               {formatCurrency(taxDetails.grossIncome)} Annual Income Tax Calculation
             </h1>
             
-            <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] mb-6 pb-6 border-b border-gray-200">
-              <div className="flex items-center">
-                <Calendar className="h-4 w-4 mr-1 text-[#999]" />
-                Last updated: {new Date().toLocaleDateString()}
-              </div>
-              
+            <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-[#666] mb-6 pb-6 border-b border-gray-200">
               <div className="flex items-center">
                 <User className="h-4 w-4 mr-1 text-[#999]" />
                 <span className="mr-2">Age group:</span>
@@ -157,27 +167,43 @@ const TaxCalculationDetail = () => {
                 </Select>
               </div>
               
-              <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
-                Tax Year 2026
-              </span>
+              <div className="flex items-center space-x-2">
+                <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
+                  Tax Year 2026
+                </span>
+
+                <ToggleGroup 
+                  type="single" 
+                  value={timeframe}
+                  onValueChange={handleTimeframeChange}
+                  className="border rounded-md"
+                >
+                  <ToggleGroupItem value="yearly" className="text-xs px-3 py-1">
+                    Yearly
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="monthly" className="text-xs px-3 py-1">
+                    Monthly
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
             </div>
             
             <div className="bg-gray-50 p-4 rounded-md mb-6">
               <div className="grid md:grid-cols-3 gap-2">
                 <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
                   <div className="text-gray-600 text-sm mb-1">Gross Income</div>
-                  <div className="text-xl font-bold">{formatCurrency(taxDetails.grossIncome)}</div>
-                  <div className="text-gray-500 text-xs mt-1">Annual before tax</div>
+                  <div className="text-xl font-bold">{formatTimeframeValue(taxDetails.grossIncome)}</div>
+                  <div className="text-gray-500 text-xs mt-1">{timeframe === "yearly" ? "Annual" : "Monthly"} before tax</div>
                 </div>
                 <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100 shadow-sm">
                   <div className="text-gray-600 text-sm mb-1">After Tax Income</div>
-                  <div className="text-2xl font-bold text-primary">{formatCurrency(taxDetails.netIncome)}</div>
-                  <div className="text-gray-500 text-xs mt-1">Take-home pay per year</div>
+                  <div className="text-2xl font-bold text-primary">{formatTimeframeValue(taxDetails.netIncome)}</div>
+                  <div className="text-gray-500 text-xs mt-1">Take-home pay per {timeframe === "yearly" ? "year" : "month"}</div>
                 </div>
                 <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
                   <div className="text-gray-600 text-sm mb-1">Tax Payable</div>
-                  <div className="text-xl font-bold">{formatCurrency(taxDetails.netTax)}</div>
-                  <div className="text-gray-500 text-xs mt-1">Annual tax amount</div>
+                  <div className="text-xl font-bold">{formatTimeframeValue(taxDetails.netTax)}</div>
+                  <div className="text-gray-500 text-xs mt-1">{timeframe === "yearly" ? "Annual" : "Monthly"} tax amount</div>
                 </div>
               </div>
             </div>
@@ -186,8 +212,9 @@ const TaxCalculationDetail = () => {
               <h2 className="text-xl font-semibold mb-3">Tax Overview</h2>
               <p className="text-gray-700 leading-relaxed">
                 With an annual income of {formatCurrency(taxDetails.grossIncome)}, your tax liability would be approximately 
-                {" "}{formatCurrency(taxDetails.netTax)} per year, leaving you with a take-home pay of 
-                {" "}{formatCurrency(taxDetails.netIncome)} per year ({formatCurrency(taxDetails.netIncome / 12)} per month).
+                {" "}{formatTimeframeValue(taxDetails.netTax)} per {timeframe === "yearly" ? "year" : "month"}, leaving you with a take-home pay of 
+                {" "}{formatTimeframeValue(taxDetails.netIncome)} per {timeframe === "yearly" ? "year" : "month"}
+                {timeframe === "yearly" ? ` (${formatCurrency(taxDetails.netIncome / 12)} per month)` : ` (${formatCurrency(taxDetails.netIncome * 12)} per year)`}.
                 Your effective tax rate is {taxDetails.effectiveTaxRate.toFixed(1)}%, while your marginal tax rate is {taxDetails.marginalTaxRate}%.
               </p>
             </div>
@@ -203,33 +230,41 @@ const TaxCalculationDetail = () => {
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell>Annual Gross Income</TableCell>
-                    <TableCell className="text-right">{formatCurrency(taxDetails.grossIncome)}</TableCell>
+                    <TableCell>{timeframe === "yearly" ? "Annual" : "Monthly"} Gross Income</TableCell>
+                    <TableCell className="text-right">{formatTimeframeValue(taxDetails.grossIncome)}</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Taxable Income</TableCell>
-                    <TableCell className="text-right">{formatCurrency(taxDetails.taxableIncome)}</TableCell>
+                    <TableCell className="text-right">{formatTimeframeValue(taxDetails.taxableIncome)}</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Tax Calculated (before rebates)</TableCell>
-                    <TableCell className="text-right">{formatCurrency(taxDetails.taxBeforeRebates)}</TableCell>
+                    <TableCell className="text-right">{formatTimeframeValue(taxDetails.taxBeforeRebates)}</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Tax Rebates</TableCell>
-                    <TableCell className="text-right">{formatCurrency(taxDetails.taxRebates)}</TableCell>
+                    <TableCell className="text-right">{formatTimeframeValue(taxDetails.taxRebates)}</TableCell>
                   </TableRow>
                   <TableRow className="font-medium">
                     <TableCell>Net Tax Payable</TableCell>
-                    <TableCell className="text-right">{formatCurrency(taxDetails.netTax)}</TableCell>
+                    <TableCell className="text-right">{formatTimeframeValue(taxDetails.netTax)}</TableCell>
                   </TableRow>
                   <TableRow className="bg-gray-50 font-medium">
-                    <TableCell>Annual Take-home Pay</TableCell>
-                    <TableCell className="text-right">{formatCurrency(taxDetails.netIncome)}</TableCell>
+                    <TableCell>{timeframe === "yearly" ? "Annual" : "Monthly"} Take-home Pay</TableCell>
+                    <TableCell className="text-right">{formatTimeframeValue(taxDetails.netIncome)}</TableCell>
                   </TableRow>
-                  <TableRow className="bg-gray-50">
-                    <TableCell>Monthly Take-home Pay</TableCell>
-                    <TableCell className="text-right">{formatCurrency(taxDetails.netIncome / 12)}</TableCell>
-                  </TableRow>
+                  {timeframe === "yearly" && (
+                    <TableRow className="bg-gray-50">
+                      <TableCell>Monthly Take-home Pay</TableCell>
+                      <TableCell className="text-right">{formatCurrency(taxDetails.netIncome / 12)}</TableCell>
+                    </TableRow>
+                  )}
+                  {timeframe === "monthly" && (
+                    <TableRow className="bg-gray-50">
+                      <TableCell>Annual Take-home Pay</TableCell>
+                      <TableCell className="text-right">{formatCurrency(taxDetails.netIncome * 12)}</TableCell>
+                    </TableRow>
+                  )}
                 </TableBody>
               </Table>
             </div>
