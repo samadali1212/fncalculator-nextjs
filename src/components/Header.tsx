@@ -32,19 +32,19 @@ const Header = () => {
           to="/" 
           className={`font-bold text-lg transition-colors ${scrolled ? 'text-[#000000]' : 'text-black'}`}
         >
-          BlogDomain
+          SassaInsider
         </Link>
         
         <nav className="flex items-center space-x-6">
           <Link 
             to="/" 
-            className={`text-sm font-medium ${scrolled ? 'text-stone-950 hover:text-[#40404f]' : 'text-white/90 hover:text-white'} transition-colors`}
+            className={`text-sm font-medium ${scrolled ? 'text-stone-950 hover:text-[#40404f]' : 'text-white/90 hover:text-black'} transition-colors`}
           >
             Home
           </Link>
           <Link 
             to="/about" 
-            className={`text-sm font-medium ${scrolled ? 'text-stone-950 hover:text-[#40404f]' : 'text-white/90 hover:text-white'} transition-colors`}
+            className={`text-sm font-medium ${scrolled ? 'text-stone-950 hover:text-[#40404f]' : 'text-white/90 hover:text-black'} transition-colors`}
           >
             About
           </Link>
