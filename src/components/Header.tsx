@@ -72,6 +72,15 @@ const Header = () => {
             Hourly Rates
           </Link>
           <Link
+            to="/tax-calculator"
+            className={cn(
+              "px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100",
+              location.pathname === "/tax-calculator" && "font-medium text-gray-900"
+            )}
+          >
+            Tax Calculator
+          </Link>
+          <Link
             to="/about"
             className={cn(
               "px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100",
@@ -125,6 +134,16 @@ const Header = () => {
                 )}
               >
                 Hourly Rates
+              </Link>
+              <Link
+                to="/tax-calculator"
+                className={cn(
+                  "px-4 py-2 rounded-md hover:bg-gray-100",
+                  location.pathname === "/tax-calculator" &&
+                    "bg-gray-100 font-medium text-gray-900"
+                )}
+              >
+                Tax Calculator
               </Link>
               <Link
                 to="/about"
