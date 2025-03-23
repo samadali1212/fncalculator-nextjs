@@ -1,55 +1,92 @@
 
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import useMobile from "@/hooks/use-mobile";
 
 const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMobile = useMobile();
+  const location = useLocation();
+  
+  // Close mobile menu when route changes
   useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-    };
+    setIsMenuOpen(false);
+  }, [location]);
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [scrolled]);
+  const isActive = (path: string) => location.pathname === path;
+
+  const navigationItems = [
+    { title: "Home", path: "/" },
+    { title: "About", path: "/about" },
+    { title: "Salaries", path: "/salaries" },
+  ];
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white shadow-sm py-2' 
-          : 'bg-[#ffffff] py-2'
-      }`}
-    >
-      <div className="container mx-auto px-4 md:px-6 flex justify-between items-center max-w-4xl">
-        <Link 
-          to="/" 
-          className={`font-bold text-lg transition-colors ${scrolled ? 'text-[#000000]' : 'text-black'}`}
-        >
-          MoneyWorth
-        </Link>
-        
-        <nav className="flex items-center space-x-6">
-          <Link 
-            to="/" 
-            className={`text-sm font-medium ${scrolled ? 'text-stone-950 hover:text-[#40404f]' : 'text-black/90 hover:text-black'} transition-colors`}
-          >
-            Home
+    <header className="fixed w-full bg-white z-40 border-b border-gray-200">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex items-center justify-between h-16">
+          <Link to="/" className="flex items-center gap-2">
+            <img
+              src="/MoneyWorth.png"
+              alt="MoneyWorth Logo"
+              className="h-8 w-auto"
+            />
+            <span className="font-bold text-xl hidden sm:inline text-[#ff6600]">
+              MoneyWorth
+            </span>
           </Link>
-          <Link 
-            to="/about" 
-            className={`text-sm font-medium ${scrolled ? 'text-stone-950 hover:text-[#40404f]' : 'text-black/90 hover:text-black'} transition-colors`}
-          >
-            About
-          </Link>
-        </nav>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-6">
+            {navigationItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`font-medium transition-colors hover:text-[#ff6600] ${
+                  isActive(item.path) ? "text-[#ff6600]" : "text-gray-600"
+                }`}
+              >
+                {item.title}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Mobile Menu Button */}
+          {isMobile && (
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 text-gray-500 hover:text-gray-700"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          )}
+        </div>
       </div>
+
+      {/* Mobile Navigation */}
+      {isMobile && isMenuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 py-3">
+            <nav className="flex flex-col space-y-3">
+              {navigationItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`py-2 px-3 rounded-md font-medium ${
+                    isActive(item.path)
+                      ? "bg-gray-100 text-[#ff6600]"
+                      : "text-gray-600 hover:bg-gray-50 hover:text-[#ff6600]"
+                  }`}
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
