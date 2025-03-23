@@ -30,7 +30,7 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center max-w-4xl">
         <Link 
           to="/" 
-          className={`font-bold text-lg transition-colors ${scrolled ? 'text-[#ff6600]' : 'text-white'}`}
+          className={`font-bold text-lg transition-colors ${scrolled ? 'text-[#000000]' : 'text-black'}`}
         >
           BlogDomain
         </Link>
