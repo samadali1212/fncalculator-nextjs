@@ -164,7 +164,7 @@ const TaxCalculationDetail = () => {
             <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-[#666] mb-6 pb-6 border-b border-gray-200">
               <div className="flex items-center">
                 <User className="h-4 w-4 mr-1 text-[#999]" />
-                <span className="mr-2">Age group:</span>
+                <span className="mr-2">Age:</span>
                 <Select 
                   value={ageGroup} 
                   onValueChange={handleAgeGroupChange}
