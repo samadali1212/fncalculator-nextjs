@@ -5,7 +5,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import Header from "../components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, Calendar, User, BriefcaseBusiness, ArrowRight } from "lucide-react";
+import { ChevronLeft, Calendar, User, BriefcaseBusiness, ArrowRight, ArrowUpRight } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getSalaryData } from "../utils/salaryData";
@@ -67,7 +67,8 @@ const JobDetail = () => {
     id,
     title: id.replace(/_/g, " "),
     salary: salaryData[id].average,
-    experience: salaryData[id].experience
+    experience: salaryData[id].experience,
+    education: salaryData[id].education
   }));
   
   const handlePeriodChange = (value: string) => {
@@ -266,27 +267,44 @@ const JobDetail = () => {
                   Explore other {getJobCategory(jobId || "")} jobs with similar skill requirements
                 </p>
                 
-                <div className="grid gap-3">
-                  {relatedJobs.map(job => (
-                    <Link 
+                <div className="bg-white rounded-sm shadow-sm border border-gray-200">
+                  {relatedJobs.map((job, index) => (
+                    <motion.div 
                       key={job.id}
-                      to={`/salaries/${job.id}`}
-                      className="group flex items-center justify-between p-3 rounded-md border border-gray-200 hover:border-primary/50 hover:bg-gray-50 transition-colors"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                      className={`group px-4 py-3 ${index !== relatedJobs.length - 1 ? 'border-b border-gray-100' : ''}`}
                     >
-                      <div className="flex items-center gap-3">
-                        <div className="bg-gray-100 rounded-full p-2">
-                          <BriefcaseBusiness className="h-5 w-5 text-gray-600" />
+                      <div className="flex items-start">
+                        <div className="pr-3 text-center hidden sm:block">
+                          <span className="text-gray-500 text-sm">{index + 1}</span>
                         </div>
-                        <div>
-                          <h4 className="font-medium capitalize">{job.title}</h4>
-                          <div className="text-xs text-gray-600">
-                            R{job.salary.toLocaleString()} per month • 
-                            <span className="capitalize ml-1">{job.experience} level</span>
+                        <div className="flex-1">
+                          <div className="flex items-baseline gap-2 mb-1">
+                            <Link 
+                              to={`/salaries/${job.id}`}
+                              className="text-[#333] hover:underline text-base sm:text-lg font-medium transition-colors group-hover:text-blog-accent capitalize"
+                            >
+                              {job.title}
+                            </Link>
+                            <ArrowUpRight 
+                              className="h-3.5 w-3.5 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
+                            />
+                          </div>
+                          
+                          <div className="flex items-center text-xs text-[#828282]">
+                            <span>R{job.salary.toLocaleString()} per month</span>
+                            <span className="mx-1">•</span>
+                            <span className="font-medium text-[#555] capitalize">{job.experience} level</span>
+                            <span className="mx-1">•</span>
+                            <span className="px-1.5 py-0.5 bg-gray-100 rounded text-[#666] text-xs">
+                              {job.education.split(" ")[0]}
+                            </span>
                           </div>
                         </div>
                       </div>
-                      <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-primary transition-colors" />
-                    </Link>
+                    </motion.div>
                   ))}
                 </div>
                 
