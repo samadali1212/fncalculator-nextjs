@@ -7,6 +7,34 @@ import Header from '../components/Header';
 import { ArrowLeft, Calendar, User, Clock, ArrowRight } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 
+// Helper function to generate schema markup JSON
+const generateArticleSchema = (post) => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "datePublished": post.publishedAt,
+    "description": post.excerpt,
+    "author": {
+      "@type": "Person",
+      "name": post.author.name
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "BlogDomain",
+      "logo": {
+        "@type": "ImageObject",
+        "url": window.location.origin + "/favicon.ico"
+      }
+    },
+    "image": post.coverImage,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": window.location.href
+    }
+  };
+};
+
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const [isLoading, setIsLoading] = useState(true);
@@ -41,6 +69,35 @@ const BlogPost = () => {
       navigate('/404');
     }
   }, [post, isLoading, navigate]);
+  
+  // Render schema markup
+  useEffect(() => {
+    if (post && !isLoading) {
+      // Create and add schema markup
+      const schemaScript = document.createElement('script');
+      schemaScript.type = 'application/ld+json';
+      schemaScript.innerHTML = JSON.stringify(generateArticleSchema(post));
+      
+      // Add an ID to easily find and remove it later
+      schemaScript.id = 'article-schema';
+      
+      // Remove any existing schema to avoid duplicates
+      const existingSchema = document.getElementById('article-schema');
+      if (existingSchema) {
+        existingSchema.remove();
+      }
+      
+      document.head.appendChild(schemaScript);
+      
+      // Cleanup function to remove the script when component unmounts
+      return () => {
+        const script = document.getElementById('article-schema');
+        if (script) {
+          script.remove();
+        }
+      };
+    }
+  }, [post, isLoading]);
   
   if (isLoading) {
     return (
