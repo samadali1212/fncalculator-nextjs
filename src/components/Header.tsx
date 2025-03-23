@@ -32,7 +32,7 @@ const Header = () => {
           to="/" 
           className={`font-bold text-lg transition-colors ${scrolled ? 'text-[#000000]' : 'text-black'}`}
         >
-          SassaInsider
+          MoneyWorth
         </Link>
         
         <nav className="flex items-center space-x-6">
