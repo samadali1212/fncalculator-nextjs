@@ -3,19 +3,14 @@ import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft } from "lucide-react";
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
-} from "@/components/ui/select";
+import { ChevronLeft, Calendar, User, BriefcaseBusiness } from "lucide-react";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getSalaryData } from "../utils/salaryData";
 import { Badge } from "@/components/ui/badge";
+import { toast } from "sonner";
 
 type SalaryPeriod = "monthly" | "yearly" | "hourly";
 
@@ -27,6 +22,13 @@ const JobDetail = () => {
   const salaryData = useMemo(() => getSalaryData(), []);
   const jobData = jobId ? salaryData[jobId] : null;
   const jobTitle = jobId ? jobId.replace(/_/g, " ") : "";
+  
+  const handlePeriodChange = (value: string) => {
+    if (value) {
+      setDisplayPeriod(value as SalaryPeriod);
+      toast(`Displaying salary as ${value}`);
+    }
+  };
   
   const convertSalary = (value: number, from: SalaryPeriod, to: SalaryPeriod): number => {
     if (from === to) return value;
@@ -103,95 +105,144 @@ const JobDetail = () => {
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <div className="mb-8">
-          <Button 
-            variant="ghost" 
-            className="mb-4" 
-            onClick={() => navigate('/salaries')}
-          >
-            <ChevronLeft className="mr-2 h-4 w-4" />
-            Back to Jobs
-          </Button>
-          
-          <h1 className="text-3xl font-bold mb-2 capitalize">{jobTitle} Salary Information</h1>
-          <div className="flex items-center gap-2 mb-6">
-            <Badge className="capitalize bg-blue-100 text-blue-800 hover:bg-blue-100">{jobData.experience} Level</Badge>
-            <Badge className="bg-amber-100 text-amber-800 hover:bg-amber-100">{jobData.education.split(" ")[0]}</Badge>
-          </div>
-        </div>
+        <Button 
+          variant="ghost" 
+          className="mb-6" 
+          onClick={() => navigate('/salaries')}
+        >
+          <ChevronLeft className="mr-2 h-4 w-4" />
+          Back to Jobs
+        </Button>
         
-        <div className="grid gap-6 md:grid-cols-3">
-          <div className="md:col-span-1">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Display Options</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Display Salary As
-                    </label>
-                    <Select 
-                      value={displayPeriod} 
-                      onValueChange={(value) => setDisplayPeriod(value as SalaryPeriod)}
-                    >
-                      <SelectTrigger id="display-period">
-                        <SelectValue placeholder="Select period" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="monthly">Monthly</SelectItem>
-                        <SelectItem value="yearly">Yearly</SelectItem>
-                        <SelectItem value="hourly">Hourly</SelectItem>
-                      </SelectContent>
-                    </Select>
+        <article className="bg-white rounded-md shadow-sm overflow-hidden">
+          <div className="p-6 sm:p-8 border-b border-gray-100">
+            <h1 className="text-3xl font-bold mb-4 capitalize">{jobTitle} Salary Information</h1>
+            
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <div className="flex items-center text-gray-600 text-sm">
+                <Calendar className="h-4 w-4 mr-1" />
+                <span>Updated {new Date().toLocaleDateString('en-ZA', { month: 'long', year: 'numeric' })}</span>
+              </div>
+              
+              <div className="flex items-center text-gray-600 text-sm">
+                <User className="h-4 w-4 mr-1" />
+                <span>MoneyWorth Research</span>
+              </div>
+              
+              <div className="flex items-center text-gray-600 text-sm">
+                <BriefcaseBusiness className="h-4 w-4 mr-1" />
+                <span className="capitalize">{jobData.experience} Level</span>
+              </div>
+            </div>
+            
+            <div className="mb-6">
+              <div className="bg-gray-50 p-4 rounded-md">
+                <div className="mb-3 flex justify-between items-center">
+                  <h3 className="font-medium">Display Salary As:</h3>
+                  <ToggleGroup 
+                    type="single" 
+                    value={displayPeriod}
+                    onValueChange={handlePeriodChange}
+                    variant="outline"
+                    className="bg-white"
+                  >
+                    <ToggleGroupItem value="monthly" aria-label="Monthly">Monthly</ToggleGroupItem>
+                    <ToggleGroupItem value="yearly" aria-label="Yearly">Yearly</ToggleGroupItem>
+                    <ToggleGroupItem value="hourly" aria-label="Hourly">Hourly</ToggleGroupItem>
+                  </ToggleGroup>
+                </div>
+                
+                <div className="grid md:grid-cols-3 gap-2">
+                  <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
+                    <div className="text-gray-600 text-sm mb-1">Minimum</div>
+                    <div className="text-xl font-bold">{displayValue(jobData.min)}</div>
+                  </div>
+                  <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100 shadow-sm">
+                    <div className="text-gray-600 text-sm mb-1">Average</div>
+                    <div className="text-2xl font-bold text-primary">{displayValue(jobData.average)}</div>
+                  </div>
+                  <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
+                    <div className="text-gray-600 text-sm mb-1">Maximum</div>
+                    <div className="text-xl font-bold">{displayValue(jobData.max)}</div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
           
-          <Card className="md:col-span-2">
-            <CardContent className="p-6">
-              <p className="mb-6 text-gray-700 leading-relaxed">
+          <div className="p-6 sm:p-8">
+            <div className="prose prose-sm sm:prose max-w-none mb-8">
+              <h2 className="text-xl font-semibold mb-3">Salary Overview</h2>
+              <p className="text-gray-700 leading-relaxed">
                 {generateSalaryDescription()}
               </p>
-              
-              <h3 className="font-medium text-lg mb-3">Salary Breakdown</h3>
+            </div>
+            
+            <div className="mb-8">
+              <h3 className="font-semibold text-lg mb-3">Detailed Breakdown</h3>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Level</TableHead>
-                    <TableHead>Salary ({displayPeriod})</TableHead>
+                    <TableHead>Experience Level</TableHead>
+                    <TableHead>Typical Salary ({displayPeriod})</TableHead>
+                    <TableHead>Requirements</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell>Minimum</TableCell>
-                    <TableCell>{displayValue(jobData.min)}</TableCell>
+                    <TableCell>Junior</TableCell>
+                    <TableCell>{displayValue(Math.round(jobData.min * 1.1))}</TableCell>
+                    <TableCell>0-2 years experience</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>Average</TableCell>
+                    <TableCell>Mid-level</TableCell>
                     <TableCell>{displayValue(jobData.average)}</TableCell>
+                    <TableCell>3-5 years experience</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>Maximum</TableCell>
-                    <TableCell>{displayValue(jobData.max)}</TableCell>
+                    <TableCell>Senior</TableCell>
+                    <TableCell>{displayValue(Math.round(jobData.max * 0.9))}</TableCell>
+                    <TableCell>5+ years experience</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
-              
-              <div className="mt-6 p-3 bg-[#fff9e6] rounded-md">
-                <h3 className="font-medium mb-2">Additional Factors</h3>
-                <ul className="text-sm list-disc pl-5 space-y-1">
-                  <li>Experience Level: <span className="capitalize">{jobData.experience}</span></li>
-                  <li>Education: {jobData.education}</li>
-                  <li>Location Factor: {jobData.location_factor}x (major cities vs. other areas)</li>
-                </ul>
+            </div>
+            
+            <div className="bg-[#fff9e6] p-5 rounded-md">
+              <h3 className="font-medium mb-3">Additional Information</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <h4 className="text-sm font-medium mb-2">Qualifications</h4>
+                  <p className="text-sm text-gray-700">{jobData.education}</p>
+                </div>
+                <div>
+                  <h4 className="text-sm font-medium mb-2">Location Factor</h4>
+                  <p className="text-sm text-gray-700">
+                    {jobData.location_factor > 1 
+                      ? `Salaries in major cities like Johannesburg or Cape Town are approximately ${Math.round((jobData.location_factor - 1) * 100)}% higher than the national average.`
+                      : "This salary is relatively consistent across South Africa."}
+                  </p>
+                </div>
               </div>
-            </CardContent>
-          </Card>
-        </div>
+            </div>
+          </div>
+          
+          <div className="bg-gray-50 p-6 sm:p-8 border-t border-gray-100">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+              <div>
+                <h3 className="font-medium">About this data</h3>
+                <p className="text-sm text-gray-600">
+                  Salary information is based on research conducted by MoneyWorth across South Africa.
+                </p>
+              </div>
+              <div className="flex gap-2">
+                <Badge variant="outline" className="bg-white">South Africa</Badge>
+                <Badge variant="outline" className="bg-white capitalize">{jobData.experience}</Badge>
+                <Badge variant="outline" className="bg-white">{displayPeriod}</Badge>
+              </div>
+            </div>
+          </div>
+        </article>
       </main>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
