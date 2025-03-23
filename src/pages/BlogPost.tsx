@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { getPostBySlug, formatDate } from '../utils/blogData';
 import Header from '../components/Header';
 import ReactMarkdown from 'react-markdown';
+import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -31,7 +32,7 @@ const BlogPost = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="w-16 h-16 border-4 border-blog-accent border-t-transparent rounded-full animate-spin"
+          className="w-16 h-16 border-4 border-[#ff6600] border-t-transparent rounded-full animate-spin"
         ></motion.div>
       </div>
     );
@@ -47,146 +48,101 @@ const BlogPost = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen"
+      className="min-h-screen bg-[#f6f6f0]"
     >
       <Header />
       
-      <main className="pt-24 pb-16">
-        <article>
-          {/* Hero section */}
-          <div className="w-full bg-blog-card py-12 mb-8">
-            <div className="container mx-auto px-4 md:px-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="max-w-3xl mx-auto text-center"
-              >
-                <Link 
-                  to="/"
-                  className="inline-flex items-center text-sm text-blog-accent mb-6 hover:underline"
-                >
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    className="h-4 w-4 mr-1" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M10 19l-7-7m0 0l7-7m-7 7h18" 
-                    />
-                  </svg>
-                  Back to articles
-                </Link>
-                
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-blog-text mb-4">
-                  {post.title}
-                </h1>
-                
-                <div className="flex items-center justify-center mb-6">
-                  <span className="inline-block px-3 py-1 text-xs font-medium bg-white rounded-full text-blog-subtle">
-                    {post.category}
-                  </span>
-                </div>
-                
-                <div className="flex items-center justify-center">
-                  {post.author.avatar && (
-                    <img 
-                      src={post.author.avatar} 
-                      alt={post.author.name}
-                      className="w-10 h-10 rounded-full mr-3 object-cover"
-                    />
-                  )}
-                  <div>
-                    <p className="font-medium text-blog-text">{post.author.name}</p>
-                    <p className="text-sm text-blog-subtle">
-                      {formatDate(post.publishedAt)} • {post.readTime} min read
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+      <main className="pt-20 pb-16">
+        <article className="container mx-auto px-4 max-w-3xl">
+          <Link 
+            to="/"
+            className="inline-flex items-center text-sm text-[#ff6600] mb-6 hover:underline"
+          >
+            <ArrowLeft className="h-4 w-4 mr-1" />
+            Back to posts
+          </Link>
+          
+          <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
+              {post.title}
+            </h1>
+            
+            <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] mb-6 pb-6 border-b border-gray-200">
+              <div className="flex items-center">
+                <Calendar className="h-4 w-4 mr-1 text-[#999]" />
+                {formatDate(post.publishedAt)}
+              </div>
+              
+              <div className="flex items-center">
+                <User className="h-4 w-4 mr-1 text-[#999]" />
+                {post.author.name}
+              </div>
+              
+              <div className="flex items-center">
+                <Clock className="h-4 w-4 mr-1 text-[#999]" />
+                {post.readTime} min read
+              </div>
+              
+              <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
+                {post.category}
+              </span>
+            </div>
+            
+            {post.coverImage && (
+              <div className="mb-8">
+                <img 
+                  src={post.coverImage} 
+                  alt={post.title}
+                  className="w-full rounded-md"
+                />
+              </div>
+            )}
+            
+            <div className="prose prose-sm sm:prose max-w-none prose-h2:text-xl prose-h2:font-bold prose-h3:text-lg prose-h3:font-bold prose-p:text-[#333] prose-a:text-[#ff6600] prose-blockquote:border-l-[#ff6600]">
+              <ReactMarkdown>{post.content}</ReactMarkdown>
             </div>
           </div>
           
-          {/* Cover image */}
-          {post.coverImage && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="container mx-auto px-4 md:px-6 mb-12"
-            >
-              <div className="max-w-4xl mx-auto">
-                <div className="aspect-video rounded-xl overflow-hidden shadow-xl">
-                  <img 
-                    src={post.coverImage} 
-                    alt={post.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </motion.div>
-          )}
-          
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="container mx-auto px-4 md:px-6"
-          >
-            <div className="max-w-3xl mx-auto">
-              <div className="blog-content prose prose-lg prose-slate">
-                <ReactMarkdown>{post.content}</ReactMarkdown>
-              </div>
-              
-              {/* Tags */}
-              <div className="mt-12 pt-8 border-t border-gray-200">
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-blog-card rounded-full text-blog-subtle text-sm">
-                    {post.category}
-                  </span>
-                  <span className="px-3 py-1 bg-blog-card rounded-full text-blog-subtle text-sm">
-                    Web Development
-                  </span>
-                  <span className="px-3 py-1 bg-blog-card rounded-full text-blog-subtle text-sm">
-                    Programming
-                  </span>
-                </div>
-              </div>
-              
-              {/* Author bio */}
-              <div className="mt-12 p-6 bg-blog-card rounded-xl">
-                <div className="flex items-start">
-                  {post.author.avatar && (
-                    <img 
-                      src={post.author.avatar} 
-                      alt={post.author.name}
-                      className="w-16 h-16 rounded-full mr-4 object-cover"
-                    />
-                  )}
-                  <div>
-                    <h3 className="text-lg font-medium text-blog-text mb-2">
-                      About {post.author.name}
-                    </h3>
-                    <p className="text-blog-subtle">
-                      A professional writer and web developer with over 10 years of experience in the industry.
-                      Passionate about creating elegant user experiences and teaching others.
-                    </p>
-                  </div>
-                </div>
+          {/* Author bio */}
+          <div className="bg-white p-6 rounded-md shadow-sm mb-8">
+            <h3 className="text-lg font-medium text-[#333] mb-4">
+              About the author
+            </h3>
+            <div className="flex items-start">
+              {post.author.avatar && (
+                <img 
+                  src={post.author.avatar} 
+                  alt={post.author.name}
+                  className="w-12 h-12 rounded-full mr-4 object-cover"
+                />
+              )}
+              <div>
+                <h4 className="font-medium text-[#333] mb-1">{post.author.name}</h4>
+                <p className="text-sm text-[#666]">
+                  A professional writer and web developer with over 10 years of experience in the industry.
+                  Passionate about creating elegant user experiences and teaching others.
+                </p>
               </div>
             </div>
-          </motion.div>
+          </div>
+          
+          {/* Related discussion section */}
+          <div className="bg-white p-6 rounded-md shadow-sm">
+            <h3 className="text-lg font-medium text-[#333] mb-4">
+              Discussion
+            </h3>
+            <div className="text-center py-8">
+              <p className="text-[#666] mb-4">Join the conversation</p>
+              <button className="px-4 py-2 bg-[#ff6600] text-white rounded hover:bg-[#e55c00] transition-colors">
+                Add Comment
+              </button>
+            </div>
+          </div>
         </article>
       </main>
       
-      <footer className="bg-blog-card border-t border-gray-200 py-12">
-        <div className="container mx-auto px-4 md:px-6 text-center text-blog-subtle">
+      <footer className="border-t border-gray-300 py-6 bg-white">
+        <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
             &copy; {new Date().getFullYear()} BlogDomain. All rights reserved.
           </p>

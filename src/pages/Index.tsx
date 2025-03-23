@@ -2,13 +2,12 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Header from "../components/Header";
-import BlogCard from "../components/BlogCard";
-import FeaturedPost from "../components/FeaturedPost";
-import { blogPosts, getFeaturedPosts } from "../utils/blogData";
+import BlogList from "../components/BlogList";
+import { blogPosts } from "../utils/blogData";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const featuredPosts = getFeaturedPosts();
+  const [sortBy, setSortBy] = useState("latest");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -34,42 +33,36 @@ const Index = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="min-h-screen"
+      className="min-h-screen bg-[#f6f6f0]"
     >
       <Header />
       
-      <main className="pt-24 px-4 md:px-6 pb-16">
-        {featuredPosts.length > 0 && <FeaturedPost post={featuredPosts[0]} />}
-
-        <div className="container mx-auto">
-          <motion.div 
-            className="flex items-center justify-between mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-2xl md:text-3xl font-medium text-blog-text">Latest Articles</h2>
-            <div className="flex items-center space-x-2">
-              <select 
-                className="bg-white border border-gray-200 text-blog-text rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blog-accent"
-              >
-                <option value="latest">Latest</option>
-                <option value="popular">Popular</option>
-                <option value="trending">Trending</option>
-              </select>
-            </div>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {blogPosts.map((post, index) => (
-              <BlogCard key={post.id} post={post} index={index} />
-            ))}
+      <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
+        <motion.div 
+          className="flex items-center justify-between mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-xl font-medium text-[#333]">Recent Posts</h2>
+          <div className="flex items-center space-x-2">
+            <select 
+              className="bg-[#f6f6f0] border border-gray-300 text-[#333] rounded px-2 py-1 text-sm focus:outline-none"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+            >
+              <option value="latest">Latest</option>
+              <option value="popular">Popular</option>
+              <option value="trending">Trending</option>
+            </select>
           </div>
-        </div>
+        </motion.div>
+
+        <BlogList posts={blogPosts} sortBy={sortBy} />
       </main>
 
-      <footer className="bg-blog-card border-t border-gray-200 py-12">
-        <div className="container mx-auto px-4 md:px-6 text-center text-blog-subtle">
+      <footer className="border-t border-gray-300 py-8 bg-white">
+        <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
           <p>
             &copy; {new Date().getFullYear()} BlogDomain. All rights reserved.
           </p>
