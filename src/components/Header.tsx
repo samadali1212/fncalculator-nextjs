@@ -31,19 +31,10 @@ const Header = () => {
           <img 
             src="/MoneyWorth.png" 
             alt="MoneyWorth Logo" 
-            className={`h-8 w-auto transition-all duration-300 ${
+            className={`h-6 w-auto transition-all duration-300 ${
               scrolled ? 'opacity-100' : 'opacity-100'
             }`}
           />
-          {/* Logo text */}
-          <span 
-            className={`font-bold text-lg transition-colors ${
-              scrolled ? 'text-[#000000]' : 'text-black'
-            }`}
-          >
-            MoneyWorth
-          </span>
-        </Link>
         
         <nav className="flex items-center space-x-6">
           <Link 
