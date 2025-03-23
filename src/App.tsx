@@ -11,6 +11,8 @@ import Salaries from "./pages/Salaries";
 import JobDetail from "./pages/JobDetail";
 import HourlyRates from "./pages/HourlyRates";
 import HourlyRateDetail from "./pages/HourlyRateDetail";
+import TaxCalculator from "./pages/TaxCalculator";
+import TaxCalculationDetail from "./pages/TaxCalculationDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +32,8 @@ const App = () => (
             <Route path="/salaries/:jobId" element={<JobDetail />} />
             <Route path="/hourly-rates" element={<HourlyRates />} />
             <Route path="/hourly-rates/:rateId" element={<HourlyRateDetail />} />
+            <Route path="/tax-calculator" element={<TaxCalculator />} />
+            <Route path="/tax-calculator/:incomeId" element={<TaxCalculationDetail />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
