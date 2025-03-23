@@ -1,4 +1,3 @@
-
 interface TaxBracket {
   min: number;
   max: number | null;
@@ -190,11 +189,15 @@ export function getTaxCalculation(
  * @returns Formatted currency string
  */
 export function formatCurrency(value: number, fractionDigits: number = 0): string {
-  return new Intl.NumberFormat('en-ZA', { 
+  // Use 'en-ZA' locale but replace the comma with a space for thousand separators
+  const formatted = new Intl.NumberFormat('en-ZA', { 
     style: 'currency', 
     currency: 'ZAR',
     maximumFractionDigits: fractionDigits
   }).format(value);
+  
+  // Replace commas with spaces for thousand separators (South African convention)
+  return formatted.replace(/,/g, ' ');
 }
 
 /**
