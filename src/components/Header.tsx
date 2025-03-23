@@ -38,13 +38,13 @@ const Header = () => {
         <nav className="flex items-center space-x-6">
           <Link 
             to="/" 
-            className={`text-sm font-medium ${scrolled ? 'text-black-700 hover:text-[#40404f]' : 'text-white/90 hover:text-white'} transition-colors`}
+            className={`text-sm font-medium ${scrolled ? 'text-stone-950 hover:text-[#40404f]' : 'text-white/90 hover:text-white'} transition-colors`}
           >
             Home
           </Link>
           <Link 
             to="/about" 
-            className={`text-sm font-medium ${scrolled ? 'text-black-700 hover:text-[#40404f]' : 'text-white/90 hover:text-white'} transition-colors`}
+            className={`text-sm font-medium ${scrolled ? 'text-stone-950 hover:text-[#40404f]' : 'text-white/90 hover:text-white'} transition-colors`}
           >
             About
           </Link>
