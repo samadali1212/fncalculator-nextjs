@@ -41,6 +41,11 @@ const HourlyRates = () => {
     setItemsToShow(prevItemsToShow => prevItemsToShow + 50);
   };
 
+  // Function to format with space as thousand separator
+  const formatWithSpaces = (value: number): string => {
+    return value.toLocaleString().replace(/,/g, ' ');
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -108,9 +113,9 @@ const HourlyRates = () => {
                       </div>
                       
                       <div className="flex items-center text-xs text-[#828282]">
-                        <span>R{rate.monthlyEquivalent.toLocaleString()} per month</span>
+                        <span>R{formatWithSpaces(rate.monthlyEquivalent)} per month</span>
                         <span className="mx-1">•</span>
-                        <span>R{rate.yearlySalary.toLocaleString()} per year</span>
+                        <span>R{formatWithSpaces(rate.yearlySalary)} per year</span>
                         <span className="mx-1">•</span>
                         <span className="px-1.5 py-0.5 bg-gray-100 rounded text-[#666] text-xs">
                           {rate.workHoursPerWeek}h/week

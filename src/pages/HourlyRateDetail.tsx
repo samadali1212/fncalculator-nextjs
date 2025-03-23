@@ -1,4 +1,3 @@
-
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
@@ -30,7 +29,6 @@ const HourlyRateDetail = () => {
     [hourlyRate, hoursPerWeek, weeksPerYear]
   );
   
-  // Get nearby hourly rates for comparison
   const allRates = useMemo(() => generateHourlyRates(), []);
   const nearbyRates = useMemo(() => {
     if (!hourlyRate) return [];
@@ -41,10 +39,8 @@ const HourlyRateDetail = () => {
       .slice(0, 20);
   }, [hourlyRate, allRates]);
   
-  // Simulate loading from API
   useEffect(() => {
     setIsLoading(true);
-    // Simulate network delay
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 800);
@@ -68,11 +64,13 @@ const HourlyRateDetail = () => {
   };
   
   const formatSalary = (value: number): string => {
-    return new Intl.NumberFormat('en-ZA', { 
+    const formatted = new Intl.NumberFormat('en-ZA', { 
       style: 'currency', 
       currency: 'ZAR',
       maximumFractionDigits: 0
     }).format(value);
+    
+    return formatted.replace(/,/g, ' ');
   };
   
   const getDisplayValue = (period: DisplayPeriod): string => {
@@ -90,6 +88,10 @@ const HourlyRateDetail = () => {
       default:
         return formatSalary(rateDetails.monthlyEquivalent);
     }
+  };
+  
+  const formatWithSpaces = (value: number): string => {
+    return value.toLocaleString().replace(/,/g, ' ');
   };
   
   if (isLoading) {
@@ -259,27 +261,27 @@ const HourlyRateDetail = () => {
                 <TableBody>
                   <TableRow>
                     <TableCell>Hourly</TableCell>
-                    <TableCell>R{rateDetails.hourlyRate.toLocaleString()}</TableCell>
+                    <TableCell>R{rateDetails.hourlyRate.toLocaleString().replace(/,/g, ' ')}</TableCell>
                     <TableCell>Base rate</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Daily (8 hours)</TableCell>
-                    <TableCell>R{(rateDetails.hourlyRate * 8).toLocaleString()}</TableCell>
+                    <TableCell>R{(rateDetails.hourlyRate * 8).toLocaleString().replace(/,/g, ' ')}</TableCell>
                     <TableCell>Hourly × 8</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Weekly</TableCell>
-                    <TableCell>R{(rateDetails.hourlyRate * hoursPerWeek).toLocaleString()}</TableCell>
+                    <TableCell>R{(rateDetails.hourlyRate * hoursPerWeek).toLocaleString().replace(/,/g, ' ')}</TableCell>
                     <TableCell>Hourly × {hoursPerWeek} hours</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Monthly</TableCell>
-                    <TableCell>R{rateDetails.monthlyEquivalent.toLocaleString()}</TableCell>
+                    <TableCell>R{rateDetails.monthlyEquivalent.toLocaleString().replace(/,/g, ' ')}</TableCell>
                     <TableCell>Weekly × 4 weeks</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Yearly</TableCell>
-                    <TableCell>R{rateDetails.yearlySalary.toLocaleString()}</TableCell>
+                    <TableCell>R{rateDetails.yearlySalary.toLocaleString().replace(/,/g, ' ')}</TableCell>
                     <TableCell>Hourly × {hoursPerWeek} hours × {weeksPerYear} weeks</TableCell>
                   </TableRow>
                 </TableBody>
@@ -311,7 +313,6 @@ const HourlyRateDetail = () => {
             </div>
           </article>
           
-          {/* Similar Rates Section */}
           {nearbyRates.length > 0 && (
             <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
               <div className="p-6 sm:p-8 border-b border-gray-100">
@@ -343,9 +344,9 @@ const HourlyRateDetail = () => {
                         </Link>
                         
                         <div className="flex items-center text-xs text-[#828282]">
-                          <span>R{rate.monthlyEquivalent.toLocaleString()} per month</span>
+                          <span>R{formatWithSpaces(rate.monthlyEquivalent)} per month</span>
                           <span className="mx-1">•</span>
-                          <span>R{rate.yearlySalary.toLocaleString()} per year</span>
+                          <span>R{formatWithSpaces(rate.yearlySalary)} per year</span>
                         </div>
                       </div>
                       <ArrowRight className="w-4 h-4 text-[#999] group-hover:text-[#ff6600] transition-colors opacity-0 group-hover:opacity-100" />

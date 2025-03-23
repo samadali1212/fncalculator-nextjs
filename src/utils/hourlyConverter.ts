@@ -1,4 +1,5 @@
 
+
 export interface HourlyRate {
   hourlyRate: number;
   monthlyEquivalent: number;
@@ -29,6 +30,15 @@ export function convertHourlyRate(
     workHoursPerWeek: hoursPerWeek,
     workWeeksPerYear: weeksPerYear
   };
+}
+
+/**
+ * Format a value with spaces as thousand separators (South African convention)
+ * @param value The number to format
+ * @returns Formatted string with spaces as thousand separators
+ */
+export function formatWithSpaces(value: number): string {
+  return value.toLocaleString().replace(/,/g, ' ');
 }
 
 // Generate a range of hourly rates with conversions
