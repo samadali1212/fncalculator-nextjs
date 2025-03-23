@@ -145,10 +145,10 @@ const BlogPost = () => {
         <article className="container mx-auto px-4 max-w-3xl">
           <Link 
             to="/"
-            className="inline-flex items-center text-sm text-[#ff6600] mb-6 hover:underline"
+            className="inline-flex items-center text-sm text-[#000000] mb-6 hover:underline"
           >
             <ArrowLeft className="h-4 w-4 mr-1" />
-            Back to posts
+            Latest Articles
           </Link>
           
           <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
