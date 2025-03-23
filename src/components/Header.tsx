@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +11,6 @@ const Header = () => {
         setScrolled(isScrolled);
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -28,23 +26,39 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center max-w-4xl">
-        <Link 
-          to="/" 
-          className={`font-bold text-lg transition-colors ${scrolled ? 'text-[#000000]' : 'text-black'}`}
-        >
-          SassaInsider
+        <Link to="/" className="flex items-center space-x-2">
+          {/* Logo image */}
+          <img 
+            src="/MoneyWorth.png" 
+            alt="MoneyWorth Logo" 
+            className={`h-8 w-auto transition-all duration-300 ${
+              scrolled ? 'opacity-100' : 'opacity-100'
+            }`}
+          />
+          {/* Logo text */}
+          <span 
+            className={`font-bold text-lg transition-colors ${
+              scrolled ? 'text-[#000000]' : 'text-black'
+            }`}
+          >
+            MoneyWorth
+          </span>
         </Link>
         
         <nav className="flex items-center space-x-6">
           <Link 
             to="/" 
-            className={`text-sm font-medium ${scrolled ? 'text-stone-950 hover:text-[#40404f]' : 'text-black/90 hover:text-black'} transition-colors`}
+            className={`text-sm font-medium ${
+              scrolled ? 'text-stone-950 hover:text-[#40404f]' : 'text-black/90 hover:text-black'
+            } transition-colors`}
           >
             Home
           </Link>
           <Link 
             to="/about" 
-            className={`text-sm font-medium ${scrolled ? 'text-stone-950 hover:text-[#40404f]' : 'text-black/90 hover:text-black'} transition-colors`}
+            className={`text-sm font-medium ${
+              scrolled ? 'text-stone-950 hover:text-[#40404f]' : 'text-black/90 hover:text-black'
+            } transition-colors`}
           >
             About
           </Link>
