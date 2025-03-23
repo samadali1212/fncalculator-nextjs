@@ -20,20 +20,34 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { generateTaxCalculations, formatCurrency, AgeGroup } from "../utils/taxCalculator";
+import { 
+  generateTaxCalculations, 
+  formatCurrency, 
+  AgeGroup, 
+  TimeFrame,
+  convertIncome
+} from "../utils/taxCalculator";
 import {
   Pagination,
   PaginationContent,
   PaginationItem,
 } from "@/components/ui/pagination";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 const TaxCalculator = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [itemsToShow, setItemsToShow] = useState(50);
   const [ageGroup, setAgeGroup] = useState<AgeGroup>("below65");
+  const [timeFrame, setTimeFrame] = useState<TimeFrame>("monthly");
   
   // Generate tax calculations
-  const taxResults = generateTaxCalculations(100000, 2000000, 50000, ageGroup);
+  const taxResults = generateTaxCalculations(
+    timeFrame === "monthly" ? 10000 : 120000,  // Default monthly min: R10,000, yearly: R120,000
+    timeFrame === "monthly" ? 150000 : 1800000, // Default monthly max: R150,000, yearly: R1,800,000
+    timeFrame === "monthly" ? 5000 : 60000,     // Monthly step: R5,000, yearly: R60,000
+    ageGroup,
+    timeFrame
+  );
   
   // Filter tax calculations based on search query
   const filteredResults = searchQuery
@@ -53,6 +67,14 @@ const TaxCalculator = () => {
     setAgeGroup(value as AgeGroup);
   };
 
+  const handleTimeFrameChange = (value: string) => {
+    if (value === "yearly" || value === "monthly") {
+      setTimeFrame(value as TimeFrame);
+      // Reset search query when changing timeframe
+      setSearchQuery("");
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -64,7 +86,7 @@ const TaxCalculator = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <h1 className="text-3xl font-bold mb-2">Income Tax Calculator</h1>
         <p className="text-gray-600 mb-6">
-          See how annual income gets taxed and what your take-home pay would be after PAYE in South Africa (2026 Tax Year)
+          See how {timeFrame === "monthly" ? "monthly" : "annual"} income gets taxed and what your take-home pay would be after PAYE in South Africa (2026 Tax Year)
         </p>
         
         <motion.div 
@@ -73,13 +95,13 @@ const TaxCalculator = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="relative md:col-span-2">
+          <div className="relative md:col-span-1">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <Search className="h-4 w-4 text-gray-400" />
             </div>
             <Input
               type="text"
-              placeholder="Search income (e.g. 300000)..."
+              placeholder={`Search ${timeFrame} income...`}
               className="pl-10"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -101,6 +123,22 @@ const TaxCalculator = () => {
               </SelectContent>
             </Select>
           </div>
+          
+          <div>
+            <ToggleGroup 
+              type="single" 
+              value={timeFrame}
+              onValueChange={handleTimeFrameChange}
+              className="w-full border rounded-md"
+            >
+              <ToggleGroupItem value="monthly" className="text-xs px-3 py-1 flex-1">
+                Monthly
+              </ToggleGroupItem>
+              <ToggleGroupItem value="yearly" className="text-xs px-3 py-1 flex-1">
+                Yearly
+              </ToggleGroupItem>
+            </ToggleGroup>
+          </div>
         </motion.div>
 
         <div className="bg-white rounded-sm shadow-sm border border-gray-200">
@@ -112,7 +150,7 @@ const TaxCalculator = () => {
             <>
               <div className="p-4 border-b border-gray-100 bg-gray-50">
                 <div className="grid grid-cols-12 text-xs font-medium text-gray-600">
-                  <div className="col-span-4 md:col-span-3">Annual Income</div>
+                  <div className="col-span-4 md:col-span-3">{timeFrame === "monthly" ? "Monthly" : "Annual"} Income</div>
                   <div className="col-span-4 md:col-span-3">After Tax</div>
                   <div className="hidden md:block md:col-span-2">Tax Amount</div>
                   <div className="col-span-3 md:col-span-2">Tax Rate</div>
@@ -131,7 +169,7 @@ const TaxCalculator = () => {
                   <div className="grid grid-cols-12 items-center">
                     <div className="col-span-4 md:col-span-3">
                       <Link 
-                        to={`/tax-calculator/${result.grossIncome}`}
+                        to={`/tax-calculator/${result.grossIncome}?timeFrame=${timeFrame}`}
                         className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                       >
                         {formatCurrency(result.grossIncome)}
