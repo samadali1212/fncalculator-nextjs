@@ -166,7 +166,8 @@ const JobDetail = () => {
           Back to Jobs
         </Button>
         
-        <article className="bg-white rounded-md shadow-sm overflow-hidden">
+        {/* Main Job Information Card */}
+        <article className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
           <div className="p-6 sm:p-8 border-b border-gray-100">
             <h1 className="text-3xl font-bold mb-4 capitalize">{jobTitle} Salary Information</h1>
             
@@ -258,65 +259,6 @@ const JobDetail = () => {
                 </div>
               </div>
             </div>
-            
-            {/* Related Salaries Section */}
-            {relatedJobs.length > 0 && (
-              <div className="mt-8 border-t border-gray-100 pt-8">
-                <h3 className="font-semibold text-lg mb-4">Related Salaries</h3>
-                <p className="text-sm text-gray-600 mb-4">
-                  Explore other {getJobCategory(jobId || "")} jobs with similar skill requirements
-                </p>
-                
-                <div className="bg-white rounded-sm shadow-sm border border-gray-200">
-                  {relatedJobs.map((job, index) => (
-                    <motion.div 
-                      key={job.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: index * 0.05 }}
-                      className={`group px-4 py-3 ${index !== relatedJobs.length - 1 ? 'border-b border-gray-100' : ''}`}
-                    >
-                      <div className="flex items-start">
-                        <div className="pr-3 text-center hidden sm:block">
-                          <span className="text-gray-500 text-sm">{index + 1}</span>
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-baseline gap-2 mb-1">
-                            <Link 
-                              to={`/salaries/${job.id}`}
-                              className="text-[#333] hover:underline text-base sm:text-lg font-medium transition-colors group-hover:text-blog-accent capitalize"
-                            >
-                              {job.title}
-                            </Link>
-                            <ArrowUpRight 
-                              className="h-3.5 w-3.5 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
-                            />
-                          </div>
-                          
-                          <div className="flex items-center text-xs text-[#828282]">
-                            <span>R{job.salary.toLocaleString()} per month</span>
-                            <span className="mx-1">•</span>
-                            <span className="font-medium text-[#555] capitalize">{job.experience} level</span>
-                            <span className="mx-1">•</span>
-                            <span className="px-1.5 py-0.5 bg-gray-100 rounded text-[#666] text-xs">
-                              {job.education.split(" ")[0]}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-                
-                <Button 
-                  variant="outline" 
-                  className="w-full mt-4"
-                  onClick={() => navigate('/salaries')}
-                >
-                  View All Jobs
-                </Button>
-              </div>
-            )}
           </div>
           
           <div className="bg-gray-50 p-6 sm:p-8 border-t border-gray-100">
@@ -335,6 +277,69 @@ const JobDetail = () => {
             </div>
           </div>
         </article>
+        
+        {/* Related Salaries Section - Now as a separate card outside the main article */}
+        {relatedJobs.length > 0 && (
+          <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
+            <div className="p-6 sm:p-8 border-b border-gray-100">
+              <h2 className="text-2xl font-bold mb-2">Related Salaries</h2>
+              <p className="text-sm text-gray-600">
+                Explore other {getJobCategory(jobId || "")} jobs with similar skill requirements
+              </p>
+            </div>
+            
+            <div className="divide-y divide-gray-100">
+              {relatedJobs.map((job, index) => (
+                <motion.div 
+                  key={job.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="group px-6 sm:px-8 py-4"
+                >
+                  <div className="flex items-start">
+                    <div className="pr-3 text-center hidden sm:block">
+                      <span className="text-gray-500 text-sm">{index + 1}</span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-baseline gap-2 mb-1">
+                        <Link 
+                          to={`/salaries/${job.id}`}
+                          className="text-[#333] hover:underline text-base sm:text-lg font-medium transition-colors group-hover:text-blog-accent capitalize"
+                        >
+                          {job.title}
+                        </Link>
+                        <ArrowUpRight 
+                          className="h-3.5 w-3.5 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
+                        />
+                      </div>
+                      
+                      <div className="flex items-center text-xs text-[#828282]">
+                        <span>R{job.salary.toLocaleString()} per month</span>
+                        <span className="mx-1">•</span>
+                        <span className="font-medium text-[#555] capitalize">{job.experience} level</span>
+                        <span className="mx-1">•</span>
+                        <span className="px-1.5 py-0.5 bg-gray-100 rounded text-[#666] text-xs">
+                          {job.education.split(" ")[0]}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            
+            <div className="p-6 sm:p-8 border-t border-gray-100">
+              <Button 
+                variant="outline" 
+                className="w-full"
+                onClick={() => navigate('/salaries')}
+              >
+                View All Jobs
+              </Button>
+            </div>
+          </div>
+        )}
       </main>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
