@@ -1,4 +1,3 @@
-
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate } from "react-router-dom";
@@ -33,13 +32,11 @@ const JobDetail = () => {
   const convertSalary = (value: number, from: SalaryPeriod, to: SalaryPeriod): number => {
     if (from === to) return value;
     
-    // Convert everything to monthly first
     let monthlyValue = value;
     if (from === "yearly") monthlyValue = value / 12;
-    if (from === "hourly") monthlyValue = value * 160; // Assuming 40 hours/week, 4 weeks/month
-    if (from === "weekly") monthlyValue = value * 4; // Assuming 4 weeks/month
+    if (from === "hourly") monthlyValue = value * 160;
+    if (from === "weekly") monthlyValue = value * 4;
     
-    // Then convert from monthly to target
     if (to === "monthly") return monthlyValue;
     if (to === "yearly") return monthlyValue * 12;
     if (to === "hourly") return monthlyValue / 160;
@@ -82,7 +79,9 @@ const JobDetail = () => {
       ? `Working in major cities like Johannesburg or Cape Town can increase this salary by up to ${Math.round((jobData.location_factor - 1) * 100)}%.`
       : "This salary is relatively consistent across South Africa.";
     
-    return `A ${jobTitle} in South Africa earns an average of ${avgSalary} ${periodText}. ${expDesc}. ${locationImpact} The salary range typically falls between ${displayValue(jobData.min)} and ${displayValue(jobData.max)} ${periodText}, depending on skills, certifications, and employer.`;
+    const article = getArticle(jobTitle);
+    
+    return `${article} ${jobTitle} in South Africa earns an average of ${avgSalary} ${periodText}. ${expDesc}. ${locationImpact} The salary range typically falls between ${displayValue(jobData.min)} and ${displayValue(jobData.max)} ${periodText}, depending on skills, certifications, and employer.`;
   };
 
   if (!jobData) {
@@ -242,3 +241,7 @@ const JobDetail = () => {
 };
 
 export default JobDetail;
+
+const getArticle = (word: string): string => {
+  return /^[aeiou]/i.test(word) ? "An" : "A";
+};
