@@ -16,7 +16,7 @@ const About = () => {
           <h1 className="text-2xl font-bold mb-4">About BlogDomain</h1>
           <div className="prose max-w-none">
             <p className="mb-4">
-              BlogDomain is a personal blog focusing on technology, programming, and design topics.
+              MoneyWorth is a personal blog focusing on technology, programming, and design topics.
               The content is curated and written to provide valuable insights and information.
             </p>
             <p className="mb-4">
@@ -27,7 +27,7 @@ const About = () => {
             <p>
               If you have any questions or would like to get in touch, please email:
               <a href="mailto:contact@blogdomain.com" className="text-[#ff6600] hover:underline ml-1">
-                contact@blogdomain.com
+                flavianjn@gmail.com
               </a>
             </p>
           </div>
@@ -37,7 +37,7 @@ const About = () => {
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} BlogDomain. All rights reserved.
+            &copy; {new Date().getFullYear()} MoneyWorth. All rights reserved.
           </p>
         </div>
       </footer>
