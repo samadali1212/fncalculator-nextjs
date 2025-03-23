@@ -29,10 +29,13 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center max-w-4xl">
         <Link 
-          to="/" 
-          className={`font-bold text-lg transition-colors ${scrolled ? 'text-[#000000]' : 'text-black'}`}
-        >
-          SassaInsider
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/sassainsider-Light-Mode-Logo-7.png" 
+              alt="SassaInsider" 
+              className="h-8 w-auto"
+            />
+          </Link>
         </Link>
         
         <nav className="flex items-center space-x-6">
