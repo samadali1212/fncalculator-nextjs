@@ -4,37 +4,68 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getPostBySlug, formatDate, getRelatedPosts } from '../utils/blogData';
 import Header from '../components/Header';
-import ReactMarkdown from 'react-markdown';
 import { ArrowLeft, Calendar, User, Clock, ArrowRight } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const [isLoading, setIsLoading] = useState(true);
+  const [post, setPost] = useState(slug ? getPostBySlug(slug) : undefined);
+  const [relatedPosts, setRelatedPosts] = useState<ReturnType<typeof getRelatedPosts>>([]);
   const navigate = useNavigate();
   
-  const post = slug ? getPostBySlug(slug) : undefined;
-  const relatedPosts = slug ? getRelatedPosts(slug, 3) : [];
+  useEffect(() => {
+    if (!slug) return;
+    
+    // Simulate loading from an API
+    const fetchPost = async () => {
+      setIsLoading(true);
+      
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      const foundPost = getPostBySlug(slug);
+      if (foundPost) {
+        setPost(foundPost);
+        setRelatedPosts(getRelatedPosts(slug, 3));
+      }
+      
+      setIsLoading(false);
+    };
+    
+    fetchPost();
+  }, [slug]);
   
   useEffect(() => {
     if (!post && !isLoading) {
       navigate('/404');
     }
-    
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-    
-    return () => clearTimeout(timer);
   }, [post, isLoading, navigate]);
   
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="w-16 h-16 border-4 border-[#ff6600] border-t-transparent rounded-full animate-spin"
-        ></motion.div>
+      <div className="min-h-screen bg-[#f6f6f0]">
+        <Header />
+        <main className="pt-20 pb-16">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
+              <Skeleton className="h-10 w-3/4 mb-4" />
+              <div className="flex flex-wrap items-center gap-3 mb-6 pb-6 border-b border-gray-200">
+                <Skeleton className="h-5 w-24" />
+                <Skeleton className="h-5 w-20" />
+                <Skeleton className="h-5 w-16" />
+              </div>
+              <Skeleton className="h-48 w-full mb-8" />
+              <div className="space-y-4">
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-5/6" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-4/5" />
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     );
   }
@@ -99,9 +130,10 @@ const BlogPost = () => {
               </div>
             )}
             
-            <div className="prose prose-sm sm:prose max-w-none prose-h2:text-xl prose-h2:font-bold prose-h3:text-lg prose-h3:font-bold prose-p:text-[#333] prose-a:text-[#ff6600] prose-blockquote:border-l-[#ff6600]">
-              <ReactMarkdown>{post.content}</ReactMarkdown>
-            </div>
+            <div 
+              className="prose prose-sm sm:prose max-w-none prose-h2:text-xl prose-h2:font-bold prose-h3:text-lg prose-h3:font-bold prose-p:text-[#333] prose-a:text-[#ff6600] prose-blockquote:border-l-[#ff6600]"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
           </div>
           
           {/* Author bio */}
@@ -133,33 +165,36 @@ const BlogPost = () => {
               <h3 className="text-lg font-medium text-[#333] mb-4">
                 Related Posts
               </h3>
-              <div className="space-y-4">
-                {relatedPosts.map(relatedPost => (
-                  <div key={relatedPost.id} className="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
-                    <Link
-                      to={`/post/${relatedPost.slug}`}
-                      className="group flex items-start gap-3"
-                    >
-                      {relatedPost.coverImage && (
-                        <div className="w-16 h-16 rounded overflow-hidden flex-shrink-0">
-                          <img 
-                            src={relatedPost.coverImage} 
-                            alt={relatedPost.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                          />
-                        </div>
-                      )}
-                      <div>
-                        <h4 className="font-medium text-[#333] group-hover:text-[#ff6600] transition-colors">
-                          {relatedPost.title}
-                        </h4>
-                        <p className="text-xs text-[#666]">
-                          {formatDate(relatedPost.publishedAt)} • {relatedPost.readTime} min read
-                        </p>
+              <div className="divide-y divide-gray-100">
+                {relatedPosts.map((relatedPost, index) => (
+                  <motion.div 
+                    key={relatedPost.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    className="group py-3"
+                  >
+                    <div className="flex items-center">
+                      <div className="pr-3 text-center hidden sm:block">
+                        <span className="text-gray-500 text-sm">{index + 1}</span>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-[#999] group-hover:text-[#ff6600] transition-colors ml-auto mt-1 opacity-0 group-hover:opacity-100" />
-                    </Link>
-                  </div>
+                      <div className="flex-1">
+                        <Link 
+                          to={`/post/${relatedPost.slug}`}
+                          className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-[#ff6600]"
+                        >
+                          {relatedPost.title}
+                        </Link>
+                        
+                        <div className="flex items-center text-xs text-[#828282]">
+                          <span>{formatDate(relatedPost.publishedAt)}</span>
+                          <span className="mx-1">•</span>
+                          <span>{relatedPost.readTime} min read</span>
+                        </div>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-[#999] group-hover:text-[#ff6600] transition-colors opacity-0 group-hover:opacity-100" />
+                    </div>
+                  </motion.div>
                 ))}
               </div>
             </div>

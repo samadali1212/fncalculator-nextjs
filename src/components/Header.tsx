@@ -28,32 +28,27 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center max-w-4xl">
-        <div className="flex items-center">
+        <Link 
+          to="/" 
+          className={`font-bold text-lg transition-colors ${scrolled ? 'text-[#ff6600]' : 'text-white'}`}
+        >
+          BlogDomain
+        </Link>
+        
+        <nav className="flex items-center space-x-6">
           <Link 
             to="/" 
-            className={`font-bold text-lg transition-colors ${scrolled ? 'text-[#ff6600]' : 'text-white'}`}
+            className={`text-sm font-medium ${scrolled ? 'text-gray-700 hover:text-[#ff6600]' : 'text-white/90 hover:text-white'} transition-colors`}
           >
-            BlogDomain
+            Home
           </Link>
-          
-          <div className="hidden md:flex items-center space-x-6 ml-8">
-            <Link 
-              to="/" 
-              className={`text-sm font-medium ${scrolled ? 'text-gray-700 hover:text-[#ff6600]' : 'text-white/90 hover:text-white'} transition-colors`}
-            >
-              Home
-            </Link>
-          </div>
-        </div>
-
-        <div className="md:block">
           <Link 
             to="/about" 
             className={`text-sm font-medium ${scrolled ? 'text-gray-700 hover:text-[#ff6600]' : 'text-white/90 hover:text-white'} transition-colors`}
           >
             About
           </Link>
-        </div>
+        </nav>
       </div>
     </header>
   );
