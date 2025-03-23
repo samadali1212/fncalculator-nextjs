@@ -158,7 +158,7 @@ const TaxCalculationDetail = () => {
               </div>
               
               <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
-                Tax Year 2023/2024
+                Tax Year 2026
               </span>
             </div>
             

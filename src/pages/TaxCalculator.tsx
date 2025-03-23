@@ -64,7 +64,7 @@ const TaxCalculator = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <h1 className="text-3xl font-bold mb-2">Income Tax Calculator</h1>
         <p className="text-gray-600 mb-6">
-          See how annual income gets taxed and what your take-home pay would be after PAYE in South Africa
+          See how annual income gets taxed and what your take-home pay would be after PAYE in South Africa (2026 Tax Year)
         </p>
         
         <motion.div 
