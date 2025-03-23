@@ -1,3 +1,4 @@
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -505,6 +506,30 @@ export const getPostBySlug = (slug: string): BlogPost | undefined => {
 
 export const getFeaturedPosts = (): BlogPost[] => {
   return blogPosts.filter(post => post.featured);
+};
+
+export const getRelatedPosts = (currentSlug: string, limit: number = 3): BlogPost[] => {
+  const currentPost = getPostBySlug(currentSlug);
+  
+  if (!currentPost) return [];
+  
+  // Find posts with the same category, excluding the current post
+  const sameCategoryPosts = blogPosts.filter(post => 
+    post.slug !== currentSlug && post.category === currentPost.category
+  );
+  
+  // If we have enough posts from the same category, return them
+  if (sameCategoryPosts.length >= limit) {
+    return sameCategoryPosts.slice(0, limit);
+  }
+  
+  // If we need more posts, get posts from other categories
+  const otherPosts = blogPosts.filter(post => 
+    post.slug !== currentSlug && post.category !== currentPost.category
+  );
+  
+  // Combine posts, ensuring we don't exceed the limit
+  return [...sameCategoryPosts, ...otherPosts].slice(0, limit);
 };
 
 export const formatDate = (dateString: string): string => {

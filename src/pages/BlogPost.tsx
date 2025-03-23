@@ -2,10 +2,10 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { getPostBySlug, formatDate } from '../utils/blogData';
+import { getPostBySlug, formatDate, getRelatedPosts } from '../utils/blogData';
 import Header from '../components/Header';
 import ReactMarkdown from 'react-markdown';
-import { ArrowLeft, Calendar, User, Clock } from 'lucide-react';
+import { ArrowLeft, Calendar, User, Clock, ArrowRight } from 'lucide-react';
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -13,6 +13,7 @@ const BlogPost = () => {
   const navigate = useNavigate();
   
   const post = slug ? getPostBySlug(slug) : undefined;
+  const relatedPosts = slug ? getRelatedPosts(slug, 3) : [];
   
   useEffect(() => {
     if (!post && !isLoading) {
@@ -126,18 +127,43 @@ const BlogPost = () => {
             </div>
           </div>
           
-          {/* Related discussion section */}
-          <div className="bg-white p-6 rounded-md shadow-sm">
-            <h3 className="text-lg font-medium text-[#333] mb-4">
-              Discussion
-            </h3>
-            <div className="text-center py-8">
-              <p className="text-[#666] mb-4">Join the conversation</p>
-              <button className="px-4 py-2 bg-[#ff6600] text-white rounded hover:bg-[#e55c00] transition-colors">
-                Add Comment
-              </button>
+          {/* Related posts section */}
+          {relatedPosts.length > 0 && (
+            <div className="bg-white p-6 rounded-md shadow-sm">
+              <h3 className="text-lg font-medium text-[#333] mb-4">
+                Related Posts
+              </h3>
+              <div className="space-y-4">
+                {relatedPosts.map(relatedPost => (
+                  <div key={relatedPost.id} className="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                    <Link
+                      to={`/post/${relatedPost.slug}`}
+                      className="group flex items-start gap-3"
+                    >
+                      {relatedPost.coverImage && (
+                        <div className="w-16 h-16 rounded overflow-hidden flex-shrink-0">
+                          <img 
+                            src={relatedPost.coverImage} 
+                            alt={relatedPost.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                          />
+                        </div>
+                      )}
+                      <div>
+                        <h4 className="font-medium text-[#333] group-hover:text-[#ff6600] transition-colors">
+                          {relatedPost.title}
+                        </h4>
+                        <p className="text-xs text-[#666]">
+                          {formatDate(relatedPost.publishedAt)} • {relatedPost.readTime} min read
+                        </p>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-[#999] group-hover:text-[#ff6600] transition-colors ml-auto mt-1 opacity-0 group-hover:opacity-100" />
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </article>
       </main>
       
