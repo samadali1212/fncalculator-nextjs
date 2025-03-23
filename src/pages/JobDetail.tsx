@@ -39,8 +39,8 @@ const getJobCategory = (jobId: string): string => {
   return "Other";
 };
 
-// Get related jobs by category
-const getRelatedJobs = (jobId: string, limit: number = 3): string[] => {
+// Get related jobs by category, now with a limit parameter defaulting to 20
+const getRelatedJobs = (jobId: string, limit: number = 20): string[] => {
   const category = getJobCategory(jobId);
   
   // Get all jobs in the same category
