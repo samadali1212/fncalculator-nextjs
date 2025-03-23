@@ -26,15 +26,12 @@ const Header = () => {
     <header className="fixed w-full bg-white z-40 border-b border-gray-200">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center">
             <img
               src="/MoneyWorth.png"
-              alt="MoneyWorth Logo"
+              alt="MoneyWorth"
               className="h-8 w-auto"
             />
-            <span className="font-bold text-xl hidden sm:inline text-[#ff6600]">
-              MoneyWorth
-            </span>
           </Link>
 
           {/* Desktop Navigation */}
