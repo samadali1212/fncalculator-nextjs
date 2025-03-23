@@ -1,89 +1,145 @@
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import useMobile from "@/hooks/use-mobile";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isMobile = useIsMobile();
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const isMobile = useMobile();
   const location = useLocation();
-  
-  // Close mobile menu when route changes
+
+  const closeMenu = () => setIsOpen(false);
+
   useEffect(() => {
-    setIsMenuOpen(false);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Close menu when location changes
+  useEffect(() => {
+    closeMenu();
   }, [location]);
 
-  const isActive = (path: string) => location.pathname === path;
-
-  const navigationItems = [
-    { title: "Home", path: "/" },
-    { title: "About", path: "/about" },
-    { title: "Salaries", path: "/salaries" },
-  ];
-
   return (
-    <header className="fixed w-full bg-white z-40 border-b border-gray-200">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center">
-            <img
-              src="/MoneyWorth.png"
-              alt="MoneyWorth"
-              className="h-8 w-auto"
-            />
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-200",
+        scrolled ? "bg-white shadow-sm py-2" : "bg-transparent py-4"
+      )}
+    >
+      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2 font-bold text-2xl">
+          <img src="/MoneyWorth.png" alt="MoneyWorth Logo" className="h-9" />
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center gap-1">
+          <Link
+            to="/"
+            className={cn(
+              "px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100",
+              location.pathname === "/" && "font-medium text-gray-900"
+            )}
+          >
+            Home
           </Link>
+          <Link
+            to="/salaries"
+            className={cn(
+              "px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100",
+              location.pathname === "/salaries" && "font-medium text-gray-900"
+            )}
+          >
+            Salaries
+          </Link>
+          <Link
+            to="/hourly-rates"
+            className={cn(
+              "px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100",
+              location.pathname === "/hourly-rates" && "font-medium text-gray-900"
+            )}
+          >
+            Hourly Rates
+          </Link>
+          <Link
+            to="/about"
+            className={cn(
+              "px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100",
+              location.pathname === "/about" && "font-medium text-gray-900"
+            )}
+          >
+            About
+          </Link>
+        </nav>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6">
-            {navigationItems.map((item) => (
+        {/* Mobile Menu Button */}
+        <Button
+          variant="ghost"
+          size="icon"
+          className="lg:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X /> : <Menu />}
+        </Button>
+
+        {/* Mobile Navigation */}
+        {isOpen && isMobile && (
+          <div className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-sm py-4">
+            <nav className="container mx-auto px-4 flex flex-col space-y-2">
               <Link
-                key={item.path}
-                to={item.path}
-                className={`font-medium transition-colors hover:text-[#ff6600] ${
-                  isActive(item.path) ? "text-[#ff6600]" : "text-gray-600"
-                }`}
+                to="/"
+                className={cn(
+                  "px-4 py-2 rounded-md hover:bg-gray-100",
+                  location.pathname === "/" &&
+                    "bg-gray-100 font-medium text-gray-900"
+                )}
               >
-                {item.title}
+                Home
               </Link>
-            ))}
-          </nav>
-
-          {/* Mobile Menu Button */}
-          {isMobile && (
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 text-gray-500 hover:text-gray-700"
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isMobile && isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
-          <div className="container mx-auto px-4 py-3">
-            <nav className="flex flex-col space-y-3">
-              {navigationItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`py-2 px-3 rounded-md font-medium ${
-                    isActive(item.path)
-                      ? "bg-gray-100 text-[#ff6600]"
-                      : "text-gray-600 hover:bg-gray-50 hover:text-[#ff6600]"
-                  }`}
-                >
-                  {item.title}
-                </Link>
-              ))}
+              <Link
+                to="/salaries"
+                className={cn(
+                  "px-4 py-2 rounded-md hover:bg-gray-100",
+                  location.pathname === "/salaries" &&
+                    "bg-gray-100 font-medium text-gray-900"
+                )}
+              >
+                Salaries
+              </Link>
+              <Link
+                to="/hourly-rates"
+                className={cn(
+                  "px-4 py-2 rounded-md hover:bg-gray-100",
+                  location.pathname === "/hourly-rates" &&
+                    "bg-gray-100 font-medium text-gray-900"
+                )}
+              >
+                Hourly Rates
+              </Link>
+              <Link
+                to="/about"
+                className={cn(
+                  "px-4 py-2 rounded-md hover:bg-gray-100",
+                  location.pathname === "/about" &&
+                    "bg-gray-100 font-medium text-gray-900"
+                )}
+              >
+                About
+              </Link>
             </nav>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </header>
   );
 };
