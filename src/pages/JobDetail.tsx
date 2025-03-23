@@ -12,7 +12,7 @@ import { getSalaryData } from "../utils/salaryData";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 
-type SalaryPeriod = "monthly" | "yearly" | "hourly";
+type SalaryPeriod = "weekly" | "monthly" | "yearly" | "hourly";
 
 const JobDetail = () => {
   const { jobId } = useParams<{ jobId: string }>();
@@ -37,11 +37,13 @@ const JobDetail = () => {
     let monthlyValue = value;
     if (from === "yearly") monthlyValue = value / 12;
     if (from === "hourly") monthlyValue = value * 160; // Assuming 40 hours/week, 4 weeks/month
+    if (from === "weekly") monthlyValue = value * 4; // Assuming 4 weeks/month
     
     // Then convert from monthly to target
     if (to === "monthly") return monthlyValue;
     if (to === "yearly") return monthlyValue * 12;
     if (to === "hourly") return monthlyValue / 160;
+    if (to === "weekly") return monthlyValue / 4;
     
     return value;
   };
@@ -72,7 +74,9 @@ const JobDetail = () => {
       ? "per month" 
       : displayPeriod === "yearly" 
         ? "per year" 
-        : "per hour";
+        : displayPeriod === "weekly"
+          ? "per week"
+          : "per hour";
     
     const locationImpact = jobData.location_factor > 1 
       ? `Working in major cities like Johannesburg or Cape Town can increase this salary by up to ${Math.round((jobData.location_factor - 1) * 100)}%.`
@@ -118,53 +122,34 @@ const JobDetail = () => {
           <div className="p-6 sm:p-8 border-b border-gray-100">
             <h1 className="text-3xl font-bold mb-4 capitalize">{jobTitle} Salary Information</h1>
             
-            <div className="flex flex-wrap items-center gap-3 mb-6">
-              <div className="flex items-center text-gray-600 text-sm">
-                <Calendar className="h-4 w-4 mr-1" />
-                <span>Updated {new Date().toLocaleDateString('en-ZA', { month: 'long', year: 'numeric' })}</span>
+            <div className="bg-gray-50 p-4 rounded-md mb-6">
+              <div className="flex justify-center mb-3">
+                <ToggleGroup 
+                  type="single" 
+                  value={displayPeriod}
+                  onValueChange={handlePeriodChange}
+                  variant="outline"
+                  className="bg-white"
+                >
+                  <ToggleGroupItem value="weekly" aria-label="Weekly">Weekly</ToggleGroupItem>
+                  <ToggleGroupItem value="monthly" aria-label="Monthly">Monthly</ToggleGroupItem>
+                  <ToggleGroupItem value="yearly" aria-label="Yearly">Yearly</ToggleGroupItem>
+                  <ToggleGroupItem value="hourly" aria-label="Hourly">Hourly</ToggleGroupItem>
+                </ToggleGroup>
               </div>
               
-              <div className="flex items-center text-gray-600 text-sm">
-                <User className="h-4 w-4 mr-1" />
-                <span>MoneyWorth Research</span>
-              </div>
-              
-              <div className="flex items-center text-gray-600 text-sm">
-                <BriefcaseBusiness className="h-4 w-4 mr-1" />
-                <span className="capitalize">{jobData.experience} Level</span>
-              </div>
-            </div>
-            
-            <div className="mb-6">
-              <div className="bg-gray-50 p-4 rounded-md">
-                <div className="mb-3 flex justify-between items-center">
-                  <h3 className="font-medium">Display Salary As:</h3>
-                  <ToggleGroup 
-                    type="single" 
-                    value={displayPeriod}
-                    onValueChange={handlePeriodChange}
-                    variant="outline"
-                    className="bg-white"
-                  >
-                    <ToggleGroupItem value="monthly" aria-label="Monthly">Monthly</ToggleGroupItem>
-                    <ToggleGroupItem value="yearly" aria-label="Yearly">Yearly</ToggleGroupItem>
-                    <ToggleGroupItem value="hourly" aria-label="Hourly">Hourly</ToggleGroupItem>
-                  </ToggleGroup>
+              <div className="grid md:grid-cols-3 gap-2">
+                <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
+                  <div className="text-gray-600 text-sm mb-1">Minimum</div>
+                  <div className="text-xl font-bold">{displayValue(jobData.min)}</div>
                 </div>
-                
-                <div className="grid md:grid-cols-3 gap-2">
-                  <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
-                    <div className="text-gray-600 text-sm mb-1">Minimum</div>
-                    <div className="text-xl font-bold">{displayValue(jobData.min)}</div>
-                  </div>
-                  <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100 shadow-sm">
-                    <div className="text-gray-600 text-sm mb-1">Average</div>
-                    <div className="text-2xl font-bold text-primary">{displayValue(jobData.average)}</div>
-                  </div>
-                  <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
-                    <div className="text-gray-600 text-sm mb-1">Maximum</div>
-                    <div className="text-xl font-bold">{displayValue(jobData.max)}</div>
-                  </div>
+                <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100 shadow-sm">
+                  <div className="text-gray-600 text-sm mb-1">Average</div>
+                  <div className="text-2xl font-bold text-primary">{displayValue(jobData.average)}</div>
+                </div>
+                <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
+                  <div className="text-gray-600 text-sm mb-1">Maximum</div>
+                  <div className="text-xl font-bold">{displayValue(jobData.max)}</div>
                 </div>
               </div>
             </div>
