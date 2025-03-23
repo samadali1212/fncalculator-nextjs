@@ -14,8 +14,6 @@ export interface BlogPost {
   category: string;
   featured?: boolean;
   coverImage?: string;
-  views: number;
-  comments?: number;
 }
 
 export const blogPosts: BlogPost[] = [
