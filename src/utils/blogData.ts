@@ -14,6 +14,7 @@ export interface BlogPost {
   featured?: boolean;
   coverImage?: string;
   views: number;
+  comments?: number;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -510,4 +511,3 @@ export const formatDate = (dateString: string): string => {
   const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
   return new Date(dateString).toLocaleDateString('en-US', options);
 };
-
