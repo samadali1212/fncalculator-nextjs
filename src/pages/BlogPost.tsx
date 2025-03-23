@@ -262,7 +262,7 @@ const BlogPost = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} BlogDomain. All rights reserved.
+            &copy; {new Date().getFullYear()} MoneyWorth. All rights reserved.
           </p>
         </div>
       </footer>
