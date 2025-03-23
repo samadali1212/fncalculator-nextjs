@@ -43,27 +43,15 @@ const Header = () => {
             >
               Home
             </Link>
-            <Link 
-              to="/category/technology" 
-              className={`text-sm font-medium ${scrolled ? 'text-gray-700 hover:text-[#ff6600]' : 'text-white/90 hover:text-white'} transition-colors`}
-            >
-              Technology
-            </Link>
-            <Link 
-              to="/category/programming" 
-              className={`text-sm font-medium ${scrolled ? 'text-gray-700 hover:text-[#ff6600]' : 'text-white/90 hover:text-white'} transition-colors`}
-            >
-              Programming
-            </Link>
           </div>
         </div>
 
         <div className="md:block">
           <Link 
-            to="/new" 
+            to="/about" 
             className={`text-sm font-medium ${scrolled ? 'text-gray-700 hover:text-[#ff6600]' : 'text-white/90 hover:text-white'} transition-colors`}
           >
-            Submit
+            About
           </Link>
         </div>
       </div>

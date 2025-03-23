@@ -1,13 +1,15 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import Header from "../components/Header";
 import BlogList from "../components/BlogList";
 import { blogPosts } from "../utils/blogData";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [sortBy, setSortBy] = useState("latest");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -39,26 +41,27 @@ const Index = () => {
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <motion.div 
-          className="flex items-center justify-between mb-6"
+          className="mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-xl font-medium text-[#333]">Recent Posts</h2>
-          <div className="flex items-center space-x-2">
-            <select 
-              className="bg-[#f6f6f0] border border-gray-300 text-[#333] rounded px-2 py-1 text-sm focus:outline-none"
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-            >
-              <option value="latest">Latest</option>
-              <option value="popular">Popular</option>
-              <option value="trending">Trending</option>
-            </select>
+          <h2 className="text-xl font-medium text-[#333] mb-4">Blog Posts</h2>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Search className="h-4 w-4 text-gray-400" />
+            </div>
+            <Input
+              type="text"
+              placeholder="Search posts..."
+              className="pl-10"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
         </motion.div>
 
-        <BlogList posts={blogPosts} sortBy={sortBy} />
+        <BlogList posts={blogPosts} searchQuery={searchQuery} />
       </main>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
