@@ -212,7 +212,7 @@ const JobDetail = () => {
           
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4 capitalize">
-              {jobTitle} Salary Information
+              {jobTitle} Salary in South Africa
             </h1>
             
             <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] mb-6 pb-6 border-b border-gray-200">
