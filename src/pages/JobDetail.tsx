@@ -1,4 +1,3 @@
-
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
@@ -203,24 +202,28 @@ const JobDetail = () => {
   const [displayPeriod, setDisplayPeriod] = useState<SalaryPeriod>("monthly");
   const [isLoading, setIsLoading] = useState(true);
   
+  // Convert URL with hyphens back to job ID with underscores
+  const actualJobId = jobId ? jobId.replace(/-/g, "_") : "";
+  
   const salaryData = useMemo(() => getSalaryData(), []);
-  const jobData = jobId && salaryData[jobId] ? salaryData[jobId] : null;
-  const jobTitle = jobId ? jobId.replace(/_/g, " ") : "";
+  const jobData = actualJobId && salaryData[actualJobId] ? salaryData[actualJobId] : null;
+  const jobTitle = actualJobId ? actualJobId.replace(/_/g, " ") : "";
   
   // Get related jobs, making sure to filter out any undefined salary data
-  const relatedJobIds = jobId ? getRelatedJobs(jobId) : [];
+  const relatedJobIds = actualJobId ? getRelatedJobs(actualJobId) : [];
   const relatedJobs = relatedJobIds
     .filter(id => salaryData[id] !== undefined) // Filter out any jobs that don't have data
     .map(id => ({
       id,
       title: id.replace(/_/g, " "),
+      slug: id.replace(/_/g, "-"), // Convert underscores to hyphens for URLs
       salary: salaryData[id].average,
       experience: salaryData[id].experience,
       education: salaryData[id].education
     }));
 
   // SEO title and description with job specific information
-  const jobCategory = jobId ? getJobCategory(jobId) : "";
+  const jobCategory = actualJobId ? getJobCategory(actualJobId) : "";
   const seoTitle = jobData 
     ? `${jobTitle} Salary in South Africa (R${jobData.average.toLocaleString()})` 
     : `${jobTitle} Salary in South Africa`;
@@ -509,7 +512,7 @@ const JobDetail = () => {
               <div className="p-6 sm:p-8 border-b border-gray-100">
                 <h2 className="text-2xl font-bold mb-2">Related Salaries</h2>
                 <p className="text-sm text-gray-600">
-                  Explore other {getJobCategory(jobId || "")} jobs with similar skill requirements
+                  Explore other {getJobCategory(actualJobId)} jobs with similar skill requirements
                 </p>
               </div>
               
@@ -528,7 +531,7 @@ const JobDetail = () => {
                       </div>
                       <div className="flex-1">
                         <Link 
-                          to={`/salaries/${job.id}`}
+                          to={`/salaries/${job.slug}`}
                           className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent capitalize"
                         >
                           {job.title}
@@ -576,3 +579,4 @@ export default JobDetail;
 const getArticle = (word: string): string => {
   return /^[aeiou]/i.test(word) ? "An" : "A";
 };
+

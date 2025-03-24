@@ -25,6 +25,7 @@ const JobList = ({ searchQuery }: JobListProps) => {
     .map(([key, value]) => ({
       id: key,
       title: key.replace(/_/g, " "),
+      slug: key.replace(/_/g, "-"), // Convert underscore to hyphens for URL
       salary: value.average,
       experience: value.experience,
       education: value.education
@@ -74,7 +75,7 @@ const JobList = ({ searchQuery }: JobListProps) => {
                 <div className="flex-1">
                   <div className="flex items-baseline gap-2 mb-1">
                     <Link 
-                      to={`/salaries/${job.id}`}
+                      to={`/salaries/${job.slug}`}
                       className="text-[#333] hover:underline text-base sm:text-lg font-medium transition-colors group-hover:text-blog-accent capitalize"
                     >
                       {job.title}
