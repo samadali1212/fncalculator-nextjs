@@ -1760,7 +1760,7 @@ export const getSalaryData = (): SalaryData => {
     min: 28500,
     average: 51250,
     max: 625000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Finance, Economics, or Accounting",
     location_factor: 1.15
   },
