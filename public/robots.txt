@@ -1,14 +1,20 @@
+
+# MoneyWorth Robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://moneyworth.com/sitemap.xml
+
+# Allow crawling of important directories
 User-agent: Googlebot
 Allow: /
-
 User-agent: Bingbot
 Allow: /
-
-User-agent: Twitterbot
+User-agent: Yandexbot
 Allow: /
-
-User-agent: facebookexternalhit
+User-agent: Slurp
 Allow: /
-
-User-agent: *
+User-agent: Baiduspider
+Allow: /
+User-agent: DuckDuckBot
 Allow: /

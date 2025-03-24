@@ -5,6 +5,7 @@ import { Search, Filter, ArrowUpRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import SEO from "../components/SEO";
 import { 
   Card, 
   CardContent, 
@@ -52,6 +53,11 @@ const HourlyRates = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
+      <SEO 
+        title="Hourly to Monthly Salary Converter | South Africa" 
+        description="Convert hourly rates to monthly and yearly salaries in South Africa. Find out what your hourly rate means in terms of monthly and annual income."
+        canonicalUrl="/hourly-rates"
+      />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">

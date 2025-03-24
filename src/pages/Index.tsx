@@ -5,6 +5,7 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Header from "../components/Header";
 import BlogList from "../components/BlogList";
+import SEO from "../components/SEO";
 import { blogPosts } from "../utils/blogData";
 
 const Index = () => {
@@ -37,6 +38,11 @@ const Index = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
+      <SEO 
+        title="MoneyWorth - South African Financial Guides & Calculators"
+        description="MoneyWorth provides expert financial insights tailored for South Africans. Find salary guides, tax calculators, and practical money advice."
+        canonicalUrl="/"
+      />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">

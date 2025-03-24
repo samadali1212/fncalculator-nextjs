@@ -1,10 +1,10 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search, ArrowUpRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import SEO from "../components/SEO";
 import { 
   Card, 
   CardContent, 
@@ -40,7 +40,6 @@ const TaxCalculator = () => {
   const [ageGroup, setAgeGroup] = useState<AgeGroup>("below65");
   const [timeFrame, setTimeFrame] = useState<TimeFrame>("monthly");
   
-  // Generate tax calculations
   const taxResults = generateTaxCalculations(
     timeFrame === "monthly" ? 10000 : 120000,  // Default monthly min: R10,000, yearly: R120,000
     timeFrame === "monthly" ? 150000 : 1800000, // Default monthly max: R150,000, yearly: R1,800,000
@@ -49,7 +48,6 @@ const TaxCalculator = () => {
     timeFrame
   );
   
-  // Filter tax calculations based on search query
   const filteredResults = searchQuery
     ? taxResults.filter(result => 
         result.grossIncome.toString().includes(searchQuery) ||
@@ -70,7 +68,6 @@ const TaxCalculator = () => {
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
       setTimeFrame(value as TimeFrame);
-      // Reset search query when changing timeframe
       setSearchQuery("");
     }
   };
@@ -81,6 +78,11 @@ const TaxCalculator = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
+      <SEO 
+        title="2025/2026 SARS Income Tax Calculator | South Africa" 
+        description="Calculate your take-home pay after PAYE tax in South Africa with our 2025/2026 SARS income tax calculator. Monthly and annual income tax calculations."
+        canonicalUrl="/tax-calculator"
+      />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">

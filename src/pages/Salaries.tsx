@@ -5,6 +5,7 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Header from "../components/Header";
 import JobList from "../components/JobList";
+import SEO from "../components/SEO";
 
 const Salaries = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,6 +16,11 @@ const Salaries = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
+      <SEO 
+        title="South African Salaries Guide" 
+        description="Explore salary ranges for various jobs and professions in South Africa. Updated salary information to help with job searches and career planning."
+        canonicalUrl="/salaries"
+      />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">

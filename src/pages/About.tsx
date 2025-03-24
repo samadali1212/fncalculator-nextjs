@@ -1,6 +1,7 @@
 
 import { motion } from "framer-motion";
 import Header from "../components/Header";
+import SEO from "../components/SEO";
 
 const About = () => {
   return (
@@ -9,6 +10,11 @@ const About = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
+      <SEO 
+        title="About MoneyWorth" 
+        description="Learn about MoneyWorth - your trusted source for financial insights in South Africa. Discover our mission to help South Africans make informed money decisions."
+        canonicalUrl="/about"
+      />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">

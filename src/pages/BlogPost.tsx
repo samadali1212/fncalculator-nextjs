@@ -4,6 +4,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getPostBySlug, formatDate, getRelatedPosts } from '../utils/blogData';
 import Header from '../components/Header';
+import SEO from '../components/SEO';
 import { ArrowLeft, Calendar, User, Clock, ArrowRight } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -139,6 +140,13 @@ const BlogPost = () => {
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
+      <SEO 
+        title={post.title}
+        description={post.excerpt}
+        canonicalUrl={`/post/${post.slug}`}
+        ogImage={post.coverImage || "/MoneyWorth.webp"}
+        ogType="article"
+      />
       <Header />
       
       <main className="pt-20 pb-16">
