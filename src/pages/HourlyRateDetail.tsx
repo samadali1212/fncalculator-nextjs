@@ -1,7 +1,9 @@
+
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Header from "../components/Header";
+import SEO from "../components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Briefcase, Clock, Calendar, ArrowUpRight, ArrowRight } from "lucide-react";
@@ -93,10 +95,15 @@ const HourlyRateDetail = () => {
   const formatWithSpaces = (value: number): string => {
     return value.toLocaleString().replace(/,/g, ' ');
   };
+
+  // SEO title and description with rate specific information 
+  const seoTitle = `R${hourlyRate} Per Hour to Monthly Salary | MoneyWorth`;
+  const seoDescription = `Convert R${hourlyRate} hourly rate to monthly salary (R${rateDetails?.monthlyEquivalent.toLocaleString().replace(/,/g, ' ')}) and yearly income in South Africa based on ${hoursPerWeek} hours per week.`;
   
   if (isLoading) {
     return (
       <div className="min-h-screen bg-[#f6f6f0]">
+        <SEO title={seoTitle} description={seoDescription} canonicalUrl={`/hourly-rates/${rateId}`} />
         <Header />
         <main className="pt-20 pb-16">
           <div className="container mx-auto px-4 max-w-3xl">
@@ -126,6 +133,7 @@ const HourlyRateDetail = () => {
   if (!rateDetails) {
     return (
       <div className="min-h-screen bg-[#f6f6f0] flex items-center justify-center">
+        <SEO title="Rate Not Found | MoneyWorth" description="The hourly rate you're looking for doesn't exist or is invalid." canonicalUrl="/hourly-rates" />
         <Card>
           <CardContent className="p-6">
             <p>Rate not found. Please try another rate.</p>
@@ -146,6 +154,11 @@ const HourlyRateDetail = () => {
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
+      <SEO 
+        title={seoTitle}
+        description={seoDescription}
+        canonicalUrl={`/hourly-rates/${rateId}`}
+      />
       <Header />
       
       <main className="pt-20 pb-16">

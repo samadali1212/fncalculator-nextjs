@@ -28,6 +28,10 @@ const SEO = ({
       <meta name="description" content={description} />
       {canonicalUrl && <link rel="canonical" href={`${siteUrl}${canonicalUrl}`} />}
       
+      {/* Favicon */}
+      <link rel="icon" href="/Money Worth Favicon.png" type="image/png" />
+      <link rel="apple-touch-icon" href="/Money Worth Favicon.png" />
+      
       {/* OpenGraph Meta Tags */}
       <meta property="og:site_name" content="MoneyWorth" />
       <meta property="og:title" content={fullTitle} />
