@@ -139,6 +139,9 @@ const TaxCalculationDetail = () => {
   // Calculate the corresponding value in the other timeframe for display
   const alternateTimeFrameValue = convertIncome(income, timeFrame);
 
+  // Format currency for the title without spaces
+  const formattedCurrencyForTitle = formatCurrency(income).replace(/\s/g, "");
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -148,11 +151,10 @@ const TaxCalculationDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title=Paye On {`${formatCurrency(income)} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary | MoneyWorth`}
+        title={`Paye on ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary | MoneyWorth`}
         description={`Calculate your take-home pay for ${formatCurrency(income)} ${timeFrame === "monthly" ? "monthly" : "annual"} income. After tax income: ${formatCurrency(taxDetails.netIncome)}. Effective tax rate: ${taxDetails.effectiveTaxRate.toFixed(1)}%.`}
         canonicalUrl={`/tax-calculator/${timeFrame}/${income}`}
       />
-      <Header />
       
       <main className="pt-20 pb-16">
         <div className="container mx-auto px-4 max-w-3xl">
