@@ -1220,14 +1220,6 @@ export const getSalaryData = (): SalaryData => {
     education: "Bachelor's or Master's Degree in Data Science, Statistics, or related",
     location_factor: 1.3
   },
-  database: {
-    min: 25000,
-    average: 45001,
-    max: 462500,
-    experience: "mid",
-    education: "Bachelor's Degree in Computer Science or related",
-    location_factor: 1.25
-  },
   database_administrator: {
     min: 25521,
     average: 45001,
