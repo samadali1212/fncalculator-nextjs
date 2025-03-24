@@ -32,7 +32,7 @@ export const getSalaryData = (): SalaryData => {
     min: 11375,
     average: 17500,
     max: 31500,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Business Administration or related",
     location_factor: 1.08
   },
@@ -40,7 +40,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12000,
     average: 13500,
     max: 20000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma with relevant certifications",
     location_factor: 1.02
   },
@@ -64,7 +64,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 19000,
     max: 33375,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Business or related",
     location_factor: 1.08
   },
@@ -96,7 +96,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16000,
     average: 22500,
     max: 182817,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Accounting",
     location_factor: 1.02
   },
@@ -104,7 +104,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 25000,
     max: 270000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Accounting",
     location_factor: 1.02
   },
@@ -112,7 +112,7 @@ export const getSalaryData = (): SalaryData => {
     min: 48000,
     average: 109722,
     max: 800000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Actuarial Science, Mathematics, or Statistics",
     location_factor: 1.3
   },
@@ -120,7 +120,7 @@ export const getSalaryData = (): SalaryData => {
     min: 45695,
     average: 91176,
     max: 750000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Actuarial Science, Mathematics, or Statistics",
     location_factor: 1.3
   },
@@ -152,7 +152,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10545,
     average: 13000,
     max: 20358,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma with secretarial or administrative qualifications",
     location_factor: 1.05
   },
@@ -192,7 +192,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 17500,
     max: 100000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma with relevant industry certifications",
     location_factor: 1.05
   },
@@ -200,7 +200,7 @@ export const getSalaryData = (): SalaryData => {
     min: 28810,
     average: 55000,
     max: 625374,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a relevant field (e.g., Business, Finance, Data Science)",
     location_factor: 1.15
   },
@@ -232,7 +232,7 @@ export const getSalaryData = (): SalaryData => {
     min: 7456,
     average: 9500,
     max: 29150,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma or enrollment in a vocational training program",
     location_factor: 1.01
   },
@@ -264,7 +264,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 17500,
     max: 35000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Fine Arts or equivalent portfolio",
     location_factor: 1.02
   },
@@ -272,7 +272,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10942,
     average: 15000,
     max: 36120,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma with technical skills",
     location_factor: 1.01
   },
@@ -280,7 +280,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13500,
     average: 19000,
     max: 249914,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.02
   },
@@ -288,7 +288,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 41667,
     max: 250000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Engineering",
     location_factor: 1.08
   },
@@ -296,7 +296,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 22500,
     max: 157794,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in a relevant field",
     location_factor: 1.08
   },
@@ -328,7 +328,7 @@ export const getSalaryData = (): SalaryData => {
     min: 11750,
     average: 14850,
     max: 30000,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies depending on the specific role",
     location_factor: 1.01
   },
@@ -344,7 +344,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10516,
     average: 12500,
     max: 33000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -352,7 +352,7 @@ export const getSalaryData = (): SalaryData => {
     min: 11250,
     average: 22500,
     max: 293745,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or certification in Audio Visual Technology",
     location_factor: 1.02
   },
@@ -368,7 +368,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 35000,
     max: 532152,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Accounting or Internal Auditing",
     location_factor: 1.08
   },
@@ -376,7 +376,7 @@ export const getSalaryData = (): SalaryData => {
     min: 5005,
     average: 252503,
     max: 500000,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies, strong writing skills and portfolio",
     location_factor: 1.02
   },
@@ -392,7 +392,7 @@ export const getSalaryData = (): SalaryData => {
     min: 43750,
     average: 47500,
     max: 47500,
-    experience: "Entry",
+    experience: "entry",
     education: "Vocational training or certification",
     location_factor: 1.02
   },
@@ -424,7 +424,7 @@ export const getSalaryData = (): SalaryData => {
     min: 11000,
     average: 13750,
     max: 40000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma or relevant vocational training",
     location_factor: 1.25
   },
@@ -440,7 +440,7 @@ export const getSalaryData = (): SalaryData => {
     min: 45001,
     average: 72917,
     max: 725000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Finance, Economics, or related",
     location_factor: 1.05
   },
@@ -448,7 +448,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 14850,
     max: 16450,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.15
   },
@@ -464,7 +464,7 @@ export const getSalaryData = (): SalaryData => {
     min: 7063,
     average: 20350,
     max: 66076,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.05
   },
@@ -472,7 +472,7 @@ export const getSalaryData = (): SalaryData => {
     min: 7000,
     average: 9000,
     max: 66764,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -480,7 +480,7 @@ export const getSalaryData = (): SalaryData => {
     min: 8000,
     average: 11000,
     max: 17500,
-    experience: "Entry",
+    experience: "entry",
     education: "Certification or diploma in Beauty Therapy",
     location_factor: 1.01
   },
@@ -488,7 +488,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 35000,
     max: 214908,
-    experience: "Entry",
+    experience: "entry",
     education: "Certification or trade qualification",
     location_factor: 1.03
   },
@@ -496,7 +496,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15766,
     average: 22250,
     max: 42114,
-    experience: "Entry",
+    experience: "entry",
     education: "Trade qualification",
     location_factor: 1.02
   },
@@ -504,7 +504,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14865,
     average: 17501,
     max: 30000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or certificate in Bookkeeping",
     location_factor: 1.03
   },
@@ -512,7 +512,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 15950,
     max: 22800,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma with basic accounting knowledge",
     location_factor: 1.05
   },
@@ -528,7 +528,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12170,
     average: 17500,
     max: 46000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.15
   },
@@ -576,7 +576,7 @@ export const getSalaryData = (): SalaryData => {
     min: 9297,
     average: 16500,
     max: 190759,
-    experience: "Entry",
+    experience: "entry",
     education: "Valid driver's license with relevant endorsements",
     location_factor: 1.08
   },
@@ -640,7 +640,7 @@ export const getSalaryData = (): SalaryData => {
     min: 35001,
     average: 59444,
     max: 690426,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Computer Science, Data Science, or related",
     location_factor: 1.25
   },
@@ -656,7 +656,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15500,
     average: 25000,
     max: 128167,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Business or related",
     location_factor: 1.2
   },
@@ -672,7 +672,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 17500,
     max: 26500,
-    experience: "Entry",
+    experience: "entry",
     education: "Vocational training or experience",
     location_factor: 1.2
   },
@@ -680,7 +680,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16500,
     average: 24979,
     max: 60000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Purchasing or related",
     location_factor: 1.02
   },
@@ -688,7 +688,7 @@ export const getSalaryData = (): SalaryData => {
     min: 8281,
     average: 13500,
     max: 41000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.08
   },
@@ -704,7 +704,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12000,
     average: 13000,
     max: 30875,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma or basic caregiving certification",
     location_factor: 1.08
   },
@@ -712,7 +712,7 @@ export const getSalaryData = (): SalaryData => {
     min: 11500,
     average: 15000,
     max: 40000,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant trade qualification",
     location_factor: 1.01
   },
@@ -728,7 +728,7 @@ export const getSalaryData = (): SalaryData => {
     min: 7501,
     average: 12900,
     max: 47711,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.1
   },
@@ -760,7 +760,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10000,
     average: 11700,
     max: 19001,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant culinary qualifications or experience",
     location_factor: 1.08
   },
@@ -776,7 +776,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20417,
     average: 43500,
     max: 360000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Chemistry",
     location_factor: 1.2
   },
@@ -816,7 +816,7 @@ export const getSalaryData = (): SalaryData => {
     min: 7861,
     average: 16450,
     max: 102534,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy",
     location_factor: 1.15
   },
@@ -824,7 +824,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 15000,
     max: 36706,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -880,7 +880,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10375,
     average: 14000,
     max: 19925,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.08
   },
@@ -896,7 +896,7 @@ export const getSalaryData = (): SalaryData => {
     min: 22500,
     average: 29000,
     max: 44750,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Commerce, Finance, or related",
     location_factor: 1.2
   },
@@ -912,7 +912,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 42500,
     max: 71667,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Communications, PR, or related",
     location_factor: 1.2
   },
@@ -920,7 +920,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 22500,
     max: 84213,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Marketing, Communications, or related",
     location_factor: 1.1
   },
@@ -936,7 +936,7 @@ export const getSalaryData = (): SalaryData => {
     min: 22002,
     average: 33449,
     max: 443500,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Law, Finance, or related",
     location_factor: 1.2
   },
@@ -944,7 +944,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12000,
     average: 15500,
     max: 40000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.1
   },
@@ -968,7 +968,7 @@ export const getSalaryData = (): SalaryData => {
     min: 11055,
     average: 11350,
     max: 30425,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy, potential for trade qualifications",
     location_factor: 1.15
   },
@@ -992,7 +992,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17000,
     average: 21500,
     max: 39250,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Journalism, Communications, or related",
     location_factor: 1.25
   },
@@ -1016,7 +1016,7 @@ export const getSalaryData = (): SalaryData => {
     min: 9500,
     average: 15000,
     max: 84225,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant technical training or certification",
     location_factor: 1.2
   },
@@ -1024,7 +1024,7 @@ export const getSalaryData = (): SalaryData => {
     min: 9000,
     average: 14500,
     max: 95650,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant technical training or certification",
     location_factor: 1.05
   },
@@ -1048,7 +1048,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15502,
     average: 21892,
     max: 203876,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in a relevant field",
     location_factor: 1.35
   },
@@ -1056,7 +1056,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 25125,
     max: 45000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Advertising, Marketing, or related",
     location_factor: 1.08
   },
@@ -1072,7 +1072,7 @@ export const getSalaryData = (): SalaryData => {
     min: 30000,
     average: 45000,
     max: 535000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Accounting or Cost Accounting",
     location_factor: 1.25
   },
@@ -1088,7 +1088,7 @@ export const getSalaryData = (): SalaryData => {
     min: 11000,
     average: 12625,
     max: 25000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.2
   },
@@ -1096,7 +1096,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16000,
     average: 27500,
     max: 202000,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role and industry",
     location_factor: 1.01
   },
@@ -1112,7 +1112,7 @@ export const getSalaryData = (): SalaryData => {
     min: 30000,
     average: 50833,
     max: 665250,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Finance, Economics, or related",
     location_factor: 1.3
   },
@@ -1128,7 +1128,7 @@ export const getSalaryData = (): SalaryData => {
     min: 35000,
     average: 50000,
     max: 675000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Finance, Economics, or related",
     location_factor: 1.2
   },
@@ -1144,7 +1144,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10500,
     average: 13466,
     max: 25000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.2
   },
@@ -1152,7 +1152,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10500,
     average: 13000,
     max: 41000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -1160,7 +1160,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 16000,
     max: 22000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -1176,7 +1176,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 16709,
     max: 30817,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.15
   },
@@ -1184,7 +1184,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13500,
     average: 20000,
     max: 299381,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in IT or related",
     location_factor: 1.01
   },
@@ -1192,7 +1192,7 @@ export const getSalaryData = (): SalaryData => {
     min: 22500,
     average: 40000,
     max: 500000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Statistics, Data Science, or related",
     location_factor: 1.1
   },
@@ -1208,7 +1208,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10725,
     average: 12000,
     max: 15025,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -1264,7 +1264,7 @@ export const getSalaryData = (): SalaryData => {
     min: 8500,
     average: 11950,
     max: 20000,
-    experience: "Entry",
+    experience: "entry",
     education: "Valid driver's license",
     location_factor: 1.01
   },
@@ -1272,7 +1272,7 @@ export const getSalaryData = (): SalaryData => {
     min: 6750,
     average: 178375,
     max: 350000,
-    experience: "Entry",
+    experience: "entry",
     education: "Valid driver's license",
     location_factor: 1.01
   },
@@ -1288,7 +1288,7 @@ export const getSalaryData = (): SalaryData => {
     min: 30000,
     average: 40000,
     max: 500000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Supply Chain Management or related",
     location_factor: 1.1
   },
@@ -1336,7 +1336,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14600,
     average: 22500,
     max: 81771,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a relevant design field",
     location_factor: 1.1
   },
@@ -1344,7 +1344,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17501,
     average: 32500,
     max: 363250,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma or relevant vocational training",
     location_factor: 1.02
   },
@@ -1368,7 +1368,7 @@ export const getSalaryData = (): SalaryData => {
     min: 19000,
     average: 25000,
     max: 38500,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant trade qualification",
     location_factor: 1.03
   },
@@ -1376,7 +1376,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 20000,
     max: 30000,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant trade qualification",
     location_factor: 1.03
   },
@@ -1392,7 +1392,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 25000,
     max: 48117,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Graphic Design or related",
     location_factor: 1.1
   },
@@ -1400,7 +1400,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 27500,
     max: 90208,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Marketing or related",
     location_factor: 1.15
   },
@@ -1416,7 +1416,7 @@ export const getSalaryData = (): SalaryData => {
     min: 323159,
     average: 338921,
     max: 365633,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy",
     location_factor: 1.01
   },
@@ -1424,7 +1424,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 14250,
     max: 24475,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.02
   },
@@ -1448,7 +1448,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17481,
     average: 22958,
     max: 45000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification in Draughting",
     location_factor: 1.08
   },
@@ -1456,7 +1456,7 @@ export const getSalaryData = (): SalaryData => {
     min: 30500,
     average: 30500,
     max: 30500,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies by industry",
     location_factor: 1.01
   },
@@ -1464,7 +1464,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10000,
     average: 15000,
     max: 65408,
-    experience: "Entry",
+    experience: "entry",
     education: "Valid driver's license",
     location_factor: 1.01
   },
@@ -1480,7 +1480,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13650,
     average: 15400,
     max: 20595,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant certification to operate heavy machinery",
     location_factor: 1.02
   },
@@ -1512,7 +1512,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15500,
     average: 25000,
     max: 61375,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant teaching qualification",
     location_factor: 1.05
   },
@@ -1536,7 +1536,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17035,
     average: 25001,
     max: 329250,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification in Electrical Engineering",
     location_factor: 1.05
   },
@@ -1544,7 +1544,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17975,
     average: 25000,
     max: 53886,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant trade qualification",
     location_factor: 1.03
   },
@@ -1552,7 +1552,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14000,
     average: 19000,
     max: 210000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification in Electronics Engineering",
     location_factor: 1.05
   },
@@ -1568,7 +1568,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25357,
     average: 46639,
     max: 600000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a relevant engineering field",
     location_factor: 1.15
   },
@@ -1576,7 +1576,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 41667,
     max: 250000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification in an engineering field",
     location_factor: 1.05
   },
@@ -1608,7 +1608,7 @@ export const getSalaryData = (): SalaryData => {
     min: 19000,
     average: 33333,
     max: 369348,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification in an engineering field",
     location_factor: 1.05
   },
@@ -1616,7 +1616,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17000,
     average: 26500,
     max: 40000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Education with English as a major",
     location_factor: 1.03
   },
@@ -1624,7 +1624,7 @@ export const getSalaryData = (): SalaryData => {
     min: 7500,
     average: 11000,
     max: 20000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in English or Education",
     location_factor: 1.02
   },
@@ -1632,7 +1632,7 @@ export const getSalaryData = (): SalaryData => {
     min: 22875,
     average: 32500,
     max: 168527,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant certification to operate specific equipment",
     location_factor: 1.02
   },
@@ -1640,7 +1640,7 @@ export const getSalaryData = (): SalaryData => {
     min: 18500,
     average: 18500,
     max: 25715,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role and industry",
     location_factor: 1.1
   },
@@ -1648,7 +1648,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 25000,
     max: 74400,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Quantity Surveying or related",
     location_factor: 1.08
   },
@@ -1656,7 +1656,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14000,
     average: 18500,
     max: 35000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Event Management or related",
     location_factor: 1.05
   },
@@ -1704,7 +1704,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14000,
     average: 400000,
     max: 405000,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role and industry",
     location_factor: 1.05
   },
@@ -1712,7 +1712,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 15000,
     max: 22500,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Fashion Design",
     location_factor: 1.1
   },
@@ -1720,7 +1720,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10000,
     average: 15000,
     max: 25000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma, specific training may be required",
     location_factor: 1.03
   },
@@ -1728,7 +1728,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 25943,
     max: 61367,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Engineering",
     location_factor: 1.15
   },
@@ -1736,7 +1736,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14000,
     average: 20000,
     max: 50000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.03
   },
@@ -1744,7 +1744,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 27500,
     max: 49250,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification",
     location_factor: 1.05
   },
@@ -1752,7 +1752,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14000,
     average: 20000,
     max: 40000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification",
     location_factor: 1.05
   },
@@ -1768,7 +1768,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14500,
     average: 21000,
     max: 300000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma in Finance or Accounting",
     location_factor: 1.05
   },
@@ -1784,7 +1784,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27500,
     average: 39961,
     max: 482077,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Accounting",
     location_factor: 1.1
   },
@@ -1792,7 +1792,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13500,
     average: 17188,
     max: 34992,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Finance or Administration",
     location_factor: 1.08
   },
@@ -1808,7 +1808,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25310,
     average: 50000,
     max: 650000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Finance, Economics, or Accounting",
     location_factor: 1.15
   },
@@ -1840,7 +1840,7 @@ export const getSalaryData = (): SalaryData => {
     min: 22089,
     average: 45399,
     max: 550000,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role",
     location_factor: 1.1
   },
@@ -1856,7 +1856,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27126,
     average: 102534,
     max: 181308,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant training and certifications",
     location_factor: 1.03
   },
@@ -1864,7 +1864,7 @@ export const getSalaryData = (): SalaryData => {
     min: 18531,
     average: 25001,
     max: 101393,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant trade qualification",
     location_factor: 1.03
   },
@@ -1880,7 +1880,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13350,
     average: 15075,
     max: 17450,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma, specific training provided by airline",
     location_factor: 1.05
   },
@@ -1904,7 +1904,7 @@ export const getSalaryData = (): SalaryData => {
     min: 5690,
     average: 6345,
     max: 7000,
-    experience: "Entry",
+    experience: "entry",
     education: "Certification to operate a forklift",
     location_factor: 1.01
   },
@@ -1912,7 +1912,7 @@ export const getSalaryData = (): SalaryData => {
     min: 7000,
     average: 13200,
     max: 22110,
-    experience: "Entry",
+    experience: "entry",
     education: "Certification to operate a forklift",
     location_factor: 1.01
   },
@@ -1920,7 +1920,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12000,
     average: 14275,
     max: 17530,
-    experience: "Entry",
+    experience: "entry",
     education: "Certification to operate a forklift",
     location_factor: 1.01
   },
@@ -1976,7 +1976,7 @@ export const getSalaryData = (): SalaryData => {
     min: 9200,
     average: 15750,
     max: 56000,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy",
     location_factor: 1.01
   },
@@ -1992,7 +1992,7 @@ export const getSalaryData = (): SalaryData => {
     min: 6751,
     average: 9501,
     max: 12250,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant vocational training or experience",
     location_factor: 1.02
   },
@@ -2008,7 +2008,7 @@ export const getSalaryData = (): SalaryData => {
     min: 19921,
     average: 45001,
     max: 162433,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Geology",
     location_factor: 1.1
   },
@@ -2016,7 +2016,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12501,
     average: 17433,
     max: 32500,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Graphic Design or related",
     location_factor: 1.1
   },
@@ -2032,7 +2032,7 @@ export const getSalaryData = (): SalaryData => {
     min: 7625,
     average: 13500,
     max: 32500,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy, security training may be required",
     location_factor: 1.01
   },
@@ -2040,7 +2040,7 @@ export const getSalaryData = (): SalaryData => {
     min: 8000,
     average: 10000,
     max: 20000,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant certification in Hairdressing",
     location_factor: 1.03
   },
@@ -2048,7 +2048,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14000,
     average: 15000,
     max: 29500,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant certification in Hairdressing",
     location_factor: 1.03
   },
@@ -2056,7 +2056,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 17500,
     max: 40000,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy",
     location_factor: 1.01
   },
@@ -2064,7 +2064,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 15283,
     max: 42725,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic DIY skills or relevant vocational training",
     location_factor: 1.02
   },
@@ -2088,7 +2088,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16000,
     average: 25000,
     max: 51333,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant qualification in public health or related",
     location_factor: 1.08
   },
@@ -2104,7 +2104,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16873,
     average: 26657,
     max: 91825,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant qualifications in health and safety",
     location_factor: 1.05
   },
@@ -2128,7 +2128,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14000,
     average: 20000,
     max: 201502,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -2136,7 +2136,7 @@ export const getSalaryData = (): SalaryData => {
     min: 9500,
     average: 13175,
     max: 19700,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -2152,7 +2152,7 @@ export const getSalaryData = (): SalaryData => {
     min: 8000,
     average: 11000,
     max: 14000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -2160,7 +2160,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13000,
     average: 16500,
     max: 35000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma or relevant experience",
     location_factor: 1.02
   },
@@ -2168,7 +2168,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13500,
     average: 16504,
     max: 27690,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Human Resources",
     location_factor: 1.05
   },
@@ -2176,7 +2176,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 16000,
     max: 32500,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Human Resources",
     location_factor: 1.05
   },
@@ -2208,7 +2208,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 25000,
     max: 45000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Human Resources",
     location_factor: 1.1
   },
@@ -2224,7 +2224,7 @@ export const getSalaryData = (): SalaryData => {
     min: 18000,
     average: 30000,
     max: 244381,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Human Resources",
     location_factor: 1.1
   },
@@ -2264,7 +2264,7 @@ export const getSalaryData = (): SalaryData => {
     min: 40000,
     average: 85001,
     max: 780000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Information Technology or related",
     location_factor: 1.1
   },
@@ -2280,7 +2280,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16667,
     average: 30000,
     max: 300462,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant qualifications or experience depending on the field",
     location_factor: 1.05
   },
@@ -2288,7 +2288,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 25000,
     max: 25000,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant technical training or certification",
     location_factor: 1.03
   },
@@ -2296,7 +2296,7 @@ export const getSalaryData = (): SalaryData => {
     min: 11500,
     average: 15000,
     max: 37500,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant technical training or certification",
     location_factor: 1.03
   },
@@ -2304,7 +2304,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15168,
     average: 20000,
     max: 32400,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant qualifications and experience in the subject",
     location_factor: 1.05
   },
@@ -2312,7 +2312,7 @@ export const getSalaryData = (): SalaryData => {
     min: 31125,
     average: 68750,
     max: 650000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification in Instrumentation",
     location_factor: 1.05
   },
@@ -2320,7 +2320,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27500,
     average: 37500,
     max: 429250,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification in Instrumentation",
     location_factor: 1.05
   },
@@ -2328,7 +2328,7 @@ export const getSalaryData = (): SalaryData => {
     min: 8000,
     average: 16000,
     max: 37500,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant certifications and licenses",
     location_factor: 1.1
   },
@@ -2344,7 +2344,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16750,
     average: 22500,
     max: 65570,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Commerce, Finance, or related",
     location_factor: 1.1
   },
@@ -2352,7 +2352,7 @@ export const getSalaryData = (): SalaryData => {
     min: 37500,
     average: 60001,
     max: 700000,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role and organization",
     location_factor: 1.15
   },
@@ -2360,7 +2360,7 @@ export const getSalaryData = (): SalaryData => {
     min: 35000,
     average: 58333,
     max: 650000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a relevant field",
     location_factor: 1.15
   },
@@ -2368,7 +2368,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 40000,
     max: 72083,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Design or related",
     location_factor: 1.1
   },
@@ -2376,7 +2376,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 21500,
     max: 35150,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Interior Design",
     location_factor: 1.1
   },
@@ -2384,7 +2384,7 @@ export const getSalaryData = (): SalaryData => {
     min: 8231,
     average: 12500,
     max: 70054,
-    experience: "Entry",
+    experience: "entry",
     education: "Enrolled in a relevant degree or vocational program",
     location_factor: 1.01
   },
@@ -2400,7 +2400,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 44926,
     max: 531979,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Accounting or Internal Auditing",
     location_factor: 1.1
   },
@@ -2408,7 +2408,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13750,
     average: 17250,
     max: 272098,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant language proficiency and/or certification",
     location_factor: 1.05
   },
@@ -2416,7 +2416,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16000,
     average: 25000,
     max: 184500,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Logistics or Supply Chain Management",
     location_factor: 1.08
   },
@@ -2432,7 +2432,7 @@ export const getSalaryData = (): SalaryData => {
     min: 19875,
     average: 49632,
     max: 637500,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant experience or qualifications depending on the field",
     location_factor: 1.08
   },
@@ -2448,7 +2448,7 @@ export const getSalaryData = (): SalaryData => {
     min: 35001,
     average: 66667,
     max: 675000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Finance, Economics, or related",
     location_factor: 1.15
   },
@@ -2472,7 +2472,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25001,
     average: 40000,
     max: 549745,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Information Technology or related",
     location_factor: 1.1
   },
@@ -2480,7 +2480,7 @@ export const getSalaryData = (): SalaryData => {
     min: 44896,
     average: 400000,
     max: 750000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Information Technology or Accounting",
     location_factor: 1.15
   },
@@ -2520,7 +2520,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12750,
     average: 16000,
     max: 27611,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification in Information Technology",
     location_factor: 1.05
   },
@@ -2536,7 +2536,7 @@ export const getSalaryData = (): SalaryData => {
     min: 39396,
     average: 50000,
     max: 687500,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Human Resources or related",
     location_factor: 1.1
   },
@@ -2544,7 +2544,7 @@ export const getSalaryData = (): SalaryData => {
     min: 35417,
     average: 50000,
     max: 463000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Human Resources or related",
     location_factor: 1.1
   },
@@ -2552,7 +2552,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13500,
     average: 16750,
     max: 32000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Journalism or Communications",
     location_factor: 1.08
   },
@@ -2584,7 +2584,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17025,
     average: 17025,
     max: 88404,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification in a scientific field",
     location_factor: 1.03
   },
@@ -2592,7 +2592,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14688,
     average: 17800,
     max: 41733,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification in a scientific field",
     location_factor: 1.03
   },
@@ -2600,7 +2600,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15095,
     average: 17500,
     max: 51667,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification in a scientific field",
     location_factor: 1.03
   },
@@ -2624,7 +2624,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 45001,
     max: 614250,
-    experience: "Entry",
+    experience: "entry",
     education: "Master's Degree in the relevant field",
     location_factor: 1.1
   },
@@ -2632,7 +2632,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 17500,
     max: 172970,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Law or Legal Studies",
     location_factor: 1.05
   },
@@ -2648,7 +2648,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13500,
     average: 17000,
     max: 35001,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma in Legal Secretarial Studies",
     location_factor: 1.03
   },
@@ -2656,7 +2656,7 @@ export const getSalaryData = (): SalaryData => {
     min: 21781,
     average: 51303,
     max: 483299,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Library Science or Information Science",
     location_factor: 1.05
   },
@@ -2664,7 +2664,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13000,
     average: 15750,
     max: 23350,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma in Legal Secretarial Studies",
     location_factor: 1.03
   },
@@ -2672,7 +2672,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16500,
     average: 22500,
     max: 39850,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Logistics or Supply Chain Management",
     location_factor: 1.08
   },
@@ -2688,7 +2688,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27000,
     average: 40000,
     max: 400000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Logistics or Supply Chain Management",
     location_factor: 1.1
   },
@@ -2696,7 +2696,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12000,
     average: 15388,
     max: 37275,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant vocational training or experience",
     location_factor: 1.02
   },
@@ -2704,7 +2704,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16375,
     average: 22500,
     max: 45000,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant trade qualification",
     location_factor: 1.03
   },
@@ -2728,7 +2728,7 @@ export const getSalaryData = (): SalaryData => {
     min: 19000,
     average: 22500,
     max: 35000,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant trade qualification",
     location_factor: 1.03
   },
@@ -2736,7 +2736,7 @@ export const getSalaryData = (): SalaryData => {
     min: 26000,
     average: 35000,
     max: 384000,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant trade qualification",
     location_factor: 1.03
   },
@@ -2744,7 +2744,7 @@ export const getSalaryData = (): SalaryData => {
     min: 26500,
     average: 42958,
     max: 471000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or experience in maintenance planning",
     location_factor: 1.05
   },
@@ -2752,7 +2752,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 25000,
     max: 49204,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification",
     location_factor: 1.05
   },
@@ -2768,7 +2768,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27500,
     average: 35000,
     max: 40000,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant trade qualification",
     location_factor: 1.03
   },
@@ -2784,7 +2784,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27917,
     average: 60001,
     max: 550000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Marketing, Economics, or Statistics",
     location_factor: 1.15
   },
@@ -2800,7 +2800,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 20716,
     max: 44083,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Marketing or related",
     location_factor: 1.1
   },
@@ -2808,7 +2808,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 45833,
     max: 423750,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Marketing, Economics, or Statistics",
     location_factor: 1.15
   },
@@ -2816,7 +2816,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 16490,
     max: 27500,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Marketing or related",
     location_factor: 1.05
   },
@@ -2832,7 +2832,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15458,
     average: 20000,
     max: 35000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Marketing or related",
     location_factor: 1.08
   },
@@ -2848,7 +2848,7 @@ export const getSalaryData = (): SalaryData => {
     min: 22500,
     average: 32500,
     max: 169771,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Marketing or related",
     location_factor: 1.1
   },
@@ -2856,7 +2856,7 @@ export const getSalaryData = (): SalaryData => {
     min: 11000,
     average: 20000,
     max: 26500,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant certification in Massage Therapy",
     location_factor: 1.03
   },
@@ -2864,7 +2864,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16175,
     average: 22033,
     max: 37500,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant trade qualification",
     location_factor: 1.03
   },
@@ -2880,7 +2880,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 22750,
     max: 47292,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification in Mechanical Engineering",
     location_factor: 1.05
   },
@@ -2920,7 +2920,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13374,
     average: 30000,
     max: 461928,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor of Medicine and Bachelor of Surgery (MBChB) degree, registration with HPCSA",
     location_factor: 1.2
   },
@@ -2928,7 +2928,7 @@ export const getSalaryData = (): SalaryData => {
     min: 22125,
     average: 30000,
     max: 307030,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Medical Technology",
     location_factor: 1.1
   },
@@ -2936,7 +2936,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 16500,
     max: 35000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.02
   },
@@ -2952,7 +2952,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 33533,
     max: 147069,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant trade qualification",
     location_factor: 1.03
   },
@@ -2968,7 +2968,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 33000,
     max: 49375,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant vocational training or experience",
     location_factor: 1.02
   },
@@ -2992,7 +2992,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14564,
     average: 31570,
     max: 88850,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role and industry",
     location_factor: 1.05
   },
@@ -3000,7 +3000,7 @@ export const getSalaryData = (): SalaryData => {
     min: 8750,
     average: 13100,
     max: 30000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma, childcare qualifications preferred",
     location_factor: 1.01
   },
@@ -3024,7 +3024,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10000,
     average: 15000,
     max: 60003,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.02
   },
@@ -3032,7 +3032,7 @@ export const getSalaryData = (): SalaryData => {
     min: 19739,
     average: 27500,
     max: 144721,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree or Diploma in Nursing, registration with SANC",
     location_factor: 1.1
   },
@@ -3064,7 +3064,7 @@ export const getSalaryData = (): SalaryData => {
     min: 18481,
     average: 52290,
     max: 562800,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant basic nursing qualifications",
     location_factor: 1.01
   },
@@ -3080,7 +3080,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12000,
     average: 15000,
     max: 25000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Office Administration",
     location_factor: 1.05
   },
@@ -3088,7 +3088,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12000,
     average: 15000,
     max: 26975,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -3096,7 +3096,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12000,
     average: 14825,
     max: 29200,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy",
     location_factor: 1.01
   },
@@ -3112,7 +3112,7 @@ export const getSalaryData = (): SalaryData => {
     min: 18735,
     average: 30090,
     max: 396191,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role and organization",
     location_factor: 1.1
   },
@@ -3144,7 +3144,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12000,
     average: 16372,
     max: 65477,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant training or certification for specific machinery",
     location_factor: 1.02
   },
@@ -3168,7 +3168,7 @@ export const getSalaryData = (): SalaryData => {
     min: 6500,
     average: 11000,
     max: 57000,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy",
     location_factor: 1.01
   },
@@ -3176,7 +3176,7 @@ export const getSalaryData = (): SalaryData => {
     min: 11000,
     average: 14500,
     max: 31750,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy or relevant vocational training",
     location_factor: 1.02
   },
@@ -3184,7 +3184,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 20000,
     max: 33333,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Law or Legal Studies",
     location_factor: 1.05
   },
@@ -3192,7 +3192,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17167,
     average: 24250,
     max: 36950,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant emergency medical qualifications",
     location_factor: 1.05
   },
@@ -3216,7 +3216,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 21616,
     max: 232163,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or certificate in Payroll Administration",
     location_factor: 1.05
   },
@@ -3224,7 +3224,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 18938,
     max: 35000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or certificate in Payroll Administration",
     location_factor: 1.05
   },
@@ -3232,7 +3232,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13000,
     average: 15000,
     max: 23813,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma with basic accounting knowledge",
     location_factor: 1.02
   },
@@ -3248,7 +3248,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13500,
     average: 17501,
     max: 35000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree, strong administrative skills",
     location_factor: 1.08
   },
@@ -3256,7 +3256,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 27500,
     max: 49950,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Pharmacy or a related scientific field",
     location_factor: 1.1
   },
@@ -3272,7 +3272,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17625,
     average: 20000,
     max: 94015,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant certification as a Pharmacy Assistant",
     location_factor: 1.03
   },
@@ -3288,7 +3288,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12000,
     average: 14500,
     max: 30000,
-    experience: "Entry",
+    experience: "entry",
     education: "Portfolio showcasing skills",
     location_factor: 1.02
   },
@@ -3320,7 +3320,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27000,
     average: 27000,
     max: 27000,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role and industry",
     location_factor: 1.1
   },
@@ -3328,7 +3328,7 @@ export const getSalaryData = (): SalaryData => {
     min: 6500,
     average: 11000,
     max: 50001,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy",
     location_factor: 1.01
   },
@@ -3344,7 +3344,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 30000,
     max: 244250,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a relevant field",
     location_factor: 1.1
   },
@@ -3368,7 +3368,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12750,
     average: 15000,
     max: 31800,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant trade qualification",
     location_factor: 1.03
   },
@@ -3376,7 +3376,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25997,
     average: 245247,
     max: 316791,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant training and qualifications from the South African Police Service",
     location_factor: 1.05
   },
@@ -3392,7 +3392,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10448,
     average: 15100,
     max: 102534,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy",
     location_factor: 1.01
   },
@@ -3416,7 +3416,7 @@ export const getSalaryData = (): SalaryData => {
     min: 50000,
     average: 387500,
     max: 772500,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Finance, Economics, or related",
     location_factor: 1.15
   },
@@ -3448,7 +3448,7 @@ export const getSalaryData = (): SalaryData => {
     min: 22500,
     average: 32500,
     max: 63219,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification in a technical field",
     location_factor: 1.05
   },
@@ -3464,7 +3464,7 @@ export const getSalaryData = (): SalaryData => {
     min: 30000,
     average: 46503,
     max: 510000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Supply Chain Management or related",
     location_factor: 1.1
   },
@@ -3472,7 +3472,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27500,
     average: 42500,
     max: 550000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a relevant field",
     location_factor: 1.15
   },
@@ -3480,7 +3480,7 @@ export const getSalaryData = (): SalaryData => {
     min: 33875,
     average: 49625,
     max: 525000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Engineering",
     location_factor: 1.15
   },
@@ -3496,7 +3496,7 @@ export const getSalaryData = (): SalaryData => {
     min: 22500,
     average: 40300,
     max: 426188,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a relevant field",
     location_factor: 1.1
   },
@@ -3504,7 +3504,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14500,
     average: 20000,
     max: 43000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -3512,7 +3512,7 @@ export const getSalaryData = (): SalaryData => {
     min: 18001,
     average: 28750,
     max: 375000,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant experience in production",
     location_factor: 1.03
   },
@@ -3528,7 +3528,7 @@ export const getSalaryData = (): SalaryData => {
     min: 22125,
     average: 30000,
     max: 275000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Production Management or related",
     location_factor: 1.08
   },
@@ -3560,7 +3560,7 @@ export const getSalaryData = (): SalaryData => {
     min: 41000,
     average: 41000,
     max: 41000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a relevant field",
     location_factor: 1.1
   },
@@ -3576,7 +3576,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 40000,
     max: 435000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Computer Science or related",
     location_factor: 1.2
   },
@@ -3584,7 +3584,7 @@ export const getSalaryData = (): SalaryData => {
     min: 59588,
     average: 100000,
     max: 780000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Computer Science or related",
     location_factor: 1.2
   },
@@ -3592,7 +3592,7 @@ export const getSalaryData = (): SalaryData => {
     min: 30000,
     average: 45001,
     max: 587500,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Computer Science or related",
     location_factor: 1.2
   },
@@ -3600,7 +3600,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 24000,
     max: 179750,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Project Management or related",
     location_factor: 1.08
   },
@@ -3608,7 +3608,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 43938,
     max: 450000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Engineering",
     location_factor: 1.15
   },
@@ -3632,7 +3632,7 @@ export const getSalaryData = (): SalaryData => {
     min: 18000,
     average: 30000,
     max: 105833,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role and industry",
     location_factor: 1.1
   },
@@ -3648,7 +3648,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 25000,
     max: 61295,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Public Relations, Communications, or related",
     location_factor: 1.1
   },
@@ -3656,7 +3656,7 @@ export const getSalaryData = (): SalaryData => {
     min: 19000,
     average: 33333,
     max: 325000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a relevant field",
     location_factor: 1.08
   },
@@ -3664,7 +3664,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17501,
     average: 32500,
     max: 373872,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a relevant field",
     location_factor: 1.08
   },
@@ -3680,7 +3680,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 30000,
     max: 200000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma with relevant training",
     location_factor: 1.02
   },
@@ -3688,7 +3688,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 20000,
     max: 39125,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma with relevant training",
     location_factor: 1.02
   },
@@ -3696,7 +3696,7 @@ export const getSalaryData = (): SalaryData => {
     min: 23000,
     average: 40000,
     max: 171600,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Engineering or a related field",
     location_factor: 1.15
   },
@@ -3712,7 +3712,7 @@ export const getSalaryData = (): SalaryData => {
     min: 21720,
     average: 40000,
     max: 93000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a relevant field",
     location_factor: 1.1
   },
@@ -3736,7 +3736,7 @@ export const getSalaryData = (): SalaryData => {
     min: 30000,
     average: 38000,
     max: 74341,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree or Diploma in Radiography, registration with HPCSA",
     location_factor: 1.1
   },
@@ -3744,7 +3744,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16667,
     average: 32500,
     max: 360000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma, registration with the Estate Agency Affairs Board",
     location_factor: 1.1
   },
@@ -3752,7 +3752,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10000,
     average: 12500,
     max: 19000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -3760,7 +3760,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13500,
     average: 20000,
     max: 54625,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Human Resources or related",
     location_factor: 1.1
   },
@@ -3768,7 +3768,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13500,
     average: 20000,
     max: 83284,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Human Resources or related",
     location_factor: 1.1
   },
@@ -3776,7 +3776,7 @@ export const getSalaryData = (): SalaryData => {
     min: 18167,
     average: 24000,
     max: 39563,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant trade qualification",
     location_factor: 1.03
   },
@@ -3792,7 +3792,7 @@ export const getSalaryData = (): SalaryData => {
     min: 22000,
     average: 26830,
     max: 58261,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree or Diploma in Nursing, registration with SANC",
     location_factor: 1.1
   },
@@ -3824,7 +3824,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16125,
     average: 30000,
     max: 47500,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Journalism or Communications",
     location_factor: 1.08
   },
@@ -3832,7 +3832,7 @@ export const getSalaryData = (): SalaryData => {
     min: 35000,
     average: 58333,
     max: 650000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Finance, IT, or related",
     location_factor: 1.15
   },
@@ -3840,7 +3840,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 20000,
     max: 53519,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role and industry",
     location_factor: 1.05
   },
@@ -3848,7 +3848,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 66667,
     max: 566880,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's or Master's Degree in a relevant field",
     location_factor: 1.15
   },
@@ -3856,7 +3856,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12000,
     average: 14000,
     max: 18950,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -3864,7 +3864,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 50000,
     max: 535000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor of Medicine and Bachelor of Surgery (MBChB) degree, ongoing training",
     location_factor: 1.15
   },
@@ -3872,7 +3872,7 @@ export const getSalaryData = (): SalaryData => {
     min: 18000,
     average: 26000,
     max: 250000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -3880,7 +3880,7 @@ export const getSalaryData = (): SalaryData => {
     min: 29792,
     average: 60000,
     max: 600000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Engineering",
     location_factor: 1.15
   },
@@ -3904,7 +3904,7 @@ export const getSalaryData = (): SalaryData => {
     min: 11000,
     average: 14000,
     max: 34625,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -3912,7 +3912,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16000,
     average: 25000,
     max: 58333,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant certification for rigging operations",
     location_factor: 1.03
   },
@@ -3920,7 +3920,7 @@ export const getSalaryData = (): SalaryData => {
     min: 28000,
     average: 50000,
     max: 650000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Finance, Economics, or related",
     location_factor: 1.15
   },
@@ -3936,7 +3936,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13500,
     average: 23750,
     max: 47750,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role and industry",
     location_factor: 1.05
   },
@@ -3944,7 +3944,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 33417,
     max: 240000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree or Diploma in Nursing, registration with SANC",
     location_factor: 1.1
   },
@@ -3968,7 +3968,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17000,
     average: 25000,
     max: 49964,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant qualifications in occupational health and safety",
     location_factor: 1.1
   },
@@ -3976,7 +3976,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 22500,
     max: 123839,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role",
     location_factor: 1.1
   },
@@ -3984,7 +3984,7 @@ export const getSalaryData = (): SalaryData => {
     min: 8031,
     average: 14000,
     max: 37500,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.05
   },
@@ -3992,7 +3992,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 27500,
     max: 258000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Business, Marketing, or related",
     location_factor: 1.1
   },
@@ -4000,7 +4000,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10000,
     average: 13500,
     max: 25001,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -4008,7 +4008,7 @@ export const getSalaryData = (): SalaryData => {
     min: 11000,
     average: 14000,
     max: 90000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -4016,7 +4016,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13500,
     average: 18113,
     max: 49893,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.08
   },
@@ -4024,7 +4024,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 37500,
     max: 373738,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Engineering",
     location_factor: 1.15
   },
@@ -4032,7 +4032,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 21287,
     max: 62629,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Business or related",
     location_factor: 1.15
   },
@@ -4048,7 +4048,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 20000,
     max: 37562,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.05
   },
@@ -4056,7 +4056,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 20000,
     max: 48680,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.05
   },
@@ -4064,7 +4064,7 @@ export const getSalaryData = (): SalaryData => {
     min: 18010,
     average: 32500,
     max: 100267,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a relevant field",
     location_factor: 1.1
   },
@@ -4072,7 +4072,7 @@ export const getSalaryData = (): SalaryData => {
     min: 11500,
     average: 22000,
     max: 400000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -4080,7 +4080,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14321,
     average: 24842,
     max: 70000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Business or Marketing",
     location_factor: 1.1
   },
@@ -4096,7 +4096,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27500,
     average: 60000,
     max: 675000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's or Master's Degree in a relevant scientific field",
     location_factor: 1.15
   },
@@ -4120,7 +4120,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14000,
     average: 19000,
     max: 53879,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma with secretarial skills",
     location_factor: 1.02
   },
@@ -4128,7 +4128,7 @@ export const getSalaryData = (): SalaryData => {
     min: 21600,
     average: 30000,
     max: 40000,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy, security training may be required",
     location_factor: 1.01
   },
@@ -4144,7 +4144,7 @@ export const getSalaryData = (): SalaryData => {
     min: 6500,
     average: 13500,
     max: 26250,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy, security training required",
     location_factor: 1.01
   },
@@ -4152,7 +4152,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13500,
     average: 45000,
     max: 495265,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy, security training required",
     location_factor: 1.01
   },
@@ -4208,7 +4208,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27500,
     average: 42500,
     max: 552022,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy",
     location_factor: 1.01
   },
@@ -4216,7 +4216,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 15000,
     max: 22000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma with automotive knowledge",
     location_factor: 1.05
   },
@@ -4224,7 +4224,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14000,
     average: 17500,
     max: 30000,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.02
   },
@@ -4232,7 +4232,7 @@ export const getSalaryData = (): SalaryData => {
     min: 18604,
     average: 27964,
     max: 87687,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Engineering",
     location_factor: 1.15
   },
@@ -4248,7 +4248,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13500,
     average: 16100,
     max: 174611,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role and industry",
     location_factor: 1.05
   },
@@ -4256,7 +4256,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13000,
     average: 17500,
     max: 48267,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.02
   },
@@ -4264,7 +4264,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 25000,
     max: 51128,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification",
     location_factor: 1.03
   },
@@ -4272,7 +4272,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14225,
     average: 20000,
     max: 37500,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant vocational training or experience",
     location_factor: 1.02
   },
@@ -4280,7 +4280,7 @@ export const getSalaryData = (): SalaryData => {
     min: 9000,
     average: 12500,
     max: 16500,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma",
     location_factor: 1.01
   },
@@ -4304,7 +4304,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14625,
     average: 20191,
     max: 320100,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Social Work, registration with SACSSP",
     location_factor: 1.08
   },
@@ -4328,7 +4328,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 32500,
     max: 201599,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Computer Science or related",
     location_factor: 1.15
   },
@@ -4360,7 +4360,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 18000,
     max: 29802,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree or Diploma in Nursing, registration with SANC",
     location_factor: 1.1
   },
@@ -4368,7 +4368,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 15000,
     max: 25001,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma with retail management experience",
     location_factor: 1.02
   },
@@ -4408,7 +4408,7 @@ export const getSalaryData = (): SalaryData => {
     min: 36763,
     average: 75000,
     max: 619502,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role and industry, often experience-based",
     location_factor: 1.03
   },
@@ -4424,7 +4424,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27750,
     average: 54139,
     max: 561950,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Supply Chain Management or related",
     location_factor: 1.05
   },
@@ -4432,7 +4432,7 @@ export const getSalaryData = (): SalaryData => {
     min: 34028,
     average: 55408,
     max: 650000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Supply Chain Management or related",
     location_factor: 1.15
   },
@@ -4456,7 +4456,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13500,
     average: 17500,
     max: 35000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification in IT or a relevant field",
     location_factor: 1.1
   },
@@ -4464,7 +4464,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16500,
     average: 22500,
     max: 596600,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor of Medicine and Bachelor of Surgery (MBChB) degree, specialization and registration with HPCSA",
     location_factor: 1.05
   },
@@ -4488,7 +4488,7 @@ export const getSalaryData = (): SalaryData => {
     min: 19000,
     average: 30000,
     max: 191600,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Computer Science or related",
     location_factor: 1.1
   },
@@ -4520,7 +4520,7 @@ export const getSalaryData = (): SalaryData => {
     min: 31250,
     average: 52500,
     max: 525000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Computer Science or related",
     location_factor: 1.15
   },
@@ -4528,7 +4528,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27292,
     average: 45000,
     max: 519655,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Computer Science or related",
     location_factor: 1.2
   },
@@ -4536,7 +4536,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 29000,
     max: 300000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Accounting, Finance, or related",
     location_factor: 1.1
   },
@@ -4544,7 +4544,7 @@ export const getSalaryData = (): SalaryData => {
     min: 30000,
     average: 70833,
     max: 750000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Accounting, Finance, or related, relevant certifications",
     location_factor: 1.1
   },
@@ -4568,7 +4568,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13500,
     average: 21000,
     max: 45000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Education",
     location_factor: 1.01
   },
@@ -4576,7 +4576,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16000,
     average: 25008,
     max: 201496,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma with experience in the relevant field",
     location_factor: 1.03
   },
@@ -4584,7 +4584,7 @@ export const getSalaryData = (): SalaryData => {
     min: 30000,
     average: 60368,
     max: 550000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a technical field",
     location_factor: 1.05
   },
@@ -4592,7 +4592,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 28750,
     max: 198800,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in a technical field",
     location_factor: 1.15
   },
@@ -4600,7 +4600,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16500,
     average: 25000,
     max: 100000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a technical field",
     location_factor: 1.1
   },
@@ -4624,7 +4624,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 25000,
     max: 44250,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Engineering or a related technical field",
     location_factor: 1.15
   },
@@ -4632,7 +4632,7 @@ export const getSalaryData = (): SalaryData => {
     min: 22500,
     average: 42500,
     max: 600000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a technical field",
     location_factor: 1.15
   },
@@ -4640,7 +4640,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 35000,
     max: 66021,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant qualifications and experience in the subject",
     location_factor: 1.15
   },
@@ -4648,7 +4648,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 20407,
     max: 195732,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or relevant certification in a technical field",
     location_factor: 1.08
   },
@@ -4656,7 +4656,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 26500,
     max: 185203,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role and industry",
     location_factor: 1.03
   },
@@ -4664,7 +4664,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27500,
     average: 40829,
     max: 500000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Computer Science or related",
     location_factor: 1.1
   },
@@ -4672,7 +4672,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 45000,
     max: 478500,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Computer Science or related",
     location_factor: 1.15
   },
@@ -4680,7 +4680,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 37485,
     max: 399317,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Computer Science or related",
     location_factor: 1.15
   },
@@ -4688,7 +4688,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10000,
     average: 15000,
     max: 42500,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant qualification and registration with a professional body",
     location_factor: 1.15
   },
@@ -4696,7 +4696,7 @@ export const getSalaryData = (): SalaryData => {
     min: 18250,
     average: 32500,
     max: 65213,
-    experience: "Entry",
+    experience: "entry",
     education: "Varies significantly by role and industry",
     location_factor: 1.1
   },
@@ -4704,7 +4704,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27370,
     average: 43750,
     max: 78542,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant experience in timber harvesting",
     location_factor: 1.05
   },
@@ -4712,7 +4712,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 22500,
     max: 32000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Tourism Management",
     location_factor: 1.02
   },
@@ -4720,7 +4720,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12375,
     average: 16000,
     max: 22050,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant certification and knowledge of the area",
     location_factor: 1.05
   },
@@ -4728,7 +4728,7 @@ export const getSalaryData = (): SalaryData => {
     min: 28696,
     average: 42500,
     max: 375000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Finance, Economics, or related",
     location_factor: 1.03
   },
@@ -4752,7 +4752,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 25000,
     max: 45000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in HR or a relevant field",
     location_factor: 1.08
   },
@@ -4768,7 +4768,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 25000,
     max: 56250,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant qualifications and experience in the subject",
     location_factor: 1.05
   },
@@ -4776,7 +4776,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 40400,
     max: 126250,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in HR or a relevant field, management experience",
     location_factor: 1.08
   },
@@ -4792,7 +4792,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 33333,
     max: 415250,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in HR or a relevant field",
     location_factor: 1.08
   },
@@ -4800,7 +4800,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 45001,
     max: 201604,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant language proficiency and/or certification",
     location_factor: 1.1
   },
@@ -4808,7 +4808,7 @@ export const getSalaryData = (): SalaryData => {
     min: 58333,
     average: 81250,
     max: 511250,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Civil or Transportation Engineering",
     location_factor: 1.05
   },
@@ -4832,7 +4832,7 @@ export const getSalaryData = (): SalaryData => {
     min: 13125,
     average: 20000,
     max: 35000,
-    experience: "Entry",
+    experience: "entry",
     education: "Diploma or Bachelor's Degree in Tourism Management",
     location_factor: 1.03
   },
@@ -4840,7 +4840,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12000,
     average: 16000,
     max: 37850,
-    experience: "Entry",
+    experience: "entry",
     education: "Valid truck driver's license with relevant endorsements",
     location_factor: 1.05
   },
@@ -4848,7 +4848,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12550,
     average: 15375,
     max: 18340,
-    experience: "Entry",
+    experience: "entry",
     education: "Valid truck driver's license with relevant endorsements",
     location_factor: 1.02
   },
@@ -4856,7 +4856,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 25000,
     max: 153611,
-    experience: "Entry",
+    experience: "entry",
     education: "Relevant trade qualification",
     location_factor: 1.02
   },
@@ -4864,7 +4864,7 @@ export const getSalaryData = (): SalaryData => {
     min: 8500,
     average: 15000,
     max: 25000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in the subject being tutored",
     location_factor: 1.03
   },
@@ -4872,7 +4872,7 @@ export const getSalaryData = (): SalaryData => {
     min: 40000,
     average: 60000,
     max: 688000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Computer Science or Design",
     location_factor: 1.02
   },
@@ -4880,7 +4880,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 25001,
     max: 150001,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Commerce, Finance, or related",
     location_factor: 1.2
   },
@@ -4888,7 +4888,7 @@ export const getSalaryData = (): SalaryData => {
     min: 34332,
     average: 43950,
     max: 450000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in a relevant field, management experience",
     location_factor: 1.1
   },
@@ -4904,7 +4904,7 @@ export const getSalaryData = (): SalaryData => {
     min: 30000,
     average: 45000,
     max: 337083,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Design or related",
     location_factor: 1.2
   },
@@ -4912,7 +4912,7 @@ export const getSalaryData = (): SalaryData => {
     min: 11000,
     average: 45000,
     max: 623280,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor of Veterinary Science (BVSc) degree, registration with SAVC",
     location_factor: 1.15
   },
@@ -4928,7 +4928,7 @@ export const getSalaryData = (): SalaryData => {
     min: 10500,
     average: 15000,
     max: 457500,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy",
     location_factor: 1.01
   },
@@ -4936,7 +4936,7 @@ export const getSalaryData = (): SalaryData => {
     min: 11233,
     average: 14300,
     max: 22500,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy",
     location_factor: 1.01
   },
@@ -4944,7 +4944,7 @@ export const getSalaryData = (): SalaryData => {
     min: 16500,
     average: 16500,
     max: 17500,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy",
     location_factor: 1.01
   },
@@ -4952,7 +4952,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 29741,
     max: 70755,
-    experience: "Entry",
+    experience: "entry",
     education: "High School Diploma with warehouse management experience",
     location_factor: 1.01
   },
@@ -4968,7 +4968,7 @@ export const getSalaryData = (): SalaryData => {
     min: 7625,
     average: 13700,
     max: 50000,
-    experience: "Entry",
+    experience: "entry",
     education: "Basic literacy",
     location_factor: 1.05
   },
@@ -4976,7 +4976,7 @@ export const getSalaryData = (): SalaryData => {
     min: 23500,
     average: 52500,
     max: 450000,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Civil or Environmental Engineering",
     location_factor: 1.01
   },
@@ -4992,7 +4992,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 37500,
     max: 211348,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in Computer Science or related",
     location_factor: 1.1
   },
@@ -5016,7 +5016,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12500,
     average: 16000,
     max: 33600,
-    experience: "Entry",
+    experience: "entry",
     education: "trade qualification",
     location_factor: 1.1
   },
@@ -5024,7 +5024,7 @@ export const getSalaryData = (): SalaryData => {
     min: 43000,
     average: 52368,
     max: 650000,
-    experience: "Entry",
+    experience: "entry",
     education: "vocational training or experience",
     location_factor: 1.03
   },
@@ -5032,7 +5032,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17500,
     average: 25000,
     max: 50095,
-    experience: "Entry",
+    experience: "entry",
     education: "Bachelor's Degree in English, Journalism, or related",
     location_factor: 1.02
   }
