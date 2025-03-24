@@ -24,8 +24,9 @@ export const blogPosts: BlogPost[] = [
     slug: "black-coffee-net-worth-and-how-he-made-60-million",
     excerpt: "Black Coffee’s net worth is huge, as of 2025, his net worth is estimated at $60 million (R1.1 billion).",
     content: `
-Black Coffee, whose real name is Nkosinathi Innocent Maphumulo, is a highly acclaimed South African DJ, record producer, and songwriter. Born on March 11, 1976, he has become one of the most prominent figures in electronic music globally. He has achieved international acclaim, winning multiple awards including a Grammy, and has collaborated with major artists like Drake and Usher. Despite losing the use of his left arm early in his life, Black Coffee has become a leading figure in electronic music, celebrated for his innovative sound and contributions to the global music scene.
-<h2>Black Coffee Net Worth</h2>Black Coffee's net worth is estimated to be around $60 million. This figure places him among the wealthiest musicians in Africa, with his income stemming from his successful career as a DJ, record producer, and songwriter, as well as investments in properties.
+<p>Black Coffee, whose real name is Nkosinathi Innocent Maphumulo, is a highly acclaimed South African DJ, record producer, and songwriter. Born on March 11, 1976, he has become one of the most prominent figures in electronic music globally. He has achieved international acclaim, winning multiple awards including a Grammy, and has collaborated with major artists like Drake and Usher. Despite losing the use of his left arm early in his life, Black Coffee has become a leading figure in electronic music, celebrated for his innovative sound and contributions to the global music scene.</p>
+<h2>Black Coffee Net Worth</h2>
+<p>Black Coffee's net worth is estimated to be around $60 million. This figure places him among the wealthiest musicians in Africa, with his income stemming from his successful career as a DJ, record producer, and songwriter, as well as investments in properties.</p>
 <h2>Black Coffee Businesses and How He Makes His Money</h2>
 <p>​Black Coffee, born Nkosinathi Maphumulo, has diversified his income through various ventures spanning music, technology, hospitality, and healthcare.</p>
 <p>Below is an overview of his business interests and revenue streams:</p>
