@@ -1,8 +1,8 @@
-
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Header from "../components/Header";
+import SEO from "../components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Calendar, User, BriefcaseBusiness, ArrowRight, ArrowUpRight } from "lucide-react";
@@ -72,6 +72,11 @@ const JobDetail = () => {
     experience: salaryData[id].experience,
     education: salaryData[id].education
   }));
+
+  // SEO title and description with job specific information
+  const jobCategory = jobId ? getJobCategory(jobId) : "";
+  const seoTitle = `${jobTitle} Salary in South Africa (R${jobData?.average.toLocaleString()})`;
+  const seoDescription = `${jobTitle} average salary in South Africa is R${jobData?.average.toLocaleString()} per month. Explore salary ranges, requirements, and career insights for ${jobTitle} positions.`;
   
   // Simulate loading from an API
   useEffect(() => {
@@ -149,6 +154,11 @@ const JobDetail = () => {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-[#f6f6f0]">
+        <SEO 
+          title={seoTitle} 
+          description={seoDescription} 
+          canonicalUrl={`/salaries/${jobId}`} 
+        />
         <Header />
         <main className="pt-20 pb-16">
           <div className="container mx-auto px-4 max-w-3xl">
@@ -178,6 +188,11 @@ const JobDetail = () => {
   if (!jobData) {
     return (
       <div className="min-h-screen bg-[#f6f6f0] flex items-center justify-center">
+        <SEO 
+          title="Job Not Found | MoneyWorth" 
+          description="The job salary information you're looking for doesn't exist or is invalid." 
+          canonicalUrl="/salaries" 
+        />
         <Card>
           <CardContent className="p-6">
             <p>Job not found. Please try another job.</p>
@@ -198,6 +213,11 @@ const JobDetail = () => {
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
+      <SEO 
+        title={seoTitle}
+        description={seoDescription}
+        canonicalUrl={`/salaries/${jobId}`}
+      />
       <Header />
       
       <main className="pt-20 pb-16">
