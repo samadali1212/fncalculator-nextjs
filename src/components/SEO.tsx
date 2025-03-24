@@ -18,7 +18,7 @@ const SEO = ({
   ogType = "website",
   twitterCard = "summary_large_image"
 }: SEOProps) => {
-  const siteUrl = "https://moneyworth.com"; // Replace with your actual domain when available
+  const siteUrl = "https://moneyworth.co.za";
   const fullTitle = title.includes("MoneyWorth") ? title : `${title} | MoneyWorth`;
   
   return (
