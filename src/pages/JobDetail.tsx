@@ -1,3 +1,4 @@
+
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
@@ -5,7 +6,7 @@ import Header from "../components/Header";
 import SEO from "../components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, Calendar, User, BriefcaseBusiness, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ChevronLeft, Calendar, User, BriefcaseBusiness, ArrowRight, ArrowUpRight, Briefcase, GraduationCap } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getSalaryData } from "../utils/salaryData";
@@ -237,18 +238,19 @@ const JobDetail = () => {
             
             <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] mb-6 pb-6 border-b border-gray-200">
               <div className="flex items-center">
-                <Calendar className="h-4 w-4 mr-1 text-[#999]" />
-                Last updated: {new Date().toLocaleDateString()}
+                <Briefcase className="h-4 w-4 mr-1 text-[#999]" />
+                <span className="text-[#555] font-medium">{jobCategory} industry</span>
               </div>
               
               <div className="flex items-center">
                 <User className="h-4 w-4 mr-1 text-[#999]" />
-                Experience: <span className="capitalize ml-1">{jobData.experience}</span>
+                Experience: <span className="capitalize ml-1 font-medium">{jobData.experience}</span>
               </div>
               
-              <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
-                {getJobCategory(jobId || "")}
-              </span>
+              <div className="flex items-center">
+                <GraduationCap className="h-4 w-4 mr-1 text-[#999]" />
+                <span className="text-xs">{jobData.education.split(" ")[0]}</span>
+              </div>
             </div>
             
             <div className="bg-gray-50 p-4 rounded-md mb-6">

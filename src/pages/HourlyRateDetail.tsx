@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import SEO from "../components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, Briefcase, Clock, Calendar, ArrowUpRight, ArrowRight } from "lucide-react";
+import { ChevronLeft, Briefcase, Clock, Calendar, ArrowUpRight, ArrowRight, Calculator } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getHourlyRateDetails, convertHourlyRate, generateHourlyRates } from "../utils/hourlyConverter";
@@ -178,8 +178,8 @@ const HourlyRateDetail = () => {
             
             <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] mb-6 pb-6 border-b border-gray-200">
               <div className="flex items-center">
-                <Calendar className="h-4 w-4 mr-1 text-[#999]" />
-                Last updated: {new Date().toLocaleDateString()}
+                <Calculator className="h-4 w-4 mr-1 text-[#999]" />
+                <span className="font-medium">Calculated in real-time</span>
               </div>
               
               <div className="flex items-center">
