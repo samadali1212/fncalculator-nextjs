@@ -12,7 +12,7 @@ type SalaryData = {
 
 export const getSalaryData = (): SalaryData => {
   return {
-  ".Net Software Developer": {
+  .Net Software Developer: {
     min: 32500,
     average: 55000,
     max: 600000,
@@ -20,7 +20,7 @@ export const getSalaryData = (): SalaryData => {
     education: "Bachelor's Degree in Computer Science or Software Engineering",
     location_factor: 1.25
   },
-  ".Net Web Developer": {
+  .Net Web Developer: {
     min: 25000,
     average: 38750,
     max: 96000,
@@ -28,7 +28,7 @@ export const getSalaryData = (): SalaryData => {
     education: "Bachelor's Degree in Computer Science or Information Technology",
     location_factor: 1.25
   },
-  "Account Administrator": {
+  Account Administrator: {
     min: 11375,
     average: 17500,
     max: 31500,
@@ -36,7 +36,7 @@ export const getSalaryData = (): SalaryData => {
     education: "Diploma or Bachelor's Degree in Business Administration or related",
     location_factor: 1.08
   },
-  "Account Clerk": {
+  Account Clerk: {
     min: 12000,
     average: 13500,
     max: 20000,
@@ -44,7 +44,7 @@ export const getSalaryData = (): SalaryData => {
     education: "High School Diploma with relevant certifications",
     location_factor: 1.02
   },
-  "Account Executive": {
+  Account Executive: {
     min: 15000,
     average: 25000,
     max: 60000,
@@ -52,7 +52,7 @@ export const getSalaryData = (): SalaryData => {
     education: "Bachelor's Degree in Business, Marketing, or Sales",
     location_factor: 1.15
   },
-  "Account Manager": {
+  Account Manager: {
     min: 20000,
     average: 30000,
     max: 330000,
@@ -60,7 +60,7 @@ export const getSalaryData = (): SalaryData => {
     education: "Bachelor's Degree in Business, Marketing, or related",
     location_factor: 1.15
   },
-  "Account Representative": {
+  Account Representative: {
     min: 15000,
     average: 19000,
     max: 33375,
@@ -68,7 +68,7 @@ export const getSalaryData = (): SalaryData => {
     education: "Bachelor's Degree in Business or related",
     location_factor: 1.08
   },
-  "Accountant": {
+  Accountant: {
     min: 21818,
     average: 33890,
     max: 454286,
@@ -76,7 +76,7 @@ export const getSalaryData = (): SalaryData => {
     education: "Bachelor's Degree in Accounting",
     location_factor: 1.15
   },
-  "Accounting Manager": {
+  Accounting Manager: {
     min: 25750,
     average: 40000,
     max: 532500,
@@ -84,7 +84,7 @@ export const getSalaryData = (): SalaryData => {
     education: "Bachelor's Degree in Accounting, CA(SA) preferred",
     location_factor: 1.3
   },
-  "Accounts Manager": {
+  Accounts Manager: {
     min: 24000,
     average: 35000,
     max: 401700,
@@ -92,7 +92,7 @@ export const getSalaryData = (): SalaryData => {
     education: "Bachelor's Degree in Accounting, CA(SA) preferred",
     location_factor: 1.3
   },
-  "Accounts Payable": {
+  Accounts Payable: {
     min: 16000,
     average: 22500,
     max: 182817,
@@ -100,7 +100,7 @@ export const getSalaryData = (): SalaryData => {
     education: "Diploma or Bachelor's Degree in Accounting",
     location_factor: 1.02
   },
-  "Accounts Receivable": {
+  Accounts Receivable: {
     min: 17500,
     average: 25000,
     max: 270000,
@@ -108,7 +108,7 @@ export const getSalaryData = (): SalaryData => {
     education: "Diploma or Bachelor's Degree in Accounting",
     location_factor: 1.02
   },
-  "Actuarial": {
+  Actuarial: {
     min: 48000,
     average: 109722,
     max: 800000,
@@ -116,7 +116,7 @@ export const getSalaryData = (): SalaryData => {
     education: "Bachelor's Degree in Actuarial Science, Mathematics, or Statistics",
     location_factor: 1.3
   },
-  "Actuarial Analyst": {
+  Actuarial Analyst: {
     min: 45695,
     average: 91176,
     max: 750000,
@@ -411,6 +411,6 @@ export const getSalaryData = (): SalaryData => {
     experience: "Mid",
     education: "Bachelor's Degree in Automotive Engineering or Mechanical Engineering",
     location_factor: 1.35
-  },
+  }
   };
 };
