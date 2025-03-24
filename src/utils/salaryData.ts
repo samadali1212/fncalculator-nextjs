@@ -12,7 +12,7 @@ type SalaryData = {
 
 export const getSalaryData = (): SalaryData => {
   return {
-  ".net_software_developer": {
+  net_software_developer: {
     min: 32500,
     average: 55000,
     max: 600000,
@@ -20,7 +20,7 @@ export const getSalaryData = (): SalaryData => {
     education: "Bachelor's Degree in Computer Science or Software Engineering",
     location_factor: 1.25
   },
-  ".net_web_developer": {
+  net_web_developer: {
     min: 25000,
     average: 38750,
     max: 96000,
