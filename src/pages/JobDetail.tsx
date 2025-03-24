@@ -20,7 +20,7 @@ type SalaryPeriod = "weekly" | "monthly" | "yearly" | "hourly";
 const jobCategories: Record<string, string[]> = {
   "Technology": [
     "software_developer", "web_developer", "data_analyst", 
-    ".net_software_developer", ".net_web_developer", "android_developer",
+    "net_software_developer", "net_web_developer", "android_developer",
     "application_developer", "application_engineer", "automation_engineer",
     "back_end", "business_intelligence", "business_intelligence_analyst",
     "data_architect", "data_scientist", "database_administrator", "dba",
