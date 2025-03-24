@@ -43,9 +43,9 @@ export function formatWithSpaces(value: number): string {
 
 // Generate a range of hourly rates with conversions
 export function generateHourlyRates(
-  min: number = 50,
+  min: number = 1,
   max: number = 1000,
-  step: number = 25
+  step: number = 1
 ): HourlyRate[] {
   const rates: HourlyRate[] = [];
   
