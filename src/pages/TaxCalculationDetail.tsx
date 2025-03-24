@@ -148,7 +148,7 @@ const TaxCalculationDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${formatCurrency(income)} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Income Tax Calculation | MoneyWorth`}
+        title=Paye On {`${formatCurrency(income)} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary | MoneyWorth`}
         description={`Calculate your take-home pay for ${formatCurrency(income)} ${timeFrame === "monthly" ? "monthly" : "annual"} income. After tax income: ${formatCurrency(taxDetails.netIncome)}. Effective tax rate: ${taxDetails.effectiveTaxRate.toFixed(1)}%.`}
         canonicalUrl={`/tax-calculator/${timeFrame}/${income}`}
       />
@@ -166,7 +166,7 @@ const TaxCalculationDetail = () => {
           
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
-              {formatCurrency(taxDetails.grossIncome)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Income Tax Calculation
+              How Much Will I Pay On {formatCurrency(taxDetails.grossIncome)} {timeFrame === "monthly" ? "Monthly" : "Annual"}
             </h1>
             
             <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-[#666] mb-6 pb-6 border-b border-gray-200">
