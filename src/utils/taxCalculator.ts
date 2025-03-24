@@ -151,7 +151,7 @@ export function calculateIncomeTax(
  * @returns Array of tax calculation results
  */
 export function generateTaxCalculations(
-  min: number = 3000,
+  min: number = 4000,
   max: number = 500000,
   step: number = 500,
   ageGroup: AgeGroup = "below65",
