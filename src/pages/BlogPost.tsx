@@ -196,7 +196,7 @@ const BlogPost = () => {
             )}
             
             <div 
-              className="prose prose-sm sm:prose max-w-none prose-h2:text-3xl prose-h2:font-bold prose-h3:text-2lg prose-h3:font-bold prose-p:text-[#333] prose-a:text-[#ff6600] prose-blockquote:border-l-[#ff6600]"
+              className="prose prose-sm sm:prose max-w-none prose-h2:text-3xl prose-h2:font-bold prose-h3:text-2xl prose-h3:font-bold prose-p:text-[#333] prose-a:text-[#ff6600] prose-blockquote:border-l-[#ff6600]"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </div>
