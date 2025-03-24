@@ -7,7 +7,14 @@ Sitemap: https://moneyworth.com/sitemap.xml
 
 # Allow crawling of important directories
 User-agent: Googlebot
-Allow: /
+Allow: /tax-calculator/
+Allow: /tax-calculator/monthly/
+Allow: /tax-calculator/yearly/
+Allow: /hourly-rates/
+Allow: /salaries/
+Allow: /post/
+Allow: /about/
+
 User-agent: Bingbot
 Allow: /
 User-agent: Yandexbot

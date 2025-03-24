@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ArrowUpRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import { 
@@ -38,7 +38,12 @@ const TaxCalculator = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [itemsToShow, setItemsToShow] = useState(50);
   const [ageGroup, setAgeGroup] = useState<AgeGroup>("below65");
-  const [timeFrame, setTimeFrame] = useState<TimeFrame>("monthly");
+  const location = useLocation();
+  const navigate = useNavigate();
+  
+  const timeFrame: TimeFrame = location.pathname.includes("/yearly") 
+    ? "yearly" 
+    : "monthly";
   
   const taxResults = generateTaxCalculations(
     timeFrame === "monthly" ? 10000 : 120000,  // Default monthly min: R10,000, yearly: R120,000
@@ -67,8 +72,7 @@ const TaxCalculator = () => {
 
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
-      setTimeFrame(value as TimeFrame);
-      setSearchQuery("");
+      navigate(`/tax-calculator/${value}`);
     }
   };
 
@@ -81,7 +85,7 @@ const TaxCalculator = () => {
       <SEO 
         title="2025/2026 SARS Income Tax Calculator | South Africa" 
         description="Calculate your take-home pay after PAYE tax in South Africa with our 2025/2026 SARS income tax calculator. Monthly and annual income tax calculations."
-        canonicalUrl="/tax-calculator"
+        canonicalUrl={`/tax-calculator${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
       />
       <Header />
       
@@ -171,7 +175,7 @@ const TaxCalculator = () => {
                   <div className="grid grid-cols-12 items-center">
                     <div className="col-span-4 md:col-span-3">
                       <Link 
-                        to={`/tax-calculator/${result.grossIncome}?timeFrame=${timeFrame}`}
+                        to={`/tax-calculator/${timeFrame}/${result.grossIncome}`}
                         className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                       >
                         {formatCurrency(result.grossIncome)}

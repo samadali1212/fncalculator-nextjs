@@ -1,8 +1,9 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useParams, useNavigate, Link, useSearchParams } from "react-router-dom";
+import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
 import Header from "../components/Header";
+import SEO from "../components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Calendar, User, ArrowRight } from "lucide-react";
@@ -31,13 +32,15 @@ import {
 
 const TaxCalculationDetail = () => {
   const { incomeId } = useParams<{ incomeId: string }>();
-  const [searchParams] = useSearchParams();
-  const initialTimeFrame = (searchParams.get("timeFrame") || "monthly") as TimeFrame;
+  const location = useLocation();
+  const pathname = location.pathname;
+  
+  // Determine timeFrame from URL path
+  const timeFrame: TimeFrame = pathname.includes("/yearly/") ? "yearly" : "monthly";
   
   const navigate = useNavigate();
   const [ageGroup, setAgeGroup] = useState<AgeGroup>("below65");
   const [isLoading, setIsLoading] = useState(true);
-  const [timeFrame, setTimeFrame] = useState<TimeFrame>(initialTimeFrame);
   
   const income = incomeId ? parseInt(incomeId) : 0;
   const taxDetails = useMemo(() => 
@@ -84,8 +87,8 @@ const TaxCalculationDetail = () => {
 
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
-      setTimeFrame(value as TimeFrame);
-      toast(`Showing ${value} figures`);
+      // Navigate to the same income but with different timeframe
+      navigate(`/tax-calculator/${value}/${income}`);
     }
   };
   
@@ -144,12 +147,17 @@ const TaxCalculationDetail = () => {
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
+      <SEO 
+        title={`${formatCurrency(income)} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Income Tax Calculation | MoneyWorth`}
+        description={`Calculate your take-home pay for ${formatCurrency(income)} ${timeFrame === "monthly" ? "monthly" : "annual"} income. After tax income: ${formatCurrency(taxDetails.netIncome)}. Effective tax rate: ${taxDetails.effectiveTaxRate.toFixed(1)}%.`}
+        canonicalUrl={`/tax-calculator/${timeFrame}/${income}`}
+      />
       <Header />
       
       <main className="pt-20 pb-16">
         <div className="container mx-auto px-4 max-w-3xl">
           <Link 
-            to="/tax-calculator"
+            to={`/tax-calculator/${timeFrame}`}
             className="inline-flex items-center text-sm text-[#000000] mb-6 hover:underline"
           >
             <ChevronLeft className="h-4 w-4 mr-1" />
@@ -329,7 +337,7 @@ const TaxCalculationDetail = () => {
                       </div>
                       <div className="flex-1">
                         <Link 
-                          to={`/tax-calculator/${calcResult.grossIncome}?timeFrame=${timeFrame}`}
+                          to={`/tax-calculator/${timeFrame}/${calcResult.grossIncome}`}
                           className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent"
                         >
                           {formatCurrency(calcResult.grossIncome)} {timeFrame === "monthly" ? "monthly" : "annual"} income
@@ -351,7 +359,7 @@ const TaxCalculationDetail = () => {
                 <Button 
                   variant="outline" 
                   className="w-full"
-                  onClick={() => navigate('/tax-calculator')}
+                  onClick={() => navigate(`/tax-calculator/${timeFrame}`)}
                 >
                   View All Tax Calculations
                 </Button>
