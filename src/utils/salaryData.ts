@@ -136,7 +136,7 @@ export const getSalaryData = (): SalaryData => {
     min: 81000,
     average: 108333,
     max: 900000,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Actuarial Science, Mathematics, or Statistics",
     location_factor: 1.35
   },
@@ -144,7 +144,7 @@ export const getSalaryData = (): SalaryData => {
     min: 66667,
     average: 125001,
     max: 900000,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Actuarial Science, Mathematics, or Statistics",
     location_factor: 1.35
   },
@@ -304,7 +304,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15987,
     average: 70000,
     max: 670500,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's or Master's Degree in a relevant field",
     location_factor: 1.15
   },
@@ -312,7 +312,7 @@ export const getSalaryData = (): SalaryData => {
     min: 567548,
     average: 802254,
     max: 978044,
-    experience: "Senior",
+    experience: "senior",
     education: "PhD in a relevant field",
     location_factor: 1.15
   },
@@ -624,7 +624,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 28153,
     max: 100000,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Business or related, often Master's",
     location_factor: 1.25
   },
@@ -784,7 +784,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 61347,
     max: 341060,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Engineering, extensive experience",
     location_factor: 1.1
   },
@@ -792,7 +792,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20129,
     average: 85834,
     max: 191250,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Finance or Accounting, CA(SA), MBA",
     location_factor: 1.3
   },
@@ -800,7 +800,7 @@ export const getSalaryData = (): SalaryData => {
     min: 30100,
     average: 81250,
     max: 385615,
-    experience: "Senior",
+    experience: "senior",
     education: "Relevant qualifications in safety management",
     location_factor: 1.35
   },
@@ -856,7 +856,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20000,
     average: 33333,
     max: 160212,
-    experience: "Senior",
+    experience: "senior",
     education: "Relevant advanced qualification in a clinical field",
     location_factor: 1.2
   },
@@ -864,7 +864,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 21031,
     max: 66318,
-    experience: "Senior",
+    experience: "senior",
     education: "Varies significantly by role and industry",
     location_factor: 1.25
   },
@@ -1032,7 +1032,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 21500,
     max: 230361,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Accounting or Finance, CA(SA)",
     location_factor: 1.05
   },
@@ -1040,7 +1040,7 @@ export const getSalaryData = (): SalaryData => {
     min: 19517,
     average: 45000,
     max: 175000,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Business or related, often Master's",
     location_factor: 1.3
   },
@@ -1104,7 +1104,7 @@ export const getSalaryData = (): SalaryData => {
     min: 5833,
     average: 15250,
     max: 69500,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Design or related, strong portfolio",
     location_factor: 1.1
   },
@@ -1200,7 +1200,7 @@ export const getSalaryData = (): SalaryData => {
     min: 51250,
     average: 88500,
     max: 872500,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's or Master's Degree in Computer Science or related",
     location_factor: 1.3
   },
@@ -1320,7 +1320,7 @@ export const getSalaryData = (): SalaryData => {
     min: 67630,
     average: 654817,
     max: 775000,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's or Master's Degree in a relevant field",
     location_factor: 1.25
   },
@@ -1408,7 +1408,7 @@ export const getSalaryData = (): SalaryData => {
     min: 22028,
     average: 62011,
     max: 410099,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's or Master's Degree in a relevant field",
     location_factor: 1.3
   },
@@ -1592,7 +1592,7 @@ export const getSalaryData = (): SalaryData => {
     min: 30000,
     average: 57300,
     max: 169361,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Engineering, management experience",
     location_factor: 1.3
   },
@@ -1672,7 +1672,7 @@ export const getSalaryData = (): SalaryData => {
     min: 22375,
     average: 28500,
     max: 42800,
-    experience: "Senior",
+    experience: "senior",
     education: "Relevant culinary qualifications and extensive experience",
     location_factor: 1.2
   },
@@ -1824,7 +1824,7 @@ export const getSalaryData = (): SalaryData => {
     min: 26007,
     average: 45000,
     max: 584954,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Finance or Accounting, CA(SA)",
     location_factor: 1.3
   },
@@ -2000,7 +2000,7 @@ export const getSalaryData = (): SalaryData => {
     min: 21500,
     average: 37500,
     max: 125000,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Business or related, extensive experience",
     location_factor: 1.3
   },
@@ -2024,7 +2024,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27250,
     average: 58819,
     max: 725000,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Business or related, management experience",
     location_factor: 1.25
   },
@@ -2072,7 +2072,7 @@ export const getSalaryData = (): SalaryData => {
     min: 17167,
     average: 20250,
     max: 33000,
-    experience: "Senior",
+    experience: "senior",
     education: "Relevant culinary qualifications and significant experience",
     location_factor: 1.2
   },
@@ -2112,7 +2112,7 @@ export const getSalaryData = (): SalaryData => {
     min: 30500,
     average: 52083,
     max: 613000,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's or Master's Degree in Healthcare Management",
     location_factor: 1.25
   },
@@ -2144,7 +2144,7 @@ export const getSalaryData = (): SalaryData => {
     min: 14279,
     average: 28000,
     max: 55000,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Hospitality Management, extensive experience",
     location_factor: 1.25
   },
@@ -2896,7 +2896,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 21500,
     max: 35250,
-    experience: "Senior",
+    experience: "senior",
     education: "Relevant medical specialization and registration",
     location_factor: 1.3
   },
@@ -2960,7 +2960,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27500,
     average: 104897,
     max: 195417,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Mining Engineering, relevant certifications",
     location_factor: 1.3
   },
@@ -2984,7 +2984,7 @@ export const getSalaryData = (): SalaryData => {
     min: 30000,
     average: 62500,
     max: 168739,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Mining Engineering, relevant certifications",
     location_factor: 1.3
   },
@@ -3200,7 +3200,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 41967,
     max: 500000,
-    experience: "Senior",
+    experience: "senior",
     education: "Varies significantly by role and industry, often advanced degrees",
     location_factor: 1.3
   },
@@ -3424,7 +3424,7 @@ export const getSalaryData = (): SalaryData => {
     min: 19749,
     average: 52500,
     max: 376060,
-    experience: "Senior",
+    experience: "senior",
     education: "Relevant teaching qualifications and experience",
     location_factor: 1.2
   },
@@ -3432,7 +3432,7 @@ export const getSalaryData = (): SalaryData => {
     min: 18000,
     average: 66667,
     max: 848504,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Engineering, extensive experience",
     location_factor: 1.3
   },
@@ -3552,7 +3552,7 @@ export const getSalaryData = (): SalaryData => {
     min: 154269,
     average: 774379,
     max: 978044,
-    experience: "Senior",
+    experience: "senior",
     education: "PhD in the relevant field",
     location_factor: 1.25
   },
@@ -3624,7 +3624,7 @@ export const getSalaryData = (): SalaryData => {
     min: 34000,
     average: 65210,
     max: 697362,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Project Management or relevant field, extensive experience",
     location_factor: 1.3
   },
@@ -3784,7 +3784,7 @@ export const getSalaryData = (): SalaryData => {
     min: 23897,
     average: 40607,
     max: 277096,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Business or related, extensive experience",
     location_factor: 1.25
   },
@@ -4088,7 +4088,7 @@ export const getSalaryData = (): SalaryData => {
     min: 15000,
     average: 26200,
     max: 54750,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Education, advanced qualifications and experience",
     location_factor: 1.2
   },
@@ -4160,7 +4160,7 @@ export const getSalaryData = (): SalaryData => {
     min: 20713,
     average: 33011,
     max: 295352,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in a relevant field, extensive experience",
     location_factor: 1.3
   },
@@ -4168,7 +4168,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 52479,
     max: 544519,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Engineering, extensive experience",
     location_factor: 1.3
   },
@@ -4176,7 +4176,7 @@ export const getSalaryData = (): SalaryData => {
     min: 30000,
     average: 40000,
     max: 312803,
-    experience: "Senior",
+    experience: "senior",
     education: "Relevant trade qualification and extensive experience",
     location_factor: 1.15
   },
@@ -4184,7 +4184,7 @@ export const getSalaryData = (): SalaryData => {
     min: 27500,
     average: 50000,
     max: 546750,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in a relevant field, extensive experience",
     location_factor: 1.25
   },
@@ -4192,7 +4192,7 @@ export const getSalaryData = (): SalaryData => {
     min: 34000,
     average: 65210,
     max: 697362,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Project Management or relevant field, extensive experience",
     location_factor: 1.35
   },
@@ -4200,7 +4200,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12328,
     average: 58344,
     max: 725000,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Computer Science or related, extensive experience",
     location_factor: 1.35
   },
@@ -4336,7 +4336,7 @@ export const getSalaryData = (): SalaryData => {
     min: 25000,
     average: 69305,
     max: 711000,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in Computer Science or related",
     location_factor: 1.3
   },
@@ -4472,7 +4472,7 @@ export const getSalaryData = (): SalaryData => {
     min: 12965,
     average: 30703,
     max: 285000,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree or Diploma in Nursing, specialized training and registration with SANC",
     location_factor: 1.35
   },
@@ -4616,7 +4616,7 @@ export const getSalaryData = (): SalaryData => {
     min: 18000,
     average: 29008,
     max: 100000,
-    experience: "Senior",
+    experience: "senior",
     education: "Bachelor's Degree in a relevant engineering field",
     location_factor: 1.3
   },
