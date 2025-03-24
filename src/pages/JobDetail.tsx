@@ -204,23 +204,29 @@ const JobDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   
   const salaryData = useMemo(() => getSalaryData(), []);
-  const jobData = jobId ? salaryData[jobId] : null;
+  const jobData = jobId && salaryData[jobId] ? salaryData[jobId] : null;
   const jobTitle = jobId ? jobId.replace(/_/g, " ") : "";
   
-  // Get related jobs
+  // Get related jobs, making sure to filter out any undefined salary data
   const relatedJobIds = jobId ? getRelatedJobs(jobId) : [];
-  const relatedJobs = relatedJobIds.map(id => ({
-    id,
-    title: id.replace(/_/g, " "),
-    salary: salaryData[id].average,
-    experience: salaryData[id].experience,
-    education: salaryData[id].education
-  }));
+  const relatedJobs = relatedJobIds
+    .filter(id => salaryData[id] !== undefined) // Filter out any jobs that don't have data
+    .map(id => ({
+      id,
+      title: id.replace(/_/g, " "),
+      salary: salaryData[id].average,
+      experience: salaryData[id].experience,
+      education: salaryData[id].education
+    }));
 
   // SEO title and description with job specific information
   const jobCategory = jobId ? getJobCategory(jobId) : "";
-  const seoTitle = `${jobTitle} Salary in South Africa (R${jobData?.average.toLocaleString()})`;
-  const seoDescription = `${jobTitle} average salary in South Africa is R${jobData?.average.toLocaleString()} per month. Explore salary ranges, requirements, and career insights for ${jobTitle} positions.`;
+  const seoTitle = jobData 
+    ? `${jobTitle} Salary in South Africa (R${jobData.average.toLocaleString()})` 
+    : `${jobTitle} Salary in South Africa`;
+  const seoDescription = jobData 
+    ? `${jobTitle} average salary in South Africa is R${jobData.average.toLocaleString()} per month. Explore salary ranges, requirements, and career insights for ${jobTitle} positions.`
+    : `Explore salary information for ${jobTitle} positions in South Africa. Get insights on pay ranges, requirements, and career prospects.`;
   
   // Simulate loading from an API
   useEffect(() => {
@@ -333,18 +339,31 @@ const JobDetail = () => {
     return (
       <div className="min-h-screen bg-[#f6f6f0] flex items-center justify-center">
         <SEO 
-          title="Job Not Found | MoneyWorth" 
-          description="The job salary information you're looking for doesn't exist or is invalid." 
+          title={`${jobTitle} | Salary Information Not Found`}
+          description={`We couldn't find salary information for ${jobTitle}. Please try another job.`}
           canonicalUrl="/salaries" 
         />
-        <Card>
-          <CardContent className="p-6">
-            <p>Job not found. Please try another job.</p>
-            <Button onClick={() => navigate('/salaries')} className="mt-4">
-              Back to Jobs List
-            </Button>
-          </CardContent>
-        </Card>
+        <Header />
+        <main className="pt-20 pb-16 px-4">
+          <div className="container mx-auto max-w-xl">
+            <Card className="shadow-md">
+              <CardContent className="p-6">
+                <h1 className="text-xl font-semibold mb-4 capitalize">Unable to find {jobTitle} salary data</h1>
+                <p className="mb-6 text-gray-600">
+                  We couldn't find salary information for this job. The data might be unavailable or the job ID might be incorrect.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button onClick={() => navigate('/salaries')} className="flex-1">
+                    Browse All Salaries
+                  </Button>
+                  <Button variant="outline" onClick={() => window.history.back()} className="flex-1">
+                    Go Back
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </main>
       </div>
     );
   }

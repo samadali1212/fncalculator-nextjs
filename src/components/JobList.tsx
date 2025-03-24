@@ -19,14 +19,16 @@ const JobList = ({ searchQuery }: JobListProps) => {
   const salaryData = getSalaryData();
   const [itemsToShow, setItemsToShow] = useState(50);
   
-  // Convert object to array of job entries
-  const jobEntries = Object.entries(salaryData).map(([key, value]) => ({
-    id: key,
-    title: key.replace(/_/g, " "),
-    salary: value.average,
-    experience: value.experience,
-    education: value.education
-  }));
+  // Convert object to array of job entries, filtering out any undefined data
+  const jobEntries = Object.entries(salaryData)
+    .filter(([_, value]) => value !== undefined) // Ensure no undefined values
+    .map(([key, value]) => ({
+      id: key,
+      title: key.replace(/_/g, " "),
+      salary: value.average,
+      experience: value.experience,
+      education: value.education
+    }));
   
   // Filter jobs based on search query
   const filteredJobs = searchQuery
