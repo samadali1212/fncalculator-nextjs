@@ -47,8 +47,8 @@ const TaxCalculator = () => {
   
   const taxResults = generateTaxCalculations(
     timeFrame === "monthly" ? 4000 : 48000,    // Min: R4,000 monthly / R48,000 yearly
-    timeFrame === "monthly" ? 600000 : 7200000, // Max: R600,000 monthly / R7,200,000 yearly
-    timeFrame === "monthly" ? 500 : 6000,       // Step: R500 monthly / R6,000 yearly
+    timeFrame === "monthly" ? 650000 : 7800000, // Max: R600,000 monthly / R7,200,000 yearly
+    timeFrame === "monthly" ? 100 : 1200,       // Step: R100 monthly / R1,200 yearly
     ageGroup,
     timeFrame
   );
