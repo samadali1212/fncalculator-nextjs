@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -7,48 +6,137 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://moneyworth.co.za/home</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-    <url>
     <loc>https://moneyworth.co.za/categories</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://moneyworth.co.za/about</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://moneyworth.co.za/salaries</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://moneyworth.co.za/hourly-rates</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://moneyworth.co.za/tax-calculator</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://moneyworth.co.za/tax-calculator/monthly</loc>
+    <loc>https://moneyworth.co.za/home</loc>
     <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/about</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/johann-rupert</loc>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneyworth.co.za/tax-calculator/yearly</loc>
-    <changefreq>weekly</changefreq>
+    <loc>https://moneyworth.co.za/net-worth/nicky-oppenheimer</loc>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneyworth.co.za/net-worth</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://moneyworth.co.za/net-worth/patrice-motsepe</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
-</urlset>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/koos-bekker</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/michiel-le-roux</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/douw-steyn</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/stephen-saad</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/jannie-mouton</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/adrian-gore</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/cyril-ramaphosa</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/black-coffee</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/dj-maphorisa</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/dj-shimza</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/dj-tira</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/dj-zinhle</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/oskido</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/kabza-de-small</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/lerato-kganyago</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/dj-fresh</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/dj-euphonik</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://moneyworth.co.za/net-worth/uncle-waffles</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
