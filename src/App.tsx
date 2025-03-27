@@ -43,6 +43,7 @@ const App = () => (
           <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
           <Route path="/net-worth/categories" element={<NetWorthCategories />} />
           <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
+          <Route path="/insurance-executives" element={<NetWorthCategory />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
