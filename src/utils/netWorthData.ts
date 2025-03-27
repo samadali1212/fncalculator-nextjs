@@ -438,7 +438,7 @@ export interface CategoryMetadata {
 export const categoryDefinitions: Record<string, CategoryMetadata> = {
   "football-club-owners": {
     id: "cat1",
-    title: "10 Richest Football Club Owners in South Africa {new Date().getFullYear()}",
+    title: "10 Richest Football Club Owners in South Africa",
     description: "South Africa's wealthiest football club owners who have invested their fortunes in the beautiful game.",
     slug: "richest-football-club-owners",
     imageUrl: "https://media.gettyimages.com/id/994504746/photo/johannesburg-south-africa-patrice-motsepe-of-the-motsepe-foundation-speaks-during-the-press.jpg?s=612x612&w=0&k=20&c=Y8KvOlDCUxXV-4LwCz3fNhHZtCs__8_C9Rf7ssBO6xY="
