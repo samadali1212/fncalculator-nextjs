@@ -169,7 +169,7 @@ const NetWorthCategory = () => {
               className="mt-4 md:mt-0 inline-flex items-center text-blog-accent hover:text-blog-accent-hover transition-colors"
             >
               <ListFilter className="h-4 w-4 mr-1.5" />
-              View All Categories
+              Top 10
             </Link>
           )}
         </div>
