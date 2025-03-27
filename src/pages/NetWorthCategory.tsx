@@ -122,7 +122,7 @@ const NetWorthCategory = () => {
           <h2 className="text-xl font-semibold mb-4">Category Not Found</h2>
           <p className="mb-4">The category you're looking for doesn't exist.</p>
           <Button onClick={() => navigate('/categories')}>
-            View All Categories
+            All Categories
           </Button>
         </div>
       </div>
