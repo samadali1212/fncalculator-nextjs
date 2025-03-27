@@ -32,7 +32,7 @@ const NetWorthCategory = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-  const [itemsToShow, setItemsToShow] = useState(10);
+  const [itemsToShow, setItemsToShow] = useState(50);
   const [sortField, setSortField] = useState<string>("netWorth");
   
   // For direct route access to insurance-executives
