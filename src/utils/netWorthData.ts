@@ -12,7 +12,7 @@ export interface NetWorthPerson {
   description: string;
   source: string;
   lastUpdated: string;
-  imageUrl?: string;
+  imageUrl: string;
   slug: string;
 }
 

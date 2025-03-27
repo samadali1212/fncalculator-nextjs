@@ -10,6 +10,7 @@ import { ChevronLeft, Calendar, User, ArrowRight, Building, MapPin, Banknote, Aw
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { 
   findPersonBySlug,
   formatNetWorth,
@@ -44,11 +45,16 @@ const NetWorthDetail = () => {
           <div className="container mx-auto px-4 max-w-3xl">
             <div className="h-8 mb-6"></div>
             <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
-              <Skeleton className="h-10 w-3/4 mb-4" />
-              <div className="flex flex-wrap items-center gap-3 mb-6 pb-6 border-b border-gray-200">
-                <Skeleton className="h-5 w-24" />
-                <Skeleton className="h-5 w-20" />
-                <Skeleton className="h-5 w-16" />
+              <div className="flex items-start gap-4 mb-6">
+                <Skeleton className="h-16 w-16 rounded-full" />
+                <div className="flex-1">
+                  <Skeleton className="h-10 w-3/4 mb-4" />
+                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <Skeleton className="h-5 w-24" />
+                    <Skeleton className="h-5 w-20" />
+                    <Skeleton className="h-5 w-16" />
+                  </div>
+                </div>
               </div>
               <Skeleton className="h-24 w-full mb-8" />
               <div className="space-y-4">
@@ -83,6 +89,16 @@ const NetWorthDetail = () => {
 
   // Format currency for the title without spaces
   const formattedNetWorthForTitle = formatNetWorth(person.netWorth, person.currency).replace(/\s/g, "");
+  
+  // Get initials for avatar fallback
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(part => part[0])
+      .join('')
+      .toUpperCase()
+      .substring(0, 2);
+  };
 
   return (
     <motion.div
@@ -111,32 +127,49 @@ const NetWorthDetail = () => {
           </Link>
           
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
-              {person.name} Net Worth
-            </h1>
-            
-            <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] mb-6 pb-6 border-b border-gray-200">
-              <div className="flex items-center">
-                <User className="h-4 w-4 mr-1 text-[#999]" />
-                <span>{person.age} years old</span>
-              </div>
+            <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
+              <Avatar className="h-24 w-24 rounded-full border-2 border-gray-100 shadow-sm">
+                <AvatarImage src={person.imageUrl || "/placeholder.svg"} alt={person.name} />
+                <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-lg font-medium">
+                  {getInitials(person.name)}
+                </AvatarFallback>
+              </Avatar>
               
-              <div className="flex items-center">
-                <MapPin className="h-4 w-4 mr-1 text-[#999]" />
-                <span>{person.country}</span>
-              </div>
-              
-              <div className="flex items-center">
-                <Badge variant="outline" className="px-2 py-0 h-5 text-xs">
-                  {person.industry}
-                </Badge>
-              </div>
-              
-              <div className="flex items-center ml-auto">
-                <Calendar className="h-4 w-4 mr-1 text-[#999]" />
-                <span className="text-xs">Updated: {person.lastUpdated}</span>
+              <div className="flex-1">
+                <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-2">
+                  {person.name} Net Worth
+                </h1>
+                
+                <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] mb-3">
+                  <div className="flex items-center">
+                    <User className="h-4 w-4 mr-1 text-[#999]" />
+                    <span>{person.age} years old</span>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <MapPin className="h-4 w-4 mr-1 text-[#999]" />
+                    <span>{person.country}</span>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <Badge variant="outline" className="px-2 py-0 h-5 text-xs">
+                      {person.industry}
+                    </Badge>
+                  </div>
+                </div>
+                
+                <div className="text-xl font-semibold text-[#333]">
+                  {formatNetWorth(person.netWorth, person.currency)}
+                </div>
+                
+                <div className="flex items-center mt-1">
+                  <Calendar className="h-4 w-4 mr-1 text-[#999]" />
+                  <span className="text-xs text-gray-500">Updated: {person.lastUpdated}</span>
+                </div>
               </div>
             </div>
+            
+            <div className="border-t border-gray-100 pt-6 mb-6"></div>
             
             <div className="bg-gray-50 p-4 rounded-md mb-6">
               <div className="grid md:grid-cols-3 gap-2">
@@ -241,6 +274,14 @@ const NetWorthDetail = () => {
                       <div className="pr-3 text-center hidden sm:block">
                         <span className="text-gray-500 text-sm">{index + 1}</span>
                       </div>
+                      
+                      <Avatar className="h-10 w-10 mr-3">
+                        <AvatarImage src={similarPerson.imageUrl || "/placeholder.svg"} alt={similarPerson.name} />
+                        <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
+                          {getInitials(similarPerson.name)}
+                        </AvatarFallback>
+                      </Avatar>
+                      
                       <div className="flex-1">
                         <Link 
                           to={`/net-worth/${similarPerson.slug}`}

@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { 
   Card, 
   CardContent, 
@@ -59,6 +60,16 @@ const NetWorth = () => {
   
   const loadMore = () => {
     setItemsToShow(prevItemsToShow => prevItemsToShow + 10);
+  };
+
+  // Get initials for avatar fallback
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(part => part[0])
+      .join('')
+      .toUpperCase()
+      .substring(0, 2);
   };
 
   // Simulate loading state
@@ -170,16 +181,27 @@ const NetWorth = () => {
                     </div>
                     
                     <div className="col-span-5 md:col-span-4">
-                      <Link 
-                        to={`/net-worth/${person.slug}`}
-                        className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
-                      >
-                        {person.name}
-                        <ArrowUpRight 
-                          className="h-3.5 w-3.5 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
-                        />
-                      </Link>
-                      <div className="text-xs text-gray-500">{person.occupation}</div>
+                      <div className="flex items-center">
+                        <Avatar className="h-8 w-8 mr-3">
+                          <AvatarImage src={person.imageUrl || "/placeholder.svg"} alt={person.name} />
+                          <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
+                            {getInitials(person.name)}
+                          </AvatarFallback>
+                        </Avatar>
+                        
+                        <div>
+                          <Link 
+                            to={`/net-worth/${person.slug}`}
+                            className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
+                          >
+                            {person.name}
+                            <ArrowUpRight 
+                              className="h-3.5 w-3.5 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
+                            />
+                          </Link>
+                          <div className="text-xs text-gray-500">{person.occupation}</div>
+                        </div>
+                      </div>
                     </div>
                     
                     <div className="col-span-3 md:col-span-3">
