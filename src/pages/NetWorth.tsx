@@ -31,7 +31,7 @@ import {
 
 const NetWorth = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [itemsToShow, setItemsToShow] = useState(10);
+  const [itemsToShow, setItemsToShow] = useState(50);
   const [industryFilter, setIndustryFilter] = useState<string>("all");
   const [isLoading, setIsLoading] = useState(true);
   
@@ -100,7 +100,7 @@ const NetWorth = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="South Africa's Richest People | Net Worth List" 
+        title="Richest People in South Africa | MoneyWorth" 
         description="Explore the net worth of South Africa's richest individuals. Updated list of millionaires and billionaires with detailed wealth information."
         canonicalUrl="/net-worth"
       />
@@ -111,7 +111,7 @@ const NetWorth = () => {
           <div>
             <h1 className="text-3xl font-bold mb-2">South Africa's Richest People</h1>
             <p className="text-gray-600">
-              Explore the net worth of South Africa's wealthiest individuals, updated for 2024
+              Explore the net worth of South Africa's wealthiest individuals
             </p>
           </div>
           
