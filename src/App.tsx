@@ -5,7 +5,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NetWorth from "./pages/NetWorth";
 import NetWorthDetail from "./pages/NetWorthDetail";
-import NetWorthCategories from "./pages/NetWorthCategories";
 import NetWorthCategory from "./pages/NetWorthCategory";
 import StandaloneCategories from "./pages/StandaloneCategories";
 import Index from "./pages/Index";
@@ -43,7 +42,6 @@ const App = () => (
           <Route path="/tax-calculator/:incomeId" element={<TaxCalculationDetail />} />
           <Route path="/net-worth" element={<NetWorth />} />
           <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
-          <Route path="/net-worth/categories" element={<NetWorthCategories />} />
           <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
           <Route path="/insurance-executives" element={<NetWorthCategory />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
