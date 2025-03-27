@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Search, ArrowUpRight } from "lucide-react";
+import { Search, ArrowUpRight, ListFilter } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
@@ -107,10 +107,22 @@ const NetWorth = () => {
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <h1 className="text-3xl font-bold mb-2">South Africa's Richest People</h1>
-        <p className="text-gray-600 mb-6">
-          Explore the net worth of South Africa's wealthiest individuals, updated for 2024
-        </p>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+          <div>
+            <h1 className="text-3xl font-bold mb-2">South Africa's Richest People</h1>
+            <p className="text-gray-600">
+              Explore the net worth of South Africa's wealthiest individuals, updated for 2024
+            </p>
+          </div>
+          
+          <Link 
+            to="/net-worth/categories"
+            className="mt-4 md:mt-0 inline-flex items-center text-blog-accent hover:text-blog-accent-hover transition-colors"
+          >
+            <ListFilter className="h-4 w-4 mr-1.5" />
+            View by Category
+          </Link>
+        </div>
         
         <motion.div 
           className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4"

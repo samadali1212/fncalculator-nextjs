@@ -1,4 +1,3 @@
-
 export interface NetWorthPerson {
   id: string;
   name: string;
@@ -14,6 +13,7 @@ export interface NetWorthPerson {
   lastUpdated: string;
   imageUrl: string;
   slug: string;
+  categories: string[];
 }
 
 export const netWorthPeople: NetWorthPerson[] = [
@@ -31,7 +31,8 @@ export const netWorthPeople: NetWorthPerson[] = [
     source: "Forbes",
     lastUpdated: "2023-05-15",
     imageUrl: "https://media.gettyimages.com/id/994504746/photo/johannesburg-south-africa-patrice-motsepe-of-the-motsepe-foundation-speaks-during-the-press.jpg?s=612x612&w=0&k=20&c=Y8KvOlDCUxXV-4LwCz3fNhHZtCs__8_C9Rf7ssBO6xY=",
-    slug: "patrice-motsepe"
+    slug: "patrice-motsepe",
+    categories: ["football-club-owners", "mining-magnates", "philanthropists"]
   },
   {
     id: "2",
@@ -47,7 +48,8 @@ export const netWorthPeople: NetWorthPerson[] = [
     source: "Forbes",
     lastUpdated: "2023-05-15",
     imageUrl: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Rupert-Johann-2004.jpg",
-    slug: "johann-rupert"
+    slug: "johann-rupert",
+    categories: ["luxury-goods", "business-magnates"]
   },
   {
     id: "3",
@@ -63,7 +65,8 @@ export const netWorthPeople: NetWorthPerson[] = [
     source: "Forbes",
     lastUpdated: "2023-05-15",
     imageUrl: "https://media.gettyimages.com/id/81157695/photo/gaborone-botswana-nicky-oppenheimer-age-63-the-chairman-of-de-beers-sits-in-a-de-beers-office.jpg?s=612x612&w=0&k=20&c=7JVCg_OsD8SQNXvo7F3t5xZ7G5Yc82Y3wiK6kjRjxfw=",
-    slug: "nicky-oppenheimer"
+    slug: "nicky-oppenheimer",
+    categories: ["mining-magnates", "diamond-industry"]
   },
   {
     id: "4",
@@ -79,7 +82,8 @@ export const netWorthPeople: NetWorthPerson[] = [
     source: "Forbes",
     lastUpdated: "2023-05-15",
     imageUrl: "https://media.gettyimages.com/id/472544152/photo/koos-bekker-billionaire-and-chairman-of-naspers-ltd-reacts-during-an-interview-at-his-office.jpg?s=612x612&w=0&k=20&c=9cuD31U6fHI1XqU6GUHs6q2XLhJYcEdRD3g3cwBKX3I=",
-    slug: "koos-bekker"
+    slug: "koos-bekker",
+    categories: ["media-executives", "tech-investors"]
   },
   {
     id: "5",
@@ -95,7 +99,8 @@ export const netWorthPeople: NetWorthPerson[] = [
     source: "Forbes",
     lastUpdated: "2023-05-15",
     imageUrl: "https://imageio.forbes.com/specials-images/imageserve/5a80fc894bbe6f2652f543fb/0x0.jpg?format=jpg&crop=455,455,x87,y0,safe&height=416&width=416&fit=bounds",
-    slug: "michiel-le-roux"
+    slug: "michiel-le-roux",
+    categories: ["bankers", "financial-innovators"]
   },
   {
     id: "6",
@@ -111,7 +116,8 @@ export const netWorthPeople: NetWorthPerson[] = [
     source: "Forbes",
     lastUpdated: "2023-05-15",
     imageUrl: "https://www.goodthingsguy.com/wp-content/uploads/2025/02/douw-steyn.jpg",
-    slug: "douw-steyn"
+    slug: "douw-steyn",
+    categories: ["insurance-executives", "property-developers"]
   },
   {
     id: "7",
@@ -127,7 +133,8 @@ export const netWorthPeople: NetWorthPerson[] = [
     source: "Forbes",
     lastUpdated: "2023-05-15",
     imageUrl: "https://lh3.googleusercontent.com/dPQ9LQuUnK6m65uLminDsUclszwNcLjorH7B7LqVFg_ztCHK6QPjW5tn-olOpgFPq32iBK8BERSG2wAFU-XiDxrd-PMyEfTB60ls4Nuzf-SuuA",
-    slug: "stephen-saad"
+    slug: "stephen-saad",
+    categories: ["pharmaceutical-executives", "healthcare-entrepreneurs"]
   },
   {
     id: "8",
@@ -143,7 +150,8 @@ export const netWorthPeople: NetWorthPerson[] = [
     source: "Bloomberg",
     lastUpdated: "2023-05-15",
     imageUrl: "https://lh3.googleusercontent.com/CuxBt-N3r9YNz9dlrNK8AMZLq5_WdkyjH1-esXje3fwBWMLnA9wxfiuVYYqj5u0KV5PJkX_4CpipTkr2jlnaOgrGvp7GtMCnsGDc3SlRQj8X9Ic=s750",
-    slug: "cyril-ramaphosa"
+    slug: "cyril-ramaphosa",
+    categories: ["politicians", "business-leaders"]
   },
   {
     id: "9",
@@ -159,7 +167,8 @@ export const netWorthPeople: NetWorthPerson[] = [
     source: "Forbes",
     lastUpdated: "2023-05-15",
     imageUrl: "https://imageio.forbes.com/specials-images/imageserve/8ab9cfd81c126830ba99bde49a2fdc07/0x0.jpg?format=jpg&crop=531,532,x105,y16,safe&height=416&width=416&fit=bounds",
-    slug: "jannie-mouton"
+    slug: "jannie-mouton",
+    categories: ["investment-gurus", "financial-advisors"]
   },
   {
     id: "10",
@@ -175,7 +184,8 @@ export const netWorthPeople: NetWorthPerson[] = [
     source: "Forbes",
     lastUpdated: "2023-05-15",
     imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/78/Adrian_Gore.jpg",
-    slug: "adrian-gore"
+    slug: "adrian-gore",
+    categories: ["insurance-executives", "healthcare-innovators"]
   }
 ];
 
@@ -225,4 +235,94 @@ export function getSimilarPeople(currentPerson: NetWorthPerson, limit: number = 
     )
     .sort((a, b) => Math.abs(a.netWorth - currentPerson.netWorth) - Math.abs(b.netWorth - currentPerson.netWorth))
     .slice(0, limit);
+}
+
+/**
+ * Get category metadata including title, description, and slug
+ */
+export interface CategoryMetadata {
+  id: string;
+  title: string;
+  description: string;
+  slug: string;
+  imageUrl?: string;
+}
+
+export const categoryDefinitions: Record<string, CategoryMetadata> = {
+  "football-club-owners": {
+    id: "cat1",
+    title: "Richest Football Club Owners in South Africa",
+    description: "South Africa's wealthiest football club owners who have invested their fortunes in the beautiful game.",
+    slug: "richest-football-club-owners",
+    imageUrl: "https://media.gettyimages.com/id/994504746/photo/johannesburg-south-africa-patrice-motsepe-of-the-motsepe-foundation-speaks-during-the-press.jpg?s=612x612&w=0&k=20&c=Y8KvOlDCUxXV-4LwCz3fNhHZtCs__8_C9Rf7ssBO6xY="
+  },
+  "djs": {
+    id: "cat2",
+    title: "Richest DJs in South Africa",
+    description: "South Africa's top earning disc jockeys who have made their fortunes in the music industry.",
+    slug: "richest-south-african-djs",
+    imageUrl: "https://media.gettyimages.com/id/472544152/photo/koos-bekker-billionaire-and-chairman-of-naspers-ltd-reacts-during-an-interview-at-his-office.jpg?s=612x612&w=0&k=20&c=9cuD31U6fHI1XqU6GUHs6q2XLhJYcEdRD3g3cwBKX3I="
+  },
+  "rappers": {
+    id: "cat3",
+    title: "Richest Rappers in South Africa",
+    description: "The highest-earning hip-hop artists and rappers who have built their wealth through music and business ventures.",
+    slug: "richest-south-african-rappers",
+    imageUrl: "https://lh3.googleusercontent.com/CuxBt-N3r9YNz9dlrNK8AMZLq5_WdkyjH1-esXje3fwBWMLnA9wxfiuVYYqj5u0KV5PJkX_4CpipTkr2jlnaOgrGvp7GtMCnsGDc3SlRQj8X9Ic=s750"
+  },
+  "mining-magnates": {
+    id: "cat4",
+    title: "Richest Mining Magnates in South Africa",
+    description: "South Africa's mining industry titans who have built enormous wealth through mineral extraction and processing.",
+    slug: "richest-mining-magnates",
+    imageUrl: "https://media.gettyimages.com/id/81157695/photo/gaborone-botswana-nicky-oppenheimer-age-63-the-chairman-of-de-beers-sits-in-a-de-beers-office.jpg?s=612x612&w=0&k=20&c=7JVCg_OsD8SQNXvo7F3t5xZ7G5Yc82Y3wiK6kjRjxfw="
+  },
+  "insurance-executives": {
+    id: "cat5",
+    title: "Richest Insurance Executives in South Africa",
+    description: "Leading figures in South Africa's insurance industry who have amassed significant wealth through innovative financial products.",
+    slug: "richest-insurance-executives",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/78/Adrian_Gore.jpg"
+  }
+};
+
+/**
+ * Get all available categories with their metadata
+ * @returns Array of category metadata
+ */
+export function getAllCategories(): CategoryMetadata[] {
+  return Object.values(categoryDefinitions);
+}
+
+/**
+ * Find a category by its slug
+ * @param slug The slug of the category to find
+ * @returns The category metadata or undefined if not found
+ */
+export function findCategoryBySlug(slug: string): CategoryMetadata | undefined {
+  return Object.values(categoryDefinitions).find(cat => cat.slug === slug);
+}
+
+/**
+ * Get all people in a specific category
+ * @param categoryId The category ID to filter by
+ * @param limit Optional limit on number of results
+ * @returns Array of people in the category
+ */
+export function getPeopleByCategory(categoryId: string, limit?: number): NetWorthPerson[] {
+  const people = netWorthPeople.filter(person => 
+    person.categories.includes(categoryId)
+  ).sort((a, b) => b.netWorth - a.netWorth);
+  
+  return limit ? people.slice(0, limit) : people;
+}
+
+/**
+ * Find a category ID by its slug
+ * @param slug The slug of the category
+ * @returns The category ID or undefined if not found
+ */
+export function getCategoryIdBySlug(slug: string): string | undefined {
+  const entry = Object.entries(categoryDefinitions).find(([_, metadata]) => metadata.slug === slug);
+  return entry ? entry[0] : undefined;
 }
