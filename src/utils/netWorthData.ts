@@ -251,35 +251,35 @@ export interface CategoryMetadata {
 export const categoryDefinitions: Record<string, CategoryMetadata> = {
   "football-club-owners": {
     id: "cat1",
-    title: "Richest Football Club Owners in South Africa",
+    title: "10 Richest Football Club Owners in South Africa",
     description: "South Africa's wealthiest football club owners who have invested their fortunes in the beautiful game.",
     slug: "richest-football-club-owners",
     imageUrl: "https://media.gettyimages.com/id/994504746/photo/johannesburg-south-africa-patrice-motsepe-of-the-motsepe-foundation-speaks-during-the-press.jpg?s=612x612&w=0&k=20&c=Y8KvOlDCUxXV-4LwCz3fNhHZtCs__8_C9Rf7ssBO6xY="
   },
   "djs": {
     id: "cat2",
-    title: "Richest DJs in South Africa",
+    title: "10 Richest DJs in South Africa",
     description: "South Africa's top earning disc jockeys who have made their fortunes in the music industry.",
     slug: "richest-south-african-djs",
     imageUrl: "https://media.gettyimages.com/id/472544152/photo/koos-bekker-billionaire-and-chairman-of-naspers-ltd-reacts-during-an-interview-at-his-office.jpg?s=612x612&w=0&k=20&c=9cuD31U6fHI1XqU6GUHs6q2XLhJYcEdRD3g3cwBKX3I="
   },
   "rappers": {
     id: "cat3",
-    title: "Richest Rappers in South Africa",
+    title: "10 Richest Rappers in South Africa",
     description: "The highest-earning hip-hop artists and rappers who have built their wealth through music and business ventures.",
     slug: "richest-south-african-rappers",
     imageUrl: "https://lh3.googleusercontent.com/CuxBt-N3r9YNz9dlrNK8AMZLq5_WdkyjH1-esXje3fwBWMLnA9wxfiuVYYqj5u0KV5PJkX_4CpipTkr2jlnaOgrGvp7GtMCnsGDc3SlRQj8X9Ic=s750"
   },
   "mining-magnates": {
     id: "cat4",
-    title: "Richest Mining Magnates in South Africa",
+    title: "10 Richest Mining Magnates in South Africa",
     description: "South Africa's mining industry titans who have built enormous wealth through mineral extraction and processing.",
     slug: "richest-mining-magnates",
     imageUrl: "https://media.gettyimages.com/id/81157695/photo/gaborone-botswana-nicky-oppenheimer-age-63-the-chairman-of-de-beers-sits-in-a-de-beers-office.jpg?s=612x612&w=0&k=20&c=7JVCg_OsD8SQNXvo7F3t5xZ7G5Yc82Y3wiK6kjRjxfw="
   },
   "insurance-executives": {
     id: "cat5",
-    title: "Richest Insurance Executives in South Africa",
+    title: "10 Richest Insurance Executives in South Africa",
     description: "Leading figures in South Africa's insurance industry who have amassed significant wealth through innovative financial products.",
     slug: "richest-insurance-executives",
     imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/78/Adrian_Gore.jpg"
