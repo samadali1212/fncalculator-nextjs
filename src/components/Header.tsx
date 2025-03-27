@@ -1,164 +1,113 @@
 
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useMobile } from "@/hooks/use-mobile";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const isMobile = useIsMobile();
   const location = useLocation();
+  const isMobile = useMobile();
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const closeMenu = () => setIsOpen(false);
+  // Close menu when route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
 
+  // Add scroll listener
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu when location changes
-  useEffect(() => {
-    closeMenu();
-  }, [location]);
+  const menuItems = [
+    { path: "/", label: "Home" },
+    { path: "/salaries", label: "Salaries" },
+    { path: "/hourly-rates", label: "Hourly Rates" },
+    { path: "/tax-calculator", label: "Tax Calculator" },
+    { path: "/net-worth", label: "Net Worth" },
+    { path: "/about", label: "About" },
+  ];
+
+  const isActive = (path: string) => {
+    if (path === "/") return location.pathname === "/";
+    return location.pathname.startsWith(path);
+  };
 
   return (
     <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-200",
-        scrolled ? "bg-white shadow-sm py-2" : "bg-transparent py-4"
-      )}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white shadow-md" : "bg-[#f6f6f0]"
+      }`}
     >
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-bold text-2xl">
-          <img src="/MoneyWorth.webp" alt="MoneyWorth Logo" className="h-6" />
+      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+        <Link to="/" className="flex items-center space-x-2">
+          <span className="font-extrabold text-xl tracking-tight text-[#333]">
+            MoneyWorth
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-1">
-          <Link
-            to="/"
-            className={cn(
-              "px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100",
-              location.pathname === "/" && "font-medium text-gray-900"
-            )}
-          >
-            Home
-          </Link>
-          <Link
-            to="/salaries"
-            className={cn(
-              "px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100",
-              location.pathname === "/salaries" && "font-medium text-gray-900"
-            )}
-          >
-            Salaries
-          </Link>
-          <Link
-            to="/hourly-rates"
-            className={cn(
-              "px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100",
-              location.pathname === "/hourly-rates" && "font-medium text-gray-900"
-            )}
-          >
-            Hourly Rates
-          </Link>
-          <Link
-            to="/tax-calculator"
-            className={cn(
-              "px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100",
-              location.pathname === "/tax-calculator" && "font-medium text-gray-900"
-            )}
-          >
-            Paye Calculator
-          </Link>
-          <Link
-            to="/about"
-            className={cn(
-              "px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100",
-              location.pathname === "/about" && "font-medium text-gray-900"
-            )}
-          >
-            About
-          </Link>
+        <nav className="hidden md:flex space-x-1">
+          {menuItems.map((item) => (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`px-3 py-2 rounded-md text-sm font-medium ${
+                isActive(item.path)
+                  ? "text-[#1a1f2c] bg-white shadow-sm"
+                  : "text-[#555] hover:text-[#000] hover:bg-white/60"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
         {/* Mobile Menu Button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="lg:hidden"
+        <button
+          className="md:hidden p-2 rounded-md text-gray-700 hover:bg-white/80 hover:text-gray-900"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
         >
-          {isOpen ? <X /> : <Menu />}
-        </Button>
-
-        {/* Mobile Navigation */}
-        {isOpen && isMobile && (
-          <div className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-sm py-4">
-            <nav className="container mx-auto px-4 flex flex-col space-y-2">
-              <Link
-                to="/"
-                className={cn(
-                  "px-4 py-2 rounded-md hover:bg-gray-100",
-                  location.pathname === "/" &&
-                    "bg-gray-100 font-medium text-gray-900"
-                )}
-              >
-                Home
-              </Link>
-              <Link
-                to="/salaries"
-                className={cn(
-                  "px-4 py-2 rounded-md hover:bg-gray-100",
-                  location.pathname === "/salaries" &&
-                    "bg-gray-100 font-medium text-gray-900"
-                )}
-              >
-                Salaries
-              </Link>
-              <Link
-                to="/hourly-rates"
-                className={cn(
-                  "px-4 py-2 rounded-md hover:bg-gray-100",
-                  location.pathname === "/hourly-rates" &&
-                    "bg-gray-100 font-medium text-gray-900"
-                )}
-              >
-                Hourly Rates
-              </Link>
-              <Link
-                to="/tax-calculator"
-                className={cn(
-                  "px-4 py-2 rounded-md hover:bg-gray-100",
-                  location.pathname === "/tax-calculator" &&
-                    "bg-gray-100 font-medium text-gray-900"
-                )}
-              >
-                Tax Calculator
-              </Link>
-              <Link
-                to="/about"
-                className={cn(
-                  "px-4 py-2 rounded-md hover:bg-gray-100",
-                  location.pathname === "/about" &&
-                    "bg-gray-100 font-medium text-gray-900"
-                )}
-              >
-                About
-              </Link>
-            </nav>
-          </div>
-        )}
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </div>
+
+      {/* Mobile Navigation */}
+      {isMobile && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{
+            opacity: isOpen ? 1 : 0,
+            height: isOpen ? "auto" : 0,
+          }}
+          transition={{ duration: 0.3 }}
+          className="md:hidden overflow-hidden"
+        >
+          <div className="bg-white px-4 pt-2 pb-3 space-y-1 shadow-lg">
+            {menuItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                  isActive(item.path)
+                    ? "text-[#333] bg-gray-100"
+                    : "text-gray-600 hover:bg-gray-50 hover:text-[#333]"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+      )}
     </header>
   );
 };

@@ -12,6 +12,8 @@ import HourlyRates from "./pages/HourlyRates";
 import HourlyRateDetail from "./pages/HourlyRateDetail";
 import TaxCalculator from "./pages/TaxCalculator";
 import TaxCalculationDetail from "./pages/TaxCalculationDetail";
+import NetWorth from "./pages/NetWorth";
+import NetWorthDetail from "./pages/NetWorthDetail";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
@@ -34,6 +36,8 @@ const App = () => (
           <Route path="/tax-calculator/monthly/:incomeId" element={<TaxCalculationDetail />} />
           <Route path="/tax-calculator/yearly/:incomeId" element={<TaxCalculationDetail />} />
           <Route path="/tax-calculator/:incomeId" element={<TaxCalculationDetail />} />
+          <Route path="/net-worth" element={<NetWorth />} />
+          <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -12,6 +12,7 @@ Allow: /tax-calculator/monthly/
 Allow: /tax-calculator/yearly/
 Allow: /hourly-rates/
 Allow: /salaries/
+Allow: /net-worth/
 Allow: /post/
 Allow: /about/
 
@@ -25,4 +26,3 @@ User-agent: Baiduspider
 Allow: /
 User-agent: DuckDuckBot
 Allow: /
-
