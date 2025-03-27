@@ -27,11 +27,11 @@ const Header = () => {
   }, []);
 
   const menuItems = [
-    { path: "/", label: "Home" },
+    { path: "/", label: "Net Worth" },
     { path: "/salaries", label: "Salaries" },
     { path: "/hourly-rates", label: "Hourly Rates" },
     { path: "/tax-calculator", label: "Tax Calculator" },
-    { path: "/net-worth", label: "Net Worth" },
+    { path: "/home", label: "Blog" },
     { path: "/about", label: "About" },
   ];
 

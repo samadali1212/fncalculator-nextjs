@@ -7,9 +7,14 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://moneyworth.co.za/home</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://moneyworth.co.za/about</loc>
     <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://moneyworth.co.za/salaries</loc>

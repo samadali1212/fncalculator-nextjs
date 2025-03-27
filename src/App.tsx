@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NetWorth from "./pages/NetWorth";
 import Index from "./pages/Index";
 import BlogPost from "./pages/BlogPost";
 import About from "./pages/About";
@@ -12,7 +13,6 @@ import HourlyRates from "./pages/HourlyRates";
 import HourlyRateDetail from "./pages/HourlyRateDetail";
 import TaxCalculator from "./pages/TaxCalculator";
 import TaxCalculationDetail from "./pages/TaxCalculationDetail";
-import NetWorth from "./pages/NetWorth";
 import NetWorthDetail from "./pages/NetWorthDetail";
 import NotFound from "./pages/NotFound";
 
@@ -23,7 +23,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<NetWorth />} />
+          <Route path="/home" element={<Index />} />
           <Route path="/post/:slug" element={<BlogPost />} />
           <Route path="/about" element={<About />} />
           <Route path="/salaries" element={<Salaries />} />
