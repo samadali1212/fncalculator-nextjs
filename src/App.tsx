@@ -30,6 +30,7 @@ const App = () => (
           <Route path="/home" element={<Index />} />
           <Route path="/post/:slug" element={<BlogPost />} />
           <Route path="/about" element={<About />} />
+          <Route path="/categories" element={<StandaloneCategories />} />
           <Route path="/salaries" element={<Salaries />} />
           <Route path="/salaries/:jobId" element={<JobDetail />} />
           <Route path="/hourly-rates" element={<HourlyRates />} />
@@ -43,7 +44,6 @@ const App = () => (
           <Route path="/net-worth" element={<NetWorth />} />
           <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
           <Route path="/net-worth/categories" element={<NetWorthCategories />} />
-          <Route path="/categories" element={<StandaloneCategories />} />
           <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
           <Route path="/insurance-executives" element={<NetWorthCategory />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
