@@ -81,7 +81,7 @@ const StandaloneCategories = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Net Worth Categories | South Africa's Wealthiest Categories" 
+        title="Wealth Categories | South Africa's Wealthiest Categories" 
         description="Explore South Africa's wealthiest individuals by categories - from business tycoons to sports stars and entertainers."
         canonicalUrl="/categories"
       />
@@ -90,7 +90,7 @@ const StandaloneCategories = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
           <div>
-            <h1 className="text-3xl font-bold mb-2">Net Worth Categories</h1>
+            <h1 className="text-3xl font-bold mb-2">Wealth Categories</h1>
             <p className="text-gray-600">
               Explore South Africa's wealthiest individuals organized by different categories
             </p>
