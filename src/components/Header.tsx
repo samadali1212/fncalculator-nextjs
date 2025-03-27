@@ -47,10 +47,8 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
-          <span className="font-extrabold text-xl tracking-tight text-[#333]">
-            MoneyWorth
-          </span>
+        <Link to="/" className="flex items-center gap-2 font-bold text-2xl">
+          <img src="/MoneyWorth.webp" alt="MoneyWorth Logo" className="h-6" />
         </Link>
 
         {/* Desktop Navigation */}
