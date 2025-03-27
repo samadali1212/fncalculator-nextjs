@@ -68,6 +68,7 @@ const NetWorthDetail = () => {
   if (!person) {
     return (
       <div className="min-h-screen bg-[#f6f6f0] flex items-center justify-center">
+        <Header />
         <Card>
           <CardContent className="p-6">
             <p>Person not found. Please try another search.</p>
@@ -96,6 +97,8 @@ const NetWorthDetail = () => {
         description={`${person.name}'s estimated net worth is ${formatNetWorth(person.netWorth, person.currency)}. Learn about their wealth, career, and ${person.industry} business ventures.`}
         canonicalUrl={`/net-worth/${person.slug}`}
       />
+      
+      <Header />
       
       <main className="pt-20 pb-16">
         <div className="container mx-auto px-4 max-w-3xl">
