@@ -59,7 +59,7 @@ const NetWorth = () => {
   const hasMorePeople = displayedPeople.length < filteredPeople.length;
   
   const loadMore = () => {
-    setItemsToShow(prevItemsToShow => prevItemsToShow + 10);
+    setItemsToShow(prevItemsToShow => prevItemsToShow + 40);
   };
 
   // Get initials for avatar fallback
