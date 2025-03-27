@@ -146,7 +146,7 @@ const NetWorthCategory = () => {
         {!isDirectAccess && (
           <div className="mb-6">
             <Link 
-              to="/net-worth/categories"
+              to="/categories"
               className="inline-flex items-center text-sm text-[#000000] hover:underline"
             >
               <ChevronLeft className="h-4 w-4 mr-1" />
@@ -165,7 +165,7 @@ const NetWorthCategory = () => {
           
           {!isDirectAccess && (
             <Link 
-              to="/net-worth/categories"
+              to="/categories"
               className="mt-4 md:mt-0 inline-flex items-center text-blog-accent hover:text-blog-accent-hover transition-colors"
             >
               <ListFilter className="h-4 w-4 mr-1.5" />
