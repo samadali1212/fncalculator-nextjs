@@ -46,7 +46,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     description: "Johann Rupert is chairman of Swiss luxury goods firm Richemont and South Africa-based investment company Remgro.",
     source: "Forbes",
     lastUpdated: "2023-05-15",
-    imageUrl: "/placeholder.svg",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Rupert-Johann-2004.jpg",
     slug: "johann-rupert"
   },
   {
