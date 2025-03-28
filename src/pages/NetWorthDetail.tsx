@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -35,8 +34,9 @@ const NetWorthDetail = () => {
       const foundPerson = getPersonBySlug(slug);
       setPerson(foundPerson || null);
       
-      if (foundPerson?.categoryId) {
-        const sameCategoryPeople = getPeopleByCategory(foundPerson.categoryId, 5)
+      if (foundPerson?.categories && foundPerson.categories.length > 0) {
+        const categoryId = foundPerson.categories[0]; // Use the first category
+        const sameCategoryPeople = getPeopleByCategory(categoryId, 5)
           .filter(p => p.slug !== slug);
         setCategoryPeople(sameCategoryPeople);
       }
@@ -105,7 +105,9 @@ const NetWorthDetail = () => {
     );
   }
 
-  const category = person.categoryId ? getCategoryBySlug(person.categoryId) : null;
+  const category = person.categories && person.categories.length > 0 
+    ? getCategoryBySlug(person.categories[0]) 
+    : null;
   
   return (
     <motion.div
@@ -277,10 +279,7 @@ const NetWorthDetail = () => {
                   {person.bio ? (
                     <p className="text-gray-700 whitespace-pre-line">{person.bio}</p>
                   ) : (
-                    <p className="text-gray-500 italic">
-                      No detailed biography available for {person.name} at this time. 
-                      We're working on compiling more information about their career and achievements.
-                    </p>
+                    <p className="text-gray-700 whitespace-pre-line">{person.description}</p>
                   )}
                   
                   {person.achievements && (
@@ -338,8 +337,8 @@ const NetWorthDetail = () => {
                     ))}
                   </div>
                   
-                  <div className="mt-6 text-center">
-                    {category && (
+                  {category && (
+                    <div className="mt-6 text-center">
                       <Link
                         to={`/net-worth/category/${category.slug}`}
                         className="inline-flex items-center text-blog-accent hover:underline text-sm"
@@ -347,8 +346,8 @@ const NetWorthDetail = () => {
                         View all {category.name}
                         <ArrowRight className="ml-1 h-4 w-4" />
                       </Link>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </motion.div>
               )}
             </div>
@@ -444,7 +443,7 @@ const NetWorthDetail = () => {
                 >
                   <div className="absolute top-0 left-0 w-16 h-16 text-white/10">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                      <path fillRule="evenodd" d="M8.267 14.68c-.184 0-.308.018-.372.036v1.178c.076.018.171.023.302.023.479 0 .774-.242.774-.651 0-.366-.254-.586-.704-.586zm1.975.02c-.2 0-.33.018-.407.036v1.168c.077.018.172.023.308.023.501 0 .813-.242.813-.651 0-.366-.262-.576-.714-.576zM18.5 2h-13A3.5 3.5 0 0 0 2 5.5v13A3.5 3.5 0 0 0 5.5 22h13a3.5 3.5 0 0 0 3.5-3.5v-13A3.5 3.5 0 0 0 18.5 2zM7.06 15.975c-.56 0-.9-.397-.9-.883 0-.71.543-1.106 1.453-1.106.172 0 .308.011.407.02v-.082c0-.204-.111-.312-.375-.312-.277 0-.548.096-.768.227l-.197-.548c.243-.138.59-.247.987-.247.74 0 1.050.407 1.05.997v.815c0 .193.011.336.021.444h-.6l-.04-.204h-.012c-.164.156-.4.247-.626.247zm1.982 0c-.507 0-.9-.214-.9-.207l.142-.561c.172.097.468.204.764.204.258 0 .375-.065.375-.183 0-.108-.082-.16-.407-.247-.563-.154-.822-.419-.822-.83 0-.493.406-.863 1.059-.863.348 0 .66.107.815.183l-.157.537a1.43 1.43 0 0 0-.663-.172c-.22 0-.34.076-.34.178 0 .106.102.156.43.247.567.163.801.406.801.84.001.494-.376.874-1.097.874zm2.03-.537v1.459h-.7v-3.24h.7v.289c.172-.183.415-.332.725-.332.574 0 .987.44.987 1.11 0 .847-.5 1.175-1.055 1.175a.939.939 0 0 1-.657-.247zm2.343.537c-.492 0-.846-.087-1.072-.183l.157-.537c.215.097.516.173.854.173.29 0 .433-.065.433-.194 0-.118-.093-.173-.45-.26-.647-.163-.944-.43-.944-.872 0-.505.43-.85 1.134-.85.355 0 .678.075.883.162l-.172.526c-.14-.065-.37-.152-.72-.152-.26 0-.386.087-.386.185 0 .118.117.172.493.27.581.15.886.366.886.882.001.496-.383.85-1.096.85zm3.96-1.658c0 .75-.43 1.701-1.565 1.701-.537 0-.867-.172-1.137-.431v.366h-.7v-3.24h.7v1.459c.237-.226.543-.366.986-.366.997.001 1.716.656 1.716 1.511zm-11.885-.177c0 .183.082.388.334.388.14 0 .258-.032.324-.064v-.516c-.054-.02-.14-.033-.247-.033-.214 0-.411.097-.411.225z" clipRule="evenodd"/>
+                      <path fillRule="evenodd" d="M8.267 14.68c-.184 0-.308.018-.372.036v1.178c.076.018.171.023.302.023.479 0 .774-.242.774-.651 0-.366-.254-.586-.704-.586zm1.975.02c-.2 0-.33.018-.407.036v1.168c.077.018.172.023.308.023.501 0 .813-.242.813-.651 0-.366-.262-.576-.714-.576zM18.5 2h-13A3.5 3.5 0 0 0 2 5.5v13A3.5 3.5 0 0 0 5.5 22h13a3.5 3.5 0 0 0 3.5-3.5v-13A3.5 3.5 0 0 0 18.5 2zM7.06 15.975c-.56 0-.9-.397-.9-.883 0-.71.543-1.106 1.453-1.106.172 0 .308.011.407.02v-.082c0-.204-.111-.312-.375-.312-.277 0-.548.096-.768.227l-.197-.548c.243-.138.59-.247.987-.247.74 0 1.05.407 1.05.997v.815c0 .193.011.336.021.444h-.6l-.04-.204h-.012c-.164.156-.4.247-.626.247zm1.982 0c-.507 0-.9-.214-.9-.207l.142-.561c.172.097.468.204.764.204.258 0 .375-.065.375-.183 0-.108-.082-.16-.407-.247-.563-.154-.822-.419-.822-.83 0-.493.406-.863 1.059-.863.348 0 .66.107.815.183l-.157.537a1.43 1.43 0 0 0-.663-.172c-.22 0-.34.076-.34.178 0 .106.102.156.43.247.567.163.801.406.801.84.001.494-.376.874-1.097.874zm2.03-.537v1.459h-.7v-3.24h.7v.289c.172-.183.415-.332.725-.332.574 0 .987.44.987 1.11 0 .847-.5 1.175-1.055 1.175a.939.939 0 0 1-.657-.247zm2.343.537c-.492 0-.846-.087-1.072-.183l.157-.537c.215.097.516.173.854.173.29 0 .433-.065.433-.194 0-.118-.093-.173-.45-.26-.647-.163-.944-.43-.944-.872 0-.505.43-.85 1.134-.85.355 0 .678.075.883.162l-.172.526c-.14-.065-.37-.152-.72-.152-.26 0-.386.087-.386.185 0 .118.117.172.493.27.581.15.886.366.886.882.001.496-.383.85-1.096.85zm3.96-1.658c0 .75-.43 1.701-1.565 1.701-.537 0-.867-.172-1.137-.431v.366h-.7v-3.24h.7v1.459c.237-.226.543-.366.986-.366.997.001 1.716.656 1.716 1.511zm-11.885-.177c0 .183.082.388.334.388.14 0 .258-.032.324-.064v-.516c-.054-.02-.14-.033-.247-.033-.214 0-.411.097-.411.225z" clipRule="evenodd"/>
                     </svg>
                   </div>
                   

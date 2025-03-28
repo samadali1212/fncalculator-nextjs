@@ -14,6 +14,20 @@ export interface NetWorthPerson {
   imageUrl: string;
   slug: string;
   categories: string[];
+  bio?: string;
+  achievements?: string;
+  assets?: string;
+  investments?: string;
+  businessInterests?: string;
+  education?: string;
+  quote?: string;
+  location?: string;
+  birthdate?: string;
+  wealthSource?: string;
+  affiliations?: string;
+  website?: string;
+  backgroundUrl?: string;
+  additionalResources?: string;
 }
 
 export const netWorthPeople: NetWorthPerson[] = [
@@ -381,7 +395,7 @@ export const netWorthPeople: NetWorthPerson[] = [
  * @param slug The slug of the person to find
  * @returns The person object or undefined if not found
  */
-export function findPersonBySlug(slug: string): NetWorthPerson | undefined {
+export function getPersonBySlug(slug: string): NetWorthPerson | undefined {
   return netWorthPeople.find(person => person.slug === slug);
 }
 
@@ -433,6 +447,7 @@ export interface CategoryMetadata {
   description: string;
   slug: string;
   imageUrl?: string;
+  name: string;
 }
 
 export const categoryDefinitions: Record<string, CategoryMetadata> = {
@@ -488,6 +503,15 @@ export function getAllCategories(): CategoryMetadata[] {
  */
 export function findCategoryBySlug(slug: string): CategoryMetadata | undefined {
   return Object.values(categoryDefinitions).find(cat => cat.slug === slug);
+}
+
+/**
+ * Get category by ID
+ * @param categoryId The category ID
+ * @returns The category metadata or undefined if not found
+ */
+export function getCategoryBySlug(categoryId: string): CategoryMetadata | undefined {
+  return categoryDefinitions[categoryId];
 }
 
 /**
