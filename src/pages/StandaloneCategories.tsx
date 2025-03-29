@@ -1,220 +1,221 @@
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Search, ArrowUpRight, ListFilter, ChevronRight } from "lucide-react";
-import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { 
   Card, 
-  CardContent,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription
+  CardContent
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { getAllCategories, CategoryMetadata } from "../utils/netWorthData";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-} from "@/components/ui/pagination";
+  CategoryMetadata,
+  getAllCategories 
+} from "../utils/netWorthData";
+import { Filter, Search, Tag, Users, X } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const StandaloneCategories = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState<CategoryMetadata[]>([]);
-  const [itemsToShow, setItemsToShow] = useState(10);
+  const [filteredCategories, setFilteredCategories] = useState<CategoryMetadata[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("all");
   
   useEffect(() => {
-    // Simulate loading state for better UX
-    const timer = setTimeout(() => {
-      setCategories(getAllCategories());
-      setIsLoading(false);
-    }, 300);
+    const fetchCategories = () => {
+      setIsLoading(true);
+      
+      // Simulate API call
+      setTimeout(() => {
+        const allCategories = getAllCategories();
+        setCategories(allCategories);
+        setFilteredCategories(allCategories);
+        setIsLoading(false);
+      }, 800);
+    };
     
-    return () => clearTimeout(timer);
+    fetchCategories();
   }, []);
   
-  // Filter categories based on search query
-  const filteredCategories = categories.filter(category => {
-    return searchQuery 
-      ? category.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-        category.description.toLowerCase().includes(searchQuery.toLowerCase())
-      : true;
-  });
+  // Apply search and filters
+  useEffect(() => {
+    let result = [...categories];
+    
+    // Apply search
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      result = result.filter(category => 
+        category.name.toLowerCase().includes(term) || 
+        category.description.toLowerCase().includes(term)
+      );
+    }
+    
+    // Apply filter
+    if (selectedFilter !== "all") {
+      if (selectedFilter === "popular") {
+        result = result.filter(category => (category.count || 0) > 2);
+      } else if (selectedFilter === "business") {
+        result = result.filter(category => 
+          category.name.toLowerCase().includes("business") || 
+          category.name.toLowerCase().includes("executive") ||
+          category.description.toLowerCase().includes("business")
+        );
+      }
+    }
+    
+    setFilteredCategories(result);
+  }, [searchTerm, selectedFilter, categories]);
   
-  // Paginate results
-  const displayedCategories = filteredCategories.slice(0, itemsToShow);
-  const hasMoreCategories = displayedCategories.length < filteredCategories.length;
-  
-  const loadMore = () => {
-    setItemsToShow(prevItemsToShow => prevItemsToShow + 5);
+  const clearSearch = () => {
+    setSearchTerm("");
   };
-
+  
+  const resetFilters = () => {
+    setSelectedFilter("all");
+    setSearchTerm("");
+  };
+  
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="w-16 h-16 border-4 border-blog-accent border-t-transparent rounded-full animate-spin"
-        ></motion.div>
+      <div className="min-h-screen bg-[#f6f6f0]">
+        <Header />
+        <main className="container mx-auto px-4 py-20">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex justify-between items-center mb-8">
+              <Skeleton className="h-10 w-64" />
+              <Skeleton className="h-10 w-48" />
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Array(9).fill(0).map((_, i) => (
+                <Skeleton key={i} className="h-64 rounded-lg" />
+              ))}
+            </div>
+          </div>
+        </main>
       </div>
     );
   }
-
+  
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Wealth Categories | South Africa's Wealthiest Categories" 
-        description="Explore South Africa's wealthiest individuals by categories - from business tycoons to sports stars and entertainers."
+        title="Browse Wealth Categories | MoneyWorth"
+        description="Explore different categories of wealthy individuals, from tech entrepreneurs to real estate moguls. Discover the industries and sectors where wealth is concentrated."
         canonicalUrl="/categories"
       />
+      
       <Header />
       
-      <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-          <div>
-            <h1 className="text-3xl font-bold mb-2">Rankings of The Wealth People in South Africa</h1>
+      <main className="container mx-auto px-4 py-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold mb-2">Wealth Categories</h1>
             <p className="text-gray-600">
-              Explore South Africa's wealthiest individuals organized by different categories
+              Explore different industries and sectors where wealth is concentrated
             </p>
           </div>
           
-          <Link 
-            to="/net-worth"
-            className="mt-4 md:mt-0 inline-flex items-center text-blog-accent hover:text-blog-accent-hover transition-colors"
-          >
-            <ListFilter className="h-4 w-4 mr-1.5" />
-            View All Rich People
-          </Link>
-        </div>
-        
-        <motion.div 
-          className="mb-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-4 w-4 text-gray-400" />
-            </div>
-            <Input
-              type="text"
-              placeholder="Search categories..."
-              className="pl-10"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-        </motion.div>
-
-        <div className="bg-white rounded-sm shadow-sm border border-gray-200">
-          {filteredCategories.length === 0 ? (
-            <div className="p-6 text-center text-gray-500">
-              No categories found matching "{searchQuery}"
-            </div>
-          ) : (
-            <>
-              <div className="p-4 border-b border-gray-100 bg-gray-50">
-                <div className="grid grid-cols-12 text-xs font-medium text-gray-600">
-                  <div className="col-span-1">#</div>
-                  <div className="col-span-6 md:col-span-5">Category</div>
-                  <div className="col-span-5 md:col-span-6">Description</div>
-                </div>
+          {/* Search and filter controls */}
+          <div className="bg-white p-6 rounded-lg shadow-sm mb-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              <div className="relative col-span-2">
+                <Input
+                  placeholder="Search categories..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10"
+                />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                {searchTerm && (
+                  <button 
+                    onClick={clearSearch}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                )}
               </div>
               
-              {displayedCategories.map((category, index) => (
-                <motion.div 
-                  key={category.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className={`group px-4 py-4 ${index !== displayedCategories.length - 1 ? 'border-b border-gray-100' : ''}`}
+              <div>
+                <Tabs defaultValue="all" value={selectedFilter} onValueChange={setSelectedFilter}>
+                  <TabsList className="w-full">
+                    <TabsTrigger value="all" className="flex-1">All</TabsTrigger>
+                    <TabsTrigger value="popular" className="flex-1">Popular</TabsTrigger>
+                    <TabsTrigger value="business" className="flex-1">Business</TabsTrigger>
+                  </TabsList>
+                </Tabs>
+              </div>
+            </div>
+            
+            {(searchTerm || selectedFilter !== "all") && (
+              <div className="flex items-center mt-4 text-sm">
+                <Tag className="h-4 w-4 mr-2 text-gray-400" />
+                <span>
+                  Showing {filteredCategories.length} of {categories.length} categories
+                </span>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={resetFilters}
+                  className="ml-2 h-7 text-xs"
                 >
-                  <div className="grid grid-cols-12 items-center">
-                    <div className="col-span-1 text-sm text-gray-500">
-                      {index + 1}
-                    </div>
-                    
-                    <div className="col-span-6 md:col-span-5">
-                      <div className="flex items-center">
-                        {category.imageUrl && (
-                          <div className="h-10 w-10 mr-3 rounded-full overflow-hidden">
-                            <img 
-                              src={category.imageUrl} 
-                              alt={category.title} 
-                              className="h-full w-full object-cover"
-                            />
-                          </div>
-                        )}
-                        
-                        <div>
-                          <Link 
-                            to={`/net-worth/category/${category.slug}`}
-                            className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
-                          >
-                            {category.title}
-                            <ArrowUpRight 
-                              className="h-3.5 w-3.5 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
-                            />
-                          </Link>
-                        </div>
+                  Reset filters
+                </Button>
+              </div>
+            )}
+          </div>
+          
+          {filteredCategories.length === 0 ? (
+            <div className="text-center py-16 bg-white rounded-lg shadow-sm">
+              <Users className="h-12 w-12 mx-auto text-gray-300 mb-4" />
+              <h3 className="text-xl font-medium mb-2">No categories found</h3>
+              <p className="text-gray-500 mb-4">
+                Try adjusting your search or filter to find what you're looking for
+              </p>
+              <Button onClick={resetFilters} variant="outline">
+                Reset filters
+              </Button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredCategories.map((category) => (
+                <Link 
+                  key={category.id}
+                  to={`/net-worth/category/${category.slug}`}
+                  className="block"
+                >
+                  <Card className="overflow-hidden transition-all duration-300 hover:shadow-md">
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-semibold mb-2">{category.name}</h3>
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                        {category.description}
+                      </p>
+                      <div className="flex items-center text-sm text-gray-500">
+                        <Filter className="h-4 w-4 mr-2" />
+                        <span>{category.count || 0} individuals</span>
                       </div>
-                    </div>
-                    
-                    <div className="col-span-5 md:col-span-6">
-                      <p className="text-sm text-gray-600 line-clamp-2">{category.description}</p>
-                      <Link 
-                        to={`/net-worth/category/${category.slug}`}
-                        className="text-xs text-blog-accent hover:underline mt-1 inline-flex items-center"
-                      >
-                        View List
-                        <ChevronRight className="h-3 w-3 ml-1"/>
-                      </Link>
-                    </div>
-                  </div>
-                </motion.div>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
-              
-              {hasMoreCategories && (
-                <Pagination className="py-5">
-                  <PaginationContent>
-                    <PaginationItem className="w-full">
-                      <Button 
-                        variant="outline" 
-                        onClick={loadMore} 
-                        className="w-full"
-                      >
-                        Load More Categories
-                      </Button>
-                    </PaginationItem>
-                  </PaginationContent>
-                </Pagination>
-              )}
-            </>
+            </div>
           )}
         </div>
       </main>
-
-      <footer className="border-t border-gray-300 py-8 bg-white">
-        <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
+      
+      <footer className="border-t border-gray-300 py-6 bg-white">
+        <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
             &copy; {new Date().getFullYear()} MoneyWorth. All rights reserved.
           </p>

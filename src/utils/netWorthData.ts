@@ -536,7 +536,12 @@ export const formatNetWorth = (amount: number, currency: string): string => {
   return `${amount} ${currency}`;
 };
 
-// Get a person by slug
+// Find a person by slug
+export const findPersonBySlug = (slug: string): NetWorthPerson | undefined => {
+  return netWorthPeople.find(person => person.slug === slug);
+};
+
+// Get a person by slug (alias for findPersonBySlug for backward compatibility)
 export const getPersonBySlug = (slug: string): NetWorthPerson | undefined => {
   return netWorthPeople.find(person => person.slug === slug);
 };
@@ -566,3 +571,55 @@ export const getAllCategoriesWithCounts = (): CategoryMetadata[] => {
   // Sort by count (descending)
   return categories.sort((a, b) => (b.count || 0) - (a.count || 0));
 };
+
+// Get similar people based on industry or net worth range
+export const getSimilarPeople = (person: NetWorthPerson, limit: number = 5): NetWorthPerson[] => {
+  if (!person) return [];
+  
+  // Get people in the same industry
+  const sameIndustry = netWorthPeople.filter(p => 
+    p.id !== person.id && 
+    p.industry === person.industry
+  );
+  
+  // Get people with similar net worth (within 50% range)
+  const minNetWorth = person.netWorth * 0.5;
+  const maxNetWorth = person.netWorth * 1.5;
+  const similarNetWorth = netWorthPeople.filter(p => 
+    p.id !== person.id && 
+    p.netWorth >= minNetWorth && 
+    p.netWorth <= maxNetWorth
+  );
+  
+  // Combine and remove duplicates
+  const combined = [...sameIndustry, ...similarNetWorth];
+  const uniqueIds = new Set();
+  const similarPeople = combined.filter(p => {
+    if (uniqueIds.has(p.id)) return false;
+    uniqueIds.add(p.id);
+    return true;
+  });
+  
+  // Sort by net worth (descending)
+  similarPeople.sort((a, b) => b.netWorth - a.netWorth);
+  
+  // Limit the results
+  return similarPeople.slice(0, limit);
+};
+
+// Find category by slug
+export const findCategoryBySlug = (slug: string): CategoryMetadata | undefined => {
+  return Object.values(categoryMetadata).find(category => category.slug === slug);
+};
+
+// Get category ID by slug
+export const getCategoryIdBySlug = (slug: string): string | undefined => {
+  const category = findCategoryBySlug(slug);
+  return category ? category.id : undefined;
+};
+
+// Get all categories (alias for backward compatibility)
+export const getAllCategories = (): CategoryMetadata[] => {
+  return getAllCategoriesWithCounts();
+};
+
