@@ -219,7 +219,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://lh3.googleusercontent.com/tGIdzVbOsBiZVcuLxpWFEiPv9yCYBMaOySIqjFOZSkgIO5zciYOziL6xhD-_PE5YRbAE_lSXTXUi3jVTfJa29uE1MijcM2HYrSUb0taLwXV3Ug=s750",
     slug: "dj-zinhle",
-	categories: ["djs"]
+	categories: ["djs", "artists", "woman", "woman"]
   },
   {
     id: "13",
@@ -236,7 +236,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://static.ra.co/images/profiles/square/kabzadesmall.jpg?dateUpdated=1611781076000",
     slug: "kabza-de-small",
-	categories: ["djs"]
+	categories: ["djs", "artists"]
   },
   {
     id: "14",
@@ -253,7 +253,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://event-images.tixel.com/cdn-cgi/image/w=700,q=70/media/images/d8d66164781ab27f5a7ca5f2bee5cb16_1695870971_3019_square_l.jpg",
     slug: "dj-maphorisa",
-	categories: ["djs"]
+	categories: ["djs", "artists"]
   },
   {
     id: "15",
@@ -270,7 +270,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://iharare.com/wp-content/uploads/2021/10/dj-tira.jpg",
     slug: "dj-tira",
-	categories: ["djs"]
+	categories: ["djs", "artists"]
   },
   {
     id: "16",
@@ -287,7 +287,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://yt3.googleusercontent.com/UBN47LCrpZcPuY2RzHsOt2Da_5sK8lVUziKF1afCBcNs0l9zYWRDdxR_SkHsK9kE3CzDDvfI6SU=s900-c-k-c0x00ffffff-no-rj",
     slug: "uncle-waffles",
-	categories: ["djs"]
+	categories: ["djs", "artists"]
   },
   {
     id: "17",
@@ -304,7 +304,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://lh3.googleusercontent.com/ddKBS1jdFwJax5OTbNCsxXzi9tb1k_yg6ie-r_cwhw3piwzcFO4AX4xVLf1RIIfHvxsXd8YZk-4YcV64EWlyv4PMAqNWxaMAoA=s1500-pp",
     slug: "oskido",
-	categories: ["djs"]
+	categories: ["djs", "artists"]
   },
   {
     id: "18",
@@ -321,7 +321,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://yt3.googleusercontent.com/IfhYU9Ydx6ekK7wzCFyjAC5Z_h_MYG6zB4_KVJZlsTuMbJAdeeQh2jZtBtj9fNuDA_ZbawmCFQ=s900-c-k-c0x00ffffff-no-rj",
     slug: "dj-shimza",
-	categories: ["djs"]
+	categories: ["djs", "artists"]
   },
   {
     id: "19",
@@ -338,7 +338,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://yt3.googleusercontent.com/IWV5YOVHydvK9IgH8kvBlZ0DJr4HlY9rbtb0HdY1D4zsyU-I31fcANLc2ZcXnC7aThVwYv-m2nA=s900-c-k-c0x00ffffff-no-rj",
     slug: "lerato-kganyago",
-	categories: ["djs"]
+	categories: ["djs", "artists"]
   },
   {
     id: "20",
@@ -355,7 +355,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://yt3.googleusercontent.com/ze433g2j5iMfFxe3rcjt8NwnrTXDucDP7gnrE0xtSBbhPhk_YMI6-RwNT5L9fLNkMmq9YT3l=s900-c-k-c0x00ffffff-no-rj",
     slug: "dj-fresh",
-	categories: ["djs"]
+	categories: ["djs", "artists"]
   },
   {
     id: "21",
@@ -372,7 +372,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://i1.sndcdn.com/avatars-000188518071-egygye-t1080x1080.jpg",
     slug: "dj-euphonik",
-	categories: ["djs"]
+	categories: ["djs", "artists"]
   },
   {
     id: "22",
@@ -423,7 +423,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-31",
     imageUrl: "https://image-prod.iol.co.za/square/450/5-Reasons-We-Love-Our-Wellness-Issue-Cover-Star-Thando-Thabethe?source=https://iol-prod.appspot.com/image/315ba1ce7b38be048fb60e587c2f92a9da7df6c2/2000&operation=CROP&offset=0x0&resize=2000x2000",
     slug: "thando-thabethe",
-    categories: ["djs", "media"]
+    categories: ["djs", "media", "woman"]
   },
   {
     id: "25",
@@ -457,7 +457,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-04-02",
     imageUrl: "https://i0.wp.com/sundayworld.co.za/wp-content/uploads/2022/04/lamiez-1.jpg?fit=677%2C592&ssl=1",
     slug: "dj-lamiez",
-    categories: ["djs", "media"]
+    categories: ["djs", "media", "woman"]
   },
   {
     id: "27",
@@ -866,7 +866,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://cdn-images.dzcdn.net/images/artist/ec229fbde21f2a9f22bcc42efbe776d1/1900x1900-000000-80-0-0.jpg",
     slug: "focalistic",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
     id: "51",
@@ -883,7 +883,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://cdn-images.dzcdn.net/images/cover/4d5e41b5ef8912a2ac0211bbaa592097/0x1900-000000-80-0-0.jpg",
     slug: "a-reece",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
     id: "52",
@@ -900,7 +900,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://pbs.twimg.com/media/EV7aFYxWsAEXYAe.png",
     slug: "jr-tabure",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
     id: "53",
@@ -917,7 +917,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://lh3.googleusercontent.com/L0os6TYfY6MCUe-fGMzZ71CNKFcfPKQ8zv8-5awusYEC7VAcvBsO_4MnKULPFJ4VaRIGdHF4vqQfmIxrx6spD7Jd2_RUw_7o7Q=s1500-pp",
     slug: "boity-thulo",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists", "woman"]
   },
   {
     id: "54",
@@ -934,7 +934,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://mdundo.com/media/picture/130611_XFT7MyBwlFgI7bgxRic2mcI05ZSY_b.jpg",
     slug: "sho-madjozi",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
     id: "55",
@@ -951,7 +951,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://hiphopafrican.com/wp-content/uploads/2020/02/gigi-lamayne.png",
     slug: "gigi-lamayne",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists", "woman"]
   },
   {
     id: "56",
@@ -968,7 +968,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://i.guim.co.uk/img/media/eacaf5d4a5f4b9cf4a921e6764880cd7c17051f6/0_150_2250_1350/master/2250.jpg",
     slug: "spoek-mathambo",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
     id: "57",
@@ -985,7 +985,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://i0.wp.com/mgosi.co.za/wp-content/uploads/2020/08/27879291_190886508164242_1185641664979402752_n-e1596663123707.jpg",
     slug: "yanga-chief",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
     id: "58",
@@ -1002,7 +1002,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://www.caferoux.co.za/wp-content/uploads/2022/08/Profile-6.jpg",
     slug: "jack-parow",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
     id: "59",
@@ -1019,7 +1019,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://upload.wikimedia.org/wikipedia/en/1/18/Shane_Eagle_-_Yellow.png",
     slug: "shane-eagle",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
     id: "60",
@@ -1036,7 +1036,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://cdn-images.dzcdn.net/images/artist/50924a59f930311432ce07e64ae4822a/500x500.jpg",
     slug: "da-les",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
     id: "61",
@@ -1053,7 +1053,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://i.scdn.co/image/ab6761610000e5eb57f4924cfcc31341d09e6ec6",
     slug: "kwesta",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
     id: "62",
@@ -1070,7 +1070,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://cdn-images.dzcdn.net/images/artist/d08a51ff9da5bce0665805985255c82f/1900x1900-000000-80-0-0.jpg",
     slug: "khuli-chana",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
     id: "63",
@@ -1087,7 +1087,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://resources.tidal.com/images/201ae6cd/4189/40da/ac65/54d950db6e69/750x750.jpg",
     slug: "nasty-c",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
     id: "64",
@@ -1104,7 +1104,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://images.genius.com/c4fdbf6b9348f7a09db994a99af92005.500x500x1.jpg",
     slug: "okmalumkoolkat",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
     id: "65",
@@ -1121,7 +1121,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://cdn-images.dzcdn.net/images/artist/df209b02db69b39480ba02c60c9e6e11/500x500.jpg",
     slug: "ko",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
     id: "66",
@@ -1138,7 +1138,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://www.defjam.africa/files/2020/08/IMG_1776-compressed.jpg",
     slug: "nadia-nakai",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists", "woman"]
   },
   {
     id: "67",
@@ -1155,7 +1155,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://www.capetowngreenmap.co.za/media/reviews/photos/original/52/d8/c7/2023-festive-lights-switch-on-cassper-48-1699885715.jpg",
     slug: "cassper-nyovest",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
     id: "68",
@@ -1172,7 +1172,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://i.pinimg.com/474x/a0/b3/88/a0b388a45866e47ae1bf7fffdd5d5958.jpg",
     slug: "yolandi-visser",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists", "woman"]
   },
   {
     id: "69",
@@ -1189,7 +1189,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://www.famousbirthdays.com/faces/jones-watkin-image.jpg",
     slug: "watkin-tudor-jones",
-    categories: ["rappers", "hip-hop"]
+    categories: ["rappers", "artists"]
   },
   {
   id: "70",
@@ -1393,7 +1393,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   lastUpdated: "2025-03-28",
   imageUrl: "https://static1.squarespace.com/static/52440ddbe4b03b33d728e5ea/52447c94e4b0c55940eca0ff/5468f27ae4b03fe05e491ff0/1416164622106/?format=1500w",
   slug: "wendy-ackerman",
-  categories: ["entrepreneurs"]
+  categories: ["entrepreneurs", "woman"]
 },
 {
   id: "82",
@@ -1410,7 +1410,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   lastUpdated: "2025-03-28",
   imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcxzrWHJIhVRhSCbbOaZKahh8VdDXRXGHH2g&s",
   slug: "wendy-appelbaum",
-  categories: ["entrepreneurs"]
+  categories: ["entrepreneurs", "woman"]
 },
   {
     id: "83",
@@ -1513,6 +1513,261 @@ export const netWorthPeople: NetWorthPerson[] = [
     imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVdFZF4zKAE-HUaP7a60yGXjNOjSEiTCwgxg&s",
     slug: "iqbal-surve",
     categories: ["entrepreneurs"]
+  },
+  {
+    id: "89",
+    name: "Charlize Theron",
+    netWorth: 200000000,
+    currency: "USD",
+    occupation: "Actress, Producer",
+    age: 49,
+    country: "South Africa",
+    industry: "Film & Entertainment",
+    company: "Denver and Delilah Productions",
+    description: "Leading the pack with an estimated net worth of a staggering $200 million, Charlize Theron is a true global icon. Her journey from South Africa to Hollywood stardom has been marked by critically acclaimed performances in films like \"The Devil's Advocate,\" \"The Cider House Rules,\" and \"Prometheus.\" Beyond acting, Theron is a successful producer through her company, Denver and Delilah Productions, which has backed films like \"Dark Places\" and \"The Burning Plain.\" Her annual earnings reportedly range from $30 million to $40 million, solidifying her position as one of the world's highest-paid actresses and a testament to her enduring talent and business acumen.",
+    source: "Forbes",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://hips.hearstapps.com/hmg-prod/images/charlize-theron-ageing-64e5e1e486ba5.jpg?crop=0.668xw:1.00xh;0.199xw,0&resize=640:*",
+    slug: "charlize-theron",
+    categories: ["actors", "artists", "woman"]
+  },
+  {
+    id: "90",
+    name: "Trevor Noah",
+    netWorth: 100000000,
+    currency: "USD",
+    occupation: "Comedian, TV Host, Actor",
+    age: 41,
+    country: "South Africa",
+    industry: "Comedy & Entertainment",
+    company: "Day Zero Productions",
+    description: "With an impressive net worth of around $100 million, Trevor Noah has carved a unique path to success. While primarily known for his sharp wit and insightful political commentary as the host of Comedy Central's \"The Daily Show\" from 2015 to 2022, Noah has also ventured into acting. He has appeared in blockbuster films like \"Black Panther,\" \"Coming 2 America,\" and \"Black Panther: Wakanda Forever.\" His reported annual salary of $16 million reflects his multifaceted career as a comedian, television host, political commentator, actor, writer, and producer, making him a significant figure in both the comedy and entertainment industries.",
+    source: "Forbes",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://media.npr.org/assets/img/2016/02/18/gettyimages-490454836_sq-d14657a0564a595bcf003da89d9670e777fc2f37.jpg?s=200&c=85&f=jpeg",
+    slug: "trevor-noah",
+    categories: ["actors", "artists"]
+  },
+  {
+    id: "91",
+    name: "Sharlto Copley",
+    netWorth: 15000000,
+    currency: "USD",
+    occupation: "Actor, Producer",
+    age: 51,
+    country: "South Africa",
+    industry: "Film & Entertainment",
+    company: "Channel 9 Studios",
+    description: "Sharlto Copley has made a name for himself in the realm of science fiction and fantasy, amassing an estimated net worth of $15 million. He gained international recognition for his compelling portrayal of Wikus van der Merwe in the Oscar-nominated film \"District 9.\" This breakthrough role opened doors to numerous other notable projects, including \"The A-Team,\" \"Elysium,\" \"Europa Report,\" and \"Maleficent.\" Copley's dedication to his craft and his ability to immerse himself in diverse and imaginative roles have solidified his place as a sought-after actor in both South Africa and Hollywood.",
+    source: "Forbes",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://pbs.twimg.com/profile_images/1305205220146847745/DzPUJ1HH_400x400.jpg",
+    slug: "sharlto-copley",
+    categories: ["actors", "artists"]
+  },
+  {
+    id: "92",
+    name: "Sello Maake kaNcube",
+    netWorth: 13000000,
+    currency: "USD",
+    occupation: "Actor, Director",
+    age: 64,
+    country: "South Africa",
+    industry: "TV & Film",
+    company: "Lesaka The Group",
+    description: "With a rumored net worth of approximately $13 million, Sello Maake kaNcube is a highly respected and seasoned actor in South Africa. His extensive career spans across various countries, including the US, the UK, Canada, and Europe. In South Africa, he is best known for his iconic roles as Archie Moroka in the long-running soap opera \"Generations,\" Lucas \"Daniel\" Nyathi in \"Scandal!,\" and Kgosietsile in \"The Queen.\" Maake kaNcube's versatility and enduring presence in the entertainment industry have made him a household name and a significant contributor to South African television.",
+    source: "Forbes",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://lh3.googleusercontent.com/SAmkEodpQ_aD49ohizxgMIv-wBlqCxp3T_McsFvvIEqtzNrF-cvViaCVoJUtGhj79AVw5lFUxh135K7aG_G_o1slzlAIarPHtBluxke0A6hdrmA=s750",
+    slug: "sello-maake-kancube",
+    categories: ["actors", "artists"]
+  },
+  {
+    id: "93",
+    name: "Moshidi Motshegwa",
+    netWorth: 8000000,
+    currency: "USD",
+    occupation: "Actress",
+    age: 47,
+    country: "South Africa",
+    industry: "TV & Film",
+    company: "Acting",
+    description: "Moshidi Motshegwa has established herself as a prominent figure in South African television and film, accumulating an estimated net worth of $8 million. She is widely recognized for her powerful portrayal of Denzela Ledwaba in the SABC2 drama series \"Zero Tolerance,\" which aired from 2003 to 2006. Motshegwa has also graced the silver screen in notable films such as \"Noem My Skollie: Call Me Thief\" and \"Drum.\" Her captivating performances and dedication to her craft have earned her critical acclaim and a loyal fanbase in South Africa.",
+    source: "Forbes",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://lh3.googleusercontent.com/3hfPxiZc9Ndkh1uxGkB1fv3KJ74Mn4nJp3fIxAAj0kWG6uKBsCypTDQ4wf5tGCjh6XrvvFyPELiXv0bbhtFmLtE=s1500-pp",
+    slug: "moshidi-motshegwa",
+    categories: ["actors", "artists", "woman"]
+  },
+  {
+    id: "94",
+    name: "Bonang Matheba",
+    netWorth: 7000000,
+    currency: "USD",
+    occupation: "TV Presenter, Actress",
+    age: 37,
+    country: "South Africa",
+    industry: "Media & Entertainment",
+    company: "House of BNG",
+    description: "Bonang Matheba, often referred to as \"Queen B,\" has built a media empire and amassed an alleged net worth of around $7 million. Known for her signature voice and charismatic presenting style, she became a household name while hosting the SABC 1 music show \"Live Amp\" from 2007 to 2012. Matheba has also ventured into acting, with a role in \"InterSEXions.\" Her success extends beyond television, encompassing radio hosting and a significant social media presence, solidifying her status as one of South Africa's wealthiest and most influential media personalities.",
+    source: "Forbes",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRamz_AFMO_NTSO_vx2yzdKgEZU-OnH-85C_w&s",
+    slug: "bonang-matheba",
+    categories: ["actors", "artists", "woman"]
+  },
+  {
+    id: "95",
+    name: "Minnie Dlamini",
+    netWorth: 5000000,
+    currency: "USD",
+    occupation: "TV Host, Actress",
+    age: 34,
+    country: "South Africa",
+    industry: "Media & Entertainment",
+    company: "MD Skin Care",
+    description: "Minnie Dlamini has transitioned from a successful television presenter to a recognized actress, accumulating a speculated net worth of approximately $5 million. She began her career hosting SABC 1's \"Live Amp\" and later co-hosted the lifestyle show \"Mzansi Insider.\" Dlamini then pursued acting, taking on roles in popular shows like \"Generations,\" \"The Wild,\" and \"Rockville.\" Her journey, including her lavish wedding documented in the reality show \"Becoming Mrs. Jones,\" has kept her in the public eye and contributed to her financial success in the South African entertainment industry.",
+    source: "Forbes",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://lh3.googleusercontent.com/cKnCaxFraEnTKaLze4yKLptmytffveLKnODdmabReLqz8v-___ErHjnuoFWejfhHUiLWTzhIgGO7fSX6Lac_amnvmSWLNj6yQFiU=s1500-pp",
+    slug: "minnie-dlamini",
+    categories: ["actors", "artists", "woman"]
+  },
+  {
+    id: "96",
+    name: "Connie Ferguson",
+    netWorth: 2000000,
+    currency: "USD",
+    occupation: "Actress, Producer",
+    age: 54,
+    country: "South Africa",
+    industry: "TV & Film",
+    company: "Ferguson Films",
+    description: "Connie Ferguson is a powerhouse in the South African television industry, with an alleged net worth of around $2 million. She is best known for her iconic role as Karabo Moroka in \"Generations,\" which she played for many years. Ferguson has also starred in other successful soap operas like \"The Wild\" and \"The Queen,\" and currently appears in \"Kings of Joburg.\" Alongside her late husband, Shona Ferguson, she co-founded the production company Ferguson Films, responsible for popular series like \"Rockville,\" further contributing to her wealth and influence in the South African entertainment.",
+    source: "Forbes",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://www.bona.co.za/wp-content/uploads/2024/07/Snapinsta.app_448400355_18441128926031194_3208248628548637872_n_1024-1-850x660.jpg",
+    slug: "connie-ferguson",
+    categories: ["actors", "artists", "woman"]
+  },
+  {
+    id: "97",
+    name: "Pearl Thusi",
+    netWorth: 1800000,
+    currency: "USD",
+    occupation: "Actress, Model",
+    age: 36,
+    country: "South Africa",
+    industry: "TV & Film",
+    company: "Black Pear & Black Rose Gin",
+    description: "Believed to have a net worth of roughly $1.8 million, Pearl Thusi has established herself as a multifaceted talent. Her acting career includes roles in international productions such as \"The No. 1 Ladies' Detective Agency\" and the American series \"Quantico.\" Notably, she starred as Queen Sono in Netflix's first African original series, \"Queen Sono,\" showcasing her leading lady potential. Beyond acting, Thusi has enjoyed a successful career as a TV presenter, hosting popular shows like \"Live Amp\" and \"Behind the Story,\" contributing significantly to her financial standing.",
+    source: "Forbes",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://lh3.googleusercontent.com/cw0wPt11mCJ40uhijphKfuL5nJt1B7afJom2rWl42fUSBH8-59AlPXLCtFSPh2A0BiPP71qkHUq8NijlfQx-=s1500-pp",
+    slug: "pearl-thusi",
+    categories: ["actors", "artists", "woman"]
+  },
+  {
+    id: "98",
+    name: "Sizwe Dhlomo",
+    netWorth: 4000000,
+    currency: "USD",
+    occupation: "TV Host, Radio Personality, Actor",
+    age: 41,
+    country: "South Africa",
+    industry: "Media & Entertainment",
+    company: "Acting",
+    description: "Sizwe Dhlomo's net worth is believed to be around $4 million, a testament to his diverse career in the media. He first gained prominence after winning the MTV Base Talent Contest, becoming the channel's first video DJ. While primarily known as a TV and radio personality, Dhlomo has also ventured into acting, appearing in \"The Tropical Island of Treasure (Zanzibar).\" Currently, he co-presents \"959 Breakfast with Sizwe Dhlomo Stand In\" on Kaya 959, further solidifying his position as a prominent and financially successful figure in the South African media industry.",
+    source: "Research",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://lh3.googleusercontent.com/f9mVV4G92ZNKrk5R-P9XwzodCSM1uHWZJkpKmficGNq6kKedH3aXYEZn9802nPEgbYVKTdGLyTOSCyD4GtA=s1500-pp",
+    slug: "sizwe-dhlomo",
+    categories: ["actors", "artists"]
+  },
+  {
+    id: "99",
+    name: "Rapulana Seiphemo",
+    netWorth: 3000000,
+    currency: "USD",
+    occupation: "Actor, Filmmaker",
+    age: 57,
+    country: "South Africa",
+    industry: "TV & Film",
+    company: "Acting",
+    description: "Rapulana Seiphemo reportedly boasts an estimated net worth of $3 million, largely earned through his extensive and impactful career in South African television. He is best recognized for his long-standing role as Tau Mogale in the popular soap opera \"Generations,\" a character he portrayed for many years. Seiphemo has also held significant roles in other successful television series like \"The Queen\" and \"Isidingo,\" as well as in films such as \"Tsotsi\" and \"How to Steal 2 Million,\" making him a consistent and financially successful presence in the industry.",
+    source: "Research",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://lh3.googleusercontent.com/pHPdA6MSftTV8uxUqXl9tqR18eT7x26i5uBCBxMvZGPGBzVVSMm3yq2RLOoFNUbBAF6sRsOz4maAAZtJa8rGHSQ4ZgH85STOig=s1500-pp",
+    slug: "rapulana-seiphemo",
+    categories: ["actors", "artists"]
+  },
+  {
+    id: "100",
+    name: "Sindi Dlathu",
+    netWorth: 3000000,
+    currency: "USD",
+    occupation: "Actress, Musician",
+    age: 51,
+    country: "South Africa",
+    industry: "TV & Film",
+    company: "Acting",
+    description: "Allegedly worth around $3 million, Sindi Dlathu is a celebrated actress in South Africa, renowned for her captivating performances in several long-running television series. Many know her for her portrayal of Thandaza Mokoena in \"Muvhango,\" a role she held for two decades. Dlathu has also starred in \"Soul City,\" \"The Queen,\" and currently shines in \"The River,\" consistently delivering powerful performances that have solidified her status as a top actress and contributed to her impressive net worth.",
+    source: "Research",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://lh3.googleusercontent.com/65Of5f5zrnojZ6RrX-TQFJyxQCFxY8-EvjUyWB8z45BBEkrFZrAV_njTQBzz9DS1n7uYmbObz4hzFFxDRxZ9Xn4yFd1eZDOFWF8bQjanuZztH5g=s1500-pp",
+    slug: "sindi-dlathu",
+    categories: ["actors", "artists", "woman"]
+  },
+  {
+    id: "101",
+    name: "Lesley-Ann Brandt",
+    netWorth: 2000000,
+    currency: "USD",
+    occupation: "Actress, Model",
+    age: 43,
+    country: "South Africa",
+    industry: "TV & Film",
+    company: "Acting",
+    description: "Lesley-Ann Brandt has built a successful acting career both in New Zealand and internationally, accumulating a believed net worth of $2 million. Based in Auckland, she has featured in various New Zealand TV shows. However, she is best known for her roles in popular international series like \"Legend of the Seeker,\" \"Spartacus,\" \"Lucifer,\" where she played the fan-favorite Mazikeen, and most recently, \"The Walking Dead: The Ones Who Live.\" Her talent and versatility have allowed her to thrive in a competitive global market.",
+    source: "Research",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://media.self.com/photos/61706cbe46e2eb217d91ef92/4:3/w_570%2Cc_limit/Lesley-Ann%2520Brandt.png",
+    slug: "lesley-ann-brandt",
+    categories: ["actors", "artists", "woman"]
+  },
+  {
+    id: "102",
+    name: "Shashi Naidoo",
+    netWorth: 1700000,
+    currency: "USD",
+    occupation: "Actress, TV Presenter, Model",
+    age: 45,
+    country: "South Africa",
+    industry: "Media & Entertainment",
+    company: "Acting",
+    description: "Shashi Naidoo's estimated net worth of $1.7 million reflects her diverse career path. She first gained public attention for her role as Linda McGinty in the South African soap opera \"Backstage.\" Naidoo further rose to prominence as a co-host for the magazine show \"20 Something\" and the \"VJ Search\" on MTV. She also won the second season of \"Tropika Island of Treasure.\" Beyond acting and presenting, Naidoo has successfully ventured into modeling, entrepreneurship, and fashion blogging, showcasing her multifaceted talents and contributing to her financial success.",
+    source: "Research",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://lh3.googleusercontent.com/IsVmhzevKq7ziGz2EfK-iEkhcAXozEFK-ME7SEDhV-__DwAzGsp4PQf54ahmfjue3IJBi6iPQ597Wwwms0tDMj0=s1500-pp",
+    slug: "shashi-naidoo",
+    categories: ["actors", "artists", "woman"]
+  },
+  {
+    id: "103",
+    name: "Jolene Martin",
+    netWorth: 1300000,
+    currency: "USD",
+    occupation: "Actress, TV Personality",
+    age: 45,
+    country: "South Africa",
+    industry: "TV & Film",
+    company: "Acting",
+    description: "With a guesstimated net worth of about $1.3 million, Jolene Martin is a well-established actress and television personality in South Africa. Having graced the screens for over 17 years since her early days as a child presenter, Martin has become a familiar and reliable presence in the industry. She has featured in numerous TV series and movies, including \"Arendsvlei,\" \"Getroud Met Rugby,\" \"Fluiters,\" and \"Kite.\" Her consistent work and dedication to her craft have made her a respected and financially stable figure in South African entertainment.",
+    source: "Research",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://i0.wp.com/sanotify.com/wp-content/uploads/2021/01/Jolene-Martin.jpg?fit=225%2C225&ssl=1",
+    slug: "jolene-martin",
+    categories: ["actors", "artists", "woman"]
   }
 
 ];
@@ -1605,12 +1860,26 @@ export const categoryDefinitions: Record<string, CategoryMetadata> = {
     slug: "richest-football-club-owners-in-south-africa",
     imageUrl: "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/10467/production/_117536666_gettyimages-994489106.jpg"
   },
-      "entrepreneurs": {
+    "entrepreneurs": {
     id: "cat6",
     title: "30 Richest People in South Africa",
     description: "A ranking of the most affluent people in South Africa, typically based on their estimated net worth. This often includes entrepreneurs, investors, and individuals who have built significant fortunes through various industries.",
     slug: "richest-people-south-africa",
     imageUrl: "https://s.abcnews.com/images/Business/elon-musk-file-gty-jef-220711_1657563938913_hpMain_16x9_1600.jpg"
+  },
+    "artists": {
+    id: "cat7",
+    title: "15 Richest Actors in South Africa",
+    description: "This page lists and profiles the wealthiest and most successful actors in South Africa based on their estimated net worth. This compilation provides insights into the financial success of prominent South African talents in the entertainment industry.",
+    slug: "richest-actors-in-south-africa",
+    imageUrl: "https://storage.googleapis.com/pr-newsroom-wp/1/2023/06/Press-Shot-2-Photo-Credit-Spotify-1-1440x733.jpg"
+  },
+    "woman": {
+    id: "cat8",
+    title: "30 Richest Woman in South Africa",
+    description: "This is the list of the wealthiest women in South Africa, including their estimated net worth. This resource provides a glimpse into the financial success of a leading businesswoman in the country.",
+    slug: "richest-woman-in-south-africa",
+    imageUrl: "https://media.citizen.co.za/wp-content/uploads/2022/06/mamkhize-thanksgiving-BET-africa.png"
   },
 };
 
