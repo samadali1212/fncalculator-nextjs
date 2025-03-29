@@ -30,7 +30,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     description: "A trailblazer in the South African mining sector, Patrice Motsepe has carved out a remarkable success story through his company, African Rainbow Minerals (ARM). Demonstrating exceptional entrepreneurial drive, Motsepe transformed a modest mining services business into a diversified mining giant with interests in platinum, gold, ferrous metals, and coal. His journey is particularly noteworthy as he was one of the first black South Africans to enter the mining industry at a senior level following the end of apartheid. Beyond his business achievements, Motsepe is also recognized for his philanthropic commitments through the Motsepe Foundation, which supports education, healthcare, and poverty alleviation initiatives. Furthermore, his passion for sports is evident in his ownership of the Mamelodi Sundowns Football Club, one of the most successful teams in South Africa.",
     source: "Forbes",
     lastUpdated: "2025-03-28",
-    imageUrl: "https://media.gettyimages.com/id/994504746/photo/johannesburg-south-africa-patrice-motsepe-of-the-motsepe-foundation-speaks-during-the-press.jpg?s=612x612&w=0&k=20&c=Y8KvOlDCUxXV-4LwCz3fNhHZtCs__8_C9Rf7ssBO6xY=",
+    imageUrl: "https://www.harmony.co.za/wp-content/uploads/2024/10/dr-patrice-motsepe-oct24.jpg",
     slug: "patrice-motsepe",
     categories: ["entrepreneurs", "football-club-owner"]
   },
@@ -1834,56 +1834,56 @@ export interface CategoryMetadata {
 export const categoryDefinitions: Record<string, CategoryMetadata> = {
   "djs": {
     id: "cat2",
-    title: "20 Richest DJs in South Africa",
+    title: "50 Richest DJs in South Africa",
     description: "South Africa's top earning disc jockeys who have made their fortunes in the music industry.",
     slug: "richest-south-african-djs",
     imageUrl: "https://djmag.com/sites/default/files/styles/djm_23_1005x565/public/article/image/black-coffee-1-sonar-bcn-2018.jpg.webp"
   },
   "rappers": {
     id: "cat3",
-    title: "20 Richest Rappers in South Africa",
+    title: "50 Richest Rappers in South Africa",
     description: "The highest-earning hip-hop artists and rappers who have built their wealth through music and business ventures.",
     slug: "richest-south-african-rappers",
     imageUrl: "https://i.ytimg.com/vi/Mso5Ex7BbpY/maxresdefault.jpg"
   },
   "football-clubs": {
     id: "cat4",
-    title: "10 Richest Football Clubs in South Africa",
+    title: "50 Richest Football Clubs in South Africa",
     description: "South Africa’s wealthiest soccer teams dominate the local football with strong financial backing, lucrative sponsorships, and top-tier talent. These teams boast high market values, successful histories, and large fan bases.",
     slug: "richest-football-clubs-in-south-africa",
-    imageUrl: "https://sassainsider.co.za/wp-content/uploads/2024/03/gettyimages-1236234629-612x612-1.jpg"
+    imageUrl: "https://a.espncdn.com/photo/2025/0206/r1448240_1296x518_5-2.jpg"
   },
     "football-club-owner": {
     id: "cat5",
-    title: "10 Richest Football Club Owners in South Africa",
+    title: "50 Richest Football Club Owners in South Africa",
     description: "Here is a list of the wealthiest football club owners in South Africa, who have made significant investments in the sport, fueling the growth and success of their teams. This list highlights individuals whose financial backing has played a pivotal role in shaping the South African soccer.",
     slug: "richest-football-club-owners-in-south-africa",
-    imageUrl: "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/10467/production/_117536666_gettyimages-994489106.jpg"
+    imageUrl: "https://www.cafonline.com/media/hhbjswlz/motsepe-speech.jpg"
   },
     "entrepreneurs": {
     id: "cat6",
-    title: "30 Richest People in South Africa",
+    title: "50 Richest People in South Africa",
     description: "A ranking of the most affluent people in South Africa, typically based on their estimated net worth. This often includes entrepreneurs, investors, and individuals who have built significant fortunes through various industries.",
     slug: "richest-people-south-africa",
     imageUrl: "https://s.abcnews.com/images/Business/elon-musk-file-gty-jef-220711_1657563938913_hpMain_16x9_1600.jpg"
   },
     "artists": {
     id: "cat7",
-    title: "15 Richest Artists in South Africa",
+    title: "50 Richest Artists in South Africa",
     description: "This page lists and profiles the wealthiest and most successful actors in South Africa based on their estimated net worth. This compilation provides insights into the financial success of prominent South African talents in the entertainment industry.",
     slug: "richest-artists-in-south-africa",
     imageUrl: "https://djmag.com/sites/default/files/styles/djm_23_1005x565/public/article/image/black-coffee-1-sonar-bcn-2018.jpg.webp"
   },
     "woman": {
     id: "cat8",
-    title: "30 Richest Woman in South Africa",
+    title: "50 Richest Woman in South Africa",
     description: "This is the list of the wealthiest women in South Africa, including their estimated net worth. This resource provides a glimpse into the financial success of a leading businesswoman in the country.",
     slug: "richest-woman-in-south-africa",
     imageUrl: "https://media.citizen.co.za/wp-content/uploads/2022/06/mamkhize-thanksgiving-BET-africa.png"
   },
    "actors": {
     id: "cat9",
-    title: "15 Richest Actors in South Africa",
+    title: "50 Richest Actors in South Africa",
     description: "This page lists and profiles the wealthiest and most successful actors in South Africa based on their estimated net worth. This compilation provides insights into the financial success of prominent South African talents in the entertainment industry.",
     slug: "richest-actors-in-south-africa",
     imageUrl: "https://storage.googleapis.com/pr-newsroom-wp/1/2023/06/Press-Shot-2-Photo-Credit-Spotify-1-1440x733.jpg"
