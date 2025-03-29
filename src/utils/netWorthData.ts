@@ -718,7 +718,7 @@ export const netWorthPeople: NetWorthPerson[] = [
 	   {
     id: "42",
     name: "Stellenbosch FC",
-    netWorth: 208000000,
+    netWorth: 12000000,
     currency: "USD",
     occupation: "Football Club",
     age: 7,
@@ -728,14 +728,14 @@ export const netWorthPeople: NetWorthPerson[] = [
     description: "Stellenbosch FC, founded in 2016, has rapidly ascended in South African football, claiming the National First Division title in 2019 and the Carling Knockout Cup in 2023. With a current market value of R208 million, the club’s financial strength is a result of its strong commercial strategy, strategic investments, and consistent performance in the DStv Premiership. Their ability to attract sponsorships, combined with the growing popularity of the club, has made Stellenbosch FC a significant player in the PSL and a rising force in the country's football landscape.",
     source: "Research",
     lastUpdated: "2025-03-29",
-    imageUrl: "",
+    imageUrl: "https://www.psl.co.za/newpsl/images/clublogos/Stellenbosch%20FC.png",
     slug: "stellenbosch-fc",
     categories: ["football-clubs", "PSL"]
   },
   {
     id: "43",
     name: "Lamontville Golden Arrows",
-    netWorth: 189000000,
+    netWorth: 10200000,
     currency: "USD",
     occupation: "Football Club",
     age: 82,
@@ -745,14 +745,14 @@ export const netWorthPeople: NetWorthPerson[] = [
     description: "Lamontville Golden Arrows, based in Durban, is a respected club in the Premier Soccer League with a market value of R189 million. Founded in 1943, the club’s long history and consistent performance have earned them a loyal following and numerous achievements. Golden Arrows secured their PSL spot in 2000 and have maintained competitiveness with a solid team. Their financial value is driven by strong sponsorship deals, consistent fan engagement, and a focus on player development, making them a staple in South African football.",
     source: "Research",
     lastUpdated: "2025-03-29",
-    imageUrl: "",
+    imageUrl: "https://www.psl.co.za/newpsl/images/clublogos/Golden%20Arrows.png",
     slug: "lamontville-golden-arrows",
     categories: ["football-clubs", "PSL"]
   },
   {
     id: "44",
     name: "Sekhukhune United FC",
-    netWorth: 188000000,
+    netWorth: 10200000,
     currency: "USD",
     occupation: "Football Club",
     age: 6,
@@ -762,14 +762,14 @@ export const netWorthPeople: NetWorthPerson[] = [
     description: "Sekhukhune United FC, a relatively new club founded in 2019, has made a significant impact in South African football. With a net worth of R188 million, the club quickly adapted to the DStv Premiership after acquiring Tshakhuma Tsha Madzivhandila’s PSL license. Despite their short history, they’ve shown remarkable progress, participating in prestigious tournaments such as the MTN 8 and the CAF Confederation Cup. Their growth is powered by strategic investments, strong management, and a focus on building a competitive squad, positioning them as a promising force in South African football.",
     source: "Research",
     lastUpdated: "2025-03-29",
-    imageUrl: "",
+    imageUrl: "https://www.psl.co.za/newpsl/images/clublogos/Sekhukhune%20United.png",
     slug: "sekhukhune-united",
     categories: ["football-clubs", "PSL"]
   },
   {
     id: "45",
     name: "Moroka Swallows FC",
-    netWorth: 154000000,
+    netWorth: 8400000,
     currency: "USD",
     occupation: "Football Club",
     age: 78,
@@ -779,14 +779,14 @@ export const netWorthPeople: NetWorthPerson[] = [
     description: "Moroka Swallows FC, a historic South African club founded in 1947, boasts a market value of R154 million. Known as the 'Beautiful Birds,' they have built a loyal fanbase over the decades with numerous accomplishments in domestic football. Despite challenges in recent years, the club remains one of the most iconic names in the PSL, thanks to their rich history and legacy. Swallows’ wealth stems from their brand’s strong recognition, local support, and a competitive edge that continues to attract valuable sponsorships and partnerships.",
     source: "Research",
     lastUpdated: "2025-03-29",
-    imageUrl: "",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/en/2/27/Moroka_Swallows_F.C._logo.png",
     slug: "moroka-swallows",
     categories: ["football-clubs", "PSL"]
   },
   {
     id: "46",
     name: "Richards Bay",
-    netWorth: 128550000,
+    netWorth: 7000000,
     currency: "USD",
     occupation: "Football Club",
     age: 8,
@@ -796,14 +796,14 @@ export const netWorthPeople: NetWorthPerson[] = [
     description: "Richards Bay FC, founded in 2017, has quickly become a competitive force in South African football. With a market value of R128.55 million, the club’s success stems from their strategic growth and notable performances, including a historic victory over Kaizer Chiefs in the 2021 Nedbank Cup. Their financial strength is supported by solid management, local support, and increasing sponsorship deals. Richards Bay’s growing presence in the DStv Premiership shows their commitment to building a strong team capable of challenging the PSL's top clubs for years to come.",
     source: "Research",
     lastUpdated: "2025-03-29",
-    imageUrl: "",
+    imageUrl: "https://www.psl.co.za/newpsl/images/clublogos/Richards%20Bay.png",
     slug: "richards-bay",
     categories: ["football-clubs", "PSL"]
   },
   {
     id: "47",
     name: "TS Galaxy",
-    netWorth: 113000000,
+    netWorth: 6200000,
     currency: "USD",
     occupation: "Football Club",
     age: 10,
@@ -813,14 +813,14 @@ export const netWorthPeople: NetWorthPerson[] = [
     description: "TS Galaxy, founded in 2015, has made waves in South African football, especially after becoming the first team from a lower division to win the Nedbank Cup. With a market value of R113 million, the club's financial strength is attributed to its strong ownership and strategic positioning in the PSL. Despite being a newer club, TS Galaxy's competitive performances, clever market positioning, and ability to attract sponsorships and investors have contributed to their rapid financial growth, establishing them as a formidable force in South African football.",
     source: "Research",
     lastUpdated: "2025-03-29",
-    imageUrl: "",
+    imageUrl: "https://www.psl.co.za/newpsl/images/clublogos/TS%20Galaxy.png",
     slug: "ts-galaxy",
     categories: ["football-clubs", "PSL"]
   },
   {
     id: "48",
     name: "Royal AM",
-    netWorth: 97000000,
+    netWorth: 5300000,
     currency: "USD",
     occupation: "Football Club",
     age: 42,
@@ -830,7 +830,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     description: "Royal AM, initially founded in 1983 as Real Kings, was rebranded after Shauwn Mkhize and her son Andile Mpisane acquired the club. With a market value of R97 million, Royal AM has quickly established itself in South Africa's top-tier football by purchasing the Premiership license from Bloemfontein Celtic in 2021. Their financial value is fueled by their celebrity ownership, strong commercial presence, and continued growth in the PSL. Royal AM's rise in South African football reflects a combination of strategic investments and effective management, making them a club to watch.",
     source: "Research",
     lastUpdated: "2025-03-29",
-    imageUrl: "",
+    imageUrl: "https://www.psl.co.za/newpsl/images/clublogos/Royal%20AM.png",
     slug: "royal-am",
     categories: ["football-clubs", "PSL"]
   },
@@ -847,7 +847,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     description: "Bidvest Wits FC, once one of South Africa's premier football clubs, was founded in 1921 and built a reputation for producing top talent and achieving domestic success. At its peak, the club's net worth was considerable, but it was sold in 2020, marking the end of an era. With a market value of $7.4 million, Bidvest Wits now operates as a significant player in South African football history, boasting several league titles and cups. Despite their recent sale, their legacy continues to influence South African football culture and development.",
     source: "Research",
     lastUpdated: "2025-03-29",
-    imageUrl: "",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/8/8f/Bidvest_Wits_logo.svg/1200px-Bidvest_Wits_logo.svg.png",
     slug: "bidvest-wits",
     categories: ["football-clubs", "PSL"]
   }
