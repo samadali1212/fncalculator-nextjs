@@ -1,3 +1,4 @@
+
 export interface NetWorthPerson {
   id: string;
   name: string;
@@ -375,7 +376,7 @@ export const netWorthPeople: NetWorthPerson[] = [
 	categories: ["djs"]
   },
   {
-    id: "13",
+    id: "22",
     name: "DJ Tbo Touch",
     netWorth: 30000000,
     currency: "USD",
@@ -384,4 +385,184 @@ export const netWorthPeople: NetWorthPerson[] = [
     country: "South Africa",
     industry: "Music & Entertainment",
     company: "Touch HD",
-    description: "Tbo Touch, born Thabo Molefe, has built a legacy in South Africa's media industry. He first gained fame as a charismatic radio host, later transitioning into television and business. His influence expanded with Touch HD, a pioneering digital radio station. Beyond music, his investments span technology and branding, cementing his status as a top
+    description: "Tbo Touch, born Thabo Molefe, has built a legacy in South Africa's media industry. He first gained fame as a charismatic radio host, later transitioning into television and business. His influence expanded with Touch HD, a pioneering digital radio station. Beyond music, his investments span technology and branding, cementing his status as a top media entrepreneur in South Africa."
+  }
+];
+
+// Define the interface for category metadata
+export interface CategoryMetadata {
+  id: string;
+  name: string;
+  description: string;
+  slug: string;
+  count?: number;
+}
+
+// Define categories with metadata
+export const categoryMetadata: Record<string, CategoryMetadata> = {
+  "djs": {
+    id: "djs",
+    name: "DJs",
+    description: "South African DJs who have established themselves as influential figures in the music industry through their performances, productions, and entrepreneurial ventures.",
+    slug: "djs"
+  },
+  "football-club-owners": {
+    id: "football-club-owners",
+    name: "Football Club Owners",
+    description: "Wealthy individuals who own or have significant stakes in football (soccer) clubs, using their financial resources to influence the sport.",
+    slug: "football-club-owners"
+  },
+  "mining-magnates": {
+    id: "mining-magnates",
+    name: "Mining Magnates",
+    description: "Business leaders who have built their wealth through mining operations, often controlling significant portions of South Africa's mineral resources.",
+    slug: "mining-magnates"
+  },
+  "philanthropists": {
+    id: "philanthropists",
+    name: "Philanthropists",
+    description: "Wealthy individuals who dedicate substantial resources to charitable causes and social initiatives, seeking to create positive change in society.",
+    slug: "philanthropists"
+  },
+  "luxury-goods": {
+    id: "luxury-goods",
+    name: "Luxury Goods Entrepreneurs",
+    description: "Business leaders who have built their fortunes in the high-end luxury goods market, catering to affluent consumers worldwide.",
+    slug: "luxury-goods"
+  },
+  "business-magnates": {
+    id: "business-magnates",
+    name: "Business Magnates",
+    description: "Powerful and influential business leaders who control large enterprises and have significant influence in the South African economy.",
+    slug: "business-magnates"
+  },
+  "diamond-industry": {
+    id: "diamond-industry",
+    name: "Diamond Industry Leaders",
+    description: "Individuals who have amassed wealth through their involvement in the diamond mining, processing, or trading industries.",
+    slug: "diamond-industry"
+  },
+  "media-executives": {
+    id: "media-executives",
+    name: "Media Executives",
+    description: "Business leaders who have built their wealth through media companies, including publishing, broadcasting, and digital media.",
+    slug: "media-executives"
+  },
+  "tech-investors": {
+    id: "tech-investors",
+    name: "Technology Investors",
+    description: "Individuals who have generated significant wealth through strategic investments in technology companies and startups.",
+    slug: "tech-investors"
+  },
+  "bankers": {
+    id: "bankers",
+    name: "Banking Executives",
+    description: "Financial leaders who have built or run major banking institutions, shaping South Africa's financial services industry.",
+    slug: "bankers"
+  },
+  "financial-innovators": {
+    id: "financial-innovators",
+    name: "Financial Innovators",
+    description: "Individuals who have introduced groundbreaking products, services, or business models in the financial services sector.",
+    slug: "financial-innovators"
+  },
+  "insurance-executives": {
+    id: "insurance-executives",
+    name: "Insurance Executives",
+    description: "Business leaders who have built or run successful insurance companies, providing risk management solutions.",
+    slug: "insurance-executives"
+  },
+  "property-developers": {
+    id: "property-developers",
+    name: "Property Developers",
+    description: "Entrepreneurs who have generated wealth through real estate development, construction, and property investment.",
+    slug: "property-developers"
+  },
+  "pharmaceutical-executives": {
+    id: "pharmaceutical-executives",
+    name: "Pharmaceutical Executives",
+    description: "Business leaders who have built successful pharmaceutical companies, contributing to healthcare and medical solutions.",
+    slug: "pharmaceutical-executives"
+  },
+  "healthcare-entrepreneurs": {
+    id: "healthcare-entrepreneurs",
+    name: "Healthcare Entrepreneurs",
+    description: "Individuals who have created innovative healthcare businesses, services, or products to address medical needs.",
+    slug: "healthcare-entrepreneurs"
+  },
+  "politicians": {
+    id: "politicians",
+    name: "Wealthy Politicians",
+    description: "Political figures who have accumulated significant wealth, either before or during their political careers.",
+    slug: "politicians"
+  },
+  "business-leaders": {
+    id: "business-leaders",
+    name: "Business Leaders",
+    description: "Influential individuals who have demonstrated exceptional leadership in building and managing successful businesses.",
+    slug: "business-leaders"
+  },
+  "investment-gurus": {
+    id: "investment-gurus",
+    name: "Investment Gurus",
+    description: "Financial experts known for their exceptional investment strategies and their ability to identify market opportunities.",
+    slug: "investment-gurus"
+  },
+  "financial-advisors": {
+    id: "financial-advisors",
+    name: "Financial Advisors",
+    description: "Professionals who have built wealth by providing financial advice and services to clients, helping them manage assets.",
+    slug: "financial-advisors"
+  },
+  "healthcare-innovators": {
+    id: "healthcare-innovators",
+    name: "Healthcare Innovators",
+    description: "Individuals who have introduced novel approaches, technologies, or business models to improve healthcare delivery and outcomes.",
+    slug: "healthcare-innovators"
+  }
+};
+
+// Utility functions for working with the net worth data
+
+// Format net worth for display
+export const formatNetWorth = (amount: number, currency: string): string => {
+  if (amount >= 1000000000) {
+    return `${(amount / 1000000000).toFixed(1)}B ${currency}`;
+  } else if (amount >= 1000000) {
+    return `${(amount / 1000000).toFixed(1)}M ${currency}`;
+  } else if (amount >= 1000) {
+    return `${(amount / 1000).toFixed(1)}K ${currency}`;
+  }
+  return `${amount} ${currency}`;
+};
+
+// Get a person by slug
+export const getPersonBySlug = (slug: string): NetWorthPerson | undefined => {
+  return netWorthPeople.find(person => person.slug === slug);
+};
+
+// Get people by category
+export const getPeopleByCategory = (categoryId: string, limit?: number): NetWorthPerson[] => {
+  const filteredPeople = netWorthPeople
+    .filter(person => person.categories.includes(categoryId))
+    .sort((a, b) => b.netWorth - a.netWorth);
+  
+  return limit ? filteredPeople.slice(0, limit) : filteredPeople;
+};
+
+// Get all categories with counts
+export const getAllCategoriesWithCounts = (): CategoryMetadata[] => {
+  const categories = Object.values(categoryMetadata).map(category => {
+    const count = netWorthPeople.filter(person => 
+      person.categories.includes(category.id)
+    ).length;
+    
+    return {
+      ...category,
+      count
+    };
+  });
+  
+  // Sort by count (descending)
+  return categories.sort((a, b) => (b.count || 0) - (a.count || 0));
+};
