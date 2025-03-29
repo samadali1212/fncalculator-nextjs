@@ -1,4 +1,3 @@
-
 export interface NetWorthPerson {
   id: string;
   name: string;
@@ -188,7 +187,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     slug: "adrian-gore",
     categories: ["insurance-executives", "healthcare-innovators"]
   },
-    {
+  {
     id: "11",
     name: "DJ Black Coffee",
     netWorth: 60000000,
@@ -203,7 +202,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://i0.wp.com/mgosi.co.za/wp-content/uploads/2022/06/Black-coffee.jpeg?fit=1440%2C1440&ssl=1",
     slug: "black-coffee",
-	categories: ["djs"]
+    categories: ["djs"]
   },
   {
     id: "12",
@@ -220,7 +219,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://lh3.googleusercontent.com/tGIdzVbOsBiZVcuLxpWFEiPv9yCYBMaOySIqjFOZSkgIO5zciYOziL6xhD-_PE5YRbAE_lSXTXUi3jVTfJa29uE1MijcM2HYrSUb0taLwXV3Ug=s750",
     slug: "dj-zinhle",
-	categories: ["djs"]
+    categories: ["djs"]
   },
   {
     id: "13",
@@ -237,7 +236,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://static.ra.co/images/profiles/square/kabzadesmall.jpg?dateUpdated=1611781076000",
     slug: "kabza-de-small",
-	categories: ["djs"]
+    categories: ["djs"]
   },
   {
     id: "14",
@@ -254,7 +253,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://event-images.tixel.com/cdn-cgi/image/w=700,q=70/media/images/d8d66164781ab27f5a7ca5f2bee5cb16_1695870971_3019_square_l.jpg",
     slug: "dj-maphorisa",
-	categories: ["djs"]
+    categories: ["djs"]
   },
   {
     id: "15",
@@ -271,7 +270,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://iharare.com/wp-content/uploads/2021/10/dj-tira.jpg",
     slug: "dj-tira",
-	categories: ["djs"]
+    categories: ["djs"]
   },
   {
     id: "16",
@@ -288,7 +287,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://yt3.googleusercontent.com/UBN47LCrpZcPuY2RzHsOt2Da_5sK8lVUziKF1afCBcNs0l9zYWRDdxR_SkHsK9kE3CzDDvfI6SU=s900-c-k-c0x00ffffff-no-rj",
     slug: "uncle-waffles",
-	categories: ["djs"]
+    categories: ["djs"]
   },
   {
     id: "17",
@@ -305,7 +304,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://lh3.googleusercontent.com/ddKBS1jdFwJax5OTbNCsxXzi9tb1k_yg6ie-r_cwhw3piwzcFO4AX4xVLf1RIIfHvxsXd8YZk-4YcV64EWlyv4PMAqNWxaMAoA=s1500-pp",
     slug: "oskido",
-	categories: ["djs"]
+    categories: ["djs"]
   },
   {
     id: "18",
@@ -322,7 +321,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://yt3.googleusercontent.com/IfhYU9Ydx6ekK7wzCFyjAC5Z_h_MYG6zB4_KVJZlsTuMbJAdeeQh2jZtBtj9fNuDA_ZbawmCFQ=s900-c-k-c0x00ffffff-no-rj",
     slug: "dj-shimza",
-	categories: ["djs"]
+    categories: ["djs"]
   },
   {
     id: "19",
@@ -339,7 +338,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://yt3.googleusercontent.com/IWV5YOVHydvK9IgH8kvBlZ0DJr4HlY9rbtb0HdY1D4zsyU-I31fcANLc2ZcXnC7aThVwYv-m2nA=s900-c-k-c0x00ffffff-no-rj",
     slug: "lerato-kganyago",
-	categories: ["djs"]
+    categories: ["djs"]
   },
   {
     id: "20",
@@ -356,7 +355,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://yt3.googleusercontent.com/ze433g2j5iMfFxe3rcjt8NwnrTXDucDP7gnrE0xtSBbhPhk_YMI6-RwNT5L9fLNkMmq9YT3l=s900-c-k-c0x00ffffff-no-rj",
     slug: "dj-fresh",
-	categories: ["djs"]
+    categories: ["djs"]
   },
   {
     id: "21",
@@ -373,7 +372,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://i1.sndcdn.com/avatars-000188518071-egygye-t1080x1080.jpg",
     slug: "dj-euphonik",
-	categories: ["djs"]
+    categories: ["djs"]
   },
   {
     id: "22",
@@ -396,6 +395,8 @@ export interface CategoryMetadata {
   description: string;
   slug: string;
   count?: number;
+  imageUrl?: string;
+  title?: string;
 }
 
 // Define categories with metadata
@@ -564,7 +565,8 @@ export const getAllCategoriesWithCounts = (): CategoryMetadata[] => {
     
     return {
       ...category,
-      count
+      count,
+      title: category.name
     };
   });
   
@@ -609,7 +611,14 @@ export const getSimilarPeople = (person: NetWorthPerson, limit: number = 5): Net
 
 // Find category by slug
 export const findCategoryBySlug = (slug: string): CategoryMetadata | undefined => {
-  return Object.values(categoryMetadata).find(category => category.slug === slug);
+  const category = Object.values(categoryMetadata).find(category => category.slug === slug);
+  if (category) {
+    return {
+      ...category,
+      title: category.name
+    };
+  }
+  return undefined;
 };
 
 // Get category ID by slug
@@ -622,4 +631,3 @@ export const getCategoryIdBySlug = (slug: string): string | undefined => {
 export const getAllCategories = (): CategoryMetadata[] => {
   return getAllCategoriesWithCounts();
 };
-

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
@@ -35,19 +34,15 @@ const NetWorthCategory = () => {
   const [itemsToShow, setItemsToShow] = useState(50);
   const [sortField, setSortField] = useState<string>("netWorth");
   
-  // For direct route access to insurance-executives
   const isDirectAccess = location.pathname === "/insurance-executives";
   const categorySlug = isDirectAccess ? "richest-insurance-executives" : slug;
   
-  // Find category by slug
   const category = categorySlug ? findCategoryBySlug(categorySlug) : undefined;
   const categoryId = categorySlug ? getCategoryIdBySlug(categorySlug) : undefined;
   
-  // Get people in this category
   const [people, setPeople] = useState<any[]>([]);
   
   useEffect(() => {
-    // Simulate loading state for better UX
     setIsLoading(true);
     
     const timer = setTimeout(() => {
@@ -61,7 +56,6 @@ const NetWorthCategory = () => {
     return () => clearTimeout(timer);
   }, [categoryId]);
   
-  // Filter people based on search query
   const filteredPeople = people.filter(person => {
     return searchQuery 
       ? person.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -70,7 +64,6 @@ const NetWorthCategory = () => {
       : true;
   });
   
-  // Sort by selected field (descending)
   const sortedPeople = [...filteredPeople].sort((a, b) => {
     if (sortField === "netWorth") {
       return b.netWorth - a.netWorth;
@@ -84,7 +77,6 @@ const NetWorthCategory = () => {
     return 0;
   });
   
-  // Paginate results
   const displayedPeople = sortedPeople.slice(0, itemsToShow);
   const hasMorePeople = displayedPeople.length < filteredPeople.length;
   
@@ -92,7 +84,6 @@ const NetWorthCategory = () => {
     setItemsToShow(prevItemsToShow => prevItemsToShow + 10);
   };
 
-  // Get initials for avatar fallback
   const getInitials = (name: string) => {
     return name
       .split(' ')
@@ -129,6 +120,8 @@ const NetWorthCategory = () => {
     );
   }
 
+  const categoryTitle = category.title || category.name;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -136,7 +129,7 @@ const NetWorthCategory = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${category.title} | South Africa's Wealthiest`}
+        title={`${categoryTitle} | South Africa's Wealthiest`}
         description={category.description}
         canonicalUrl={isDirectAccess ? "/insurance-executives" : `/net-worth/category/${slug}`}
       />
@@ -157,7 +150,7 @@ const NetWorthCategory = () => {
         
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
           <div>
-            <h1 className="text-3xl font-bold mb-2">{category.title}</h1>
+            <h1 className="text-3xl font-bold mb-2">{categoryTitle}</h1>
             <p className="text-gray-600">
               {category.description}
             </p>
@@ -214,7 +207,7 @@ const NetWorthCategory = () => {
           <div className="mb-8 rounded-md overflow-hidden">
             <img 
               src={category.imageUrl} 
-              alt={category.title} 
+              alt={categoryTitle} 
               className="w-full h-64 object-cover"
             />
           </div>
