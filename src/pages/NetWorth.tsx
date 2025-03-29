@@ -38,21 +38,14 @@ const NetWorth = () => {
 // Get unique industries for filter
 const industries = ["all", ...new Set(netWorthPeople.map(person => person.industry).filter(Boolean))];
 
-// Filter people based on search query and industry
-const filteredPeople = netWorthPeople.filter(person => {
-  const searchLower = searchQuery?.toLowerCase() || "";
-  const industryLower = industryFilter?.toLowerCase() || "all";
-
-  const matchesSearch = !searchQuery || 
-    person.name.toLowerCase().includes(searchLower) || 
-    person.company?.toLowerCase().includes(searchLower) || 
-    person.industry?.toLowerCase().includes(searchLower);
-
-  const matchesIndustry = industryLower === "all" || 
-    person.industry?.toLowerCase() === industryLower;
-
-  return matchesSearch && matchesIndustry;
-});
+  // Filter people based on search query
+  const filteredPeople = people.filter(person => {
+    return searchQuery 
+      ? person.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        person.company?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        person.industry.toLowerCase().includes(searchQuery.toLowerCase())
+      : true;
+  });
   
   // Sort by net worth (descending)
   const sortedPeople = [...filteredPeople].sort((a, b) => b.netWorth - a.netWorth);
