@@ -32,12 +32,12 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://media.gettyimages.com/id/994504746/photo/johannesburg-south-africa-patrice-motsepe-of-the-motsepe-foundation-speaks-during-the-press.jpg?s=612x612&w=0&k=20&c=Y8KvOlDCUxXV-4LwCz3fNhHZtCs__8_C9Rf7ssBO6xY=",
     slug: "patrice-motsepe",
-    categories: ["football-club-owners", "mining-magnates", "philanthropists"]
+    categories: ["entrepreneurs", "football-club-owner"]
   },
   {
     id: "2",
     name: "Johann Rupert",
-    netWorth: 10700000000,
+    netWorth: 14700000000,
     currency: "USD",
     occupation: "Businessman",
     age: 73,
@@ -49,12 +49,12 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Rupert-Johann-2004.jpg",
     slug: "johann-rupert",
-    categories: ["luxury-goods", "business-magnates"]
+    categories: ["entrepreneurs", "football-club-owner"]
   },
   {
     id: "3",
     name: "Nicky Oppenheimer",
-    netWorth: 8700000000,
+    netWorth: 10700000000,
     currency: "USD",
     occupation: "Diamond Heir",
     age: 78,
@@ -66,12 +66,12 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://media.gettyimages.com/id/81157695/photo/gaborone-botswana-nicky-oppenheimer-age-63-the-chairman-of-de-beers-sits-in-a-de-beers-office.jpg?s=612x612&w=0&k=20&c=7JVCg_OsD8SQNXvo7F3t5xZ7G5Yc82Y3wiK6kjRjxfw=",
     slug: "nicky-oppenheimer",
-    categories: ["mining-magnates", "diamond-industry"]
+    categories: ["entrepreneurs"]
   },
   {
     id: "4",
     name: "Koos Bekker",
-    netWorth: 2300000000,
+    netWorth: 3400000000,
     currency: "USD",
     occupation: "Media Executive",
     age: 71,
@@ -83,12 +83,12 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://media.gettyimages.com/id/472544152/photo/koos-bekker-billionaire-and-chairman-of-naspers-ltd-reacts-during-an-interview-at-his-office.jpg?s=612x612&w=0&k=20&c=9cuD31U6fHI1XqU6GUHs6q2XLhJYcEdRD3g3cwBKX3I=",
     slug: "koos-bekker",
-    categories: ["media-executives", "tech-investors"]
+    categories: ["entrepreneurs"]
   },
   {
     id: "5",
     name: "Michiel Le Roux",
-    netWorth: 1100000000,
+    netWorth: 2200000000,
     currency: "USD",
     occupation: "Banker",
     age: 73,
@@ -100,12 +100,12 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://imageio.forbes.com/specials-images/imageserve/5a80fc894bbe6f2652f543fb/0x0.jpg?format=jpg&crop=455,455,x87,y0,safe&height=416&width=416&fit=bounds",
     slug: "michiel-le-roux",
-    categories: ["bankers", "financial-innovators"]
+    categories: ["entrepreneurs"]
   },
   {
     id: "6",
     name: "Douw Steyn",
-    netWorth: 1000000000,
+    netWorth: 1800000000,
     currency: "USD",
     occupation: "Insurance Entrepreneur",
     age: 70,
@@ -117,7 +117,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://www.goodthingsguy.com/wp-content/uploads/2025/02/douw-steyn.jpg",
     slug: "douw-steyn",
-    categories: ["insurance-executives", "property-developers"]
+    categories: ["entrepreneurs"]
   },
   {
     id: "7",
@@ -134,7 +134,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://lh3.googleusercontent.com/dPQ9LQuUnK6m65uLminDsUclszwNcLjorH7B7LqVFg_ztCHK6QPjW5tn-olOpgFPq32iBK8BERSG2wAFU-XiDxrd-PMyEfTB60ls4Nuzf-SuuA",
     slug: "stephen-saad",
-    categories: ["pharmaceutical-executives", "healthcare-entrepreneurs"]
+    categories: ["entrepreneurs"]
   },
   {
     id: "8",
@@ -151,12 +151,12 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://lh3.googleusercontent.com/CuxBt-N3r9YNz9dlrNK8AMZLq5_WdkyjH1-esXje3fwBWMLnA9wxfiuVYYqj5u0KV5PJkX_4CpipTkr2jlnaOgrGvp7GtMCnsGDc3SlRQj8X9Ic=s750",
     slug: "cyril-ramaphosa",
-    categories: ["politicians", "business-leaders"]
+    categories: ["politicians", "entrepreneurs"]
   },
   {
     id: "9",
     name: "Jannie Mouton",
-    netWorth: 800000000,
+    netWorth: 1500000000,
     currency: "USD",
     occupation: "Investor",
     age: 77,
@@ -168,7 +168,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://imageio.forbes.com/specials-images/imageserve/8ab9cfd81c126830ba99bde49a2fdc07/0x0.jpg?format=jpg&crop=531,532,x105,y16,safe&height=416&width=416&fit=bounds",
     slug: "jannie-mouton",
-    categories: ["investment-gurus", "financial-advisors"]
+    categories: ["entrepreneurs"]
   },
   {
     id: "10",
@@ -185,7 +185,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/78/Adrian_Gore.jpg",
     slug: "adrian-gore",
-    categories: ["insurance-executives", "healthcare-innovators"]
+    categories: ["entrepreneurs"]
   },
     {
     id: "11",
@@ -202,7 +202,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://i0.wp.com/mgosi.co.za/wp-content/uploads/2022/06/Black-coffee.jpeg?fit=1440%2C1440&ssl=1",
     slug: "black-coffee",
-	categories: ["djs"]
+	categories: ["djs", "entrepreneurs"]
   },
   {
     id: "12",
@@ -1190,7 +1190,228 @@ export const netWorthPeople: NetWorthPerson[] = [
     imageUrl: "https://www.famousbirthdays.com/faces/jones-watkin-image.jpg",
     slug: "watkin-tudor-jones",
     categories: ["rappers", "hip-hop"]
-  }
+  },
+  {
+  id: "70",
+  name: "Elon Musk",
+  netWorth: 348300000000,
+  currency: "USD",
+  occupation: "Tech Entrepreneur",
+  age: 52,
+  country: "USA",
+  industry: "Tech and Automobile",
+  company: "Tesla, SpaceX",
+  description: "Elon Musk is a pioneering tech entrepreneur, inventor, and CEO known for revolutionizing electric vehicles with Tesla, advancing space exploration with SpaceX, and shaping the future of transportation with ventures like The Boring Company. Musk is one of the wealthiest individuals globally, driving innovation in diverse fields such as renewable energy, artificial intelligence, and transportation.",
+  source: "Forbes",
+  lastUpdated: "2025-03-28",
+  imageUrl: "https://imageio.forbes.com/specials-images/imageserve/62d700cd6094d2c180f269b9/0x0.jpg",
+  slug: "elon-musk",
+  categories: ["entrepreneurs"]
+},
+{
+  id: "71",
+  name: "Ivan Glasenberg",
+  netWorth: 89200000000,
+  currency: "USD",
+  occupation: "Commodity Trader",
+  age: 64,
+  country: "South Africa",
+  industry: "Commodity Trading and Mining",
+  company: "Glencore",
+  description: "Ivan Glasenberg is a prominent businessman and former CEO of Glencore, one of the world’s largest commodity trading and mining companies. He played a crucial role in expanding the company’s global reach, making it a powerhouse in the industry, with diverse operations in natural resources such as coal, oil, and metals. Glasenberg is known for his strategic business decisions and leadership in the commodity sector.",
+  source: "Forbes",
+  lastUpdated: "2025-03-28",
+  imageUrl: "https://imageio.forbes.com/specials-images/imageserve/5e77d02310380d0006fbc6b6/0x0.jpg",
+  slug: "ivan-glasenberg",
+  categories: ["entrepreneurs"]
+},
+{
+  id: "72",
+  name: "Patrick Soon-Shiong",
+  netWorth: 6200000000,
+  currency: "USD",
+  occupation: "Philanthropist and Scientist",
+  age: 72,
+  country: "South Africa",
+  industry: "Medicine",
+  company: "NantWorks",
+  description: "Patrick Soon-Shiong is a renowned South African-born American surgeon, medical researcher, and entrepreneur. He is the founder of NantWorks, a network of healthcare companies focused on developing innovative treatments for cancer and other serious diseases. Soon-Shiong is also recognized for his philanthropic efforts, contributing extensively to medical research and healthcare initiatives.",
+  source: "Forbes",
+  lastUpdated: "2025-03-28",
+  imageUrl: "https://imageio.forbes.com/specials-images/imageserve/5ba4416731358e5690cd9dd9/0x0.jpg",
+  slug: "patrick-soon-shiong",
+  categories: ["entrepreneurs"]
+},
+{
+  id: "73",
+  name: "Christoffel Wiese",
+  netWorth: 1600000000,
+  currency: "USD",
+  occupation: "Businessman",
+  age: 79,
+  country: "South Africa",
+  industry: "Fashion, Winery, and Stock Trading",
+  company: "Pepkor",
+  description: "Christoffel Wiese is a seasoned South African businessman, best known for his role in Pepkor, a major retail group. He has interests spanning fashion, wine, and stock trading, and is considered one of the wealthiest individuals in South Africa. Wiese’s strategic investments have made him a significant figure in the country’s business landscape.",
+  source: "Forbes",
+  lastUpdated: "2025-03-28",
+  imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc7t7HiwGMARINsEAvO_pRlum7OyMn_Fbgog&s",
+  slug: "christoffel-wiese",
+  categories: ["entrepreneurs"]
+},
+{
+  id: "74",
+  name: "Desmond Sacco",
+  netWorth: 1100000000,
+  currency: "USD",
+  occupation: "Mining Executive",
+  age: 68,
+  country: "South Africa",
+  industry: "Mining",
+  company: "Assore",
+  description: "Desmond Sacco is a prominent South African mining magnate and the executive chairman of Assore, a leading mining company focused on mining, processing, and trading minerals. Sacco is recognized for his leadership in the mining sector and his ability to navigate through fluctuating global commodity prices.",
+  source: "Forbes",
+  lastUpdated: "2025-03-28",
+  imageUrl: "https://imageio.forbes.com/specials-images/imageserve/0c5ba01b111861a219173fe2ea1e38ee/0x0.jpg",
+  slug: "desmond-sacco",
+  categories: ["entrepreneurs"]
+},
+{
+  id: "75",
+  name: "Ivan and Lynette Saltzman",
+  netWorth: 1000000000,
+  currency: "USD",
+  occupation: "Pharmaceutical Executives",
+  age: "N/A",
+  country: "South Africa",
+  industry: "Pharmaceuticals",
+  company: "Aspen Pharmacare",
+  description: "Ivan and Lynette Saltzman are co-founders of Aspen Pharmacare, a global pharmaceutical company. Their success has been driven by their focus on manufacturing and distributing generic medicines worldwide. Aspen has become one of the largest generic pharmaceutical companies in the Southern Hemisphere, and the Saltzmans continue to influence the global healthcare industry.",
+  source: "Forbes",
+  lastUpdated: "2025-03-28",
+  imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-puVLS2jgiHdgDJyJK6bGGc45dz-yV_Cyzeu5ThN1cmpPpDqrp1srngN3Abq8NadlB2U&usqp=CAU",
+  slug: "ivan-lynette-saltzman",
+  categories: ["entrepreneurs"]
+},
+{
+  id: "76",
+  name: "Laurie Dippenaar",
+  netWorth: 610000000,
+  currency: "USD",
+  occupation: "Banker and Insurance Executive",
+  age: 70,
+  country: "South Africa",
+  industry: "Banking and Insurance",
+  company: "FirstRand",
+  description: "Laurie Dippenaar is a distinguished South African businessman known for his role as co-founder of FirstRand, one of the largest financial institutions in the country. Dippenaar's leadership in banking and insurance has earned him recognition as a top figure in the South African financial sector.",
+  source: "Forbes",
+  lastUpdated: "2025-03-28",
+  imageUrl: "https://www.moneyweb.co.za/wp-content/uploads/2014/07/Laurie-Dippenaar-1-a-1024x739.jpg",
+  slug: "laurie-dippenaar",
+  categories: ["entrepreneurs"]
+},
+{
+  id: "77",
+  name: "Gerrit Thomas (GT) Ferreira",
+  netWorth: 420000000,
+  currency: "USD",
+  occupation: "Banker and Insurance Executive",
+  age: 66,
+  country: "South Africa",
+  industry: "Banking and Insurance",
+  company: "FirstRand",
+  description: "Gerrit Thomas (GT) Ferreira is a South African banker and businessman, known for his role as a co-founder of FirstRand, one of the leading financial services groups in the country. His expertise in banking and insurance has made him a respected figure in South Africa's financial industry.",
+  source: "Forbes",
+  lastUpdated: "2025-03-28",
+  imageUrl: "https://www.billionaires.africa/content/images/wp-content/uploads/2021/09/whatsapp-image-2021-09-21-at-12.03.11.jpg",
+  slug: "gerrit-thomas-ferreira",
+  categories: ["entrepreneurs"]
+},
+{
+  id: "78",
+  name: "Gus Attridge",
+  netWorth: 410000000,
+  currency: "USD",
+  occupation: "Pharmaceutical Executive",
+  age: 67,
+  country: "South Africa",
+  industry: "Pharmaceuticals",
+  company: "Aspen Pharmacare",
+  description: "Gus Attridge is a South African pharmaceutical executive and co-founder of Aspen Pharmacare, one of the largest pharmaceutical companies in the Southern Hemisphere. Aspen is renowned for producing and distributing generic medications, and Attridge played an integral role in expanding its global footprint.",
+  source: "Forbes",
+  lastUpdated: "2025-03-28",
+  imageUrl: "https://www.billionaires.africa/content/images/size/w1304/format/webp/wp-content/uploads/2023/08/gus-attridge-2.jpg",
+  slug: "gus-attridge",
+  categories: ["entrepreneurs"]
+},
+{
+  id: "79",
+  name: "Markus Jooste",
+  netWorth: 400000000,
+  currency: "USD",
+  occupation: "Retail Executive",
+  age: 58,
+  country: "South Africa",
+  industry: "Goods Retailing",
+  company: "Steinhoff International",
+  description: "Markus Jooste is a South African businessman best known for his role as CEO of Steinhoff International, a global retail company. He gained international attention for the company's rapid expansion, although he became embroiled in a major accounting scandal that has significantly affected his reputation. Despite the controversy, Jooste remains a figure of interest in the retail industry.",
+  source: "Forbes",
+  lastUpdated: "2025-03-28",
+  imageUrl: "https://imageio.forbes.com/i-forbesimg/media/lists/people/markus-jooste_416x416.jpg",
+  slug: "markus-jooste",
+  categories: ["entrepreneurs"]
+},
+{
+  id: "80",
+  name: "Giovanni Ravazzotti",
+  netWorth: 330000000,
+  currency: "USD",
+  occupation: "Businessman",
+  age: "82",
+  country: "South Africa",
+  industry: "Ceramics and Tiles",
+  company: "Ceramic Industries Ltd",
+  description: "Giovanni Ravazzotti is a South African businessman primarily involved in the ceramics and tiles industry. He is recognized for his contributions to the local manufacturing sector and has built a successful business empire based on high-quality ceramics and tiles. His company is one of the leading players in the South African market.",
+  source: "Forbes",
+  lastUpdated: "2025-03-28",
+  imageUrl: "https://italtile-reports.co.za/annual-reports/iar-2023/images/board-of-directors/giovanni-ravazzotti.png",
+  slug: "giovanni-ravazzotti",
+  categories: ["entrepreneurs"]
+},
+{
+  id: "81",
+  name: "Wendy Ackerman",
+  netWorth: 300000000,
+  currency: "USD",
+  occupation: "Retail Executive",
+  age: "85",
+  country: "South Africa",
+  industry: "Retailing",
+  company: "Pick n Pay",
+  description: "Wendy Ackerman is a prominent South African retail executive known for her role in Pick n Pay, one of the country's leading retail chains. Ackerman has been instrumental in the company's growth and expansion, contributing to its success in the highly competitive retail market. She continues to play a key role in shaping the future of the South African retail industry.",
+  source: "Forbes",
+  lastUpdated: "2025-03-28",
+  imageUrl: "https://static1.squarespace.com/static/52440ddbe4b03b33d728e5ea/52447c94e4b0c55940eca0ff/5468f27ae4b03fe05e491ff0/1416164622106/?format=1500w",
+  slug: "wendy-ackerman",
+  categories: ["entrepreneurs"]
+},
+{
+  id: "13",
+  name: "Wendy Appelbaum",
+  netWorth: 200000000,
+  currency: "USD",
+  occupation: "Businesswoman",
+  age: "N/A",
+  country: "South Africa",
+  industry: "Winery and Farming",
+  company: "De Morgenzon",
+  description: "Wendy Appelbaum is a South African businesswoman and philanthropist known for her involvement in the winery and farming industries. She is the owner of De Morgenzon, a renowned winery in the Western Cape. Appelbaum has contributed significantly to the South African wine industry, blending a passion for farming with her commitment to sustainability and quality.",
+  source: "Forbes",
+  lastUpdated: "2025-03-28",
+  imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcxzrWHJIhVRhSCbbOaZKahh8VdDXRXGHH2g&s",
+  slug: "wendy-appelbaum",
+  categories: ["entrepreneurs"]
+}
 ];
 
 /**
@@ -1262,14 +1483,14 @@ export const categoryDefinitions: Record<string, CategoryMetadata> = {
   },
   "djs": {
     id: "cat2",
-    title: "10 Richest DJs in South Africa",
+    title: "20 Richest DJs in South Africa",
     description: "South Africa's top earning disc jockeys who have made their fortunes in the music industry.",
     slug: "richest-south-african-djs",
     imageUrl: "https://djmag.com/sites/default/files/styles/djm_23_1005x565/public/article/image/black-coffee-1-sonar-bcn-2018.jpg.webp"
   },
   "rappers": {
     id: "cat3",
-    title: "10 Richest Rappers in South Africa",
+    title: "20 Richest Rappers in South Africa",
     description: "The highest-earning hip-hop artists and rappers who have built their wealth through music and business ventures.",
     slug: "richest-south-african-rappers",
     imageUrl: "https://i.ytimg.com/vi/Mso5Ex7BbpY/maxresdefault.jpg"
@@ -1280,6 +1501,20 @@ export const categoryDefinitions: Record<string, CategoryMetadata> = {
     description: "South Africa’s wealthiest soccer teams dominate the local football with strong financial backing, lucrative sponsorships, and top-tier talent. These teams boast high market values, successful histories, and large fan bases.",
     slug: "richest-football-clubs-in-south-africa",
     imageUrl: "https://sassainsider.co.za/wp-content/uploads/2024/03/gettyimages-1236234629-612x612-1.jpg"
+  },
+    "football-club-owner": {
+    id: "cat5",
+    title: "10 Richest Football Club Owners in South Africa",
+    description: "Here is a list of the wealthiest football club owners in South Africa, who have made significant investments in the sport, fueling the growth and success of their teams. This list highlights individuals whose financial backing has played a pivotal role in shaping the South African soccer.",
+    slug: "richest-football-club-owners-in-south-africa",
+    imageUrl: "https://sassainsider.co.za/wp-content/uploads/2024/03/gettyimages-1236234629-612x612-1.jpg"
+  },
+      "entrepreneurs": {
+    id: "cat6",
+    title: "30 Richest People in South Africa",
+    description: "A ranking of the most affluent people in South Africa, typically based on their estimated net worth. This often includes entrepreneurs, investors, and individuals who have built significant fortunes through various industries.",
+    slug: "richest-people-south-africa",
+    imageUrl: "https://s.abcnews.com/images/Business/elon-musk-file-gty-jef-220711_1657563938913_hpMain_16x9_1600.jpg"
   },
 };
 
