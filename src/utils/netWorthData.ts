@@ -499,7 +499,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     netWorth: 350000,
     currency: "USD",
     occupation: "DJ, Producer",
-    age: "30s",
+    age: "30",
     country: "South Africa",
     industry: "Music & Entertainment",
     company: "DJ",
