@@ -35,21 +35,24 @@ const NetWorth = () => {
   const [industryFilter, setIndustryFilter] = useState<string>("all");
   const [isLoading, setIsLoading] = useState(true);
   
-  // Get unique industries for filter
-  const industries = ["all", ...Array.from(new Set(netWorthPeople.map(person => person.industry)))];
-  
-  // Filter people based on search query and industry
-  const filteredPeople = netWorthPeople.filter(person => {
-    const matchesSearch = searchQuery 
-      ? person.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-        person.company?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        person.industry.toLowerCase().includes(searchQuery.toLowerCase())
-      : true;
-      
-    const matchesIndustry = industryFilter === "all" || person.industry === industryFilter;
-    
-    return matchesSearch && matchesIndustry;
-  });
+// Get unique industries for filter
+const industries = ["all", ...new Set(netWorthPeople.map(person => person.industry).filter(Boolean))];
+
+// Filter people based on search query and industry
+const filteredPeople = netWorthPeople.filter(person => {
+  const searchLower = searchQuery?.toLowerCase() || "";
+  const industryLower = industryFilter?.toLowerCase() || "all";
+
+  const matchesSearch = !searchQuery || 
+    person.name.toLowerCase().includes(searchLower) || 
+    person.company?.toLowerCase().includes(searchLower) || 
+    person.industry?.toLowerCase().includes(searchLower);
+
+  const matchesIndustry = industryLower === "all" || 
+    person.industry?.toLowerCase() === industryLower;
+
+  return matchesSearch && matchesIndustry;
+});
   
   // Sort by net worth (descending)
   const sortedPeople = [...filteredPeople].sort((a, b) => b.netWorth - a.netWorth);
