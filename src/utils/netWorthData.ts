@@ -1396,7 +1396,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   categories: ["entrepreneurs"]
 },
 {
-  id: "13",
+  id: "82",
   name: "Wendy Appelbaum",
   netWorth: 200000000,
   currency: "USD",
