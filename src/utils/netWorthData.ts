@@ -776,7 +776,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     country: "South Africa",
     industry: "Sports",
     company: "Moroka Swallows FC",
-    description: "Moroka Swallows FC, a historic South African club founded in 1947, boasts a market value of R154 million. Known as the "Beautiful Birds," they have built a loyal fanbase over the decades with numerous accomplishments in domestic football. Despite challenges in recent years, the club remains one of the most iconic names in the PSL, thanks to their rich history and legacy. Swallows’ wealth stems from their brand’s strong recognition, local support, and a competitive edge that continues to attract valuable sponsorships and partnerships.",
+    description: "Moroka Swallows FC, a historic South African club founded in 1947, boasts a market value of R154 million. Known as the 'Beautiful Birds,' they have built a loyal fanbase over the decades with numerous accomplishments in domestic football. Despite challenges in recent years, the club remains one of the most iconic names in the PSL, thanks to their rich history and legacy. Swallows’ wealth stems from their brand’s strong recognition, local support, and a competitive edge that continues to attract valuable sponsorships and partnerships.",
     source: "Research",
     lastUpdated: "2025-03-29",
     imageUrl: "",
