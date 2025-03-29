@@ -1869,10 +1869,10 @@ export const categoryDefinitions: Record<string, CategoryMetadata> = {
   },
     "artists": {
     id: "cat7",
-    title: "15 Richest Actors in South Africa",
+    title: "15 Richest Artists in South Africa",
     description: "This page lists and profiles the wealthiest and most successful actors in South Africa based on their estimated net worth. This compilation provides insights into the financial success of prominent South African talents in the entertainment industry.",
-    slug: "richest-actors-in-south-africa",
-    imageUrl: "https://storage.googleapis.com/pr-newsroom-wp/1/2023/06/Press-Shot-2-Photo-Credit-Spotify-1-1440x733.jpg"
+    slug: "richest-artists-in-south-africa",
+    imageUrl: "https://djmag.com/sites/default/files/styles/djm_23_1005x565/public/article/image/black-coffee-1-sonar-bcn-2018.jpg.webp"
   },
     "woman": {
     id: "cat8",
@@ -1880,6 +1880,13 @@ export const categoryDefinitions: Record<string, CategoryMetadata> = {
     description: "This is the list of the wealthiest women in South Africa, including their estimated net worth. This resource provides a glimpse into the financial success of a leading businesswoman in the country.",
     slug: "richest-woman-in-south-africa",
     imageUrl: "https://media.citizen.co.za/wp-content/uploads/2022/06/mamkhize-thanksgiving-BET-africa.png"
+  },
+   "actors": {
+    id: "cat9",
+    title: "15 Richest Actors in South Africa",
+    description: "This page lists and profiles the wealthiest and most successful actors in South Africa based on their estimated net worth. This compilation provides insights into the financial success of prominent South African talents in the entertainment industry.",
+    slug: "richest-actors-in-south-africa",
+    imageUrl: "https://storage.googleapis.com/pr-newsroom-wp/1/2023/06/Press-Shot-2-Photo-Credit-Spotify-1-1440x733.jpg"
   },
 };
 
