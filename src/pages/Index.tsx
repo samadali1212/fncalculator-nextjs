@@ -41,8 +41,8 @@ const Index = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="MoneyWorth - South African Financial Guides & Calculators"
-        description="MoneyWorth provides expert financial insights tailored for South Africans. Find salary guides, tax calculators, and practical money advice."
+        title="List Of The Richest People in South Africa - MoneyWorth"
+        description="Get the latest list of the richest people in South Africa. Find their net worth and the industries behind their fortunes."
         canonicalUrl="/"
       />
       <Header />
