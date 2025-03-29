@@ -1474,13 +1474,6 @@ export interface CategoryMetadata {
 }
 
 export const categoryDefinitions: Record<string, CategoryMetadata> = {
-  "football-club-owners": {
-    id: "cat1",
-    title: "10 Richest Football Club Owners in South Africa",
-    description: "South Africa's wealthiest football club owners who have invested their fortunes in the beautiful game.",
-    slug: "richest-football-club-owners",
-    imageUrl: "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/10467/production/_117536666_gettyimages-994489106.jpg"
-  },
   "djs": {
     id: "cat2",
     title: "20 Richest DJs in South Africa",
@@ -1507,7 +1500,7 @@ export const categoryDefinitions: Record<string, CategoryMetadata> = {
     title: "10 Richest Football Club Owners in South Africa",
     description: "Here is a list of the wealthiest football club owners in South Africa, who have made significant investments in the sport, fueling the growth and success of their teams. This list highlights individuals whose financial backing has played a pivotal role in shaping the South African soccer.",
     slug: "richest-football-club-owners-in-south-africa",
-    imageUrl: "https://sassainsider.co.za/wp-content/uploads/2024/03/gettyimages-1236234629-612x612-1.jpg"
+    imageUrl: "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/10467/production/_117536666_gettyimages-994489106.jpg"
   },
       "entrepreneurs": {
     id: "cat6",
