@@ -350,7 +350,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     country: "South Africa",
     industry: "Media Personality",
     company: "Big Dawg Productions",
-    description: "Daniel Stein, known professionally as DJ Fresh, is an award-winning British DJ and record producer who has also made a significant impact on the South African music scene. While originally from the UK, DJ Fresh has collaborated with numerous South African artists and has become a familiar face at local music festivals and events. His dynamic and energetic sets, often blending drum and bass with other electronic music genres, have earned him a strong following in South Africa. Notably, he formed a successful duo with DJ Euphonik under the name F.Eu, releasing several albums and headlining major events like Ultra Fest South Africa. DJ Fresh's ability to connect with the South African audience and his willingness to collaborate with local talent have cemented his place as a respected figure in the country's electronic music landscape.",
+    description: "Daniel Stein, known professionally as DJ Fresh, is an award-winning British DJ and record producer who has also made a significant impact on the South African music scene. While originally from the UK, DJ Fresh has collaborated with numerous South African artists and has become a familiar face at local music festivals and events. His dynamic and energetic sets, often blending drum and bass with other electronic music genres, have earned him a strong following in South Africa. Notably, he formed a successful duo with DJ Euphonik under the name F.Eu, releasing several albums and headlining major events. DJ Fresh's ability to connect with the South African audience and his willingness to collaborate with local talent have cemented his place as a respected figure in the country's electronic music landscape.",
     source: "Forbes",
     lastUpdated: "2025-03-28",
     imageUrl: "https://yt3.googleusercontent.com/ze433g2j5iMfFxe3rcjt8NwnrTXDucDP7gnrE0xtSBbhPhk_YMI6-RwNT5L9fLNkMmq9YT3l=s900-c-k-c0x00ffffff-no-rj",
@@ -735,6 +735,17 @@ export function findPersonBySlug(slug: string): NetWorthPerson | undefined {
 export function formatNetWorth(amount: number, currency: string = "USD"): string {
   // Default to USD if no currency specified
   const currencyCode = currency || "USD";
+  
+  // Special case for ZAR (South African Rand)
+  if (currencyCode === "ZAR") {
+    return new Intl.NumberFormat('en-ZA', {
+      style: 'currency',
+      currency: 'ZAR',
+      maximumFractionDigits: 0,
+      notation: 'compact',
+      compactDisplay: 'short',
+    }).format(amount);
+  }
   
   // Format with the appropriate currency symbol
   return new Intl.NumberFormat('en-US', {

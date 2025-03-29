@@ -181,7 +181,7 @@ const NetWorth = () => {
               
               {displayedPeople.map((person, index) => (
                 <motion.div 
-                  key={person.id}
+                  key={`person-${person.id}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
