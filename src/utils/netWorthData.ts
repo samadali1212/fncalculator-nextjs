@@ -16,46 +16,6 @@ export interface NetWorthPerson {
   categories: string[];
 }
 
-export interface CategoryMetadata {
-  id: string;
-  name: string;
-  description: string;
-  slug: string;
-  coverImage?: string;
-}
-
-// Categories data
-export const categories: CategoryMetadata[] = [
-  {
-    id: "djs",
-    name: "DJs & Music Producers",
-    description: "South Africa's most successful music producers and DJs that have built wealth through their craft.",
-    slug: "djs",
-    coverImage: "https://images.unsplash.com/photo-1571397133301-3f1b6ae00916"
-  },
-  {
-    id: "mining-magnates",
-    name: "Mining Magnates",
-    description: "Leaders in South Africa's mining industry who have built substantial fortunes.",
-    slug: "mining-magnates",
-    coverImage: "https://images.unsplash.com/photo-1574235515773-9d391b5f06f3"
-  },
-  {
-    id: "tech-investors",
-    name: "Tech Investors",
-    description: "South African entrepreneurs who have invested in and grown successful technology companies.",
-    slug: "tech-investors",
-    coverImage: "https://images.unsplash.com/photo-1559136555-9303baea8ebd"
-  },
-  {
-    id: "insurance-executives",
-    name: "Insurance Executives",
-    description: "Top executives from South Africa's insurance industry who have accumulated significant wealth.",
-    slug: "insurance-executives",
-    coverImage: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85"
-  }
-];
-
 export const netWorthPeople: NetWorthPerson[] = [
   {
     id: "1",
@@ -390,7 +350,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     country: "South Africa",
     industry: "Media Personality",
     company: "Big Dawg Productions",
-    description: "Daniel Stein, known professionally as DJ Fresh, is an award-winning British DJ and record producer who has also made a significant impact on the South African music scene. While originally from the UK, DJ Fresh has collaborated with numerous South African artists and has become a familiar face at local music festivals and events. His dynamic and energetic sets, often blending drum and bass with other electronic music genres, have earned him a strong following in South Africa. Notably, he formed a successful duo with DJ Euphonik under the name F.Eu, releasing several albums and headlining major events. DJ Fresh's ability to connect with the South African audience and his willingness to collaborate with local talent have cemented his place as a respected figure in the country's electronic music landscape.",
+    description: "Daniel Stein, known professionally as DJ Fresh, is an award-winning British DJ and record producer who has also made a significant impact on the South African music scene. While originally from the UK, DJ Fresh has collaborated with numerous South African artists and has become a familiar face at local music festivals and events. His dynamic and energetic sets, often blending drum and bass with other electronic music genres, have earned him a strong following in South Africa. Notably, he formed a successful duo with DJ Euphonik under the name F.Eu, releasing several albums and headlining major events like Ultra Fest South Africa. DJ Fresh's ability to connect with the South African audience and his willingness to collaborate with local talent have cemented his place as a respected figure in the country's electronic music landscape.",
     source: "Forbes",
     lastUpdated: "2025-03-28",
     imageUrl: "https://yt3.googleusercontent.com/ze433g2j5iMfFxe3rcjt8NwnrTXDucDP7gnrE0xtSBbhPhk_YMI6-RwNT5L9fLNkMmq9YT3l=s900-c-k-c0x00ffffff-no-rj",
@@ -405,4 +365,485 @@ export const netWorthPeople: NetWorthPerson[] = [
     occupation: "DJ & Record Producer",
     age: 41,
     country: "South Africa",
-    industry: "
+    industry: "Music &  Property Investor",
+    company: "ROCKA X Euphonik Headphones",
+    description: "Themba Mbongeni Nkosi, widely recognized as DJ Euphonik, is a prominent figure in the South African house music scene and a well-known radio personality on stations like 5FM and 947. His consistent delivery of popular house music tracks and his energetic DJ sets have garnered him a large and dedicated fanbase. DJ Euphonik gained significant recognition early in his career with the hit track 'Cool and Deadly,' a collaboration that topped the 5FM charts. He also formed a successful partnership with DJ Fresh, creating the duo F.Eu, which produced several popular albums and headlined major events. Beyond his music career, DJ Euphonik has also ventured into business, demonstrating his entrepreneurial spirit and his desire to diversify his income streams.",
+    source: "Forbes",
+    lastUpdated: "2025-03-28",
+    imageUrl: "https://i1.sndcdn.com/avatars-000188518071-egygye-t1080x1080.jpg",
+    slug: "dj-euphonik",
+	categories: ["djs"]
+  },
+  {
+    id: "13",
+    name: "DJ Tbo Touch",
+    netWorth: 30000000,
+    currency: "USD",
+    occupation: "DJ, Radio Host",
+    age: 43,
+    country: "South Africa",
+    industry: "Music & Entertainment",
+    company: "Touch HD",
+    description: "Tbo Touch, born Thabo Molefe, has built a legacy in South Africa's media industry. He first gained fame as a charismatic radio host, later transitioning into television and business. His influence expanded with Touch HD, a pioneering digital radio station. Beyond music, his investments span technology and branding, cementing his status as a top entrepreneur. His ability to merge entertainment with business innovation has placed him among the richest DJs in the country.",
+    source: "Research",
+    lastUpdated: "2025-03-29",
+    imageUrl: "https://afternoonexpress.co.za/website/admin/UserFiles/Image/Guests/Presenters/2016/October%202016/TBO%20Touch_edited.jpg",
+    slug: "dj-tbo-touch",
+    categories: ["djs", "media"]
+  },
+  {
+    id: "14",
+    name: "DJ Heavy K",
+    netWorth: 3000000,
+    currency: "USD",
+    occupation: "DJ, Producer",
+    age: 33,
+    country: "South Africa",
+    industry: "Music & Entertainment",
+    company: "DrumBoss Musik",
+    description: "Mkhululi Siqula, widely known as Heavy K, is a celebrated house music producer and DJ. His career took off after producing hits that blended deep African rhythms with modern electronic sounds. His signature drum patterns and soulful melodies have made him a household name. With numerous chart-topping singles and collaborations with industry heavyweights, he has solidified his financial and artistic success. His passion for music continues to fuel his ever-growing influence in South Africa's entertainment landscape.",
+    source: "Research",
+    lastUpdated: "2025-03-30",
+    imageUrl: "https://pbs.twimg.com/profile_images/1763285663133155328/-mzBxip0_400x400.jpg",
+    slug: "dj-heavy-k",
+    categories: ["djs", "music"]
+  },
+  {
+    id: "15",
+    name: "Thando Thabethe",
+    netWorth: 2000000,
+    currency: "USD",
+    occupation: "DJ, Actress, Radio Host",
+    age: 34,
+    country: "South Africa",
+    industry: "Music & Entertainment",
+    company: "DJ",
+    description: "Thando Thabethe is a multitalented media personality, actress, and DJ. From hosting major radio shows to making waves in the acting industry, she has consistently expanded her influence. Her skills behind the decks have further established her presence in the entertainment world. She has secured lucrative brand partnerships and business ventures, adding to her financial success. Her ability to dominate multiple industries while maintaining an authentic connection with fans has made her one of South Africa's most influential and wealthiest DJs.",
+    source: "Research",
+    lastUpdated: "2025-03-31",
+    imageUrl: "https://image-prod.iol.co.za/square/450/5-Reasons-We-Love-Our-Wellness-Issue-Cover-Star-Thando-Thabethe?source=https://iol-prod.appspot.com/image/315ba1ce7b38be048fb60e587c2f92a9da7df6c2/2000&operation=CROP&offset=0x0&resize=2000x2000",
+    slug: "thando-thabethe",
+    categories: ["djs", "media"]
+  },
+  {
+    id: "16",
+    name: "DJ Sbu",
+    netWorth: 1600000,
+    currency: "USD",
+    occupation: "DJ, Entrepreneur",
+    age: 47,
+    country: "South Africa",
+    industry: "Music & Entertainment",
+    company: "Massiv Metro",
+    description: "DJ Sbu, real name Sbusiso Leope, is more than just a DJ he's a businessman, author, and media mogul. He first made his mark in radio and music, but his entrepreneurial drive led to ventures like MoFaya energy drinks. He has continuously expanded his empire, creating opportunities for young artists and investing in various businesses. His relentless work ethic and diverse income streams have made him one of the wealthiest DJs in the country, proving that success comes from both talent and strategic business moves.",
+    source: "Research",
+    lastUpdated: "2025-04-01",
+    imageUrl: "https://lh3.googleusercontent.com/Q_Fhqe8CSfh6iNNyK_nSdW02TE_JAMqWCnDZl-yXSRGpeErvKmft4YZNNfYlAt1B6sbPJ_3QuEX9PtJDYA4c4XRdNPMVkxkGgps=s1000",
+    slug: "dj-sbu",
+    categories: ["djs", "business"]
+  },
+  {
+    id: "17",
+    name: "DJ Lamiez",
+    netWorth: 1000000,
+    currency: "USD",
+    occupation: "DJ, TV Host",
+    age: 33,
+    country: "South Africa",
+    industry: "Music & Entertainment",
+    company: "DJ",
+    description: "Lamiez Holworthy has become one of the most recognizable female DJs in South Africa. Her rise to fame was fueled by her deep passion for house music and her energetic live performances. She built a strong brand through television, radio, and DJing, attracting numerous endorsements and business opportunities. Her authenticity and dedication to her craft have set her apart, allowing her to command major gigs across the country. Her growing influence and financial success continue to inspire aspiring female DJs in the industry.",
+    source: "Research",
+    lastUpdated: "2025-04-02",
+    imageUrl: "https://i0.wp.com/sundayworld.co.za/wp-content/uploads/2022/04/lamiez-1.jpg?fit=677%2C592&ssl=1",
+    slug: "dj-lamiez",
+    categories: ["djs", "media"]
+  },
+  {
+    id: "18",
+    name: "Felo Le Tee",
+    netWorth: 380000,
+    currency: "USD",
+    occupation: "DJ, Producer",
+    age: 28,
+    country: "South Africa",
+    industry: "Music & Entertainment",
+    company: "DJ",
+    description: "Felo Le Tee has emerged as a leading force in Amapiano, a genre that has taken South Africa by storm. His ability to produce chart-topping hits and electrify dance floors has made him a sought-after name in the industry. His success has brought financial rewards, with major collaborations and performances at high-profile events. His unique sound and creativity keep him at the forefront of the music scene, ensuring his position as one of the most successful DJs in the country.",
+    source: "Research",
+    lastUpdated: "2025-04-03",
+    imageUrl: "https://cdn-images.dzcdn.net/images/artist/1a54f9bc98dfc73ea023602a4c49c7c4/1900x1900-000000-80-0-0.jpg",
+    slug: "felo-le-tee",
+    categories: ["djs", "music"]
+  },
+  {
+    id: "19",
+    name: "DJ Melzi",
+    netWorth: 377000,
+    currency: "USD",
+    occupation: "DJ, Producer",
+    age: 23,
+    country: "South Africa",
+    industry: "Music & Entertainment",
+    company: "DJ",
+    description: "DJ Melzi, born Tumelo Mphai, is a rising star in the South African DJing world. Despite his young age, he has already made a name for himself through hit singles and an impressive production style. His fresh approach to house and Amapiano music has attracted a massive fan base. With a keen eye for business, he has capitalized on his success, securing deals and endorsements that have boosted his financial standing. His rapid rise and ability to stay relevant show that his influence is only set to grow.",
+    source: "Research",
+    lastUpdated: "2025-04-04",
+    imageUrl: "https://yt3.googleusercontent.com/NqzHHeP-D7jahdrs_B4Wx1qzXiTria01ZASPtz0n6pjEx5bDF1sZL7_yQRqLohXn8_NrxebP=s900-c-k-c0x00ffffff-no-rj",
+    slug: "dj-melzi",
+    categories: ["djs", "music"]
+  },
+  {
+    id: "20",
+    name: "DJ Nate Raubenheimer",
+    netWorth: 350000,
+    currency: "USD",
+    occupation: "DJ, Producer",
+    age: "30s",
+    country: "South Africa",
+    industry: "Music & Entertainment",
+    company: "DJ",
+    description: "Nate Raubenheimer, better known as Protoculture, is a globally recognized DJ and music producer from South Africa. Specializing in trance and progressive house, he has performed at international festivals and collaborated with some of the biggest names in the industry. His deep understanding of sound design and production has made him a respected figure in electronic music. His career longevity, combined with smart financial decisions, has placed him among the country's wealthiest DJs.",
+    source: "Research",
+    lastUpdated: "2025-04-05",
+    imageUrl: "https://img.imageboss.me/rinse-fm/cover:smart/1200x1200/format:webp/Webite-Episode-_No-Text-Overlayed_-Square_2022-10-10-123705_pald.png",
+    slug: "dj-protoculture",
+    categories: ["djs", "music"]
+  },
+  {
+    id: "21",
+    name: "DJ Kent",
+    netWorth: 320000,
+    currency: "USD",
+    occupation: "DJ, Producer",
+    age: 42,
+    country: "South Africa",
+    industry: "Music & Entertainment",
+    company: "DJ",
+    description: "DJ Kent has mastered the art of blending soulful house with commercial appeal. His signature smooth mixes and timeless production style have made him a household name in South Africa. Over the years, he has released numerous hit songs and built a brand that extends beyond just music. His business acumen and ability to adapt to industry trends have allowed him to maintain both his relevance and financial success, making him one of the richest DJs in the country.",
+    source: "Research",
+    lastUpdated: "2025-04-06",
+    imageUrl: "https://yt3.googleusercontent.com/pEZiS4oUxAk3F-jxh7_m5F34U8M2wJ0fKawV_2lCrOVOqNjxT0JjDcYXUG_fpO1Eaf7tja5wkbY=s900-c-k-c0x00ffffff-no-rj",
+    slug: "dj-kent",
+    categories: ["djs", "music"]
+  },
+  {
+    id: "22",
+    name: "DJ Jaivane",
+    netWorth: 260000,
+    currency: "USD",
+    occupation: "DJ, Producer",
+    age: 33,
+    country: "South Africa",
+    industry: "Music & Entertainment",
+    company: "DJ",
+    description: "DJ Jaivane has played a pivotal role in the rise of private school Amapiano, a subgenre that has gained massive popularity. His deep, soulful mixes have set him apart, earning him a dedicated fan base. His label, Simnandi Records, has helped launch the careers of several young artists. Through strategic branding, exclusive performances, and smart investments, he has secured his place among South Africa's wealthiest DJs while continuing to push boundaries in the music industry.",
+    source: "Research",
+    lastUpdated: "2025-04-07",
+    imageUrl: "https://cdn-images.dzcdn.net/images/cover/494bfb6cf17a6723d473ec9a1aebbca8/0x1900-000000-80-0-0.jpg",
+    slug: "dj-jaivane",
+    categories: ["djs", "music"]
+  },
+	
+  {
+    id: "1",
+    name: "Mamelodi Sundowns",
+    netWorth: 382000000,
+    currency: "ZAR",
+    occupation: "Football Club",
+    age: 54,
+    country: "South Africa",
+    industry: "Sports",
+    company: "Mamelodi Sundowns FC",
+    description: "Mamelodi Sundowns reigns supreme as the wealthiest football club in South Africa. Their financial might, bolstered by an estimated net worth of R382 million, comes primarily from the backing of billionaire mining magnate Patrice Motsepe. This financial power is a key driver behind their sustained dominance in recent years, enabling the club to attract top talent and build a winning dynasty. Beyond trophies, Sundowns are known for their flamboyant style of play and the vibrant atmosphere created by their passionate fanbase filling Loftus Versfeld Stadium.",
+    source: "Statista",
+    lastUpdated: "2025-03-29",
+    imageUrl: "https://www.psl.co.za/newpsl/images/clublogos/Mamelodi%20Sundowns.png",
+    slug: "mamelodi-sundowns",
+    categories: ["football-clubs", "psl"]
+  },
+  {
+    id: "2",
+    name: "Orlando Pirates",
+    netWorth: 325900000,
+    currency: "ZAR",
+    occupation: "Football Club",
+    age: 87,
+    country: "South Africa",
+    industry: "Sports",
+    company: "Orlando Pirates FC",
+    description: "Orlando Pirates are a club steeped in history and synonymous with the Soweto township where they are based. Founded in 1937, the Buccaneers have built a legacy of success on the pitch and a fiercely loyal following throughout the nation. With an estimated net worth of R325. 9 million, Pirates command immense commercial power. This comes from their unwavering fan base, savvy sponsorship deals, and a rich history that makes them one of Africa’s most recognizable football brands.",
+    source: "Statista",
+    lastUpdated: "2025-03-29",
+    imageUrl: "https://www.psl.co.za/newpsl/images/clublogos/Orlando%20Pirates.png",
+    slug: "orlando-pirates",
+    categories: ["football-clubs", "psl"]
+  },
+  {
+    id: "3",
+    name: "Kaizer Chiefs",
+    netWorth: 262000000,
+    currency: "ZAR",
+    occupation: "Football Club",
+    age: 54,
+    country: "South Africa",
+    industry: "Sports",
+    company: "Kaizer Chiefs FC",
+    description: "Founded by South African football legend Kaizer Motaung, the Kaizer Chiefs are more than just a football club; they are a symbol of pride and resilience. Their nickname, “AmaKhosi” (The Chiefs), reflects their status as one of the country’s most beloved sporting institutions. While trophies have been harder to come by in recent seasons, the Chiefs retain immense financial clout with an estimated net worth of R262 million. This is driven by their unparalleled fanbase, devoted sponsorships, and the enduring appeal of their iconic black and gold kit.",
+    source: "Statista",
+    lastUpdated: "2025-03-29",
+    imageUrl: "https://www.psl.co.za/newpsl/images/clublogos/Kaizer%20Chiefs.png",
+    slug: "kaizer-chiefs",
+    categories: ["football-clubs", "psl"]
+  },
+  {
+    id: "4",
+    name: "AmaZulu",
+    netWorth: 173000000,
+    currency: "ZAR",
+    occupation: "Football Club",
+    age: 92,
+    country: "South Africa",
+    industry: "Sports",
+    company: "AmaZulu FC",
+    description: "AmaZulu, with a net worth of R173 million, holds a unique position as one of South Africa’s oldest and most culturally significant football clubs. Founded in 1932, “Usuthu” carries deep historical roots entwined with Zulu heritage. Under Sandile Zungu’s leadership, AmaZulu has seen a financial and competitive resurgence. Their strong performances in the PSL solidify their position as a top contender and a testament to their enduring legacy and recent investments in success.",
+    source: "Statista",
+    lastUpdated: "2025-03-29",
+    imageUrl: "https://www.psl.co.za/newpsl/images/clublogos/AmaZulu%20FC.png",
+    slug: "amazulu",
+    categories: ["football-clubs", "psl"]
+  },
+  {
+    id: "5",
+    name: "SuperSport United",
+    netWorth: 170000000,
+    currency: "ZAR",
+    occupation: "Football Club",
+    age: 30,
+    country: "South Africa",
+    industry: "Sports",
+    company: "SuperSport United FC",
+    description: "Holding a net worth of R170 million, SuperSport United stands out as a fascinating example of sports and media convergence. Owned by the SuperSport television network, “Matsatsantsa” enjoys unique branding opportunities and enhanced fan engagement thanks to its media ties. Based in Pretoria, they represent a potent mix of financial stability and on-field prowess. SuperSport United’s model demonstrates how strategic partnerships and media exposure can fuel a football club’s financial success.",
+    source: "Statista",
+    lastUpdated: "2025-03-29",
+    imageUrl: "https://www.psl.co.za/newpsl/images/clublogos/SuperSport%20United.png",
+    slug: "supersport-united",
+    categories: ["football-clubs", "psl"]
+  },
+    {
+    id: "6",
+    name: "Cape Town City",
+    netWorth: 159000000,
+    currency: "ZAR",
+    occupation: "Football Club",
+    age: 8,
+    country: "South Africa",
+    industry: "Sports",
+    company: "Cape Town City FC",
+    description: "Cape Town City, with a net worth of R159 million, represents a blend of tradition revitalized. While technically founded in 2016, its roots stretch back much further. “The Citizens” boast a passionate fanbase in Cape Town and ownership committed to community engagement and developing young talent. Their focus on building a strong foundation through youth development and smart financial management suggests a bright future for this club, making them a force to be reckoned with for years to come.",
+    source: "Statista",
+    lastUpdated: "2025-03-29",
+    imageUrl: "https://www.psl.co.za/newpsl/images/clublogos/Cape%20Town%20City%20FC.png",
+    slug: "cape-town-city",
+    categories: ["football-clubs", "psl"]
+  },
+  {
+    id: "7",
+    name: "Tshakhuma Tsha Madzivhandila (TTM FC)",
+    netWorth: 107360000,
+    currency: "ZAR",
+    occupation: "Football Club",
+    age: 5,
+    country: "South Africa",
+    industry: "Sports",
+    company: "TTM FC",
+    description: "With a net worth of R107.36 million, TTM FC is a relative newcomer that’s made a splash. Founded in 2020, this Limpopo-based club rose rapidly by acquiring Bidvest Wits’ Premier League status. This bold move signals ambition and substantial financial backing. While their on-field consistency is still developing, TTM FC’s rapid acquisition of wealth makes them a fascinating club to keep an eye on in the ever-evolving South African football scene.",
+    source: "Statista",
+    lastUpdated: "2025-03-29",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/en/e/ea/Tshakhuma_Tsha_Madzivhandila_F.C._logo.png",
+    slug: "ttm-fc",
+    categories: ["football-clubs", "psl"]
+  },
+  {
+    id: "8",
+    name: "Cape Town Spurs",
+    netWorth: 76140000,
+    currency: "ZAR",
+    occupation: "Football Club",
+    age: 54,
+    country: "South Africa",
+    industry: "Sports",
+    company: "Cape Town Spurs FC",
+    description: "Formerly known as Ajax Cape Town, the Cape Town Spurs boast a net worth of R76.14 million. This club’s rich history stretches back to 1970 and includes a legacy of developing exceptional young players. Though formerly affiliated with Dutch giants AFC Ajax, their 2020 rebranding as the “Urban Warriors” reflects a commitment to their own identity. Their value showcases a continued presence in South African football and their long-term dedication to nurturing rising stars.",
+    source: "Statista",
+    lastUpdated: "2025-03-29",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/CT_SPURS_LOGO-01.jpg/1200px-CT_SPURS_LOGO-01.jpg",
+    slug: "cape-town-spurs",
+    categories: ["football-clubs", "psl"]
+  },
+  {
+    id: "9",
+    name: "Bloemfontein Celtic",
+    netWorth: 73990000,
+    currency: "ZAR",
+    occupation: "Football Club",
+    age: 55,
+    country: "South Africa",
+    industry: "Sports",
+    company: "Bloemfontein Celtic FC",
+    description: "Celtic holds a net worth of R73.99 million and is beloved for its distinct identity as “Phunya Sele Sele.” Founded in 1969, the club enjoys a loyal fanbase despite its recent absence from the PSL. Celtic’s resilience despite challenges points to a strong foundation built on tradition. Their financial strength is a testament to their enduring legacy and continued importance in the upper echelons of South African football.",
+    source: "Statista",
+    lastUpdated: "2025-03-29",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/a/ac/Bloemfontein_Celtic_FC_logo.svg/1200px-Bloemfontein_Celtic_FC_logo.svg.png",
+    slug: "bloemfontein-celtic",
+    categories: ["football-clubs", "psl"]
+  },
+  {
+    id: "10",
+    name: "Chippa United",
+    netWorth: 63830000,
+    currency: "ZAR",
+    occupation: "Football Club",
+    age: 15,
+    country: "South Africa",
+    industry: "Sports",
+    company: "Chippa United FC",
+    description: "Rounding out the list with a net worth of R63.83 million is Chippa United, the “Chilli Boys.” This relatively young club founded in 2010 has steadily worked its way to the top tier. Their journey from Cape Town to Gqeberha symbolizes their determination. Chippa United’s consistent presence in the PSL shows promise, making them a team to watch as they aim for even greater heights in the years to come.",
+    source: "Statista",
+    lastUpdated: "2025-03-29",
+    imageUrl: "https://www.psl.co.za/newpsl/images/clublogos/Chippa%20United.png",
+    slug: "chippa-united",
+    categories: ["football-clubs", "psl"]
+  }
+];
+
+/**
+ * Find a person by their slug
+ * @param slug The slug of the person to find
+ * @returns The person object or undefined if not found
+ */
+export function findPersonBySlug(slug: string): NetWorthPerson | undefined {
+  return netWorthPeople.find(person => person.slug === slug);
+}
+
+/**
+ * Format currency amounts with appropriate symbol
+ * @param amount The amount to format
+ * @param currency The currency code
+ * @returns Formatted currency string
+ */
+export function formatNetWorth(amount: number, currency: string = "USD"): string {
+  // Default to USD if no currency specified
+  const currencyCode = currency || "USD";
+  
+  // Format with the appropriate currency symbol
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: currencyCode,
+    maximumFractionDigits: 0,
+    notation: 'compact',
+    compactDisplay: 'short',
+  }).format(amount);
+}
+
+/**
+ * Get a list of similar people based on industry and net worth range
+ * @param currentPerson The current person being viewed
+ * @param limit Maximum number of people to return
+ * @returns Array of similar people
+ */
+export function getSimilarPeople(currentPerson: NetWorthPerson, limit: number = 5): NetWorthPerson[] {
+  if (!currentPerson) return [];
+  
+  return netWorthPeople
+    .filter(person => 
+      person.id !== currentPerson.id && 
+      (person.industry === currentPerson.industry || 
+       Math.abs(person.netWorth - currentPerson.netWorth) < currentPerson.netWorth * 0.5)
+    )
+    .sort((a, b) => Math.abs(a.netWorth - currentPerson.netWorth) - Math.abs(b.netWorth - currentPerson.netWorth))
+    .slice(0, limit);
+}
+
+/**
+ * Get category metadata including title, description, and slug
+ */
+export interface CategoryMetadata {
+  id: string;
+  title: string;
+  description: string;
+  slug: string;
+  imageUrl?: string;
+}
+
+export const categoryDefinitions: Record<string, CategoryMetadata> = {
+  "football-club-owners": {
+    id: "cat1",
+    title: "10 Richest Football Club Owners in South Africa",
+    description: "South Africa's wealthiest football club owners who have invested their fortunes in the beautiful game.",
+    slug: "richest-football-club-owners",
+    imageUrl: "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/10467/production/_117536666_gettyimages-994489106.jpg"
+  },
+  "djs": {
+    id: "cat2",
+    title: "10 Richest DJs in South Africa",
+    description: "South Africa's top earning disc jockeys who have made their fortunes in the music industry.",
+    slug: "richest-south-african-djs",
+    imageUrl: "https://djmag.com/sites/default/files/styles/djm_23_1005x565/public/article/image/black-coffee-1-sonar-bcn-2018.jpg.webp"
+  },
+  "rappers": {
+    id: "cat3",
+    title: "10 Richest Rappers in South Africa",
+    description: "The highest-earning hip-hop artists and rappers who have built their wealth through music and business ventures.",
+    slug: "richest-south-african-rappers",
+    imageUrl: "https://i.ytimg.com/vi/Mso5Ex7BbpY/maxresdefault.jpg"
+  },
+  "football-clubs": {
+    id: "cat4",
+    title: "10 Richest Football Clubs in South Africa",
+    description: "South Africa’s wealthiest soccer teams dominate the local football with strong financial backing, lucrative sponsorships, and top-tier talent. These teams boast high market values, successful histories, and large fan bases.",
+    slug: "richest-football-clubs-in-south-africa",
+    imageUrl: "https://sassainsider.co.za/wp-content/uploads/2024/03/gettyimages-1236234629-612x612-1.jpg"
+  },
+};
+
+/**
+ * Get all available categories with their metadata
+ * @returns Array of category metadata
+ */
+export function getAllCategories(): CategoryMetadata[] {
+  return Object.values(categoryDefinitions);
+}
+
+/**
+ * Find a category by its slug
+ * @param slug The slug of the category to find
+ * @returns The category metadata or undefined if not found
+ */
+export function findCategoryBySlug(slug: string): CategoryMetadata | undefined {
+  return Object.values(categoryDefinitions).find(cat => cat.slug === slug);
+}
+
+/**
+ * Get all people in a specific category
+ * @param categoryId The category ID to filter by
+ * @param limit Optional limit on number of results
+ * @returns Array of people in the category
+ */
+export function getPeopleByCategory(categoryId: string, limit?: number): NetWorthPerson[] {
+  const people = netWorthPeople.filter(person => 
+    person.categories.includes(categoryId)
+  ).sort((a, b) => b.netWorth - a.netWorth);
+  
+  return limit ? people.slice(0, limit) : people;
+}
+
+/**
+ * Find a category ID by its slug
+ * @param slug The slug of the category
+ * @returns The category ID or undefined if not found
+ */
+export function getCategoryIdBySlug(slug: string): string | undefined {
+  const entry = Object.entries(categoryDefinitions).find(([_, metadata]) => metadata.slug === slug);
+  return entry ? entry[0] : undefined;
+}
