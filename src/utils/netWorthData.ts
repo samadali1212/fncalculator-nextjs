@@ -798,6 +798,13 @@ export const categoryDefinitions: Record<string, CategoryMetadata> = {
     slug: "richest-south-african-rappers",
     imageUrl: "https://i.ytimg.com/vi/Mso5Ex7BbpY/maxresdefault.jpg"
   },
+  "football-clubs": {
+    id: "cat4",
+    title: "10 Richest Football Clubs in South Africa",
+    description: "South Africa’s wealthiest soccer teams dominate the local football with strong financial backing, lucrative sponsorships, and top-tier talent. These teams boast high market values, successful histories, and large fan bases.",
+    slug: "richest-south-african-rappers",
+    imageUrl: "https://sassainsider.co.za/wp-content/uploads/2024/03/gettyimages-1236234629-612x612-1.jpg"
+  },
 };
 
 /**
