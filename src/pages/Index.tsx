@@ -168,7 +168,7 @@ const Index = () => {
               </div>
             ) : (
               <div className="divide-y divide-gray-100">
-                {topPeople.map((person, index) => (
+                {topPeople.map((person) => (
                   <Link 
                     key={person.id} 
                     to={`/net-worth/${person.slug}`}
