@@ -1211,7 +1211,7 @@ export const netWorthPeople: NetWorthPerson[] = [
 {
   id: "71",
   name: "Ivan Glasenberg",
-  netWorth: 89200000000,
+  netWorth: 8920000000,
   currency: "USD",
   occupation: "Commodity Trader",
   age: 64,
