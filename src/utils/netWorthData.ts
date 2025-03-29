@@ -16,6 +16,46 @@ export interface NetWorthPerson {
   categories: string[];
 }
 
+export interface CategoryMetadata {
+  id: string;
+  name: string;
+  description: string;
+  slug: string;
+  coverImage?: string;
+}
+
+// Categories data
+export const categories: CategoryMetadata[] = [
+  {
+    id: "djs",
+    name: "DJs & Music Producers",
+    description: "South Africa's most successful music producers and DJs that have built wealth through their craft.",
+    slug: "djs",
+    coverImage: "https://images.unsplash.com/photo-1571397133301-3f1b6ae00916"
+  },
+  {
+    id: "mining-magnates",
+    name: "Mining Magnates",
+    description: "Leaders in South Africa's mining industry who have built substantial fortunes.",
+    slug: "mining-magnates",
+    coverImage: "https://images.unsplash.com/photo-1574235515773-9d391b5f06f3"
+  },
+  {
+    id: "tech-investors",
+    name: "Tech Investors",
+    description: "South African entrepreneurs who have invested in and grown successful technology companies.",
+    slug: "tech-investors",
+    coverImage: "https://images.unsplash.com/photo-1559136555-9303baea8ebd"
+  },
+  {
+    id: "insurance-executives",
+    name: "Insurance Executives",
+    description: "Top executives from South Africa's insurance industry who have accumulated significant wealth.",
+    slug: "insurance-executives",
+    coverImage: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85"
+  }
+];
+
 export const netWorthPeople: NetWorthPerson[] = [
   {
     id: "1",
@@ -365,23 +405,4 @@ export const netWorthPeople: NetWorthPerson[] = [
     occupation: "DJ & Record Producer",
     age: 41,
     country: "South Africa",
-    industry: "Music &  Property Investor",
-    company: "ROCKA X Euphonik Headphones",
-    description: "Themba Mbongeni Nkosi, widely recognized as DJ Euphonik, is a prominent figure in the South African house music scene and a well-known radio personality on stations like 5FM and 947. His consistent delivery of popular house music tracks and his energetic DJ sets have garnered him a large and dedicated fanbase. DJ Euphonik gained significant recognition early in his career with the hit track 'Cool and Deadly,' a collaboration that topped the 5FM charts. He also formed a successful partnership with DJ Fresh, creating the duo F.Eu, which produced several popular albums and headlined major events. Beyond his music career, DJ Euphonik has also ventured into business, demonstrating his entrepreneurial spirit and his desire to diversify his income streams.",
-    source: "Forbes",
-    lastUpdated: "2025-03-28",
-    imageUrl: "https://i1.sndcdn.com/avatars-000188518071-egygye-t1080x1080.jpg",
-    slug: "dj-euphonik",
-	categories: ["djs"]
-  },
-  {
-    id: "13",
-    name: "DJ Tbo Touch",
-    netWorth: 30000000,
-    currency: "USD",
-    occupation: "DJ, Radio Host",
-    age: 43,
-    country: "South Africa",
-    industry: "Music & Entertainment",
-    company: "Touch HD",
-    description: "Tbo Touch, born Thabo Molefe, has built a legacy in South Africa's media industry. He first gained fame as a charismatic radio host, later transitioning into television and business. His influence expanded with Touch HD, a pioneering digital radio station. Beyond music, his investments span technology and branding, cementing his status as a top entrepreneur.
+    industry: "
