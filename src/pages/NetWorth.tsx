@@ -42,7 +42,7 @@ const NetWorth = () => {
   const filteredPeople = netWorthPeople.filter(person => {
     const matchesSearch = searchQuery 
       ? person.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-        (person.company ? person.company.toLowerCase().includes(searchQuery.toLowerCase()) : false) ||
+        person.company?.toLowerCase().includes(searchQuery.toLowerCase()) ||
         person.industry.toLowerCase().includes(searchQuery.toLowerCase())
       : true;
       
@@ -181,7 +181,7 @@ const NetWorth = () => {
               
               {displayedPeople.map((person, index) => (
                 <motion.div 
-                  key={`person-${person.id}`}
+                  key={person.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
