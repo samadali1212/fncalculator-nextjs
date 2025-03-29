@@ -375,7 +375,7 @@ export const netWorthPeople: NetWorthPerson[] = [
 	categories: ["djs"]
   },
   {
-    id: "13",
+    id: "22",
     name: "DJ Tbo Touch",
     netWorth: 30000000,
     currency: "USD",
@@ -392,7 +392,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["djs", "media"]
   },
   {
-    id: "14",
+    id: "23",
     name: "DJ Heavy K",
     netWorth: 3000000,
     currency: "USD",
@@ -409,7 +409,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["djs", "music"]
   },
   {
-    id: "15",
+    id: "24",
     name: "Thando Thabethe",
     netWorth: 2000000,
     currency: "USD",
@@ -426,7 +426,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["djs", "media"]
   },
   {
-    id: "16",
+    id: "25",
     name: "DJ Sbu",
     netWorth: 1600000,
     currency: "USD",
@@ -443,7 +443,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["djs", "business"]
   },
   {
-    id: "17",
+    id: "26",
     name: "DJ Lamiez",
     netWorth: 1000000,
     currency: "USD",
@@ -460,7 +460,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["djs", "media"]
   },
   {
-    id: "18",
+    id: "27",
     name: "Felo Le Tee",
     netWorth: 380000,
     currency: "USD",
@@ -477,7 +477,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["djs", "music"]
   },
   {
-    id: "19",
+    id: "28",
     name: "DJ Melzi",
     netWorth: 377000,
     currency: "USD",
@@ -494,7 +494,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["djs", "music"]
   },
   {
-    id: "20",
+    id: "29",
     name: "DJ Nate Raubenheimer",
     netWorth: 350000,
     currency: "USD",
@@ -511,7 +511,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["djs", "music"]
   },
   {
-    id: "21",
+    id: "30",
     name: "DJ Kent",
     netWorth: 320000,
     currency: "USD",
@@ -528,7 +528,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["djs", "music"]
   },
   {
-    id: "22",
+    id: "31",
     name: "DJ Jaivane",
     netWorth: 260000,
     currency: "USD",
@@ -546,7 +546,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   },
 	
   {
-    id: "1",
+    id: "32",
     name: "Mamelodi Sundowns",
     netWorth: 20700000,
     currency: "USD",
@@ -563,7 +563,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["football-clubs", "psl"]
   },
   {
-    id: "2",
+    id: "33",
     name: "Orlando Pirates",
     netWorth: 18000000,
     currency: "USD",
@@ -580,7 +580,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["football-clubs", "psl"]
   },
   {
-    id: "3",
+    id: "34",
     name: "Kaizer Chiefs",
     netWorth: 15000000,
     currency: "USD",
@@ -597,7 +597,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["football-clubs", "psl"]
   },
   {
-    id: "4",
+    id: "35",
     name: "AmaZulu",
     netWorth: 10000000,
     currency: "USD",
@@ -614,7 +614,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["football-clubs", "psl"]
   },
   {
-    id: "5",
+    id: "36",
     name: "SuperSport United",
     netWorth: 9500000,
     currency: "USD",
@@ -631,7 +631,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["football-clubs", "psl"]
   },
     {
-    id: "6",
+    id: "37",
     name: "Cape Town City",
     netWorth: 9200000,
     currency: "USD",
@@ -648,7 +648,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["football-clubs", "psl"]
   },
   {
-    id: "7",
+    id: "38",
     name: "Tshakhuma Tsha Madzivhandila (TTM FC)",
     netWorth: 6500000,
     currency: "USD",
@@ -665,7 +665,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["football-clubs", "psl"]
   },
   {
-    id: "8",
+    id: "39",
     name: "Cape Town Spurs",
     netWorth: 5000000,
     currency: "USD",
@@ -682,7 +682,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["football-clubs", "psl"]
   },
   {
-    id: "9",
+    id: "40",
     name: "Bloemfontein Celtic",
     netWorth: 4500000,
     currency: "USD",
@@ -699,7 +699,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     categories: ["football-clubs", "psl"]
   },
   {
-    id: "10",
+    id: "41",
     name: "Chippa United",
     netWorth: 4000000,
     currency: "USD",
