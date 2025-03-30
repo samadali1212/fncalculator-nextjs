@@ -1,41 +1,4 @@
 [[redirects]]
-  from = "/richest-rappers-in-south-africa/*"
+  from = "/richest-rappers-in-south-africa"
   to = "/net-worth/category/richest-south-african-rappers"
   status = 301
-  force = true
-
-[[redirects]]
-  from = "/richest-djs-in-south-africa/*"
-  to = "/net-worth/category/richest-south-african-djs"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/richest-football-clubs-in-south-africa-2/*"
-  to = "/net-worth/category/richest-football-clubs-in-south-africa"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/richest-man-in-south-africa/*"
-  to = "/net-worth/category/richest-people-south-africa"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/richest-football-club-owners/*"
-  to = "/net-worth/category/richest-football-club-owners-in-south-africa"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/richest-women-in-south-africa/*"
-  to = "/net-worth/category/richest-woman-in-south-africa"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/richest-football-clubs-in-south-africa/*"
-  to = "/net-worth/category/richest-football-clubs-in-south-africa"
-  status = 301
-  force = true
