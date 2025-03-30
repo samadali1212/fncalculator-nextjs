@@ -24,7 +24,7 @@ const NetWorthDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   
   const person = findPersonBySlug(slug || "");
-  const similarPeople = person ? getSimilarPeople(person, 5) : [];
+  const similarPeople = person ? getSimilarPeople(person, 10) : [];
   
   // Simulate loading from API
   useEffect(() => {
