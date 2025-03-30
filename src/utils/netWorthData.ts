@@ -2012,7 +2012,7 @@ export function formatNetWorth(amount: number, currency: string = "USD"): string
  * @param limit Maximum number of people to return
  * @returns Array of similar people
  */
-export function getSimilarPeople(currentPerson: NetWorthPerson, limit: number = 5): NetWorthPerson[] {
+export function getSimilarPeople(currentPerson: NetWorthPerson, limit: number = 10): NetWorthPerson[] {
   if (!currentPerson) return [];
   
   return netWorthPeople
