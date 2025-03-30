@@ -11,15 +11,15 @@ interface SEOProps {
 }
 
 const SEO = ({
-  title = "List Of The Richest People in South Africa",
+  title = "List Of The Richest People in South Africa - financepedia",
   description = "Get the latest list of the richest people in South Africa. Find their net worth and the industries behind their fortunes.",
   canonicalUrl,
-  ogImage = "/MoneyWorth.webp", 
+  ogImage = "/financepedia.webp", 
   ogType = "website",
   twitterCard = "summary_large_image"
 }: SEOProps) => {
-  const siteUrl = "https://moneyworth.co.za";
-  const fullTitle = title.includes("MoneyWorth") ? title : `${title} | MoneyWorth`;
+  const siteUrl = "https://financepedia.co.za";
+  const fullTitle = title.includes("financepedia") ? title : `${title} | financepedia`;
   
   return (
     <Helmet>
@@ -33,7 +33,7 @@ const SEO = ({
       <link rel="apple-touch-icon" href="/Money Worth Favicon.png" />
       
       {/* OpenGraph Meta Tags */}
-      <meta property="og:site_name" content="MoneyWorth" />
+      <meta property="og:site_name" content="financepedia" />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
