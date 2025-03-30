@@ -97,7 +97,7 @@ const HourlyRateDetail = () => {
   };
 
   // SEO title and description with rate specific information 
-  const seoTitle = `R${hourlyRate} Per Hour to Monthly Salary | MoneyWorth`;
+  const seoTitle = `R${hourlyRate} Per Hour to Monthly Salary | financepedia`;
   const seoDescription = `Convert R${hourlyRate} hourly rate to monthly salary (R${rateDetails?.monthlyEquivalent.toLocaleString().replace(/,/g, ' ')}) and yearly income in South Africa based on ${hoursPerWeek} hours per week.`;
   
   if (isLoading) {
@@ -133,7 +133,7 @@ const HourlyRateDetail = () => {
   if (!rateDetails) {
     return (
       <div className="min-h-screen bg-[#f6f6f0] flex items-center justify-center">
-        <SEO title="Rate Not Found | MoneyWorth" description="The hourly rate you're looking for doesn't exist or is invalid." canonicalUrl="/hourly-rates" />
+        <SEO title="Rate Not Found | financepedia" description="The hourly rate you're looking for doesn't exist or is invalid." canonicalUrl="/hourly-rates" />
         <Card>
           <CardContent className="p-6">
             <p>Rate not found. Please try another rate.</p>
@@ -385,7 +385,7 @@ const HourlyRateDetail = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} MoneyWorth. All rights reserved.
+            &copy; {new Date().getFullYear()} financepedia. All rights reserved.
           </p>
         </div>
       </footer>
