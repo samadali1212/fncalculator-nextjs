@@ -1999,7 +1999,8 @@ export function formatNetWorth(amount: number, currency: string = "USD"): string
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: currencyCode,
-    maximumFractionDigits: 0,
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
     notation: 'compact',
     compactDisplay: 'short',
   }).format(amount);
