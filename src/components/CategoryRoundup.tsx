@@ -25,7 +25,7 @@ const CategoryRoundup = ({ category, categoryId, limit = 10 }: CategoryRoundupPr
     // Simulate loading state for better UX
     setIsLoading(true);
     const timer = setTimeout(() => {
-      const categoryPeople = getPeopleByCategory(Number(categoryId));
+      const categoryPeople = getPeopleByCategory(categoryId, limit);
       setPeople(categoryPeople);
       setIsLoading(false);
     }, 300);
