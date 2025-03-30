@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
@@ -9,6 +8,7 @@ import BlogList from "../components/BlogList";
 import SEO from "../components/SEO";
 import { blogPosts } from "../utils/blogData";
 import { Button } from "@/components/ui/button";
+import GoogleAdsense from "../components/GoogleAdsense";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -49,6 +49,14 @@ const Index = () => {
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <div className="mb-8">
+          <GoogleAdsense 
+            slot="1234567890" 
+            format="horizontal"
+            className="w-full h-[90px] bg-gray-50" 
+          />
+        </div>
+
+        <div className="mb-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Link to="/categories" className="block">
               <div className="bg-white p-6 rounded-md shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
@@ -57,6 +65,7 @@ const Index = () => {
                 <Button variant="outline" size="sm" className="w-full">View Categories</Button>
               </div>
             </Link>
+            
             <Link to="/salaries" className="block">
               <div className="bg-white p-6 rounded-md shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
                 <h2 className="text-lg font-semibold mb-2">Explore Salaries</h2>
@@ -64,6 +73,7 @@ const Index = () => {
                 <Button variant="outline" size="sm" className="w-full">View Salaries</Button>
               </div>
             </Link>
+            
             <Link to="/tax-calculator" className="block">
               <div className="bg-white p-6 rounded-md shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
                 <h2 className="text-lg font-semibold mb-2">Tax Calculator</h2>
@@ -94,7 +104,23 @@ const Index = () => {
           </div>
         </motion.div>
 
+        <div className="mb-6">
+          <GoogleAdsense 
+            slot="2345678901" 
+            format="rectangle"
+            className="w-full h-[250px] bg-gray-50" 
+          />
+        </div>
+
         <BlogList posts={blogPosts} searchQuery={searchQuery} />
+        
+        <div className="mt-8">
+          <GoogleAdsense 
+            slot="3456789012" 
+            format="rectangle"
+            className="w-full h-[250px] bg-gray-50" 
+          />
+        </div>
       </main>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
