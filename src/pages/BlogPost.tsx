@@ -144,7 +144,7 @@ const BlogPost = () => {
         title={post.title}
         description={post.excerpt}
         canonicalUrl={`/post/${post.slug}`}
-        ogImage={post.coverImage || "/MoneyWorth.webp"}
+        ogImage={post.coverImage || "/financepedialogo.webp"}
         ogType="article"
       />
       <Header />
@@ -270,7 +270,7 @@ const BlogPost = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} MoneyWorth. All rights reserved.
+            &copy; {new Date().getFullYear()} financepedia. All rights reserved.
           </p>
         </div>
       </footer>
