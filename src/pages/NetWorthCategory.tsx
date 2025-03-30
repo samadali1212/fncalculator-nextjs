@@ -278,7 +278,8 @@ const NetWorthCategory = () => {
                       <span className="text-sm font-medium">{person.netWorth.toLocaleString('en-US', {
                         style: 'currency',
                         currency: person.currency,
-                        maximumFractionDigits: 0,
+                        maximumFractionDigits: 1,
+                        maximumFractionDigits: 1,
                         notation: 'compact',
                         compactDisplay: 'short',
                       })}</span>
