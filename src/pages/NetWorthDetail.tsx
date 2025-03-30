@@ -108,7 +108,7 @@ const NetWorthDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${person.name} Net Worth: ${formattedNetWorthForTitle} | MoneyWorth`}
+        title={`${person.name} Net Worth: ${formattedNetWorthForTitle} | financepedia`}
         description={`${person.name}'s estimated net worth is ${formatNetWorth(person.netWorth, person.currency)}. Learn about their wealth, career, and ${person.industry} business ventures.`}
         canonicalUrl={`/net-worth/${person.slug}`}
       />
@@ -318,7 +318,7 @@ const NetWorthDetail = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} MoneyWorth. All rights reserved.
+            &copy; {new Date().getFullYear()} financepedia. All rights reserved.
           </p>
         </div>
       </footer>
