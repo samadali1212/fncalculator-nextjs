@@ -14,8 +14,7 @@ import CategoryRoundup from "../components/CategoryRoundup";
 import { 
   findPersonBySlug,
   formatNetWorth,
-  NetWorthPerson,
-  getSimilarPeople
+  NetWorthPerson
 } from "../utils/netWorthData";
 
 const NetWorthDetail = () => {
@@ -25,10 +24,8 @@ const NetWorthDetail = () => {
   
   const person = findPersonBySlug(slug || "");
   
-  // Simulate loading from API
   useEffect(() => {
     setIsLoading(true);
-    // Simulate network delay
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 800);
@@ -86,10 +83,8 @@ const NetWorthDetail = () => {
     );
   }
 
-  // Format currency for the title without spaces
-  const formattedNetWorthForTitle = formatNetWorth(person.netWorth, person.currency).replace(/\s/g, "");
+  const formattedNetWorthForTitle = formatNetWorth(person.netWorth).replace(/\s/g, "");
   
-  // Get initials for avatar fallback
   const getInitials = (name: string) => {
     return name
       .split(' ')
@@ -109,7 +104,7 @@ const NetWorthDetail = () => {
     >
       <SEO 
         title={`${person.name} Net Worth: ${formattedNetWorthForTitle} | MoneyWorth`}
-        description={`${person.name}'s estimated net worth is ${formatNetWorth(person.netWorth, person.currency)}. Learn about their wealth, career, and ${person.industry} business ventures.`}
+        description={`${person.name}'s estimated net worth is ${formatNetWorth(person.netWorth)}. Learn about their wealth, career, and ${person.industry} business ventures.`}
         canonicalUrl={`/net-worth/${person.slug}`}
       />
       
@@ -158,7 +153,7 @@ const NetWorthDetail = () => {
                 </div>
                 
                 <div className="text-xl font-semibold text-[#333]">
-                  {formatNetWorth(person.netWorth, person.currency)}
+                  {formatNetWorth(person.netWorth)}
                 </div>
                 
                 <div className="flex items-center mt-1">
@@ -174,7 +169,7 @@ const NetWorthDetail = () => {
               <div className="grid md:grid-cols-3 gap-2">
                 <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
                   <div className="text-gray-600 text-sm mb-1">Net Worth</div>
-                  <div className="text-xl font-bold">{formatNetWorth(person.netWorth, person.currency)}</div>
+                  <div className="text-xl font-bold">{formatNetWorth(person.netWorth)}</div>
                   <div className="text-gray-500 text-xs mt-1">Source: {person.source}</div>
                 </div>
                 <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
@@ -209,7 +204,7 @@ const NetWorthDetail = () => {
                 <TableBody>
                   <TableRow>
                     <TableCell>Estimated Net Worth</TableCell>
-                    <TableCell className="text-right font-medium">{formatNetWorth(person.netWorth, person.currency)}</TableCell>
+                    <TableCell className="text-right font-medium">{formatNetWorth(person.netWorth)}</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Primary Industry</TableCell>
@@ -250,19 +245,18 @@ const NetWorthDetail = () => {
             </div>
           </article>
           
-          {/* Related People Section - Using CategoryRoundup component */}
-          {person.category && (
+          {person.industry && (
             <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
               <div className="p-6 sm:p-8 border-b border-gray-100">
                 <h2 className="text-2xl font-bold mb-2">Similar Wealthy Individuals</h2>
                 <p className="text-sm text-gray-600">
-                  People in the {person.category} category
+                  People in the {person.industry} industry
                 </p>
               </div>
               
               <CategoryRoundup 
-                category={person.category} 
-                categoryId={person.category} 
+                category={person.industry} 
+                categoryId={person.industry} 
                 limit={5}
                 excludePersonId={person.id}
               />
