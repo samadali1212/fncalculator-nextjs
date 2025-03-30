@@ -16,7 +16,7 @@ const GoogleAdsense = ({
   className = "",
   responsive = true,
 }: GoogleAdsenseProps) => {
-  const adRef = useRef<HTMLDivElement>(null);
+  const adRef = useRef<HTMLElement>(null);
   
   useEffect(() => {
     // Only run this on client-side
@@ -44,7 +44,7 @@ const GoogleAdsense = ({
   return (
     <div className={`ad-container ${className}`}>
       <ins
-        ref={adRef}
+        ref={adRef as React.RefObject<HTMLModElement>}
         className="adsbygoogle"
         style={style}
         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" // Replace with your AdSense Publisher ID

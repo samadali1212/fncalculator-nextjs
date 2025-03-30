@@ -279,7 +279,6 @@ const NetWorthCategory = () => {
                         style: 'currency',
                         currency: person.currency,
                         maximumFractionDigits: 1,
-                        maximumFractionDigits: 1,
                         notation: 'compact',
                         compactDisplay: 'short',
                       })}</span>
