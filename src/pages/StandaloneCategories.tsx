@@ -81,7 +81,7 @@ const StandaloneCategories = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Wealth Categories | South Africa's Wealthiest Categories" 
+        title="Rankings of The Wealth People in South Africa" 
         description="Explore South Africa's wealthiest individuals by categories - from business tycoons to sports stars and entertainers."
         canonicalUrl="/categories"
       />
