@@ -16,7 +16,7 @@ export interface NetWorthPerson {
   categoryId: number;
 }
 
-export interface NetWorthCategory {
+export interface CategoryMetadata {
   id: number;
   slug: string;
   title: string;
@@ -537,7 +537,7 @@ const netWorthData: NetWorthPerson[] = [
   },
 ];
 
-const netWorthCategories: NetWorthCategory[] = [
+const netWorthCategories: CategoryMetadata[] = [
   {
     id: 1,
     slug: "technology",
@@ -589,6 +589,8 @@ const netWorthCategories: NetWorthCategory[] = [
   },
 ];
 
+export const netWorthPeople = netWorthData;
+
 // Function to find a person by slug
 export const findPersonBySlug = (slug: string): NetWorthPerson | undefined => {
   return netWorthData.find((person) => person.slug === slug);
@@ -602,7 +604,7 @@ export const getSimilarPeople = (person: NetWorthPerson, limit: number): NetWort
 };
 
 // Function to find a category by slug
-export const findCategoryBySlug = (slug: string): NetWorthCategory | undefined => {
+export const findCategoryBySlug = (slug: string): CategoryMetadata | undefined => {
   return netWorthCategories.find((category) => category.slug === slug);
 };
 
@@ -612,18 +614,23 @@ export const getCategoryIdBySlug = (slug: string): number | undefined => {
   return category ? category.id : undefined;
 };
 
+// Function to get all categories
+export const getAllCategories = (): CategoryMetadata[] => {
+  return [...netWorthCategories];
+};
+
 // Function to get people by category
 export const getPeopleByCategory = (categoryId: number): NetWorthPerson[] => {
   return netWorthData.filter(person => person.categoryId === categoryId);
 };
 
 // Function to format net worth
-export const formatNetWorth = (amount: number, currency = 'ZAR', useDecimals = false): string => {
+export const formatNetWorth = (amount: number, currency = 'ZAR'): string => {
   const options: Intl.NumberFormatOptions = {
     style: 'currency',
     currency: currency,
-    maximumFractionDigits: useDecimals ? 1 : 0,
-    minimumFractionDigits: useDecimals ? 1 : 0,
+    maximumFractionDigits: 1,
+    minimumFractionDigits: 1,
     notation: 'compact',
     compactDisplay: 'short',
   };

@@ -22,7 +22,8 @@ import {
 import { 
   findCategoryBySlug, 
   getCategoryIdBySlug,
-  getPeopleByCategory
+  getPeopleByCategory,
+  formatNetWorth,
 } from "../utils/netWorthData";
 
 const NetWorthCategory = () => {
@@ -266,14 +267,7 @@ const NetWorthCategory = () => {
                     </div>
                     
                     <div className="col-span-3 md:col-span-3">
-                      <span className="text-sm font-medium">{person.netWorth.toLocaleString('en-US', {
-                        style: 'currency',
-                        currency: person.currency,
-                        maximumFractionDigits: 1,
-                        minimumFractionDigits: 1,
-                        notation: 'compact',
-                        compactDisplay: 'short',
-                      })}</span>
+                      <span className="text-sm font-medium">{formatNetWorth(person.netWorth, person.currency)}</span>
                     </div>
                     
                     <div className="hidden md:block md:col-span-2">

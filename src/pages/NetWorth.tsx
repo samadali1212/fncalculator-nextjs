@@ -35,7 +35,7 @@ const NetWorth = () => {
   const [industryFilter, setIndustryFilter] = useState<string>("all");
   const [isLoading, setIsLoading] = useState(true);
 
-// Get unique industries for filter
+  // Get unique industries for filter
   const industries = ["all", ...Array.from(new Set(netWorthPeople.map(person => person.industry)))];
   
   // Filter people based on search query and industry
