@@ -49,7 +49,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-bold text-2xl">
-          <img src="/financepedialogo.webp" alt="financepedia Logo" className="h-8" />
+          <img src="/financepedialogo.png" alt="financepedia Logo" className="h-8" />
         </Link>
 
         {/* Desktop Navigation */}
