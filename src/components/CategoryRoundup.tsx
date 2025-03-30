@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { 
+  CategoryMetadata, 
   NetWorthPerson, 
   formatNetWorth, 
   getPeopleByCategory 
@@ -11,13 +12,12 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface CategoryRoundupProps {
-  category: string;
+  category: CategoryMetadata;
   categoryId: string;
   limit?: number;
-  excludePersonId?: string;
 }
 
-const CategoryRoundup = ({ category, categoryId, limit = 10, excludePersonId }: CategoryRoundupProps) => {
+const CategoryRoundup = ({ category, categoryId, limit = 10 }: CategoryRoundupProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [people, setPeople] = useState<NetWorthPerson[]>([]);
   
@@ -25,15 +25,13 @@ const CategoryRoundup = ({ category, categoryId, limit = 10, excludePersonId }: 
     // Simulate loading state for better UX
     setIsLoading(true);
     const timer = setTimeout(() => {
-      const categoryPeople = getPeopleByCategory(categoryId)
-        .filter(person => !excludePersonId || person.id !== excludePersonId)
-        .slice(0, limit);
+      const categoryPeople = getPeopleByCategory(categoryId, limit);
       setPeople(categoryPeople);
       setIsLoading(false);
     }, 300);
     
     return () => clearTimeout(timer);
-  }, [categoryId, limit, excludePersonId]);
+  }, [categoryId, limit]);
   
   // Get initials for avatar fallback
   const getInitials = (name: string) => {
@@ -111,7 +109,7 @@ const CategoryRoundup = ({ category, categoryId, limit = 10, excludePersonId }: 
             </div>
             
             <div className="col-span-3 md:col-span-3">
-              <span className="text-sm font-medium">{formatNetWorth(person.netWorth)}</span>
+              <span className="text-sm font-medium">{formatNetWorth(person.netWorth, person.currency)}</span>
             </div>
             
             <div className="hidden md:block md:col-span-2">
