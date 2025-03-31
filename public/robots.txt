@@ -1,0 +1,27 @@
+# Financepedia Robots.txt
+ User-agent: *
+ Allow: /
+ 
+ Sitemap: https://financepedia.co.za/sitemap.xml
+ 
+ # Allow crawling of important directories
+ User-agent: Googlebot
+ Allow: /tax-calculator/
+ Allow: /tax-calculator/monthly/
+ Allow: /tax-calculator/yearly/
+ Allow: /hourly-rates/
+ Allow: /salaries/
+ Allow: /net-worth/
+ Allow: /post/
+ Allow: /about/
+ 
+ User-agent: Bingbot
+ Allow: /
+ User-agent: Yandexbot
+ Allow: /
+ User-agent: Slurp
+ Allow: /
+ User-agent: Baiduspider
+ Allow: /
+ User-agent: DuckDuckBot
+ Allow: /
