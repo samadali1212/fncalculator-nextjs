@@ -125,77 +125,94 @@ const NetWorthDetail = () => {
             All Wealthy Individuals
           </Link>
           
-          <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
-            <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
-              <Avatar className="h-24 w-24 rounded-full border-2 border-gray-100 shadow-sm">
-                <AvatarImage src={person.imageUrl || "/placeholder.svg"} alt={person.name} />
-                <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-lg font-medium">
-                  {getInitials(person.name)}
-                </AvatarFallback>
-              </Avatar>
-              
-              <div className="flex-1">
-                <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-2">
-                  {person.name} Net Worth
-                </h1>
-                
-                <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] mb-3">
-                  <div className="flex items-center">
-                    <User className="h-4 w-4 mr-1 text-[#999]" />
-                    <span>{person.age} years old</span>
-                  </div>
-                  
-                  <div className="flex items-center">
-                    <MapPin className="h-4 w-4 mr-1 text-[#999]" />
-                    <span>{person.country}</span>
-                  </div>
-                  
-                  <div className="flex items-center">
-                    <Badge variant="outline" className="px-2 py-0 h-5 text-xs">
-                      {person.industry}
-                    </Badge>
-                  </div>
-                </div>
-                
-                <div className="text-xl font-semibold text-[#333]">
-                  {formatNetWorth(person.netWorth, person.currency)}
-                </div>
-                
-                <div className="flex items-center mt-1">
-                  <Calendar className="h-4 w-4 mr-1 text-[#999]" />
-                  <span className="text-xs text-gray-500">Updated: {person.lastUpdated}</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="border-t border-gray-100 pt-6 mb-6"></div>
-            
-            <div className="bg-gray-50 p-4 rounded-md mb-6">
-              <div className="grid md:grid-cols-3 gap-2">
-                <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
-                  <div className="text-gray-600 text-sm mb-1">Net Worth</div>
-                  <div className="text-xl font-bold">{formatNetWorth(person.netWorth, person.currency)}</div>
-                  <div className="text-gray-500 text-xs mt-1">Source: {person.source}</div>
-                </div>
-                <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
-                  <div className="text-gray-600 text-sm mb-1">Occupation</div>
-                  <div className="text-lg font-medium">{person.occupation}</div>
-                  <div className="text-gray-500 text-xs mt-1">{person.industry}</div>
-                </div>
-                <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
-                  <div className="text-gray-600 text-sm mb-1">Company</div>
-                  <div className="text-lg font-medium">{person.company || "Multiple Ventures"}</div>
-                  <div className="text-gray-500 text-xs mt-1">{person.country}</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="prose prose-sm sm:prose max-w-none mb-8">
-              <h2 className="text-xl font-semibold mb-3">About {person.name}</h2>
-              <p className="text-gray-700 leading-relaxed">
-                {person.description}
-              </p>
-            </div>
+<article className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-lg shadow-md mb-8">
+  {/* Header Section with Avatar and Primary Info */}
+  <div className="flex flex-col sm:flex-row gap-6 mb-8">
+    <div className="relative">
+      <Avatar className="h-28 w-28 rounded-full ring-4 ring-white shadow-lg">
+        <AvatarImage src={person.imageUrl || "/placeholder.svg"} alt={person.name} />
+        <AvatarFallback className="bg-blue-50 text-blue-700 text-xl font-medium">
+          {getInitials(person.name)}
+        </AvatarFallback>
+      </Avatar>
+      <div className="absolute bottom-0 right-0 bg-blue-500 text-white px-2 py-1 text-xs rounded-full font-semibold">
+        {person.industry}
+      </div>
+    </div>
+    
+    <div className="flex-1">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
+          {person.name}
+        </h1>
+        <div className="flex items-center bg-blue-50 px-3 py-1 rounded-md">
+          <span className="text-blue-600 font-bold mr-1">Net Worth:</span>
+          <span className="text-xl font-bold text-gray-800">{formatNetWorth(person.netWorth, person.currency)}</span>
+        </div>
+      </div>
+      
+      <div className="flex flex-wrap items-center gap-4 mt-3 text-sm text-gray-600">
+        <div className="flex items-center">
+          <User className="h-4 w-4 mr-1.5 text-blue-500" />
+          <span>{person.age} years old</span>
+        </div>
+        
+        <div className="flex items-center">
+          <MapPin className="h-4 w-4 mr-1.5 text-blue-500" />
+          <span>{person.country}</span>
+        </div>
+        
+        <div className="flex items-center">
+          <Calendar className="h-4 w-4 mr-1.5 text-blue-500" />
+          <span className="text-gray-500">Updated: {person.lastUpdated}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {/* Financial Info Cards */}
+  <div className="grid md:grid-cols-3 gap-4 mb-8">
+    <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100 transform transition-transform hover:shadow-md hover:-translate-y-1">
+      <div className="flex flex-col">
+        <span className="text-gray-500 text-sm uppercase tracking-wider mb-1">Net Worth</span>
+        <span className="text-2xl font-bold text-gray-800">{formatNetWorth(person.netWorth, person.currency)}</span>
+        <div className="mt-auto pt-2 flex items-center text-xs text-gray-500">
+          <span>Source: {person.source}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100 transform transition-transform hover:shadow-md hover:-translate-y-1">
+      <div className="flex flex-col">
+        <span className="text-gray-500 text-sm uppercase tracking-wider mb-1">Occupation</span>
+        <span className="text-xl font-semibold text-gray-800">{person.occupation}</span>
+        <div className="mt-auto pt-2 flex items-center text-xs text-gray-500">
+          <span>{person.industry}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-100 transform transition-transform hover:shadow-md hover:-translate-y-1">
+      <div className="flex flex-col">
+        <span className="text-gray-500 text-sm uppercase tracking-wider mb-1">Company</span>
+        <span className="text-xl font-semibold text-gray-800">{person.company || "Multiple Ventures"}</span>
+        <div className="mt-auto pt-2 flex items-center text-xs text-gray-500">
+          <span>{person.country}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {/* About Section */}
+  <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+    <h2 className="text-xl font-semibold text-gray-800 mb-3 flex items-center">
+      <span className="w-1.5 h-6 bg-blue-500 rounded-sm mr-2.5"></span>
+      About {person.name}
+    </h2>
+    <p className="text-gray-700 leading-relaxed">
+      {person.description}
+    </p>
+  </div>
             
             <div className="mb-8">
               <h3 className="font-semibold text-lg mb-3">Wealth Details</h3>
