@@ -125,67 +125,77 @@ const NetWorthDetail = () => {
             All Wealthy Individuals
           </Link>
           
-<article className="bg-white p-6 sm:p-8 rounded-lg shadow-sm mb-8">
-  {/* Header with Avatar and Primary Info */}
-  <div className="flex flex-col sm:flex-row items-start gap-6 mb-8">
-    <Avatar className="h-20 w-20 rounded-full border border-gray-100">
-      <AvatarImage src={person.imageUrl || "/placeholder.svg"} alt={person.name} />
-      <AvatarFallback className="bg-gray-50 text-gray-600 text-lg font-medium">
-        {getInitials(person.name)}
-      </AvatarFallback>
-    </Avatar>
-    
-    <div className="flex-1">
-      <h1 className="text-2xl font-semibold text-gray-800 mb-1">
-        {person.name}
-      </h1>
-      
-      <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-3">
-        <span>{person.age} years old</span>
-        <span>•</span>
-        <span>{person.country}</span>
-        <span>•</span>
-        <span className="text-gray-600">{person.industry}</span>
-      </div>
-      
-      <div className="text-xl font-medium text-gray-800">
-        {formatNetWorth(person.netWorth, person.currency)}
-      </div>
-      
-      <div className="text-xs text-gray-400 mt-1">
-        Updated: {person.lastUpdated}
-      </div>
-    </div>
-  </div>
-  
-  {/* Financial Info Cards - Minimalist Version */}
-  <div className="grid md:grid-cols-3 gap-6 mb-8">
-    <div className="bg-gray-50 p-5 rounded-lg">
-      <div className="text-xs uppercase tracking-wide text-gray-400 mb-2">Net Worth</div>
-      <div className="text-xl font-medium text-gray-800">{formatNetWorth(person.netWorth, person.currency)}</div>
-      <div className="text-xs text-gray-400 mt-2">Source: {person.source}</div>
-    </div>
-    
-    <div className="bg-gray-50 p-5 rounded-lg">
-      <div className="text-xs uppercase tracking-wide text-gray-400 mb-2">Occupation</div>
-      <div className="text-xl font-medium text-gray-800">{person.occupation}</div>
-      <div className="text-xs text-gray-400 mt-2">{person.industry}</div>
-    </div>
-    
-    <div className="bg-gray-50 p-5 rounded-lg">
-      <div className="text-xs uppercase tracking-wide text-gray-400 mb-2">Company</div>
-      <div className="text-xl font-medium text-gray-800">{person.company || "Multiple Ventures"}</div>
-      <div className="text-xs text-gray-400 mt-2">{person.country}</div>
-    </div>
-  </div>
-  
-  {/* About Section */}
-  <div className="mb-6">
-    <h2 className="text-lg font-medium text-gray-800 mb-3">About {person.name}</h2>
-    <p className="text-gray-600 leading-relaxed text-sm">
-      {person.description}
-    </p>
-  </div>
+          <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
+            <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
+              <Avatar className="h-24 w-24 rounded-full border-2 border-gray-100 shadow-sm">
+                <AvatarImage src={person.imageUrl || "/placeholder.svg"} alt={person.name} />
+                <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-lg font-medium">
+                  {getInitials(person.name)}
+                </AvatarFallback>
+              </Avatar>
+              
+              <div className="flex-1">
+                <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-2">
+                  {person.name} Net Worth
+                </h1>
+                
+                <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] mb-3">
+                  <div className="flex items-center">
+                    <User className="h-4 w-4 mr-1 text-[#999]" />
+                    <span>{person.age} years old</span>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <MapPin className="h-4 w-4 mr-1 text-[#999]" />
+                    <span>{person.country}</span>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <Badge variant="outline" className="px-2 py-0 h-5 text-xs">
+                      {person.industry}
+                    </Badge>
+                  </div>
+                </div>
+                
+                <div className="text-xl font-semibold text-[#333]">
+                  {formatNetWorth(person.netWorth, person.currency)}
+                </div>
+                
+                <div className="flex items-center mt-1">
+                  <Calendar className="h-4 w-4 mr-1 text-[#999]" />
+                  <span className="text-xs text-gray-500">Updated: {person.lastUpdated}</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="border-t border-gray-100 pt-6 mb-6"></div>
+            
+            <div className="bg-gray-50 p-4 rounded-md mb-6">
+              <div className="grid md:grid-cols-3 gap-2">
+                <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
+                  <div className="text-gray-600 text-sm mb-1">Net Worth</div>
+                  <div className="text-xl font-bold">{formatNetWorth(person.netWorth, person.currency)}</div>
+                  <div className="text-gray-500 text-xs mt-1">Source: {person.source}</div>
+                </div>
+                <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
+                  <div className="text-gray-600 text-sm mb-1">Occupation</div>
+                  <div className="text-lg font-medium">{person.occupation}</div>
+                  <div className="text-gray-500 text-xs mt-1">{person.industry}</div>
+                </div>
+                <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
+                  <div className="text-gray-600 text-sm mb-1">Company</div>
+                  <div className="text-lg font-medium">{person.company || "Multiple Ventures"}</div>
+                  <div className="text-gray-500 text-xs mt-1">{person.country}</div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="prose prose-sm sm:prose max-w-none mb-8">
+              <h2 className="text-xl font-semibold mb-3">About {person.name}</h2>
+              <p className="text-gray-700 leading-relaxed">
+                {person.description}
+              </p>
+            </div>
             
             <div className="mb-8">
               <h3 className="font-semibold text-lg mb-3">Wealth Details</h3>
