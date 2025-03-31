@@ -41,8 +41,8 @@ const Index = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="List Of The Richest People in South Africa - financepedia"
-        description="Get the latest list of the richest people in South Africa. Find their net worth and the industries behind their fortunes."
+        title="Latest Blog Posts From Financepedia"
+        description="Get all the latest blog posts and what is happening in South Africa right in front of your screen"
         canonicalUrl="/"
       />
       <Header />
