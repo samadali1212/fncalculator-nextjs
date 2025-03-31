@@ -610,4 +610,44 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
+    <url>
+    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-south-african-djs</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-south-african-rappers</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-football-clubs-in-south-africa</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-football-club-owners-in-south-africa</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-people-south-africa</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-artists-in-south-africa</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-woman-in-south-africa</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-actors-in-south-africa</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
