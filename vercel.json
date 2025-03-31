@@ -3,3 +3,43 @@
     {"source": "/(.*)", "destination": "/"}
 ]
 }
+
+{
+  "redirects": [
+    {
+      "source": "/richest-rappers-in-south-africa",
+      "destination": "/net-worth/category/richest-south-african-rappers",
+      "permanent": true
+    },
+    {
+      "source": "/richest-djs-in-south-africa",
+      "destination": "/net-worth/category/richest-south-african-djs",
+      "permanent": true
+    },
+    {
+      "source": "/richest-football-clubs-in-south-africa-2",
+      "destination": "/net-worth/category/richest-football-clubs-in-south-africa",
+      "permanent": true
+    },
+    {
+      "source": "/richest-man-in-south-africa",
+      "destination": "/net-worth/category/richest-people-south-africa",
+      "permanent": true
+    },
+    {
+      "source": "/richest-football-club-owners",
+      "destination": "/net-worth/category/richest-football-club-owners-in-south-africa",
+      "permanent": true
+    },
+    {
+      "source": "/richest-women-in-south-africa",
+      "destination": "/net-worth/category/richest-woman-in-south-africa",
+      "permanent": true
+    },
+    {
+      "source": "/richest-football-clubs-in-south-africa",
+      "destination": "/net-worth/category/richest-football-clubs-in-south-africa",
+      "permanent": true
+    }
+  ]
+}
