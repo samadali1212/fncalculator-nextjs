@@ -97,7 +97,7 @@ const HourlyRateDetail = () => {
   };
 
   // SEO title and description with rate specific information 
-  const seoTitle = `R${hourlyRate} Per Hour to Monthly Salary | financepedia`;
+  const seoTitle = `R${hourlyRate} Per Hour to Monthly Salary`;
   const seoDescription = `Convert R${hourlyRate} hourly rate to monthly salary (R${rateDetails?.monthlyEquivalent.toLocaleString().replace(/,/g, ' ')}) and yearly income in South Africa based on ${hoursPerWeek} hours per week.`;
   
   if (isLoading) {
