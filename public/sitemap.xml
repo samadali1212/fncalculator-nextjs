@@ -35,6 +35,8 @@
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
+ <?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://financepedia.co.za/net-worth/elon-musk</loc>
     <changefreq>daily</changefreq>
@@ -92,6 +94,11 @@
   </url>
   <url>
     <loc>https://financepedia.co.za/net-worth/desmond-sacco</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://financepedia.co.za/net-worth/rob-hersov</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -166,6 +173,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://financepedia.co.za/net-worth/robert-gumede</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://financepedia.co.za/net-worth/vivian-reddy</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -176,12 +188,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://financepedia.co.za/net-worth/moses-tembe</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://financepedia.co.za/net-worth/lindiwe-zulu</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://financepedia.co.za/net-worth/black-coffee</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://financepedia.co.za/net-worth/vusi-thembekwayo</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -201,7 +223,17 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://financepedia.co.za/net-worth/somizi-mhlongo</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://financepedia.co.za/net-worth/mamelodi-sundowns</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://financepedia.co.za/net-worth/peet-viljoen</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -426,6 +458,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://financepedia.co.za/net-worth/julius-malema</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://financepedia.co.za/net-worth/mamphela-ramphele</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -610,44 +647,5 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
-    <url>
-    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-south-african-djs</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-south-african-rappers</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-football-clubs-in-south-africa</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-football-club-owners-in-south-africa</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-people-south-africa</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-artists-in-south-africa</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-woman-in-south-africa</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://og-moneyworth.vercel.app/net-worth/category/richest-actors-in-south-africa</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
+</urlset>
 </urlset>
