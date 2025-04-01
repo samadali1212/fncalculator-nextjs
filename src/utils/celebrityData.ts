@@ -248,7 +248,7 @@ export const celebrities: Celebrity[] = [
     name: "Khuliso Mudau",
     slug: "khuliso-mudau",
     occupation: "Football Player",
-    salary: 30000,
+    salary: 300000,
     currency: "ZAR",
     imageUrl: "https://sundownsfc.co.za/wp-content/uploads/2020/12/Mudau-2.jpg",
     description: "Khuliso Mudau is a South African professional footballer who plays as a right-back for Mamelodi Sundowns FC and the South African national team. Currently regarded as one of the best right-backs in the league, Mudau signed for Mamelodi Sundowns in October 2020 on a five-year contract. Born on April 26, 1995, making him 30 years old in 2025, his estimated monthly salary is between R200,000 and R400,000. He is a key defender for both club and country.",
