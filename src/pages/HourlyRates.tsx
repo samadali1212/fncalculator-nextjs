@@ -54,7 +54,7 @@ const HourlyRates = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Hourly to Monthly Salary Converter | South Africa" 
+        title="Hourly to Monthly Salary Converter" 
         description="Convert hourly rates to monthly and yearly salaries in South Africa. Find out what your hourly rate means in terms of monthly and annual income."
         canonicalUrl="/hourly-rates"
       />
@@ -155,7 +155,7 @@ const HourlyRates = () => {
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} financepedia. All rights reserved.
+            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
           </p>
         </div>
       </footer>
