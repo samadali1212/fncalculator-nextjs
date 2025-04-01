@@ -225,8 +225,8 @@ const JobDetail = () => {
   // SEO title and description with job specific information
   const jobCategory = actualJobId ? getJobCategory(actualJobId) : "";
   const seoTitle = jobData 
-    ? `${jobTitle} Salary in South Africa (R${jobData.average.toLocaleString()})` 
-    : `${jobTitle} Salary in South Africa`;
+    ? `${jobTitle} Salary in South Africa (R${jobData.average.toLocaleString()}) | SalaryList` 
+    : `${jobTitle} Salary in South Africa | SalaryList`;
   const seoDescription = jobData 
     ? `${jobTitle} average salary in South Africa is R${jobData.average.toLocaleString()} per month. Explore salary ranges, requirements, and career insights for ${jobTitle} positions.`
     : `Explore salary information for ${jobTitle} positions in South Africa. Get insights on pay ranges, requirements, and career prospects.`;
@@ -566,7 +566,7 @@ const JobDetail = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} financepedia. All rights reserved.
+            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
           </p>
         </div>
       </footer>
@@ -579,4 +579,3 @@ export default JobDetail;
 const getArticle = (word: string): string => {
   return /^[aeiou]/i.test(word) ? "An" : "A";
 };
-

@@ -17,7 +17,7 @@ const Salaries = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="South African Salaries Guide" 
+        title="South African Salaries Guide | SalaryList" 
         description="Explore salary ranges for various jobs and professions in South Africa. Updated salary information to help with job searches and career planning."
         canonicalUrl="/salaries"
       />
@@ -55,7 +55,7 @@ const Salaries = () => {
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} financepedia. All rights reserved.
+            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
           </p>
         </div>
       </footer>

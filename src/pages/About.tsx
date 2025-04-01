@@ -11,8 +11,8 @@ const About = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="About Financepedia" 
-        description="Learn about Financepedia - your trusted source for financial insights in South Africa. Discover our mission to help South Africans make informed money decisions."
+        title="About SalaryList" 
+        description="Learn about SalaryList - your trusted source for salary insights in South Africa. Discover our mission to help South Africans make informed career and financial decisions."
         canonicalUrl="/about"
       />
       <Header />
@@ -44,7 +44,7 @@ const About = () => {
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} financepedia. All rights reserved.
+            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
           </p>
         </div>
       </footer>

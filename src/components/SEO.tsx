@@ -11,15 +11,15 @@ interface SEOProps {
 }
 
 const SEO = ({
-  title = "List Of The Richest People in South Africa - financepedia",
-  description = "Get the latest list of the richest people in South Africa. Find their net worth and the industries behind their fortunes.",
+  title = "SalaryList - South African Salary Guide & Career Information",
+  description = "Access South Africa's most comprehensive salary guide. Find average salaries by profession, hourly rates, tax information, and more to help with your career planning.",
   canonicalUrl,
-  ogImage = "/financepedia.webp", 
+  ogImage = "/SalaryList favicon.png", 
   ogType = "website",
   twitterCard = "summary_large_image"
 }: SEOProps) => {
-  const siteUrl = "https://financepedia.co.za";
-  const fullTitle = title.includes("financepedia") ? title : `${title} | financepedia`;
+  const siteUrl = "https://salarylist.co.za";
+  const fullTitle = title.includes("SalaryList") ? title : `${title} | SalaryList`;
   
   return (
     <Helmet>
@@ -29,11 +29,11 @@ const SEO = ({
       {canonicalUrl && <link rel="canonical" href={`${siteUrl}${canonicalUrl}`} />}
       
       {/* Favicon */}
-      <link rel="icon" href="/Money Worth Favicon.png" type="image/png" />
-      <link rel="apple-touch-icon" href="/Money Worth Favicon.png" />
+      <link rel="icon" href="/SalaryList favicon.png" type="image/png" />
+      <link rel="apple-touch-icon" href="/SalaryList favicon.png" />
       
       {/* OpenGraph Meta Tags */}
-      <meta property="og:site_name" content="financepedia" />
+      <meta property="og:site_name" content="SalaryList" />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
