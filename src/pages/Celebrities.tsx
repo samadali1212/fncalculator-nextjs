@@ -109,9 +109,9 @@ const Celebrities = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
           <div>
-            <h1 className="text-3xl font-bold mb-2">South African Celebrities' Salaries</h1>
+            <h1 className="text-3xl font-bold mb-2">Salaries of the Most Popular People in South Africa</h1>
             <p className="text-gray-600">
-              Explore the salaries of South Africa's most popular celebrities
+              Explore the earnings of South Africa’s most well-known personalities. From entertainers and athletes to business leaders and influencers, see how much the country’s top figures make and what contributes to their wealth.
             </p>
           </div>
         </div>
