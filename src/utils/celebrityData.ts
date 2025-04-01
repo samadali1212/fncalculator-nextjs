@@ -20,54 +20,6 @@ export interface Celebrity {
   categories: string[];
 }
 
-// Define Category interface
-export interface CelebrityCategory {
-  id: string;
-  title: string;
-  description: string;
-  slug: string;
-  imageUrl?: string;
-}
-
-// Categories for celebrities
-export const celebrityCategories: CelebrityCategory[] = [
-  {
-    id: uuidv4(),
-    title: "Football Players",
-    description: "The highest-paid football players in South Africa",
-    slug: "football-players",
-    imageUrl: "/placeholder.svg"
-  },
-  {
-    id: uuidv4(),
-    title: "Actors & Actresses",
-    description: "South Africa's top-paid actors and actresses",
-    slug: "actors-actresses",
-    imageUrl: "/placeholder.svg"
-  },
-  {
-    id: uuidv4(),
-    title: "Musicians",
-    description: "The most successful musicians in South Africa",
-    slug: "musicians",
-    imageUrl: "/placeholder.svg"
-  },
-  {
-    id: uuidv4(),
-    title: "TV Personalities",
-    description: "South Africa's highest-paid TV personalities",
-    slug: "tv-personalities",
-    imageUrl: "/placeholder.svg"
-  },
-  {
-    id: uuidv4(),
-    title: "Sports Stars",
-    description: "Top-earning sports stars in South Africa",
-    slug: "sports-stars",
-    imageUrl: "/placeholder.svg"
-  }
-];
-
 // Sample celebrity data
 export const celebrities: Celebrity[] = [
   {
@@ -257,25 +209,6 @@ export const formatSalary = (salary: number, currency: string) => {
 // Find a celebrity by slug
 export const findCelebrityBySlug = (slug: string): Celebrity | undefined => {
   return celebrities.find(celebrity => celebrity.slug === slug);
-};
-
-// Find category by slug
-export const findCategoryBySlug = (slug: string): CelebrityCategory | undefined => {
-  return celebrityCategories.find(category => category.slug === slug);
-};
-
-// Get category ID by slug
-export const getCategoryIdBySlug = (slug: string): string | undefined => {
-  const category = findCategoryBySlug(slug);
-  return category?.id;
-};
-
-// Get celebrities by category
-export const getCelebritiesByCategory = (categoryId: string): Celebrity[] => {
-  return celebrities.filter(celebrity => 
-    celebrity.categories.includes(categoryId) || 
-    celebrity.categories.includes(findCategoryBySlug(categoryId)?.slug || '')
-  );
 };
 
 // Get similar celebrities (same industry or similar salary)
