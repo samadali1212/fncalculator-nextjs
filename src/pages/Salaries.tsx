@@ -26,7 +26,7 @@ const Salaries = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <h1 className="text-3xl font-bold mb-6">South African Salaries Guide</h1>
                     <p className="text-gray-600">
-              This list covers average earnings across industries, factors influencing pay, and tips for negotiating better compensation. Stay informed about job market trends and see how your income compares to national standards.
+              This list covers average Salaries across industries, factors influencing pay, and tips for negotiating better compensation. Stay informed about job market trends and see how your income compares to national standards.
             </p>
         
         <motion.div 
