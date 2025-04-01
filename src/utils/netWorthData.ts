@@ -1991,23 +1991,6 @@ slug: "moses-tembe",
 categories: ["entrepreneurs", "business"]
 },
 {
-    id: "116",
-    name: "Vusi Thembekwayo",
-    netWorth: 37000000,
-    currency: "USD",
-    occupation: "Entrepreneur, Speaker, Author",
-    age: 39,
-    country: "South Africa",
-    industry: "Venture Capital, Business Consulting, Public Speaking",
-    company: "My Growth Fund, Motiv8 Advisory, Watermark Capital Partners",
-    description: "Vusi Thembekwayo is a dynamic entrepreneur and global speaker whose impact extends across venture capital, business strategy, and leadership development. With a net worth of $37 million, he has built a reputation as an influential thought leader through ventures like My Growth Fund, which supports small businesses, and Motiv8 Advisory, a consultancy specializing in business transformation. His expertise in investment and corporate restructuring has positioned him as a formidable force in private equity through Watermark Capital Partners. Beyond his business ventures, his commanding presence on global stages and best-selling books continue to shape the next generation of entrepreneurs.",
-    source: "Forbes Africa",
-    lastUpdated: "2025-04-01",
-    imageUrl: "https://assets.entrepreneur.com/content/1x1/300/20190311082210-Vusi-Thembekwayo.jpeg",
-    slug: "vusi-thembekwayo",
-    categories: ["entrepreneurs"]
-},
-{
     id: "117",
     name: "Rob Hersov",
     netWorth: 1038873448,
@@ -2090,6 +2073,23 @@ categories: ["entrepreneurs", "business"]
     lastUpdated: "2025-04-01",
     imageUrl: "https://pbs.twimg.com/profile_images/629344822332157952/9L9Gpnnl_400x400.png",
     slug: "peet-viljoen",
+    categories: ["entrepreneurs"]
+},
+{
+    id: "122",
+    name: "Vusi Thembekwayo",
+    netWorth: 37000000,
+    currency: "USD",
+    occupation: "Entrepreneur, Speaker, Author",
+    age: 39,
+    country: "South Africa",
+    industry: "Venture Capital, Business Consulting, Public Speaking",
+    company: "My Growth Fund, Motiv8 Advisory, Watermark Capital Partners",
+    description: "Vusi Thembekwayo is a dynamic entrepreneur and global speaker whose impact extends across venture capital, business strategy, and leadership development. With a net worth of $37 million, he has built a reputation as an influential thought leader through ventures like My Growth Fund, which supports small businesses, and Motiv8 Advisory, a consultancy specializing in business transformation. His expertise in investment and corporate restructuring has positioned him as a formidable force in private equity through Watermark Capital Partners. Beyond his business ventures, his commanding presence on global stages and best-selling books continue to shape the next generation of entrepreneurs.",
+    source: "Forbes Africa",
+    lastUpdated: "2025-04-01",
+    imageUrl: "https://assets.entrepreneur.com/content/1x1/300/20190311082210-Vusi-Thembekwayo.jpeg",
+    slug: "vusi-thembekwayo",
     categories: ["entrepreneurs"]
 }
 
