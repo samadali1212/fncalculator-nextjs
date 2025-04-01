@@ -11,7 +11,7 @@ interface SEOProps {
 }
 
 const SEO = ({
-  title = "SalaryList - South African Salary Guide & Career Information",
+  title = "South African Salary Guide & Career Information",
   description = "Access South Africa's most comprehensive salary guide. Find average salaries by profession, hourly rates, tax information, and more to help with your career planning.",
   canonicalUrl,
   ogImage = "/SalaryList favicon.png", 
