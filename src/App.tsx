@@ -6,9 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NetWorth from "./pages/NetWorth";
 import NetWorthDetail from "./pages/NetWorthDetail";
 import NetWorthCategory from "./pages/NetWorthCategory";
-import StandaloneCategories from "./pages/StandaloneCategories";
-import Index from "./pages/Index";
-import BlogPost from "./pages/BlogPost";
 import About from "./pages/About";
 import Salaries from "./pages/Salaries";
 import JobDetail from "./pages/JobDetail";
@@ -26,10 +23,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<NetWorth />} />
-          <Route path="/home" element={<Index />} />
-          <Route path="/post/:slug" element={<BlogPost />} />
           <Route path="/about" element={<About />} />
-          <Route path="/categories" element={<StandaloneCategories />} />
           <Route path="/salaries" element={<Salaries />} />
           <Route path="/salaries/:jobId" element={<JobDetail />} />
           <Route path="/hourly-rates" element={<HourlyRates />} />

@@ -28,11 +28,9 @@ const Header = () => {
 
   const menuItems = [
     { path: "/", label: "Net Worth" },
-    { path: "/categories", label: "Top 10" },
     { path: "/salaries", label: "Salaries" },
     { path: "/hourly-rates", label: "Hourly Rates" },
     { path: "/tax-calculator", label: "Tax Calculator" },
-    { path: "/home", label: "Blog" },
     { path: "/about", label: "About" },
   ];
 
