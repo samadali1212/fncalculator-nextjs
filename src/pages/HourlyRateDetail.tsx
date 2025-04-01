@@ -133,7 +133,7 @@ const HourlyRateDetail = () => {
   if (!rateDetails) {
     return (
       <div className="min-h-screen bg-[#f6f6f0] flex items-center justify-center">
-        <SEO title="Rate Not Found | financepedia" description="The hourly rate you're looking for doesn't exist or is invalid." canonicalUrl="/hourly-rates" />
+        <SEO title="Rate Not Found | SalaryList" description="The hourly rate you're looking for doesn't exist or is invalid." canonicalUrl="/hourly-rates" />
         <Card>
           <CardContent className="p-6">
             <p>Rate not found. Please try another rate.</p>
