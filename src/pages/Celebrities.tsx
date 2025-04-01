@@ -100,7 +100,7 @@ const Celebrities = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="South African Celebrities' Salaries - financepedia" 
+        title="South African Celebrities' Salaries" 
         description="Explore the salaries of South Africa's most popular celebrities. Updated information on earnings of actors, musicians, athletes, and more."
         canonicalUrl="/celebrities"
       />
