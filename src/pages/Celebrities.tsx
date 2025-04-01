@@ -114,6 +114,13 @@ const Celebrities = () => {
               Explore the earnings of South Africa’s most well-known personalities. From entertainers and athletes to business leaders and influencers, see how much the country’s top figures make and what contributes to their wealth.
             </p>
           </div>
+                    <Link 
+            to="/celebrities/category/sports-stars"
+            className="mt-4 md:mt-0 inline-flex items-center text-blog-accent hover:text-blog-accent-hover transition-colors"
+          >
+            <ListFilter className="h-4 w-4 mr-1.5" />
+            Sports Stars
+          </Link>
         </div>
         
         <motion.div 
