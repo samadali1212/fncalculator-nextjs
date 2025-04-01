@@ -25,6 +25,9 @@ const Salaries = () => {
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <h1 className="text-3xl font-bold mb-6">South African Salaries Guide</h1>
+                    <p className="text-gray-600">
+              Explore the salaries of South Africa's most popular celebrities
+            </p>
         
         <motion.div 
           className="mb-6"
