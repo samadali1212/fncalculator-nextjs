@@ -83,7 +83,7 @@ const TaxCalculator = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="2025/2026 SARS Income Tax Calculator | South Africa" 
+        title="2025/2026 SARS Income Tax Calculator in South Africa" 
         description="Calculate your take-home pay after PAYE tax in South Africa with our 2025/2026 SARS income tax calculator. Monthly and annual income tax calculations."
         canonicalUrl={`/tax-calculator${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
       />
@@ -229,7 +229,7 @@ const TaxCalculator = () => {
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} financepedia. All rights reserved.
+            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
           </p>
         </div>
       </footer>
