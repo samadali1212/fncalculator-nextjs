@@ -32,7 +32,7 @@ export interface CelebrityCategory {
 // Categories for celebrities
 export const celebrityCategories: CelebrityCategory[] = [
   {
-    id: uuidv4(),
+    id: uuidv4("football-players"),
     title: "Football Players",
     description: "The highest-paid football players in South Africa",
     slug: "football-players",
