@@ -17,7 +17,7 @@ const Salaries = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="South African Salaries Guide | SalaryList" 
+        title="South African Salaries Guide" 
         description="Explore salary ranges for various jobs and professions in South Africa. Updated salary information to help with job searches and career planning."
         canonicalUrl="/salaries"
       />
