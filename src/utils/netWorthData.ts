@@ -1282,7 +1282,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   netWorth: 1000000000,
   currency: "USD",
   occupation: "Pharmaceutical Executives",
-  age: "65",
+  age: 65,
   country: "South Africa",
   industry: "Pharmaceuticals",
   company: "Aspen Pharmacare",
