@@ -100,7 +100,7 @@ const NetWorth = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Richest People in South Africa - financepedia" 
+        title="Richest People in South Africa" 
         description="Explore the net worth of South Africa's richest individuals. Updated list of millionaires and billionaires with detailed wealth information."
         canonicalUrl="/net-worth"
       />
@@ -248,7 +248,7 @@ const NetWorth = () => {
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} financepedia. All rights reserved.
+            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
           </p>
         </div>
       </footer>
