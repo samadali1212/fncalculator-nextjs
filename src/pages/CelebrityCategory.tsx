@@ -23,29 +23,24 @@ import {
 import { 
   findCategoryBySlug, 
   getCategoryIdBySlug,
-  getPeopleByCategory,
-  formatNetWorth
-} from "../utils/netWorthData";
+  getCelebritiesByCategory,
+  formatSalary
+} from "../utils/celebrityData";
 
-const NetWorthCategory = () => {
+const CelebrityCategory = () => {
   const { slug } = useParams<{ slug: string }>();
-  const location = useLocation();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [itemsToShow, setItemsToShow] = useState(50);
-  const [sortField, setSortField] = useState<string>("netWorth");
-  
-  // For direct route access to insurance-executives
-  const isDirectAccess = location.pathname === "/insurance-executives";
-  const categorySlug = isDirectAccess ? "richest-insurance-executives" : slug;
+  const [sortField, setSortField] = useState<string>("salary");
   
   // Find category by slug
-  const category = categorySlug ? findCategoryBySlug(categorySlug) : undefined;
-  const categoryId = categorySlug ? getCategoryIdBySlug(categorySlug) : undefined;
+  const category = slug ? findCategoryBySlug(slug) : undefined;
+  const categoryId = slug ? getCategoryIdBySlug(slug) : undefined;
   
-  // Get people in this category
-  const [people, setPeople] = useState<any[]>([]);
+  // Get celebrities in this category
+  const [celebrities, setCelebrities] = useState<any[]>([]);
   
   useEffect(() => {
     // Simulate loading state for better UX
@@ -53,8 +48,8 @@ const NetWorthCategory = () => {
     
     const timer = setTimeout(() => {
       if (categoryId) {
-        const categoryPeople = getPeopleByCategory(categoryId);
-        setPeople(categoryPeople);
+        const categoryCelebrities = getCelebritiesByCategory(categoryId);
+        setCelebrities(categoryCelebrities);
       }
       setIsLoading(false);
     }, 300);
@@ -62,19 +57,19 @@ const NetWorthCategory = () => {
     return () => clearTimeout(timer);
   }, [categoryId]);
   
-  // Filter people based on search query
-  const filteredPeople = people.filter(person => {
+  // Filter celebrities based on search query
+  const filteredCelebrities = celebrities.filter(celebrity => {
     return searchQuery 
-      ? person.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-        person.company?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        person.industry.toLowerCase().includes(searchQuery.toLowerCase())
+      ? celebrity.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        celebrity.company?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        celebrity.industry.toLowerCase().includes(searchQuery.toLowerCase())
       : true;
   });
   
   // Sort by selected field (descending)
-  const sortedPeople = [...filteredPeople].sort((a, b) => {
-    if (sortField === "netWorth") {
-      return b.netWorth - a.netWorth;
+  const sortedCelebrities = [...filteredCelebrities].sort((a, b) => {
+    if (sortField === "salary") {
+      return b.salary - a.salary;
     } else if (sortField === "name") {
       return a.name.localeCompare(b.name);
     } else if (sortField === "company") {
@@ -86,8 +81,8 @@ const NetWorthCategory = () => {
   });
   
   // Paginate results
-  const displayedPeople = sortedPeople.slice(0, itemsToShow);
-  const hasMorePeople = displayedPeople.length < filteredPeople.length;
+  const displayedCelebrities = sortedCelebrities.slice(0, itemsToShow);
+  const hasMoreCelebrities = displayedCelebrities.length < filteredCelebrities.length;
   
   const loadMore = () => {
     setItemsToShow(prevItemsToShow => prevItemsToShow + 10);
@@ -122,8 +117,8 @@ const NetWorthCategory = () => {
         <div className="bg-white p-6 rounded-md shadow-sm">
           <h2 className="text-xl font-semibold mb-4">Category Not Found</h2>
           <p className="mb-4">The category you're looking for doesn't exist.</p>
-          <Button onClick={() => navigate('/categories')}>
-            All Categories
+          <Button onClick={() => navigate('/celebrities')}>
+            All Celebrities
           </Button>
         </div>
       </div>
@@ -137,24 +132,22 @@ const NetWorthCategory = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${category.title} | South Africa's Wealthiest`}
+        title={`${category.title} | South Africa's Celebrities`}
         description={category.description}
-        canonicalUrl={isDirectAccess ? "/insurance-executives" : `/net-worth/category/${slug}`}
+        canonicalUrl={`/celebrities/category/${slug}`}
       />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        {!isDirectAccess && (
-          <div className="mb-6">
-            <Link 
-              to="/categories"
-              className="inline-flex items-center text-sm text-[#000000] hover:underline"
-            >
-              <ChevronLeft className="h-4 w-4 mr-1" />
-              All Categories
-            </Link>
-          </div>
-        )}
+        <div className="mb-6">
+          <Link 
+            to="/celebrities"
+            className="inline-flex items-center text-sm text-[#000000] hover:underline"
+          >
+            <ChevronLeft className="h-4 w-4 mr-1" />
+            All Celebrities
+          </Link>
+        </div>
         
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
           <div>
@@ -163,16 +156,6 @@ const NetWorthCategory = () => {
               {category.description}
             </p>
           </div>
-          
-          {!isDirectAccess && (
-            <Link 
-              to="/categories"
-              className="mt-4 md:mt-0 inline-flex items-center text-blog-accent hover:text-blog-accent-hover transition-colors"
-            >
-              <ListFilter className="h-4 w-4 mr-1.5" />
-              Top 10
-            </Link>
-          )}
         </div>
         
         <motion.div 
@@ -203,7 +186,7 @@ const NetWorthCategory = () => {
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="netWorth">Sort by Net Worth</SelectItem>
+                <SelectItem value="salary">Sort by Salary</SelectItem>
                 <SelectItem value="name">Sort by Name</SelectItem>
                 <SelectItem value="company">Sort by Company</SelectItem>
               </SelectContent>
@@ -222,9 +205,9 @@ const NetWorthCategory = () => {
         )}
 
         <div className="bg-white rounded-sm shadow-sm border border-gray-200">
-          {filteredPeople.length === 0 ? (
+          {filteredCelebrities.length === 0 ? (
             <div className="p-6 text-center text-gray-500">
-              No individuals found matching "{searchQuery}"
+              No celebrities found matching "{searchQuery}"
             </div>
           ) : (
             <>
@@ -232,19 +215,19 @@ const NetWorthCategory = () => {
                 <div className="grid grid-cols-12 text-xs font-medium text-gray-600">
                   <div className="col-span-1">#</div>
                   <div className="col-span-5 md:col-span-4">Name</div>
-                  <div className="col-span-3 md:col-span-3">Net Worth</div>
+                  <div className="col-span-3 md:col-span-3">Salary</div>
                   <div className="hidden md:block md:col-span-2">Industry</div>
                   <div className="col-span-3 md:col-span-2">Company</div>
                 </div>
               </div>
               
-              {displayedPeople.map((person, index) => (
+              {displayedCelebrities.map((celebrity, index) => (
                 <motion.div 
-                  key={person.id}
+                  key={celebrity.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className={`group px-4 py-3 ${index !== displayedPeople.length - 1 ? 'border-b border-gray-100' : ''}`}
+                  className={`group px-4 py-3 ${index !== displayedCelebrities.length - 1 ? 'border-b border-gray-100' : ''}`}
                 >
                   <div className="grid grid-cols-12 items-center">
                     <div className="col-span-1 text-sm text-gray-500">
@@ -254,52 +237,45 @@ const NetWorthCategory = () => {
                     <div className="col-span-5 md:col-span-4">
                       <div className="flex items-center">
                         <Avatar className="h-8 w-8 mr-3">
-                          <AvatarImage src={person.imageUrl || "/placeholder.svg"} alt={person.name} />
+                          <AvatarImage src={celebrity.imageUrl || "/placeholder.svg"} alt={celebrity.name} />
                           <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
-                            {getInitials(person.name)}
+                            {getInitials(celebrity.name)}
                           </AvatarFallback>
                         </Avatar>
                         
                         <div>
                           <Link 
-                            to={`/net-worth/${person.slug}`}
+                            to={`/celebrities/${celebrity.slug}`}
                             className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                           >
-                            {person.name}
+                            {celebrity.name}
                             <ArrowUpRight 
                               className="h-3.5 w-3.5 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
                             />
                           </Link>
-                          <div className="text-xs text-gray-500">{person.occupation}</div>
+                          <div className="text-xs text-gray-500">{celebrity.occupation}</div>
                         </div>
                       </div>
                     </div>
                     
                     <div className="col-span-3 md:col-span-3">
-                      <span className="text-sm font-medium">{person.netWorth.toLocaleString('en-US', {
-                        style: 'currency',
-                        currency: person.currency,
-                        maximumFractionDigits: 1,
-                        minimumFractionDigits: 0,
-                        notation: 'compact',
-                        compactDisplay: 'short',
-                      })}</span>
+                      <span className="text-sm font-medium">{formatSalary(celebrity.salary, celebrity.currency)}</span>
                     </div>
                     
                     <div className="hidden md:block md:col-span-2">
                       <span className="px-1.5 py-0.5 bg-gray-100 rounded text-[#666] text-xs">
-                        {person.industry}
+                        {celebrity.industry}
                       </span>
                     </div>
                     
                     <div className="col-span-3 md:col-span-2">
-                      <span className="text-xs text-gray-600">{person.company || "—"}</span>
+                      <span className="text-xs text-gray-600">{celebrity.company || "—"}</span>
                     </div>
                   </div>
                 </motion.div>
               ))}
               
-              {hasMorePeople && (
+              {hasMoreCelebrities && (
                 <Pagination className="py-5">
                   <PaginationContent>
                     <PaginationItem className="w-full">
@@ -330,4 +306,4 @@ const NetWorthCategory = () => {
   );
 };
 
-export default NetWorthCategory;
+export default CelebrityCategory;
