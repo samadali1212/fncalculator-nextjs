@@ -13,10 +13,8 @@
  Allow: /hourly-rates/
  Allow: /salaries/
  Allow: /net-worth/
- Allow: /net-worth/category/
  Allow: /about/
  Allow: /celebrities/
- Allow: /celebrities/category/
  
  User-agent: Bingbot
  Allow: /
