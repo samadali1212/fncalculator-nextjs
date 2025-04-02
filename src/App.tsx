@@ -3,8 +3,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import NetWorth from "./pages/NetWorth";
-import NetWorthDetail from "./pages/NetWorthDetail";
 import About from "./pages/About";
 import Salaries from "./pages/Salaries";
 import JobDetail from "./pages/JobDetail";
@@ -35,8 +33,6 @@ const App = () => (
           <Route path="/tax-calculator/monthly/:incomeId" element={<TaxCalculationDetail />} />
           <Route path="/tax-calculator/yearly/:incomeId" element={<TaxCalculationDetail />} />
           <Route path="/tax-calculator/:incomeId" element={<TaxCalculationDetail />} />
-          <Route path="/net-worth" element={<NetWorth />} />
-          <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
           <Route path="/celebrities" element={<Celebrities />} />
           <Route path="/celebrities/:slug" element={<CelebrityDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

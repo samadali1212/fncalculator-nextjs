@@ -12,7 +12,6 @@
  Allow: /tax-calculator/yearly/
  Allow: /hourly-rates/
  Allow: /salaries/
- Allow: /net-worth/
  Allow: /about/
  Allow: /celebrities/
  
