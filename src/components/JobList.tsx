@@ -32,7 +32,7 @@ const getJobCategory = (jobTitle: string): string => {
   if (titleLower.includes("account") || titleLower.includes("financ") || titleLower.includes("bank") || titleLower.includes("tax")) {
     return "Finance";
   } else if (titleLower.includes("develop") || titleLower.includes("software") || titleLower.includes("programmer") || titleLower.includes("it ") || titleLower.includes("web") || titleLower.includes("data")) {
-    return "IT";
+    return "Tech";
   } else if (titleLower.includes("doctor") || titleLower.includes("nurse") || titleLower.includes("health") || titleLower.includes("medical") || titleLower.includes("pharma")) {
     return "Healthcare";
   } else if (titleLower.includes("teach") || titleLower.includes("educat") || titleLower.includes("professor") || titleLower.includes("lecturer")) {
@@ -43,6 +43,8 @@ const getJobCategory = (jobTitle: string): string => {
     return "Marketing";
   } else if (titleLower.includes("legal") || titleLower.includes("lawyer") || titleLower.includes("attorney") || titleLower.includes("advocate")) {
     return "Legal";
+  } else if (titleLower.includes("police") || titleLower.includes("officer") || titleLower.includes("security") || titleLower.includes("service") || titleLower.includes("fire") || titleLower.includes("protection")) {
+    return "Service";
   }
   
   // Default category for jobs that don't match specific keywords
