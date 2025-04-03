@@ -15,6 +15,14 @@ interface JobListProps {
   searchQuery: string;
 }
 
+// Function to properly capitalize job titles
+const capitalizeJobTitle = (title: string): string => {
+  return title
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
 const JobList = ({ searchQuery }: JobListProps) => {
   const salaryData = getSalaryData();
   const [itemsToShow, setItemsToShow] = useState(50);
@@ -24,7 +32,7 @@ const JobList = ({ searchQuery }: JobListProps) => {
     .filter(([_, value]) => value !== undefined) // Ensure no undefined values
     .map(([key, value]) => ({
       id: key,
-      title: key.replace(/_/g, " "),
+      title: capitalizeJobTitle(key.replace(/_/g, " ")), // Now properly capitalized
       slug: key.replace(/_/g, "-"), // Convert underscore to hyphens for URL
       salary: value.average,
       experience: value.experience,

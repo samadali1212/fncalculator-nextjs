@@ -196,6 +196,14 @@ const getRelatedJobs = (jobId: string, limit: number = 20): string[] => {
     .slice(0, limit);
 };
 
+// Function to properly capitalize job titles
+const capitalizeJobTitle = (title: string): string => {
+  return title
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
 const JobDetail = () => {
   const { jobId } = useParams<{ jobId: string }>();
   const navigate = useNavigate();
@@ -207,7 +215,10 @@ const JobDetail = () => {
   
   const salaryData = useMemo(() => getSalaryData(), []);
   const jobData = actualJobId && salaryData[actualJobId] ? salaryData[actualJobId] : null;
+  
+  // Get properly capitalized job title for display and SEO
   const jobTitle = actualJobId ? actualJobId.replace(/_/g, " ") : "";
+  const capitalizedJobTitle = capitalizeJobTitle(jobTitle);
   
   // Get related jobs, making sure to filter out any undefined salary data
   const relatedJobIds = actualJobId ? getRelatedJobs(actualJobId) : [];
@@ -215,21 +226,21 @@ const JobDetail = () => {
     .filter(id => salaryData[id] !== undefined) // Filter out any jobs that don't have data
     .map(id => ({
       id,
-      title: id.replace(/_/g, " "),
+      title: capitalizeJobTitle(id.replace(/_/g, " ")),
       slug: id.replace(/_/g, "-"), // Convert underscores to hyphens for URLs
       salary: salaryData[id].average,
       experience: salaryData[id].experience,
       education: salaryData[id].education
     }));
 
-  // SEO title and description with job specific information
+  // SEO title and description with properly capitalized job specific information
   const jobCategory = actualJobId ? getJobCategory(actualJobId) : "";
   const seoTitle = jobData 
-    ? `${jobTitle} Salary in South Africa (R${jobData.average.toLocaleString()}) | SalaryList` 
-    : `${jobTitle} Salary in South Africa | SalaryList`;
+    ? `${capitalizedJobTitle} Salary in South Africa (R${jobData.average.toLocaleString()}) | SalaryList` 
+    : `${capitalizedJobTitle} Salary in South Africa | SalaryList`;
   const seoDescription = jobData 
-    ? `${jobTitle} average salary in South Africa is R${jobData.average.toLocaleString()} per month. Explore salary ranges, requirements, and career insights for ${jobTitle} positions.`
-    : `Explore salary information for ${jobTitle} positions in South Africa. Get insights on pay ranges, requirements, and career prospects.`;
+    ? `${capitalizedJobTitle} average salary in South Africa is R${jobData.average.toLocaleString()} per month. Explore salary ranges, requirements, and career insights for ${capitalizedJobTitle} positions.`
+    : `Explore salary information for ${capitalizedJobTitle} positions in South Africa. Get insights on pay ranges, requirements, and career prospects.`;
   
   // Simulate loading from an API
   useEffect(() => {
@@ -299,9 +310,9 @@ const JobDetail = () => {
       ? `Working in major cities like Johannesburg or Cape Town can increase this salary by up to ${Math.round((jobData.location_factor - 1) * 100)}%.`
       : "This salary is relatively consistent across South Africa.";
     
-    const article = getArticle(jobTitle);
+    const article = getArticle(capitalizedJobTitle);
     
-    return `${article} ${jobTitle} in South Africa earns an average of ${avgSalary} ${periodText}. ${expDesc}. ${locationImpact} The salary range typically falls between ${displayValue(jobData.min)} and ${displayValue(jobData.max)} ${periodText}, depending on skills, certifications, and employer.`;
+    return `${article} ${capitalizedJobTitle} in South Africa earns an average of ${avgSalary} ${periodText}. ${expDesc}. ${locationImpact} The salary range typically falls between ${displayValue(jobData.min)} and ${displayValue(jobData.max)} ${periodText}, depending on skills, certifications, and employer.`;
   };
 
   if (isLoading) {
@@ -398,7 +409,7 @@ const JobDetail = () => {
           
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4 capitalize">
-              {jobTitle} Salary in South Africa
+              {capitalizedJobTitle} Salary in South Africa
             </h1>
             
             <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] mb-6 pb-6 border-b border-gray-200">
