@@ -13,7 +13,6 @@ import {
 
 interface JobListProps {
   searchQuery: string;
-  categoryFilter?: string;
 }
 
 // Function to properly capitalize job titles
@@ -24,64 +23,30 @@ const capitalizeJobTitle = (title: string): string => {
     .join(' ');
 };
 
-// Function to determine job category based on title or other criteria
-const getJobCategory = (jobTitle: string): string => {
-  const titleLower = jobTitle.toLowerCase();
-  
-  // Simple mapping based on keywords
-  if (titleLower.includes("account") || titleLower.includes("financ") || titleLower.includes("bank") || titleLower.includes("tax")) {
-    return "Finance";
-  } else if (titleLower.includes("develop") || titleLower.includes("software") || titleLower.includes("programmer") || titleLower.includes("it ") || titleLower.includes("web") || titleLower.includes("data")) {
-    return "Tech";
-  } else if (titleLower.includes("doctor") || titleLower.includes("nurse") || titleLower.includes("health") || titleLower.includes("medical") || titleLower.includes("pharma")) {
-    return "Healthcare";
-  } else if (titleLower.includes("teach") || titleLower.includes("educat") || titleLower.includes("professor") || titleLower.includes("lecturer")) {
-    return "Education";
-  } else if (titleLower.includes("engineer") || titleLower.includes("mechanic") || titleLower.includes("technician")) {
-    return "Engineering";
-  } else if (titleLower.includes("market") || titleLower.includes("sales") || titleLower.includes("advertising") || titleLower.includes("brand")) {
-    return "Marketing";
-  } else if (titleLower.includes("legal") || titleLower.includes("lawyer") || titleLower.includes("attorney") || titleLower.includes("advocate")) {
-    return "Legal";
-  } else if (titleLower.includes("police") || titleLower.includes("officer") || titleLower.includes("security") || titleLower.includes("service") || titleLower.includes("fire") || titleLower.includes("protection")) {
-    return "Service";
-  }
-  
-  // Default category for jobs that don't match specific keywords
-  return "Other";
-};
-
-const JobList = ({ searchQuery, categoryFilter = "All" }: JobListProps) => {
+const JobList = ({ searchQuery }: JobListProps) => {
   const salaryData = getSalaryData();
   const [itemsToShow, setItemsToShow] = useState(50);
   
   // Convert object to array of job entries, filtering out any undefined data
   const jobEntries = Object.entries(salaryData)
     .filter(([_, value]) => value !== undefined) // Ensure no undefined values
-    .map(([key, value]) => {
-      const title = capitalizeJobTitle(key.replace(/_/g, " "));
-      return {
-        id: key,
-        title: title,
-        slug: key.replace(/_/g, "-"), // Convert underscore to hyphens for URL
-        salary: value.average,
-        experience: value.experience,
-        education: value.education,
-        category: getJobCategory(title)
-      };
-    });
+    .map(([key, value]) => ({
+      id: key,
+      title: capitalizeJobTitle(key.replace(/_/g, " ")), // Now properly capitalized
+      slug: key.replace(/_/g, "-"), // Convert underscore to hyphens for URL
+      salary: value.average,
+      experience: value.experience,
+      education: value.education
+    }));
   
-  // Filter jobs based on search query and category
-  const filteredJobs = jobEntries.filter(job => {
-    const matchesSearch = !searchQuery || 
-      job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      job.experience.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      job.education.toLowerCase().includes(searchQuery.toLowerCase());
-      
-    const matchesCategory = categoryFilter === "All" || job.category === categoryFilter;
-    
-    return matchesSearch && matchesCategory;
-  });
+  // Filter jobs based on search query
+  const filteredJobs = searchQuery
+    ? jobEntries.filter(job => 
+        job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        job.experience.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        job.education.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : jobEntries;
 
   // Sort jobs alphabetically by title
   const sortedJobs = [...filteredJobs].sort((a, b) => {
@@ -99,9 +64,7 @@ const JobList = ({ searchQuery, categoryFilter = "All" }: JobListProps) => {
     <div className="bg-white rounded-sm shadow-sm border border-gray-200">
       {sortedJobs.length === 0 ? (
         <div className="p-6 text-center text-gray-500">
-          {searchQuery 
-            ? `No jobs found matching "${searchQuery}"${categoryFilter !== "All" ? ` in ${categoryFilter}` : ''}`
-            : categoryFilter !== "All" ? `No jobs found in ${categoryFilter}` : 'No jobs found'}
+          No jobs found matching "{searchQuery}"
         </div>
       ) : (
         <>
@@ -137,10 +100,6 @@ const JobList = ({ searchQuery, categoryFilter = "All" }: JobListProps) => {
                     <span className="mx-1">•</span>
                     <span className="px-1.5 py-0.5 bg-gray-100 rounded text-[#666] text-xs">
                       {job.education.split(" ")[0]}
-                    </span>
-                    <span className="mx-1">•</span>
-                    <span className="px-1.5 py-0.5 bg-blue-50 text-blue-700 rounded text-xs">
-                      {job.category}
                     </span>
                   </div>
                 </div>

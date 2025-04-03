@@ -5180,6 +5180,14 @@ export const getSalaryData = (): SalaryData => {
     education: "Relevant driver's license",
     location_factor: 1.3
   },
+  bus_driver: {
+    min: 13952,
+    average: 22231,
+    max: 35400,
+    experience: "mid",
+    education: "Professional driver's license, Training",
+    location_factor: 1.8
+  },
   petrol_attendant: {
     min: 4700,
     average: 5800,
