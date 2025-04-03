@@ -59,7 +59,6 @@ const Salaries = () => {
         >
           {/* Toggle filter - now positioned above the search bar */}
           <div className="mb-4 overflow-x-auto">
-            <p className="text-sm text-gray-500 mb-2">Filter by category:</p>
             <ToggleGroup 
               type="single" 
               value={selectedCategory} 
