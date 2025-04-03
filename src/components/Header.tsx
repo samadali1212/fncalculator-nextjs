@@ -47,7 +47,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-bold text-2xl">
-          <img src="/SalaryListlogo.png" alt="SalaryList Logo" className="h-6" />
+          <img src="/SalaryListlogo.png" alt="SalaryList Logo" className="h-4" />
         </Link>
 
         {/* Desktop Navigation */}
