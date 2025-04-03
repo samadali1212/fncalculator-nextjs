@@ -15,7 +15,7 @@ import {
 const jobCategories = [
   "All",
   "Finance",
-  "IT",
+  "Tech",
   "Healthcare",
   "Education",
   "Engineering",
