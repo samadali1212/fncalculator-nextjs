@@ -5027,6 +5027,342 @@ export const getSalaryData = (): SalaryData => {
     experience: "entry",
     education: "Bachelor's Degree in English, Journalism, or related",
     location_factor: 1.02
+  },
+  traffic_cop: {
+    min: 8550,
+    average: 18600,
+    max: 29600,
+    experience: "mid",
+    education: "High school diploma, Police training",
+    location_factor: 2
+  },
+  takealot_driver: {
+    min: 1100,
+    average: 12000,
+    max: 16200,
+    experience: "entry",
+    education: "Basic literacy, Valid driver's license",
+    location_factor: 1.5
+  },
+  police_saps: {
+    min: 8550,
+    average: 18600,
+    max: 29600,
+    experience: "entry",
+    education: "High school diploma, Police training",
+    location_factor: 0
+  },
+  eskom_ceo: {
+    min: 575000,
+    average: 586000,
+    max: 592000,
+    experience: "senior",
+    education: "Relevant Bachelor's degree, Extensive experience",
+    location_factor: 0.5
+  },
+  domestic_workers: {
+    min: 4433,
+    average: 7500,
+    max: 15000,
+    experience: "entry",
+    education: "No formal education required",
+    location_factor: 3
+  },
+  onelogix_driver: {
+    min: 14160,
+    average: 17080,
+    max: 23550,
+    experience: "entry",
+    education: "Basic literacy, Valid driver's license",
+    location_factor: 1.5
+  },
+  code_14_truck_driver: {
+    min: 9000,
+    average: 19676,
+    max: 65000,
+    experience: "mid",
+    education: "Code 14 driver's license",
+    location_factor: 1.8
+  },
+  long_distance_truck_driver: {
+    min: 12000,
+    average: 20000,
+    max: 37850,
+    experience: "mid",
+    education: "Relevant driver's license, Experience",
+    location_factor: 1.8
+  },
+  train_driver: {
+    min: 1585,
+    average: 28333,
+    max: 37850,
+    experience: "mid",
+    education: "Specialized training and certification",
+    location_factor: 1.2
+  },
+  minister_of_police: {
+    min: 200000,
+    average: 200136,
+    max: 300136,
+    experience: "senior",
+    education: "Relevant degree, Significant experience",
+    location_factor: 0
+  },
+  picup_driver: {
+    min: 12000,
+    average: 15600,
+    max: 20000,
+    experience: "entry",
+    education: "Basic literacy, Valid driver's license",
+    location_factor: 2
+  },
+  shoprite_truck_driver: {
+    min: 12000,
+    average: 20000,
+    max: 37850,
+    experience: "entry",
+    education: "Relevant driver's license",
+    location_factor: 0
+  },
+  soldier: {
+    min: 7000,
+    average: 23018,
+    max: 75000,
+    experience: "entry",
+    education: "High school diploma, Military training",
+    location_factor: 1
+  },
+  bolt_driver: {
+    min: 18900,
+    average: 30000,
+    max: 750000,
+    experience: "entry",
+    education: "Basic literacy, Valid driver's license",
+    location_factor: 2.5
+  },
+  green_beans_police: {
+    min: 8550,
+    average: 18600,
+    max: 29600,
+    experience: "entry",
+    education: "High school diploma, Police training",
+    location_factor: 2
+  },
+  metro_police: {
+    min: 8550,
+    average: 18600,
+    max: 29600,
+    experience: "entry",
+    education: "High school diploma, Metro Police training",
+    location_factor: 2.2
+  },
+  hawks_police: {
+    min: 8550,
+    average: 18600,
+    max: 29600,
+    experience: "senior",
+    education: "Law degree or equivalent, Extensive experience",
+    location_factor: 1
+  },
+  military_police: {
+    min: 26970,
+    average: 32199,
+    max: 75030,
+    experience: "entry",
+    education: "High school diploma, Military Police training",
+    location_factor: 1
+  },
+  sasol_truck_driver: {
+    min: 12000,
+    average: 20000,
+    max: 37850,
+    experience: "entry",
+    education: "Relevant driver's license",
+    location_factor: 1.3
+  },
+  bus_driver: {
+    min: 13952,
+    average: 22231,
+    max: 35400,
+    experience: "mid",
+    education: "Professional driver's license, Training",
+    location_factor: 1.8
+  },
+  petrol_attendant: {
+    min: 4700,
+    average: 5800,
+    max: 8700,
+    experience: "entry",
+    education: "Basic literacy",
+    location_factor: 1.2
+  },
+  emirates_flight_attendant: {
+    min: 13350,
+    average: 15075,
+    max: 17450,
+    experience: "entry",
+    education: "High school diploma",
+    location_factor: 0.8
+  },
+  airlink_flight_attendant: {
+    min: 13350,
+    average: 15075,
+    max: 17450,
+    experience: "entry",
+    education: "High school diploma",
+    location_factor: 1.5
+  },
+  sasol_petrol_attendant: {
+    min: 4700,
+    average: 5800,
+    max: 8700,
+    experience: "entry",
+    education: "Basic literacy",
+    location_factor: 1.2
+  },
+  mines_belt_attendant: {
+    min: 15000,
+    average: 17400,
+    max: 28000,
+    experience: "entry",
+    education: "Basic vocational training",
+    location_factor: 2
+  },
+  saa_flight_attendant: {
+    min: 13350,
+    average: 15075,
+    max: 17450,
+    experience: "entry",
+    education: "High school diploma",
+    location_factor: 1.5
+  },
+  sasol_garage_petrol_attendant: {
+    min: 4700,
+    average: 5800,
+    max: 8700,
+    experience: "entry",
+    education: "Basic literacy",
+    location_factor: 1.2
+  },
+  tshwane_metro_police: {
+    min: 8550,
+    average: 18600,
+    max: 29600,
+    experience: "entry",
+    education: "High school diploma, Metro Police training",
+    location_factor: 2.2
+  },
+  gauteng_traffic_police: {
+    min: 8550,
+    average: 18600,
+    max: 29600,
+    experience: "mid",
+    education: "High school diploma, Traffic Police training",
+    location_factor: 2.2
+  },
+  durban_metro_police: {
+    min: 8550,
+    average: 18600,
+    max: 29600,
+    experience: "entry",
+    education: "High school diploma, Metro Police training",
+    location_factor: 2.2
+  },
+  johannesburg_metro_police: {
+    min: 8550,
+    average: 18600,
+    max: 29600,
+    experience: "entry",
+    education: "High school diploma, Metro Police training",
+    location_factor: 2.2
+  },
+  ethekwini_metro_police: {
+    min: 8550,
+    average: 18600,
+    max: 29600,
+    experience: "entry",
+    education: "High school diploma, Metro Police training",
+    location_factor: 2.2
+  },
+  tactical_security_officer: {
+    min: 8550,
+    average: 23900,
+    max: 34300,
+    experience: "mid",
+    education: "Specialized security training",
+    location_factor: 2.5
+  },
+  chief_information_security_officer: {
+    min: 8550,
+    average: 18600,
+    max: 30600,
+    experience: "senior",
+    education: "Bachelor's degree in IT, Security certifications",
+    location_factor: 2.8
+  },
+  chief_security_officer: {
+    min: 6217,
+    average: 16500,
+    max: 25300,
+    experience: "senior",
+    education: "Bachelor's degree in Security Management",
+    location_factor: 2.8
+  },
+  private_security_officer: {
+    min: 6217,
+    average: 16500,
+    max: 25300,
+    experience: "entry",
+    education: "Basic security training",
+    location_factor: 2.5
+  },
+  nuclear_security_officer: {
+    min: 15000,
+    average: 23500,
+    max: 29160,
+    experience: "senior",
+    education: "Specialized training, Security clearances",
+    location_factor: 1.3
+  },
+  fidelity_security_officer: {
+    min: 6217,
+    average: 16500,
+    max: 25300,
+    experience: "entry",
+    education: "Basic security training",
+    location_factor: 2.5
+  },
+  flight_security_officer: {
+    min: 6217,
+    average: 16500,
+    max: 25300,
+    experience: "mid",
+    education: "Specialized aviation security training",
+    location_factor: 1.8
+  },
+  school_security_officer: {
+    min: 6217,
+    average: 16500,
+    max: 25300,
+    experience: "entry",
+    education: "Basic security training",
+    location_factor: 1.5
+  },
+  cruise_ship_security_officer: {
+    min: 6217,
+    average: 16500,
+    max: 25300,
+    experience: "entry",
+    education: "Basic security training",
+    location_factor: 0
+  },
+  grade_b_security: {
+    min: 6217,
+    average: 16500,
+    max: 25300,
+    experience: "entry",
+    education: "Basic security training",
+    location_factor: 2.5
   }
   };
 };
