@@ -312,7 +312,7 @@ const JobDetail = () => {
     
     const article = getArticle(capitalizedJobTitle);
     
-    return `${article} ${capitalizedJobTitle} in South Africa earns an average of ${avgSalary} ${periodText}. ${expDesc}. ${locationImpact} The salary range typically falls between ${displayValue(jobData.min)} and ${displayValue(jobData.max)} ${periodText}, depending on skills, certifications, and employer.`;
+    return `${article} ${capitalizedJobTitle} in South Africa earns an average salary of ${avgSalary} ${periodText}. ${expDesc}. ${locationImpact} The salary range typically falls between ${displayValue(jobData.min)} and ${displayValue(jobData.max)} ${periodText}, depending on skills, certifications, and employer.`;
   };
 
   if (isLoading) {
