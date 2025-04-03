@@ -34,7 +34,7 @@ const jobCategories: Record<string, string[]> = {
     "systems_administrator", "systems_analyst", "systems_developer",
     "systems_engineer", "test_analyst", "test_engineer", "tester",
     "ui_developer", "ux_and_ui", "ux_designer", "web_designer", "web_engineer",
-    "web_graphic_designer"
+    "web_graphic_designer", "chief_information_security_officer"
   ],
   "Finance": [
     "accountant", "financial_analyst", "bank_teller", "account_administrator",
@@ -72,7 +72,7 @@ const jobCategories: Record<string, string[]> = {
     "english_teacher", "english_tutor", "instructor", "lecturer", "professor",
     "school_principal", "trainer", "training_consultant", "training_coordinator",
     "training_facilitator", "training_manager", "training_officer",
-    "training_specialist", "tutor"
+    "training_specialist", "tutor", "school_security_officer"
   ],
   "Engineering": [
     "civil_engineer", "mechanical_engineer", "assistant_engineer", "automotive_engineer",
@@ -111,7 +111,7 @@ const jobCategories: Record<string, string[]> = {
     "relationship_manager", "restaurant_manager", "risk_manager", "safety_manager",
     "sales_manager", "senior_project_manager", "service_manager", "site_manager",
     "store_manager", "supply_chain_manager", "supply_manager", "tax_manager",
-    "team_leader", "unit_manager", "warehouse_manager"
+    "team_leader", "unit_manager", "warehouse_manager", "eskom_ceo", "minister_of_police", "chief_security_officer"
   ],
   "Creative": [
     "graphic_designer", "art_director", "artist", "author", "content_writer",
@@ -132,7 +132,7 @@ const jobCategories: Record<string, string[]> = {
   ],
   "Legal": [
     "attorney", "compliance_officer", "counsel", "lawyer", "legal_assistant",
-    "legal_counsel", "legal_secretary", "litigation_secretary", "paralegal"
+    "legal_counsel", "legal_secretary", "litigation_secretary", "paralegal", "hawks_police"
   ],
   "Service": [
     "chef", "admin_assistant", "administrative_assistant", "adviser", "advisor",
@@ -153,7 +153,7 @@ const jobCategories: Record<string, string[]> = {
     "shop_assistant", "social_worker", "stylist", "support_specialist",
     "support_technician", "taxi_driver", "technician", "therapist", "tour_guide",
     "trainer", "translator", "truck_driver", "waiter", "waitress", "warehouse_assistant",
-    "warehouse_man", "warehouse_supervisor", "warehouse_worker"
+    "warehouse_man", "warehouse_supervisor", "warehouse_worker", "traffic_cop", "takealot_driver", "police_saps", "domestic_workers", "onelogix_driver", "long_distance_truck_driver", "train_driver", "picup_driver", "shoprite_truck_driver", "soldier", "bolt_driver", "green_beans_police", "metro_police", "military_police", "bus_driver", "petrol_attendant", "emirates_flight_attendant", "airlink_flight_attendant", "sasol_petrol_attendant", "mines_belt_attendant", "saa_flight_attendant", "sasol_garage_petrol_attendant", "tshwane_metro_police", "gauteng_traffic_police", "durban_metro_police", "johannesburg_metro_police", "ethekwini_metro_police", "tactical_security_officer", "private_security_officer", "fidelity_security_officer", "flight_security_officer", "cruise_ship_security_officer", "grade_b_security"
   ],
   "Trades": [
     "electrician", "apprentice", "assembler", "auto_technician", "auto_tester",
@@ -169,7 +169,7 @@ const jobCategories: Record<string, string[]> = {
     "miner", "operator", "packer", "painter", "pastry_chef", "picker", "plumber",
     "police_officer", "porter", "rigger", "setter", "steel_fixer", "superintendent",
     "supervisor", "technician", "timberman", "truck_operator", "turner", "welder",
-    "winder"
+    "winder", "code_14_truck_driver", "sasol_truck_driver", "nuclear_security_officer"
   ]
 };
 
