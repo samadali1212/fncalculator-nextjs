@@ -6,9 +6,31 @@ import { Input } from "@/components/ui/input";
 import Header from "../components/Header";
 import JobList from "../components/JobList";
 import SEO from "../components/SEO";
+import { 
+  ToggleGroup, 
+  ToggleGroupItem 
+} from "@/components/ui/toggle-group";
+
+// Job categories for filtering
+const jobCategories = [
+  "All",
+  "Finance",
+  "IT",
+  "Healthcare",
+  "Education",
+  "Engineering",
+  "Marketing",
+  "Legal"
+];
 
 const Salaries = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  // Handle category selection
+  const handleCategoryChange = (value: string) => {
+    if (value) setSelectedCategory(value);
+  };
 
   return (
     <motion.div
@@ -25,9 +47,9 @@ const Salaries = () => {
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <h1 className="text-3xl font-bold mb-6">South African Salaries Guide</h1>
-                    <p className="text-gray-600">
-              This list covers average Salaries across industries, factors influencing pay, and tips for negotiating better compensation. Stay informed about job market trends and see how your income compares to national standards.
-            </p>
+        <p className="text-gray-600">
+          This list covers average Salaries across industries, factors influencing pay, and tips for negotiating better compensation. Stay informed about job market trends and see how your income compares to national standards.
+        </p>
         
         <motion.div 
           className="mb-6"
@@ -48,8 +70,28 @@ const Salaries = () => {
             />
           </div>
         </motion.div>
+        
+        <div className="mb-6 overflow-x-auto">
+          <ToggleGroup 
+            type="single" 
+            value={selectedCategory} 
+            onValueChange={handleCategoryChange}
+            className="flex space-x-2 pb-2"
+          >
+            {jobCategories.map((category) => (
+              <ToggleGroupItem 
+                key={category} 
+                value={category}
+                variant="outline"
+                className="text-sm whitespace-nowrap"
+              >
+                {category}
+              </ToggleGroupItem>
+            ))}
+          </ToggleGroup>
+        </div>
 
-        <JobList searchQuery={searchQuery} />
+        <JobList searchQuery={searchQuery} categoryFilter={selectedCategory} />
       </main>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
