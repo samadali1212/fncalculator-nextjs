@@ -20,7 +20,8 @@ const jobCategories = [
   "Education",
   "Engineering",
   "Marketing",
-  "Legal"
+  "Legal",
+  "Service"
 ];
 
 const Salaries = () => {
