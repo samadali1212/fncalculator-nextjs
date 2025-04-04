@@ -125,7 +125,7 @@ const CelebrityDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${celebrity.name} Salary Per Month At ${celebrity.company}- SalaryList`}
+        title={`${celebrity.name} Salary Per Month - SalaryList`}
         description={`${celebrity.name}'s estimated salary is ${formatSalary(celebrity.salary, celebrity.currency)}. Learn about their earnings, career, and ${celebrity.industry} ventures.`}
         canonicalUrl={`/celebrities/${celebrity.slug}`}
       />
