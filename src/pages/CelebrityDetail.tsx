@@ -36,6 +36,22 @@ const CelebrityDetail = () => {
     
     return () => clearTimeout(timer);
   }, [slug]);
+
+  // Generate SEO-friendly paragraph
+  const generateSEOParagraph = (celeb: Celebrity) => {
+    const age = celeb.age ? `${celeb.age}-year-old ` : '';
+    const industryPhrase = celeb.industry ? 
+      `in the ${celeb.industry} industry` : 
+      'across various industries';
+    const companyPhrase = celeb.company ? 
+      ` while working with ${celeb.company}` : 
+      '';
+    const countryPhrase = celeb.country ? 
+      ` in ${celeb.country}` : 
+      '';
+    
+    return `${celeb.name} is a ${age}${celeb.occupation} who earns an estimated ${formatSalary(celeb.salary, celeb.currency)} per year ${industryPhrase}${companyPhrase}${countryPhrase}. This salary information was last updated on ${celeb.lastUpdated} and is sourced from ${celeb.source}. Many people search for "${celeb.name} salary" to compare their earnings with this prominent figure in the ${celeb.industry} field. ${celeb.name}'s earnings reflect their success and status as a leading ${celeb.occupation}.`;
+  };
   
   if (isLoading) {
     return (
@@ -167,6 +183,13 @@ const CelebrityDetail = () => {
                   <span className="text-xs text-gray-500">Updated: {celebrity.lastUpdated}</span>
                 </div>
               </div>
+            </div>
+            
+            {/* SEO-friendly natural language paragraph */}
+            <div className="border-t border-gray-100 pt-6 mb-6">
+              <p className="text-gray-700 leading-relaxed">
+                {generateSEOParagraph(celebrity)}
+              </p>
             </div>
             
             <div className="border-t border-gray-100 pt-6 mb-6"></div>
