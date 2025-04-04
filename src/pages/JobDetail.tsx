@@ -462,7 +462,6 @@ const JobDetail = () => {
             </div>
             
             <div className="prose prose-sm sm:prose max-w-none mb-8">
-              <h2 className="text-xl font-semibold mb-3">Salary Overview</h2>
               <p className="text-gray-700 leading-relaxed">
                 {generateSalaryDescription()}
               </p>
