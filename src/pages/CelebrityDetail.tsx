@@ -50,7 +50,7 @@ const CelebrityDetail = () => {
       ` in ${celeb.country}` : 
       '';
     
-    return `${celeb.name} is a ${age}${celeb.occupation} who earns an estimated ${formatSalary(celeb.salary, celeb.currency)} per year ${industryPhrase}${companyPhrase}${countryPhrase}. This salary information was last updated on ${celeb.lastUpdated} and is sourced from ${celeb.source}. Many people search for "${celeb.name} salary" to compare their earnings with this prominent figure in the ${celeb.industry} field. ${celeb.name}'s earnings reflect their success and status as a leading ${celeb.occupation}.`;
+    return `${celeb.name} is a ${age}${celeb.occupation} who earns an estimated salary of R${celeb.salary} per year ${industryPhrase}${companyPhrase}${countryPhrase}. This salary information was last updated on ${celeb.lastUpdated} and is sourced from ${celeb.source}. Many people search for "${celeb.name} salary" to compare their earnings with this prominent figure in the ${celeb.industry} field. ${celeb.name}'s earnings reflect their success and status as a leading ${celeb.occupation}.`;
   };
   
   if (isLoading) {
