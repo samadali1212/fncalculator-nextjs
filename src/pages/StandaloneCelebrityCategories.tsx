@@ -80,7 +80,7 @@ const StandaloneCelebrityCategories = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Celebrity Rankings in South Africa" 
+        title="Rankings of The Highest Paid people in South Africa" 
         description="Explore South Africa's celebrities ranked by categories - from sports teams to TV presenters and musicians."
         canonicalUrl="/celebrity-categories"
       />
@@ -89,9 +89,9 @@ const StandaloneCelebrityCategories = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
           <div>
-            <h1 className="text-3xl font-bold mb-2">Celebrity Rankings in South Africa</h1>
+            <h1 className="text-3xl font-bold mb-2">Highest Paid people in South Africa</h1>
             <p className="text-gray-600">
-              Explore South Africa's celebrities organized by different categories
+              South Africa’s top earners command impressive figures across industries like mining, finance, sports, and entertainment. These individuals have leveraged skill, strategy, and opportunity to secure multi-million rand incomes. From CEOs of major corporations to global sports stars, their earnings reflect both their impact and demand in their respective fields.
             </p>
           </div>
           
