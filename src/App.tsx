@@ -16,6 +16,8 @@ import NetWorth from "./pages/NetWorth";
 import NetWorthDetail from "./pages/NetWorthDetail";
 import NetWorthCategory from "./pages/NetWorthCategory";
 import StandaloneCategories from "./pages/StandaloneCategories";
+import StandaloneCelebrityCategories from "./pages/StandaloneCelebrityCategories";
+import CelebrityCategory from "./pages/CelebrityCategory";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
@@ -39,6 +41,8 @@ const App = () => (
           <Route path="/tax-calculator/:incomeId" element={<TaxCalculationDetail />} />
           <Route path="/celebrities" element={<Celebrities />} />
           <Route path="/celebrities/:slug" element={<CelebrityDetail />} />
+          <Route path="/celebrity-categories" element={<StandaloneCelebrityCategories />} />
+          <Route path="/celebrities/category/:slug" element={<CelebrityCategory />} />
           <Route path="/net-worth" element={<NetWorth />} />
           <Route path="/categories" element={<StandaloneCategories />} />
           <Route path="/net-worth/:slug" element={<NetWorthDetail />} />

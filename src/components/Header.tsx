@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
@@ -29,8 +28,9 @@ const Header = () => {
   const menuItems = [
     { path: "/salaries", label: "Salaries" },
     { path: "/celebrities", label: "Celebrities" },
+    { path: "/celebrity-categories", label: "Celebrity Rankings" },
     { path: "/net-worth", label: "Net Worth" },
-    { path: "/categories", label: "Rankings" },
+    { path: "/categories", label: "Wealth Rankings" },
     { path: "/hourly-rates", label: "Hourly Rates" },
     { path: "/tax-calculator", label: "Tax Calculator" },
     { path: "/about", label: "About" },
