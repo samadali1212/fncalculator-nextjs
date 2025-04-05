@@ -24,7 +24,7 @@ const celebrityCategories: CelebrityCategory[] = [
     id: 2,
     title: "26 Highest Paid Players At Mamelodi Sundowns",
     slug: "highest-paid-players-at-mamelodi-sundowns",
-    description: "A list of the highest paid football players at Mamelodi Sundowns. When you talk about financial heavyweights in African football, Mamelodi Sundowns is inevitably part of the conversation. They are the undisputed powerhouse of recent South African football, collecting trophies with relentless consistency. Mamelodi Sundowns' era of dominance is fueled by incredible talent and significant investment. Curious about who commands the top salaries within this star-studded squad? We delve into the wage structure of the mighty 'Masandawana'.",
+    description: "A list of the highest paid football players at Mamelodi Sundowns. When you talk about financial heavyweights in African football, Mamelodi Sundowns is inevitably part of the conversation. They are the undisputed powerhouse of recent South African football, collecting trophies with relentless consistency. Mamelodi Sundowns' era of dominance is fueled by incredible talent and significant investment.",
     imageUrl: "https://sundownsfc.co.za/wp-content/uploads/2025/03/B25CASS0995-3.jpg",
     filter: (celebrity) => celebrity.company?.toLowerCase().includes("mamelodi sundowns")
   },
