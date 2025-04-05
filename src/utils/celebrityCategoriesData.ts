@@ -34,9 +34,13 @@ const celebrityCategories: CelebrityCategory[] = [
     slug: "highest-paid-football-players-in-south-africas-psl",
     description: "The South African Premier Soccer League stands as one of Africa's most prominent and financially robust leagues, attracting top talent with competitive salaries. The league’s top stars are cashing in with eye-watering salaries, making them some of the highest earners in African football. Here’s a breakdown of who’s topping the charts financially in the PSL.",
     imageUrl: "https://sundownsfc.co.za/wp-content/uploads/2024/12/Richards-Bay-Report.jpg",
-    filter: (celebrity) => celebrity.company?.toLowerCase().includes("mamelodi sundowns")
-              celebrity.occupation?.toLowerCase().includes("kaizer chiefs") ||
-              celebrity.occupation?.toLowerCase().includes("orlando pirates")
+    filter: (celebrity) => 
+      celebrity.industry?.toLowerCase() === "football" && 
+      celebrity.occupation?.toLowerCase().includes("player") && 
+      (celebrity.company?.toLowerCase().includes("premier league") || 
+       celebrity.company?.toLowerCase().includes("kaizer") || 
+       celebrity.company?.toLowerCase().includes("pirates") || 
+       celebrity.company?.toLowerCase().includes("sundowns"))
   },
   {
     id: 4,
