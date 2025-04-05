@@ -12,6 +12,10 @@ import TaxCalculator from "./pages/TaxCalculator";
 import TaxCalculationDetail from "./pages/TaxCalculationDetail";
 import Celebrities from "./pages/Celebrities";
 import CelebrityDetail from "./pages/CelebrityDetail";
+import NetWorth from "./pages/NetWorth";
+import NetWorthDetail from "./pages/NetWorthDetail";
+import NetWorthCategory from "./pages/NetWorthCategory";
+import StandaloneCategories from "./pages/StandaloneCategories";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
@@ -35,6 +39,10 @@ const App = () => (
           <Route path="/tax-calculator/:incomeId" element={<TaxCalculationDetail />} />
           <Route path="/celebrities" element={<Celebrities />} />
           <Route path="/celebrities/:slug" element={<CelebrityDetail />} />
+          <Route path="/net-worth" element={<NetWorth />} />
+          <Route path="/categories" element={<StandaloneCategories />} />
+          <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
+          <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
