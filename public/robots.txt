@@ -1,4 +1,3 @@
-
 # SalaryList Robots.txt
  User-agent: *
  Allow: /
@@ -14,7 +13,10 @@
  Allow: /salaries/
  Allow: /about/
  Allow: /celebrities/
- 
+ Allow: /celebrity-categories/
+ Allow: /net-worth/
+ Allow: /categories/
+
  User-agent: Bingbot
  Allow: /
  User-agent: Yandexbot
