@@ -44,7 +44,7 @@ const celebrityCategories: CelebrityCategory[] = [
   },
   {
     id: 4,
-    title: "27 Highest Paid Players At Orlando Pirates",
+    title: "26 Highest Paid Players At Orlando Pirates",
     slug: "highest-paid-players-at-orlando-pirates",
     description: "Highest paid football stars from Orlando Pirates FC in the Premier Soccer League. Big money moves and top-tier talent define Orlando Pirates’ current squad. With hefty paychecks to match their skill, some players are earning figures that turn heads both on and off the pitch. From veterans to rising stars, here’s a look at who’s banking the most at the Buccaneers.",
     imageUrl: "https://www.orlandopiratesfc.com/storage/2025/04/B25DAFRA2950-e1743545142948.jpg",
