@@ -16,7 +16,7 @@ const celebrityCategories: CelebrityCategory[] = [
     id: 1,
     title: "25 Highest Paid Players At Kaizer Chiefs",
     slug: "highest-paid-players-at-kaizer-chiefs",
-    description: "Top earning football players from Kaizer Chiefs, one of South Africa's most popular football clubs. Ever wondered which stars command the biggest paychecks at Naturena? We're pulling back the curtain to reveal the highest earners wearing the iconic Gold and Black",
+    description: "Top earning football players from Kaizer Chiefs, one of South Africa's most popular football clubs. Ever wondered which stars command the biggest paychecks at Naturena? We're pulling back the curtain to reveal the highest earners wearing the iconic Gold and Black.",
     imageUrl: "https://kcpub.azureedge.net/storage/uploads/public/67e/292/195/67e292195c72d356849357.jpg",
     filter: (celebrity) => celebrity.company?.toLowerCase().includes("kaizer chiefs")
   },
