@@ -360,7 +360,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-03",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -377,7 +377,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-04",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -394,7 +394,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-05",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -411,7 +411,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-06",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -428,7 +428,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-07",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -445,7 +445,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-08",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -462,7 +462,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-09",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -479,7 +479,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-10",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -496,7 +496,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-11",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -513,7 +513,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-12",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -530,7 +530,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-13",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -547,7 +547,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-14",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -564,7 +564,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-15",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -581,7 +581,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-16",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -598,7 +598,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-17",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -615,7 +615,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-18",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -632,7 +632,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-19",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -649,7 +649,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-20",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -666,7 +666,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-21",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -683,7 +683,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-22",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -700,7 +700,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-23",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -717,7 +717,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-24",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -734,7 +734,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-25",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -751,7 +751,7 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-26",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
   },
   {
     id: uuidv4(),
@@ -768,7 +768,449 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-27",
-    categories: ["football-players"]
+    categories: ["football-players", "kaizer-chiefs"]
+  },
+  {
+    id: uuidv4(),
+    name: "Nkosinathi Sibisi",
+    slug: "nkosinathi-sibisi",
+    occupation: "Football Player",
+    salary: 180000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/nkosinathi-sibisi-defender-home-headshot-2024-25-kit-brandon-barnard-photography-L1040420.png",
+    description: "Defender Nkosinathi Sibisi's reported R180,000 salary reflects his status as a key signing and a player fulfilling a lifelong dream. Arriving before the 2022/23 season, the former Golden Arrows stalwart brought over 100 games of top-flight experience. His robust defending style and fighting spirit are qualities Pirates clearly valued, warranting a significant wage. As a boyhood supporter aiming to emulate heroes like Mbulelo Mabizela, Sibisi's earnings align with the expectation that he will be a cornerstone of the defence and contribute significantly to the club's trophy ambitions for years to come.",
+    age: 29,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Tapelo Xoki",
+    slug: "tapelo-xoki",
+    occupation: "Football Player",
+    salary: 100000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/tapelo-xoki-defender-home-headshot-2024-25-kit-brandon-barnard-photography-L1040415.png",
+    description: "Tapelo Xoki's reported R100,000 salary aligns with the acquisition of a player known for his natural leadership qualities. Arriving after an eight-year stint at AmaZulu, where he often wore the captain's armband, Xoki brought proven PSL experience and defensive stability. His compensation reflects the value Pirates placed on securing not just a capable defender, but also a strong character and leader within the dressing room. Inspired by Thiago Silva, Xoki aims to leave a lasting mark, and his salary represents a solid investment in experience and leadership for the squad.",
+    age: 29,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Bandile Shandu",
+    slug: "bandile-shandu",
+    occupation: "Football Player",
+    salary: 200000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/bandile-shandu-defender-home-headshot-2024-25-kit-brandon-barnard-photography-L1040641.png",
+    description: "Utility player Bandile Shandu commands a respectable salary at R200,000, placing him in the upper tier of earners within the squad. This compensation acknowledges the extensive experience he brought upon arrival, having already played over 150 games for Maritzburg United. His versatility, allowing him to fill multiple roles effectively, makes him a valuable asset. The R200,000 figure signifies the club's investment in a proven, reliable performer capable of contributing significantly to maintaining the team's high standards and competitive edge across different competitions, justifying his substantial wage packet.",
+    age: 30,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Deon Hotto",
+    slug: "deon-hotto",
+    occupation: "Football Player",
+    salary: 500000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/deon-hotto-forward-home-headshot-2024-25-kit-brandon-barnard-photography-L1040498.png",
+    description: "Standing out significantly on the wage bill is Namibian international Deon Hotto, reportedly earning R500,000. This figure places him firmly among the club's top earners, a reflection of his established quality and importance. Joining in 2020, the dynamic winger brought international experience and a proven track record in the PSL. His high salary underscores the investment Pirates made to secure a player known for his persistence and ability to influence games, expecting him to play a key role in competing for silverware, much like his idol Ryan Giggs did for Manchester United.",
+    age: 34,
+    country: "Namibian",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Innocent Maela",
+    slug: "innocent-maela",
+    occupation: "Football Player",
+    salary: 150000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/innocent-maela-defender-home-headshot-2024-25-kit-brandon-barnard-photography-L1040596.png",
+    description: "As a product of the Orlando Pirates Youth Development system, Innocent Maela's R150,000 salary represents a solid investment in homegrown talent combined with proven leadership. Having successfully captained Thanda Royal Zulu during a loan spell, he returned with valuable experience. His compensation reflects his role as a reliable defender and a figure who understands the club's culture deeply. Maela aims to win trophies for the fans, and his earnings signify his importance within the squad structure as an established player hoping his performances also secure national team recognition.",
+    age: 32,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Thabiso Monyane",
+    slug: "thabiso-monyane",
+    occupation: "Football Player",
+    salary: 50000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/thabiso-monyane-defender-home-headshot-2024-25-kit-brandon-barnard-photography-L1040601-op.webp",
+    description: "As a young product of the Orlando Pirates Development program, Thabiso Monyane's reported R50,000 salary is indicative of his status as an emerging talent. Breaking into the first team at 19, his earnings reflect his developmental stage rather than peak market value. This wage structure is common for young players proving their worth. His focus on improving with each game aligns with this, suggesting his salary represents the club nurturing homegrown talent, providing opportunities based on potential, with the expectation of growth in both performance and future earning power.",
+    age: 24,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Olisa Ndah",
+    slug: "olisa-ndah",
+    occupation: "Football Player",
+    salary: 107000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/olisa-ndah-defender-home-headshot-2024-25-kit-brandon-barnard-photography-L1040392.png",
+    description: "Nigerian international Olisa Ndah joined Pirates with a league title under his belt from Akwa United, commanding a salary reported at R107,000. This figure signifies the club's investment in securing a promising, internationally recognised defender. Having represented Nigeria at U23 and senior levels, Ndah brought potential and proven ability. His earnings reflect the value placed on strengthening the defence with relatively young talent possessing international experience. The club secured a player aiming to make his mark in South Africa, justifying a competitive salary within the Pirates' wage structure.",
+    age: 27,
+    country: "Nigerian",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Ndabayithethwa Ndlondlo",
+    slug: "phillip-ndlondlo",
+    occupation: "Football Player",
+    salary: 80000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/ndabayithetwa-ndlondlo-midfielder-home-headshot-2024-25-kit-brandon-barnard-photography-L1040624.png",
+    description: "Secured after a standout season with Marumo Gallants, Ndabayithethwa Ndlondlo's R80,000 salary might be seen as a shrewd investment by Pirates. Despite being highly sought-after, his reported wage isn't among the highest, suggesting the club possibly acquired his versatile midfield talents and high work rate at good value. Known for his stocky build and never-say-die attitude, Ndlondlo provides energy and adaptability. His earnings reflect the club securing a player with significant potential impact without necessarily breaking the bank, adding depth and dynamism to the midfield options available.",
+    age: 29,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Miguel Timm",
+    slug: "miguel-timm",
+    occupation: "Football Player",
+    salary: 120000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/miguel-timm-midfielder-home-headshot-2024-25-kit-brandon-barnard-photography-L1040839.png",
+    description: "Miguel Timm’s return to Orlando Pirates, where his football journey began, came with a reported salary of R120,000. This figure represents the value placed on his extensive midfield experience, gathered across South Africa and even internationally in the United States. His journey coming full circle adds a narrative element, but his compensation is primarily based on his proven abilities and tactical understanding. Timm sees representing the badge as 'bigger than the athlete,' and his salary reflects the club securing a mature, dedicated professional committed to driving the team towards collecting more silverware.",
+    age: 33,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Mkhehleni Makhaula",
+    slug: "mkhehleni-makhaula",
+    occupation: "Football Player",
+    salary: 30000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/makhehlene-makhaula-midfielder-home-headshot-2024-25-kit-brandon-barnard-photography-L1040579.png",
+    description: "Veteran midfielder Mkhehleni Makhaula, earning a reported R30,000, represents a different kind of value proposition within the squad's wage structure. While his salary sits at the lower end, he brings significant experience from stints at Free State Stars, Highlands Park, and AmaZulu. Signed mid-season in 2022/23, his compensation might reflect his age (35) or the nature of the deal, but Pirates secured valuable leadership and a combative style economically. His earnings demonstrate that squad building involves balancing high-cost stars with experienced heads secured at more modest figures.",
+    age: 35,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Patrick Maswanganyi",
+    slug: "patrick-maswanganyi",
+    occupation: "Football Player",
+    salary: 250000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/patrick-maswanganyi-forward-home-headshot-2024-25-kit-brandon-barnard-photography-L1040610.png",
+    description: "Patrick 'Tito' Maswanganyi quickly established himself as a fan favourite, and his reported R250,000 salary places him among Orlando Pirates' top earners. This substantial figure reflects the impact he made after joining from SuperSport United, following formative years in Portugal. His creativity and technical skill, reminiscent of his idol Teko Modise, clearly impressed the club. Maswanganyi's significant earnings underscore the investment made to secure a player seen as pivotal to the team's attacking ambitions, justifying the outlay through consistent, eye-catching performances in the middle of the park.",
+    age: 27,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Kabelo Dlamini",
+    slug: "kabelo-dlamini",
+    occupation: "Football Player",
+    salary: 80000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/kabelo-dlamini-forward-home-headshot-2024-25-kit-brandon-barnard-photography-L1040620.png",
+    description: "Affectionately known as 'Shuffle,' Kabelo Dlamini earns a reported R80,000, reflecting his role as a creative spark within the Orlando Pirates squad. Having caught the eye while at Bloemfontein Celtic, his salary represents the club securing a player hoped to contribute significantly to the team's attacking flair and trophy ambitions. While not among the highest earners, his compensation is solid for a player valued for his technical ability and capacity to unlock defences. Dlamini provides valuable depth and creativity in the final third for the Buccaneers' setup.",
+    age: 28,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Karim Kimvuidi",
+    slug: "karim-kimvuidi",
+    occupation: "Football Player",
+    salary: 150000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/karim-kimvuidi-midfielder-home-headshot-2024-25-kit-brandon-barnard-photography-L1040653-op.webp",
+    description: "Hailing from the DRC, Karim Kimvuidi's arrival came with considerable buzz, reflected in his reported R150,000 salary. This places him in a solid earning bracket, indicative of Pirates securing 'hot property' after his strong showings for Maritzburg United. The club acted swiftly to bring the midfielder to Soweto, and his compensation signifies the value placed on his potential and demonstrated skill. It's an investment in a young, dynamic international talent expected to stamp his mark further and play a key role in the Buccaneers' quest for honours.",
+    age: 23,
+    country: "DR Congo",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Thalente Mbatha",
+    slug: "thalente-mbatha",
+    occupation: "Football Player",
+    salary: 120000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/thalente-mbatha-midfielder-home-headshot-2024-25-kit-brandon-barnard-photography-L1040808.png",
+    description: "The stylish midfielder Thalente Mbatha described his 2024 move to Orlando Pirates as a 'dream come true,' accompanied by a reported salary of R120,000. This places him comfortably in the mid-tier earning range, reflecting the club's investment in his polished skills honed at Highlands Park and SuperSport United. Hailing from KwaMashu, Mbatha's compensation signifies Pirates securing a player with potential and top-flight experience to bolster their midfield stocks. His earnings match the expectation that he will continue developing and contribute significantly to the team's engine room creativity and control.",
+    age: 25,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Selaelo Rasebotja",
+    slug: "selaelo-rasebotja",
+    occupation: "Football Player",
+    salary: 60000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/08/selaelo-rasebotja-midfielder-home-headshot-2024-25-kit-brandon-barnard-photography-L1040823.png",
+    description: "Joining Orlando Pirates in 2024 from SuperSport United, midfielder Selaelo Rasebotja commands a reported salary of R60,000. This figure places him in the developmental bracket of the squad's wage structure. As a young player making a switch between major clubs, his earnings reflect an investment in his potential future contributions rather than established stardom. The Mokopane-born player aims to contribute to league and CAF Champions League success, and his current salary represents the starting point for a player looking to grow and establish himself at the Soweto Giants.",
+    age: 23,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Relebohile Mofokeng",
+    slug: "relebohile-mofokeng",
+    occupation: "Football Player",
+    salary: 90000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/relebohile-mofokeng-forward-home-headshot-2024-25-kit-brandon-barnard-photography-L1040612.png",
+    description: "Teen sensation Relebohile Mofokeng's rapid ascent is mirrored in his reported R90,000 salary – a significant sum for a player so young. Making his first-team debut shortly after impressing in the Diski Challenge highlights his phenomenal talent. This wage, while not topping the charts, is substantial for a developing player and underlines how highly Pirates rates the Sharpeville-born forward. It represents a major investment in his potential, acknowledging his immediate impact and marking him as a key future asset expected to shine on domestic and continental stages for years.",
+    age: 20,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Tshegofatso Mabasa",
+    slug: "tshegofatso-mabasa",
+    occupation: "Football Player",
+    salary: 120000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/tshegofatso-mabasa-forward-home-headshot-2024-25-kit-brandon-barnard-photography-L1040831.png",
+    description: "Striker Tshegofatso Mabasa's journey with Pirates includes loan spells, but his return saw him command a respectable R120,000 salary. This figure acknowledges his natural goal-scoring instincts, evident since his Bloemfontein Celtic days. For Pirates, bringing him back and assigning this wage reflects renewed faith in his ability to find the net consistently. Supporting the club as a youngster, Mabasa's earnings represent the value placed on a proven finisher within the squad, tasked with delivering goals and spearheading the attack, justifying his place among the well-compensated players.",
+    age: 28,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Mohau Nkota",
+    slug: "mohau-nkota",
+    occupation: "Football Player",
+    salary: 70000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/09/mohau-nkota-forward-home-headshot-2024-25-kit-brandon-barnard-photography-L1040357.png",
+    description: "Mohau Nkota, earning a reported R70,000, is another example of Orlando Pirates investing in youth potential emerging from their structures. His journey from Kimberly culminated in eye-catching Diski Challenge performances that earned him a first-team spot. His current salary reflects his status as a promising young player transitioning to senior football. Living by 'If you believe, you will achieve,' Nkota's earnings represent the club providing a platform and initial reward for his talent, with the expectation of growth as he gains experience and contributes towards collecting silverware.",
+    age: 20,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Boitumelo Radiopane",
+    slug: "boitumelo-radiopane",
+    occupation: "Football Player",
+    salary: 50000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/09/boitumelo-radiopane-forward-home-headshot-2024-25-kit-brandon-barnard-photography-L1040821.png",
+    description: "Striker Boitumelo Radiopane's reported R50,000 salary aligns with his status as a highly-regarded youth product stepping into the senior setup. Despite his accolades at the DStv Diski Challenge level – including a Golden Boot and Player of the Season award – his first-team earnings reflect the need to translate that potential into consistent senior performance. His wage is typical for a young player promoted based on promise, offering him the opportunity to prove his worth and earn higher honours (and likely salary increases) through future contributions to the first team's success.",
+    age: 23,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Monnapule Saleng",
+    slug: "monnapule-saleng",
+    occupation: "Football Player",
+    salary: 265000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/08/monnapule-saleng-headshot-opfc.png",
+    description: "Monnapule Saleng sits comfortably near the apex of the Pirates' pay scale with a reported R265,000 salary. This significant earning reflects his explosive impact and journey. After impressing in the lower tier and joining Pirates, a successful loan spell at Swallows proved his top-flight readiness. His subsequent performances, marked by skill reminiscent of his idol Arjen Robben, have made him a key attacking threat. His high wage is a clear indicator of his status as one of the team's most valuable players, rewarded for his game-changing abilities and crucial contributions.",
+    age: 27,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Zakhele Lepasa",
+    slug: "zakhele-lepasa",
+    occupation: "Football Player",
+    salary: 150000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/zakhele-lepasa-forward-home-headshot-2024-25-kit-brandon-barnard-photography-L1040633.png",
+    description: "Zakhele Lepasa, a product of the Buccaneers' own development system, earns a solid R150,000. This respectable salary acknowledges his journey through the ranks, including proving his goal-scoring prowess during loan spells – notably finishing as Nedbank Cup top scorer with TS Galaxy. Having established himself as a regular Bafana Bafana international, Lepasa's compensation reflects his recognized ability to find the net and his value as a homegrown talent who successfully made the leap to the first team, contributing significantly to the club's attacking options over the years.",
+    age: 28,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Evidence Makgopa",
+    slug: "evidence-makgopa",
+    occupation: "Football Player",
+    salary: 200000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/evidence-makgopa-defender-home-headshot-2024-25-kit-brandon-barnard-photography-L1040402.png",
+    description: "Striker Evidence Makgopa commands a significant salary, reported at R200,000, placing him among the higher earners at Orlando Pirates. This substantial wage reflects the club's investment in securing a player who had already earned Bafana Bafana caps and shown immense promise after converting from a defender. His goal-scoring exploits for Baroka and the national team justified the move. Makgopa's earnings underscore his status as a key attacking asset, with Pirates banking on his talent, potential, and international experience to deliver goals and lead the line effectively for the Soweto giants.",
+    age: 24,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Paseka Mako",
+    slug: "paseka-mako",
+    occupation: "Football Player",
+    salary: 80000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/paseka-mako-defender-home-headshot-2024-25-kit-brandon-barnard-photography-L1040650.png",
+    description: "Versatile defender Paseka Mako earns a reported R80,000, a mid-range salary reflecting his role as a reliable squad member since joining in 2018. His journey saw him pass through Mamelodi Sundowns' academy and gain experience at Cape Town All Stars and Chippa United before arriving at Pirates. Mako's earnings represent the value placed on his consistency, adaptability (often playing left-back or wing-back), and experience in the PSL. He provides dependable depth and tactical flexibility for the team without commanding the wages of the absolute top earners on the squad list.",
+    age: 30,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Sipho Chaine",
+    slug: "sipho-chaine",
+    occupation: "Football Player",
+    salary: 75000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/sipho-chaine-goalkeeper-home-headshot-2024-25-kit-brandon-barnard-photography-L1040806-1.png",
+    description: "Goalkeeper Sipho Chaine was brought into the squad earning a reported R75,000. This salary reflects his role in bolstering the goalkeeping department with valuable Premiership experience gained at clubs like Bloemfontein Celtic, Royal AM, and Chippa United. While not positioned at the top end of the pay scale, his earnings signify the club securing necessary depth and competition between the sticks. Chaine provides experienced cover and challenges for the starting spot, representing a practical investment to ensure the team is well-covered in a crucial position on the field.",
+    age: 29,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Melusi Buthelezi",
+    slug: "melusi-buthelezi",
+    occupation: "Football Player",
+    salary: 50000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/melusi-buthelezi-goalkeeper-home-headshot-2024-25-kit-brandon-barnard-photography-L1040805.png",
+    description: "Melusi Buthelezi joined Orlando Pirates with a burgeoning reputation, reflected in a reported salary of R50,000. Despite this placing him lower on the overall wage scale, it signifies Pirates potentially securing excellent value. Buthelezi's sharp career rise included becoming first-choice at TS Galaxy and earning a Bafana Bafana call-up. His signing bolsters the goalkeeping ranks significantly, adding stiff competition. His modest salary might reflect a strategic acquisition, securing a talented, capped goalkeeper entering his prime without a massive initial financial outlay by the club’s management team.",
+    age: 27,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
+  },
+  {
+    id: uuidv4(),
+    name: "Siyabonga Dladla",
+    slug: "siyabonga-dladla",
+    occupation: "Football Player",
+    salary: 30000,
+    currency: "ZAR",
+    imageUrl: "https://www.orlandopiratesfc.com/storage/2024/08/siyabonga-dladla-goalkeeper-home-headshot-2024-25-kit-brandon-barnard-photography-L1040817.png",
+    description: "As a young goalkeeper recently promoted from the youth structures ahead of the 2024/25 season, Siyabonga Dladla sits at the entry level of the first-team pay scale with a reported R30,000. This salary is typical for a player making the transition from development football to the senior professional environment. It represents the opportunity given by the Soweto Giants to showcase his talent and grow. His earnings reflect his current status based purely on potential, providing a starting point from which he can aim to build his career and increase his value.",
+    age: 24,
+    country: "South African",
+    company: "Orlando Pirates",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-06",
+    categories: ["football-players", "orlando pirates"]
   }
 
 ];
