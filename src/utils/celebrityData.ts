@@ -486,7 +486,7 @@ export const celebrities: Celebrity[] = [
     name: "Thabo Cele",
     slug: "thabo-cele",
     occupation: "Football Player",
-    salary: 120000,
+    salary: 480000,
     currency: "ZAR",
     imageUrl: "https://kcpub.azureedge.net/storage/images/players/Thabo%20Cele.jpg",
     description: "Cele, a hardworking central midfielder, earns R120,000 monthly. At 28, the South African playmaker brings energy, passing accuracy, and defensive contribution. His ability to dictate the tempo of matches makes him a valuable asset. With experience in both domestic and international football, he understands the demands of high-level competition. His salary reflects his importance as a balanced midfielder capable of transitioning between attack and defense. His leadership and composure ensure stability in the middle of the park. With his technical skills and work ethic, he continues to be a key player for Kaizer Chiefs.",
