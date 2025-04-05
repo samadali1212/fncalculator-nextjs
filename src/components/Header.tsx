@@ -26,11 +26,10 @@ const Header = () => {
   }, []);
 
   const menuItems = [
-    { path: "/salaries", label: "Salaries" },
     { path: "/celebrities", label: "Celebrities" },
-    { path: "/celebrity-categories", label: "Celebrity Rankings" },
+    { path: "/celebrity-categories", label: "Highest-Paid" },
     { path: "/net-worth", label: "Net Worth" },
-    { path: "/categories", label: "Wealth Rankings" },
+    { path: "/categories", label: "Richest" },
     { path: "/hourly-rates", label: "Hourly Rates" },
     { path: "/tax-calculator", label: "Tax Calculator" },
     { path: "/about", label: "About" },
