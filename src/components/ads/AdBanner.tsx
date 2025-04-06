@@ -42,7 +42,7 @@ const AdBanner = ({
   return (
     <div className={`ad-container my-4 mx-auto text-center ${className}`}>
       <div className="text-xs text-gray-400 mb-1">Advertisement</div>
-      <ins
+      <div
         ref={adRef}
         className={`adsbygoogle ${formatClass}`}
         style={style}
