@@ -17,6 +17,7 @@ export interface Celebrity {
   industry: string;
   source: string;
   lastUpdated: string;
+  categories: string[];
 }
 
 // Sample celebrity data
