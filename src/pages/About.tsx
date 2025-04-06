@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
+import AdBanner from "../components/ads/AdBanner";
 
 const About = () => {
   return (
@@ -18,6 +19,9 @@ const About = () => {
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
+        {/* Ad before content */}
+        <AdBanner className="mb-6" />
+        
         <div className="bg-white p-6 rounded-sm shadow-sm">
          <h1 className="text-2xl font-bold mb-4">About Salarylist</h1>
 <div className="prose max-w-none">
@@ -27,6 +31,10 @@ const About = () => {
   <p className="mb-4">
     Our mission is to bring transparency to salaries, empowering individuals to negotiate better pay and plan their financial future. From industry comparisons to cost-of-living analysis, we offer valuable information to guide your career and salary expectations.
   </p>
+  
+  {/* In-article ad */}
+  <AdBanner className="my-6" />
+  
   <p className="mb-4">
     Stay informed and take control of your earning potential with Salarylist.
   </p>
@@ -39,6 +47,9 @@ const About = () => {
   </p>
           </div>
         </div>
+        
+        {/* Ad after content */}
+        <AdBanner className="mt-6" />
       </main>
 
       <footer className="border-t border-gray-300 py-8 bg-white">

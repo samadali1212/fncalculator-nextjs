@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import Header from "../components/Header";
 import JobList from "../components/JobList";
 import SEO from "../components/SEO";
+import AdBanner from "../components/ads/AdBanner";
 
 const Salaries = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -28,6 +29,9 @@ const Salaries = () => {
                     <p className="text-gray-600">
               This list covers average Salaries across industries, factors influencing pay, and tips for negotiating better compensation. Stay informed about job market trends and see how your income compares to national standards.
             </p>
+            
+        {/* Top ad banner */}
+        <AdBanner className="my-6" />
         
         <motion.div 
           className="mb-6"
@@ -50,6 +54,9 @@ const Salaries = () => {
         </motion.div>
 
         <JobList searchQuery={searchQuery} />
+        
+        {/* Bottom ad banner */}
+        <AdBanner className="mt-8" />
       </main>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
