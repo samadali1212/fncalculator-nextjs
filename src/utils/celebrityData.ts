@@ -96,3 +96,84 @@ for (let i = 1; i < celebrities.length; i++) {
   (celebrities[i] as any).categories = getDefaultCategories(tempCelebrity);
 }
 
+/**
+ * Format celebrity salary with proper currency symbol
+ */
+export function formatSalary(amount: number, currency: string = 'ZAR'): string {
+  if (!amount) return 'Not Available';
+
+  let symbol = 'R';
+  
+  switch(currency) {
+    case 'USD':
+      symbol = '$';
+      break;
+    case 'EUR':
+      symbol = '€';
+      break;
+    case 'GBP':
+      symbol = '£';
+      break;
+    default:
+      symbol = 'R'; // South African Rand default
+  }
+  
+  // Format number with comma as thousands separator
+  return `${symbol}${amount.toLocaleString()}`;
+}
+
+/**
+ * Find a celebrity by their slug
+ */
+export function findCelebrityBySlug(slug: string): Celebrity | undefined {
+  return celebrities.find(celebrity => celebrity.slug === slug);
+}
+
+/**
+ * Get similar celebrities based on industry, company, or salary range
+ */
+export function getSimilarCelebrities(celebrity: Celebrity, limit: number = 5): Celebrity[] {
+  // Get all celebrities except the current one
+  const otherCelebrities = celebrities.filter(c => c.id !== celebrity.id);
+  
+  // Score each celebrity by similarity
+  const scoredCelebrities = otherCelebrities.map(c => {
+    let score = 0;
+    
+    // Same industry gets highest score
+    if (c.industry === celebrity.industry) {
+      score += 5;
+    }
+    
+    // Same company gets high score
+    if (c.company && celebrity.company && c.company === celebrity.company) {
+      score += 4;
+    }
+    
+    // Similar salary range (within 30%)
+    const salaryDiff = Math.abs(c.salary - celebrity.salary);
+    const salaryRatio = salaryDiff / celebrity.salary;
+    if (salaryRatio < 0.3) {
+      score += 3;
+    }
+    
+    // Same occupation type
+    if (c.occupation.toLowerCase().includes(celebrity.occupation.toLowerCase()) ||
+        celebrity.occupation.toLowerCase().includes(c.occupation.toLowerCase())) {
+      score += 2;
+    }
+    
+    // Same country
+    if (c.country === celebrity.country) {
+      score += 1;
+    }
+    
+    return { celebrity: c, score };
+  });
+  
+  // Sort by score (highest first) and return the celebrities
+  return scoredCelebrities
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map(item => item.celebrity);
+}
