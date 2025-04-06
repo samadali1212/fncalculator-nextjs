@@ -34,7 +34,7 @@ const AdBanner = ({ adSlot, adFormat = "auto", className = "" }: AdBannerProps) 
         <ins
           className="adsbygoogle"
           style={{ display: "block" }}
-          data-ad-client="ca-pub-7886138136550351"
+          data-ad-client="ca-pub-6455681110933282"
           data-ad-slot={adSlot}
           data-ad-format={adFormat}
           data-full-width-responsive="true"
