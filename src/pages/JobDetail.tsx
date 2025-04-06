@@ -12,6 +12,8 @@ import { getSalaryData } from "../utils/salaryData";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
+import AdBanner from "../components/ads/AdBanner";
+import InArticleAd from "../components/ads/InArticleAd";
 
 type SalaryPeriod = "weekly" | "monthly" | "yearly" | "hourly";
 
@@ -407,6 +409,9 @@ const JobDetail = () => {
             All Salaries
           </Link>
           
+          {/* Top ad banner */}
+          <AdBanner adSlot="2468013579" adFormat="horizontal" className="mb-6" />
+          
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4 capitalize">
               {capitalizedJobTitle} Salary in South Africa
@@ -467,6 +472,9 @@ const JobDetail = () => {
               </p>
             </div>
             
+            {/* Add in-article ad after job description */}
+            <InArticleAd adSlot="1357924680" className="my-8" />
+            
             <div className="mb-8">
               <h3 className="font-semibold text-lg mb-3">Detailed Breakdown</h3>
               <Table>
@@ -515,6 +523,9 @@ const JobDetail = () => {
               </div>
             </div>
           </article>
+          
+          {/* Bottom ad banner */}
+          <AdBanner adSlot="3691215487" adFormat="rectangle" className="my-8" />
           
           {/* Related Salaries Section */}
           {relatedJobs.length > 0 && (
@@ -566,26 +577,4 @@ const JobDetail = () => {
                   onClick={() => navigate('/salaries')}
                 >
                   View All Jobs
-                </Button>
-              </div>
-            </div>
-          )}
-        </div>
-      </main>
-
-      <footer className="border-t border-gray-300 py-6 bg-white">
-        <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
-          <p>
-            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
-          </p>
-        </div>
-      </footer>
-    </motion.div>
-  );
-};
-
-export default JobDetail;
-
-const getArticle = (word: string): string => {
-  return /^[aeiou]/i.test(word) ? "An" : "A";
-};
+                </Button
