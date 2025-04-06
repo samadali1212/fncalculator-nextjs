@@ -4,10 +4,8 @@ import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Header from "../components/Header";
-import SEO from "../components/SEO";
 import JobList from "../components/JobList";
-import AdBanner from "../components/ads/AdBanner";
-import InArticleAd from "../components/ads/InArticleAd";
+import SEO from "../components/SEO";
 
 const Salaries = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -19,24 +17,17 @@ const Salaries = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="South African Salary Guide by Profession" 
-        description="Explore comprehensive salary information for various professions in South Africa. Find average monthly salaries, requirements, and more."
-        canonicalUrl="/"
+        title="South African Salaries Guide" 
+        description="Explore salary ranges for various jobs and professions in South Africa. Updated salary information to help with job searches and career planning."
+        canonicalUrl="/salaries"
       />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-          <div>
-            <h1 className="text-3xl font-bold mb-2">South African Salary Guide by Profession</h1>
-            <p className="text-gray-600">
-              Explore average monthly salaries across different professions in South Africa
+        <h1 className="text-3xl font-bold mb-6">South African Salaries Guide</h1>
+                    <p className="text-gray-600">
+              This list covers average Salaries across industries, factors influencing pay, and tips for negotiating better compensation. Stay informed about job market trends and see how your income compares to national standards.
             </p>
-          </div>
-        </div>
-        
-        {/* Top ad banner */}
-        <AdBanner adSlot="1234567890" adFormat="horizontal" className="mb-6" />
         
         <motion.div 
           className="mb-6"
@@ -50,21 +41,15 @@ const Salaries = () => {
             </div>
             <Input
               type="text"
-              placeholder="Search job titles, experience levels..."
+              placeholder="Search jobs..."
               className="pl-10"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
         </motion.div>
-        
-        {/* In-article ad */}
-        <InArticleAd adSlot="9876543210" className="my-6" />
-        
+
         <JobList searchQuery={searchQuery} />
-        
-        {/* Bottom ad banner */}
-        <AdBanner adSlot="5432167890" adFormat="rectangle" className="mt-8" />
       </main>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
