@@ -35,7 +35,7 @@ const InArticleAd = ({ adSlot, className = "" }: InArticleAdProps) => {
           style={{ display: "block", textAlign: "center" }}
           data-ad-layout="in-article"
           data-ad-format="fluid"
-          data-ad-client="ca-pub-7886138136550351"
+          data-ad-client="ca-pub-6455681110933282"
           data-ad-slot={adSlot}
         ></ins>
       </div>
