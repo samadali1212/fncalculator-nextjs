@@ -50,7 +50,7 @@ const CelebrityDetail = () => {
       ` in ${celeb.country}` : 
       '';
     
-        return `${celeb.name} earns an estimated monthly salary of R${celeb.salary.toLocaleString()} at ${celeb.company}. ${celeb.name} is a ${celeb.age}-year-old ${celeb.occupation} from ${celeb.country} currently playing in the South African PSL.`;
+        return `${celeb.name} earns an estimated monthly salary of R${celeb.salary.toLocaleString()} at ${celeb.company}. ${celeb.name} is a ${celeb.age}-year-old ${celeb.occupation} from ${celeb.country}.`;
   };
   
   if (isLoading) {
