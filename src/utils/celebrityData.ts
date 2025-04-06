@@ -36,8 +36,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -53,8 +52,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -70,8 +68,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -87,8 +84,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -104,8 +100,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -121,8 +116,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -138,8 +132,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -155,8 +148,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -172,8 +164,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -189,8 +180,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -206,8 +196,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -223,8 +212,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -240,8 +228,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -257,8 +244,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -274,8 +260,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -291,8 +276,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -308,8 +292,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -325,8 +308,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
   {
     id: uuidv4(),
@@ -342,8 +324,7 @@ export const celebrities: Celebrity[] = [
     company: "Mamelodi Sundowns",
     industry: "Football",
     source: "Research",
-    lastUpdated: "2025-04-02",
-    categories: ["football-players", "mamelodi-sundowns"]
+    lastUpdated: "2025-04-02"
   },
     {
     id: uuidv4(),
@@ -359,8 +340,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-03",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-03"
   },
   {
     id: uuidv4(),
@@ -376,8 +356,8 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-04",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-04"
+
   },
   {
     id: uuidv4(),
@@ -393,8 +373,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-05",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-05"
   },
   {
     id: uuidv4(),
@@ -410,8 +389,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -427,8 +405,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-07",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-07"
   },
   {
     id: uuidv4(),
@@ -444,8 +421,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-08",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-08"
   },
   {
     id: uuidv4(),
@@ -461,8 +437,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-09",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-09"
   },
   {
     id: uuidv4(),
@@ -478,8 +453,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-10",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-10"
   },
   {
     id: uuidv4(),
@@ -495,8 +469,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-11",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-11"
   },
   {
     id: uuidv4(),
@@ -512,8 +485,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-12",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-12"
   },
   {
     id: uuidv4(),
@@ -529,8 +501,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-13",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-13"
   },
   {
     id: uuidv4(),
@@ -546,8 +517,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-14",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-14"
   },
   {
     id: uuidv4(),
@@ -563,8 +533,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-15",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-15"
   },
   {
     id: uuidv4(),
@@ -580,8 +549,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-16",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-16"
   },
   {
     id: uuidv4(),
@@ -597,8 +565,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-17",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-17"
   },
   {
     id: uuidv4(),
@@ -614,8 +581,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-18",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-18"
   },
   {
     id: uuidv4(),
@@ -631,8 +597,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-19",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-19"
   },
   {
     id: uuidv4(),
@@ -648,8 +613,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-20",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-20"
   },
   {
     id: uuidv4(),
@@ -665,8 +629,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-21",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-21"
   },
   {
     id: uuidv4(),
@@ -682,8 +645,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-22",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-22"
   },
   {
     id: uuidv4(),
@@ -699,8 +661,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-23",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-23"
   },
   {
     id: uuidv4(),
@@ -716,8 +677,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-24",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-24"
   },
   {
     id: uuidv4(),
@@ -733,8 +693,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-25",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-25"
   },
   {
     id: uuidv4(),
@@ -750,8 +709,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-26",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-26"
   },
   {
     id: uuidv4(),
@@ -767,8 +725,7 @@ export const celebrities: Celebrity[] = [
     company: "Kaizer Chiefs",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-27",
-    categories: ["football-players", "kaizer-chiefs"]
+    lastUpdated: "2025-04-27"
   },
   {
     id: uuidv4(),
@@ -784,8 +741,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -801,8 +757,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -818,8 +773,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -835,8 +789,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -852,8 +805,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -869,8 +821,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -886,8 +837,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -903,8 +853,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -920,8 +869,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -937,8 +885,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -954,8 +901,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -971,8 +917,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -988,8 +933,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -1005,8 +949,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -1022,8 +965,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -1039,8 +981,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -1056,8 +997,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -1073,8 +1013,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -1090,8 +1029,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -1107,8 +1045,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -1124,8 +1061,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -1141,8 +1077,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -1158,8 +1093,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -1175,8 +1109,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -1192,8 +1125,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
@@ -1209,8 +1141,7 @@ export const celebrities: Celebrity[] = [
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
-    lastUpdated: "2025-04-06",
-    categories: ["football-players", "orlando pirates"]
+    lastUpdated: "2025-04-06"
   },
   {
     id: uuidv4(),
