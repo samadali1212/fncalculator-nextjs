@@ -206,6 +206,13 @@ const capitalizeJobTitle = (title: string): string => {
     .join(' ');
 };
 
+// Function to determine appropriate article (a/an) for a job title
+const getArticle = (jobTitle: string): string => {
+  const firstLetter = jobTitle.charAt(0).toLowerCase();
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  return vowels.includes(firstLetter) ? "An" : "A";
+};
+
 const JobDetail = () => {
   const { jobId } = useParams<{ jobId: string }>();
   const navigate = useNavigate();
@@ -577,4 +584,14 @@ const JobDetail = () => {
                   onClick={() => navigate('/salaries')}
                 >
                   View All Jobs
-                </Button
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
+      </main>
+    </motion.div>
+  );
+};
+
+export default JobDetail;
