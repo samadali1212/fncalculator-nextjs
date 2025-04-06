@@ -30,15 +30,16 @@ const AdBanner = ({ adSlot, adFormat = "auto", className = "" }: AdBannerProps) 
 
   return (
     <div className={`ad-container my-4 mx-auto text-center ${className}`}>
-      <ins
-        className="adsbygoogle"
-        style={{ display: "block" }}
-        data-ad-client="ca-pub-7886138136550351"
-        data-ad-slot={adSlot}
-        data-ad-format={adFormat}
-        data-full-width-responsive="true"
-        ref={adRef}
-      ></ins>
+      <div ref={adRef}>
+        <ins
+          className="adsbygoogle"
+          style={{ display: "block" }}
+          data-ad-client="ca-pub-7886138136550351"
+          data-ad-slot={adSlot}
+          data-ad-format={adFormat}
+          data-full-width-responsive="true"
+        ></ins>
+      </div>
     </div>
   );
 };

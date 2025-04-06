@@ -29,15 +29,16 @@ const InArticleAd = ({ adSlot, className = "" }: InArticleAdProps) => {
 
   return (
     <div className={`ad-container my-6 mx-auto text-center ${className}`}>
-      <ins
-        className="adsbygoogle"
-        style={{ display: "block", textAlign: "center" }}
-        data-ad-layout="in-article"
-        data-ad-format="fluid"
-        data-ad-client="ca-pub-7886138136550351"
-        data-ad-slot={adSlot}
-        ref={adRef}
-      ></ins>
+      <div ref={adRef}>
+        <ins
+          className="adsbygoogle"
+          style={{ display: "block", textAlign: "center" }}
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-7886138136550351"
+          data-ad-slot={adSlot}
+        ></ins>
+      </div>
     </div>
   );
 };

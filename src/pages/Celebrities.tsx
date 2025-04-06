@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ArrowUpRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -29,7 +28,6 @@ const Celebrities = () => {
   const [industryFilter, setIndustryFilter] = useState<string>("all");
   const [isLoading, setIsLoading] = useState(true);
 
-  // Format salary function (moving it here since it was imported before)
   const formatSalary = (salary: number, currency: string = "ZAR") => {
     return new Intl.NumberFormat('en-ZA', {
       style: 'currency',
@@ -39,10 +37,8 @@ const Celebrities = () => {
     }).format(salary);
   };
 
-  // Get unique industries for filter
   const industries = ["all", ...Array.from(new Set(celebrities.map(celebrity => celebrity.industry)))];
   
-  // Filter celebrities based on search query and industry
   const filteredCelebrities = celebrities.filter(celebrity => {
     const matchesSearch = searchQuery 
       ? celebrity.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -55,10 +51,8 @@ const Celebrities = () => {
     return matchesSearch && matchesIndustry;
   });
   
-  // Sort by salary (descending)
   const sortedCelebrities = [...filteredCelebrities].sort((a, b) => b.salary - a.salary);
   
-  // Paginate results
   const displayedCelebrities = sortedCelebrities.slice(0, itemsToShow);
   const hasMoreCelebrities = displayedCelebrities.length < filteredCelebrities.length;
   
@@ -66,7 +60,6 @@ const Celebrities = () => {
     setItemsToShow(prevItemsToShow => prevItemsToShow + 40);
   };
 
-  // Get initials for avatar fallback
   const getInitials = (name: string) => {
     return name
       .split(' ')
@@ -76,7 +69,6 @@ const Celebrities = () => {
       .substring(0, 2);
   };
 
-  // Simulate loading state
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -120,7 +112,6 @@ const Celebrities = () => {
           </div>
         </div>
         
-        {/* Top ad banner */}
         <AdBanner adFormat="horizontal" className="mb-6" />
         
         <motion.div 
@@ -178,7 +169,6 @@ const Celebrities = () => {
                 </div>
               </div>
               
-              {/* Add in-feed ad after first 10 celebrities */}
               {displayedCelebrities.map((celebrity, index) => {
                 const listItem = (
                   <motion.div 
@@ -234,7 +224,6 @@ const Celebrities = () => {
                   </motion.div>
                 );
 
-                // Insert ad after 10th celebrity and then every 20 entries
                 if (index === 10 || (index > 10 && (index - 10) % 20 === 0)) {
                   return (
                     <React.Fragment key={`ad-${index}`}>
@@ -268,7 +257,6 @@ const Celebrities = () => {
           )}
         </div>
         
-        {/* Bottom ad banner */}
         <AdBanner adFormat="horizontal" className="mt-8" />
       </main>
 
