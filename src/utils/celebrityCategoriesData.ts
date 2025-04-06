@@ -51,7 +51,7 @@ const celebrityCategories: CelebrityCategory[] = [
     filter: (celebrity) => celebrity.company?.toLowerCase().includes("orlando pirates")
   },
         {
-    id: 3,
+    id: 5,
     title: "16 Highest-Paid CEOs in South Africa",
     slug: "highest-paid-ceos-in-south-africa",
     description: "South Africa’s corporate sector has some of the highest-paid and influential CEOs on the continent. These leaders are not only responsible for steering billion-rand companies through economic shifts but are also rewarded handsomely for their efforts.",
