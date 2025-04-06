@@ -49,6 +49,14 @@ const celebrityCategories: CelebrityCategory[] = [
     description: "Highest paid football stars from Orlando Pirates FC in the Premier Soccer League. Big money moves and top-tier talent define Orlando Pirates’ current squad. With hefty paychecks to match their skill, some players are earning figures that turn heads both on and off the pitch. From veterans to rising stars, here’s a look at who’s banking the most at the Buccaneers.",
     imageUrl: "https://www.orlandopiratesfc.com/storage/2025/04/B25DAFRA2950-e1743545142948.jpg",
     filter: (celebrity) => celebrity.company?.toLowerCase().includes("orlando pirates")
+  },
+        {
+    id: 3,
+    title: "16 Highest-Paid CEOs in South Africa",
+    slug: "highest-paid-ceos-in-south-africa",
+    description: "South Africa’s corporate sector has some of the highest-paid and influential CEOs on the continent. These leaders are not only responsible for steering billion-rand companies through economic shifts but are also rewarded handsomely for their efforts.",
+    imageUrl: "https://www.ft.com/__origami/service/image/v2/images/raw/ftcms%3A741d8712-6192-4515-b7b3-c19c96e3af16?source=next-article&fit=scale-down&quality=highest&width=1440&dpr=1",
+    filter: (celebrity) => celebrity.occupation?.toLowerCase().includes("ceo")
   }
 ];
 
