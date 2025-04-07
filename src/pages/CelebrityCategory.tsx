@@ -6,6 +6,7 @@ import { Search, ArrowUpRight, ListFilter, ChevronLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
+import ShareButton from "../components/ShareButton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { 
@@ -149,14 +150,10 @@ const CelebrityCategory = () => {
               {category.description}
             </p>
           </div>
-          
-          <Link 
-            to="/celebrity-categories"
-            className="mt-4 md:mt-0 inline-flex items-center text-blog-accent hover:text-blog-accent-hover transition-colors"
-          >
-            <ListFilter className="h-4 w-4 mr-1.5" />
-            Top 10
-          </Link>
+            <ShareButton 
+              title={`${celebrity.name}'s Salary - SalaryList`} 
+              variant="outline"
+            />
         </div>
         
         <motion.div 
