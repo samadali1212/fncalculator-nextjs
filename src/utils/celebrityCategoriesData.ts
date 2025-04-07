@@ -57,6 +57,14 @@ const celebrityCategories: CelebrityCategory[] = [
     description: "South Africa’s corporate sector has some of the highest-paid and influential CEOs on the continent. These leaders are not only responsible for steering billion-rand companies through economic shifts but are also rewarded handsomely for their efforts.",
     imageUrl: "https://www.ft.com/__origami/service/image/v2/images/raw/ftcms%3A741d8712-6192-4515-b7b3-c19c96e3af16?source=next-article&fit=scale-down&quality=highest&width=1440&dpr=1",
     filter: (celebrity) => celebrity.occupation?.toLowerCase().includes("ceo")
+  },
+    {
+    id: 6,
+    title: "10 Highest Paid Coaches in South Africa",
+    slug: "highest-paid-coaches-in-south-africa",
+    description: "South Africa’s Premiership is home to some of the most talented coaches in African football. With top-tier teams and a passionate fanbase, the league attracts skilled managers who are well-compensated for their expertise. Here’s a look at the highest-paid coaches in the PSL and what makes them stand out.",
+    imageUrl: "https://kcpub.azureedge.net/storage/uploads/public/67e/292/195/67e292195c72d356849357.jpg",
+    filter: (celebrity) => celebrity.occupation?.toLowerCase().includes("football coach")
   }
 ];
 
