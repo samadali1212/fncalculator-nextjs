@@ -26,19 +26,6 @@ const NetWorthDetail = () => {
   
   const person = findPersonBySlug(slug || "");
   const similarPeople = person ? getSimilarPeople(person, 10) : [];
-
-  // Generate SEO-friendly paragraph
-  const generateSEOParagraph = (person: NetWorthPerson) => {
-    const age = person.age ? `${person.age}-year-old ` : '';
-    const industryPhrase = person.industry ? 
-      `in the ${person.industry} industry` : 
-      'across various industries';
-    const companyPhrase = person.company ? 
-      ` while working with ${person.company}` : 
-      '';
-    
-    return `${person.name} has an estimated net worth of ${formatNetWorth(person.netWorth, person.currency)}. ${person.name} is a ${age}${person.occupation} from ${person.country} who built wealth ${industryPhrase}${companyPhrase}.`;
-  };
   
   // Simulate loading from API
   useEffect(() => {
@@ -189,14 +176,6 @@ const NetWorthDetail = () => {
                 </div>
               </div>
             </div>
-
-              <div className="p-6 sm:p-8">
-              {/* SEO-friendly natural language paragraph */}
-              <div className="mb-8 bg-gray-50 p-5 rounded-md border-l-4 border-[#2e7d32] text-gray-700">
-                <p className="leading-relaxed">
-                  {generateSEOParagraph(person)}
-                </p>
-              </div>
             
             <div className="border-t border-gray-100 pt-6 mb-6"></div>
             
@@ -357,3 +336,4 @@ const NetWorthDetail = () => {
 };
 
 export default NetWorthDetail;
+
