@@ -6,6 +6,7 @@ import { Search, ArrowUpRight, ListFilter, ChevronLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
+import ShareButton from "../components/ShareButton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { 
