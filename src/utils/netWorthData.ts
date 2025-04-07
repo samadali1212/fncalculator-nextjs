@@ -2428,7 +2428,7 @@ export function formatNetWorth(amount: number, currency: string = "USD"): string
     maximumFractionDigits: 0,
     notation: 'compact',
     compactDisplay: 'short',
-  }).format(amount);
+  });
 }
 
 /**
