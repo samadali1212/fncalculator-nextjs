@@ -247,16 +247,6 @@ const NetWorthDetail = () => {
                 </TableBody>
               </Table>
             </div>
-            
-            <div className="bg-[#fff9e6] p-5 rounded-md">
-              <h3 className="font-medium mb-3 flex items-center">
-                <Info className="h-4 w-4 mr-2" />
-                About This Data
-              </h3>
-              <p className="text-sm text-gray-700">
-                Net worth estimates are based on publicly available information and may not reflect the individual's actual wealth. The figures shown here are approximations and subject to change based on market conditions and private investments.
-              </p>
-            </div>
           </article>
           
           {/* Similar People Section */}
@@ -319,6 +309,15 @@ const NetWorthDetail = () => {
                   View All Wealthy Individuals
                 </Button>
               </div>
+            </div>
+                  <div className="bg-[#fff9e6] p-5 rounded-md">
+              <h3 className="font-medium mb-3 flex items-center">
+                <Info className="h-4 w-4 mr-2" />
+                About This Data
+              </h3>
+              <p className="text-sm text-gray-700">
+                Net worth estimates are based on publicly available information and may not reflect the individual's actual wealth. The figures shown here are approximations and subject to change based on market conditions and private investments.
+              </p>
             </div>
           )}
         </div>
