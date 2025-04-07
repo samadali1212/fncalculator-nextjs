@@ -1,4 +1,3 @@
-
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
@@ -20,6 +19,7 @@ import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import ShareButton from "../components/ShareButton";
 import { 
   getTaxCalculation, 
   formatCurrency, 
@@ -35,7 +35,6 @@ const TaxCalculationDetail = () => {
   const location = useLocation();
   const pathname = location.pathname;
   
-  // Determine timeFrame from URL path
   const timeFrame: TimeFrame = pathname.includes("/yearly/") ? "yearly" : "monthly";
   
   const navigate = useNavigate();
@@ -48,7 +47,6 @@ const TaxCalculationDetail = () => {
     [income, ageGroup, timeFrame]
   );
   
-  // Get nearby incomes for comparison
   const allCalculations = useMemo(() => 
     generateTaxCalculations(
       timeFrame === "monthly" ? 10000 : 120000,  // Default monthly min: R10,000, yearly: R120,000
@@ -69,10 +67,8 @@ const TaxCalculationDetail = () => {
       .slice(0, 10);
   }, [income, allCalculations]);
   
-  // Simulate loading from API
   useEffect(() => {
     setIsLoading(true);
-    // Simulate network delay
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 800);
@@ -87,7 +83,6 @@ const TaxCalculationDetail = () => {
 
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
-      // Navigate to the same income but with different timeframe
       navigate(`/tax-calculator/${value}/${income}`);
     }
   };
@@ -136,10 +131,8 @@ const TaxCalculationDetail = () => {
     );
   }
 
-  // Calculate the corresponding value in the other timeframe for display
   const alternateTimeFrameValue = convertIncome(income, timeFrame);
 
-  // Format currency for the title without spaces
   const formattedCurrencyForTitle = formatCurrency(income).replace(/\s/g, "");
 
   return (
@@ -158,13 +151,21 @@ const TaxCalculationDetail = () => {
       
       <main className="pt-20 pb-16">
         <div className="container mx-auto px-4 max-w-3xl">
-          <Link 
-            to={`/tax-calculator/${timeFrame}`}
-            className="inline-flex items-center text-sm text-[#000000] mb-6 hover:underline"
-          >
-            <ChevronLeft className="h-4 w-4 mr-1" />
-            All Tax Calculations
-          </Link>
+          <div className="flex justify-between items-center mb-6">
+            <Link 
+              to={`/tax-calculator/${timeFrame}`}
+              className="inline-flex items-center text-sm text-[#000000] hover:underline"
+            >
+              <ChevronLeft className="h-4 w-4 mr-1" />
+              All Tax Calculations
+            </Link>
+            
+            <ShareButton 
+              title={`${formatCurrency(taxDetails.grossIncome)} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Income Tax Calculation`}
+              variant="outline" 
+              className="text-xs"
+            />
+          </div>
           
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
@@ -314,7 +315,6 @@ const TaxCalculationDetail = () => {
             </div>
           </article>
           
-          {/* Similar Incomes Section */}
           {nearbyIncomes.length > 0 && (
             <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
               <div className="p-6 sm:p-8 border-b border-gray-100">
