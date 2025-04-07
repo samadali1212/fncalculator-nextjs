@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
-import ShareButton from "../components/ShareButton";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { 
   Card, 
@@ -115,10 +114,6 @@ const Celebrities = () => {
               Explore the earnings of South Africa’s most well-known personalities. From entertainers and athletes to business leaders and influencers, see how much the country’s top figures make and what contributes to their wealth.
             </p>
           </div>
-           <ShareButton 
-              title={`${celebrity.name}'s Salary - SalaryList`} 
-              variant="outline"
-            />
         </div>
         
         <motion.div 
