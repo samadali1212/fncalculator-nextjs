@@ -1,8 +1,10 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
+import ShareButton from "../components/ShareButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Calendar, User, ArrowRight, Building, MapPin, Banknote, Award, Info } from "lucide-react";
@@ -117,13 +119,20 @@ const NetWorthDetail = () => {
       
       <main className="pt-20 pb-16">
         <div className="container mx-auto px-4 max-w-3xl">
-          <Link 
-            to="/net-worth"
-            className="inline-flex items-center text-sm text-[#000000] mb-6 hover:underline"
-          >
-            <ChevronLeft className="h-4 w-4 mr-1" />
-            All Wealthy Individuals
-          </Link>
+          <div className="flex items-center justify-between mb-6">
+            <Link 
+              to="/net-worth"
+              className="inline-flex items-center text-sm text-[#000000] hover:underline"
+            >
+              <ChevronLeft className="h-4 w-4 mr-1" />
+              All Wealthy Individuals
+            </Link>
+            
+            <ShareButton 
+              title={`${person.name} Net Worth: ${formattedNetWorthForTitle} - SalaryList`} 
+              variant="outline"
+            />
+          </div>
           
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">

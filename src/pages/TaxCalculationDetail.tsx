@@ -1,9 +1,9 @@
-
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
+import ShareButton from "../components/ShareButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Calendar, User, ArrowRight } from "lucide-react";
@@ -156,15 +156,24 @@ const TaxCalculationDetail = () => {
         canonicalUrl={`/tax-calculator/${timeFrame}/${income}`}
       />
       
+      <Header />
+      
       <main className="pt-20 pb-16">
         <div className="container mx-auto px-4 max-w-3xl">
-          <Link 
-            to={`/tax-calculator/${timeFrame}`}
-            className="inline-flex items-center text-sm text-[#000000] mb-6 hover:underline"
-          >
-            <ChevronLeft className="h-4 w-4 mr-1" />
-            All Tax Calculations
-          </Link>
+          <div className="flex items-center justify-between mb-6">
+            <Link 
+              to={`/tax-calculator/${timeFrame}`}
+              className="inline-flex items-center text-sm text-[#000000] hover:underline"
+            >
+              <ChevronLeft className="h-4 w-4 mr-1" />
+              All Tax Calculations
+            </Link>
+            
+            <ShareButton 
+              title={`Paye on ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary - SalaryList`} 
+              variant="outline"
+            />
+          </div>
           
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
