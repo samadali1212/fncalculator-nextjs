@@ -6,7 +6,6 @@ import { Search, ArrowUpRight, ListFilter, ChevronLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
-import ShareButton from "../components/ShareButton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { 
@@ -132,22 +131,16 @@ const CelebrityCategory = () => {
       />
       <Header />
       
-      <main className="pt-20 pb-16">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <div className="flex items-center justify-between mb-6">
-            <Link 
-              to={`/celebrity-categories`}
-              className="inline-flex items-center text-sm text-[#000000] hover:underline"
-            >
-              <ChevronLeft className="h-4 w-4 mr-1" />
-              All Celebrity Categories
-            </Link>
-            
-            <ShareButton 
-              title={`${category.title} - SalaryList`} 
-              variant="outline"
-            />
-          </div>
+      <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
+        <div className="mb-6">
+          <Link 
+            to="/celebrity-categories"
+            className="inline-flex items-center text-sm text-[#000000] hover:underline"
+          >
+            <ChevronLeft className="h-4 w-4 mr-1" />
+            All Celebrity Categories
+          </Link>
+        </div>
         
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
           <div>
@@ -156,7 +149,8 @@ const CelebrityCategory = () => {
               {category.description}
             </p>
           </div>
-                    <Link 
+          
+          <Link 
             to="/celebrity-categories"
             className="mt-4 md:mt-0 inline-flex items-center text-blog-accent hover:text-blog-accent-hover transition-colors"
           >
