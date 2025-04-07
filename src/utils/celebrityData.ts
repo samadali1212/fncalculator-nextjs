@@ -1542,6 +1542,22 @@ export const celebrities: Celebrity[] = [
     industry: "Football",
     source: "UGC",
     lastUpdated: "2025-04-08"
+  },
+    {
+    id: uuidv4(),
+    name: "Miguel Cardoso",
+    slug: "miguel-cardoso",
+    occupation: "Football Coach",
+    salary: 1500000,
+    currency: "ZAR",
+    imageUrl: "https://football.fmh.ulisboa.pt/wp-content/uploads/2015/09/MIGUEL_CARDOSO.jpg",
+    description: "Miguel Cardoso, the tactical mastermind behind Mamelodi Sundowns, commands an impressive R1.5 million per month. His strategic approach and ability to elevate the team’s performance have made him one of the highest-paid coaches in South Africa. Cardoso’s experience, honed through various roles in Europe and Africa, has brought a fresh, dynamic style to Sundowns. Under his leadership, the club has enjoyed remarkable success, both domestically and internationally. Cardoso’s tactical depth, combined with his passion for the game, ensures that Sundowns remains a formidable force in the PSL.",
+    age: 52,
+    country: "Brazil",
+    company: "Mamelodi Sundowns",
+    industry: "Football",
+    source: "UGC",
+    lastUpdated: "2025-04-08"
   }
 ];
 
