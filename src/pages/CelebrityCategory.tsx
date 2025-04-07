@@ -144,7 +144,7 @@ const CelebrityCategory = () => {
             </Link>
             
             <ShareButton 
-              title={`${category.title} - SalaryList`}  ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary - SalaryList`} 
+              title={`${category.title} - SalaryList`} 
               variant="outline"
             />
           </div>
