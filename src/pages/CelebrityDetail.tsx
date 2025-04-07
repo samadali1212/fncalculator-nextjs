@@ -1,9 +1,9 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
+import ShareButton from "../components/ShareButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Calendar, User, ArrowRight, Building, MapPin, Banknote, Award, Info } from "lucide-react";
@@ -47,10 +47,10 @@ const CelebrityDetail = () => {
       ` while working with ${celeb.company}` : 
       '';
     const countryPhrase = celeb.country ? 
-      ` in ${celeb.country}` : 
+      ` in ${celebrity.country}` : 
       '';
     
-        return `${celeb.name} earns an estimated monthly salary of R${celeb.salary.toLocaleString()} at ${celeb.company}. ${celeb.name} is a ${celeb.age}-year-old ${celeb.occupation} from ${celeb.country}.`;
+        return `${celeb.name} earns an estimated monthly salary of R${celeb.salary.toLocaleString()} at ${celebrity.company}. ${celebrity.name} is a ${celebrity.age}-year-old ${celebrity.occupation} from ${celebrity.country}.`;
   };
   
   if (isLoading) {
@@ -134,13 +134,20 @@ const CelebrityDetail = () => {
       
       <main className="pt-20 pb-16">
         <div className="container mx-auto px-4 max-w-3xl">
-          <Link 
-            to="/celebrities"
-            className="inline-flex items-center text-sm text-[#000000] mb-6 hover:underline"
-          >
-            <ChevronLeft className="h-4 w-4 mr-1" />
-            All Celebrities
-          </Link>
+          <div className="flex items-center justify-between mb-6">
+            <Link 
+              to="/celebrities"
+              className="inline-flex items-center text-sm text-[#000000] hover:underline"
+            >
+              <ChevronLeft className="h-4 w-4 mr-1" />
+              All Celebrities
+            </Link>
+            
+            <ShareButton 
+              title={`${celebrity.name}'s Salary - SalaryList`} 
+              variant="outline"
+            />
+          </div>
           
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
