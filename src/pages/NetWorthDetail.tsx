@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
@@ -33,7 +33,7 @@ const NetWorthDetail = () => {
     // Simulate network delay
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 100); // Reduced from 800ms to 100ms for faster loading
+    }, 800);
     
     return () => clearTimeout(timer);
   }, [slug]);
@@ -79,7 +79,7 @@ const NetWorthDetail = () => {
         <Card>
           <CardContent className="p-6">
             <p>Person not found. Please try another search.</p>
-            <Button onClick={() => window.location.href = '/net-worth'} className="mt-4">
+            <Button onClick={() => navigate('/net-worth')} className="mt-4">
               Back to Net Worth List
             </Button>
           </CardContent>
@@ -106,7 +106,7 @@ const NetWorthDetail = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }} // Reduced from 0.5 to 0.3 for faster animation
+      transition={{ duration: 0.5 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
@@ -120,13 +120,13 @@ const NetWorthDetail = () => {
       <main className="pt-20 pb-16">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="flex items-center justify-between mb-6">
-            <a 
-              href="/net-worth"
+            <Link 
+              to="/net-worth"
               className="inline-flex items-center text-sm text-[#000000] hover:underline"
             >
               <ChevronLeft className="h-4 w-4 mr-1" />
               All Wealthy Individuals
-            </a>
+            </Link>
             
             <ShareButton 
               title={`${person.name} Net Worth: ${formattedNetWorthForTitle} - SalaryList`} 
@@ -275,7 +275,7 @@ const NetWorthDetail = () => {
                     key={similarPerson.id}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2, delay: index * 0.03 }} // Reduced animation times
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
                     className="group py-3 px-6 sm:px-8"
                   >
                     <div className="flex items-center">
@@ -291,12 +291,12 @@ const NetWorthDetail = () => {
                       </Avatar>
                       
                       <div className="flex-1">
-                        <a 
-                          href={`/net-worth/${similarPerson.slug}`}
+                        <Link 
+                          to={`/net-worth/${similarPerson.slug}`}
                           className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent"
                         >
                           {similarPerson.name}
-                        </a>
+                        </Link>
                         
                         <div className="flex items-center text-xs text-[#828282]">
                           <span>{formatNetWorth(similarPerson.netWorth, similarPerson.currency)}</span>
@@ -314,7 +314,7 @@ const NetWorthDetail = () => {
                 <Button 
                   variant="outline" 
                   className="w-full"
-                  onClick={() => window.location.href = '/net-worth'}
+                  onClick={() => navigate('/net-worth')}
                 >
                   View All Wealthy Individuals
                 </Button>

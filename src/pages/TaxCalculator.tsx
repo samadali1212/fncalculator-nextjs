@@ -1,9 +1,8 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ArrowUpRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import { 
@@ -40,6 +39,7 @@ const TaxCalculator = () => {
   const [itemsToShow, setItemsToShow] = useState(50);
   const [ageGroup, setAgeGroup] = useState<AgeGroup>("below65");
   const location = useLocation();
+  const navigate = useNavigate();
   
   const timeFrame: TimeFrame = location.pathname.includes("/yearly") 
     ? "yearly" 
@@ -72,7 +72,7 @@ const TaxCalculator = () => {
 
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
-      window.location.href = `/tax-calculator/${value}`;
+      navigate(`/tax-calculator/${value}`);
     }
   };
 
@@ -80,7 +80,6 @@ const TaxCalculator = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }} // Reduced animation time
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
@@ -100,7 +99,7 @@ const TaxCalculator = () => {
           className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }} // Reduced animation time
+          transition={{ duration: 0.5 }}
         >
           <div className="relative md:col-span-1">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -170,20 +169,20 @@ const TaxCalculator = () => {
                   key={result.grossIncome}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2, delay: index * 0.02 }} // Reduced animation time and delay
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
                   className={`group px-4 py-3 ${index !== displayedResults.length - 1 ? 'border-b border-gray-100' : ''}`}
                 >
                   <div className="grid grid-cols-12 items-center">
                     <div className="col-span-4 md:col-span-3">
-                      <a 
-                        href={`/tax-calculator/${timeFrame}/${result.grossIncome}`}
+                      <Link 
+                        to={`/tax-calculator/${timeFrame}/${result.grossIncome}`}
                         className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                       >
                         {formatCurrency(result.grossIncome)}
                         <ArrowUpRight 
                           className="h-3.5 w-3.5 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
                         />
-                      </a>
+                      </Link>
                     </div>
                     
                     <div className="col-span-4 md:col-span-3">
