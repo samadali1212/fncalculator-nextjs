@@ -189,6 +189,14 @@ const NetWorthDetail = () => {
                 </div>
               </div>
             </div>
+
+              <div className="p-6 sm:p-8">
+              {/* SEO-friendly natural language paragraph */}
+              <div className="mb-8 bg-gray-50 p-5 rounded-md border-l-4 border-[#2e7d32] text-gray-700">
+                <p className="leading-relaxed">
+                  {generateSEOParagraph(person)}
+                </p>
+              </div>
             
             <div className="border-t border-gray-100 pt-6 mb-6"></div>
             
