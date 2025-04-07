@@ -2421,15 +2421,15 @@ export function formatNetWorth(amount: number, currency: string = "USD"): string
   const currencyCode = currency || "USD";
   
   // Format with the appropriate currency symbol
-  return new Intl.NumberFormat('en-US', {
+    return amount.toLocaleString('en-US', {
     style: 'currency',
-    currency: currencyCode,
-    minimumFractionDigits: 1,
+    currency: currency,
     maximumFractionDigits: 1,
+    minimumFractionDigits: 0,
     notation: 'compact',
     compactDisplay: 'short',
-  }).format(amount);
-}
+  });
+};
 
 /**
  * Get a list of similar people based on industry and net worth range
