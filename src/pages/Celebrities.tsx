@@ -119,7 +119,6 @@ const Celebrities = () => {
               title={`${celebrity.name}'s Salary - SalaryList`} 
               variant="outline"
             />
-          </div>
         </div>
         
         <motion.div 
