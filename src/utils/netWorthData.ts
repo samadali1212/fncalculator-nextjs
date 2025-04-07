@@ -2425,10 +2425,10 @@ export function formatNetWorth(amount: number, currency: string = "USD"): string
     style: 'currency',
     currency: currencyCode,
     minimumFractionDigits: 1,
-    maximumFractionDigits: 0,
+    maximumFractionDigits: 1,
     notation: 'compact',
     compactDisplay: 'short',
-  });
+  }).format(amount);
 }
 
 /**
