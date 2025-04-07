@@ -142,7 +142,7 @@ const CelebrityCategory = () => {
             All Celebrity Categories
           </Link>
              <ShareButton 
-              title={`${celebrity.name}'s Salary - SalaryList`} 
+              title={`${category.title} - SalaryList`} 
               variant="outline"
             />
         </div>
