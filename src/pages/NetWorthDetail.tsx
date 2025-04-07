@@ -10,7 +10,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import ShareButton from "../components/ShareButton";
 import { 
   findPersonBySlug,
   formatNetWorth,
@@ -26,8 +25,10 @@ const NetWorthDetail = () => {
   const person = findPersonBySlug(slug || "");
   const similarPeople = person ? getSimilarPeople(person, 10) : [];
   
+  // Simulate loading from API
   useEffect(() => {
     setIsLoading(true);
+    // Simulate network delay
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 800);
@@ -85,8 +86,10 @@ const NetWorthDetail = () => {
     );
   }
 
+  // Format currency for the title without spaces
   const formattedNetWorthForTitle = formatNetWorth(person.netWorth, person.currency).replace(/\s/g, "");
-
+  
+  // Get initials for avatar fallback
   const getInitials = (name: string) => {
     return name
       .split(' ')
@@ -114,21 +117,13 @@ const NetWorthDetail = () => {
       
       <main className="pt-20 pb-16">
         <div className="container mx-auto px-4 max-w-3xl">
-          <div className="flex justify-between items-center mb-6">
-            <Link 
-              to="/net-worth"
-              className="inline-flex items-center text-sm text-[#000000] hover:underline"
-            >
-              <ChevronLeft className="h-4 w-4 mr-1" />
-              All Wealthy Individuals
-            </Link>
-            
-            <ShareButton 
-              title={`${person.name}'s Net Worth: ${formatNetWorth(person.netWorth, person.currency)}`}
-              variant="outline"
-              className="text-xs"
-            />
-          </div>
+          <Link 
+            to="/net-worth"
+            className="inline-flex items-center text-sm text-[#000000] mb-6 hover:underline"
+          >
+            <ChevronLeft className="h-4 w-4 mr-1" />
+            All Wealthy Individuals
+          </Link>
           
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
@@ -255,6 +250,7 @@ const NetWorthDetail = () => {
             </div>
           </article>
           
+          {/* Similar People Section */}
           {similarPeople.length > 0 && (
             <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
               <div className="p-6 sm:p-8 border-b border-gray-100">
