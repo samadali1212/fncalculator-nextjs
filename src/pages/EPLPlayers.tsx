@@ -25,7 +25,7 @@ const EPLPlayers = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [players, setPlayers] = useState<EPLPlayer[]>([]);
-  const [itemsToShow, setItemsToShow] = useState(15);
+  const [itemsToShow, setItemsToShow] = useState(100);
   
   useEffect(() => {
     // Simulate loading state for better UX
