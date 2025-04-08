@@ -65,7 +65,7 @@ export const eplPlayers: EPLPlayer[] = [
     age: 32,
     weeklySalary: 350000,
     annualSalary: calculateAnnualSalary(350000),
-    imageUrl: "https://resources.premierleague.com/premierleague/photos/players/250x250/p118748.png",
+    imageUrl: "https://img.a.transfermarkt.technology/portrait/medium/148455-1727337594.jpg?lm=1",
     description: "Mohamed Salah is one of the most prolific goalscorers in Premier League history. The Egyptian winger combines blistering pace with clinical finishing and has been a cornerstone of Liverpool's recent domestic and European success. His consistent goal-scoring ability and work rate have made him a fan favorite at Anfield.",
     contractUntil: "June 2025",
     transferValue: 80,
