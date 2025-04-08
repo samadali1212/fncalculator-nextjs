@@ -168,7 +168,7 @@ const EPLPlayerDetail = () => {
                 </div>
                 
                 <div className="text-xl font-semibold text-[#333]">
-                  {formatWeeklySalary(player.weeklySalary)} Per Week
+                  {formatWeeklySalary(player.weeklySalary)} per week
                 </div>
                 
                 <div className="text-sm text-gray-600 mt-1">
