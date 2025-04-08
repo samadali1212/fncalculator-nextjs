@@ -866,7 +866,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://cdn-images.dzcdn.net/images/artist/ec229fbde21f2a9f22bcc42efbe776d1/1900x1900-000000-80-0-0.jpg",
     slug: "focalistic",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
     id: "51",
@@ -883,7 +883,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://cdn-images.dzcdn.net/images/cover/4d5e41b5ef8912a2ac0211bbaa592097/0x1900-000000-80-0-0.jpg",
     slug: "a-reece",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
     id: "52",
@@ -900,7 +900,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://pbs.twimg.com/media/EV7aFYxWsAEXYAe.png",
     slug: "jr-tabure",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
     id: "53",
@@ -934,7 +934,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://mdundo.com/media/picture/130611_XFT7MyBwlFgI7bgxRic2mcI05ZSY_b.jpg",
     slug: "sho-madjozi",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
     id: "55",
@@ -968,7 +968,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://i.guim.co.uk/img/media/eacaf5d4a5f4b9cf4a921e6764880cd7c17051f6/0_150_2250_1350/master/2250.jpg",
     slug: "spoek-mathambo",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
     id: "57",
@@ -985,7 +985,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://i0.wp.com/mgosi.co.za/wp-content/uploads/2020/08/27879291_190886508164242_1185641664979402752_n-e1596663123707.jpg",
     slug: "yanga-chief",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
     id: "58",
@@ -1002,7 +1002,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://www.caferoux.co.za/wp-content/uploads/2022/08/Profile-6.jpg",
     slug: "jack-parow",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
     id: "59",
@@ -1019,7 +1019,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://upload.wikimedia.org/wikipedia/en/1/18/Shane_Eagle_-_Yellow.png",
     slug: "shane-eagle",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
     id: "60",
@@ -1036,7 +1036,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://cdn-images.dzcdn.net/images/artist/50924a59f930311432ce07e64ae4822a/500x500.jpg",
     slug: "da-les",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
     id: "61",
@@ -1053,7 +1053,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://i.scdn.co/image/ab6761610000e5eb57f4924cfcc31341d09e6ec6",
     slug: "kwesta",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
     id: "62",
@@ -1070,7 +1070,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://cdn-images.dzcdn.net/images/artist/d08a51ff9da5bce0665805985255c82f/1900x1900-000000-80-0-0.jpg",
     slug: "khuli-chana",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
     id: "63",
@@ -1087,7 +1087,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://resources.tidal.com/images/201ae6cd/4189/40da/ac65/54d950db6e69/750x750.jpg",
     slug: "nasty-c",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
     id: "64",
@@ -1104,7 +1104,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://images.genius.com/c4fdbf6b9348f7a09db994a99af92005.500x500x1.jpg",
     slug: "okmalumkoolkat",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
     id: "65",
@@ -1121,7 +1121,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://cdn-images.dzcdn.net/images/artist/df209b02db69b39480ba02c60c9e6e11/500x500.jpg",
     slug: "ko",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
     id: "66",
@@ -1155,7 +1155,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://www.capetowngreenmap.co.za/media/reviews/photos/original/52/d8/c7/2023-festive-lights-switch-on-cassper-48-1699885715.jpg",
     slug: "cassper-nyovest",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
     id: "68",
@@ -1189,7 +1189,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-29",
     imageUrl: "https://www.famousbirthdays.com/faces/jones-watkin-image.jpg",
     slug: "watkin-tudor-jones",
-    categories: ["rappers", "artists"]
+    categories: ["rappers", "artists", "musicians"]
   },
   {
   id: "70",
