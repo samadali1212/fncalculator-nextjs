@@ -403,7 +403,7 @@ export function formatWeeklySalary(salary: number, currency: string = "£"): str
 
 // Format annual salary
 export function formatAnnualSalary(salary: number, currency: string = "£"): string {
-  return `${currency}${salary.toLocaleString()} per year`;
+  return `${currency}${salary.toLocaleString()}`;
 }
 
 // Get similar players based on position and team
