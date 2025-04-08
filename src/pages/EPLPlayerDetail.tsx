@@ -184,7 +184,7 @@ const EPLPlayerDetail = () => {
                 <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
                   <div className="text-gray-600 text-sm mb-1">Weekly Salary</div>
                   <div className="text-xl font-bold">{formatWeeklySalary(player.weeklySalary)}</div>
-                  <div className="text-gray-500 text-xs mt-1">Source: {player.source}</div>
+                  <div className="text-gray-500 text-xs mt-1">{player.source}</div>
                 </div>
                 <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
                   <div className="text-gray-600 text-sm mb-1">Team</div>
