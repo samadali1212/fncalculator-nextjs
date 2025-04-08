@@ -17,7 +17,6 @@
  Allow: /net-worth/
  Allow: /categories/
  Allow: /epl-players/
- Allow: /epl-categories/
 
  User-agent: Bingbot
  Allow: /
