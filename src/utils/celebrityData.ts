@@ -832,7 +832,7 @@ export const celebrities: Celebrity[] = [
     imageUrl: "https://www.orlandopiratesfc.com/storage/2024/07/olisa-ndah-defender-home-headshot-2024-25-kit-brandon-barnard-photography-L1040392.png",
     description: "Nigerian international Olisa Ndah joined Pirates with a league title under his belt from Akwa United, commanding a salary reported at R107,000. This figure signifies the club's investment in securing a promising, internationally recognised defender. Having represented Nigeria at U23 and senior levels, Ndah brought potential and proven ability. His earnings reflect the value placed on strengthening the defence with relatively young talent possessing international experience. The club secured a player aiming to make his mark in South Africa, justifying a competitive salary within the Pirates' wage structure.",
     age: 27,
-    country: "Nigerian",
+    country: "Nigeria",
     company: "Orlando Pirates",
     industry: "Football",
     source: "UGC",
