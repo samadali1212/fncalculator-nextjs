@@ -15,7 +15,7 @@ const eplCategories: EPLCategory[] = [
   {
     id: 1,
     title: "Top 10 Highest Paid Players in the Premier League",
-    slug: "top-10-highest-paid-epl-players",
+    slug: "highest-paid-epl-players",
     description: "The Premier League is home to some of the highest-paid footballers in the world. These players earn astronomical weekly wages, reflecting their status as elite athletes in the world's most-watched football league.",
     imageUrl: "https://resources.premierleague.com/photos/2024/04/16/ee85c29e-0c56-4366-9309-643398ecc9ea/FhweyqQXsAEYar9.jpg?width=860&height=573",
     filter: (player) => player.weeklySalary >= 200000
