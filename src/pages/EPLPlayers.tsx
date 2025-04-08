@@ -94,7 +94,7 @@ const EPLPlayers = () => {
             <Link to="/epl-categories" className="text-sm bg-white px-3 py-1 rounded-full border border-gray-200 hover:border-gray-300 transition-colors">
               View Categories
             </Link>
-            <Link to="epl-players/category/highest-paid-epl-players" className="text-sm bg-white px-3 py-1 rounded-full border border-gray-200 hover:border-gray-300 transition-colors">
+            <Link to="/epl-players/category/highest-paid-epl-players" className="text-sm bg-white px-3 py-1 rounded-full border border-gray-200 hover:border-gray-300 transition-colors">
              Highest paid
             </Link>
           </div>
