@@ -63,7 +63,7 @@ export const eplPlayers: EPLPlayer[] = [
     position: "Forward",
     nationality: "Egypt",
     age: 32,
-    weeklySalary: 350000, // £350,000 per week
+    weeklySalary: 350000,
     annualSalary: calculateAnnualSalary(350000),
     imageUrl: "https://resources.premierleague.com/premierleague/photos/players/250x250/p118748.png",
     description: "Mohamed Salah is one of the most prolific goalscorers in Premier League history. The Egyptian winger combines blistering pace with clinical finishing and has been a cornerstone of Liverpool's recent domestic and European success. His consistent goal-scoring ability and work rate have made him a fan favorite at Anfield.",
@@ -86,7 +86,7 @@ export const eplPlayers: EPLPlayer[] = [
     position: "Forward",
     nationality: "Norway",
     age: 24,
-    weeklySalary: 375000, // £375,000 per week
+    weeklySalary: 375000,
     annualSalary: calculateAnnualSalary(375000),
     imageUrl: "https://resources.premierleague.com/premierleague/photos/players/250x250/p223094.png",
     description: "Erling Haaland has established himself as one of the most feared strikers in world football. The Norwegian's combination of physical presence, pace, and lethal finishing has seen him break numerous scoring records since joining Manchester City. His goal-scoring exploits have quickly made him one of the Premier League's biggest stars.",
@@ -109,7 +109,7 @@ export const eplPlayers: EPLPlayer[] = [
     position: "Midfielder",
     nationality: "Portugal",
     age: 29,
-    weeklySalary: 240000, // £240,000 per week
+    weeklySalary: 240000,
     annualSalary: calculateAnnualSalary(240000),
     imageUrl: "https://resources.premierleague.com/premierleague/photos/players/250x250/p141746.png",
     description: "Bruno Fernandes has been Manchester United's creative hub since his arrival. The Portuguese midfielder combines excellent passing range with an eye for goal, particularly from penalties and free kicks. His leadership qualities have also seen him wear the captain's armband for the Red Devils.",
@@ -132,7 +132,7 @@ export const eplPlayers: EPLPlayer[] = [
     position: "Defender",
     nationality: "Netherlands",
     age: 33,
-    weeklySalary: 220000, // £220,000 per week
+    weeklySalary: 220000,
     annualSalary: calculateAnnualSalary(220000),
     imageUrl: "https://resources.premierleague.com/premierleague/photos/players/250x250/p97032.png",
     description: "Virgil van Dijk is widely regarded as one of the world's best central defenders. The imposing Dutch international combines physical prowess with excellent ball-playing ability and leadership. His arrival at Liverpool coincided with a period of domestic and European success for the club.",
@@ -155,7 +155,7 @@ export const eplPlayers: EPLPlayer[] = [
     position: "Forward",
     nationality: "England",
     age: 31,
-    weeklySalary: 200000, // At Tottenham before moving to Bayern
+    weeklySalary: 200000,
     annualSalary: calculateAnnualSalary(200000),
     imageUrl: "https://img.bundesliga.com/tachyon/sites/2/2023/08/231007_FCB_Kane_0095.jpg",
     description: "Harry Kane is one of England's greatest goalscorers, holding the record for most goals for Tottenham Hotspur before his move to Bayern Munich. A complete forward with excellent finishing, passing, and link-up play, Kane has won multiple Premier League Golden Boot awards. The England captain is known for his professionalism and consistent goal-scoring record.",
@@ -178,7 +178,7 @@ export const eplPlayers: EPLPlayer[] = [
     position: "Winger",
     nationality: "England",
     age: 22,
-    weeklySalary: 195000, // £195,000 per week
+    weeklySalary: 195000,
     annualSalary: calculateAnnualSalary(195000),
     imageUrl: "https://resources.premierleague.com/premierleague/photos/players/250x250/p223340.png",
     description: "Bukayo Saka has established himself as one of Arsenal's most important players despite his young age. A versatile winger with excellent technical ability, Saka combines pace with intelligent decision-making in the final third. The England international has become a key figure for both club and country.",
@@ -201,7 +201,7 @@ export const eplPlayers: EPLPlayer[] = [
     position: "Midfielder",
     nationality: "France",
     age: 33,
-    weeklySalary: 290000, // At Chelsea before leaving
+    weeklySalary: 290000,
     annualSalary: calculateAnnualSalary(290000),
     imageUrl: "https://resources.premierleague.com/premierleague/photos/players/250x250/p116594.png",
     description: "N'Golo Kanté was one of the Premier League's most influential midfielders, known for his exceptional work rate, tackling ability, and interceptions. The French World Cup winner played a crucial role in Leicester's fairy-tale Premier League title win before moving to Chelsea, where he continued his success. After leaving Chelsea, he joined Saudi Arabian club Al-Ittihad.",
@@ -224,7 +224,7 @@ export const eplPlayers: EPLPlayer[] = [
     position: "Winger",
     nationality: "England",
     age: 28,
-    weeklySalary: 300000, // £300,000 per week
+    weeklySalary: 300000,
     annualSalary: calculateAnnualSalary(300000),
     imageUrl: "https://resources.premierleague.com/premierleague/photos/players/250x250/p114283.png",
     description: "Jack Grealish became the most expensive British player when he moved from Aston Villa to Manchester City. Known for his close ball control, dribbling ability, and creativity, Grealish can play as a winger or attacking midfielder. His flair and ability to draw fouls make him a dangerous attacking threat.",
@@ -247,7 +247,7 @@ export const eplPlayers: EPLPlayer[] = [
     position: "Goalkeeper",
     nationality: "Brazil",
     age: 31,
-    weeklySalary: 150000, // £150,000 per week
+    weeklySalary: 150000,
     annualSalary: calculateAnnualSalary(150000),
     imageUrl: "https://resources.premierleague.com/premierleague/photos/players/250x250/p116535.png",
     description: "Alisson Becker is widely regarded as one of the world's best goalkeepers. The Brazilian combines exceptional shot-stopping ability with excellent distribution and command of his area. His arrival at Liverpool coincided with a significant improvement in the club's defensive record and subsequent success.",
@@ -270,7 +270,7 @@ export const eplPlayers: EPLPlayer[] = [
     position: "Midfielder",
     nationality: "England",
     age: 25,
-    weeklySalary: 240000, // £240,000 per week
+    weeklySalary: 240000,
     annualSalary: calculateAnnualSalary(240000),
     imageUrl: "https://resources.premierleague.com/premierleague/photos/players/250x250/p204480.png",
     description: "Declan Rice is one of England's most promising midfielders, combining defensive awareness with excellent passing ability. After establishing himself as West Ham's captain and key player, he made a high-profile move to Arsenal. His ability to break up opposition attacks and progress the ball make him a complete modern midfielder.",
@@ -293,7 +293,7 @@ export const eplPlayers: EPLPlayer[] = [
     position: "Forward",
     nationality: "England",
     age: 26,
-    weeklySalary: 300000, // £300,000 per week
+    weeklySalary: 300000,
     annualSalary: calculateAnnualSalary(300000),
     imageUrl: "https://resources.premierleague.com/premierleague/photos/players/250x250/p176297.png",
     description: "Marcus Rashford is a product of Manchester United's youth academy who has developed into one of the club's key attacking players. Known for his pace, direct running, and finishing ability, Rashford has also earned praise for his off-field charitable work. The England international typically operates from the left wing but can play across the forward line.",
@@ -316,7 +316,7 @@ export const eplPlayers: EPLPlayer[] = [
     position: "Midfielder",
     nationality: "England",
     age: 24,
-    weeklySalary: 225000, // £225,000 per week
+    weeklySalary: 225000,
     annualSalary: calculateAnnualSalary(225000),
     imageUrl: "https://resources.premierleague.com/premierleague/photos/players/250x250/p209244.png",
     description: "Phil Foden has progressed from Manchester City's academy to become one of the Premier League's most talented attacking midfielders. Known for his technical ability, dribbling, and creativity, Foden has been compared to former City midfielder David Silva. His versatility allows him to play in multiple positions across the midfield and attack.",
@@ -339,7 +339,7 @@ export const eplPlayers: EPLPlayer[] = [
     position: "Right-Back",
     nationality: "England",
     age: 25,
-    weeklySalary: 180000, // £180,000 per week
+    weeklySalary: 180000,
     annualSalary: calculateAnnualSalary(180000),
     imageUrl: "https://resources.premierleague.com/premierleague/photos/players/250x250/p169187.png",
     description: "Trent Alexander-Arnold has redefined the role of the modern full-back with his exceptional passing and crossing ability. A product of Liverpool's academy, he has developed into one of the world's best right-backs. His set-piece delivery and ability to create chances from deep positions make him a unique attacking threat from defense.",
@@ -362,7 +362,7 @@ export const eplPlayers: EPLPlayer[] = [
     position: "Winger",
     nationality: "England",
     age: 29,
-    weeklySalary: 325000, // £325,000 per week
+    weeklySalary: 325000,
     annualSalary: calculateAnnualSalary(325000),
     imageUrl: "https://resources.premierleague.com/premierleague/photos/players/250x250/p103955.png",
     description: "Raheem Sterling is one of England's most accomplished wingers, known for his pace, dribbling ability, and improved finishing. After successful spells at Liverpool and Manchester City, he joined Chelsea in a high-profile transfer. Sterling's ability to consistently deliver goals and assists has made him a valuable asset for both club and country.",
