@@ -2654,6 +2654,13 @@ export const categoryDefinitions: Record<string, CategoryMetadata> = {
     slug: "richest-actors-in-south-africa",
     imageUrl: "https://storage.googleapis.com/pr-newsroom-wp/1/2023/06/Press-Shot-2-Photo-Credit-Spotify-1-1440x733.jpg"
   },
+  "musicians": {
+    id: "cat10",
+    title: "50 Richest Musicians in South Africa",
+    description: "South Africa has no shortage of musical legends. From jazz and gospel to pop and soul, these artists didn’t just create unforgettable songs—they turned their talent into serious money. Here’s a look at some of the richest musicians in South Africa and how they made it happen.",
+    slug: "richest-musicians-in-south-africa",
+    imageUrl: "https://cms.groupeditors.com/img/4343267c-8f24-43cf-9441-1cef04ab21a5.jpg"
+  },
 };
 
 /**
