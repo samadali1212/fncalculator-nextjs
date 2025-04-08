@@ -398,7 +398,7 @@ export function getAllPlayers(): EPLPlayer[] {
 
 // Format weekly salary
 export function formatWeeklySalary(salary: number, currency: string = "£"): string {
-  return `${currency}${salary.toLocaleString()} per week`;
+  return `${currency}${salary.toLocaleString()}`;
 }
 
 // Format annual salary
