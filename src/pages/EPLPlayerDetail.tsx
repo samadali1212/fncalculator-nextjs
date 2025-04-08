@@ -146,7 +146,7 @@ const EPLPlayerDetail = () => {
               
               <div className="flex-1">
                 <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-2">
-                  {player.name} Salary Per Week
+                  {player.name} Salary
                 </h1>
                 
                 <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] mb-3">
@@ -183,7 +183,7 @@ const EPLPlayerDetail = () => {
               <div className="grid md:grid-cols-3 gap-2">
                 <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
                   <div className="text-gray-600 text-sm mb-1">Weekly Salary</div>
-                  <div className="text-xl font-bold">{formatWeeklySalary(player.weeklySalary)}</div>
+                  <div className="text-xl font-bold">{player.weeklySalary}</div>
                   <div className="text-gray-500 text-xs mt-1">Source: {player.source}</div>
                 </div>
                 <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
