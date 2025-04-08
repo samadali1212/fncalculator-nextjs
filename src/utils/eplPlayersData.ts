@@ -40,7 +40,7 @@ export const eplPlayers: EPLPlayer[] = [
     position: "Midfielder",
     nationality: "Belgium",
     age: 33,
-    weeklySalary: 400000, // £400,000 per week
+    weeklySalary: 400000,
     annualSalary: calculateAnnualSalary(400000),
     imageUrl: "https://resources.premierleague.com/premierleague/photos/players/250x250/p61366.png",
     description: "Kevin De Bruyne is widely regarded as one of the best midfielders in the world. Known for his exceptional passing, vision, and shooting ability, he has been instrumental in Manchester City's domestic and European successes. The Belgian international is renowned for his ability to create scoring chances and his excellent set-piece delivery.",
