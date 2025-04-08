@@ -26,7 +26,7 @@ const EPLPlayerDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   
   const player = findPlayerBySlug(slug || "");
-  const similarPlayers = player ? getSimilarPlayers(player, 5) : [];
+  const similarPlayers = player ? getSimilarPlayers(player, 10) : [];
   
   // Simulate loading from API
   useEffect(() => {
