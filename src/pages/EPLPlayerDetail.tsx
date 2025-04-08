@@ -146,7 +146,7 @@ const EPLPlayerDetail = () => {
               
               <div className="flex-1">
                 <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-2">
-                  {player.name} Salary Per Week
+                  {player.name}
                 </h1>
                 
                 <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] mb-3">
