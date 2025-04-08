@@ -19,6 +19,10 @@ import StandaloneCategories from "./pages/StandaloneCategories";
 import StandaloneCelebrityCategories from "./pages/StandaloneCelebrityCategories";
 import CelebrityCategory from "./pages/CelebrityCategory";
 import NotFound from "./pages/NotFound";
+import EPLPlayers from "./pages/EPLPlayers";
+import EPLPlayerDetail from "./pages/EPLPlayerDetail";
+import EPLCategories from "./pages/EPLCategories";
+import EPLCategory from "./pages/EPLCategory";
 
 const App = () => (
   <TooltipProvider>
@@ -47,6 +51,13 @@ const App = () => (
           <Route path="/categories" element={<StandaloneCategories />} />
           <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
           <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
+          
+          {/* New EPL Routes */}
+          <Route path="/epl-players" element={<EPLPlayers />} />
+          <Route path="/epl-players/:slug" element={<EPLPlayerDetail />} />
+          <Route path="/epl-categories" element={<EPLCategories />} />
+          <Route path="/epl-players/category/:slug" element={<EPLCategory />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
