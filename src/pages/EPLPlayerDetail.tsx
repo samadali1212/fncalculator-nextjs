@@ -172,7 +172,7 @@ const EPLPlayerDetail = () => {
                 </div>
                 
                 <div className="text-sm text-gray-600 mt-1">
-                  {formatAnnualSalary(player.weeklySalary * 52)}
+                  {formatAnnualSalary(player.weeklySalary * 52)} per year
                 </div>
               </div>
             </div>
