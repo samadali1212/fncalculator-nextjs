@@ -111,7 +111,7 @@ const EPLPlayerDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${player.name} Salary: ${formattedWeeklySalaryForTitle} - ${player.team}`}
+        title={`${player.name} Salary Per Week At ${player.team}`}
         description={`${player.name}'s salary at ${player.team} is ${formatWeeklySalary(player.weeklySalary)}. Learn about ${player.name}'s contract, position, and career as a ${player.position}.`}
         canonicalUrl={`/epl-players/${player.slug}`}
       />
@@ -130,7 +130,7 @@ const EPLPlayerDetail = () => {
             </Link>
             
             <ShareButton 
-              title={`${player.name} Salary: ${formattedWeeklySalaryForTitle} - ${player.team} | SalaryList`} 
+              title={`${player.name} Salary Per Week At ${player.team} | SalaryList`} 
               variant="outline"
             />
           </div>
@@ -146,7 +146,7 @@ const EPLPlayerDetail = () => {
               
               <div className="flex-1">
                 <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-2">
-                  {player.name}
+                  {player.name} Salary Per Week
                 </h1>
                 
                 <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] mb-3">
