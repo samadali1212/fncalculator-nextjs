@@ -1,19 +1,12 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Search, ArrowUpRight, ListFilter } from "lucide-react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { Search, ArrowUpRight, ListFilter, ChevronLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { 
-  Card, 
-  CardContent, 
-  CardHeader, 
-  CardTitle, 
-  CardDescription 
-} from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { 
   Select,
@@ -22,61 +15,73 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { celebrities, formatSalary } from "../utils/popularData";
-import { getPopularCelebrityCategories } from "../utils/celebrityCategoriesData";
 import {
   Pagination,
   PaginationContent,
   PaginationItem,
 } from "@/components/ui/pagination";
+import { 
+  findCelebrityCategoryBySlug, 
+  getCelebrityCategoryIdBySlug,
+  getCelebritiesByCategory
+} from "../utils/celebrityCategoriesData";
+import { formatSalary } from "../utils/popularData";
 
-const Popular = () => {
+const PopularCategory = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [itemsToShow, setItemsToShow] = useState(50);
-  const [industryFilter, setIndustryFilter] = useState<string>("all");
-  const [isLoading, setIsLoading] = useState(true);
-  const [categories, setCategories] = useState<any[]>([]);
-
-  // Get unique industries for filter
-  const industries = ["all", ...Array.from(new Set(celebrities.map(celebrity => celebrity.industry)))];
+  const [sortField, setSortField] = useState<string>("salary");
+  
+  const category = slug ? findCelebrityCategoryBySlug(slug) : undefined;
+  const categoryId = slug ? getCelebrityCategoryIdBySlug(slug) : undefined;
+  
+  const [celebrities, setCelebrities] = useState<any[]>([]);
   
   useEffect(() => {
-    // Load categories
-    setCategories(getPopularCelebrityCategories());
+    setIsLoading(true);
     
-    // Simulate loading state
     const timer = setTimeout(() => {
+      if (categoryId) {
+        const categoryCelebrities = getCelebritiesByCategory(categoryId);
+        setCelebrities(categoryCelebrities);
+      }
       setIsLoading(false);
-    }, 500);
+    }, 300);
     
     return () => clearTimeout(timer);
-  }, []);
+  }, [categoryId]);
   
-  // Filter celebrities based on search query and industry
   const filteredCelebrities = celebrities.filter(celebrity => {
-    const matchesSearch = searchQuery 
+    return searchQuery 
       ? celebrity.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
         celebrity.company?.toLowerCase().includes(searchQuery.toLowerCase()) ||
         celebrity.industry?.toLowerCase().includes(searchQuery.toLowerCase())
       : true;
-      
-    const matchesIndustry = industryFilter === "all" || celebrity.industry === industryFilter;
-    
-    return matchesSearch && matchesIndustry;
   });
   
-  // Sort by salary (descending)
-  const sortedCelebrities = [...filteredCelebrities].sort((a, b) => b.salary - a.salary);
+  const sortedCelebrities = [...filteredCelebrities].sort((a, b) => {
+    if (sortField === "salary") {
+      return b.salary - a.salary;
+    } else if (sortField === "name") {
+      return a.name.localeCompare(b.name);
+    } else if (sortField === "company") {
+      const companyA = a.company || "";
+      const companyB = b.company || "";
+      return companyA.localeCompare(companyB);
+    }
+    return 0;
+  });
   
-  // Paginate results
   const displayedCelebrities = sortedCelebrities.slice(0, itemsToShow);
   const hasMoreCelebrities = displayedCelebrities.length < filteredCelebrities.length;
   
   const loadMore = () => {
-    setItemsToShow(prevItemsToShow => prevItemsToShow + 40);
+    setItemsToShow(prevItemsToShow => prevItemsToShow + 10);
   };
 
-  // Get initials for avatar fallback
   const getInitials = (name: string) => {
     return name
       .split(' ')
@@ -98,6 +103,21 @@ const Popular = () => {
     );
   }
 
+  if (!category || !categoryId) {
+    return (
+      <div className="min-h-screen bg-[#f6f6f0] flex items-center justify-center">
+        <Header />
+        <div className="bg-white p-6 rounded-md shadow-sm">
+          <h2 className="text-xl font-semibold mb-4">Category Not Found</h2>
+          <p className="mb-4">The category you're looking for doesn't exist.</p>
+          <Button onClick={() => navigate('/popular')}>
+            Back to Popular
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -105,50 +125,39 @@ const Popular = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Most Popular South African Personalities" 
-        description="Explore the most popular personalities in South Africa, including actors, musicians, athletes, and more. Updated information on their background, achievements, and influence."
-        canonicalUrl="/popular"
+        title={`${category.title} | South Africa's Most Popular`}
+        description={category.description}
+        canonicalUrl={`/popular/category/${slug}`}
       />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-          <div>
-            <h1 className="text-3xl font-bold mb-2">Most Popular People in South Africa</h1>
-            <p className="text-gray-600">
-              Explore South Africa's most popular and influential personalities. From entertainment and sports to business and politics, discover who captivates public attention and shapes South African culture.
-            </p>
-          </div>
+        <div className="mb-6">
+          <Link 
+            to="/popular"
+            className="inline-flex items-center text-sm text-[#000000] hover:underline"
+          >
+            <ChevronLeft className="h-4 w-4 mr-1" />
+            All Popular Personalities
+          </Link>
         </div>
         
-        {categories.length > 0 && (
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">Browse by Category</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {categories.map((category) => (
-                <Link 
-                  key={category.id}
-                  to={`/popular/category/${category.slug}`}
-                  className="group"
-                >
-                  <Card className="h-full hover:shadow-md transition-shadow">
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-lg group-hover:text-blog-accent transition-colors flex items-center">
-                        {category.title}
-                        <ArrowUpRight className="h-4 w-4 ml-1.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription className="line-clamp-2">
-                        {category.description}
-                      </CardDescription>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+          <div>
+            <h1 className="text-3xl font-bold mb-2">{category.title}</h1>
+            <p className="text-gray-600">
+              {category.description}
+            </p>
           </div>
-        )}
+          
+          <Link 
+            to="/popular"
+            className="mt-4 md:mt-0 inline-flex items-center text-blog-accent hover:text-blog-accent-hover transition-colors"
+          >
+            <ListFilter className="h-4 w-4 mr-1.5" />
+            Top 10
+          </Link>
+        </div>
         
         <motion.div 
           className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4"
@@ -171,22 +180,30 @@ const Popular = () => {
           
           <div>
             <Select 
-              value={industryFilter} 
-              onValueChange={setIndustryFilter}
+              value={sortField} 
+              onValueChange={setSortField}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Filter by industry" />
+                <SelectValue placeholder="Sort by" />
               </SelectTrigger>
               <SelectContent>
-                {industries.map((industry) => (
-                  <SelectItem key={industry} value={industry}>
-                    {industry === "all" ? "All Industries" : industry}
-                  </SelectItem>
-                ))}
+                <SelectItem value="salary">Sort by Salary</SelectItem>
+                <SelectItem value="name">Sort by Name</SelectItem>
+                <SelectItem value="company">Sort by Company</SelectItem>
               </SelectContent>
             </Select>
           </div>
         </motion.div>
+
+        {category.imageUrl && (
+          <div className="mb-8 rounded-md overflow-hidden">
+            <img 
+              src={category.imageUrl} 
+              alt={category.title} 
+              className="w-full h-64 object-cover"
+            />
+          </div>
+        )}
 
         <div className="bg-white rounded-sm shadow-sm border border-gray-200">
           {filteredCelebrities.length === 0 ? (
@@ -290,4 +307,4 @@ const Popular = () => {
   );
 };
 
-export default Popular;
+export default PopularCategory;

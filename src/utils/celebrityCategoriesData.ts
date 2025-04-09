@@ -1,5 +1,5 @@
 
-import { celebrities } from "./celebrityData";
+import { celebrities as regularCelebrities } from "./celebrityData";
 import { celebrities as popularCelebrities } from "./popularData";
 
 export interface CelebrityCategory {
@@ -9,6 +9,7 @@ export interface CelebrityCategory {
   description: string;
   imageUrl?: string;
   filter: (celebrity: any) => boolean;
+  sourceType?: 'regular' | 'popular'; // To indicate which dataset to use
 }
 
 // List of pre-defined celebrity categories
@@ -19,17 +20,19 @@ const celebrityCategories: CelebrityCategory[] = [
     slug: "highest-paid-players-at-kaizer-chiefs",
     description: "Top earning football players from Kaizer Chiefs, one of South Africa's most popular football clubs. Ever wondered which stars command the biggest paychecks at Naturena? We're pulling back the curtain to reveal the highest earners wearing the iconic Gold and Black.",
     imageUrl: "https://kcpub.azureedge.net/storage/uploads/public/67e/292/195/67e292195c72d356849357.jpg",
-    filter: (celebrity) => celebrity.company?.toLowerCase().includes("kaizer chiefs")
+    filter: (celebrity) => celebrity.company?.toLowerCase().includes("kaizer chiefs"),
+    sourceType: 'regular'
   },
-    {
+  {
     id: 2,
     title: "26 Highest Paid Players At Mamelodi Sundowns",
     slug: "highest-paid-players-at-mamelodi-sundowns",
     description: "A list of the highest paid football players at Mamelodi Sundowns. When you talk about financial heavyweights in African football, Mamelodi Sundowns is inevitably part of the conversation. They are the undisputed powerhouse of recent South African football, collecting trophies with relentless consistency. Mamelodi Sundowns' era of dominance is fueled by incredible talent and significant investment.",
     imageUrl: "https://sundownsfc.co.za/wp-content/uploads/2025/03/B25CASS0995-3.jpg",
-    filter: (celebrity) => celebrity.company?.toLowerCase().includes("mamelodi sundowns")
+    filter: (celebrity) => celebrity.company?.toLowerCase().includes("mamelodi sundowns"),
+    sourceType: 'regular'
   },
-      {
+  {
     id: 3,
     title: "50 Highest-Paid Football Players in South Africa's PSL",
     slug: "highest-paid-football-players-in-south-africas-psl",
@@ -41,7 +44,8 @@ const celebrityCategories: CelebrityCategory[] = [
       (celebrity.company?.toLowerCase().includes("premier league") || 
        celebrity.company?.toLowerCase().includes("kaizer") || 
        celebrity.company?.toLowerCase().includes("pirates") || 
-       celebrity.company?.toLowerCase().includes("sundowns"))
+       celebrity.company?.toLowerCase().includes("sundowns")),
+    sourceType: 'regular'
   },
   {
     id: 4,
@@ -49,23 +53,36 @@ const celebrityCategories: CelebrityCategory[] = [
     slug: "highest-paid-players-at-orlando-pirates",
     description: "Highest paid football stars from Orlando Pirates FC in the Premier Soccer League. Big money moves and top-tier talent define Orlando Pirates' current squad. With hefty paychecks to match their skill, some players are earning figures that turn heads both on and off the pitch. From veterans to rising stars, here's a look at who's banking the most at the Buccaneers.",
     imageUrl: "https://www.orlandopiratesfc.com/storage/2025/04/B25DAFRA2950-e1743545142948.jpg",
-    filter: (celebrity) => celebrity.company?.toLowerCase().includes("orlando pirates")
+    filter: (celebrity) => celebrity.company?.toLowerCase().includes("orlando pirates"),
+    sourceType: 'regular'
   },
-        {
+  {
     id: 5,
     title: "16 Highest-Paid CEOs in South Africa",
     slug: "highest-paid-ceos-in-south-africa",
     description: "South Africa's corporate sector has some of the highest-paid and influential CEOs on the continent. These leaders are not only responsible for steering billion-rand companies through economic shifts but are also rewarded handsomely for their efforts.",
     imageUrl: "https://www.ft.com/__origami/service/image/v2/images/raw/ftcms%3A741d8712-6192-4515-b7b3-c19c96e3af16?source=next-article&fit=scale-down&quality=highest&width=1440&dpr=1",
-    filter: (celebrity) => celebrity.occupation?.toLowerCase().includes("ceo")
+    filter: (celebrity) => celebrity.occupation?.toLowerCase().includes("ceo"),
+    sourceType: 'regular'
   },
-    {
+  {
     id: 6,
     title: "10 Highest Paid Coaches in South Africa",
     slug: "highest-paid-coaches-in-south-africa",
     description: "South Africa's Premiership is home to some of the most talented coaches in African football. With top-tier teams and a passionate fanbase, the league attracts skilled managers who are well-compensated for their expertise. Here's a look at the highest-paid coaches in the PSL and what makes them stand out.",
     imageUrl: "https://kcpub.azureedge.net/storage/uploads/public/67e/292/195/67e292195c72d356849357.jpg",
-    filter: (celebrity) => celebrity.occupation?.toLowerCase().includes("football coach")
+    filter: (celebrity) => celebrity.occupation?.toLowerCase().includes("football coach"),
+    sourceType: 'regular'
+  },
+  // Popular celebrities categories
+  {
+    id: 101,
+    title: "Most Popular South African Celebrities",
+    slug: "most-popular-south-african-celebrities",
+    description: "A comprehensive list of South Africa's most popular celebrities, ranked by their influence, earnings, and public visibility.",
+    imageUrl: "https://media.cnn.com/api/v1/images/stellar/prod/130708104038-nelson-mandela-portrait-vertical.jpg",
+    filter: (celebrity) => celebrity.country?.toLowerCase().includes("south africa"),
+    sourceType: 'popular'
   }
 ];
 
@@ -93,8 +110,9 @@ export function getCelebritiesByCategory(categoryId: number): any[] {
     return [];
   }
   
-  // Use the standard celebrities by default, or popularCelebrities if appropriate
-  return celebrities.filter(celebrity => category.filter(celebrity));
+  // Use the appropriate celebrity dataset based on the category source type
+  const source = category.sourceType === 'popular' ? popularCelebrities : regularCelebrities;
+  return source.filter(celebrity => category.filter(celebrity));
 }
 
 // Get category metadata
@@ -104,15 +122,27 @@ export interface CategoryMetadata {
   slug: string;
   description: string;
   imageUrl?: string;
+  sourceType?: 'regular' | 'popular';
 }
 
 // Get all category metadata
 export function getAllCelebrityMetadata(): CategoryMetadata[] {
-  return celebrityCategories.map(({ id, title, slug, description, imageUrl }) => ({
+  return celebrityCategories.map(({ id, title, slug, description, imageUrl, sourceType }) => ({
     id,
     title,
     slug,
     description,
     imageUrl,
+    sourceType
   }));
+}
+
+// Get all regular celebrity categories
+export function getRegularCelebrityCategories(): CelebrityCategory[] {
+  return celebrityCategories.filter(category => category.sourceType !== 'popular');
+}
+
+// Get all popular celebrity categories
+export function getPopularCelebrityCategories(): CelebrityCategory[] {
+  return celebrityCategories.filter(category => category.sourceType === 'popular');
 }
