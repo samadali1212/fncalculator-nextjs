@@ -29,7 +29,7 @@ import {
   PaginationItem,
 } from "@/components/ui/pagination";
 
-const Celebrities = () => {
+const Popular = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [itemsToShow, setItemsToShow] = useState(50);
   const [industryFilter, setIndustryFilter] = useState<string>("all");

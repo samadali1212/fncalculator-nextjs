@@ -18,7 +18,7 @@ import {
   Celebrity
 } from "../utils/popularData";
 
-const CelebrityDetail = () => {
+const PopularDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
@@ -50,7 +50,7 @@ const CelebrityDetail = () => {
       ` in ${celebrity.country}` : 
       '';
     
-        return `${celeb.name} earns an estimated monthly salary of R${celeb.salary.toLocaleString()} at ${celebrity.company}. ${celebrity.name} is a ${celebrity.age}-year-old ${celebrity.occupation} from ${celebrity.country}.`;
+    return `${celeb.name} earns an estimated monthly salary of R${celeb.salary.toLocaleString()} at ${celebrity.company}. ${celebrity.name} is a ${celebrity.age}-year-old ${celebrity.occupation} from ${celebrity.country}.`;
   };
   
   if (isLoading) {

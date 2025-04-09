@@ -1,4 +1,3 @@
-
 // EPL Players data
 
 export interface EPLPlayer {
@@ -647,7 +646,7 @@ transferValue: 2.5,
 jerseyNumber: 56,
 height: "1.90m",
 accolades: ["U21 Euro Champion (Czech Rep. squad)"],
-previousClubs: ["St Patrick’s", "Stockport"],
+previousClubs: ["St Patrick's", "Stockport"],
 internationalCaps: 0,
 marketValue: 2,
 source: "Verified contracts",
@@ -690,7 +689,7 @@ imageUrl: "https://backend.liverpoolfc.com/sites/default/files/styles/lg/public/
 description: "A young goalkeeper making his way through the Liverpool academy, Harvey Davies is showing promising signs for the future. Developing his technique and gaining experience within the club's youth system, Davies represents another potential option for Liverpool in the goalkeeping department down the line. His continued progress and dedication will be key as he aims to make his mark within the club's ranks.",
 contractUntil: "June 2025",
 transferValue: 2.5,
-jerseyNumber: "-",
+jerseyNumber: 0,
 height: "1.90m",
 accolades: ["FA Youth Cup Finalist"],
 previousClubs: ["Liverpool Youth"],
@@ -699,7 +698,6 @@ marketValue: 2,
 source: "Verified contracts",
 lastUpdated: "April 2024"
 }
-  
 ];
 
 // Helper functions
