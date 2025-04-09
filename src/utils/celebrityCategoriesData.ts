@@ -1,6 +1,6 @@
 
 import { celebrities } from "./celebrityData";
-import { celebrities } from "./popularData";
+import { celebrities as popularCelebrities } from "./popularData";
 
 export interface CelebrityCategory {
   id: number;
@@ -33,7 +33,7 @@ const celebrityCategories: CelebrityCategory[] = [
     id: 3,
     title: "50 Highest-Paid Football Players in South Africa's PSL",
     slug: "highest-paid-football-players-in-south-africas-psl",
-    description: "The South African Premier Soccer League stands as one of Africa's most prominent and financially robust leagues, attracting top talent with competitive salaries. The league’s top stars are cashing in with eye-watering salaries, making them some of the highest earners in African football. Here’s a breakdown of who’s topping the charts financially in the PSL.",
+    description: "The South African Premier Soccer League stands as one of Africa's most prominent and financially robust leagues, attracting top talent with competitive salaries. The league's top stars are cashing in with eye-watering salaries, making them some of the highest earners in African football. Here's a breakdown of who's topping the charts financially in the PSL.",
     imageUrl: "https://sundownsfc.co.za/wp-content/uploads/2024/12/Richards-Bay-Report.jpg",
     filter: (celebrity) => 
       celebrity.industry?.toLowerCase() === "football" && 
@@ -47,7 +47,7 @@ const celebrityCategories: CelebrityCategory[] = [
     id: 4,
     title: "26 Highest Paid Players At Orlando Pirates",
     slug: "highest-paid-players-at-orlando-pirates",
-    description: "Highest paid football stars from Orlando Pirates FC in the Premier Soccer League. Big money moves and top-tier talent define Orlando Pirates’ current squad. With hefty paychecks to match their skill, some players are earning figures that turn heads both on and off the pitch. From veterans to rising stars, here’s a look at who’s banking the most at the Buccaneers.",
+    description: "Highest paid football stars from Orlando Pirates FC in the Premier Soccer League. Big money moves and top-tier talent define Orlando Pirates' current squad. With hefty paychecks to match their skill, some players are earning figures that turn heads both on and off the pitch. From veterans to rising stars, here's a look at who's banking the most at the Buccaneers.",
     imageUrl: "https://www.orlandopiratesfc.com/storage/2025/04/B25DAFRA2950-e1743545142948.jpg",
     filter: (celebrity) => celebrity.company?.toLowerCase().includes("orlando pirates")
   },
@@ -55,7 +55,7 @@ const celebrityCategories: CelebrityCategory[] = [
     id: 5,
     title: "16 Highest-Paid CEOs in South Africa",
     slug: "highest-paid-ceos-in-south-africa",
-    description: "South Africa’s corporate sector has some of the highest-paid and influential CEOs on the continent. These leaders are not only responsible for steering billion-rand companies through economic shifts but are also rewarded handsomely for their efforts.",
+    description: "South Africa's corporate sector has some of the highest-paid and influential CEOs on the continent. These leaders are not only responsible for steering billion-rand companies through economic shifts but are also rewarded handsomely for their efforts.",
     imageUrl: "https://www.ft.com/__origami/service/image/v2/images/raw/ftcms%3A741d8712-6192-4515-b7b3-c19c96e3af16?source=next-article&fit=scale-down&quality=highest&width=1440&dpr=1",
     filter: (celebrity) => celebrity.occupation?.toLowerCase().includes("ceo")
   },
@@ -63,7 +63,7 @@ const celebrityCategories: CelebrityCategory[] = [
     id: 6,
     title: "10 Highest Paid Coaches in South Africa",
     slug: "highest-paid-coaches-in-south-africa",
-    description: "South Africa’s Premiership is home to some of the most talented coaches in African football. With top-tier teams and a passionate fanbase, the league attracts skilled managers who are well-compensated for their expertise. Here’s a look at the highest-paid coaches in the PSL and what makes them stand out.",
+    description: "South Africa's Premiership is home to some of the most talented coaches in African football. With top-tier teams and a passionate fanbase, the league attracts skilled managers who are well-compensated for their expertise. Here's a look at the highest-paid coaches in the PSL and what makes them stand out.",
     imageUrl: "https://kcpub.azureedge.net/storage/uploads/public/67e/292/195/67e292195c72d356849357.jpg",
     filter: (celebrity) => celebrity.occupation?.toLowerCase().includes("football coach")
   }
@@ -93,6 +93,7 @@ export function getCelebritiesByCategory(categoryId: number): any[] {
     return [];
   }
   
+  // Use the standard celebrities by default, or popularCelebrities if appropriate
   return celebrities.filter(celebrity => category.filter(celebrity));
 }
 
@@ -115,4 +116,3 @@ export function getAllCelebrityMetadata(): CategoryMetadata[] {
     imageUrl,
   }));
 }
-
