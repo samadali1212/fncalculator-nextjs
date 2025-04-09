@@ -2545,7 +2545,7 @@ categories: ["entrepreneurs", "business"]
   country: "South Africa",
   industry: "Sports",
   company: "Racing 92",
-  description: "Siya Kolisi is a historic figure in South African sport, celebrated as the first black captain of the national rugby team, the Springboks. He famously led the team to victory in the 2019 Rugby World Cup, becoming a national hero and symbol of unity. Rising from humble beginnings in the Zwide township, Kolisi's talent earned him a scholarship and paved the way for a successful professional career with teams like the Stormers, Springboks, and currently Racing 92 in France. Beyond the field, Kolisi is a highly marketable athlete with significant endorsements from major brands like Adidas and Land Rover, managed by Roc Nation Sports. Together with his wife Rachel, he founded the Kolisi Foundation, dedicated to tackling inequality and supporting underprivileged communities in South Africa, highlighting his commitment to social impact.",
+  description: "Siya Kolisi is a historic figure in South African sport, celebrated as the first black captain of the national rugby team, the Springboks. He famously led the team to victory in the 2019 Rugby World Cup, becoming a national hero and symbol of unity. Rising from humble beginnings in the Zwide township, Kolisi's talent earned him a scholarship and paved the way for a successful professional career with teams like the Stormers, Springboks, and currently Racing 92 in France. Beyond the field, Kolisi is a highly marketable athlete with significant endorsements from major brands like Adidas and Land Rover, managed by Roc Nation Sports.",
   source: "UGC",
   lastUpdated: "2025-04-09", 
   imageUrl: "https://all.rugby/photos/2024/les-springboks/siya-kolisi_m.webp",
