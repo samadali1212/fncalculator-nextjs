@@ -23,8 +23,8 @@ import EPLPlayers from "./pages/EPLPlayers";
 import EPLPlayerDetail from "./pages/EPLPlayerDetail";
 import EPLCategories from "./pages/EPLCategories";
 import EPLCategory from "./pages/EPLCategory";
-import EPLPlayers from "./pages/Popular";
-import EPLPlayerDetail from "./pages/PopularDetail";
+import Popular from "./pages/Popular";
+import PopularDetail from "./pages/PopularDetail";
 
 const App = () => (
   <TooltipProvider>
@@ -53,8 +53,8 @@ const App = () => (
           <Route path="/categories" element={<StandaloneCategories />} />
           <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
           <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
-	  <Route path="/epl-players" element={<Popular />} />
-          <Route path="/epl-players/:slug" element={<PopularDetail />} />
+	  <Route path="/popular" element={<Popular />} />
+          <Route path="/popular-celebrities/:slug" element={<PopularDetail />} />
           
           {/* New EPL Routes */}
           <Route path="/epl-players" element={<EPLPlayers />} />
