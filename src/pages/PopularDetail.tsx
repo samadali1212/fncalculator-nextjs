@@ -357,4 +357,4 @@ const CelebrityDetail = () => {
   );
 };
 
-export default CelebrityDetail;
+export default PopularDetail;
