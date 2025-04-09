@@ -18,14 +18,11 @@ import NetWorthCategory from "./pages/NetWorthCategory";
 import StandaloneCategories from "./pages/StandaloneCategories";
 import StandaloneCelebrityCategories from "./pages/StandaloneCelebrityCategories";
 import CelebrityCategory from "./pages/CelebrityCategory";
-import PopularCategory from "./pages/PopularCategory";
 import NotFound from "./pages/NotFound";
 import EPLPlayers from "./pages/EPLPlayers";
 import EPLPlayerDetail from "./pages/EPLPlayerDetail";
 import EPLCategories from "./pages/EPLCategories";
 import EPLCategory from "./pages/EPLCategory";
-import Popular from "./pages/Popular";
-import PopularDetail from "./pages/PopularDetail";
 
 const App = () => (
   <TooltipProvider>
@@ -50,20 +47,17 @@ const App = () => (
           <Route path="/celebrities/:slug" element={<CelebrityDetail />} />
           <Route path="/celebrity-categories" element={<StandaloneCelebrityCategories />} />
           <Route path="/celebrities/category/:slug" element={<CelebrityCategory />} />
-          <Route path="/popular" element={<Popular />} />
-          <Route path="/popular-celebrities/:slug" element={<PopularDetail />} />
-          <Route path="/popular/category/:slug" element={<PopularCategory />} />
           <Route path="/net-worth" element={<NetWorth />} />
           <Route path="/categories" element={<StandaloneCategories />} />
           <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
           <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
           
-          {/* EPL Routes */}
+          {/* New EPL Routes */}
           <Route path="/epl-players" element={<EPLPlayers />} />
           <Route path="/epl-players/:slug" element={<EPLPlayerDetail />} />
           <Route path="/epl-categories" element={<EPLCategories />} />
           <Route path="/epl-players/category/:slug" element={<EPLCategory />} />
-
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
