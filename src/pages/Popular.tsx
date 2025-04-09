@@ -256,4 +256,4 @@ const Celebrities = () => {
   );
 };
 
-export default Celebrities;
+export default Popular;
