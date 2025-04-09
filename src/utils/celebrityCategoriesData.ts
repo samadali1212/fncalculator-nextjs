@@ -1,5 +1,6 @@
 
 import { celebrities } from "./celebrityData";
+import { celebrities } from "./popularData";
 
 export interface CelebrityCategory {
   id: number;
