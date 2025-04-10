@@ -27,7 +27,7 @@ export type { GeneralKnowledgeCategory };
 export { generalKnowledgeCategories, getCategoryBySlug };
 
 // Data for best sugar brands South African
-const bestSugarBrands: GeneralKnowledgeItem[] = [
+const sugarBrandsData: GeneralKnowledgeItem[] = [
  {
     id: "illovo-sugar-africa",
     title: "Illovo Sugar Africa",
@@ -40,7 +40,7 @@ const bestSugarBrands: GeneralKnowledgeItem[] = [
     facts: [
       { title: "Established", value: "Since 1891" },
       { title: "Product Types", value: "White sugar, brown sugar, syrups, sweeteners" },
-      { title: "Availability", value: "South Africa, >20 African countries" },
+      { title: "Availability", value: "South Africa, More than 20 countries" },
       { title: "Reputation", value: "High-quality, Affordable, Great taste" }
     ],
     tags: ["sugar", "south africa", "sweetener", "white sugar", "brown sugar", "syrups", "illovo", "major producer", "africa"],
@@ -352,6 +352,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
 export const generalKnowledgeItems: GeneralKnowledgeItem[] = [
   ...valuableCoinsData,
   ...shoppingMallsData,
+  ...sugarBrandsData,
   // Additional category data would be added here
 ];
 
