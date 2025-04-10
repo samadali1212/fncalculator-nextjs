@@ -135,7 +135,7 @@ const bestSugarBrands: GeneralKnowledgeItem[] = [
     categoryId: "sugar-brands",
     categoryName: "Best South African Sugar Brands",
     shortDescription: "A reputable, long-standing South African sugar company producing high-quality white, brown, and raw sugar suitable for baking and cooking.",
-    fullDescription": "Gledhow Sugar Company is recognized as one of the best sugar brands in South Africa. With many years in operation, it holds a good reputation. Gledhow produces high-quality sugar perfect for baking or cooking and offers a variety including white sugar, brown sugar, and raw sugar.",
+    fullDescription: "Gledhow Sugar Company is recognized as one of the best sugar brands in South Africa. With many years in operation, it holds a good reputation. Gledhow produces high-quality sugar perfect for baking or cooking and offers a variety including white sugar, brown sugar, and raw sugar.",
     imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
     facts: [
       { title: "Established", value: "Many years" },
@@ -155,7 +155,7 @@ const bestSugarBrands: GeneralKnowledgeItem[] = [
     categoryId: "sugar-brands",
     categoryName: "Best South African Sugar Brands",
     shortDescription": "A leading, popular South African sugar brand known for quality, affordability, and wide availability in granulated and brown forms.",
-    fullDescription": "Atlanta Sugar is a leading sugar brand in South Africa, available in both granulated and brown forms. It's a popular choice for households across the country. The company has produced sugar for years, earning a reputation for quality and affordability. Atlanta Sugar is also widely available in supermarkets and grocery stores, making it easy to find.",
+    fullDescription: "Atlanta Sugar is a leading sugar brand in South Africa, available in both granulated and brown forms. It's a popular choice for households across the country. The company has produced sugar for years, earning a reputation for quality and affordability. Atlanta Sugar is also widely available in supermarkets and grocery stores, making it easy to find.",
     imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
     facts: [
       { title: "Position", value: "Leading brand" },
@@ -175,7 +175,7 @@ const bestSugarBrands: GeneralKnowledgeItem[] = [
     categoryId: "sugar-brands",
     categoryName: "Best South African Sugar Brands",
     shortDescription": "A well-known South African sugar mill operating for over 100 years, recognized for high-quality products and commitment to sustainability.",
-    fullDescription": "Noodsberg Sugar Mill is a well-known sugar producer in South Africa, renowned for its high-quality products sold throughout the country. Having operated for over 100 years, it continues to produce some of the best sugar in South Africa. The mill is also recognized for its commitment to sustainability and has received several awards for its environmental initiatives.",
+    fullDescription: "Noodsberg Sugar Mill is a well-known sugar producer in South Africa, renowned for its high-quality products sold throughout the country. Having operated for over 100 years, it continues to produce some of the best sugar in South Africa. The mill is also recognized for its commitment to sustainability and has received several awards for its environmental initiatives.",
     imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
     facts: [
       { title: "Established", value: "Over 100 years" },
@@ -195,7 +195,7 @@ const bestSugarBrands: GeneralKnowledgeItem[] = [
     categoryId: "sugar-brands",
     categoryName: "Best South African Sugar Brands",
     shortDescription": "A popular, reliable South African sugar brand offering high-quality, affordable sugar suitable for baking or sweetening drinks.",
-    fullDescription": "For sugar that is both high-quality and affordable, Royal Sugar is a great option. This brand is very popular in South Africa, known for products made with utmost care and attention to detail. Whether for baking or sweetening coffee, Royal Sugar is sure to satisfy. This reliable South African brand has been around for years.",
+    fullDescription: "For sugar that is both high-quality and affordable, Royal Sugar is a great option. This brand is very popular in South Africa, known for products made with utmost care and attention to detail. Whether for baking or sweetening coffee, Royal Sugar is sure to satisfy. This reliable South African brand has been around for years.",
     imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
     facts: [
       { title: "Known For", value: "High-quality and Affordability" },
@@ -215,7 +215,7 @@ const bestSugarBrands: GeneralKnowledgeItem[] = [
     categoryId: "sugar-brands",
     categoryName: "Best South African Sugar Brands",
     shortDescription": "A popular family-owned South African distributor (since 2012) offering high-quality sugars, syrups (for cocktails), and natural honey.",
-    fullDescription": "Operating since 2012, Lluvia Sugar Distributors is a popular sugar brand in South Africa. They offer a wide variety of high-quality sugars, syrups (perfect for cocktails/mocktails), and honey (a natural sweetener great for baking). As a family-owned business, Lluvia takes pride in its products and dedication to quality, supported by a team of skilled professionals ensuring customer satisfaction.",
+    fullDescription: "Operating since 2012, Lluvia Sugar Distributors is a popular sugar brand in South Africa. They offer a wide variety of high-quality sugars, syrups (perfect for cocktails/mocktails), and honey (a natural sweetener great for baking). As a family-owned business, Lluvia takes pride in its products and dedication to quality, supported by a team of skilled professionals ensuring customer satisfaction.",
     imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
     facts: [
       { title: "Established", value: "Since 2012" },
