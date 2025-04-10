@@ -310,7 +310,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
     categoryName: "Biggest Malls in South Africa",
     shortDescription: "Conveniently located near OR Tambo Airport, offering shopping, entertainment, and the only ice rink in the east.",
     fullDescription: "Festival Mall is located in close proximity to OR Tambo Airport, with easy access from the R21 and various other highways. It offers convenient shopping, quality merchandise, and non-stop entertainment every day of the week. Festival Mall is home to the only ice rink in the east and SterKinekor for all the latest movies.",
-    imageUrl: "/items/malls/festival-mall-kempton-park.jpg",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhUO8g-oUlCNf0NOLi9gh8wtB-5yZ56MptAQ&s",
     facts: [
       { title: "Location", value: "Corner C.R. Swart Drive and, Kelvin St, Esther Park, Kempton Park, 1619" },
       { title: "Owner", value: "Acucap Investments" },
@@ -332,7 +332,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
     categoryName: "Biggest Malls in South Africa",
     shortDescription: "Situated in Edenvale, covering 75,000 sqm with over 150 stores, anchored by major retailers.",
     fullDescription: "Greenstone Shopping Centre is conveniently situated on Modderfontein Road in Edenvale. It covers 75,000 square metres and has over 150 fully registered and licenced businesses. The major stores in Greenstone Shopping Centre are Checkers, Game, Pick 'n Pay Hyper, and Woolworths.",
-    imageUrl: "/items/malls/greenstone-shopping-centre-modderfontein.jpg",
+    imageUrl: "https://fastly.4sqi.net/img/general/600x600/YUCNXjpn4hWnsTWpuRA6s4ZHU8YGSpTT04UJFbUF4cs.jpg",
     facts: [
       { title: "Location", value: "Cnr Modderfontein Rd & Van Riebeeck Ave Greenstone Hill, Modderfontein, 1609" },
       { title: "Owner", value: "The AECI Group" },
@@ -355,7 +355,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
     categoryName: "Biggest Malls in South Africa",
     shortDescription: "A top Johannesburg mall with over 400 stores, known for its extensive retail offering in the Rosebank area.",
     fullDescription: "Rosebank is one of the top South African malls. It opens Mondays to Thursdays from 9am to 6pm, and 9am to 7pm on Fridays and Saturdays. Rosebank Mall opens from 9am to 5pm on Sundays and public holidays. It has over 400 stores that serve thousands of customers every day.",
-    imageUrl: "/items/malls/rosebank-mall-johannesburg.jpg",
+    imageUrl: "https://sassainsider.co.za/wp-content/uploads/2024/03/gettyimages-1063212632-612x612-1.jpg",
     facts: [
       { title: "Location", value: "15A Cradock Ave, Rosebank, Johannesburg, 2196" },
       { title: "Owner", value: "Hyprop Investments Limited" },
@@ -376,7 +376,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
     categoryName: "Biggest Malls in South Africa",
     shortDescription: "Located in Roodepoort, Gauteng, this mall opened in 2004 and houses over 400 shops.",
     fullDescription: "Clearwater Mall opened its doors to the public in 2004. It is located in Roodepoort, a town in Gauteng and is home to over 400 shops. Clearwater Mall's key tenants include Edgars, Woolworths, Dis-Chem, Pick n Pay, and Game.",
-    imageUrl: "/items/malls/clearwater-mall-roodepoort.jpg",
+    imageUrl: "https://sassainsider.co.za/wp-content/uploads/2024/03/gettyimages-1408834057-612x612-1.jpg",
     facts: [
       { title: "Location", value: "Hendrik Potgieter Rd, Christiaan de Wet Rd, Strubens Valley, Roodepoort, 1735" },
       { title: "Owner", value: "Hyprop Investments Limited" },
@@ -398,7 +398,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
     categoryName: "Biggest Malls in South Africa",
     shortDescription: "A major shopping destination in Polokwane with 180 stores, diverse restaurants, and key anchor tenants.",
     fullDescription: "Mall of the North has a floor area of 77,788m². It offers reputable fashion and homeware brands and boasts of the most diverse restaurant mix in Polokwane. The anchors of Mall of the North are Game, Woolworths, Pick n Pay, Edgars, Checkers, and Ster-Kinekor.",
-    imageUrl: "/items/malls/mall-of-the-north-polokwane.jpg",
+    imageUrl: "https://sassainsider.co.za/wp-content/uploads/2024/03/gettyimages-1257380436-612x612-1.jpg",
     facts: [
       { title: "Location", value: "R81, Bendor, Polokwane, 0699" },
       { title: "Owners", value: "Resilient Properties Income Fund, Moolman Group, Flanagan & Gerar" },
@@ -421,7 +421,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
     categoryName: "Biggest Malls in South Africa",
     shortDescription: "Established in 1989 in Pretoria's Embassy suburbs, featuring around 220 specialist retail stores.",
     fullDescription: "In 1989, Growthpoint Properties established Brooklyn Mall in Pretoria. The facility is among the top 10 biggest malls in South Africa. It is situated in the heart of Pretoria's cosmopolitan Embassy suburbs. A full complement of national retailers alongside about 220 specialist retail stores provides the best shopping experience.",
-    imageUrl: "/items/malls/brooklyn-mall-pretoria.jpg",
+    imageUrl: "https://sassainsider.co.za/wp-content/uploads/2024/03/gettyimages-1457855790-612x612-1.jpg",
     facts: [
       { title: "Location", value: "Cnr Veale Street and, Fehrsen St, Nieuw Muckleneuk, Pretoria" },
       { title: "Owner", value: "Growthpoint Properties" },
@@ -442,7 +442,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
     categoryName: "Biggest Malls in South Africa",
     shortDescription: "Established in 1985 and refurbished in 2016, this Roodepoort mall boasts a GLA of 112,592 sqm and 173 stores.",
     fullDescription: "The Westgate Shopping Mall was established in 1985 and refurbished 2016. It now has a gross leasable area of 112,592 square meters and has 173 stores and 5676 parking bays. Some of its key tenants are Pick n Pay, Edgars, Checkers Hyper, Game, Food Lovers Market, and Woolworths.",
-    imageUrl: "/items/malls/westgate-shopping-mall-roodepoort.jpg",
+    imageUrl: "https://media.gettyimages.com/id/1330898490/photo/mother-and-her-daughter-shopping-in-a-supermarket.jpg?s=612x612&w=0&k=20&c=7-cKVOlgyGZX_KjtHe1xerizbsv1omH2fPDPulOO1ys=",
     facts: [
       { title: "Location", value: "120 Ontdekkers Road, Horizon View, Roodepoort, Johannesburg" },
       { title: "Owner", value: "Pareto Limited" },
@@ -466,7 +466,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
     categoryName: "Biggest Malls in South Africa",
     shortDescription: "A large shopping centre near Durban, established in 1993, with over 200 stores and numerous food outlets.",
     fullDescription: "Pavilion Shopping Centre is located in Westville near Durban and is one of the largest in South Africa. It has gone through many phases of extensions. Today, Pavilion Shopping Centre has over 200 stores and 5319 parking bays, including fast food outlets, high-end bakeries, and coffee houses.",
-    imageUrl: "/items/malls/the-pavilion-shopping-centre-durban.jpg",
+    imageUrl: "https://media.gettyimages.com/id/487704285/photo/women-shopping-together-in-mall.jpg?s=612x612&w=0&k=20&c=ng6oTBxseS_u_9JVHy2FYxL2_envNInr0IRX758X-Ig=",
     facts: [
       { title: "Location", value: "Jack Martens Dr, Dawncliffe, Westville, 3611, Durban" },
       { title: "Owner", value: "Pareto Limited" },
@@ -490,7 +490,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
     categoryName: "Biggest Malls in South Africa",
     shortDescription: "South Africa's largest mall built in a single phase (2016), located in Waterfall City, Midrand, with over 300 shops.",
     fullDescription: "Attacq started building the Mall of Africa in 2012 and finished the project in 2016. It is South Africa's largest shopping centre to be constructed in a single phase. It is home to over 300 shops, including local and international brands.",
-    imageUrl: "/items/malls/mall-of-africa-midrand.jpg",
+    imageUrl: "https://media.gettyimages.com/id/182657444/photo/older-black-woman-shopping-in-store.jpg?s=612x612&w=0&k=20&c=mIDi4MF-7eVcTdgvfGLuuA69JqVxv7wF6TNwli4w1uc=",
     facts: [
       { title: "Location", value: "Waterfall City, Midrand, Gauteng" },
       { title: "Owner", value: "Attacq" },
@@ -512,7 +512,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
     categoryName: "Biggest Malls in South Africa",
     shortDescription: "A major mall in Johannesburg's eastern suburbs since 1979, featuring over 300 stores and convenient Call & Collect services.",
     fullDescription: "Eastgate Shopping Centre is one of the top 10 biggest malls in South Africa. It is located in Johannesburg's eastern suburbs. Its Call & Collect services are convenient because customers call the stores, place orders, pay, and collect their items from the rooftop using the Piazza entrance. Eastgate Shopping Centre is a haven for shopping lovers.",
-    imageUrl: "/items/malls/eastgate-shopping-centre-johannesburg.jpg",
+    imageUrl: "https://media.gettyimages.com/id/1291100364/photo/a-young-woman-out-shopping-in-the-city.jpg?s=612x612&w=0&k=20&c=4esCvkasCo6Em3Bfakb-i05eOCfomyTLRpjEsKpp7Q4=",
     facts: [
       { title: "Location", value: "43 Bradford Rd, Bedfordview, Germiston, 2008, Gauteng" },
       { title: "Owner", value: "Liberty Group Limited" },
@@ -535,7 +535,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
     categoryName: "Biggest Malls in South Africa",
     shortDescription: "Arguably Cape Town's biggest mall, located in Century City, offering over 400 shops, movies, and diverse food options since 2000.",
     fullDescription: "Canal Walk is arguably the biggest mall in Cape Town. It is situated in the Century City precinct. It is the best place for 4k movies and food, including vegan dishes. Canal Walk has over 400 shops in its 141,000 square metre property that hosts 8,000 parking bays.",
-    imageUrl: "/items/malls/canal-walk-cape-town.jpg",
+    imageUrl: "https://media.gettyimages.com/id/1449421978/photo/mother-and-daughter-looking-for-shoes-in-a-store-window.jpg?s=612x612&w=0&k=20&c=r9gfocyhmZg5GBbZjBZD5enKxQXgCnF7Wt2nPn8oHCk=",
     facts: [
       { title: "Location", value: "Cape Town, South Africa (Century City precinct)" },
       { title: "Owner", value: "Hyprop Investment Limited" },
@@ -559,7 +559,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
     categoryName: "Biggest Malls in South Africa",
     shortDescription: "An iconic Johannesburg mall established in 1973 and expanded significantly, now featuring over 300 local and international stores.",
     fullDescription: "Sandton City South Africa occupied an area of 50,000 square metres in 1973. It was expanded in 2011 and now covers an area of 146,803 square metres. Sandton City South Africa has over 300 local and international shops.",
-    imageUrl: "/items/malls/sandton-city-johannesburg.jpg",
+    imageUrl: "https://media.gettyimages.com/id/616091828/photo/shopping-woman-texting-on-her-phone.jpg?s=612x612&w=0&k=20&c=hiWhQcZIrUhrdiFdtCMM1gtFHotSdekEWvp_ipahoLg=",
     facts: [
       { title: "Location", value: "83 Rivonia Rd, Sandhurst, Sandton, 2196, Johannesburg" },
       { title: "Owners", value: "Liberty Holdings Limited/Liberty Two Degrees and Pareto Ltd" },
@@ -581,7 +581,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
     categoryName: "Biggest Malls in South Africa",
     shortDescription: "One of South Africa's largest malls by GLA, located in Sandton, featuring over 400 stores and extensive entertainment options.",
     fullDescription: "Fourways Mall is located in Sandton, Johannesburg, and it occupies a 170,000 square meter space with over 2500 parking bays. It is one of the top 3 biggest malls in South Africa. Fourways Mall is arguably the biggest mall in Johannesburg. It has over 400 stores, multiple restaurants, a two-level food court, a massive open-air exhibition arena, and an impressive entertainment area.",
-    imageUrl: "/items/malls/fourways-mall-johannesburg.jpg",
+    imageUrl: "https://media.gettyimages.com/id/527027176/photo/mother-and-daughter-text-messaging-in-a-shopping-mall.jpg?s=612x612&w=0&k=20&c=BlgrepVM5EO4ZWPKUkekag5z21Y8y9Oi7PXLJok6CtU=",
     facts: [
       { title: "Location", value: "11 Ruby Cl, Witkoppen, Sandton, 2068, Johannesburg" },
       { title: "Owner", value: "Accelerate Property Fund" },
@@ -605,7 +605,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
     categoryName: "Biggest Malls in South Africa",
     shortDescription: "An award-winning super-regional mall in Pretoria, established 1979, covering 177,000 sqm GLA with over 500 stores.",
     fullDescription: "Menlyn Park Shopping Centre is located in Tshwane, Pretoria. It is the second-largest shopping mall in South Africa, covering a gross leasable area of 177,000 square meters with 8,250 parking bays. Menlyn Park Shopping Centre is an award-winning super-regional shopping centre.",
-    imageUrl: "/items/malls/menlyn-park-shopping-centre-pretoria.jpg",
+    imageUrl: "https://media.gettyimages.com/id/1156659232/photo/smiling-man-buying-tickets-at-movie-theater.jpg?s=612x612&w=0&k=20&c=UUNhNL9RZAXIlm8-_yvSn2JVMcdQ60RXncWlrs6JGfY=",
     facts: [
       { title: "Location", value: "Atterbury Road And, Lois Ave, Menlyn, Pretoria, 0063" },
       { title: "Owner", value: "Pareto Limited" },
@@ -629,7 +629,7 @@ const shoppingMallsData: GeneralKnowledgeItem[] = [
     categoryName: "Biggest Malls in South Africa",
     shortDescription: "Ranked among the world's top 100 largest malls, located in uMhlanga, offering ultimate dining, entertainment, and fashion with 460 stores.",
     fullDescription: "Gateway Theatre of Shopping is the biggest mall in South Africa (based on article's detailed list ranking). It is among the world's top 100 largest malls and the ultimate destination for dining, entertainment, and fashion in South Africa. Gateway Theatre of Shopping has about 460 stores and 70 eateries.",
-    imageUrl: "/items/malls/gateway-theatre-of-shopping-umhlanga.jpg",
+    imageUrl: "https://media.gettyimages.com/id/1277536751/photo/young-woman-using-digital-tablet-to-check-invetory-at-a-shoe-store.jpg?s=612x612&w=0&k=20&c=Jq3vNabCCqGsUmHfkRNutGnJ3XqNFUPanqAg3pJ85VM=",
     facts: [
       { title: "Location", value: "1 Palm Blvd, Umhlanga Ridge, Umhlanga, 4021" },
       { title: "Owner", value: "Old Mutual Property" },
