@@ -77,7 +77,7 @@ export const generalKnowledgeCategories: GeneralKnowledgeCategory[] = [
   },
   {
   id: "sugar-brands",
-  title: "Best South African Sugar Brands",
+  title: "10 Best South African Sugar Brands",
   slug: "best-south-african-sugar-brands",
   description: "Discover the top sugar brands available in South Africa, known for quality, reliability, and diverse product offerings.", 
   imageUrl: "https://irp.cdn-website.com/cbf48001/dms3rep/multi/shutterstock_2463705563.jpg",
