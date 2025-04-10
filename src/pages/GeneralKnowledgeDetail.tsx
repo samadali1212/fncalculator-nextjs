@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -13,6 +14,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { 
   getItemBySlug,
   getSimilarItems,
+  getCategoryBySlug,
 } from "../utils/generalKnowledgeData";
 import { formatCurrency } from "../utils/utils";
 
@@ -22,6 +24,7 @@ const GeneralKnowledgeDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   
   const item = slug ? getItemBySlug(slug) : undefined;
+  const category = item ? getCategoryBySlug(item.categoryId) : undefined;
   const similarItems = item ? getSimilarItems(item, 3) : [];
 
   useEffect(() => {
