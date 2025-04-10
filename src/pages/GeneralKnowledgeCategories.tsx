@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -6,7 +5,7 @@ import { Search, ArrowRight } from "lucide-react";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import { Input } from "@/components/ui/input";
-import { generalKnowledgeCategories } from "../utils/generalKnowledgeData";
+import { generalKnowledgeCategories } from "../utils/generalKnowledgeCategoriesData";
 
 const GeneralKnowledgeCategories = () => {
   const [searchQuery, setSearchQuery] = useState("");
