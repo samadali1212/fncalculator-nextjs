@@ -83,7 +83,7 @@ export const generalKnowledgeCategories: GeneralKnowledgeCategory[] = [
   imageUrl: "https://irp.cdn-website.com/cbf48001/dms3rep/multi/shutterstock_2463705563.jpg",
   articleCount: 10,
   emoji: "🍬",
-  createdAt: "2025-04-17",
+  createdAt: "2025-04-10",
 },
 ];
 
