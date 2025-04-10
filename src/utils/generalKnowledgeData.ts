@@ -34,7 +34,7 @@ export interface GeneralKnowledgeItem {
 export const generalKnowledgeCategories: GeneralKnowledgeCategory[] = [
   {
     id: "valuable-coins",
-    title: "Valuable South African Coins",
+    title: "10 Most Valuable Coins In South Africa",
     slug: "valuable-south-african-coins",
     description: "Discover the most valuable and rare coins in South African currency history, including their current market value and historical significance.",
     imageUrl: "/categories/valuable-coins.jpg",
@@ -44,7 +44,7 @@ export const generalKnowledgeCategories: GeneralKnowledgeCategory[] = [
   },
   {
     id: "shopping-malls",
-    title: "Biggest Shopping Malls in South Africa",
+    title: "15 Biggest Shopping Malls in South Africa",
     slug: "biggest-shopping-malls-south-africa",
     description: "A comprehensive guide to South Africa's largest shopping destinations with information on size, stores, amenities, and visitor numbers.",
     imageUrl: "/categories/shopping-malls.jpg",
