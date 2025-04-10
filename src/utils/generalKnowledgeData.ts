@@ -20,7 +20,8 @@ export interface GeneralKnowledgeItem {
 }
 
 // Re-export the category interface and helper functions for backward compatibility
-export { GeneralKnowledgeCategory, generalKnowledgeCategories, getCategoryBySlug };
+export { generalKnowledgeCategories, getCategoryBySlug };
+export type { GeneralKnowledgeCategory };
 
 // Sample data for valuable South African coins
 const valuableCoinsData: GeneralKnowledgeItem[] = [
