@@ -56,7 +56,7 @@ const sugarBrandsData: GeneralKnowledgeItem[] = [
     categoryName: "Best South African Sugar Brands",
     shortDescription: "A major South African sugar producer with a history dating back to 1892, known for high-quality sugar and sustainability efforts.",
     fullDescription: "Tongaat Hulett is one of the best sugar brands in South Africa, with a long history dating back to early 1892. As one of the biggest producers in the country, its products are sold nationwide. Tongaat Hulett is renowned for its high-quality sugar, ideal for baking or cooking. The company has operated for over a hundred years, building a strong reputation for quality products and notable sustainability initiatives, making it a respected business in South Africa.",
-    imageUrl: "/items/sugar/tongaat-hulett.jpg",
+    imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
     facts: [
       { title: "Established", value: "Since 1892" },
       { title: "Product Types", value: "High-quality sugar (for baking/cooking)" },
