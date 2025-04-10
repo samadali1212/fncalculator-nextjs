@@ -19,10 +19,8 @@ import StandaloneCategories from "./pages/StandaloneCategories";
 import StandaloneCelebrityCategories from "./pages/StandaloneCelebrityCategories";
 import CelebrityCategory from "./pages/CelebrityCategory";
 import NotFound from "./pages/NotFound";
-import EPLPlayers from "./pages/EPLPlayers";
-import EPLPlayerDetail from "./pages/EPLPlayerDetail";
-import EPLCategories from "./pages/EPLCategories";
-import EPLCategory from "./pages/EPLCategory";
+import BranchCodes from "./pages/BranchCodes";
+import BranchCodeDetail from "./pages/BranchCodeDetail";
 
 const App = () => (
   <TooltipProvider>
@@ -31,7 +29,12 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Salaries />} />
+          {/* Set BranchCodes as the explicit homepage */}
+          <Route path="/" element={<BranchCodes />} />
+          <Route path="/about" element={<About />} />
+          {/* Ensure branch-codes path also works and doesn't create duplicate content */}
+          <Route path="/branch-codes" element={<Navigate to="/" replace />} />
+          <Route path="/branch-codes/:slug" element={<BranchCodeDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/salaries" element={<Salaries />} />
           <Route path="/salaries/:jobId" element={<JobDetail />} />
