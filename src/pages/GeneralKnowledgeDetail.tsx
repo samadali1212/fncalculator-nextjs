@@ -120,13 +120,23 @@ const GeneralKnowledgeDetail = () => {
       <main className="pt-20 pb-16">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="flex items-center justify-between mb-6">
-            <Link 
-              to={`/general-knowledge/`}
-              className="inline-flex items-center text-sm text-[#000000] hover:underline"
-            >
-              <ChevronLeft className="h-4 w-4 mr-1" />
-              All Categories
-            </Link>
+            {category ? (
+              <Link 
+                to={`/general-knowledge/category/${category.slug}`}
+                className="inline-flex items-center text-sm text-[#000000] hover:underline"
+              >
+                <ChevronLeft className="h-4 w-4 mr-1" />
+                Back to {category.title}
+              </Link>
+            ) : (
+              <Link 
+                to="/general-knowledge"
+                className="inline-flex items-center text-sm text-[#000000] hover:underline"
+              >
+                <ChevronLeft className="h-4 w-4 mr-1" />
+                All Categories
+              </Link>
+            )}
             
             <ShareButton 
               title={`${item.title} | Financepedia`} 
