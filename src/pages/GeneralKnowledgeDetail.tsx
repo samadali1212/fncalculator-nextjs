@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -10,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { 
   getItemBySlug,
   getSimilarItems,
@@ -59,7 +57,7 @@ const GeneralKnowledgeDetail = () => {
             <div className="h-8 mb-6"></div>
             <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
               <div className="flex items-start gap-4 mb-6">
-                <Skeleton className="h-16 w-16 rounded-full" />
+                <Skeleton className="h-16 w-16 rounded-md" />
                 <div className="flex-1">
                   <Skeleton className="h-10 w-3/4 mb-4" />
                   <div className="flex flex-wrap items-center gap-3 mb-2">
@@ -146,12 +144,19 @@ const GeneralKnowledgeDetail = () => {
           
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
-<Avatar className="h-24 w-24 rounded-lg border-2 border-gray-100 shadow-sm">
-  <AvatarImage src={item.imageUrl} alt={item.title} />
-  <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-2xl">
-    {getInitials(item.title)}
-  </AvatarFallback>
-</Avatar>
+              <div className="h-24 w-24 rounded-lg border-2 border-gray-100 shadow-sm overflow-hidden">
+                {item.imageUrl ? (
+                  <img 
+                    src={item.imageUrl} 
+                    alt={item.title}
+                    className="h-full w-full object-cover" 
+                  />
+                ) : (
+                  <div className="h-full w-full flex items-center justify-center bg-[#f6f6f0] text-gray-700 text-2xl">
+                    {getInitials(item.title)}
+                  </div>
+                )}
+              </div>
               
               <div>
                 <h1 className="text-3xl font-bold mb-3">{item.title}</h1>
@@ -215,16 +220,23 @@ const GeneralKnowledgeDetail = () => {
             <div className="bg-white p-6 rounded-md shadow-sm mb-8">
               <h2 className="text-xl font-semibold mb-4">You Might Also Be Interested In</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {similarItems.map((similarItem, index) => (
+                {similarItems.map((similarItem) => (
                   <Card key={similarItem.id} className="hover:shadow-md transition-shadow">
                     <CardContent className="p-4">
                       <div className="flex items-center space-x-3 mb-2">
-                        <Avatar className="h-8 w-8">
-                          <AvatarImage src={similarItem.imageUrl} alt={similarItem.title} />
-                          <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
-                            {getInitials(similarItem.title)}
-                          </AvatarFallback>
-                        </Avatar>
+                        <div className="h-8 w-8 rounded-md overflow-hidden">
+                          {similarItem.imageUrl ? (
+                            <img 
+                              src={similarItem.imageUrl} 
+                              alt={similarItem.title}
+                              className="h-full w-full object-cover" 
+                            />
+                          ) : (
+                            <div className="h-full w-full flex items-center justify-center bg-[#f6f6f0] text-gray-700 text-xs">
+                              {getInitials(similarItem.title)}
+                            </div>
+                          )}
+                        </div>
                         <h3 className="font-medium text-sm line-clamp-1">{similarItem.title}</h3>
                       </div>
                       <p className="text-xs text-gray-600 mb-3 line-clamp-2">
