@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -14,9 +13,8 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { 
   getItemBySlug,
   getSimilarItems,
-  formatCurrency,
 } from "../utils/generalKnowledgeData";
-import { formatCurrency as formatCurrencyUtil } from "../utils/utils";
+import { formatCurrency } from "../utils/utils";
 
 const GeneralKnowledgeDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -26,10 +24,8 @@ const GeneralKnowledgeDetail = () => {
   const item = slug ? getItemBySlug(slug) : undefined;
   const similarItems = item ? getSimilarItems(item, 3) : [];
 
-  // Simulate loading from API
   useEffect(() => {
     setIsLoading(true);
-    // Simulate network delay
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 800);
@@ -37,7 +33,6 @@ const GeneralKnowledgeDetail = () => {
     return () => clearTimeout(timer);
   }, [slug]);
 
-  // Get initials for avatar fallback
   const getInitials = (title: string) => {
     return title
       .split(' ')
@@ -47,7 +42,6 @@ const GeneralKnowledgeDetail = () => {
       .substring(0, 2);
   };
 
-  // Format date in readable format
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString('en-ZA', options);
@@ -184,7 +178,7 @@ const GeneralKnowledgeDetail = () => {
                     <div className="flex flex-col">
                       <dt className="text-sm text-gray-500">Price</dt>
                       <dd className="text-base font-medium">
-                        {formatCurrencyUtil(item.price.value, item.price.currency)}
+                        {formatCurrency(item.price.value, item.price.currency)}
                       </dd>
                     </div>
                   )}

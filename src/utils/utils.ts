@@ -23,7 +23,10 @@ export const slugify = (text: string): string => {
  * @param currency The currency code (e.g., ZAR, USD)
  * @returns Formatted currency string
  */
-export const formatCurrency = (amount: number, currency: string = 'ZAR'): string => {
+export const formatCurrency = (amount: number | string, currency: string = 'ZAR'): string => {
+  // Convert amount to number if it's a string
+  const numericAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
+  
   const formatter = new Intl.NumberFormat('en-ZA', {
     style: 'currency',
     currency: currency,
@@ -31,5 +34,5 @@ export const formatCurrency = (amount: number, currency: string = 'ZAR'): string
     maximumFractionDigits: 0,
   });
   
-  return formatter.format(amount);
+  return formatter.format(numericAmount);
 };
