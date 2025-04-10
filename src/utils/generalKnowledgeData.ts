@@ -26,6 +26,210 @@ export type { GeneralKnowledgeCategory };
 // Re-export the helper functions and data (values) using regular 'export'
 export { generalKnowledgeCategories, getCategoryBySlug };
 
+// Data for best sugar brands South African
+const bestSugarBrands: GeneralKnowledgeItem[] = [
+ {
+    id: "illovo-sugar-africa",
+    title: "Illovo Sugar Africa",
+    slug: "illovo-sugar-africa",
+    categoryId: "sugar-brands",
+    categoryName: "Best South African Sugar Brands",
+    shortDescription: "One of the best and largest sugar producers in South Africa, offering a wide variety of sugars, syrups, and sweeteners since 1891.",
+    fullDescription: "This brand is one of the best in South Africa, offering a variety of products like white sugar, brown sugar, and more. Illovo Sugar Africa has been producing high-quality sugar since 1891 and is now one of the largest producers of sugar in Africa. Their products, known for being affordable and great-tasting using high-quality ingredients, are available in more than 20 countries on the continent.",
+    imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
+    facts: [
+      { title: "Established", value: "Since 1891" },
+      { title: "Product Types", value: "White sugar, brown sugar, syrups, sweeteners" },
+      { title: "Availability", value: "South Africa, >20 African countries" },
+      { title: "Reputation", value: "High-quality, Affordable, Great taste" }
+    ],
+    tags: ["sugar", "south africa", "sweetener", "white sugar", "brown sugar", "syrups", "illovo", "major producer", "africa"],
+    rating: 4.8,
+    createdAt: "2023-12-17",
+    updatedAt: "2025-04-10",
+  },
+  {
+    id: "tongaat-hulett",
+    title: "Tongaat Hulett",
+    slug: "tongaat-hulett",
+    categoryId: "sugar-brands",
+    categoryName: "Best South African Sugar Brands",
+    shortDescription: "A major South African sugar producer with a history dating back to 1892, known for high-quality sugar and sustainability efforts.",
+    fullDescription: "Tongaat Hulett is one of the best sugar brands in South Africa, with a long history dating back to early 1892. As one of the biggest producers in the country, its products are sold nationwide. Tongaat Hulett is renowned for its high-quality sugar, ideal for baking or cooking. The company has operated for over a hundred years, building a strong reputation for quality products and notable sustainability initiatives, making it a respected business in South Africa.",
+    imageUrl: "/items/sugar/tongaat-hulett.jpg",
+    facts: [
+      { title: "Established", value: "Since 1892" },
+      { title: "Product Types", value: "High-quality sugar (for baking/cooking)" },
+      { title: "Availability", value: "Nationwide (South Africa)" },
+      { title: "Reputation", value: "High-quality, Strong reputation, Sustainable" }
+    ],
+    tags: ["sugar", "south africa", "sweetener", "baking", "cooking", "tongaat hulett", "major producer", "sustainable"],
+    rating: 4.8,
+    createdAt: "2023-12-17",
+    updatedAt: "2025-04-10",
+  },
+  {
+    id: "rcl-foods-sugar-milling",
+    title: "RCL Foods Sugar & Milling",
+    slug: "rcl-foods-sugar-milling",
+    categoryId: "sugar-brands",
+    categoryName: "Best South African Sugar Brands",
+    shortDescription: "A trusted South African sugar brand known for quality, consistency, and offering both white and brown sugar in various packaging options.",
+    fullDescription: "For a sugar brand known for quality and consistency, RCL Foods Sugar & Milling is a perfect choice. Operating in South Africa for many years, it has become a trusted name. RCL Foods Sugar & Milling produces both white and brown sugar, ensuring you can find the right product. They also offer various packaging options for convenient storage.",
+    imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
+    facts: [
+      { title: "Known For", value: "Quality and Consistency" },
+      { title: "Product Types", value: "White sugar, Brown sugar" },
+      { title: "Availability", value: "South Africa" },
+      { title: "Features", value: "Variety of packaging options" }
+    ],
+    tags: ["sugar", "south africa", "sweetener", "white sugar", "brown sugar", "rcl foods", "quality", "consistent", "trusted"],
+    rating: 4.8,
+    createdAt: "2023-12-17",
+    updatedAt: "2025-04-10",
+  },
+  {
+    id: "ucl-company",
+    title: "UCL Company",
+    slug: "ucl-company",
+    categoryId: "sugar-brands",
+    categoryName: "Best South African Sugar Brands",
+    shortDescription: "A long-standing South African company (over 100 years) producing a wide variety of sugar products, honey, syrups, jams, and jellies.",
+    fullDescription: "With over 100 years in business, UCL Company has a reputation as one of the best sugar brands in the country. It produces a wide variety of sugar products, including white sugar, brown sugar, and honey. The company also manufactures other food products like syrups, jams, and jellies. Known for quality and innovation, its products are popular with consumers throughout South Africa.",
+    imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
+    facts: [
+      { title: "Established", value: "Over 100 years" },
+      { title: "Product Types", value: "White sugar, Brown sugar, Honey, Syrups, Jams, Jellies" },
+      { title: "Availability", value: "Throughout South Africa" },
+      { title: "Reputation", value: "Quality, Innovation, Popular" }
+    ],
+    tags: ["sugar", "south africa", "sweetener", "white sugar", "brown sugar", "honey", "syrups", "jams", "jellies", "ucl company", "diversified products"],
+    rating: 4.8,
+    createdAt: "2023-12-17",
+    updatedAt: "2025-04-10",
+  },
+  {
+    id: "umfolozi-sugar-mill",
+    title: "Umfolozi Sugar Mill",
+    slug: "umfolozi-sugar-mill",
+    categoryId: "sugar-brands",
+    categoryName: "Best South African Sugar Brands",
+    shortDescription: "Operating for over 100 years in Kwazulu Natal, producing high-quality, high-purity sugar with a distinctive flavour.",
+    fullDescription": "Umfolozi Sugar Mill is one of South Africa's best sugar brands, operating for over 100 years and producing some of the country's highest-quality sugar. Located between the Isimangaliso Wetlands Park and the Hluhluwe Umfolozi game reserve in Zululand, an area known for rich soil and favourable climate. The sugar from Umfolozi has a distinctive flavour and high purity, making it a consumer favourite. The mill prides itself on its tradition of excellence.",
+    imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
+    facts: [
+      { title: "Established", value: "Over 100 years" },
+      { title: "Product Types", value: "High-quality sugar" },
+      { title: "Location", value: "Kwazulu Natal North Coast (Zululand)" },
+      { title: "Reputation", value: "High-quality, High purity, Distinctive flavour, Excellence" }
+    ],
+    tags: ["sugar", "south africa", "sweetener", "umfolozi", "kwazulu natal", "zululand", "high purity", "distinctive flavour", "sugar mill"],
+    rating: 4.8,
+    createdAt: "2023-12-17",
+    updatedAt: "2025-04-10",
+  },
+  {
+    id: "gledhow-sugar-company",
+    title: "Gledhow Sugar Company",
+    slug: "gledhow-sugar-company",
+    categoryId: "sugar-brands",
+    categoryName: "Best South African Sugar Brands",
+    shortDescription: "A reputable, long-standing South African sugar company producing high-quality white, brown, and raw sugar suitable for baking and cooking.",
+    fullDescription": "Gledhow Sugar Company is recognized as one of the best sugar brands in South Africa. With many years in operation, it holds a good reputation. Gledhow produces high-quality sugar perfect for baking or cooking and offers a variety including white sugar, brown sugar, and raw sugar.",
+    imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
+    facts: [
+      { title: "Established", value: "Many years" },
+      { title: "Product Types", value: "White sugar, Brown sugar, Raw sugar" },
+      { title: "Use Case", value: "Baking, Cooking" },
+      { title: "Reputation", value: "Good reputation, High-quality" }
+    ],
+    tags: ["sugar", "south africa", "sweetener", "gledhow", "white sugar", "brown sugar", "raw sugar", "baking", "cooking", "reputable"],
+    rating: 4.8,
+    createdAt: "2023-12-17",
+    updatedAt: "2025-04-10",
+  },
+  {
+    id: "atlanta-sugar",
+    title: "Atlanta Sugar",
+    slug: "atlanta-sugar",
+    categoryId: "sugar-brands",
+    categoryName: "Best South African Sugar Brands",
+    shortDescription": "A leading, popular South African sugar brand known for quality, affordability, and wide availability in granulated and brown forms.",
+    fullDescription": "Atlanta Sugar is a leading sugar brand in South Africa, available in both granulated and brown forms. It's a popular choice for households across the country. The company has produced sugar for years, earning a reputation for quality and affordability. Atlanta Sugar is also widely available in supermarkets and grocery stores, making it easy to find.",
+    imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
+    facts: [
+      { title: "Position", value: "Leading brand" },
+      { title: "Product Types", value: "Granulated sugar, Brown sugar" },
+      { title: "Availability", value: "Widely available in supermarkets/grocery stores" },
+      { title: "Reputation", value: "Quality, Affordability, Popular" }
+    ],
+    tags: ["sugar", "south africa", "sweetener", "atlanta sugar", "granulated sugar", "brown sugar", "affordable", "quality", "widely available"],
+    rating: 4.8,
+    createdAt: "2023-12-17",
+    updatedAt: "2025-04-10",
+  },
+  {
+    id: "noodsberg-sugar-mill",
+    title: "Noodsberg Sugar Mill",
+    slug: "noodsberg-sugar-mill",
+    categoryId: "sugar-brands",
+    categoryName: "Best South African Sugar Brands",
+    shortDescription": "A well-known South African sugar mill operating for over 100 years, recognized for high-quality products and commitment to sustainability.",
+    fullDescription": "Noodsberg Sugar Mill is a well-known sugar producer in South Africa, renowned for its high-quality products sold throughout the country. Having operated for over 100 years, it continues to produce some of the best sugar in South Africa. The mill is also recognized for its commitment to sustainability and has received several awards for its environmental initiatives.",
+    imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
+    facts: [
+      { title: "Established", value: "Over 100 years" },
+      { title: "Product Types", value: "High-quality sugar" },
+      { title: "Availability", value: "Throughout South Africa" },
+      { title: "Reputation", value: "High-quality, Commitment to sustainability, Award-winning (environmental)" }
+    ],
+    tags: ["sugar", "south africa", "sweetener", "noodsberg", "sugar mill", "high quality", "sustainable", "environmental awards", "long-standing"],
+    rating: 4.8,
+    createdAt: "2023-12-17",
+    updatedAt: "2025-04-10",
+  },
+  {
+    id: "royal-sugar",
+    title: "Royal Sugar",
+    slug: "royal-sugar",
+    categoryId: "sugar-brands",
+    categoryName: "Best South African Sugar Brands",
+    shortDescription": "A popular, reliable South African sugar brand offering high-quality, affordable sugar suitable for baking or sweetening drinks.",
+    fullDescription": "For sugar that is both high-quality and affordable, Royal Sugar is a great option. This brand is very popular in South Africa, known for products made with utmost care and attention to detail. Whether for baking or sweetening coffee, Royal Sugar is sure to satisfy. This reliable South African brand has been around for years.",
+    imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
+    facts: [
+      { title: "Known For", value: "High-quality and Affordability" },
+      { title: "Use Case", value: "Baking, Sweetening coffee/drinks" },
+      { title: "Reputation", value: "Popular, Reliable, Care and attention to detail" },
+      { title: "Established", value: "Years" }
+    ],
+    tags: ["sugar", "south africa", "sweetener", "royal sugar", "affordable", "quality", "popular", "reliable", "baking"],
+    rating: 4.8,
+    createdAt: "2023-12-17",
+    updatedAt: "2025-04-10",
+  },
+  {
+    id: "lluvia-sugar-distributors",
+    title: "Lluvia Sugar Distributors",
+    slug: "lluvia-sugar-distributors",
+    categoryId: "sugar-brands",
+    categoryName: "Best South African Sugar Brands",
+    shortDescription": "A popular family-owned South African distributor (since 2012) offering high-quality sugars, syrups (for cocktails), and natural honey.",
+    fullDescription": "Operating since 2012, Lluvia Sugar Distributors is a popular sugar brand in South Africa. They offer a wide variety of high-quality sugars, syrups (perfect for cocktails/mocktails), and honey (a natural sweetener great for baking). As a family-owned business, Lluvia takes pride in its products and dedication to quality, supported by a team of skilled professionals ensuring customer satisfaction.",
+    imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
+    facts: [
+      { title: "Established", value: "Since 2012" },
+      { title: "Product Types", value: "Sugars, Syrups (for cocktails), Honey (natural sweetener)" },
+      { title: "Ownership", value: "Family-owned business" },
+      { title: "Reputation", value: "Popular, High-quality ingredients, Customer satisfaction focus" }
+    ],
+    tags: ["sugar", "south africa", "sweetener", "lluvia", "syrups", "honey", "cocktails", "baking", "family owned", "distributor"],
+    rating: 4.8,
+    createdAt: "2023-12-17",
+    updatedAt: "2025-04-10",
+  }
+  ];
+
 // Sample data for valuable South African coins
 const valuableCoinsData: GeneralKnowledgeItem[] = [
   {
