@@ -18,8 +18,8 @@ const SEO = ({
   ogType = "website",
   twitterCard = "summary_large_image"
 }: SEOProps) => {
-  const siteUrl = "https://salarylist.co.za";
-  const fullTitle = title.includes("SalaryList") ? title : `${title} | SalaryList`;
+  const siteUrl = "https://financepedia.co.za";
+  const fullTitle = title.includes("Financepedia") ? title : `${title} | Financepedia`;
   
   return (
     <Helmet>
