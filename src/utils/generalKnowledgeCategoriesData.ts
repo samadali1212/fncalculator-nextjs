@@ -75,6 +75,16 @@ export const generalKnowledgeCategories: GeneralKnowledgeCategory[] = [
     emoji: "🍽️",
     createdAt: "2023-10-30",
   },
+  {
+  id: "sugar-brands",
+  title: "Best South African Sugar Brands",
+  slug: "best-south-african-sugar-brands",
+  description: "Discover the top sugar brands available in South Africa, known for quality, reliability, and diverse product offerings.", 
+  imageUrl: "https://irp.cdn-website.com/cbf48001/dms3rep/multi/shutterstock_2463705563.jpg",
+  articleCount: 10,
+  emoji: "🍬",
+  createdAt: "2025-04-17",
+},
 ];
 
 // Helper functions
