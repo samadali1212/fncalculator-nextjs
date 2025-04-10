@@ -33,8 +33,8 @@ const About = () => {
             <h2 className="text-xl font-semibold mt-6 mb-3">Contact</h2>
             <p>
               For inquiries or collaborations, reach out via email:
-              <a href="mailto:info@moneyworth.co.za" className="text-[#ff6600] hover:underline ml-1">
-                info@moneyworth.co.za
+              <a href="mailto:flavianjn@gmail.com" className="text-[#ff6600] hover:underline ml-1">
+                flavianjn[at]gmail[dot]com
               </a>
             </p>
           </div>
