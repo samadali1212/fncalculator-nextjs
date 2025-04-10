@@ -27,7 +27,9 @@ const Header = () => {
 
   const menuItems = [
     { path: "/celebrities", label: "Celebrities" },
+    { path: "/celebrity-categories", label: "Highest-Paid" },
     { path: "/net-worth", label: "Net Worth" },
+    { path: "/categories", label: "Richest" },
     { path: "/salaries", label: "Careers" },
     { path: "/about", label: "About" },
   ];
