@@ -115,7 +115,7 @@ const bestSugarBrands: GeneralKnowledgeItem[] = [
     categoryId: "sugar-brands",
     categoryName: "Best South African Sugar Brands",
     shortDescription: "Operating for over 100 years in Kwazulu Natal, producing high-quality, high-purity sugar with a distinctive flavour.",
-    fullDescription": "Umfolozi Sugar Mill is one of South Africa's best sugar brands, operating for over 100 years and producing some of the country's highest-quality sugar. Located between the Isimangaliso Wetlands Park and the Hluhluwe Umfolozi game reserve in Zululand, an area known for rich soil and favourable climate. The sugar from Umfolozi has a distinctive flavour and high purity, making it a consumer favourite. The mill prides itself on its tradition of excellence.",
+    fullDescription: "Umfolozi Sugar Mill is one of South Africa's best sugar brands, operating for over 100 years and producing some of the country's highest-quality sugar. Located between the Isimangaliso Wetlands Park and the Hluhluwe Umfolozi game reserve in Zululand, an area known for rich soil and favourable climate. The sugar from Umfolozi has a distinctive flavour and high purity, making it a consumer favourite. The mill prides itself on its tradition of excellence.",
     imageUrl: "https://onehotoven.com/wp-content/uploads/2024/04/feature-brown-sugar.jpg",
     facts: [
       { title: "Established", value: "Over 100 years" },
