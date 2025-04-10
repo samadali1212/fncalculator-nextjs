@@ -2536,7 +2536,7 @@ categories: ["entrepreneurs", "business"]
   categories: ["musicians", "artists"]
 },
 	{
-  id: 149,
+  id: "149",
   name: "Siya Kolisi",
   netWorth: 3768972,
   currency: "USD",
