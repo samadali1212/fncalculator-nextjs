@@ -30,7 +30,7 @@ export const generalKnowledgeCategories: GeneralKnowledgeCategory[] = [
     title: "15 Biggest Shopping Malls in South Africa",
     slug: "biggest-shopping-malls-south-africa",
     description: "A comprehensive guide to South Africa's largest shopping destinations with information on size, stores, amenities, and visitor numbers.",
-    imageUrl: "/categories/shopping-malls.jpg",
+    imageUrl: "https://toprates.co.za/assets/uploads/1/large/featured_1699521608.jpg",
     articleCount: 15,
     emoji: "🛍️",
     createdAt: "2023-06-15",
