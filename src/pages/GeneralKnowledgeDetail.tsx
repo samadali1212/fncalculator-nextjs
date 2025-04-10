@@ -146,12 +146,12 @@ const GeneralKnowledgeDetail = () => {
           
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
-              <Avatar className="h-24 w-24 rounded-sm border-2 border-gray-100 shadow-sm">
-                <AvatarImage src={item.imageUrl} alt={item.title} />
-                <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-2xl">
-                  {getInitials(item.title)}
-                </AvatarFallback>
-              </Avatar>
+<Avatar className="h-24 w-24 rounded-lg border-2 border-gray-100 shadow-sm">
+  <AvatarImage src={item.imageUrl} alt={item.title} />
+  <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-2xl">
+    {getInitials(item.title)}
+  </AvatarFallback>
+</Avatar>
               
               <div>
                 <h1 className="text-3xl font-bold mb-3">{item.title}</h1>
