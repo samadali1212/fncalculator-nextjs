@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
@@ -26,6 +27,7 @@ const Header = () => {
   }, []);
 
   const menuItems = [
+    { path: "/general-knowledge", label: "Knowledge" },
     { path: "/celebrities", label: "Celebrities" },
     { path: "/celebrity-categories", label: "Highest-Paid" },
     { path: "/net-worth", label: "Net Worth" },
