@@ -40,7 +40,7 @@ const AdSense = ({ slot, format = 'auto', responsive = true, className = '' }: A
   return (
     <div className={containerClasses}>
       <ins
-        ref={adRef}
+        ref={adRef as any}
         className="adsbygoogle"
         style={{ display: 'block' }}
         data-ad-client="ca-pub-6455681110933282"
