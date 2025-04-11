@@ -1,26 +1,46 @@
-import { slugify } from "./utils";
-import { GeneralKnowledgeCategory, generalKnowledgeCategories, getCategoryBySlug } from "./generalKnowledgeCategoriesData";
+
+import { 
+  GeneralKnowledgeCategory, 
+  generalKnowledgeCategories, 
+  getCategoryBySlug 
+} from './generalKnowledgeCategoriesData';
 
 // Define the structure for general knowledge items
 export interface GeneralKnowledgeItem {
   id: string;
   title: string;
   slug: string;
-  categoryId: string;
-  categoryName: string;
   shortDescription: string;
   fullDescription: string;
   imageUrl?: string;
-  facts: Array<{ title: string; value: string }>;
+  categoryId: string;
+  categoryName: string;
   tags: string[];
+  facts: {
+    title: string;
+    value: string;
+  }[];
+  price?: {
+    value: number;
+    currency: string;
+  };
   rating?: number;
-  price?: { value: number; currency: string };
   createdAt: string;
   updatedAt: string;
 }
 
-// Re-export the category interface and helper functions for backward compatibility
-// Re-export the category interface using 'export type'
+// For How-To guides, we'll use a slightly different structure
+export interface HowToGuideItem extends GeneralKnowledgeItem {
+  steps: {
+    title: string;
+    description: string;
+    imageUrl?: string;
+  }[];
+  difficulty: 'Easy' | 'Moderate' | 'Advanced';
+  timeRequired: string;
+}
+
+// Export types for use in other files
 export type { GeneralKnowledgeCategory };
 
 // Re-export the helper functions and data (values) using regular 'export'
