@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -10,6 +9,12 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ArrowRight, Clock, BarChart3 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
+
+interface Step {
+  title: string;
+  description: string;
+  imageUrl?: string;
+}
 
 // Temporary data for a sample How-To guide
 const howToGuides = [
