@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
+import AdSense from "../components/AdSense";
 import { findBlogPostBySlug, getRecentPosts, formatBlogDate, BlogPost } from "../utils/blogData";
 
 const BlogDetail = () => {
@@ -85,6 +86,11 @@ const BlogDetail = () => {
             Back to all articles
           </Link>
           
+          {/* Ad slot before the main content */}
+          <div className="my-4">
+            <AdSense slot="1234567890" format="horizontal" className="py-2" />
+          </div>
+          
           <div className="bg-white rounded-lg shadow-sm overflow-hidden">
             <AspectRatio ratio={16 / 9}>
               <img 
@@ -122,16 +128,37 @@ const BlogDetail = () => {
                 </div>
               </div>
               
+              {/* First half of the content */}
+              <div 
+                className="blog-content prose prose-lg max-w-none mb-6"
+                dangerouslySetInnerHTML={{ 
+                  __html: blogPost.content.substring(0, Math.floor(blogPost.content.length / 2)) 
+                }}
+              />
+              
+              {/* Mid-content ad */}
+              <div className="my-6">
+                <AdSense slot="2345678901" format="rectangle" className="py-3" />
+              </div>
+              
+              {/* Second half of the content */}
               <div 
                 className="blog-content prose prose-lg max-w-none"
-                dangerouslySetInnerHTML={{ __html: blogPost.content }}
+                dangerouslySetInnerHTML={{ 
+                  __html: blogPost.content.substring(Math.floor(blogPost.content.length / 2)) 
+                }}
               />
             </div>
           </div>
         </div>
         
+        {/* Ad before related posts */}
+        <div className="my-6">
+          <AdSense slot="3456789012" format="horizontal" className="py-2" />
+        </div>
+        
         {relatedPosts.length > 0 && (
-          <div className="mt-12">
+          <div className="mt-6">
             <h2 className="text-2xl font-bold mb-6">More Articles</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedPosts.map((post, index) => (
@@ -165,6 +192,11 @@ const BlogDetail = () => {
           </div>
         )}
       </main>
+
+      {/* Bottom ad before footer */}
+      <div className="container mx-auto px-4 md:px-6 pb-8">
+        <AdSense slot="4567890123" format="horizontal" className="py-3" />
+      </div>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
