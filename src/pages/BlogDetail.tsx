@@ -89,9 +89,9 @@ const BlogDetail = () => {
             <ArrowLeft className="h-4 w-4" /> Back to Blog
           </Button>
 
-          {/* Ad slot before the main content */}
-          <div className="my-4">
-            <AdSense slot="1234567890" format="horizontal" className="py-2" />
+          {/* Enhanced top ad with larger size and better placement */}
+          <div className="my-6">
+            <AdSense slot="1234567890" format="horizontal" className="py-3" />
           </div>
           
           <motion.div
@@ -138,33 +138,71 @@ const BlogDetail = () => {
               )}
               
               <div className="p-6">
-                {/* First half of the content */}
+                {/* First quarter of the content */}
                 <div 
                   className="blog-content prose prose-sm max-w-none mb-5"
                   dangerouslySetInnerHTML={{ 
-                    __html: blogPost.content.substring(0, Math.floor(blogPost.content.length / 2)) 
+                    __html: blogPost.content.substring(0, Math.floor(blogPost.content.length / 4)) 
                   }}
                 />
                 
-                {/* Mid-content ad */}
-                <div className="my-8">
-                  <AdSense slot="2345678901" format="rectangle" className="py-2" />
+                {/* First mid-content ad */}
+                <div className="my-6">
+                  <AdSense slot="2345678901" format="rectangle" className="py-3" />
                 </div>
                 
-                {/* Second half of the content */}
+                {/* Second quarter of the content */}
+                <div 
+                  className="blog-content prose prose-sm max-w-none mb-5"
+                  dangerouslySetInnerHTML={{ 
+                    __html: blogPost.content.substring(
+                      Math.floor(blogPost.content.length / 4),
+                      Math.floor(blogPost.content.length / 2)
+                    ) 
+                  }}
+                />
+                
+                {/* Second mid-content ad */}
+                <div className="my-6">
+                  <AdSense slot="3456789012" format="rectangle" className="py-3" />
+                </div>
+                
+                {/* Third quarter of the content */}
+                <div 
+                  className="blog-content prose prose-sm max-w-none mb-5"
+                  dangerouslySetInnerHTML={{ 
+                    __html: blogPost.content.substring(
+                      Math.floor(blogPost.content.length / 2),
+                      Math.floor(blogPost.content.length * 3 / 4)
+                    ) 
+                  }}
+                />
+                
+                {/* Third mid-content ad */}
+                <div className="my-6">
+                  <AdSense slot="4567890123" format="rectangle" className="py-3" />
+                </div>
+                
+                {/* Fourth quarter of the content */}
                 <div 
                   className="blog-content prose prose-sm max-w-none"
                   dangerouslySetInnerHTML={{ 
-                    __html: blogPost.content.substring(Math.floor(blogPost.content.length / 2)) 
+                    __html: blogPost.content.substring(Math.floor(blogPost.content.length * 3 / 4)) 
                   }}
                 />
               </div>
             </div>
             
-            {/* Related Posts Section */}
+            {/* Related Posts Section with Ad */}
             {relatedPosts.length > 0 && (
               <div className="bg-white rounded-sm shadow-sm border border-gray-200 p-6 mb-6">
                 <h3 className="text-xl font-bold mb-4">Related Articles</h3>
+                
+                {/* Ad before related posts */}
+                <div className="mb-6">
+                  <AdSense slot="5678901234" format="horizontal" className="py-3" />
+                </div>
+                
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {relatedPosts.map(post => (
                     <Link 
@@ -201,9 +239,9 @@ const BlogDetail = () => {
         </div>
       </main>
 
-      {/* Bottom ad before footer */}
-      <div className="container mx-auto px-4 pb-6">
-        <AdSense slot="4567890123" format="horizontal" className="py-2" />
+      {/* Enhanced bottom ad with better visibility */}
+      <div className="container mx-auto px-4 pb-8">
+        <AdSense slot="6789012345" format="horizontal" className="py-4" />
       </div>
 
       <footer className="border-t border-gray-300 py-8 bg-white">

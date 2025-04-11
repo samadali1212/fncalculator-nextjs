@@ -10,6 +10,7 @@ import {
   getPeopleByCategory 
 } from "../utils/netWorthData";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import AdSense from "../components/AdSense";
 
 interface CategoryRoundupProps {
   category: CategoryMetadata;
@@ -43,35 +44,20 @@ const CategoryRoundup = ({ category, categoryId, limit = 10 }: CategoryRoundupPr
       .substring(0, 2);
   };
 
-  if (isLoading) {
-    return (
-      <div className="py-6 flex justify-center">
-        <div className="w-8 h-8 border-4 border-blog-accent border-t-transparent rounded-full animate-spin"></div>
+  // Function to insert ads at specific intervals
+  const renderPeopleWithAds = () => {
+    const itemsWithAds = [];
+    
+    // Add top ad
+    itemsWithAds.push(
+      <div key="top-ad" className="p-4 border-b border-gray-100">
+        <AdSense slot={`category-${categoryId}-top`} format="horizontal" className="py-2" />
       </div>
     );
-  }
-
-  if (people.length === 0) {
-    return (
-      <div className="py-8 text-center">
-        <p className="text-gray-500">No individuals found in this category.</p>
-      </div>
-    );
-  }
-
-  return (
-    <div className="bg-white rounded-sm shadow-sm border border-gray-200">
-      <div className="p-4 border-b border-gray-100 bg-gray-50">
-        <div className="grid grid-cols-12 text-xs font-medium text-gray-600">
-          <div className="col-span-1">#</div>
-          <div className="col-span-5 md:col-span-4">Name</div>
-          <div className="col-span-3 md:col-span-3">Net Worth</div>
-          <div className="hidden md:block md:col-span-2">Industry</div>
-          <div className="col-span-3 md:col-span-2">Company</div>
-        </div>
-      </div>
-      
-      {people.map((person, index) => (
+    
+    // Add people with an ad in the middle
+    people.forEach((person, index) => {
+      itemsWithAds.push(
         <motion.div 
           key={person.id}
           initial={{ opacity: 0, y: 20 }}
@@ -123,7 +109,59 @@ const CategoryRoundup = ({ category, categoryId, limit = 10 }: CategoryRoundupPr
             </div>
           </div>
         </motion.div>
-      ))}
+      );
+      
+      // Add an ad in the middle of the list
+      if (index === Math.floor(people.length / 2) && people.length > 5) {
+        itemsWithAds.push(
+          <div key={`ad-middle`} className="p-4 border-b border-gray-100">
+            <AdSense slot={`category-${categoryId}-middle`} format="rectangle" className="py-2" />
+          </div>
+        );
+      }
+    });
+    
+    // Add bottom ad if there are enough items
+    if (people.length > 3) {
+      itemsWithAds.push(
+        <div key="bottom-ad" className="p-4">
+          <AdSense slot={`category-${categoryId}-bottom`} format="horizontal" className="py-2" />
+        </div>
+      );
+    }
+    
+    return itemsWithAds;
+  };
+
+  if (isLoading) {
+    return (
+      <div className="py-6 flex justify-center">
+        <div className="w-8 h-8 border-4 border-blog-accent border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  if (people.length === 0) {
+    return (
+      <div className="py-8 text-center">
+        <p className="text-gray-500">No individuals found in this category.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-white rounded-sm shadow-sm border border-gray-200">
+      <div className="p-4 border-b border-gray-100 bg-gray-50">
+        <div className="grid grid-cols-12 text-xs font-medium text-gray-600">
+          <div className="col-span-1">#</div>
+          <div className="col-span-5 md:col-span-4">Name</div>
+          <div className="col-span-3 md:col-span-3">Net Worth</div>
+          <div className="hidden md:block md:col-span-2">Industry</div>
+          <div className="col-span-3 md:col-span-2">Company</div>
+        </div>
+      </div>
+      
+      {renderPeopleWithAds()}
     </div>
   );
 };
