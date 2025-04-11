@@ -1,17 +1,17 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Search, ArrowUpRight } from "lucide-react";
+import { Search, ArrowUpRight, FileDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/components/ui/use-toast";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import { generalKnowledgeCategories } from "../utils/generalKnowledgeCategoriesData";
+import { generateHowToGuideTemplate } from "../utils/guideUtils";
 
-// Temporary data for How-To guides, in a real implementation this would come from a data file
 const howToGuides = [
   {
     id: "apply-for-id",
@@ -73,6 +73,7 @@ const howToGuides = [
 const HowToGuides = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const { toast } = useToast();
   
   useEffect(() => {
     setIsLoading(true);
@@ -83,12 +84,10 @@ const HowToGuides = () => {
     return () => clearTimeout(timer);
   }, []);
   
-  // Find the How-To category
   const howToCategory = generalKnowledgeCategories.find(
     category => category.id === "how-to-guides"
   );
   
-  // Filter guides based on search query
   const filteredGuides = howToGuides.filter(guide => {
     if (!searchQuery) return true;
     
@@ -100,10 +99,17 @@ const HowToGuides = () => {
     );
   });
   
-  // Sort guides by newest
   const sortedGuides = [...filteredGuides].sort((a, b) => 
     new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   );
+
+  const handleDownloadTemplate = () => {
+    generateHowToGuideTemplate();
+    toast({
+      title: "Template Downloaded",
+      description: "Your How-To guide template has been downloaded. Fill it out to create a new guide.",
+    });
+  };
 
   return (
     <motion.div
@@ -127,6 +133,15 @@ const HowToGuides = () => {
               Step-by-step instructions to help you navigate everyday tasks in South Africa
             </p>
           </div>
+          
+          <Button 
+            onClick={handleDownloadTemplate} 
+            variant="outline" 
+            className="mt-4 md:mt-0 flex items-center gap-2"
+          >
+            <FileDown className="h-4 w-4" />
+            <span>Download Guide Template</span>
+          </Button>
         </div>
         
         <motion.div 
@@ -149,10 +164,8 @@ const HowToGuides = () => {
           </div>
         </motion.div>
         
-        {/* Display guides in a grid layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {isLoading ? (
-            // Loading state
             Array.from({ length: 4 }).map((_, index) => (
               <Card key={index} className="overflow-hidden animate-pulse bg-gray-100">
                 <div className="h-40 bg-gray-200"></div>
@@ -167,7 +180,6 @@ const HowToGuides = () => {
               </Card>
             ))
           ) : sortedGuides.length === 0 ? (
-            // No results found
             <div className="col-span-1 md:col-span-2 p-6 text-center bg-white rounded-md shadow-sm">
               <h3 className="text-lg font-medium">No guides found</h3>
               <p className="text-gray-600 mt-2">
@@ -175,7 +187,6 @@ const HowToGuides = () => {
               </p>
             </div>
           ) : (
-            // Actual guide cards
             sortedGuides.map((guide, index) => (
               <motion.div
                 key={guide.id}

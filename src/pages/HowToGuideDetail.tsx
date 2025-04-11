@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -38,7 +37,6 @@ interface HowToGuide {
   facts?: Fact[];
 }
 
-// Temporary data for a sample How-To guide
 const howToGuides: HowToGuide[] = [
   {
     id: "apply-for-id",
@@ -174,9 +172,7 @@ const HowToGuideDetail = () => {
     return () => clearTimeout(timer);
   }, [slug]);
   
-  // Find the guide by slug
   const guide = howToGuides.find(guide => guide.slug === slug);
-  // Find similar guides (excluding current)
   const similarGuides = howToGuides
     .filter(g => g.slug !== slug)
     .slice(0, 3);
