@@ -35,7 +35,7 @@ const App = () => (
           {/* Ensure branch-codes path also works and doesn't create duplicate content */}
           <Route path="/branch-codes" element={<Navigate to="/" replace />} />
           <Route path="/branch-codes/:slug" element={<BranchCodeDetail />} />
-          <Route path="/about" element={<About />} /
+          <Route path="/about" element={<About />} />
           <Route path="/blog-post" element={<BlogPost />} />
           <Route path="/salaries" element={<Salaries />} />
           <Route path="/salaries/:jobId" element={<JobDetail />} />
