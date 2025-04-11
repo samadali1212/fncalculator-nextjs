@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import { Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -12,15 +12,19 @@ import { cn } from "@/lib/utils";
 
 interface ShareButtonProps {
   title: string;
+  text?: string;
   url?: string;
   className?: string;
+  children?: ReactNode;
   variant?: "default" | "outline" | "ghost" | "secondary" | "link" | "destructive";
 }
 
 const ShareButton = ({
   title,
+  text,
   url,
   className,
+  children,
   variant = "ghost"
 }: ShareButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,7 +75,10 @@ const ShareButton = ({
     {
       name: "Email",
       action: () => {
-        window.open(`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(`Check out this link: ${shareableUrl}`)}`, "_blank");
+        const body = text 
+          ? `${text}\n\nCheck out this link: ${shareableUrl}`
+          : `Check out this link: ${shareableUrl}`;
+        window.open(`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`, "_blank");
         setIsOpen(false);
       }
     }
@@ -86,8 +93,12 @@ const ShareButton = ({
           className={cn("flex items-center gap-1.5", className)}
           aria-label="Share"
         >
-          <Share2 className="h-4 w-4" />
-          <span>Share</span>
+          {children || (
+            <>
+              <Share2 className="h-4 w-4" />
+              <span>Share</span>
+            </>
+          )}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-56 p-2" align="end">

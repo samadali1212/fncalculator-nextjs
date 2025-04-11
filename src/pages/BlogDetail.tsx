@@ -113,7 +113,7 @@ const BlogDetail = () => {
                 <div className="ml-auto">
                   <ShareButton 
                     title={blogPost.title}
-                    text={blogPost.excerpt} 
+                    text={blogPost.excerpt}
                     className="flex items-center text-gray-600 hover:text-blog-accent"
                   >
                     <Share2 className="h-4 w-4 mr-1" />
