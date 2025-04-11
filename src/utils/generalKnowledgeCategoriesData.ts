@@ -76,28 +76,19 @@ export const generalKnowledgeCategories: GeneralKnowledgeCategory[] = [
     createdAt: "2023-10-30",
   },
   {
-    id: "sugar-brands",
-    title: "10 Best Sugar Brands in South Africa",
-    slug: "best-south-african-sugar-brands",
-    description: "Discover the top sugar brands available in South Africa, known for quality, reliability, and diverse product offerings.", 
-    imageUrl: "https://irp.cdn-website.com/cbf48001/dms3rep/multi/shutterstock_2463705563.jpg",
-    articleCount: 10,
-    emoji: "🍬",
-    createdAt: "2025-04-10",
-  },
-  {
-    id: "how-to-guides",
-    title: "How-To Guides",
-    slug: "how-to-guides",
-    description: "Practical step-by-step guides on various topics to help South Africans navigate everyday challenges and learn new skills.", 
-    imageUrl: "https://images.pexels.com/photos/3760819/pexels-photo-3760819.jpeg",
-    articleCount: 18,
-    emoji: "📝",
-    createdAt: "2025-04-11",
-  },
+  id: "sugar-brands",
+  title: "10 Best Sugar Brands in South Africa",
+  slug: "best-south-african-sugar-brands",
+  description: "Discover the top sugar brands available in South Africa, known for quality, reliability, and diverse product offerings.", 
+  imageUrl: "https://irp.cdn-website.com/cbf48001/dms3rep/multi/shutterstock_2463705563.jpg",
+  articleCount: 10,
+  emoji: "🍬",
+  createdAt: "2025-04-10",
+},
 ];
 
 // Helper functions
 export const getCategoryBySlug = (slug: string): GeneralKnowledgeCategory | undefined => {
   return generalKnowledgeCategories.find(category => category.slug === slug);
 };
+

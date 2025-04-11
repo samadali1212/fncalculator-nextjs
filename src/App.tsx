@@ -18,8 +18,6 @@ import GeneralKnowledge from "./pages/GeneralKnowledge";
 import GeneralKnowledgeDetail from "./pages/GeneralKnowledgeDetail";
 import GeneralKnowledgeCategory from "./pages/GeneralKnowledgeCategory";
 import GeneralKnowledgeCategories from "./pages/GeneralKnowledgeCategories";
-import HowToGuides from "./pages/HowToGuides";
-import HowToGuideDetail from "./pages/HowToGuideDetail";
 import NotFound from "./pages/NotFound";
 import BranchCodes from "./pages/BranchCodes";
 import BranchCodeDetail from "./pages/BranchCodeDetail";
@@ -53,10 +51,6 @@ const App = () => (
           <Route path="/general-knowledge/:slug" element={<GeneralKnowledgeDetail />} />
           <Route path="/general-knowledge/category/:slug" element={<GeneralKnowledgeCategory />} />
           <Route path="/categories/general-knowledge" element={<GeneralKnowledgeCategories />} />
-          
-          {/* How-To Guides Routes */}
-          <Route path="/how-to-guides" element={<HowToGuides />} />
-          <Route path="/how-to-guides/:slug" element={<HowToGuideDetail />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
