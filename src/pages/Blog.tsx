@@ -162,9 +162,9 @@ const Blog = () => {
                 <div className="p-4 border-b border-gray-100 bg-gray-50 hidden md:block">
                   <div className="grid grid-cols-12 text-xs font-medium text-gray-600">
                     <div className="col-span-1">#</div>
-                    <div className="col-span-6">Article</div>
+                    <div className="col-span-7">Article</div>
                     <div className="col-span-2">Author</div>
-                    <div className="col-span-3">Date & Category</div>
+                    <div className="col-span-2">Date</div>
                   </div>
                 </div>
                 
@@ -181,7 +181,7 @@ const Blog = () => {
                         {index + 1}
                       </div>
                       
-                      <div className="md:col-span-6">
+                      <div className="md:col-span-7">
                         <div className="flex items-center">
                           <Avatar className="h-10 w-10 mr-3 hidden sm:flex">
                             <AvatarImage src={post.imageUrl || "/placeholder.svg"} alt={post.title} />
@@ -203,6 +203,10 @@ const Blog = () => {
                             <div className="text-xs text-gray-500 line-clamp-1 md:line-clamp-2 mt-1">
                               {post.excerpt}
                             </div>
+                            <div className="mt-1 md:hidden">
+                              <Badge className="text-xs mr-2">{post.category}</Badge>
+                              <span className="text-xs text-gray-500">{formatBlogDate(post.date)}</span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -212,13 +216,9 @@ const Blog = () => {
                         <span className="text-gray-600">{post.author}</span>
                       </div>
                       
-                      <div className="md:col-span-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-                        <div className="flex items-center text-xs text-gray-500">
-                          <CalendarDays className="h-3.5 w-3.5 mr-1.5 text-gray-400" />
-                          <span>{formatBlogDate(post.date)}</span>
-                        </div>
-                        
-                        <Badge className="w-fit">{post.category}</Badge>
+                      <div className="md:col-span-2 flex items-center text-xs text-gray-500">
+                        <CalendarDays className="h-3.5 w-3.5 mr-1.5 text-gray-400" />
+                        <span>{formatBlogDate(post.date)}</span>
                       </div>
                     </div>
                   </motion.div>

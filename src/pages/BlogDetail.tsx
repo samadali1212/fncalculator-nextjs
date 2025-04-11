@@ -80,8 +80,8 @@ const BlogDetail = () => {
       />
       <Header />
       
-      <main className="container mx-auto pt-24 px-4 md:px-6 pb-16">
-        <div className="mb-8">
+      <main className="container mx-auto pt-20 px-4 pb-12">
+        <div className="mb-6">
           <Link to="/blog" className="inline-flex items-center text-blog-accent hover:underline mb-4">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to all articles
@@ -92,7 +92,7 @@ const BlogDetail = () => {
             <AdSense slot="1234567890" format="horizontal" className="py-2" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Main content column */}
             <div className="lg:col-span-2">
               <div className="bg-white rounded-lg shadow-sm overflow-hidden">
@@ -104,14 +104,14 @@ const BlogDetail = () => {
                   />
                 </AspectRatio>
                 
-                <div className="p-6 md:p-8">
-                  <div className="flex flex-wrap gap-2 mb-4">
+                <div className="p-4 sm:p-5">
+                  <div className="flex flex-wrap gap-2 mb-3">
                     <Badge>{blogPost.category}</Badge>
                   </div>
                   
-                  <h1 className="text-3xl md:text-4xl font-bold mb-4">{blogPost.title}</h1>
+                  <h1 className="text-2xl md:text-3xl font-bold mb-3">{blogPost.title}</h1>
                   
-                  <div className="flex flex-wrap items-center text-sm text-gray-600 mb-6 gap-4">
+                  <div className="flex flex-wrap items-center text-sm text-gray-600 mb-4 gap-4">
                     <div className="flex items-center">
                       <User className="h-4 w-4 mr-2" />
                       <span>{blogPost.author}</span>
@@ -134,20 +134,20 @@ const BlogDetail = () => {
                   
                   {/* First half of the content */}
                   <div 
-                    className="blog-content prose prose-lg max-w-none mb-6"
+                    className="blog-content prose prose-sm max-w-none mb-5"
                     dangerouslySetInnerHTML={{ 
                       __html: blogPost.content.substring(0, Math.floor(blogPost.content.length / 2)) 
                     }}
                   />
                   
                   {/* Mid-content ad */}
-                  <div className="my-6">
-                    <AdSense slot="2345678901" format="rectangle" className="py-3" />
+                  <div className="my-5">
+                    <AdSense slot="2345678901" format="rectangle" className="py-2" />
                   </div>
                   
                   {/* Second half of the content */}
                   <div 
-                    className="blog-content prose prose-lg max-w-none"
+                    className="blog-content prose prose-sm max-w-none"
                     dangerouslySetInnerHTML={{ 
                       __html: blogPost.content.substring(Math.floor(blogPost.content.length / 2)) 
                     }}
@@ -158,21 +158,21 @@ const BlogDetail = () => {
 
             {/* Sidebar column */}
             <div className="lg:col-span-1">
-              <div className="bg-white rounded-lg shadow-sm p-6">
-                <h3 className="text-xl font-semibold mb-4">Article Details</h3>
+              <div className="bg-white rounded-lg shadow-sm p-4">
+                <h3 className="text-lg font-semibold mb-3">Article Details</h3>
                 <Table>
                   <TableBody>
                     <TableRow>
-                      <TableCell className="font-medium">Author</TableCell>
-                      <TableCell>{blogPost.author}</TableCell>
+                      <TableCell className="font-medium py-2">Author</TableCell>
+                      <TableCell className="py-2">{blogPost.author}</TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-medium">Published</TableCell>
-                      <TableCell>{formatBlogDate(blogPost.date)}</TableCell>
+                      <TableCell className="font-medium py-2">Published</TableCell>
+                      <TableCell className="py-2">{formatBlogDate(blogPost.date)}</TableCell>
                     </TableRow>
                     <TableRow>
-                      <TableCell className="font-medium">Category</TableCell>
-                      <TableCell>
+                      <TableCell className="font-medium py-2">Category</TableCell>
+                      <TableCell className="py-2">
                         <Link to={`/blog?category=${blogPost.category}`}>
                           <Badge className="hover:bg-primary/90 cursor-pointer">{blogPost.category}</Badge>
                         </Link>
@@ -181,15 +181,15 @@ const BlogDetail = () => {
                   </TableBody>
                 </Table>
 
-                <div className="mt-6">
-                  <AdSense slot="3456789012" format="rectangle" className="py-3" />
+                <div className="mt-4">
+                  <AdSense slot="3456789012" format="rectangle" className="py-2" />
                 </div>
               </div>
 
               {relatedPosts.length > 0 && (
-                <div className="bg-white rounded-lg shadow-sm p-6 mt-6">
-                  <h3 className="text-xl font-semibold mb-4">Related Articles</h3>
-                  <div className="space-y-4">
+                <div className="bg-white rounded-lg shadow-sm p-4 mt-4">
+                  <h3 className="text-lg font-semibold mb-3">Related Articles</h3>
+                  <div className="space-y-3">
                     {relatedPosts.map((post) => (
                       <Link 
                         key={post.id} 
@@ -197,7 +197,7 @@ const BlogDetail = () => {
                         className="block group"
                       >
                         <div className="flex gap-3">
-                          <div className="flex-shrink-0 w-20 h-20 overflow-hidden rounded">
+                          <div className="flex-shrink-0 w-16 h-16 overflow-hidden rounded">
                             <img 
                               src={post.imageUrl || "/placeholder.svg"} 
                               alt={post.title}
@@ -205,7 +205,7 @@ const BlogDetail = () => {
                             />
                           </div>
                           <div>
-                            <h4 className="font-medium group-hover:text-blog-accent transition-colors line-clamp-2">
+                            <h4 className="font-medium group-hover:text-blog-accent transition-colors line-clamp-2 text-sm">
                               {post.title}
                             </h4>
                             <p className="text-xs text-gray-500 mt-1">
@@ -224,8 +224,8 @@ const BlogDetail = () => {
       </main>
 
       {/* Bottom ad before footer */}
-      <div className="container mx-auto px-4 md:px-6 pb-8">
-        <AdSense slot="4567890123" format="horizontal" className="py-3" />
+      <div className="container mx-auto px-4 pb-6">
+        <AdSense slot="4567890123" format="horizontal" className="py-2" />
       </div>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
