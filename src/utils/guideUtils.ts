@@ -216,4 +216,3 @@ export const generateHowToGuideTemplate = (guideTitle: string = "Your Guide Titl
   // Save the file
   saveAs(blob, `how-to-guide-template.html`);
 };
-
