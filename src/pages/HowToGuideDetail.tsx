@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -16,8 +17,29 @@ interface Step {
   imageUrl?: string;
 }
 
+interface Fact {
+  title: string;
+  value: string;
+}
+
+interface HowToGuide {
+  id: string;
+  title: string;
+  slug: string;
+  shortDescription: string;
+  fullDescription: string;
+  imageUrl?: string;
+  difficulty: string;
+  timeRequired: string;
+  createdAt: string;
+  updatedAt: string;
+  tags: string[];
+  steps: Step[];
+  facts?: Fact[];
+}
+
 // Temporary data for a sample How-To guide
-const howToGuides = [
+const howToGuides: HowToGuide[] = [
   {
     id: "apply-for-id",
     title: "How To Apply For An ID In South Africa",
