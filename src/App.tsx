@@ -4,7 +4,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import About from "./pages/About";
-import BlogPost from "./pages/BlogPost";
 import Salaries from "./pages/Salaries";
 import JobDetail from "./pages/JobDetail";
 import Celebrities from "./pages/Celebrities";
@@ -36,7 +35,6 @@ const App = () => (
           <Route path="/branch-codes" element={<Navigate to="/" replace />} />
           <Route path="/branch-codes/:slug" element={<BranchCodeDetail />} />
           <Route path="/about" element={<About />} />
-          <Route path="/blog-post" element={<BlogPost />} />
           <Route path="/salaries" element={<Salaries />} />
           <Route path="/salaries/:jobId" element={<JobDetail />} />
           <Route path="/celebrities" element={<Celebrities />} />
