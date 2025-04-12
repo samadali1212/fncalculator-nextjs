@@ -64,7 +64,7 @@ const AdSense = ({
   }, [slot, adKey, location.pathname]);
 
   // For display ads with no specific format
-  const isDisplayAd = slot === "9803570345";
+  const isDisplayAd = slot === "9889084223";
   
   if (isDisplayAd) {
     return (
@@ -73,8 +73,8 @@ const AdSense = ({
           ref={adRef as any}
           className="adsbygoogle"
           style={{ display: 'block' }}
-          data-ad-client="ca-pub-6455681110933282"
-          data-ad-slot="9803570345"
+          data-ad-client="ca-pub-7886138136550351"
+          data-ad-slot="9889084223"
           data-ad-format="auto"
           data-full-width-responsive="true"
         />
@@ -100,7 +100,7 @@ const AdSense = ({
   // Create additional attributes based on layout type
   const getAdAttributes = () => {
     const attributes: Record<string, string> = {
-      'data-ad-client': 'ca-pub-6455681110933282',
+      'data-ad-client': 'ca-pub-7886138136550351',
       'data-ad-slot': slot,
       'data-ad-format': format,
       'data-full-width-responsive': responsive ? 'true' : 'false',
