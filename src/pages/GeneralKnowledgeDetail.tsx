@@ -137,7 +137,7 @@ const GeneralKnowledgeDetail = () => {
             )}
             
             <ShareButton 
-              title={`${item.title} | Financepedia`} 
+              title={`${item.title} | Sassa Insider`} 
               variant="outline"
             />
           </div>
@@ -265,7 +265,7 @@ const GeneralKnowledgeDetail = () => {
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Financepedia. All rights reserved.
+            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
           </p>
         </div>
       </footer>
