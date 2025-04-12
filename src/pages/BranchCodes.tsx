@@ -18,8 +18,8 @@ const BranchCodes = () => {
   const [displayType, setDisplayType] = useState<"banks" | "branches">("banks");
   const isMobile = useIsMobile();
   
-  // Add state for pagination
-  const [visibleCount, setVisibleCount] = useState(200);
+  // Change initial visible count to 150 branches
+  const [visibleCount, setVisibleCount] = useState(150);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -31,7 +31,7 @@ const BranchCodes = () => {
 
   // Reset visible count when search or activeTab changes
   useEffect(() => {
-    setVisibleCount(200);
+    setVisibleCount(150);
   }, [searchQuery, activeTab, displayType]);
 
   const filteredBranchCodes = branchCodes.filter(branch => {
@@ -49,7 +49,7 @@ const BranchCodes = () => {
   const visibleBranchCodes = filteredBranchCodes.slice(0, visibleCount);
 
   const loadMore = () => {
-    setVisibleCount(prev => prev + 200);
+    setVisibleCount(prev => prev + 150);
   };
 
   if (isLoading) {
@@ -285,7 +285,7 @@ const BranchCodes = () => {
               </div>
             )}
             
-            {/* Load More Button */}
+            {/* Load More Button - only show if there are more branches to load */}
             {filteredBranchCodes.length > visibleCount && (
               <div className="flex justify-center p-4 border-t border-gray-100">
                 <Button 
