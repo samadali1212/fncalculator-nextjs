@@ -282,20 +282,20 @@ const blogPosts: BlogPost[] = [
     content: `
 <p>I recently found myself needing to update my SASSA SRD phone number but couldn't remember my application ID.</p>
 <p>It was a bit of a panic moment, but after some digging, I realized it wasn't as complicated as I initially thought.</p>
-<p>If you're in the same boat, don't worry! I'm here to share my experience and <a href="https://sassainsider.co.za/step-by-step-guide-to-apply-for-a-sassa-new-card/">guide you through the process step-by-step</a>.</p>
+<p>If you're in the same boat, don't worry! I'm here to share my experience and <a href="https://sassainsider.co.za/blog/step-by-step-guide-to-apply-for-a-sassa-new-card/">guide you through the process step-by-step</a>.</p>
 <p>You'll need to visit a SASSA office in person, but I'll walk you through everything you need to do and bring with you.</p>
 <p>Plus, I'll share some extra tips I've learned along the way to make the process as smooth as possible.</p>
 <p>So, let's get started and get this done together!</p>
 <h2>Things You Need to Change YOUR SASSA Srd Number</h2>
-<p>To change your <a href="https://sassainsider.co.za/4-quick-ways-to-recover-your-lost-sassa-reference-number/">SASSA Grant phone number</a>, you'll need the following:</p>
+<p>To change your <a href="https://sassainsider.co.za/blog/4-quick-ways-to-recover-your-lost-sassa-reference-number/">SASSA Grant phone number</a>, you'll need the following:</p>
 <p><strong>1. Your South African ID number:</strong> This is your 13-digit identification number.</p>
 <p><strong>2. One of the following:</strong></p>
 <ul>
   <li>
-    <strong>Your</strong> <a href="https://sassainsider.co.za/sassa-reconsideration-application-process/">application ID: This is a 6-digit number issued by SASSA</a> when you applied for the grant. (<strong>Don't Worry, this guide is for those without an application ID</strong>)
+    <strong>Your</strong> <a href="https://sassainsider.co.za/blog/sassa-reconsideration-application-process/">application ID: This is a 6-digit number issued by SASSA</a> when you applied for the grant. (<strong>Don't Worry, this guide is for those without an application ID</strong>)
   </li>
   <li>
-    <strong>The phone number currently registered with your</strong> <a href="https://sassainsider.co.za/why-sassa-grant-application-declined-14-reasons-why/">SASSA account: If you don't have your application</a> ID, you can use the phone number currently associated with your account to retrieve it.
+    <strong>The phone number currently registered with your</strong> <a href="https://sassainsider.co.za/blog/why-sassa-grant-application-declined-14-reasons-why/">SASSA account: If you don't have your application</a> ID, you can use the phone number currently associated with your account to retrieve it.
   </li>
 </ul>
 <p><strong>3. Your new phone number:</strong> This is the number you want to use for future communication from SASSA.</p>
@@ -307,9 +307,9 @@ const blogPosts: BlogPost[] = [
 <p><strong>3. Talk to a SASSA representative</strong></p>
 <p>Once at the office, find a staff member and explain clearly:</p>
 <ul>
-  <li>You receive the <a href="https://sassainsider.co.za/how-to-appeal-for-declined-sassa-srd-grant/">SRD grant</a>
+  <li>You receive the <a href="https://sassainsider.co.za/blog/how-to-appeal-for-declined-sassa-srd-grant/">SRD grant</a>
   </li>
-  <li>You need to change the <a href="https://sassainsider.co.za/how-to-recover-your-forgotten-sassa-phone-number/">phone number</a> linked to your grant
+  <li>You need to change the <a href="https://sassainsider.co.za/blog/how-to-recover-your-forgotten-sassa-phone-number/">phone number</a> linked to your grant
   </li>
   <li>You don't remember your application ID</li>
 </ul>
@@ -318,7 +318,7 @@ const blogPosts: BlogPost[] = [
 <p><strong>5. Provide your current phone number</strong></p>
 <p>They will need the phone number currently connected to your SRD grant. This might be an old number you no longer use, but you'll need to know it to change it.</p>
 <p><strong>6. Give your new phone number</strong></p>
-<p>Make sure this is a number you have access to! This will become the main <a href="https://sassainsider.co.za/quick-ways-to-check-your-sassa-350-status-via-moya-app/">way SASSA</a> contacts you about your grant.</p>
+<p>Make sure this is a number you have access to! This will become the main <a href="https://sassainsider.co.za/blog/quick-ways-to-check-your-sassa-350-status-via-moya-app/">way SASSA</a> contacts you about your grant.</p>
 <p><strong>7. Fill out a form</strong></p>
 <p>The SASSA representative will likely give you a form where you need to write down your:</p>
 <p>Updated contact information, including your new phone number</p>
@@ -326,7 +326,7 @@ const blogPosts: BlogPost[] = [
 <p><strong>8. Double-check everything</strong></p>
 <p>Before giving the form back, make sure you didn't make any mistakes writing down your information. A wrong number could cause problems!</p>
 <p><strong>9. Wait for the update</strong></p>
-<p><a href="https://sassainsider.co.za/sassa-change-banking-details-for-srd-r350/">SASSA will handle changing</a> the number in their system. This might take some time.</p>
+<p><a href="https://sassainsider.co.za/blog/sassa-change-banking-details-for-srd-r350/">SASSA will handle changing</a> the number in their system. This might take some time.</p>
 <p><strong>10. Check for confirmation</strong></p>
 <p>You'll likely receive a text message (SMS) on both your old AND new phone numbers when the change is complete.</p>
 <p><strong>Extra Tips:</strong></p>
@@ -335,7 +335,7 @@ const blogPosts: BlogPost[] = [
   <li><strong>Be polite and patient:</strong> The staff are there to help, and being friendly helps the process go smoothly.</li>
   <li><strong>Protect your new number:</strong> Don't give your new phone number to anyone you don't trust, especially if it's connected to how you get money.</li>
 </ul>
-<p><strong>You CANNOT <a href="https://sassainsider.co.za/how-to-change-your-sassa-phone-number-for-srd-grant/">change your SRD phone number</a> online without an application ID.</strong> This process must be done in person for security reasons.</p>
+<p><strong>You CANNOT <a href="https://sassainsider.co.za/blog/how-to-change-your-sassa-phone-number-for-srd-grant/">change your SRD phone number</a> online without an application ID.</strong> This process must be done in person for security reasons.</p>
 <p>Let me know in the comment section below if you have other questions about your SRD grant!</p>
     `,
     author: "Sipho Zulu",
@@ -349,7 +349,7 @@ const blogPosts: BlogPost[] = [
     slug: "change-sassa-gold-card-to-bank-account",
     excerpt: "Learn how to switch from a SASSA Gold Card to a bank account for your grant payments. Step-by-step instructions to update your payment method quickly and easily.",
     content: `
-<p>I know how important the SASSA grant can be, and I remember when I first received mine, I was getting payments on that gold <a href="https://sassainsider.co.za/sassa-card-renewal-process-a-step-by-step-guide/">SASSA card</a>.</p>
+<p>I know how important the SASSA grant can be, and I remember when I first received mine, I was getting payments on that gold <a href="https://sassainsider.co.za/blog/sassa-card-renewal-process-a-step-by-step-guide/">SASSA card</a>.</p>
 <p>It was okay, but sometimes the lines at the machines were so long, and I always worried a bit about losing the card.</p>
 <p>That's why I decided to switch my payments to my bank account. At first, figuring out how to do it all seemed a bit confusing.</p>
 <p>Do I start at the bank? What about all those forms? But honestly, once I got going, it turned out to be easier than I expected.</p>
@@ -358,12 +358,12 @@ const blogPosts: BlogPost[] = [
 <p><strong>Bank Details:</strong> If you already have a bank account, make sure you know these:</p>
 <ul>
   <li>Bank Name (Example: Capitec, FNB)</li>
-  <li>Account Number (It's a long number on your bank card or <a href="https://sassainsider.co.za/4-quick-steps-to-get-a-bank-statement-from-the-capitec-app/">bank statement</a>)
+  <li>Account Number (It's a long number on your bank card or <a href="https://sassainsider.co.za/blog/4-quick-steps-to-get-a-bank-statement-from-the-capitec-app/">bank statement</a>)
   </li>
   <li>Branch Name (The name of the specific bank branch where you opened your account)</li>
   <li>Branch Code (A special number for your bank branch. Your bank can give you this)</li>
 </ul>
-<p><strong>Your ID</strong>: You'll need your official <a href="https://sassainsider.co.za/profitable-side-hustles-for-south-african-students/">South African</a> ID document.</p>
+<p><strong>Your ID</strong>: You'll need your official <a href="https://sassainsider.co.za/blog/profitable-side-hustles-for-south-african-students/">South African</a> ID document.</p>
 <h2>How to Change Your SASSA Card to a Bank Account</h2>
 <p><strong>1. Find Your Nearest SASSA Office</strong></p>
 <p>Go to the SASSA office closest to where you live.</p>
@@ -373,7 +373,7 @@ const blogPosts: BlogPost[] = [
 <p>They will give you a special form called a 'Consent Form' and might also give you an 'Annexure C' form.</p>
 <ul>
   <li>The "Consent Form for Bank Payment" (this lets SASSA know you agree to the change)</li>
-  <li>The "SASSA Annexure C" form (this is where you and your bank fill in your <a href="https://sassainsider.co.za/submit-banking-details-to-sassa/">bank details</a>)
+  <li>The "SASSA Annexure C" form (this is where you and your bank fill in your <a href="https://sassainsider.co.za/blog/submit-banking-details-to-sassa/">bank details</a>)
   </li>
 </ul>
 <p><strong>Download:</strong> Visit the SASSA website and find the form under the "Forms" section. Print it out.</p>
@@ -383,11 +383,11 @@ const blogPosts: BlogPost[] = [
 <p>If you can't write well, ask a SASSA worker to help you fill out the forms.</p>
 <p><strong>4. Go to Your Bank</strong></p>
 <p>Take the forms to the bank where you have your account.</p>
-<p>Ask a bank worker to help you. Tell them you're <a href="https://sassainsider.co.za/how-to-change-your-sassa-phone-number-for-srd-grant/">changing your SASSA grant</a> to be paid into this account.</p>
-<p>The <a href="https://sassainsider.co.za/how-to-check-african-bank-loan-balance/">bank worker will check</a> your forms and put a special stamp on them (this shows it's official).</p>
+<p>Ask a bank worker to help you. Tell them you're <a href="https://sassainsider.co.za/blog/how-to-change-your-sassa-phone-number-for-srd-grant/">changing your SASSA grant</a> to be paid into this account.</p>
+<p>The <a href="https://sassainsider.co.za/blog/how-to-check-african-bank-loan-balance/">bank worker will check</a> your forms and put a special stamp on them (this shows it's official).</p>
 <p><strong>5. Back to SASSA</strong></p>
 <p>Take the forms with the bank stamp back to the SASSA office.</p>
-<p>remember to bring these things on your <a href="https://sassainsider.co.za/4-quick-ways-to-recover-your-lost-sassa-reference-number/">way back to the SASSA</a> office:</p>
+<p>remember to bring these things on your <a href="https://sassainsider.co.za/blog/4-quick-ways-to-recover-your-lost-sassa-reference-number/">way back to the SASSA</a> office:</p>
 <ul>
   <li>Your South African ID</li>
   <li>The Consent Form you filled out</li>
@@ -407,24 +407,24 @@ const blogPosts: BlogPost[] = [
     slug: "how-to-fix-pending-sassa-r370-status-to-approved",
     excerpt: "Struggling with a pending SASSA R370 status? Discover the steps to resolve the issue and get your grant status updated to 'Approved' quickly and easily.",
     content: `
-<p>Honestly, seeing that "<strong><a href="https://sassainsider.co.za/why-is-sassa-status-check-still-pending-4-reasons-why/">Pending</a></strong>" on my Sassa status screen used to fill me with dread.</p>
+<p>Honestly, seeing that "<strong><a href="https://sassainsider.co.za/blog/why-is-sassa-status-check-still-pending-4-reasons-why/">Pending</a></strong>" on my Sassa status screen used to fill me with dread.</p>
 <p>I knew it meant something was holding up my grant payment, and with bills piling up, the stress was real.</p>
 <p>After a couple of rounds with the system, I learned a few tricks to figure out what was up.</p>
 <p>Sometimes it was a silly mistake on my end, sometimes there were forms to fix, and once or twice, the system just needed a kickstart.</p>
 <p>I've felt that frustration, but I've also felt the relief when you finally get things cleared up.</p>
 <p>Let me share what I've learned to help make this whole Sassa process a little less nerve-wracking.</p>
 <h2>Meaning of "SASSA Status Pending"</h2>
-<p>A <a href="https://sassainsider.co.za/sassa-status-check/">"SASSA Status</a> Pending" message means that SASSA has received your application, but it is still undergoing review and verification.</p>
+<p>A <a href="https://sassainsider.co.za/blog/sassa-status-check/">"SASSA Status</a> Pending" message means that SASSA has received your application, but it is still undergoing review and verification.</p>
 <p>This is not an indication of approval or rejection.</p>
 <p>Here's a breakdown of what "pending" means in this context:</p>
-<p><strong>Application received:</strong> SASSA has acknowledged your <a href="https://sassainsider.co.za/sassa-reconsideration-application-process/">application and is processing</a> it.</p>
-<p><strong>Review and verification:</strong> SASSA is <a href="https://sassainsider.co.za/check-sassa-balance-without-airtime/">checking</a> your information against various databases to ensure eligibility and accuracy.</p>
+<p><strong>Application received:</strong> SASSA has acknowledged your <a href="https://sassainsider.co.za/blog/sassa-reconsideration-application-process/">application and is processing</a> it.</p>
+<p><strong>Review and verification:</strong> SASSA is <a href="https://sassainsider.co.za/blog/check-sassa-balance-without-airtime/">checking</a> your information against various databases to ensure eligibility and accuracy.</p>
 <p>This might involve cross-checking with other government departments or financial institutions.</p>
 <p><strong>No fixed timeframe:</strong> Unfortunately, there's no set timeframe for the processing duration. It can take several weeks or even months due to:</p>
-<p><strong>High</strong> <a href="https://sassainsider.co.za/how-to-change-your-srd-phone-number-without-an-application-id/">application volume: SASSA receives a large number</a> of applications, leading to a backlog.</p>
+<p><strong>High</strong> <a href="https://sassainsider.co.za/blog/how-to-change-your-srd-phone-number-without-an-application-id/">application volume: SASSA receives a large number</a> of applications, leading to a backlog.</p>
 <p><strong>Complexity of individual cases:</strong> Some applications require a more thorough investigation due to specific circumstances.</p>
 <h2>How to Fix Your Status from Pending to Approved</h2>
-<p>To address the issue of a "Pending" <a href="https://sassainsider.co.za/failed-sassa-status-check-a-quick-fix/">status on your SASSA</a> application, there are several steps you can take.</p>
+<p>To address the issue of a "Pending" <a href="https://sassainsider.co.za/blog/failed-sassa-status-check-a-quick-fix/">status on your SASSA</a> application, there are several steps you can take.</p>
 <p>Here are some actions you can consider:</p>
 <p><strong>1. Contact SASSA</strong></p>
 <p>Reach out to SASSA for assistance. You can call their national call centre, visit a regional office, or send an email with your inquiries.</p>
@@ -438,7 +438,7 @@ const blogPosts: BlogPost[] = [
 <p><strong>4. Follow Up</strong></p>
 <p>If your application remains pending for an extended period, such as over 90 days, follow up with SASSA to inquire about the delay and ensure your application is being processed.</p>
 <p><strong>5. Consider Reconsideration or Appeal</strong></p>
-<p>If your <a href="https://sassainsider.co.za/why-sassa-grant-application-declined-14-reasons-why/">application is eventually declined</a>, you have the option to request a reconsideration or appeal the decision, providing additional information or clarification that might influence the outcome in your favour.</p>
+<p>If your <a href="https://sassainsider.co.za/blog/why-sassa-grant-application-declined-14-reasons-why/">application is eventually declined</a>, you have the option to request a reconsideration or appeal the decision, providing additional information or clarification that might influence the outcome in your favour.</p>
 <h2>How long will it take to be Approved?</h2>
 <p>It's important to understand that <strong>there's no set timeframe</strong> for your SASSA R350 grant application to be approved.</p>
 <p>While SASSA aims to process applications within <strong>90 days</strong>, this timeframe can be <strong>longer</strong> due to various factors:</p>
@@ -447,31 +447,31 @@ const blogPosts: BlogPost[] = [
 <p>Imagine SASSA as a meticulous checker, ensuring everyone who receives a grant truly needs it.</p>
 <p>This means carefully reviewing your application to verify.</p>
 <p><strong>Verification Process</strong></p>
-<p><a href="https://sassainsider.co.za/sassa-reconsideration-application-process/">SASSA</a> needs to confirm the accuracy of the information you provided in your application. This includes details like your identity, income, residency, and eligibility for the grant.</p>
+<p><a href="https://sassainsider.co.za/blog/sassa-reconsideration-application-process/">SASSA</a> needs to confirm the accuracy of the information you provided in your application. This includes details like your identity, income, residency, and eligibility for the grant.</p>
 <p><strong>System Overload</strong></p>
 <p>Given the high volume of applications pouring into SASSA, their systems can get overwhelmed.</p>
 <p>This influx of applications puts a strain on their resources, causing delays in processing and updating statuses.</p>
 <p><strong>Technical Issues</strong></p>
-<p>Sometimes, technical glitches or connectivity problems can hamper <a href="https://sassainsider.co.za/sassa-card-renewal-process-a-step-by-step-guide/">SASSA's ability to process</a> applications smoothly.</p>
+<p>Sometimes, technical glitches or connectivity problems can hamper <a href="https://sassainsider.co.za/blog/sassa-card-renewal-process-a-step-by-step-guide/">SASSA's ability to process</a> applications smoothly.</p>
 <p>These issues could range from software bugs to problems with internet connections or servers.</p>
 <p><strong>Your Eligibility</strong></p>
 <p>They check if you meet any additional requirements specific to the grant program.</p>
 <p>This verification process can take time, especially if there are any discrepancies or missing information in your application.</p>
 <p><strong>High Volume of Applications</strong></p>
-<p>Sometimes, <a href="https://sassainsider.co.za/7-convenient-ways-to-receive-your-sassa-payment/">SASSA receives</a> a large number of applications at once, causing a backlog and slowing down the processing time.</p>
+<p>Sometimes, <a href="https://sassainsider.co.za/blog/7-convenient-ways-to-receive-your-sassa-payment/">SASSA receives</a> a large number of applications at once, causing a backlog and slowing down the processing time.</p>
 <p><strong>Technical Issues</strong></p>
 <p>Occasionally, technical glitches or system problems might delay the processing of your application.</p>
 <h2>Tips to avoid Longer Status Pending Wait</h2>
-<p>To avoid a prolonged "Pending" <a href="https://sassainsider.co.za/quick-ways-to-check-your-sassa-350-status-via-moya-app/">status on your SASSA</a> application, here are some tips based on various sources:</p>
+<p>To avoid a prolonged "Pending" <a href="https://sassainsider.co.za/blog/quick-ways-to-check-your-sassa-350-status-via-moya-app/">status on your SASSA</a> application, here are some tips based on various sources:</p>
 <ol>
   <li>
-    <strong>Avoid Multiple Applications</strong>: Submitting multiple applications can delay your <a href="https://sassainsider.co.za/why-is-sassa-status-check-still-pending-4-reasons-why/">pending status</a>. Focus on your most recent complete application and follow up on that one only​​.
+    <strong>Avoid Multiple Applications</strong>: Submitting multiple applications can delay your <a href="https://sassainsider.co.za/blog/why-is-sassa-status-check-still-pending-4-reasons-why/">pending status</a>. Focus on your most recent complete application and follow up on that one only​​.
   </li>
   <li><strong>Use the Moya App</strong>: For SRD R350 grant applications, the Moya App is a convenient tool to check your status. It's available for free on both Google Play Store and Apple App Store​​.</li>
   <li><strong>Ensure Accurate and Complete Applications</strong>: Review your application and accompanying documentation for any errors or omissions. Accurate and complete information can expedite the review process​​.</li>
   <li><strong>Visit a SASSA Office or Contact the Helpline</strong>: If your application remains pending, consider visiting a SASSA office or contacting their helpline for assistance and updates​​.</li>
   <li>
-    <strong>Follow Up on Your Application</strong>: Keep an eye on your <a href="https://sassainsider.co.za/how-to-appeal-for-declined-sassa-srd-grant/">SRD grant</a> status for updates. SASSA undergoes a verification process that includes checking your ID against various databases. Providing any additional requested documentation promptly can help move the process along​​.
+    <strong>Follow Up on Your Application</strong>: Keep an eye on your <a href="https://sassainsider.co.za/blog/how-to-appeal-for-declined-sassa-srd-grant/">SRD grant</a> status for updates. SASSA undergoes a verification process that includes checking your ID against various databases. Providing any additional requested documentation promptly can help move the process along​​.
   </li>
   <li><strong>Email Communication</strong>: You can reach out to SASSA by sending an email to [email protected] for inquiries about your application's current status​​.</li>
 </ol>
@@ -492,15 +492,15 @@ const blogPosts: BlogPost[] = [
 <p>I meticulously combed through my application, cross-checking every detail with my official documents.</p>
 <p>I realized a tiny typo in my bank details, a simple mistake with huge consequences.</p>
 <p>After correcting it and submitting an appeal, the anxious wait began.</p>
-<p>Thankfully, perseverance paid off, and my <a href="https://sassainsider.co.za/how-to-fix-pending-sassa-r370-status-to-approved/">status changed to "Approved."</a></p>
+<p>Thankfully, perseverance paid off, and my <a href="https://sassainsider.co.za/blog/how-to-fix-pending-sassa-r370-status-to-approved/">status changed to "Approved."</a></p>
 <p>I learned that even a small error can derail your application, but it's fixable and here is how.</p>
 <h2>7 Possible Solutions to Fix Sassa 'Identity Verification Failed' Status</h2>
-<p><strong>Understand Why Verification Failed:</strong> The 'Identity Verification <a href="https://sassainsider.co.za/failed-sassa-status-check-a-quick-fix/">Failed' status means that the information you provided to SASSA</a> doesn't match the records they have on file.</p>
+<p><strong>Understand Why Verification Failed:</strong> The 'Identity Verification <a href="https://sassainsider.co.za/blog/failed-sassa-status-check-a-quick-fix/">Failed' status means that the information you provided to SASSA</a> doesn't match the records they have on file.</p>
 <p>This could be due to typos, outdated information, or issues with your identification documents.</p>
 <p><strong>1. Check Your Application Details:</strong></p>
 <p><strong>Personal Information:</strong> Ensure that your name, ID number, and date of birth are exactly the same on your application and your ID document.</p>
-<p><strong>Banking Details:</strong> Double-check your <a href="https://sassainsider.co.za/change-sassa-gold-card-to-bank-account/">bank account</a> number and branch code. Make sure the account is in your name.</p>
-<p><strong>Contact Information:</strong> Verify that your <a href="https://sassainsider.co.za/how-to-change-your-sassa-phone-number-for-srd-grant/">phone number</a> and address are correct and up-to-date.</p>
+<p><strong>Banking Details:</strong> Double-check your <a href="https://sassainsider.co.za/blog/change-sassa-gold-card-to-bank-account/">bank account</a> number and branch code. Make sure the account is in your name.</p>
+<p><strong>Contact Information:</strong> Verify that your <a href="https://sassainsider.co.za/blog/how-to-change-your-sassa-phone-number-for-srd-grant/">phone number</a> and address are correct and up-to-date.</p>
 <p><strong>2. Verify Your Information with Home Affairs:</strong></p>
 <p><strong>Recent Changes:</strong> If you've recently updated your name, marital status, or other details, make sure these changes are reflected in the Department of Home Affairs' records.</p>
 <p><strong>In-Person Visit:</strong> If there are discrepancies, you might need to visit your nearest Home Affairs office with supporting documents (e.g., marriage certificate, ID) to update your information.</p>
@@ -508,15 +508,15 @@ const blogPosts: BlogPost[] = [
 <p>SASSA Website: Log into the SRD website (srd.sassa.gov.za) using your ID number and phone number.</p>
 <p><strong>Correct Details:</strong> Make any necessary corrections to your application information.</p>
 <p><strong>4. Appeal the Decision:</strong></p>
-<p><strong>30-Day Window:</strong> You have 30 days from the date of the 'Identity Verification <a href="https://sassainsider.co.za/how-to-fix-sassa-r370-failed-status/">Failed' status</a> to appeal the decision.</p>
-<p><a href="https://sassainsider.co.za/business-ideas-to-start-with-your-sassa-srd-r370/">SASSA Website: Log into the SRD</a> website and follow the instructions for lodging an appeal.</p>
+<p><strong>30-Day Window:</strong> You have 30 days from the date of the 'Identity Verification <a href="https://sassainsider.co.za/blog/how-to-fix-sassa-r370-failed-status/">Failed' status</a> to appeal the decision.</p>
+<p><a href="https://sassainsider.co.za/blog/business-ideas-to-start-with-your-sassa-srd-r370/">SASSA Website: Log into the SRD</a> website and follow the instructions for lodging an appeal.</p>
 <p><strong>Reasons for Appeal:</strong> Clearly explain why you believe the verification failed and provide any supporting documents.</p>
 <p><strong>5. Consider Biometric Verification (if applicable):</strong></p>
 <p>Facial Recognition: SASSA might use facial recognition technology to verify your identity. This involves comparing your photo to the one on your ID.</p>
 <p><strong>Fingerprint Scanning:</strong> In some cases, SASSA might require you to provide fingerprints for verification.</p>
 <p><strong>6. Be Patient and Persistent:</strong></p>
-<p><strong>Processing Time:</strong> It may take some time for <a href="https://sassainsider.co.za/sassa-r350-appeal-status-check/">SASSA to process your appeal and update your status</a>.</p>
-<p><strong>Regular Checks:</strong> <a href="https://sassainsider.co.za/">Check your application status regularly on the SRD</a> website or through the WhatsApp line.</p>
+<p><strong>Processing Time:</strong> It may take some time for <a href="https://sassainsider.co.za/blog/sassa-r350-appeal-status-check/">SASSA to process your appeal and update your status</a>.</p>
+<p><strong>Regular Checks:</strong> <a href="https://sassainsider.co.za/blog/">Check your application status regularly on the SRD</a> website or through the WhatsApp line.</p>
 <p><strong>7. Contact SASSA for Help:</strong></p>
 <p><strong>Call Center:</strong> You can call the SASSA toll-free number (0800 60 10 11) for assistance.</p>
 <p><strong>SASSA Office:</strong> Visit your nearest SASSA office for in-person help.</p>
@@ -622,7 +622,7 @@ const blogPosts: BlogPost[] = [
   <li><strong>A stable internet connection:</strong> Resending the SMS requires an internet connection, so make sure you're connected to Wi-Fi or have a strong data signal.</li>
 </ul>
 <p><strong>Alright, with those things ready, let's get started!</strong></p>
-<p><strong>1. Resending the Absa <a href="https://sassainsider.co.za/places-to-withdraw-capitec-cash-send/">Cash Send</a> SMS through the Mobile App:</strong></p>
+<p><strong>1. Resending the Absa <a href="https://sassainsider.co.za/blog/places-to-withdraw-capitec-cash-send/">Cash Send</a> SMS through the Mobile App:</strong></p>
 <ol>
   <li><strong>Open the Absa App:</strong> Find the Absa icon on your phone and tap on it to launch the application.</li>
   <li><strong>Navigate to Beneficiaries:</strong> Once you're in the app, locate the <strong>Menu</strong> icon. Tap it to open the options.</li>
@@ -634,7 +634,7 @@ const blogPosts: BlogPost[] = [
 <p><strong>2. Double-Checking Before Resending:</strong></p>
 <p><strong>Hold on a sec!</strong> Before you hit resend, here are two quick things to confirm:</p>
 <ul>
-  <li><strong>Double-check the <a href="https://sassainsider.co.za/how-to-change-your-srd-phone-number-without-an-application-id/">phone number</a>:</strong> A wrong number could be why the SMS isn’t arriving.</li>
+  <li><strong>Double-check the <a href="https://sassainsider.co.za/blog/how-to-change-your-srd-phone-number-without-an-application-id/">phone number</a>:</strong> A wrong number could be why the SMS isn’t arriving.</li>
   <li><strong>Inform the recipient:</strong> Let them know you’re resending the code so they can keep an eye out for it.</li>
 </ul>
 <p><strong>3. Troubleshooting Tips:</strong></p>
