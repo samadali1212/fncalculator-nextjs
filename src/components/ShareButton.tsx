@@ -57,30 +57,6 @@ const ShareButton = ({
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareableUrl)}`, "_blank");
         setIsOpen(false);
       }
-    },
-    {
-      name: "Twitter",
-      action: () => {
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(shareableUrl)}`, "_blank");
-        setIsOpen(false);
-      }
-    },
-    {
-      name: "LinkedIn",
-      action: () => {
-        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareableUrl)}`, "_blank");
-        setIsOpen(false);
-      }
-    },
-    {
-      name: "Email",
-      action: () => {
-        const body = text 
-          ? `${text}\n\nCheck out this link: ${shareableUrl}`
-          : `Check out this link: ${shareableUrl}`;
-        window.open(`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`, "_blank");
-        setIsOpen(false);
-      }
     }
   ];
 
