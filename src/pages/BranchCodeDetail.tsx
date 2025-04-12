@@ -414,6 +414,10 @@ const BranchCodeDetail = () => {
             </CardContent>
           </Card>
 
+          <div className="my-6">
+            <AdSense slot="1234567890" format="horizontal" className="py-3" />
+          </div>
+
           <Card className="bg-white shadow-sm">
             <CardHeader className="pb-3">
               <CardTitle>Related Branches</CardTitle>
