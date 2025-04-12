@@ -125,7 +125,7 @@ const CelebrityDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${celebrity.name} Salary Per Month - Financepedia`}
+        title={`${celebrity.name} Salary Per Month - Sassa Insider`}
         description={`${celebrity.name}'s estimated salary is ${formatSalary(celebrity.salary, celebrity.currency)}. Learn about their earnings, career, and ${celebrity.industry} ventures.`}
         canonicalUrl={`/celebrities/${celebrity.slug}`}
       />
@@ -144,7 +144,7 @@ const CelebrityDetail = () => {
             </Link>
             
             <ShareButton 
-              title={`${celebrity.name}'s Salary - Financepedia`} 
+              title={`${celebrity.name}'s Salary - Sassa Insider`} 
               variant="outline"
             />
           </div>
@@ -349,7 +349,7 @@ const CelebrityDetail = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Financepedia. All rights reserved.
+            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
           </p>
         </div>
       </footer>
