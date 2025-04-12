@@ -72,7 +72,7 @@ const BlogDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${blogPost.title} | Sassa Insider`} 
+        title={`${blogPost.title} - Sassa Insider`} 
         description={blogPost.excerpt}
         canonicalUrl={`/blog/${blogPost.slug}`}
       />
