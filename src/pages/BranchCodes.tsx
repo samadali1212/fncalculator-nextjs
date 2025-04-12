@@ -94,7 +94,7 @@ const BranchCodes = () => {
         </div>
 
         <div className="container mx-auto px-4 pb-8">
-          <AdSense slot="9803570345" format="auto" className="py-4" />
+          <AdSense slot="9889084223" format="auto" className="py-4" />
         </div>
 
         <motion.div 
