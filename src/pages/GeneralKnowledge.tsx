@@ -65,7 +65,7 @@ const GeneralKnowledge = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
           <div>
-            <h1 className="text-3xl font-bold mb-2">Best of The Best Top Rankings Ranked for You</h1>
+            <h1 className="text-3xl font-bold mb-2">Best of The Best Ranked for You</h1>
             <p className="text-gray-600">
               Discover our curated selection of top-ranking products, services, and content. From trending items to highly recommended picks, this collection highlights the best of the best. Whether you're looking for quality, value, or popularity, our top-ranking collection offers something for everyone.
             </p>
