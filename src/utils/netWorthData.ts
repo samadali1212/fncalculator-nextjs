@@ -2551,7 +2551,25 @@ categories: ["entrepreneurs", "business"]
   imageUrl: "https://all.rugby/photos/2024/les-springboks/siya-kolisi_m.webp",
   slug: "siya-kolisi",
   categories: ["rugby-players", "sports-figures"]
+},
+{
+  id: "150",
+  name: "Sbu Mpisane",
+  netWorth: 11000000,
+  currency: "USD",
+  occupation: "Businessman",
+  age: 52,
+  country: "South Africa",
+  industry: "Construction",
+  company: "Zikhulise Group",
+  description: "Sbu Mpisane made his fortune through a diverse business empire, notably in construction with the Zikhulise Group, which has landed numerous government contracts for low-cost housing. Co-founded with his ex-wife, Shauwn Mkhize, the group also includes Zikhulise Auto Restorers and Inyanga Security Services. His interests extend into sports as chairman of Royal Eagles FC and owner of Uthongathi FC. His La Lucia mansion in Durban, worth over R40 million, adds to his impressive asset portfolio.",
+  source: "Public data",
+  lastUpdated: "2025-04-12",
+  imageUrl: "https://cdn.24.co.za/files/Cms/General/d/10372/bda80beea5834433bd2dc45f54f507bf.jpeg",
+  slug: "sbu-mpisane",
+  categories: ["entrepreneurs"]
 }
+
 ];
 
 /**
