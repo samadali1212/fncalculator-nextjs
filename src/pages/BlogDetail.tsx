@@ -139,7 +139,7 @@ const BlogDetail = () => {
           </Button>
 
           <div className="my-6">
-            <AdSense slot="1234567890" format="horizontal" className="py-3" />
+            <AdSense slot="9803570345" format="auto" className="py-4" />
           </div>
           
           <motion.div
@@ -197,7 +197,7 @@ const BlogDetail = () => {
                 <h3 className="text-xl font-bold mb-4">Related Articles</h3>
                 
                 <div className="mb-6">
-                  <AdSense slot="5678901234" format="horizontal" className="py-3" />
+                  <AdSense slot="9803570345" format="auto" className="py-4" />
                 </div>
                 
                 <div className="bg-white rounded-sm shadow-sm border border-gray-200">
@@ -246,7 +246,7 @@ const BlogDetail = () => {
       </main>
 
       <div className="container mx-auto px-4 pb-8">
-        <AdSense slot="6789012345" format="horizontal" className="py-4" />
+        <AdSense slot="9803570345" format="auto" className="py-4" />
       </div>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
