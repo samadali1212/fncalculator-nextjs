@@ -92,6 +92,10 @@ const BranchCodes = () => {
           </div>
         </div>
 
+              <div className="container mx-auto px-4 pb-8">
+        <AdSense slot="9803570345" format="horizontal" className="py-4" />
+      </div>
+
         <motion.div 
           className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4"
           initial={{ opacity: 0, y: 20 }}
