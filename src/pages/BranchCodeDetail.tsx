@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import SEO from "@/components/SEO";
 import SEOParagraph from "@/components/SEOParagraph";
 import { Button } from "@/components/ui/button";
+import AdSense from "../components/AdSense";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -151,7 +152,11 @@ const BranchCodeDetail = () => {
               <ChevronLeft className="h-4 w-4" /> Back to All Banks
             </Button>
           </div>
-
+         
+          <div className="my-6">
+            <AdSense slot="1234567890" format="horizontal" className="py-3" />
+          </div>
+          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
