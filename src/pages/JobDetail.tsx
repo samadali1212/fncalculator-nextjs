@@ -237,8 +237,8 @@ const JobDetail = () => {
   // SEO title and description with properly capitalized job specific information
   const jobCategory = actualJobId ? getJobCategory(actualJobId) : "";
   const seoTitle = jobData 
-    ? `${capitalizedJobTitle} Salary in South Africa (R${jobData.average.toLocaleString()}) | Financepedia` 
-    : `${capitalizedJobTitle} Salary in South Africa | Financepedia`;
+    ? `${capitalizedJobTitle} Salary in South Africa (R${jobData.average.toLocaleString()}) - Sassa Insider` 
+    : `${capitalizedJobTitle} Salary in South Africa - Sassa Insider`;
   const seoDescription = jobData 
     ? `${capitalizedJobTitle} average salary in South Africa is R${jobData.average.toLocaleString()} per month. Explore salary ranges, requirements, and career insights for ${capitalizedJobTitle} positions.`
     : `Explore salary information for ${capitalizedJobTitle} positions in South Africa. Get insights on pay ranges, requirements, and career prospects.`;
@@ -410,7 +410,7 @@ const JobDetail = () => {
             </Link>
             
             <ShareButton 
-              title={`${capitalizedJobTitle} Salary in South Africa - Financepedia`} 
+              title={`${capitalizedJobTitle} Salary in South Africa - Sassa Insider`} 
               variant="outline"
             />
           </div>
@@ -584,7 +584,7 @@ const JobDetail = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Financepedia. All rights reserved.
+            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
           </p>
         </div>
       </footer>
