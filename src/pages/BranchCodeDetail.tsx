@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -31,26 +30,22 @@ const BranchCodeDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const isMobile = useIsMobile();
   
-  // Add state for pagination
-  const [visibleBankCount, setVisibleBankCount] = useState(200);
+  const [visibleBankCount, setVisibleBankCount] = useState(150);
   const [visibleSimilarCount, setVisibleSimilarCount] = useState(20);
 
   useEffect(() => {
     setIsLoading(true);
     
-    // Simulate a network request
     const timer = setTimeout(() => {
       if (slug) {
-        // First check if it's a branch code
         const foundBranch = findBranchCodeBySlug(slug);
         
         if (foundBranch) {
           setBranchCode(foundBranch);
-          setSimilarBranches(getSimilarBranchCodes(foundBranch, 200)); // Get more for pagination
+          setSimilarBranches(getSimilarBranchCodes(foundBranch, 200));
           setBank(null);
           setBankBranches([]);
         } else {
-          // Check if it's a bank
           const foundBank = findBankBySlug(slug);
           
           if (foundBank) {
@@ -89,7 +84,7 @@ const BranchCodeDetail = () => {
   };
 
   const loadMoreBankBranches = () => {
-    setVisibleBankCount(prev => prev + 200);
+    setVisibleBankCount(prev => prev + 150);
   };
 
   const loadMoreSimilarBranches = () => {
@@ -113,7 +108,6 @@ const BranchCodeDetail = () => {
     );
   }
 
-  // If it's neither a branch nor a bank
   if (!branchCode && !bank) {
     return (
       <div className="min-h-screen bg-[#f6f6f0]">
@@ -131,9 +125,7 @@ const BranchCodeDetail = () => {
     );
   }
 
-  // If it's a bank detail page
   if (bank) {
-    // Get only the visible bank branches
     const visibleBankBranches = bankBranches.slice(0, visibleBankCount);
     
     return (
@@ -184,7 +176,6 @@ const BranchCodeDetail = () => {
               </div>
             </div>
 
-            {/* Add SEO Paragraph for bank */}
             <SEOParagraph bank={bank} />
 
             <div className="bg-white rounded-sm shadow-sm border border-gray-200">
@@ -253,7 +244,6 @@ const BranchCodeDetail = () => {
                 </div>
               )}
               
-              {/* Load More Button for Bank Branches */}
               {bankBranches.length > visibleBankCount && (
                 <div className="flex justify-center p-4 border-t border-gray-100">
                   <Button 
@@ -280,8 +270,6 @@ const BranchCodeDetail = () => {
     );
   }
 
-  // If it's a branch detail page
-  // Get only the visible similar branches
   const visibleSimilarBranches = similarBranches.slice(0, visibleSimilarCount);
   
   return (
@@ -341,13 +329,11 @@ const BranchCodeDetail = () => {
             </div>
           </div>
 
-          {/* Branch Details Card */}
           <Card className="mb-6 bg-white shadow-sm">
             <CardHeader className="pb-3">
               <CardTitle>Branch Details</CardTitle>  
             </CardHeader>
             <CardContent>
-              {/* Add SEO Paragraph for branch */}
               <SEOParagraph branchCode={branchCode} />
               
               <Table>
@@ -417,7 +403,6 @@ const BranchCodeDetail = () => {
             </CardContent>
           </Card>
 
-          {/* Related Branches Card */}
           <Card className="bg-white shadow-sm">
             <CardHeader className="pb-3">
               <CardTitle>Related Branches</CardTitle>
@@ -447,6 +432,18 @@ const BranchCodeDetail = () => {
               ) : (
                 <div className="text-center py-10">
                   <p className="text-gray-500">No similar branches found.</p>
+                </div>
+              )}
+              
+              {similarBranches.length > visibleSimilarCount && (
+                <div className="mt-4 mb-2">
+                  <Button 
+                    variant="outline" 
+                    onClick={loadMoreSimilarBranches}
+                    className="w-full gap-2"
+                  >
+                    Load More <ChevronDown className="h-4 w-4" />
+                  </Button>
                 </div>
               )}
               
