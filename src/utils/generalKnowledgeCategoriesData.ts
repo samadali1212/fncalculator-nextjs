@@ -20,7 +20,7 @@ export const generalKnowledgeCategories: GeneralKnowledgeCategory[] = [
     title: "10 Most Valuable Coins In South Africa",
     slug: "valuable-south-african-coins",
     description: "Discover the most valuable and rare coins in South African currency history, including their current market value and historical significance.",
-    imageUrl: "/categories/valuable-coins.jpg",
+    imageUrl: "https://media.gettyimages.com/id/185080314/photo/gold-coins.jpg?s=612x612&w=0&k=20&c=M6DEzoikwTh_W9YL1ofsaZWgIphZsG8aUedMaOPys0I=",
     articleCount: 10,
     emoji: "💰",
     createdAt: "2023-05-10",
