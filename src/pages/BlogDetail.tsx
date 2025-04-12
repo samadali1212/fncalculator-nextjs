@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
@@ -84,7 +83,32 @@ const BlogDetail = () => {
     );
   };
 
-  // ... keep existing code (loading state and blog post not found UI)
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="w-16 h-16 border-4 border-blog-accent border-t-transparent rounded-full animate-spin"
+        ></motion.div>
+      </div>
+    );
+  }
+
+  if (!blogPost) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center p-4">
+        <h1 className="text-2xl font-bold mb-4">Article Not Found</h1>
+        <p className="text-gray-600 mb-6">The article you're looking for doesn't exist or has been moved.</p>
+        <Button asChild>
+          <Link to="/blog">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Blog
+          </Link>
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -173,7 +197,43 @@ const BlogDetail = () => {
                 </div>
                 
                 <div className="bg-white rounded-sm shadow-sm border border-gray-200">
-                  {/* ... keep existing code (related posts rendering) */}
+                  {relatedPosts.map((post, index) => (
+                    <motion.div 
+                      key={post.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                      className={`group p-4 ${index !== relatedPosts.length - 1 ? 'border-b border-gray-100' : ''}`}
+                    >
+                      <div className="flex items-center">
+                        <Avatar className="h-10 w-10 mr-3 hidden sm:flex">
+                          <AvatarImage src={post.imageUrl || "/placeholder.svg"} alt={post.title} />
+                          <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
+                            {post.title.substring(0, 2).toUpperCase()}
+                          </AvatarFallback>
+                        </Avatar>
+                        
+                        <div className="flex-1">
+                          <Link 
+                            to={`/blog/${post.slug}`}
+                            className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
+                          >
+                            {post.title}
+                            <ArrowUpRight 
+                              className="h-3.5 w-3.5 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
+                            />
+                          </Link>
+                          <div className="text-xs text-gray-500 line-clamp-1 md:line-clamp-2 mt-1">
+                            {post.excerpt}
+                          </div>
+                          <div className="mt-1 flex items-center gap-4">
+                            <Badge className="text-xs">{post.category}</Badge>
+                            <span className="text-xs text-gray-500">{formatBlogDate(post.date)}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             )}
