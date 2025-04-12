@@ -144,7 +144,7 @@ const GeneralKnowledgeDetail = () => {
           </div>
           
           <div className="mb-4">
-            <AdSense slot="9803570345" format="auto" className="py-3" />
+            <AdSense slot="9889084223" format="auto" className="py-3" />
           </div>
           
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
@@ -188,7 +188,7 @@ const GeneralKnowledgeDetail = () => {
             </div>
             
             <div className="my-6">
-              <AdSense slot="9803570345" format="auto" className="py-3" />
+              <AdSense slot="9889084223" format="auto" className="py-3" />
             </div>
             
             <div className="mb-8">
@@ -230,7 +230,7 @@ const GeneralKnowledgeDetail = () => {
               <h2 className="text-xl font-semibold mb-4">You Might Also Be Interested In</h2>
               
               <div className="mb-4">
-                <AdSense slot="9803570345" format="auto" className="py-3" />
+                <AdSense slot="9889084223" format="auto" className="py-3" />
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -277,7 +277,7 @@ const GeneralKnowledgeDetail = () => {
       </main>
 
       <div className="container mx-auto px-4 pb-8">
-        <AdSense slot="9803570345" format="auto" className="py-4" />
+        <AdSense slot="9889084223" format="auto" className="py-4" />
       </div>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
