@@ -183,6 +183,10 @@ const BranchCodeDetail = () => {
 
             <SEOParagraph bank={bank} />
 
+          <div className="my-6">
+            <AdSense slot="1234567810" format="horizontal" className="py-3" />
+          </div>
+
             <div className="bg-white rounded-sm shadow-sm border border-gray-200">
               <div className="p-4 border-b border-gray-100 bg-gray-50">
                 <div className="grid grid-cols-10 text-xs font-medium text-gray-600">
@@ -340,7 +344,9 @@ const BranchCodeDetail = () => {
             </CardHeader>
             <CardContent>
               <SEOParagraph branchCode={branchCode} />
-              
+                        <div className="my-6">
+            <AdSense slot="1234561239" format="horizontal" className="py-3" />
+          </div>
               <Table>
                 <TableBody>
                   <TableRow>
