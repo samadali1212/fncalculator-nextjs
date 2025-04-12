@@ -184,7 +184,7 @@ const BranchCodeDetail = () => {
             <SEOParagraph bank={bank} />
 
           <div className="my-6">
-            <AdSense slot="9803570345" format="auto" className="py-4" />
+            <AdSense slot="9889084223" format="auto" className="py-4" />
           </div>
 
             <div className="bg-white rounded-sm shadow-sm border border-gray-200">
