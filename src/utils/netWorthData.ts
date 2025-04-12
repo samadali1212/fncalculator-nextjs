@@ -2567,7 +2567,7 @@ categories: ["entrepreneurs", "business"]
   lastUpdated: "2025-04-12",
   imageUrl: "https://cdn.24.co.za/files/Cms/General/d/10372/bda80beea5834433bd2dc45f54f507bf.jpeg",
   slug: "sbu-mpisane",
-  categories: ["entrepreneurs"]
+  categories: ["entrepreneurs", "football-club-owner"]
 }
 
 ];
