@@ -37,18 +37,50 @@ const AdSense = ({
   useEffect(() => {
     try {
       if (adRef.current && typeof window !== 'undefined') {
-        // Push the ad only if adsbygoogle is defined
-        if (window.adsbygoogle) {
-          window.adsbygoogle.push({});
-          console.log(`AdSense ad pushed: ${slot} at ${location.pathname}`);
-        } else {
-          console.log('AdSense not loaded yet');
-        }
+        // Wait for adsbygoogle to be defined
+        const interval = setInterval(() => {
+          if (window.adsbygoogle) {
+            clearInterval(interval);
+            window.adsbygoogle.push({});
+            console.log(`AdSense ad pushed: ${slot} at ${location.pathname}`);
+          }
+        }, 100);
+        
+        // Clear interval after 5 seconds (timeout)
+        setTimeout(() => {
+          clearInterval(interval);
+          if (!window.adsbygoogle) {
+            console.warn('AdSense not loaded after timeout');
+          }
+        }, 5000);
+        
+        return () => {
+          clearInterval(interval);
+        };
       }
     } catch (error) {
       console.error('AdSense error:', error);
     }
   }, [slot, adKey, location.pathname]);
+
+  // For display ads with no specific format
+  const isDisplayAd = slot === "9803570345";
+  
+  if (isDisplayAd) {
+    return (
+      <div className={className} key={adKey}>
+        <ins
+          ref={adRef as any}
+          className="adsbygoogle"
+          style={{ display: 'block' }}
+          data-ad-client="ca-pub-6455681110933282"
+          data-ad-slot="9803570345"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
+      </div>
+    );
+  }
 
   // Base classes for the ad container
   const containerClasses = `overflow-hidden text-center ${className}`;
