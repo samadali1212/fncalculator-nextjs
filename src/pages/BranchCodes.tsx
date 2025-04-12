@@ -85,9 +85,9 @@ const BranchCodes = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
           <div>
-            <h1 className="text-3xl font-bold mb-2">South African Bank Branch Codes</h1>
+            <h1 className="text-3xl font-bold mb-2">South African Bank Branch Codes Directory</h1>
             <p className="text-gray-600">
-              Find branch codes for all major banks in South Africa
+              Find branch codes for all major South African banks in one place. Easily search for the code you need to make secure transactions, transfers, and payments without hassle. Simple, accurate, and always up to date.
             </p>
           </div>
         </div>
