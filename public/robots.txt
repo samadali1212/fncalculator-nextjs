@@ -1,8 +1,8 @@
-# Financepedia Robots.txt
+# Sassa Insider Robots.txt
  User-agent: *
  Allow: /
  
- Sitemap: https://financepedia.co.za/sitemap.xml
+ Sitemap: https://sassainsider.co.za/sitemap.xml
  
  # Allow crawling of important directories
  User-agent: Googlebot
@@ -13,6 +13,8 @@
  Allow: /celebrity-categories/
  Allow: /net-worth/
  Allow: /categories/
+ Allow: /general-knowledge/
+ Allow: /blog/
 
  User-agent: Bingbot
  Allow: /
