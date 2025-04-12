@@ -142,10 +142,7 @@ const BlogDetail = () => {
                     __html: blogPost.content.substring(0, Math.floor(blogPost.content.length / 4)) 
                   }}
                 />
-                
-                <div className="my-6">
-                  <AdSense slot="2345678901" format="rectangle" className="py-3" />
-                </div>
+          
                 
                 <div 
                   className="blog-content prose prose-sm max-w-none mb-5"
@@ -157,9 +154,6 @@ const BlogDetail = () => {
                   }}
                 />
                 
-                <div className="my-6">
-                  <AdSense slot="3456789012" format="rectangle" className="py-3" />
-                </div>
                 
                 <div 
                   className="blog-content prose prose-sm max-w-none mb-5"
@@ -171,9 +165,6 @@ const BlogDetail = () => {
                   }}
                 />
                 
-                <div className="my-6">
-                  <AdSense slot="4567890123" format="rectangle" className="py-3" />
-                </div>
                 
                 <div 
                   className="blog-content prose prose-sm max-w-none"
@@ -183,6 +174,9 @@ const BlogDetail = () => {
                 />
               </div>
             </div>
+                  <div className="my-6">
+                  <AdSense slot="4567890123" format="rectangle" className="py-3" />
+                </div>
             
             {relatedPosts.length > 0 && (
               <div className="bg-white rounded-sm shadow-sm border border-gray-200 p-6 mb-6">
