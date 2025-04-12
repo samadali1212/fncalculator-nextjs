@@ -70,7 +70,7 @@ const BlogDetail = () => {
                (index < paragraphs.length - 1) && (
                 <div className="my-6">
                   <AdSense 
-                    slot="9803570345"
+                    slot="9889084223"
                     format="auto" 
                     className="py-3" 
                   />
@@ -135,7 +135,7 @@ const BlogDetail = () => {
           </Button>
 
           <div className="my-6">
-            <AdSense slot="9803570345" format="auto" className="py-3" />
+            <AdSense slot="9889084223" format="auto" className="py-3" />
           </div>
           
           <motion.div
@@ -193,7 +193,7 @@ const BlogDetail = () => {
                 <h3 className="text-xl font-bold mb-4">Related Articles</h3>
                 
                 <div className="mb-6">
-                  <AdSense slot="9803570345" format="auto" className="py-3" />
+                  <AdSense slot="9889084223" format="auto" className="py-3" />
                 </div>
                 
                 <div className="bg-white rounded-sm shadow-sm border border-gray-200">
@@ -242,7 +242,7 @@ const BlogDetail = () => {
       </main>
 
       <div className="container mx-auto px-4 pb-8">
-        <AdSense slot="9803570345" format="auto" className="py-4" />
+        <AdSense slot="9889084223" format="auto" className="py-4" />
       </div>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
