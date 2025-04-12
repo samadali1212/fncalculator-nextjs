@@ -56,9 +56,9 @@ const GeneralKnowledgeCategories = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
           <div>
-            <h1 className="text-3xl font-bold mb-2">Knowledge Categories</h1>
+            <h1 className="text-3xl font-bold mb-2">Top Rankings</h1>
             <p className="text-gray-600">
-              Browse all our knowledge categories about South Africa
+              Browse all our Latest Rankings about South Africa
             </p>
           </div>
         </div>
@@ -155,7 +155,7 @@ const GeneralKnowledgeCategories = () => {
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Financepedia. All rights reserved.
+            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
           </p>
         </div>
       </footer>
