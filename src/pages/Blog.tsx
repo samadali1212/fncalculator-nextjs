@@ -104,7 +104,7 @@ const Blog = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Financial Blog - Personal Finance Tips & Investment Advice" 
+        title="Personal Finance Tips & Investment Advice" 
         description="Get expert financial advice, investment strategies, and personal finance tips for South Africans. Stay updated with the latest financial news and insights."
         canonicalUrl="/blog"
       />
@@ -112,9 +112,9 @@ const Blog = () => {
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-5xl">
         <div className="flex flex-col mb-8">
-          <h1 className="text-3xl font-bold mb-2">Financial Blog</h1>
+          <h1 className="text-3xl font-bold mb-2">Explore Our Latest Articles</h1>
           <p className="text-gray-600 mb-6">
-            Get expert financial advice, investment strategies, and personal finance tips tailored for South Africans.
+            Browse all our blog posts in one place. From expert tips to trending topics, this is your gateway to every article we've published. Stay informed, inspired, and up to date with our full collection.
           </p>
           
           <div className="flex flex-col md:flex-row gap-4 mb-8">
