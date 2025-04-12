@@ -35,15 +35,15 @@ const blogPosts: BlogPost[] = [
 <h2>How to Withdraw Your CashSend Money at The ATM</h2>
 <p>Here's a detailed breakdown of how to withdraw your CashSend money at an Absa ATM:</p>
 <ol>
-<li><strong>Locate an Absa ATM:</strong> Find a nearby Absa ATM. Ensure it's in a safe and well-lit location.</li>
-<li><strong>Insert Your Card (If Required):</strong> Some ATMs may require you to insert your bank card to initiate the transaction, even if you are not making a standard withdrawal. If the ATM prompts you to insert a card, do so. If not, proceed to the next step.</li>
-<li><strong>Select "CashSend Withdrawal":</strong> On the ATM screen, look for the "CashSend Withdrawal" option. This might be located on the main menu or under a "More Options" or "Other Services" menu. Use the ATM's buttons to navigate and select "CashSend Withdrawal."</li>
-<li><strong>Enter the 10-Digit Reference/Withdrawal Number:</strong> The ATM will now prompt you to enter the 10-digit reference or withdrawal number that the sender provided. Carefully enter the number using the ATM keypad. Double-check the number for accuracy before proceeding. An incorrect number will result in a failed transaction.</li>
-<li><strong>Enter the 6-Digit PIN:</strong> Next, you'll be asked to enter the 6-digit PIN code provided by the sender. Enter the PIN carefully and discreetly, shielding the keypad from prying eyes. Remember, this PIN is your security key, so keep it confidential.</li>
-<li><strong>Confirm the Transaction:</strong> The ATM may display a summary of the transaction, including the amount being withdrawn. Verify the details to ensure they are correct. If everything is accurate, confirm the transaction.</li>
-<li><strong>Collect Your Cash:</strong> The ATM will dispense the cash. Take the money and count it to ensure you have received the correct amount.</li>
-<li><strong>Retrieve Your Card (If Applicable):</strong> If you inserted your bank card at the beginning of the process, don't forget to retrieve it from the ATM.</li>
-<li><strong>Receipt (Optional):</strong> The ATM will usually offer to print a receipt. It's a good idea to accept the receipt for your records.</li>
+  <li><strong>Locate an Absa ATM:</strong> Find a nearby Absa ATM. Ensure it's in a safe and well-lit location.</li>
+  <li><strong>Insert Your Card (If Required):</strong> Some ATMs may require you to insert your bank card to initiate the transaction, even if you are not making a standard withdrawal. If the ATM prompts you to insert a card, do so. If not, proceed to the next step.</li>
+  <li><strong>Select "CashSend Withdrawal":</strong> On the ATM screen, look for the "CashSend Withdrawal" option. This might be located on the main menu or under a "More Options" or "Other Services" menu. Use the ATM's buttons to navigate and select "CashSend Withdrawal."</li>
+  <li><strong>Enter the 10-Digit Reference/Withdrawal Number:</strong> The ATM will now prompt you to enter the 10-digit reference or withdrawal number that the sender provided. Carefully enter the number using the ATM keypad. Double-check the number for accuracy before proceeding. An incorrect number will result in a failed transaction.</li>
+  <li><strong>Enter the 6-Digit PIN:</strong> Next, you'll be asked to enter the 6-digit PIN code provided by the sender. Enter the PIN carefully and discreetly, shielding the keypad from prying eyes. Remember, this PIN is your security key, so keep it confidential.</li>
+  <li><strong>Confirm the Transaction:</strong> The ATM may display a summary of the transaction, including the amount being withdrawn. Verify the details to ensure they are correct. If everything is accurate, confirm the transaction.</li>
+  <li><strong>Collect Your Cash:</strong> The ATM will dispense the cash. Take the money and count it to ensure you have received the correct amount.</li>
+  <li><strong>Retrieve Your Card (If Applicable):</strong> If you inserted your bank card at the beginning of the process, don't forget to retrieve it from the ATM.</li>
+  <li><strong>Receipt (Optional):</strong> The ATM will usually offer to print a receipt. It's a good idea to accept the receipt for your records.</li>
 </ol>
 <h2>Where Can I Withdraw Absa Cash Send Besides ATM</h2>
 <h2>2. Pick n Pay</h2>
@@ -63,14 +63,14 @@ const blogPosts: BlogPost[] = [
 <h2>How to Withdraw Your CashSend Money at Pick n Pay or Boxer</h2>
 <p>Here's a detailed breakdown of how to withdraw your CashSend money at a Pick n Pay or Boxer store:</p>
 <ol>
-<li><strong>Locate a Participating Store:</strong> Find a nearby Pick n Pay or Boxer store. Not all smaller express stores may offer this service, so it's best to check beforehand if you are unsure. Larger supermarkets and hypermarkets are more likely to have this facility.</li>
-<li><strong>Proceed to Any Till Point:</strong> Once inside the store, proceed to any open till point. You don't need to purchase anything to withdraw your CashSend money.</li>
-<li><strong>Inform the Till Operator:</strong> Let the till operator know that you would like to make a CashSend withdrawal. This will alert them to the correct procedure.</li>
-<li><strong>Present the 10-Digit Withdrawal Number:</strong> Provide the till operator with the 10-digit withdrawal number that the sender provided. You can either read it out or show it to them on your phone. Ensure the number is clearly communicated to avoid any errors.</li>
-<li><strong>Provide the 6-Digit PIN:</strong> Next, you will need to provide the 6-digit PIN code that the sender gave you. It is crucial to enter this PIN discreetly. Shield the keypad with your hand or body to prevent anyone from seeing it.</li>
-<li><strong>Verification and Processing:</strong> The till operator will enter the withdrawal number and PIN into their system. The system will then verify the information and confirm the transaction. This process usually takes a few moments.</li>
-<li><strong>Receive Your Cash:</strong> Once the transaction is approved, the till operator will hand you the full amount of your CashSend money.</li>
-<li><strong>Confirmation and Receipt:</strong> The till operator may provide you with a printed receipt confirming the transaction. It's advisable to keep this receipt for your records.</li>
+  <li><strong>Locate a Participating Store:</strong> Find a nearby Pick n Pay or Boxer store. Not all smaller express stores may offer this service, so it's best to check beforehand if you are unsure. Larger supermarkets and hypermarkets are more likely to have this facility.</li>
+  <li><strong>Proceed to Any Till Point:</strong> Once inside the store, proceed to any open till point. You don't need to purchase anything to withdraw your CashSend money.</li>
+  <li><strong>Inform the Till Operator:</strong> Let the till operator know that you would like to make a CashSend withdrawal. This will alert them to the correct procedure.</li>
+  <li><strong>Present the 10-Digit Withdrawal Number:</strong> Provide the till operator with the 10-digit withdrawal number that the sender provided. You can either read it out or show it to them on your phone. Ensure the number is clearly communicated to avoid any errors.</li>
+  <li><strong>Provide the 6-Digit PIN:</strong> Next, you will need to provide the 6-digit PIN code that the sender gave you. It is crucial to enter this PIN discreetly. Shield the keypad with your hand or body to prevent anyone from seeing it.</li>
+  <li><strong>Verification and Processing:</strong> The till operator will enter the withdrawal number and PIN into their system. The system will then verify the information and confirm the transaction. This process usually takes a few moments.</li>
+  <li><strong>Receive Your Cash:</strong> Once the transaction is approved, the till operator will hand you the full amount of your CashSend money.</li>
+  <li><strong>Confirmation and Receipt:</strong> The till operator may provide you with a printed receipt confirming the transaction. It's advisable to keep this receipt for your records.</li>
 </ol>
     `,
     author: "Sarah Johnson",
