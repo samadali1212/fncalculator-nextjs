@@ -51,9 +51,6 @@ const BlogDetail = () => {
     const halfPoint = Math.floor(paragraphs.length / 2);
     const threeQuarterPoint = Math.floor(paragraphs.length * 3 / 4);
     
-    // Ad slots to use
-    const adSlots = ["2345678901", "3456789012", "4567890123"];
-    
     return (
       <>
         {paragraphs.map((paragraph, index) => {
@@ -74,8 +71,8 @@ const BlogDetail = () => {
                (index < paragraphs.length - 1) && (
                 <div className="my-6">
                   <AdSense 
-                    slot={adSlots[(index === quarterPoint) ? 0 : (index === halfPoint) ? 1 : 2]} 
-                    format="rectangle" 
+                    slot="9803570345"
+                    format="auto" 
                     className="py-3" 
                   />
                 </div>
@@ -87,32 +84,7 @@ const BlogDetail = () => {
     );
   };
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="w-16 h-16 border-4 border-blog-accent border-t-transparent rounded-full animate-spin"
-        ></motion.div>
-      </div>
-    );
-  }
-
-  if (!blogPost) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-4">
-        <h1 className="text-2xl font-bold mb-4">Article Not Found</h1>
-        <p className="text-gray-600 mb-6">The article you're looking for doesn't exist or has been moved.</p>
-        <Button asChild>
-          <Link to="/blog">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Blog
-          </Link>
-        </Button>
-      </div>
-    );
-  }
+  // ... keep existing code (loading state and blog post not found UI)
 
   return (
     <motion.div
@@ -139,7 +111,7 @@ const BlogDetail = () => {
           </Button>
 
           <div className="my-6">
-            <AdSense slot="9803570345" format="auto" className="py-4" />
+            <AdSense slot="9803570345" format="auto" className="py-3" />
           </div>
           
           <motion.div
@@ -197,47 +169,11 @@ const BlogDetail = () => {
                 <h3 className="text-xl font-bold mb-4">Related Articles</h3>
                 
                 <div className="mb-6">
-                  <AdSense slot="9803570345" format="auto" className="py-4" />
+                  <AdSense slot="9803570345" format="auto" className="py-3" />
                 </div>
                 
                 <div className="bg-white rounded-sm shadow-sm border border-gray-200">
-                  {relatedPosts.map((post, index) => (
-                    <motion.div 
-                      key={post.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: index * 0.05 }}
-                      className={`group p-4 ${index !== relatedPosts.length - 1 ? 'border-b border-gray-100' : ''}`}
-                    >
-                      <div className="flex items-center">
-                        <Avatar className="h-10 w-10 mr-3 hidden sm:flex">
-                          <AvatarImage src={post.imageUrl || "/placeholder.svg"} alt={post.title} />
-                          <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
-                            {post.title.substring(0, 2).toUpperCase()}
-                          </AvatarFallback>
-                        </Avatar>
-                        
-                        <div className="flex-1">
-                          <Link 
-                            to={`/blog/${post.slug}`}
-                            className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
-                          >
-                            {post.title}
-                            <ArrowUpRight 
-                              className="h-3.5 w-3.5 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
-                            />
-                          </Link>
-                          <div className="text-xs text-gray-500 line-clamp-1 md:line-clamp-2 mt-1">
-                            {post.excerpt}
-                          </div>
-                          <div className="mt-1 flex items-center gap-4">
-                            <Badge className="text-xs">{post.category}</Badge>
-                            <span className="text-xs text-gray-500">{formatBlogDate(post.date)}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
+                  {/* ... keep existing code (related posts rendering) */}
                 </div>
               </div>
             )}
@@ -245,9 +181,9 @@ const BlogDetail = () => {
         </div>
       </main>
 
-          <div className="my-6">
-            <AdSense slot="9803570345" format="auto" className="py-4" />
-          </div>
+      <div className="container mx-auto px-4 pb-8">
+        <AdSense slot="9803570345" format="auto" className="py-4" />
+      </div>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
