@@ -1,10 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, CalendarDays, User } from "lucide-react";
+import { ArrowLeft, CalendarDays, User, ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
@@ -18,7 +18,6 @@ const BlogDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
-    // Simulate loading state
     setIsLoading(true);
     window.scrollTo(0, 0);
     
@@ -89,7 +88,6 @@ const BlogDetail = () => {
             <ArrowLeft className="h-4 w-4" /> Back to Blog
           </Button>
 
-          {/* Enhanced top ad with larger size and better placement */}
           <div className="my-6">
             <AdSense slot="1234567890" format="horizontal" className="py-3" />
           </div>
@@ -138,7 +136,6 @@ const BlogDetail = () => {
               )}
               
               <div className="p-6">
-                {/* First quarter of the content */}
                 <div 
                   className="blog-content prose prose-sm max-w-none mb-5"
                   dangerouslySetInnerHTML={{ 
@@ -146,12 +143,10 @@ const BlogDetail = () => {
                   }}
                 />
                 
-                {/* First mid-content ad */}
                 <div className="my-6">
                   <AdSense slot="2345678901" format="rectangle" className="py-3" />
                 </div>
                 
-                {/* Second quarter of the content */}
                 <div 
                   className="blog-content prose prose-sm max-w-none mb-5"
                   dangerouslySetInnerHTML={{ 
@@ -162,12 +157,10 @@ const BlogDetail = () => {
                   }}
                 />
                 
-                {/* Second mid-content ad */}
                 <div className="my-6">
                   <AdSense slot="3456789012" format="rectangle" className="py-3" />
                 </div>
                 
-                {/* Third quarter of the content */}
                 <div 
                   className="blog-content prose prose-sm max-w-none mb-5"
                   dangerouslySetInnerHTML={{ 
@@ -178,12 +171,10 @@ const BlogDetail = () => {
                   }}
                 />
                 
-                {/* Third mid-content ad */}
                 <div className="my-6">
                   <AdSense slot="4567890123" format="rectangle" className="py-3" />
                 </div>
                 
-                {/* Fourth quarter of the content */}
                 <div 
                   className="blog-content prose prose-sm max-w-none"
                   dangerouslySetInnerHTML={{ 
@@ -193,44 +184,51 @@ const BlogDetail = () => {
               </div>
             </div>
             
-            {/* Related Posts Section with Ad */}
             {relatedPosts.length > 0 && (
               <div className="bg-white rounded-sm shadow-sm border border-gray-200 p-6 mb-6">
                 <h3 className="text-xl font-bold mb-4">Related Articles</h3>
                 
-                {/* Ad before related posts */}
                 <div className="mb-6">
                   <AdSense slot="5678901234" format="horizontal" className="py-3" />
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {relatedPosts.map(post => (
-                    <Link 
-                      key={post.id} 
-                      to={`/blog/${post.slug}`}
-                      className="group block"
+                <div className="bg-white rounded-sm shadow-sm border border-gray-200">
+                  {relatedPosts.map((post, index) => (
+                    <motion.div 
+                      key={post.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                      className={`group p-4 ${index !== relatedPosts.length - 1 ? 'border-b border-gray-100' : ''}`}
                     >
-                      <div className="flex flex-col h-full bg-gray-50 rounded-sm overflow-hidden border border-gray-100 hover:border-gray-300 transition-all">
-                        {post.imageUrl && (
-                          <div className="h-40 overflow-hidden">
-                            <img
-                              src={post.imageUrl}
-                              alt={post.title}
-                              className="w-full h-full object-cover transition-transform group-hover:scale-105"
-                            />
-                          </div>
-                        )}
-                        <div className="p-4 flex-1 flex flex-col">
-                          <h4 className="font-medium mb-2 text-sm group-hover:text-blog-accent transition-colors line-clamp-2">
+                      <div className="flex items-center">
+                        <Avatar className="h-10 w-10 mr-3 hidden sm:flex">
+                          <AvatarImage src={post.imageUrl || "/placeholder.svg"} alt={post.title} />
+                          <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
+                            {post.title.substring(0, 2).toUpperCase()}
+                          </AvatarFallback>
+                        </Avatar>
+                        
+                        <div className="flex-1">
+                          <Link 
+                            to={`/blog/${post.slug}`}
+                            className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
+                          >
                             {post.title}
-                          </h4>
-                          <p className="text-xs text-gray-500 line-clamp-2 mb-2">{post.excerpt}</p>
-                          <div className="text-xs text-gray-500 mt-auto">
-                            {formatBlogDate(post.date)}
+                            <ArrowUpRight 
+                              className="h-3.5 w-3.5 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
+                            />
+                          </Link>
+                          <div className="text-xs text-gray-500 line-clamp-1 md:line-clamp-2 mt-1">
+                            {post.excerpt}
+                          </div>
+                          <div className="mt-1 flex items-center gap-4">
+                            <Badge className="text-xs">{post.category}</Badge>
+                            <span className="text-xs text-gray-500">{formatBlogDate(post.date)}</span>
                           </div>
                         </div>
                       </div>
-                    </Link>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -239,7 +237,6 @@ const BlogDetail = () => {
         </div>
       </main>
 
-      {/* Enhanced bottom ad with better visibility */}
       <div className="container mx-auto px-4 pb-8">
         <AdSense slot="6789012345" format="horizontal" className="py-4" />
       </div>
