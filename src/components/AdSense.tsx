@@ -69,8 +69,8 @@ const AdSense = ({
   const getAdAttributes = () => {
     const attributes: Record<string, string> = {
       'data-ad-client': 'ca-pub-6455681110933282',
-      'data-ad-slot': '9803570345',
-      'data-ad-format': auto,
+      'data-ad-slot': slot,
+      'data-ad-format': format,
       'data-full-width-responsive': responsive ? 'true' : 'false',
     };
     
