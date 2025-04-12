@@ -1,5 +1,6 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 type AdFormat = 'auto' | 'horizontal' | 'vertical' | 'rectangle' | 'leaderboard';
 
@@ -25,6 +26,13 @@ const AdSense = ({
   layout = 'normal'
 }: AdSenseProps) => {
   const adRef = useRef<HTMLDivElement>(null);
+  const [adKey, setAdKey] = useState(Date.now());
+  const location = useLocation();
+  
+  // Reset the ad when the route changes
+  useEffect(() => {
+    setAdKey(Date.now());
+  }, [location.pathname]);
   
   useEffect(() => {
     try {
@@ -32,7 +40,7 @@ const AdSense = ({
         // Push the ad only if adsbygoogle is defined
         if (window.adsbygoogle) {
           window.adsbygoogle.push({});
-          console.log(`AdSense ad pushed: ${slot}`);
+          console.log(`AdSense ad pushed: ${slot} at ${location.pathname}`);
         } else {
           console.log('AdSense not loaded yet');
         }
@@ -40,7 +48,7 @@ const AdSense = ({
     } catch (error) {
       console.error('AdSense error:', error);
     }
-  }, [slot]);
+  }, [slot, adKey, location.pathname]);
 
   // Base classes for the ad container
   const containerClasses = `overflow-hidden text-center ${className}`;
@@ -79,7 +87,7 @@ const AdSense = ({
   };
 
   return (
-    <div className={`${containerClasses} ${sizeClass}`}>
+    <div className={`${containerClasses} ${sizeClass}`} key={adKey}>
       <ins
         ref={adRef as any}
         className="adsbygoogle"
