@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
@@ -36,6 +37,55 @@ const BlogDetail = () => {
     
     return () => clearTimeout(timer);
   }, [slug]);
+
+  // Function to split content by paragraph tags and insert ads between paragraphs
+  const renderContentWithAds = (content: string) => {
+    // Split content by closing paragraph tags
+    const paragraphs = content.split('</p>');
+    
+    // Only process if we have paragraphs
+    if (paragraphs.length <= 1) return <div dangerouslySetInnerHTML={{ __html: content }} />;
+    
+    // Calculate roughly where to place ads
+    const quarterPoint = Math.floor(paragraphs.length / 4);
+    const halfPoint = Math.floor(paragraphs.length / 2);
+    const threeQuarterPoint = Math.floor(paragraphs.length * 3 / 4);
+    
+    // Ad slots to use
+    const adSlots = ["2345678901", "3456789012", "4567890123"];
+    
+    return (
+      <>
+        {paragraphs.map((paragraph, index) => {
+          // Skip empty paragraphs
+          if (!paragraph.trim()) return null;
+          
+          // Add closing tag back if not the last item
+          const fullParagraph = index < paragraphs.length - 1 
+            ? `${paragraph}</p>` 
+            : paragraph;
+            
+          return (
+            <div key={index}>
+              <div dangerouslySetInnerHTML={{ __html: fullParagraph }} />
+              
+              {/* Insert ads at strategic positions */}
+              {(index === quarterPoint || index === halfPoint || index === threeQuarterPoint) && 
+               (index < paragraphs.length - 1) && (
+                <div className="my-6">
+                  <AdSense 
+                    slot={adSlots[(index === quarterPoint) ? 0 : (index === halfPoint) ? 1 : 2]} 
+                    format="rectangle" 
+                    className="py-3" 
+                  />
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </>
+    );
+  };
 
   if (isLoading) {
     return (
@@ -136,51 +186,9 @@ const BlogDetail = () => {
               )}
               
               <div className="p-6">
-                <div 
-                  className="blog-content prose prose-sm max-w-none mb-5"
-                  dangerouslySetInnerHTML={{ 
-                    __html: blogPost.content.substring(0, Math.floor(blogPost.content.length / 4)) 
-                  }}
-                />
-                
-                <div className="my-6">
-                  <AdSense slot="2345678901" format="rectangle" className="py-3" />
+                <div className="blog-content prose prose-sm max-w-none">
+                  {renderContentWithAds(blogPost.content)}
                 </div>
-                
-                <div 
-                  className="blog-content prose prose-sm max-w-none mb-5"
-                  dangerouslySetInnerHTML={{ 
-                    __html: blogPost.content.substring(
-                      Math.floor(blogPost.content.length / 4),
-                      Math.floor(blogPost.content.length / 2)
-                    ) 
-                  }}
-                />
-                
-                <div className="my-6">
-                  <AdSense slot="3456789012" format="rectangle" className="py-3" />
-                </div>
-                
-                <div 
-                  className="blog-content prose prose-sm max-w-none mb-5"
-                  dangerouslySetInnerHTML={{ 
-                    __html: blogPost.content.substring(
-                      Math.floor(blogPost.content.length / 2),
-                      Math.floor(blogPost.content.length * 3 / 4)
-                    ) 
-                  }}
-                />
-                
-                <div className="my-6">
-                  <AdSense slot="4567890123" format="rectangle" className="py-3" />
-                </div>
-                
-                <div 
-                  className="blog-content prose prose-sm max-w-none"
-                  dangerouslySetInnerHTML={{ 
-                    __html: blogPost.content.substring(Math.floor(blogPost.content.length * 3 / 4)) 
-                  }}
-                />
               </div>
             </div>
             
