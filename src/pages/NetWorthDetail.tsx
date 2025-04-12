@@ -12,6 +12,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import AdSense from "../components/AdSense";
 import { 
   findPersonBySlug,
   formatNetWorth,
@@ -133,6 +134,9 @@ const NetWorthDetail = () => {
               variant="outline"
             />
           </div>
+                    <div className="mb-4">
+            <AdSense slot="9803570345" format="auto" className="py-3" />
+          </div>
           
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
@@ -205,6 +209,9 @@ const NetWorthDetail = () => {
                 {person.description}
               </p>
             </div>
+          <div className="mb-4">
+            <AdSense slot="9803570345" format="auto" className="py-3" />
+          </div>
             
             <div className="mb-8">
               <h3 className="font-semibold text-lg mb-3">Wealth Details</h3>
@@ -258,6 +265,10 @@ const NetWorthDetail = () => {
               </p>
             </div>
           </article>
+
+          <div className="mb-4">
+            <AdSense slot="9803570345" format="auto" className="py-3" />
+          </div>
           
           {/* Similar People Section */}
           {similarPeople.length > 0 && (
