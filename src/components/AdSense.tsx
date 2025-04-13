@@ -37,29 +37,44 @@ const AdSense = ({
   useEffect(() => {
     try {
       if (adRef.current && typeof window !== 'undefined') {
-        // Wait for adsbygoogle to be defined
-        const interval = setInterval(() => {
-          if (window.adsbygoogle) {
-            clearInterval(interval);
-            window.adsbygoogle.push({});
-            console.log(`AdSense ad pushed: ${slot} at ${location.pathname}`);
-          }
-        }, 100);
+        // Verbose logging for AdSense initialization
+        console.log(`Initializing AdSense for slot: ${slot}`);
+        console.log(`Current pathname: ${location.pathname}`);
         
-        // Clear interval after 5 seconds (timeout)
-        setTimeout(() => {
-          clearInterval(interval);
-          if (!window.adsbygoogle) {
-            console.warn('AdSense not loaded after timeout');
+        let attempts = 0;
+        const maxAttempts = 10;
+        
+        const checkAdsbygoogle = () => {
+          attempts++;
+          
+          if (window.adsbygoogle) {
+            try {
+              window.adsbygoogle.push({});
+              console.log(`AdSense ad successfully pushed for slot: ${slot}`);
+            } catch (pushError) {
+              console.error(`Error pushing AdSense ad for slot ${slot}:`, pushError);
+            }
+          } else {
+            console.warn(`AdSense not ready (Attempt ${attempts})`);
+            
+            if (attempts < maxAttempts) {
+              // Retry with exponential backoff
+              setTimeout(checkAdsbygoogle, Math.pow(2, attempts) * 100);
+            } else {
+              console.error('AdSense failed to initialize after multiple attempts');
+            }
           }
-        }, 5000);
+        };
+        
+        // Initial check
+        checkAdsbygoogle();
         
         return () => {
-          clearInterval(interval);
+          // Cleanup logic (if needed)
         };
       }
     } catch (error) {
-      console.error('AdSense error:', error);
+      console.error('Critical AdSense initialization error:', error);
     }
   }, [slot, adKey, location.pathname]);
 
