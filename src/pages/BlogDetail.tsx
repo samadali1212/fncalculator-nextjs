@@ -10,7 +10,7 @@ import Header from "../components/Header";
 import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
 import AdSense from "../components/AdSense";
-import { findBlogPostBySlug, getPostsByCategory, formatBlogDate, BlogPost } from "../utils/blogData";
+import { findBlogPostBySlug, getBlogPostsByCategory, formatBlogDate, BlogPost } from "../utils/blogData";
 
 const BlogDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -29,7 +29,7 @@ const BlogDetail = () => {
         if (post) {
           setBlogPost(post);
           // Get 10 posts from the same category, excluding the current post
-          const categoryPosts = getPostsByCategory(post.category, 10, post.slug);
+          const categoryPosts = getBlogPostsByCategory(post.category, 10, post.slug);
           setRelatedPosts(categoryPosts);
         }
       }
