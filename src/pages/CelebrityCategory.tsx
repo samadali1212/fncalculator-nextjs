@@ -6,6 +6,7 @@ import { Search, ArrowUpRight, ListFilter, ChevronLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
+import AdSense from "../components/AdSense";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { 
@@ -158,6 +159,10 @@ const CelebrityCategory = () => {
             Top 10
           </Link>
         </div>
+
+          <div className="mb-6">
+           <AdSense slot="9889084223" format="auto" className="py-3" />
+          </div>
         
         <motion.div 
           className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4"
@@ -204,7 +209,11 @@ const CelebrityCategory = () => {
             />
           </div>
         )}
-
+        
+        <div className="mb-6">
+           <AdSense slot="9889084223" format="auto" className="py-3" />
+        </div>
+        
         <div className="bg-white rounded-sm shadow-sm border border-gray-200">
           {filteredCelebrities.length === 0 ? (
             <div className="p-6 text-center text-gray-500">
@@ -295,6 +304,10 @@ const CelebrityCategory = () => {
           )}
         </div>
       </main>
+
+          <div className="mb-6">
+           <AdSense slot="9889084223" format="auto" className="py-3" />
+          </div>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
