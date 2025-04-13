@@ -41,37 +41,17 @@ const AdSense = ({
         console.log(`Initializing AdSense for slot: ${slot}`);
         console.log(`Current pathname: ${location.pathname}`);
         
-        let attempts = 0;
-        const maxAttempts = 10;
-        
-        const checkAdsbygoogle = () => {
-          attempts++;
-          
-          if (window.adsbygoogle) {
-            try {
-              window.adsbygoogle.push({});
-              console.log(`AdSense ad successfully pushed for slot: ${slot}`);
-            } catch (pushError) {
-              console.error(`Error pushing AdSense ad for slot ${slot}:`, pushError);
-            }
-          } else {
-            console.warn(`AdSense not ready (Attempt ${attempts})`);
-            
-            if (attempts < maxAttempts) {
-              // Retry with exponential backoff
-              setTimeout(checkAdsbygoogle, Math.pow(2, attempts) * 100);
-            } else {
-              console.error('AdSense failed to initialize after multiple attempts');
-            }
+        // Simple push without retries for traditional page loads
+        if (window.adsbygoogle) {
+          try {
+            window.adsbygoogle.push({});
+            console.log(`AdSense ad successfully pushed for slot: ${slot}`);
+          } catch (pushError) {
+            console.error(`Error pushing AdSense ad for slot ${slot}:`, pushError);
           }
-        };
-        
-        // Initial check
-        checkAdsbygoogle();
-        
-        return () => {
-          // Cleanup logic (if needed)
-        };
+        } else {
+          console.warn('AdSense not available - will rely on traditional page load');
+        }
       }
     } catch (error) {
       console.error('Critical AdSense initialization error:', error);

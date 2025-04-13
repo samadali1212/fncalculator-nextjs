@@ -42,13 +42,6 @@ const Header = () => {
     return location.pathname.startsWith(path);
   };
 
-  // Handle navigation and ensure smooth scrolling to top
-  const handleNavigation = () => {
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 100);
-  };
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -56,21 +49,20 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link 
-          to="/" 
+        {/* Use regular anchor for the logo/homepage link */}
+        <a 
+          href="/" 
           className="flex items-center gap-2 font-bold text-2xl"
-          onClick={handleNavigation}
         >
           <img src="/sassainsiderlogo.png" alt="Sassa Insider" className="h-6" />
-        </Link>
+        </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-1">
           {menuItems.map((item) => (
-            <Link
+            <a
               key={item.path}
-              to={item.path}
-              onClick={handleNavigation}
+              href={item.path}
               className={`px-3 py-2 rounded-md text-sm font-medium ${
                 isActive(item.path)
                   ? "text-[#1a1f2c] bg-white shadow-sm"
@@ -78,7 +70,7 @@ const Header = () => {
               }`}
             >
               {item.label}
-            </Link>
+            </a>
           ))}
         </nav>
 
@@ -105,13 +97,10 @@ const Header = () => {
         >
           <div className="bg-white px-4 pt-2 pb-3 space-y-1 shadow-lg">
             {menuItems.map((item) => (
-              <Link
+              <a
                 key={item.path}
-                to={item.path}
-                onClick={() => {
-                  setIsOpen(false);
-                  handleNavigation();
-                }}
+                href={item.path}
+                onClick={() => setIsOpen(false)}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive(item.path)
                     ? "text-[#333] bg-gray-100"
@@ -119,7 +108,7 @@ const Header = () => {
                 }`}
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
           </div>
         </motion.div>
