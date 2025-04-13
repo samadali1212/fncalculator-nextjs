@@ -6,6 +6,7 @@ import { Search, ArrowUpRight, ChevronLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
+import AdSense from "../components/AdSense";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -134,6 +135,10 @@ const GeneralKnowledgeCategory = () => {
             </p>
           </div>
         </div>
+
+          <div className="mb-6">
+           <AdSense slot="9889084223" format="auto" className="py-3" />
+          </div>
         
         <motion.div 
           className="mb-6"
@@ -164,6 +169,10 @@ const GeneralKnowledgeCategory = () => {
             />
           </div>
         )}
+        
+          <div className="mb-6">
+           <AdSense slot="9889084223" format="auto" className="py-3" />
+          </div>
 
         <div className="bg-white rounded-sm shadow-sm border border-gray-200">
           {filteredItems.length === 0 ? (
@@ -266,6 +275,10 @@ const GeneralKnowledgeCategory = () => {
           )}
         </div>
       </main>
+      
+          <div className="mb-6">
+           <AdSense slot="9889084223" format="auto" className="py-3" />
+          </div>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
