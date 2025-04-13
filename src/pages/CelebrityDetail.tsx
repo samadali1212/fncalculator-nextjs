@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
+import AdSense from "../components/AdSense";
 import ShareButton from "../components/ShareButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -149,6 +150,10 @@ const CelebrityDetail = () => {
             />
           </div>
           
+          <div className="mb-6">
+           <AdSense slot="9889084223" format="auto" className="py-3" />
+          </div>
+          
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
               <Avatar className="h-24 w-24 rounded-full border-2 border-gray-100 shadow-sm">
@@ -221,6 +226,10 @@ const CelebrityDetail = () => {
               </div>
             </div>
             
+          <div className="mb-6">
+           <AdSense slot="9889084223" format="auto" className="py-3" />
+          </div>
+            
             <div className="prose prose-sm sm:prose max-w-none mb-8">
               <h2 className="text-xl font-semibold mb-3">About {celebrity.name}</h2>
               <p className="text-gray-700 leading-relaxed">
@@ -280,6 +289,10 @@ const CelebrityDetail = () => {
               </p>
             </div>
           </article>
+
+          <div className="mb-6">
+           <AdSense slot="9889084223" format="auto" className="py-3" />
+          </div>
           
           {/* Similar Celebrities Section */}
           {similarCelebrities.length > 0 && (
