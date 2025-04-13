@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
@@ -9,7 +10,7 @@ import Header from "../components/Header";
 import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
 import AdSense from "../components/AdSense";
-import { findBlogPostBySlug, getRecentPosts, formatBlogDate, BlogPost } from "../utils/blogData";
+import { findBlogPostBySlug, getPostsByCategory, formatBlogDate, BlogPost } from "../utils/blogData";
 
 const BlogDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -24,11 +25,12 @@ const BlogDetail = () => {
     const timer = setTimeout(() => {
       if (slug) {
         const post = findBlogPostBySlug(slug);
-        const recent = getRecentPosts(3).filter(p => p.slug !== slug);
         
         if (post) {
           setBlogPost(post);
-          setRelatedPosts(recent);
+          // Get 10 posts from the same category, excluding the current post
+          const categoryPosts = getPostsByCategory(post.category, 10, post.slug);
+          setRelatedPosts(categoryPosts);
         }
       }
       setIsLoading(false);
