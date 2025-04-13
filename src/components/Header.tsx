@@ -61,7 +61,7 @@ const Header = () => {
           className="flex items-center gap-2 font-bold text-2xl"
           onClick={handleNavigation}
         >
-          <img src="/sassainsiderlogo.png" alt="Sassa Insider" className="h-7" />
+          <img src="/sassainsiderlogo.png" alt="Sassa Insider" className="h-6" />
         </Link>
 
         {/* Desktop Navigation */}
