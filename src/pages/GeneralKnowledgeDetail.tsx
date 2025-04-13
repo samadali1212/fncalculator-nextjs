@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -21,15 +22,35 @@ const GeneralKnowledgeDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
+  const [pageKey, setPageKey] = useState(Date.now());
   
   const item = slug ? getItemBySlug(slug) : undefined;
   const category = item ? getCategoryBySlug(item.categoryId) : undefined;
   const similarItems = item ? getSimilarItems(item, 10) : [];
 
+  // Reset component state and force reload when slug changes
   useEffect(() => {
+    // Set loading state to true to show skeleton
     setIsLoading(true);
+    
+    // Generate a new key to force component remount
+    setPageKey(Date.now());
+    
+    // Small timeout for loading state
     const timer = setTimeout(() => {
       setIsLoading(false);
+      
+      // Scroll to top of the page
+      window.scrollTo(0, 0);
+      
+      // Force refresh of ad units
+      if (typeof window !== 'undefined' && window.adsbygoogle) {
+        try {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+          console.error('Error refreshing ads:', e);
+        }
+      }
     }, 800);
     
     return () => clearTimeout(timer);
@@ -102,6 +123,7 @@ const GeneralKnowledgeDetail = () => {
 
   return (
     <motion.div
+      key={pageKey} // Add key to force re-render when changing pages
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -123,6 +145,12 @@ const GeneralKnowledgeDetail = () => {
               <Link 
                 to={`/general-knowledge/category/${category.slug}`}
                 className="inline-flex items-center text-sm text-[#000000] hover:underline"
+                onClick={() => {
+                  // Force a slight delay to ensure proper navigation
+                  setTimeout(() => {
+                    window.scrollTo(0, 0);
+                  }, 100);
+                }}
               >
                 <ChevronLeft className="h-4 w-4 mr-1" />
                 Back to {category.title}
@@ -131,6 +159,12 @@ const GeneralKnowledgeDetail = () => {
               <Link 
                 to="/general-knowledge"
                 className="inline-flex items-center text-sm text-[#000000] hover:underline"
+                onClick={() => {
+                  // Force a slight delay to ensure proper navigation
+                  setTimeout(() => {
+                    window.scrollTo(0, 0);
+                  }, 100);
+                }}
               >
                 <ChevronLeft className="h-4 w-4 mr-1" />
                 All Categories
@@ -262,7 +296,15 @@ const GeneralKnowledgeDetail = () => {
                         className="w-full justify-between" 
                         asChild
                       >
-                        <Link to={`/general-knowledge/${similarItem.slug}`}>
+                        <Link 
+                          to={`/general-knowledge/${similarItem.slug}`}
+                          onClick={() => {
+                            // Force component reload by setting isLoading to true
+                            setIsLoading(true);
+                            // Scroll to top
+                            window.scrollTo(0, 0);
+                          }}
+                        >
                           <span>Read More</span>
                           <ArrowRight className="h-3.5 w-3.5" />
                         </Link>
