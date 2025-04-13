@@ -532,6 +532,10 @@ const JobDetail = () => {
               </div>
             </div>
           </article>
+
+          <div className="mb-6">
+           <AdSense slot="9889084223" format="auto" className="py-3" />
+          </div>
           
           {/* Related Salaries Section */}
           {relatedJobs.length > 0 && (
