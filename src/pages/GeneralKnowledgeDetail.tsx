@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import AdSense from "../components/AdSense";
 import { 
   getItemBySlug,
   getSimilarItems,
@@ -138,10 +137,6 @@ const GeneralKnowledgeDetail = () => {
             />
           </div>
           
-          <div className="mb-4">
-            <AdSense slot="9889084223" format="auto" className="py-3" />
-          </div>
-          
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
               <div className="h-24 w-24 rounded-lg border-2 border-gray-100 shadow-sm overflow-hidden">
@@ -181,11 +176,7 @@ const GeneralKnowledgeDetail = () => {
               <p className="text-lg font-medium text-gray-700 mb-4">{item.shortDescription}</p>
               <p>{item.fullDescription}</p>
             </div>
-            
-            <div className="my-6">
-              <AdSense slot="9889084223" format="auto" className="py-3" />
-            </div>
-            
+
             <div className="mb-8">
               <h3 className="text-lg font-semibold mb-3">Key Facts</h3>
               <div className="bg-gray-50 p-4 rounded-md">
@@ -223,11 +214,7 @@ const GeneralKnowledgeDetail = () => {
           {similarItems.length > 0 && (
             <div className="bg-white p-6 rounded-md shadow-sm mb-8">
               <h2 className="text-xl font-semibold mb-4">You Might Also Be Interested In</h2>
-              
-              <div className="mb-4">
-                <AdSense slot="9889084223" format="auto" className="py-3" />
-              </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {similarItems.map((similarItem) => (
                   <Card key={similarItem.id} className="hover:shadow-md transition-shadow">
@@ -270,10 +257,6 @@ const GeneralKnowledgeDetail = () => {
           )}
         </div>
       </main>
-
-      <div className="container mx-auto px-4 pb-8">
-        <AdSense slot="9889084223" format="auto" className="py-4" />
-      </div>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
