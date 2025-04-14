@@ -102,6 +102,5 @@ const AdSense = ({
       />
     </div>
   );
-};
 
 export default AdSense;
