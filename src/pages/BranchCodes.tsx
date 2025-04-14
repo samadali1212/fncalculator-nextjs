@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import AdSense from "../components/AdSense";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import useIsMobile from "@/hooks/use-mobile";
@@ -91,10 +90,6 @@ const BranchCodes = () => {
               Find branch codes for all major South African banks in one place. Easily search for the code you need to make secure transactions, transfers, and payments without hassle. Simple, accurate, and always up to date.
             </p>
           </div>
-        </div>
-
-        <div className="container mx-auto px-4 pb-8">
-          <AdSense slot="9889084223" format="auto" className="py-4" />
         </div>
 
         <motion.div 
