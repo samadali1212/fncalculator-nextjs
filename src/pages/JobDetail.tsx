@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
-import AdSense from "../components/AdSense";
 import ShareButton from "../components/ShareButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -415,11 +414,7 @@ const JobDetail = () => {
               variant="outline"
             />
           </div>
-          
-          <div className="mb-6">
-           <AdSense slot="9889084223" format="auto" className="py-3" />
-          </div>
-          
+
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4 capitalize">
               {capitalizedJobTitle} Salary in South Africa
@@ -479,11 +474,7 @@ const JobDetail = () => {
                 {generateSalaryDescription()}
               </p>
             </div>
-          
-          <div className="mb-6">
-           <AdSense slot="9889084223" format="auto" className="py-3" />
-          </div>
-            
+
             <div className="mb-8">
               <h3 className="font-semibold text-lg mb-3">Detailed Breakdown</h3>
               <Table>
@@ -533,10 +524,6 @@ const JobDetail = () => {
             </div>
           </article>
 
-          <div className="mb-6">
-           <AdSense slot="9889084223" format="auto" className="py-3" />
-          </div>
-          
           {/* Related Salaries Section */}
           {relatedJobs.length > 0 && (
             <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
