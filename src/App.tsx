@@ -25,6 +25,8 @@ import BranchCodes from "./pages/BranchCodes";
 import BranchCodeDetail from "./pages/BranchCodeDetail";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
+import RealNames from "./pages/RealNames";
+import RealNameDetail from "./pages/RealNameDetail";
 
 const App = () => (
   <BrowserRouter>
@@ -64,6 +66,10 @@ const App = () => (
         {/* Blog Routes */}
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogDetail />} />
+        
+        {/* Real Names Routes */}
+        <Route path="/real-names" element={<RealNames />} />
+        <Route path="/real-names/:slug" element={<RealNameDetail />} />
         
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
