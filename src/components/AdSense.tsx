@@ -79,6 +79,27 @@ const AdSense = ({
 
   // Base classes for the ad container
   const containerClasses = `overflow-hidden text-center ${className}`;
+  
+  // Format sizing classes
+  const formatClasses = {
+    horizontal: 'min-h-[90px] w-full',
+    vertical: 'min-h-[600px] w-full max-w-[160px] mx-auto',
+    rectangle: 'min-h-[250px] w-full max-w-[336px] mx-auto',
+    leaderboard: 'min-h-[90px] w-full max-w-[728px] mx-auto',
+    auto: 'min-h-[100px] w-full',
+  };
+  
+  // Get the class based on format
+  const sizeClass = formatClasses[format] || formatClasses.auto;
+
+  // Create additional attributes based on layout type
+  const getAdAttributes = () => {
+    const attributes: Record<string, string> = {
+      'data-ad-client': 'ca-pub-7886138136550351',
+      'data-ad-slot': slot,
+      'data-ad-format': format,
+      'data-full-width-responsive': responsive ? 'true' : 'false',
+    };
     
     // Add layout-specific attributes
     if (layout === 'in-article') {
@@ -102,5 +123,6 @@ const AdSense = ({
       />
     </div>
   );
+};
 
 export default AdSense;
