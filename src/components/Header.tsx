@@ -53,7 +53,7 @@ const Header = () => {
           href="/" 
           className="flex items-center gap-2 font-bold text-2xl"
         >
-          <img src="/SalaryListlogo.png" alt="Salary List" className="h-6" />
+          <img src="/SalaryListlogo.webp" alt="Salary List" className="h-6" />
         </a>
 
         {/* Desktop Navigation */}
