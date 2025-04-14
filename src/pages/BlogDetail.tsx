@@ -53,7 +53,6 @@ const BlogDetail = () => {
     const threeQuarterPoint = Math.floor(paragraphs.length * 3 / 4);
     
     return (
-      <>
         {paragraphs.map((paragraph, index) => {
           // Skip empty paragraphs
           if (!paragraph.trim()) return null;
@@ -67,7 +66,6 @@ const BlogDetail = () => {
             <div key={index}>
               <div dangerouslySetInnerHTML={{ __html: fullParagraph }} />
           
-      </>
     );
   };
 
