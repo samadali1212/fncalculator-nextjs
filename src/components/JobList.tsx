@@ -106,20 +106,6 @@ const JobList = ({ searchQuery }: JobListProps) => {
           </div>
         </motion.div>
       );
-      
-      // Add an ad after specific intervals
-      if (adIntervals.includes(index + 1)) {
-        const adSlot = `job-list-ad-${index}`;
-        itemsWithAds.push(
-          <div key={`ad-${index}`} className="p-4 border-b border-gray-100">
-            <AdSense slot={adSlot} format="horizontal" className="py-2" />
-          </div>
-        );
-      }
-    });
-    
-    return itemsWithAds;
-  };
 
   return (
     <div className="bg-white rounded-sm shadow-sm border border-gray-200">
@@ -133,9 +119,6 @@ const JobList = ({ searchQuery }: JobListProps) => {
           
           {hasMoreJobs && (
             <>
-              <div className="p-4 border-b border-gray-100">
-                <AdSense slot="job-list-load-more" format="rectangle" className="py-2" />
-              </div>
               <Pagination className="py-5">
                 <PaginationContent>
                   <PaginationItem className="w-full">
