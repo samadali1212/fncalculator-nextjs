@@ -66,21 +66,7 @@ const BlogDetail = () => {
           return (
             <div key={index}>
               <div dangerouslySetInnerHTML={{ __html: fullParagraph }} />
-              
-              {/* Insert ads at strategic positions */}
-              {(index === quarterPoint || index === halfPoint || index === threeQuarterPoint) && 
-               (index < paragraphs.length - 1) && (
-                <div className="my-6">
-                  <AdSense 
-                    slot="9889084223"
-                    format="auto" 
-                    className="py-3" 
-                  />
-                </div>
-              )}
-            </div>
-          );
-        })}
+          
       </>
     );
   };
