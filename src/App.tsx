@@ -31,12 +31,12 @@ const App = () => (
     <Layout>
       <Routes>
         {/* Set BranchCodes as the explicit homepage */}
-        <Route path="/" element={<BranchCodes />} />
+        <Route path="/" element={<Salaries />} />
         {/* Ensure branch-codes path also works and doesn't create duplicate content */}
-        <Route path="/branch-codes" element={<Navigate to="/" replace />} />
+        <Route path="/salaries" element={<Navigate to="/" replace />} />
         <Route path="/branch-codes/:slug" element={<BranchCodeDetail />} />
         <Route path="/about" element={<About />} />
-        <Route path="/salaries" element={<Salaries />} />
+        <Route path="/branch-codes" element={<Branch Codes />} />
         <Route path="/hourly-rates" element={<HourlyRates />} />
         <Route path="/hourly-rates/:rateId" element={<HourlyRateDetail />} />
         <Route path="/tax-calculator" element={<TaxCalculator />} />
