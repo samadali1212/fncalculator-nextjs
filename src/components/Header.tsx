@@ -29,10 +29,9 @@ const Header = () => {
   const menuItems = [
     { path: "/general-knowledge", label: "Rankings" },
     { path: "/celebrities", label: "Celebrities" },
-    { path: "/celebrity-categories", label: "Highest-Paid" },
     { path: "/net-worth", label: "Net Worth" },
-    { path: "/categories", label: "Richest" },
-    { path: "/salaries", label: "Careers" },
+    { path: "/tax-calculator", label: "Tax Calculator" },
+    { path: "/hourly-rates", label: "Hourly Rates" },
     { path: "/blog", label: "Blog" },
     { path: "/about", label: "About" },
   ];
