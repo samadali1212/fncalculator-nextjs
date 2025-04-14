@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { ArrowLeft, CalendarDays, MapPin, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, CalendarDays, MapPin, ArrowUpRight, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,13 +10,14 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
-import { findCelebrityBySlug, getRelatedCelebrities, CelebrityRealName } from "../utils/realNamesData";
+import { findCelebrityBySlug, getRelatedCelebrities, getAllRealNames, CelebrityRealName } from "../utils/realNamesData";
 
 const RealNameDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [celebrity, setCelebrity] = useState<CelebrityRealName | null>(null);
   const [relatedCelebrities, setRelatedCelebrities] = useState<CelebrityRealName[]>([]);
+  const [moreRelatedCelebrities, setMoreRelatedCelebrities] = useState<CelebrityRealName[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
@@ -29,8 +30,17 @@ const RealNameDetail = () => {
         
         if (celeb) {
           setCelebrity(celeb);
+          // Get celebrities with the same profession
           const related = getRelatedCelebrities(celeb.profession, slug, 4);
           setRelatedCelebrities(related);
+          
+          // Get random celebrities with different professions for the "More Real Names" section
+          const allCelebs = getAllRealNames();
+          const filtered = allCelebs
+            .filter(c => c.slug !== slug && c.profession !== celeb.profession)
+            .sort(() => 0.5 - Math.random()) // Shuffle array
+            .slice(0, 8);
+          setMoreRelatedCelebrities(filtered);
         }
       }
       setIsLoading(false);
@@ -187,13 +197,54 @@ const RealNameDetail = () => {
             </div>
             
             {relatedCelebrities.length > 0 && (
-              <Card className="bg-white shadow-sm">
+              <Card className="bg-white shadow-sm mb-8">
                 <CardHeader className="pb-3">
                   <CardTitle>More {celebrity.profession}s</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                     {relatedCelebrities.map((celeb) => (
+                      <Link
+                        key={celeb.id}
+                        to={`/real-names/${celeb.slug}`}
+                        className="group"
+                      >
+                        <div className="p-4 rounded-md border border-gray-200 hover:shadow-md transition-all">
+                          <div className="flex items-center mb-3">
+                            <Avatar className="h-10 w-10 mr-3">
+                              <AvatarImage src={celeb.imageUrl || "/placeholder.svg"} alt={celeb.stageName} />
+                              <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
+                                {getInitials(celeb.stageName)}
+                              </AvatarFallback>
+                            </Avatar>
+                            <div>
+                              <div className="text-base font-medium group-hover:text-blog-accent transition-colors flex items-center">
+                                {celeb.stageName}
+                                <ArrowUpRight className="h-3.5 w-3.5 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                              </div>
+                              <div className="text-xs text-gray-500">{celeb.profession}</div>
+                            </div>
+                          </div>
+                          <div className="text-sm text-gray-700">
+                            Real name: <span className="font-medium">{celeb.realName}</span>
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+            
+            {/* New section: More Real Names */}
+            {moreRelatedCelebrities.length > 0 && (
+              <Card className="bg-white shadow-sm">
+                <CardHeader className="pb-3">
+                  <CardTitle>More Celebrity Real Names</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                    {moreRelatedCelebrities.map((celeb) => (
                       <Link
                         key={celeb.id}
                         to={`/real-names/${celeb.slug}`}

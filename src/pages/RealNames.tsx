@@ -19,7 +19,7 @@ const RealNames = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [celebrities, setCelebrities] = useState<CelebrityRealName[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [itemsToShow, setItemsToShow] = useState(20);
+  const [itemsToShow, setItemsToShow] = useState(100);
   
   useEffect(() => {
     // Simulate loading state
@@ -36,7 +36,7 @@ const RealNames = () => {
   
   // Reset items to show when search query changes
   useEffect(() => {
-    setItemsToShow(20);
+    setItemsToShow(100);
   }, [searchQuery]);
   
   // Filter celebrities based on search query
@@ -53,7 +53,7 @@ const RealNames = () => {
   const hasMoreCelebrities = displayedCelebrities.length < sortedCelebrities.length;
   
   const loadMore = () => {
-    setItemsToShow(prevItemsToShow => prevItemsToShow + 20);
+    setItemsToShow(prevItemsToShow => prevItemsToShow + 100);
   };
 
   // Get initials for avatar fallback
