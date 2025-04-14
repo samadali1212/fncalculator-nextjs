@@ -492,7 +492,6 @@ const celebrityRealNames: CelebrityRealName[] = [
       "Started the Sbu Leope Education Foundation to help underprivileged students"
     ]
   },
-  [
   {
     id: "africa-tsoai-1",
     stageName: "John Maputla",
@@ -988,7 +987,6 @@ const celebrityRealNames: CelebrityRealName[] = [
     bio: "Hellen Motsuki portrays Melita, a strong and independent character who brings unique flair to Skeem Saam. Born in the North West Province, Hellen began her career in theatre before transitioning to television. Her performances have been recognized for their emotional depth and ability to capture the essence of complex characters. Off-screen, Hellen is dedicated to advocating for mental health awareness, especially among the youth. Her role in Skeem Saam highlights themes of personal identity and resilience, offering viewers a relatable and inspiring figure to look up to.",
     slug: "hellen-motsuki"
   }
-]
 ];
 
 export const getAllRealNames = (): CelebrityRealName[] => {
