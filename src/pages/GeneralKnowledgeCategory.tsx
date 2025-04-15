@@ -25,7 +25,7 @@ const GeneralKnowledgeCategory = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-  const [itemsToShow, setItemsToShow] = useState(10);
+  const [itemsToShow, setItemsToShow] = useState(20);
   
   const category = slug ? getCategoryBySlug(slug) : undefined;
   const [items, setItems] = useState<GeneralKnowledgeItem[]>([]);
