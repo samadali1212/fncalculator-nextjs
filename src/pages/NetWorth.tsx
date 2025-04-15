@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ArrowUpRight, ListFilter } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -35,10 +34,8 @@ const NetWorth = () => {
   const [industryFilter, setIndustryFilter] = useState<string>("all");
   const [isLoading, setIsLoading] = useState(true);
 
-// Get unique industries for filter
   const industries = ["all", ...Array.from(new Set(netWorthPeople.map(person => person.industry)))];
   
-  // Filter people based on search query and industry
   const filteredPeople = netWorthPeople.filter(person => {
     const matchesSearch = searchQuery 
       ? person.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -51,10 +48,8 @@ const NetWorth = () => {
     return matchesSearch && matchesIndustry;
   });
   
-  // Sort by net worth (descending)
   const sortedPeople = [...filteredPeople].sort((a, b) => b.netWorth - a.netWorth);
   
-  // Paginate results
   const displayedPeople = sortedPeople.slice(0, itemsToShow);
   const hasMorePeople = displayedPeople.length < filteredPeople.length;
   
@@ -62,7 +57,6 @@ const NetWorth = () => {
     setItemsToShow(prevItemsToShow => prevItemsToShow + 40);
   };
 
-  // Get initials for avatar fallback
   const getInitials = (name: string) => {
     return name
       .split(' ')
@@ -72,7 +66,6 @@ const NetWorth = () => {
       .substring(0, 2);
   };
 
-  // Simulate loading state
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -114,12 +107,12 @@ const NetWorth = () => {
               Explore the net worth of South Africa's wealthiest individuals
             </p>
           </div>
-                    <Link 
+          <Link 
             to="/categories"
             className="mt-4 md:mt-0 inline-flex items-center text-blog-accent hover:text-blog-accent-hover transition-colors"
           >
             <ListFilter className="h-4 w-4 mr-1.5" />
-           Top 10
+            Top 10
           </Link>
         </div>
         
@@ -194,7 +187,11 @@ const NetWorth = () => {
                     <div className="col-span-5 md:col-span-4">
                       <div className="flex items-center">
                         <Avatar className="h-8 w-8 mr-3">
-                          <AvatarImage src={person.imageUrl || "/placeholder.svg"} alt={person.name} />
+                          <AvatarImage 
+                            src={person.imageUrl || "/placeholder.svg"} 
+                            alt={person.name} 
+                            className="object-cover"
+                          />
                           <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
                             {getInitials(person.name)}
                           </AvatarFallback>

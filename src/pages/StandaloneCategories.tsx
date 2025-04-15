@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ArrowUpRight, ListFilter, ChevronRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -37,7 +36,6 @@ const StandaloneCategories = () => {
   const [itemsToShow, setItemsToShow] = useState(10);
   
   useEffect(() => {
-    // Simulate loading state for better UX
     const timer = setTimeout(() => {
       setCategories(getAllCategories());
       setIsLoading(false);
@@ -46,7 +44,6 @@ const StandaloneCategories = () => {
     return () => clearTimeout(timer);
   }, []);
   
-  // Filter categories based on search query
   const filteredCategories = categories.filter(category => {
     return searchQuery 
       ? category.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -54,7 +51,6 @@ const StandaloneCategories = () => {
       : true;
   });
   
-  // Paginate results
   const displayedCategories = filteredCategories.slice(0, itemsToShow);
   const hasMoreCategories = displayedCategories.length < filteredCategories.length;
   
