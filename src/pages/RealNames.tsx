@@ -35,7 +35,7 @@ const RealNames = () => {
   };
   
   return (
-    <div className="container mx-auto py-6 px-4 max-w-7xl">
+    <div className="container mx-auto py-6 px-4 mt-14">
       <Helmet>
         <title>Celebrity Real Names | Discover Famous People's Birth Names</title>
         <meta 
@@ -70,7 +70,7 @@ const RealNames = () => {
         </p>
         
         {/* Celebrity grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {visibleCelebrities.map((celebrity) => (
             <Link to={`/real-names/${celebrity.slug}`} key={celebrity.id}>
               <Card className="h-full hover:shadow-md transition-shadow">

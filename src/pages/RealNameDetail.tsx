@@ -19,7 +19,7 @@ const RealNameDetail = () => {
   const celebrity = getCelebrityBySlug(slug || '');
   
   // Get related celebrities
-  const relatedCelebrities = celebrity ? getRelatedCelebrities(celebrity.id, 20) : [];
+  const relatedCelebrities = celebrity ? getRelatedCelebrities(celebrity.id, 3) : [];
   
   // Handle case when celebrity is not found
   if (!celebrity) {
@@ -35,7 +35,7 @@ const RealNameDetail = () => {
   }
   
   return (
-    <div className="container mx-auto py-6 px-4 max-w-4xl">
+    <div className="container mx-auto py-6 px-4 mt-14">
       <Helmet>
         <title>{celebrity.stageName} Real Name - {celebrity.realName}</title>
         <meta 
