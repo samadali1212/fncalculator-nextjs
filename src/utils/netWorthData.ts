@@ -2830,6 +2830,7 @@ categories: ["entrepreneurs", "business"]
     netWorth: 5000000,
     currency: "USD",
     occupation: "Businessman",
+    age: 38,
     country: "South Africa",
     industry: "Construction, Energy, Logistics",
     company: "Sakhile Ezweni Group",
