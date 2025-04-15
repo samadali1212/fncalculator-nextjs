@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ArrowUpRight, ListFilter, ChevronRight } from "lucide-react";
@@ -36,7 +35,6 @@ const StandaloneCelebrityCategories = () => {
   const [itemsToShow, setItemsToShow] = useState(10);
   
   useEffect(() => {
-    // Simulate loading state for better UX
     const timer = setTimeout(() => {
       setCategories(getAllCelebrityMetadata());
       setIsLoading(false);
@@ -45,7 +43,6 @@ const StandaloneCelebrityCategories = () => {
     return () => clearTimeout(timer);
   }, []);
   
-  // Filter categories based on search query
   const filteredCategories = categories.filter(category => {
     return searchQuery 
       ? category.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -53,7 +50,6 @@ const StandaloneCelebrityCategories = () => {
       : true;
   });
   
-  // Paginate results
   const displayedCategories = filteredCategories.slice(0, itemsToShow);
   const hasMoreCategories = displayedCategories.length < filteredCategories.length;
   
@@ -91,7 +87,7 @@ const StandaloneCelebrityCategories = () => {
           <div>
             <h1 className="text-3xl font-bold mb-2">Highest Paid people in South Africa</h1>
             <p className="text-gray-600">
-              South Africa’s top earners command impressive figures across industries like mining, finance, sports, and entertainment. These individuals have leveraged skill, strategy, and opportunity to secure multi-million rand incomes. From CEOs of major corporations to global sports stars, their earnings reflect both their impact and demand in their respective fields.
+              South Africa's top earners command impressive figures across industries like mining, finance, sports, and entertainment. These individuals have leveraged skill, strategy, and opportunity to secure multi-million rand incomes. From CEOs of major corporations to global sports stars, their earnings reflect both their impact and demand in their respective fields.
             </p>
           </div>
           

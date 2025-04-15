@@ -168,7 +168,7 @@ const NetWorthCategory = () => {
         
         <div className="mb-6">
          <AdSense slot="9889084223" format="auto" className="py-3" />
-         </div>
+        </div>
         
         <motion.div 
           className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4"
@@ -253,7 +253,11 @@ const NetWorthCategory = () => {
                     <div className="col-span-5 md:col-span-4">
                       <div className="flex items-center">
                         <Avatar className="h-8 w-8 mr-3">
-                          <AvatarImage src={person.imageUrl || "/placeholder.svg"} alt={person.name} />
+                          <AvatarImage 
+                            src={person.imageUrl || "/placeholder.svg"} 
+                            alt={person.name} 
+                            className="object-cover"
+                          />
                           <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
                             {getInitials(person.name)}
                           </AvatarFallback>

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -28,10 +27,8 @@ const NetWorthDetail = () => {
   const person = findPersonBySlug(slug || "");
   const similarPeople = person ? getSimilarPeople(person, 10) : [];
   
-  // Simulate loading from API
   useEffect(() => {
     setIsLoading(true);
-    // Simulate network delay
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 800);
@@ -89,10 +86,8 @@ const NetWorthDetail = () => {
     );
   }
 
-  // Format currency for the title without spaces
   const formattedNetWorthForTitle = formatNetWorth(person.netWorth, person.currency).replace(/\s/g, "");
   
-  // Get initials for avatar fallback
   const getInitials = (name: string) => {
     return name
       .split(' ')
@@ -141,7 +136,11 @@ const NetWorthDetail = () => {
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
               <Avatar className="h-24 w-24 rounded-full border-2 border-gray-100 shadow-sm">
-                <AvatarImage src={person.imageUrl || "/placeholder.svg"} alt={person.name} />
+                <AvatarImage 
+                  src={person.imageUrl || "/placeholder.svg"} 
+                  alt={person.name}
+                  className="object-cover"
+                />
                 <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-lg font-medium">
                   {getInitials(person.name)}
                 </AvatarFallback>
@@ -270,7 +269,6 @@ const NetWorthDetail = () => {
             <AdSense slot="9889084223" format="auto" className="py-3" />
           </div>
           
-          {/* Similar People Section */}
           {similarPeople.length > 0 && (
             <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
               <div className="p-6 sm:p-8 border-b border-gray-100">
@@ -295,7 +293,11 @@ const NetWorthDetail = () => {
                       </div>
                       
                       <Avatar className="h-10 w-10 mr-3">
-                        <AvatarImage src={similarPerson.imageUrl || "/placeholder.svg"} alt={similarPerson.name} />
+                        <AvatarImage 
+                          src={similarPerson.imageUrl || "/placeholder.svg"} 
+                          alt={similarPerson.name}
+                          className="object-cover"
+                        />
                         <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
                           {getInitials(similarPerson.name)}
                         </AvatarFallback>
@@ -347,4 +349,3 @@ const NetWorthDetail = () => {
 };
 
 export default NetWorthDetail;
-
