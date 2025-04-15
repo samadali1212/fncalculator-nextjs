@@ -154,7 +154,7 @@ const BranchCodeDetail = () => {
           </div>
          
           <div className="my-6">
-            <AdSense slot="1234567890" format="horizontal" className="py-3" />
+            <AdSense slot="9889084223" format="horizontal" className="py-3" />
           </div>
           
           <motion.div
@@ -345,7 +345,7 @@ const BranchCodeDetail = () => {
             <CardContent>
               <SEOParagraph branchCode={branchCode} />
                         <div className="my-6">
-            <AdSense slot="1234561239" format="horizontal" className="py-3" />
+            <AdSense slot="9889084223" format="horizontal" className="py-3" />
           </div>
               <Table>
                 <TableBody>
@@ -415,7 +415,7 @@ const BranchCodeDetail = () => {
           </Card>
 
           <div className="my-6">
-            <AdSense slot="1234567890" format="horizontal" className="py-3" />
+            <AdSense slot="9889084223" format="horizontal" className="py-3" />
           </div>
 
           <Card className="bg-white shadow-sm">
