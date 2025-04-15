@@ -135,7 +135,7 @@ const NetWorthDetail = () => {
             />
           </div>
                     <div className="mb-4">
-            <AdSense slot="9803570345" format="auto" className="py-3" />
+            <AdSense slot="9889084223" format="auto" className="py-3" />
           </div>
           
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
@@ -210,7 +210,7 @@ const NetWorthDetail = () => {
               </p>
             </div>
           <div className="mb-4">
-            <AdSense slot="9803570345" format="auto" className="py-3" />
+            <AdSense slot="9889084223" format="auto" className="py-3" />
           </div>
             
             <div className="mb-8">
@@ -267,7 +267,7 @@ const NetWorthDetail = () => {
           </article>
 
           <div className="mb-4">
-            <AdSense slot="9803570345" format="auto" className="py-3" />
+            <AdSense slot="9889084223" format="auto" className="py-3" />
           </div>
           
           {/* Similar People Section */}
