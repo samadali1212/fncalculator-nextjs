@@ -237,8 +237,8 @@ const JobDetail = () => {
   // SEO title and description with properly capitalized job specific information
   const jobCategory = actualJobId ? getJobCategory(actualJobId) : "";
   const seoTitle = jobData 
-    ? `${capitalizedJobTitle} Salary in South Africa (R${jobData.average.toLocaleString()}) - Salary List` 
-    : `${capitalizedJobTitle} Salary in South Africa - Salary List`;
+    ? `${capitalizedJobTitle} Salary in South Africa (R${jobData.average.toLocaleString()}) - Sassa Insider` 
+    : `${capitalizedJobTitle} Salary in South Africa - Sassa Insider`;
   const seoDescription = jobData 
     ? `${capitalizedJobTitle} average salary in South Africa is R${jobData.average.toLocaleString()} per month. Explore salary ranges, requirements, and career insights for ${capitalizedJobTitle} positions.`
     : `Explore salary information for ${capitalizedJobTitle} positions in South Africa. Get insights on pay ranges, requirements, and career prospects.`;
@@ -410,11 +410,11 @@ const JobDetail = () => {
             </Link>
             
             <ShareButton 
-              title={`${capitalizedJobTitle} Salary in South Africa - Salary List`} 
+              title={`${capitalizedJobTitle} Salary in South Africa - Sassa Insider`} 
               variant="outline"
             />
           </div>
-
+          
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4 capitalize">
               {capitalizedJobTitle} Salary in South Africa
@@ -474,7 +474,7 @@ const JobDetail = () => {
                 {generateSalaryDescription()}
               </p>
             </div>
-
+            
             <div className="mb-8">
               <h3 className="font-semibold text-lg mb-3">Detailed Breakdown</h3>
               <Table>
@@ -523,7 +523,7 @@ const JobDetail = () => {
               </div>
             </div>
           </article>
-
+          
           {/* Related Salaries Section */}
           {relatedJobs.length > 0 && (
             <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
@@ -584,7 +584,7 @@ const JobDetail = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Salary List. All rights reserved.
+            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
           </p>
         </div>
       </footer>

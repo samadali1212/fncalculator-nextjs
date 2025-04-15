@@ -12,6 +12,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import AdSense from "../components/AdSense";
 import { 
   findPersonBySlug,
   formatNetWorth,
@@ -129,9 +130,12 @@ const NetWorthDetail = () => {
             </Link>
             
             <ShareButton 
-              title={`${person.name} Net Worth: ${formattedNetWorthForTitle} - Salary List`} 
+              title={`${person.name} Net Worth: ${formattedNetWorthForTitle} - Sassa Insider`} 
               variant="outline"
             />
+          </div>
+                    <div className="mb-4">
+            <AdSense slot="9803570345" format="auto" className="py-3" />
           </div>
           
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
@@ -205,7 +209,10 @@ const NetWorthDetail = () => {
                 {person.description}
               </p>
             </div>
-
+          <div className="mb-4">
+            <AdSense slot="9803570345" format="auto" className="py-3" />
+          </div>
+            
             <div className="mb-8">
               <h3 className="font-semibold text-lg mb-3">Wealth Details</h3>
               <Table>
@@ -259,6 +266,10 @@ const NetWorthDetail = () => {
             </div>
           </article>
 
+          <div className="mb-4">
+            <AdSense slot="9803570345" format="auto" className="py-3" />
+          </div>
+          
           {/* Similar People Section */}
           {similarPeople.length > 0 && (
             <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
@@ -327,7 +338,7 @@ const NetWorthDetail = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Salary List. All rights reserved.
+            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
           </p>
         </div>
       </footer>

@@ -14,12 +14,12 @@ const SEO = ({
   title = "South African Salary Guide & Career Information",
   description = "Access South Africa's most comprehensive salary guide. Find average salaries by profession, hourly rates, tax information, and more to help with your career planning.",
   canonicalUrl,
-  ogImage = "/SalaryList favicon.png", 
+  ogImage = "/sassainsiderfavicon.png.png", 
   ogType = "website",
   twitterCard = "summary_large_image"
 }: SEOProps) => {
-  const siteUrl = "https://salarylist.co.za";
-  const fullTitle = title.includes("Salary List") ? title : `${title} | Salary List`;
+  const siteUrl = "https://sassainsider.co.za";
+  const fullTitle = title.includes("Sassa Insider") ? title : `${title} | Sassa Insider`;
   
   return (
     <Helmet>

@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import SEO from "@/components/SEO";
 import SEOParagraph from "@/components/SEOParagraph";
 import { Button } from "@/components/ui/button";
+import AdSense from "../components/AdSense";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -151,7 +152,11 @@ const BranchCodeDetail = () => {
               <ChevronLeft className="h-4 w-4" /> Back to All Banks
             </Button>
           </div>
-
+         
+          <div className="my-6">
+            <AdSense slot="1234567890" format="horizontal" className="py-3" />
+          </div>
+          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -177,6 +182,10 @@ const BranchCodeDetail = () => {
             </div>
 
             <SEOParagraph bank={bank} />
+
+          <div className="my-6">
+            <AdSense slot="9889084223" format="auto" className="py-4" />
+          </div>
 
             <div className="bg-white rounded-sm shadow-sm border border-gray-200">
               <div className="p-4 border-b border-gray-100 bg-gray-50">
@@ -262,7 +271,7 @@ const BranchCodeDetail = () => {
         <footer className="border-t border-gray-300 py-8 bg-white">
           <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
             <p>
-              &copy; {new Date().getFullYear()} Salary List. All rights reserved.
+              &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
             </p>
           </div>
         </footer>
@@ -335,7 +344,9 @@ const BranchCodeDetail = () => {
             </CardHeader>
             <CardContent>
               <SEOParagraph branchCode={branchCode} />
-              
+                        <div className="my-6">
+            <AdSense slot="1234561239" format="horizontal" className="py-3" />
+          </div>
               <Table>
                 <TableBody>
                   <TableRow>
@@ -403,6 +414,10 @@ const BranchCodeDetail = () => {
             </CardContent>
           </Card>
 
+          <div className="my-6">
+            <AdSense slot="1234567890" format="horizontal" className="py-3" />
+          </div>
+
           <Card className="bg-white shadow-sm">
             <CardHeader className="pb-3">
               <CardTitle>Related Branches</CardTitle>
@@ -460,7 +475,7 @@ const BranchCodeDetail = () => {
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Salary List. All rights reserved.
+            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
           </p>
         </div>
       </footer>
