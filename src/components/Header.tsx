@@ -33,6 +33,7 @@ const Header = () => {
     { path: "/net-worth", label: "Net Worth" },
     { path: "/categories", label: "Richest" },
     { path: "/salaries", label: "Careers" },
+    { path: "/real-names", label: "Real Names" },
     { path: "/blog", label: "Blog" },
     { path: "/about", label: "About" },
   ];
