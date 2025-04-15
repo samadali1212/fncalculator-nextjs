@@ -32,7 +32,7 @@ const Salaries = () => {
         
         {/* Top ad placement */}
         <div className="my-6">
-          <AdSense slot="7890123456" format="horizontal" className="py-3" />
+          <AdSense slot="9889084223" format="horizontal" className="py-3" />
         </div>
         
         <motion.div 
@@ -59,7 +59,7 @@ const Salaries = () => {
         
         {/* Bottom ad placement */}
         <div className="mt-8 mb-4">
-          <AdSense slot="8901234567" format="horizontal" className="py-3" />
+          <AdSense slot="9889084223" format="horizontal" className="py-3" />
         </div>
       </main>
 
