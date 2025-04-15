@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import Header from "../components/Header";
 import JobList from "../components/JobList";
 import SEO from "../components/SEO";
-import AdSense from "../components/AdSense";
 
 const Salaries = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -26,14 +25,9 @@ const Salaries = () => {
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <h1 className="text-3xl font-bold mb-6">South African Salaries Guide</h1>
-        <p className="text-gray-600 mb-4">
-          This list covers average Salaries across industries, factors influencing pay, and tips for negotiating better compensation. Stay informed about job market trends and see how your income compares to national standards.
-        </p>
-        
-        {/* Top ad placement */}
-        <div className="my-6">
-          <AdSense slot="7890123456" format="horizontal" className="py-3" />
-        </div>
+                    <p className="text-gray-600">
+              This list covers average Salaries across industries, factors influencing pay, and tips for negotiating better compensation. Stay informed about job market trends and see how your income compares to national standards.
+            </p>
         
         <motion.div 
           className="mb-6"
@@ -56,17 +50,12 @@ const Salaries = () => {
         </motion.div>
 
         <JobList searchQuery={searchQuery} />
-        
-        {/* Bottom ad placement */}
-        <div className="mt-8 mb-4">
-          <AdSense slot="8901234567" format="horizontal" className="py-3" />
-        </div>
       </main>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
+            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
           </p>
         </div>
       </footer>

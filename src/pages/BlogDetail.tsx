@@ -9,7 +9,6 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
-import AdSense from "../components/AdSense";
 import { findBlogPostBySlug, formatBlogDate, BlogPost } from "../utils/blogData";
 import { getRelatedPosts } from "../utils/blogUtils";
 
@@ -120,7 +119,7 @@ const BlogDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${blogPost.title} - Sassa Insider`} 
+        title={`${blogPost.title} - Salary List`} 
         description={blogPost.excerpt}
         canonicalUrl={`/blog/${blogPost.slug}`}
       />
@@ -136,10 +135,6 @@ const BlogDetail = () => {
           >
             <ArrowLeft className="h-4 w-4" /> Back to Blog
           </Button>
-
-          <div className="my-6">
-            <AdSense slot="9889084223" format="auto" className="py-3" />
-          </div>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -195,10 +190,6 @@ const BlogDetail = () => {
               <div className="bg-white rounded-sm shadow-sm border border-gray-200 p-6 mb-6">
                 <h3 className="text-xl font-bold mb-4">Related Articles</h3>
                 
-                <div className="mb-6">
-                  <AdSense slot="9889084223" format="auto" className="py-3" />
-                </div>
-                
                 <div className="bg-white rounded-sm shadow-sm border border-gray-200">
                   {relatedPosts.map((post, index) => (
                     <motion.div 
@@ -244,14 +235,10 @@ const BlogDetail = () => {
         </div>
       </main>
 
-      <div className="container mx-auto px-4 pb-8">
-        <AdSense slot="9889084223" format="auto" className="py-4" />
-      </div>
-
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
+            &copy; {new Date().getFullYear()} Salary List. All rights reserved.
           </p>
         </div>
       </footer>

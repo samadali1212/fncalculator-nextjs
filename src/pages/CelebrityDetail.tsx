@@ -125,7 +125,7 @@ const CelebrityDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${celebrity.name} Salary Per Month - Sassa Insider`}
+        title={`${celebrity.name} Salary Per Month - Salary List`}
         description={`${celebrity.name}'s estimated salary is ${formatSalary(celebrity.salary, celebrity.currency)}. Learn about their earnings, career, and ${celebrity.industry} ventures.`}
         canonicalUrl={`/celebrities/${celebrity.slug}`}
       />
@@ -144,11 +144,11 @@ const CelebrityDetail = () => {
             </Link>
             
             <ShareButton 
-              title={`${celebrity.name}'s Salary - Sassa Insider`} 
+              title={`${celebrity.name}'s Salary - Salary List`} 
               variant="outline"
             />
           </div>
-          
+ 
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
               <Avatar className="h-24 w-24 rounded-full border-2 border-gray-100 shadow-sm">
@@ -220,7 +220,7 @@ const CelebrityDetail = () => {
                 </div>
               </div>
             </div>
-            
+ 
             <div className="prose prose-sm sm:prose max-w-none mb-8">
               <h2 className="text-xl font-semibold mb-3">About {celebrity.name}</h2>
               <p className="text-gray-700 leading-relaxed">
@@ -280,7 +280,7 @@ const CelebrityDetail = () => {
               </p>
             </div>
           </article>
-          
+
           {/* Similar Celebrities Section */}
           {similarCelebrities.length > 0 && (
             <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
@@ -349,7 +349,7 @@ const CelebrityDetail = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
+            &copy; {new Date().getFullYear()} Salary List. All rights reserved.
           </p>
         </div>
       </footer>
