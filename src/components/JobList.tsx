@@ -112,7 +112,7 @@ const JobList = ({ searchQuery }: JobListProps) => {
         const adSlot = `job-list-ad-${index}`;
         itemsWithAds.push(
           <div key={`ad-${index}`} className="p-4 border-b border-gray-100">
-            <AdSense slot={adSlot} format="horizontal" className="py-2" />
+            <AdSense slot={adSlot} format="auto" className="py-2" />
           </div>
         );
       }
@@ -134,7 +134,7 @@ const JobList = ({ searchQuery }: JobListProps) => {
           {hasMoreJobs && (
             <>
               <div className="p-4 border-b border-gray-100">
-                <AdSense slot="job-list-load-more" format="rectangle" className="py-2" />
+                <AdSense slot="job-list-load-more" format="auto" className="py-2" />
               </div>
               <Pagination className="py-5">
                 <PaginationContent>
