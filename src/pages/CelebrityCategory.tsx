@@ -247,7 +247,11 @@ const CelebrityCategory = () => {
                     <div className="col-span-5 md:col-span-4">
                       <div className="flex items-center">
                         <Avatar className="h-8 w-8 mr-3">
-                          <AvatarImage src={celebrity.imageUrl || "/placeholder.svg"} alt={celebrity.name} />
+                          <AvatarImage 
+                            src={celebrity.imageUrl || "/placeholder.svg"} 
+                            alt={celebrity.name} 
+                            className="object-cover"
+                          />
                           <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
                             {getInitials(celebrity.name)}
                           </AvatarFallback>

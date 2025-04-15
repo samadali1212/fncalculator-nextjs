@@ -111,7 +111,7 @@ const Celebrities = () => {
           <div>
             <h1 className="text-3xl font-bold mb-2">Salaries of the Most Popular People in South Africa</h1>
             <p className="text-gray-600">
-              Explore the earnings of South Africa’s most well-known personalities. From entertainers and athletes to business leaders and influencers, see how much the country’s top figures make and what contributes to their wealth.
+              Explore the earnings of South Africa's most well-known personalities. From entertainers and athletes to business leaders and influencers, see how much the country's top figures make and what contributes to their wealth.
             </p>
           </div>
         </div>
@@ -187,7 +187,11 @@ const Celebrities = () => {
                     <div className="col-span-5 md:col-span-4">
                       <div className="flex items-center">
                         <Avatar className="h-8 w-8 mr-3">
-                          <AvatarImage src={celebrity.imageUrl || "/placeholder.svg"} alt={celebrity.name} />
+                          <AvatarImage 
+                            src={celebrity.imageUrl || "/placeholder.svg"} 
+                            alt={celebrity.name}
+                            className="object-cover"
+                          />
                           <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
                             {getInitials(celebrity.name)}
                           </AvatarFallback>

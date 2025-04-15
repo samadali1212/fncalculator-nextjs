@@ -27,10 +27,8 @@ const CelebrityDetail = () => {
   const celebrity = findCelebrityBySlug(slug || "");
   const similarCelebrities = celebrity ? getSimilarCelebrities(celebrity, 10) : [];
   
-  // Simulate loading from API
   useEffect(() => {
     setIsLoading(true);
-    // Simulate network delay
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 800);
@@ -38,7 +36,6 @@ const CelebrityDetail = () => {
     return () => clearTimeout(timer);
   }, [slug]);
 
-  // Generate SEO-friendly paragraph
   const generateSEOParagraph = (celeb: Celebrity) => {
     const age = celeb.age ? `${celeb.age}-year-old ` : '';
     const industryPhrase = celeb.industry ? 
@@ -51,9 +48,9 @@ const CelebrityDetail = () => {
       ` in ${celebrity.country}` : 
       '';
     
-        return `${celeb.name} earns an estimated monthly salary of R${celeb.salary.toLocaleString()} at ${celebrity.company}. ${celebrity.name} is a ${celebrity.age}-year-old ${celebrity.occupation} from ${celebrity.country}.`;
+    return `${celeb.name} earns an estimated monthly salary of R${celeb.salary.toLocaleString()} at ${celebrity.company}. ${celebrity.name} is a ${celebrity.age}-year-old ${celebrity.occupation} from ${celebrity.country}.`;
   };
-  
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-[#f6f6f0]">
@@ -104,10 +101,8 @@ const CelebrityDetail = () => {
     );
   }
 
-  // Format currency for the title without spaces
   const formattedSalaryForTitle = formatSalary(celebrity.salary, celebrity.currency).replace(/\s/g, "");
   
-  // Get initials for avatar fallback
   const getInitials = (name: string) => {
     return name
       .split(' ')
@@ -157,7 +152,11 @@ const CelebrityDetail = () => {
           <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <div className="flex flex-col sm:flex-row items-start gap-6 mb-6">
               <Avatar className="h-24 w-24 rounded-full border-2 border-gray-100 shadow-sm">
-                <AvatarImage src={celebrity.imageUrl || "/placeholder.svg"} alt={celebrity.name} />
+                <AvatarImage 
+                  src={celebrity.imageUrl || "/placeholder.svg"} 
+                  alt={celebrity.name} 
+                  className="object-cover"
+                />
                 <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-lg font-medium">
                   {getInitials(celebrity.name)}
                 </AvatarFallback>
@@ -197,7 +196,6 @@ const CelebrityDetail = () => {
               </div>
             </div>
             
-            {/* SEO-friendly natural language paragraph */}
             <div className="border-t border-gray-100 pt-6 mb-6">
               <p className="text-gray-700 leading-relaxed">
                 {generateSEOParagraph(celebrity)}
@@ -294,7 +292,6 @@ const CelebrityDetail = () => {
            <AdSense slot="9889084223" format="auto" className="py-3" />
           </div>
           
-          {/* Similar Celebrities Section */}
           {similarCelebrities.length > 0 && (
             <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
               <div className="p-6 sm:p-8 border-b border-gray-100">
@@ -319,7 +316,11 @@ const CelebrityDetail = () => {
                       </div>
                       
                       <Avatar className="h-10 w-10 mr-3">
-                        <AvatarImage src={similarCelebrity.imageUrl || "/placeholder.svg"} alt={similarCelebrity.name} />
+                        <AvatarImage 
+                          src={similarCelebrity.imageUrl || "/placeholder.svg"} 
+                          alt={similarCelebrity.name} 
+                          className="object-cover"
+                        />
                         <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
                           {getInitials(similarCelebrity.name)}
                         </AvatarFallback>
