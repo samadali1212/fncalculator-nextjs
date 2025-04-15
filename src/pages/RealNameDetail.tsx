@@ -2,13 +2,15 @@
 import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, User } from 'lucide-react';
+import { ArrowLeft, User, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { 
   Card, 
   CardContent, 
   CardFooter 
 } from '@/components/ui/card';
+import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { getCelebrityBySlug, getRelatedCelebrities } from '@/utils/realNamesData';
 
 const RealNameDetail = () => {
@@ -20,6 +22,16 @@ const RealNameDetail = () => {
   
   // Get related celebrities
   const relatedCelebrities = celebrity ? getRelatedCelebrities(celebrity.id, 3) : [];
+  
+  // Get initials for avatar fallback
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(part => part[0])
+      .join('')
+      .toUpperCase()
+      .substring(0, 2);
+  };
   
   // Handle case when celebrity is not found
   if (!celebrity) {
@@ -88,36 +100,62 @@ const RealNameDetail = () => {
         </div>
       </div>
       
-      {/* Related celebrities section */}
+      {/* Related celebrities section - Now styled as a table */}
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-6">More Celebrity Real Names</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {relatedCelebrities.map(related => (
+        
+        <div className="bg-white rounded-sm shadow-sm border border-gray-200">
+          <div className="p-4 border-b border-gray-100 bg-gray-50">
+            <div className="grid grid-cols-12 text-xs font-medium text-gray-600">
+              <div className="col-span-1">#</div>
+              <div className="col-span-5 md:col-span-4">Celebrity</div>
+              <div className="col-span-6 md:col-span-4">Real Name</div>
+              <div className="hidden md:block md:col-span-3">Profession</div>
+            </div>
+          </div>
+          
+          {relatedCelebrities.map((related, index) => (
             <Link to={`/real-names/${related.slug}`} key={related.id}>
-              <Card className="h-full hover:shadow-md transition-shadow">
-                <CardContent className="p-4">
-                  <div className="flex items-center space-x-3">
-                    {related.imageUrl ? (
-                      <img 
-                        src={related.imageUrl} 
-                        alt={related.stageName} 
-                        className="w-12 h-12 object-cover rounded-full"
-                      />
-                    ) : (
-                      <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-                        <User size={18} className="text-gray-500" />
+              <div className={`group px-4 py-3 ${index !== relatedCelebrities.length - 1 ? 'border-b border-gray-100' : ''} hover:bg-gray-50`}>
+                <div className="grid grid-cols-12 items-center">
+                  <div className="col-span-1 text-sm text-gray-500">
+                    {index + 1}
+                  </div>
+                  
+                  <div className="col-span-5 md:col-span-4">
+                    <div className="flex items-center">
+                      <Avatar className="h-8 w-8 mr-3">
+                        {related.imageUrl ? (
+                          <AvatarImage src={related.imageUrl} alt={related.stageName} />
+                        ) : (
+                          <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
+                            {getInitials(related.stageName)}
+                          </AvatarFallback>
+                        )}
+                      </Avatar>
+                      
+                      <div>
+                        <span className="text-[#333] text-sm font-medium transition-colors group-hover:text-blog-accent flex items-center">
+                          {related.stageName}
+                          <ArrowUpRight 
+                            className="h-3.5 w-3.5 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
+                          />
+                        </span>
                       </div>
-                    )}
-                    <div>
-                      <h3 className="font-semibold">{related.stageName}</h3>
-                      <p className="text-sm text-gray-600">{related.realName}</p>
                     </div>
                   </div>
-                </CardContent>
-                <CardFooter className="p-4 pt-0 text-xs text-blue-600">
-                  View details →
-                </CardFooter>
-              </Card>
+                  
+                  <div className="col-span-6 md:col-span-4">
+                    <span className="text-sm">{related.realName}</span>
+                  </div>
+                  
+                  <div className="hidden md:block md:col-span-3">
+                    <span className="px-1.5 py-0.5 bg-gray-100 rounded text-[#666] text-xs">
+                      {related.profession}
+                    </span>
+                  </div>
+                </div>
+              </div>
             </Link>
           ))}
         </div>

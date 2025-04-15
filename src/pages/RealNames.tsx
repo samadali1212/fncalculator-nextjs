@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Search, User } from 'lucide-react';
+import { Search, User, ArrowUpRight } from 'lucide-react';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -13,6 +13,7 @@ import {
   PaginationLink
 } from '@/components/ui/pagination';
 import { getAllCelebrityRealNames } from '@/utils/realNamesData';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 const RealNames = () => {
   const allCelebrities = getAllCelebrityRealNames();
@@ -32,6 +33,16 @@ const RealNames = () => {
   // Handle load more button click
   const handleLoadMore = () => {
     setVisibleCount(prev => prev + 50);
+  };
+  
+  // Get initials for avatar fallback
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(part => part[0])
+      .join('')
+      .toUpperCase()
+      .substring(0, 2);
   };
   
   return (
@@ -69,47 +80,100 @@ const RealNames = () => {
           Showing {visibleCelebrities.length} of {filteredCelebrities.length} results
         </p>
         
-        {/* Celebrity grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {visibleCelebrities.map((celebrity) => (
-            <Link to={`/real-names/${celebrity.slug}`} key={celebrity.id}>
-              <Card className="h-full hover:shadow-md transition-shadow">
-                <CardContent className="p-4">
-                  <div className="flex items-center space-x-4">
-                    {celebrity.imageUrl ? (
-                      <img 
-                        src={celebrity.imageUrl} 
-                        alt={celebrity.stageName} 
-                        className="w-16 h-16 object-cover rounded-full"
-                      />
-                    ) : (
-                      <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center">
-                        <User size={24} className="text-gray-500" />
+        {/* Celebrity table */}
+        <div className="bg-white rounded-sm shadow-sm border border-gray-200">
+          <div className="p-4 border-b border-gray-100 bg-gray-50">
+            <div className="grid grid-cols-12 text-xs font-medium text-gray-600">
+              <div className="col-span-1">#</div>
+              <div className="col-span-5 md:col-span-4">Celebrity</div>
+              <div className="col-span-6 md:col-span-3">Real Name</div>
+              <div className="hidden md:block md:col-span-3">Profession</div>
+              <div className="hidden md:block md:col-span-1 text-right">Details</div>
+            </div>
+          </div>
+          
+          {visibleCelebrities.length === 0 ? (
+            <div className="p-6 text-center text-gray-500">
+              No celebrities found matching "{searchTerm}"
+            </div>
+          ) : (
+            <>
+              {visibleCelebrities.map((celebrity, index) => (
+                <div 
+                  key={celebrity.id}
+                  className={`group px-4 py-3 ${index !== visibleCelebrities.length - 1 ? 'border-b border-gray-100' : ''}`}
+                >
+                  <div className="grid grid-cols-12 items-center">
+                    <div className="col-span-1 text-sm text-gray-500">
+                      {index + 1}
+                    </div>
+                    
+                    <div className="col-span-5 md:col-span-4">
+                      <div className="flex items-center">
+                        <Avatar className="h-8 w-8 mr-3">
+                          {celebrity.imageUrl ? (
+                            <AvatarImage src={celebrity.imageUrl} alt={celebrity.stageName} />
+                          ) : (
+                            <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
+                              {getInitials(celebrity.stageName)}
+                            </AvatarFallback>
+                          )}
+                        </Avatar>
+                        
+                        <div>
+                          <Link 
+                            to={`/real-names/${celebrity.slug}`}
+                            className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
+                          >
+                            {celebrity.stageName}
+                            <ArrowUpRight 
+                              className="h-3.5 w-3.5 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
+                            />
+                          </Link>
+                        </div>
                       </div>
-                    )}
-                    <div>
-                      <h3 className="font-bold text-lg">{celebrity.stageName}</h3>
-                      <p className="text-gray-600">{celebrity.realName}</p>
-                      <p className="text-sm text-gray-500">{celebrity.profession}</p>
+                    </div>
+                    
+                    <div className="col-span-6 md:col-span-3">
+                      <span className="text-sm">{celebrity.realName}</span>
+                    </div>
+                    
+                    <div className="hidden md:block md:col-span-3">
+                      <span className="px-1.5 py-0.5 bg-gray-100 rounded text-[#666] text-xs">
+                        {celebrity.profession}
+                      </span>
+                    </div>
+                    
+                    <div className="hidden md:block md:col-span-1 text-right">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        asChild
+                        className="hover:bg-gray-100 px-2"
+                      >
+                        <Link to={`/real-names/${celebrity.slug}`}>
+                          View
+                        </Link>
+                      </Button>
                     </div>
                   </div>
-                </CardContent>
-                <CardFooter className="p-4 pt-0 text-sm text-blue-600">
-                  View details →
-                </CardFooter>
-              </Card>
-            </Link>
-          ))}
+                </div>
+              ))}
+              
+              {visibleCount < filteredCelebrities.length && (
+                <div className="flex justify-center p-4 border-t border-gray-100">
+                  <Button 
+                    variant="outline" 
+                    onClick={handleLoadMore}
+                    className="gap-2"
+                  >
+                    Load More
+                  </Button>
+                </div>
+              )}
+            </>
+          )}
         </div>
-        
-        {/* Load more button */}
-        {visibleCount < filteredCelebrities.length && (
-          <div className="flex justify-center mt-8">
-            <Button onClick={handleLoadMore} variant="outline" className="gap-2">
-              Load More
-            </Button>
-          </div>
-        )}
         
         {/* Simple pagination for SEO */}
         <Pagination>
