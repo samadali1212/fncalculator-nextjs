@@ -18,7 +18,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import AdSense from "../components/AdSense";
 
 import { celebrities } from "../utils/celebrityData";
-import { formatCurrency, createComparisonUrl } from "../utils/utils";
+import { formatCurrency, createComparisonUrl, findRelatedPeople } from "../utils/utils";
 
 interface Celebrity {
   id: string;
@@ -54,6 +54,7 @@ const CompareCelebritySalaries = () => {
   const [searchResults, setSearchResults] = useState<Celebrity[]>([]);
   const [activePersonSelect, setActivePersonSelect] = useState<'p1' | 'p2' | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [relatedComparisons, setRelatedComparisons] = useState<Celebrity[]>([]);
 
   const allPeople: Celebrity[] = celebrities;
 
@@ -114,6 +115,16 @@ const CompareCelebritySalaries = () => {
       setSearchResults([]);
     }
   }, [searchTerm, allPeople]);
+
+  useEffect(() => {
+    if (person1 && person2) {
+      const relatedToPerson1 = findRelatedPeople(person1, person2, allPeople, 2);
+      const relatedToPerson2 = findRelatedPeople(person2, person1, allPeople, 2)
+        .filter(p => !relatedToPerson1.some(r => r.id === p.id));
+      
+      setRelatedComparisons([...relatedToPerson1, ...relatedToPerson2].slice(0, 4));
+    }
+  }, [person1, person2, allPeople]);
 
   const updateUrlParams = (p1: string | null, p2: string | null) => {
     if (p1 && p2) {
@@ -250,6 +261,35 @@ const CompareCelebritySalaries = () => {
   const lowerPaidPersonValue = getLowerPaidPerson();
   const percentageDifferenceValue = getSalaryDifferencePercentage();
   const comparisonTextValue = generateComparisonText();
+
+  const renderRelatedComparisonCard = (relatedPerson: Celebrity) => {
+    if (!person1 || !person2) return null;
+    
+    const compareWith = Math.random() > 0.5 ? person1 : person2;
+    const comparisonUrl = createComparisonUrl(relatedPerson.slug, compareWith.slug, 'salary');
+    
+    return (
+      <Card 
+        key={relatedPerson.id} 
+        className="hover:shadow-md transition-shadow cursor-pointer"
+        onClick={() => navigate(comparisonUrl)}
+      >
+        <CardContent className="p-4">
+          <div className="flex items-center space-x-3">
+            <Avatar className="h-10 w-10 flex-shrink-0">
+              <AvatarImage src={relatedPerson.imageUrl || "/placeholder.svg"} alt={relatedPerson.name} />
+              <AvatarFallback>{getInitials(relatedPerson.name)}</AvatarFallback>
+            </Avatar>
+            <div className="flex-1 min-w-0">
+              <p className="font-medium text-sm truncate">{relatedPerson.name}</p>
+              <p className="text-xs text-gray-500 truncate">{formatSalary(relatedPerson.salary, relatedPerson.currency)}</p>
+            </div>
+            <div className="text-xs text-gray-500">vs {compareWith.name}</div>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  };
 
   if (isLoading) {
     return (
@@ -576,6 +616,15 @@ const CompareCelebritySalaries = () => {
                   </Table>
                 </div>
               </>
+            )}
+
+            {person1 && person2 && relatedComparisons.length > 0 && (
+              <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
+                <h2 className="text-xl font-bold mb-4">Related Comparisons</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  {relatedComparisons.map(relatedPerson => renderRelatedComparisonCard(relatedPerson))}
+                </div>
+              </div>
             )}
           </div>
         </div>
