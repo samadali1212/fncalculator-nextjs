@@ -31,10 +31,9 @@ const Header = () => {
     { path: "/celebrity-categories", label: "Highest-Paid" },
     { path: "/net-worth", label: "Net Worth" },
     { path: "/categories", label: "Richest" },
-    { path: "/comparison", label: "Compare Wealth" },
-    { path: "/compare-salaries", label: "Compare Salaries" },
     { path: "/hourly-rates", label: "Hourly Rates" },
     { path: "/tax-calculator", label: "Tax Calculator" },
+    { path: "/branch-codes", label: "Branch Codes" },
     { path: "/about", label: "About" },
   ];
 
