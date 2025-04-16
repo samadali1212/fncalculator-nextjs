@@ -13,7 +13,6 @@ import CelebrityDetail from "./pages/CelebrityDetail";
 import NetWorth from "./pages/NetWorth";
 import NetWorthDetail from "./pages/NetWorthDetail";
 import CompareNetWorth from "./pages/CompareNetWorth";
-import CompareCelebrities from "./pages/CompareCelebrities";
 import NetWorthCategory from "./pages/NetWorthCategory";
 import StandaloneCategories from "./pages/StandaloneCategories";
 import StandaloneCelebrityCategories from "./pages/StandaloneCelebrityCategories";
@@ -51,16 +50,11 @@ const App = () => (
         <Route path="/celebrity-categories" element={<StandaloneCelebrityCategories />} />
         <Route path="/celebrities/category/:slug" element={<CelebrityCategory />} />
         <Route path="/net-worth" element={<NetWorth />} />
-        
-        {/* Celebrity comparison routes */}
-        <Route path="/compare-celebrities" element={<CompareCelebrities />} />
-        <Route path="/compare-celebrities/:comparison" element={<CompareCelebrities />} />
-        
-        {/* Net worth comparison routes - completely separate */}
-        <Route path="/compare" element={<CompareNetWorth />} />
+        <Route path="/comparison" element={<CompareNetWorth />} />
+        {/* Update SEO-friendly route for comparisons with vs format */}
         <Route path="/compare/:comparison" element={<CompareNetWorth />} />
+        {/* Maintain backward compatibility with the previous format */}
         <Route path="/compare/:person1/:person2" element={<CompareNetWorth />} />
-        
         <Route path="/categories" element={<StandaloneCategories />} />
         <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
         <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
