@@ -29,7 +29,6 @@ const Header = () => {
   const menuItems = [
     { path: "/celebrities", label: "Celebrities" },
     { path: "/celebrity-categories", label: "Highest-Paid" },
-    { path: "/compare-celebrities", label: "Compare Salaries" },
     { path: "/net-worth", label: "Net Worth" },
     { path: "/categories", label: "Richest" },
     { path: "/comparison", label: "Compare Wealth" },
@@ -41,7 +40,6 @@ const Header = () => {
   const isActive = (path: string) => {
     if (path === "/branch-codes" && (location.pathname === "/" || location.pathname === "/branch-codes")) return true;
     if (path === "/comparison" && location.pathname.startsWith("/compare/")) return true;
-    if (path === "/compare-celebrities" && location.pathname.startsWith("/compare-celebrities/")) return true;
     return location.pathname.startsWith(path);
   };
 
