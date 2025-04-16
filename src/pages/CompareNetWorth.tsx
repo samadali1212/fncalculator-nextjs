@@ -14,6 +14,8 @@ import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import AdSense from "../components/AdSense";
+import { usePageReload } from "../hooks/usePageReload";
+import RelatedComparisons from "../components/RelatedComparisons";
 import { 
   netWorthPeople,
   formatNetWorth,
@@ -39,6 +41,7 @@ const CompareNetWorth = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const { person1: oldPerson1Slug, person2: oldPerson2Slug, comparison } = useParams();
+  const { pageKey, isLoading, setIsLoading } = usePageReload();
   
   const [person1Slug, person2Slug] = comparison ? comparison.split('-vs-') : [null, null];
   
@@ -53,7 +56,7 @@ const CompareNetWorth = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<NetWorthPerson[]>([]);
   const [activePersonSelect, setActivePersonSelect] = useState<'p1' | 'p2' | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [localLoading, setLocalLoading] = useState(true);
   const [relatedComparisons, setRelatedComparisons] = useState<{person1: NetWorthPerson, person2: NetWorthPerson}[]>([]);
   
   const allPeople = netWorthPeople;
@@ -63,6 +66,9 @@ const CompareNetWorth = () => {
   };
   
   useEffect(() => {
+    setLocalLoading(true);
+    setIsLoading(true);
+    
     if (person1Id) {
       const found = findPersonBySlug(person1Id);
       if (found) setPerson1(found);
@@ -86,11 +92,13 @@ const CompareNetWorth = () => {
     }
     
     const timer = setTimeout(() => {
+      setLocalLoading(false);
       setIsLoading(false);
+      window.scrollTo(0, 0);
     }, 800);
     
     return () => clearTimeout(timer);
-  }, [person1Id, person2Id]);
+  }, [person1Id, person2Id, comparison, pageKey]);
   
   useEffect(() => {
     if (person1 && person2) {
@@ -169,7 +177,8 @@ const CompareNetWorth = () => {
   };
   
   const navigateToSEOUrl = (p1: string, p2: string) => {
-    navigate(createComparisonUrl(p1, p2));
+    const url = createComparisonUrl(p1, p2);
+    window.location.href = url;
   };
   
   const selectPerson = (person: NetWorthPerson) => {
@@ -268,7 +277,7 @@ const CompareNetWorth = () => {
   const percentageDifference = getWealthDifferencePercentage();
   const comparisonText = generateComparisonText();
   
-  if (isLoading) {
+  if (isLoading || localLoading) {
     return (
       <div className="min-h-screen bg-[#f6f6f0]">
         <Header />
@@ -299,8 +308,14 @@ const CompareNetWorth = () => {
     );
   }
   
+  const handleBackClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.href = '/net-worth';
+  }
+
   return (
     <motion.div
+      key={pageKey}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -319,14 +334,14 @@ const CompareNetWorth = () => {
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
-              <Button 
-                variant="ghost" 
-                className="text-sm text-[#000000] hover:bg-white/60 mr-2"
-                onClick={() => navigate('/net-worth')}
+              <a 
+                href="/net-worth"
+                className="inline-flex items-center justify-center text-sm text-[#000000] hover:bg-white/60 mr-2 px-4 py-2 rounded-md"
+                onClick={handleBackClick}
               >
                 <ChevronLeft className="h-4 w-4 mr-1" />
                 Back to Net Worth List
-              </Button>
+              </a>
             </div>
             
             <ShareButton 
@@ -646,58 +661,15 @@ const CompareNetWorth = () => {
           </div>
           
           {person1 && person2 && relatedComparisons.length > 0 && (
-            <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
-              <h2 className="text-xl font-bold mb-6">Related Comparisons</h2>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {relatedComparisons.map((comparison, index) => (
-                  <Link 
-                    key={`${comparison.person1.id}-${comparison.person2.id}-${index}`}
-                    to={createComparisonUrl(comparison.person1.slug, comparison.person2.slug)}
-                    className="block"
-                  >
-                    <Card className="hover:shadow-md transition-shadow h-full">
-                      <CardContent className="p-4">
-                        <div className="flex items-center mb-3">
-                          <Avatar className="h-8 w-8 mr-2">
-                            <AvatarImage src={comparison.person1.imageUrl || "/placeholder.svg"} alt={comparison.person1.name} />
-                            <AvatarFallback>{getInitials(comparison.person1.name)}</AvatarFallback>
-                          </Avatar>
-                          <div className="truncate flex-1">
-                            <p className="font-medium text-sm truncate">{comparison.person1.name}</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex justify-center my-1">
-                          <Badge variant="outline" className="text-xs">
-                            VS
-                          </Badge>
-                        </div>
-                        
-                        <div className="flex items-center mt-3">
-                          <Avatar className="h-8 w-8 mr-2">
-                            <AvatarImage src={comparison.person2.imageUrl || "/placeholder.svg"} alt={comparison.person2.name} />
-                            <AvatarFallback>{getInitials(comparison.person2.name)}</AvatarFallback>
-                          </Avatar>
-                          <div className="truncate flex-1">
-                            <p className="font-medium text-sm truncate">{comparison.person2.name}</p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-              
-              <div className="mt-6 text-center">
-                <Button 
-                  variant="outline" 
-                  onClick={() => navigate('/compare')}
-                >
-                  View More Comparisons
-                </Button>
-              </div>
-            </div>
+            <RelatedComparisons
+              comparisons={relatedComparisons.map(comparison => ({
+                person1: comparison.person1,
+                person2: comparison.person2,
+                comparisonUrl: createComparisonUrl(comparison.person1.slug, comparison.person2.slug)
+              }))}
+              type="net-worth"
+              viewMoreLink="/compare"
+            />
           )}
         </div>
       </main>
