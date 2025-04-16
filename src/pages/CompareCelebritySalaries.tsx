@@ -1,14 +1,13 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useParams, useNavigate, useSearchParams, useLocation, Link } from 'react-router-dom';
-import { usePageReload } from '../hooks/usePageReload';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import Header from '../components/Header';
 import SEO from '../components/SEO';
 import ShareButton from '../components/ShareButton';
-import RelatedComparisons from '../components/RelatedComparisons';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, TrendingUp, TrendingDown, Activity, User, MapPin, Building, Banknote, Search, Briefcase, Landmark, ExternalLink } from "lucide-react";
+import { ChevronLeft, TrendingUp, TrendingDown, Activity, User, MapPin, Building, Banknote, Search, Briefcase, Landmark } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -16,6 +15,8 @@ import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import AdSense from "../components/AdSense";
+import { Link } from 'react-router-dom';
+import { ExternalLink } from 'lucide-react';
 
 import { celebrities } from "../utils/celebrityData";
 import { formatCurrency, createComparisonUrl } from "../utils/utils";
@@ -41,8 +42,6 @@ const CompareCelebritySalaries = () => {
   const { comparison } = useParams<{ comparison: string }>();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
-  const { pageKey, isLoading, setIsLoading } = usePageReload();
   
   const [person1Slug, person2Slug] = comparison && comparison.includes('-vs-') 
     ? comparison.split('-vs-') 
@@ -58,7 +57,7 @@ const CompareCelebritySalaries = () => {
   const [person2, setPerson2] = useState<Celebrity | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<Celebrity[]>([]);
-  const [localLoading, setLocalLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const allPeople: Celebrity[] = celebrities;
 
@@ -67,9 +66,7 @@ const CompareCelebritySalaries = () => {
   };
 
   useEffect(() => {
-    setLocalLoading(true);
     setIsLoading(true);
-    
     let foundP1: Celebrity | null = null;
     let foundP2: Celebrity | null = null;
 
@@ -98,18 +95,32 @@ const CompareCelebritySalaries = () => {
     }
 
     const timer = setTimeout(() => {
-      setLocalLoading(false);
       setIsLoading(false);
-      window.scrollTo(0, 0);
     }, 800);
 
     return () => clearTimeout(timer);
-  }, [person1Id, person2Id, comparison, pageKey]);
+  }, [person1Id, person2Id, comparison]);
+
+  useEffect(() => {
+    if (searchTerm.length > 1) {
+      const results = allPeople
+        .filter(person =>
+          person.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          person.occupation.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          person.industry.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (person.company && person.company.toLowerCase().includes(searchTerm.toLowerCase()))
+        )
+        .slice(0, 5);
+
+      setSearchResults(results);
+    } else {
+      setSearchResults([]);
+    }
+  }, [searchTerm, allPeople]);
 
   const updateUrlParams = (p1: string | null, p2: string | null) => {
     if (p1 && p2) {
-      const newUrl = createComparisonUrl(p1, p2, 'salary');
-      window.location.href = newUrl;
+      navigateToSEOUrl(p1, p2);
     } else {
       const params: Record<string, string> = {};
       if (p1) params.p1 = p1;
@@ -120,13 +131,8 @@ const CompareCelebritySalaries = () => {
 
   const navigateToSEOUrl = (p1Slug: string, p2Slug: string) => {
     const url = createComparisonUrl(p1Slug, p2Slug, 'salary');
-    window.location.href = url;
+    navigate(url);
   };
-
-  const handleBackClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.location.href = '/celebrities';
-  }
 
   const getSalaryDifferencePercentage = () => {
     if (!person1 || !person2) return 0;
@@ -227,10 +233,13 @@ const CompareCelebritySalaries = () => {
   const percentageDifferenceValue = getSalaryDifferencePercentage();
   const comparisonTextValue = generateComparisonText();
 
+  // Generate a random comparison when clicking on "Select First/Second Celebrity"
   const handleSelectCelebrity = (position: 'first' | 'second') => {
+    // Get current selected celebrities
     const currentFirstId = person1?.id;
     const currentSecondId = person2?.id;
     
+    // Filter out existing selected celebrity and get a random new one
     const availableCelebrities = allPeople.filter(celeb => {
       if (position === 'first') {
         return celeb.id !== currentSecondId;
@@ -247,6 +256,7 @@ const CompareCelebritySalaries = () => {
         if (person2) {
           navigateToSEOUrl(selectedCelebrity.slug, person2.slug);
         } else if (allPeople.length >= 2) {
+          // If no person2, select a second random celebrity
           const secondPerson = allPeople.find(p => p.id !== selectedCelebrity.id) || allPeople[1];
           navigateToSEOUrl(selectedCelebrity.slug, secondPerson.slug);
         }
@@ -254,6 +264,7 @@ const CompareCelebritySalaries = () => {
         if (person1) {
           navigateToSEOUrl(person1.slug, selectedCelebrity.slug);
         } else if (allPeople.length >= 2) {
+          // If no person1, select a second random celebrity
           const firstPerson = allPeople.find(p => p.id !== selectedCelebrity.id) || allPeople[0];
           navigateToSEOUrl(firstPerson.slug, selectedCelebrity.slug);
         }
@@ -261,39 +272,7 @@ const CompareCelebritySalaries = () => {
     }
   };
 
-  const generateRelatedComparisons = () => {
-    if (!person1 || !person2) return [];
-    
-    const otherCelebrities = allPeople.filter(
-      celeb => celeb.id !== person1.id && celeb.id !== person2.id
-    );
-    
-    const relatedPairs = [];
-    const maxPairs = Math.min(10, otherCelebrities.length);
-    
-    for (let i = 0; i < maxPairs; i++) {
-      const randomIndex = Math.floor(Math.random() * otherCelebrities.length);
-      const randomCeleb = otherCelebrities[randomIndex];
-      
-      const secondPerson = i % 2 === 0 ? person1 : person2;
-      
-      relatedPairs.push({
-        person1: randomCeleb,
-        person2: secondPerson,
-        comparisonUrl: createComparisonUrl(randomCeleb.slug, secondPerson.slug, 'salary')
-      });
-      
-      otherCelebrities.splice(randomIndex, 1);
-      
-      if (otherCelebrities.length === 0) break;
-    }
-    
-    return relatedPairs;
-  };
-  
-  const relatedComparisons = generateRelatedComparisons();
-
-  if (isLoading || localLoading) {
+  if (isLoading) {
     return (
       <div className="min-h-screen bg-[#f6f6f0]">
         <Header />
@@ -348,14 +327,14 @@ const CompareCelebritySalaries = () => {
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
-              <a
-                href="/celebrities"
-                className="inline-flex items-center justify-center text-sm text-[#000000] hover:bg-white/60 mr-2 px-4 py-2 rounded-md"
-                onClick={handleBackClick}
+              <Button
+                variant="ghost"
+                className="text-sm text-[#000000] hover:bg-white/60 mr-2"
+                onClick={() => navigate('/celebrities')}
               >
                 <ChevronLeft className="h-4 w-4 mr-1" />
                 Back to Celebrity List
-              </a>
+              </Button>
             </div>
 
             <ShareButton
@@ -594,14 +573,6 @@ const CompareCelebritySalaries = () => {
               </>
             )}
           </div>
-
-          {person1 && person2 && relatedComparisons.length > 0 && (
-            <RelatedComparisons 
-              comparisons={relatedComparisons}
-              type="salary"
-              viewMoreLink="/compare-salaries"
-            />
-          )}
         </div>
       </main>
 

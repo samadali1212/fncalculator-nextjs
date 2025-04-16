@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ExternalLink, ArrowRight } from "lucide-react";
@@ -10,6 +9,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { netWorthPeople } from "../utils/netWorthData";
 import { createComparisonUrl, getRandomInt, formatCurrency } from "../utils/utils";
+import RelatedComparisons from "../components/RelatedComparisons";
 import {
   Table,
   TableBody,
@@ -26,8 +26,9 @@ import {
 
 const NetWorthComparisonList = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [itemsToShow, setItemsToShow] = useState(100);
+  const [itemsToShow, setItemsToShow] = useState(20);
   const [isLoading, setIsLoading] = useState(true);
+  const [featuredComparisons, setFeaturedComparisons] = useState<{person1: any, person2: any, comparisonUrl: string}[]>([]);
   const navigate = useNavigate();
 
   const getInitials = (name: string) => {
@@ -67,6 +68,28 @@ const NetWorthComparisonList = () => {
       ((a.person1.netWorth || 0) + (a.person2.netWorth || 0))
     );
   };
+
+  useEffect(() => {
+    if (netWorthPeople.length >= 8) {
+      const shuffled = [...netWorthPeople].sort(() => 0.5 - Math.random());
+      const featured = [];
+      
+      for (let i = 0; i < 4; i++) {
+        if (i * 2 + 1 < shuffled.length) {
+          featured.push({
+            person1: shuffled[i * 2],
+            person2: shuffled[i * 2 + 1],
+            comparisonUrl: createComparisonUrl(
+              shuffled[i * 2].slug,
+              shuffled[i * 2 + 1].slug
+            )
+          });
+        }
+      }
+      
+      setFeaturedComparisons(featured);
+    }
+  }, []);
 
   const comparisonPairs = generateComparisonPairs();
   const displayedPairs = comparisonPairs.slice(0, itemsToShow);
@@ -261,6 +284,16 @@ const NetWorthComparisonList = () => {
                 </PaginationContent>
               </Pagination>
             )}
+          </div>
+        )}
+        
+        {featuredComparisons.length > 0 && searchQuery === "" && (
+          <div className="mt-12">
+            <RelatedComparisons 
+              comparisons={featuredComparisons}
+              type="net-worth"
+              viewMoreLink="/compare"
+            />
           </div>
         )}
       </main>

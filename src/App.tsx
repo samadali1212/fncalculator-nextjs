@@ -45,52 +45,42 @@ const App = () => {
     <BrowserRouter>
       <Layout>
         <Routes>
-          {/* Set Salaries as the explicit homepage */}
+          {/* Set BranchCodes as the explicit homepage */}
           <Route path="/" element={<Salaries />} />
-          {/* Ensure salaries path also works and doesn't create duplicate content */}
+          {/* Ensure branch-codes path also works and doesn't create duplicate content */}
           <Route path="/salaries" element={<Navigate to="/" replace />} />
-          
-          {/* Basic routes */}
+          <Route path="/branch-codes/:slug" element={<BranchCodeDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/branch-codes" element={<BranchCodes />} />
-          <Route path="/branch-codes/:slug" element={<BranchCodeDetail />} />
           <Route path="/salaries/:jobId" element={<JobDetail />} />
           <Route path="/hourly-rates" element={<HourlyRates />} />
           <Route path="/hourly-rates/:rateId" element={<HourlyRateDetail />} />
-          
-          {/* Tax calculator routes */}
           <Route path="/tax-calculator" element={<TaxCalculator />} />
           <Route path="/tax-calculator/monthly" element={<TaxCalculator />} />
           <Route path="/tax-calculator/yearly" element={<TaxCalculator />} />
           <Route path="/tax-calculator/monthly/:incomeId" element={<TaxCalculationDetail />} />
           <Route path="/tax-calculator/yearly/:incomeId" element={<TaxCalculationDetail />} />
           <Route path="/tax-calculator/:incomeId" element={<TaxCalculationDetail />} />
-          
-          {/* Celebrity routes */}
           <Route path="/celebrities" element={<Celebrities />} />
           <Route path="/celebrities/:slug" element={<CelebrityDetail />} />
           <Route path="/celebrity-categories" element={<StandaloneCelebrityCategories />} />
           <Route path="/celebrities/category/:slug" element={<CelebrityCategory />} />
-          
-          {/* Net Worth routes */}
           <Route path="/net-worth" element={<NetWorth />} />
-          <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
-          <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
           
-          {/* Comparison routes - make sure these are in the correct order */}
-          {/* Important: place more specific routes before general routes */}
+          {/* Net Worth comparison routes */}
           <Route path="/comparison" element={<Navigate to="/compare" replace />} />
           <Route path="/compare" element={<NetWorthComparisonList />} />
           <Route path="/compare/:comparison" element={<CompareNetWorth />} />
           <Route path="/compare/:person1/:person2" element={<CompareNetWorth />} />
           
-          {/* Salary comparison routes */}
+          {/* Salary comparison routes - add direct navigation to default comparison */}
           <Route path="/compare-salaries" element={<SalaryComparisonList />} />
           <Route path="/compare-salaries/:comparison" element={<CompareCelebritySalaries />} />
           <Route path="/salary-comparison" element={<Navigate to="/compare-salaries" replace />} />
           
-          {/* Category routes */}
           <Route path="/categories" element={<StandaloneCategories />} />
+          <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
+          <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
           
           {/* General Knowledge Routes */}
           <Route path="/general-knowledge" element={<GeneralKnowledge />} />
