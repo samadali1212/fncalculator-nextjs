@@ -70,12 +70,10 @@ const App = () => {
           <Route path="/compare/:comparison" element={<CompareNetWorth />} />
           <Route path="/compare/:person1/:person2" element={<CompareNetWorth />} />
           
-          {/* Salary comparison routes - add redirect from bare path to default comparison from data */}
+          {/* Salary comparison routes - add direct navigation to default comparison */}
           <Route 
             path="/compare-salaries" 
-            element={defaultCelebrityComparison ? 
-              <Navigate to={`/compare-salaries/${defaultCelebrityComparison}`} replace /> : 
-              <CompareCelebritySalaries />} 
+            element={<Navigate to={`/compare-salaries/${defaultCelebrityComparison}`} replace />} 
           />
           <Route path="/compare-salaries/:comparison" element={<CompareCelebritySalaries />} />
           

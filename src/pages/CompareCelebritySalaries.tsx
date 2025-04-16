@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
@@ -12,7 +13,6 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Skeleton } from "@/components/ui/skeleton";
 import AdSense from "../components/AdSense";
 import { Link } from 'react-router-dom';
@@ -57,7 +57,6 @@ const CompareCelebritySalaries = () => {
   const [person2, setPerson2] = useState<Celebrity | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<Celebrity[]>([]);
-  const [activePersonSelect, setActivePersonSelect] = useState<'p1' | 'p2' | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const allPeople: Celebrity[] = celebrities;
@@ -133,28 +132,6 @@ const CompareCelebritySalaries = () => {
   const navigateToSEOUrl = (p1Slug: string, p2Slug: string) => {
     const url = createComparisonUrl(p1Slug, p2Slug, 'salary');
     navigate(url);
-  };
-
-  const selectPerson = (person: Celebrity) => {
-    if (activePersonSelect === 'p1') {
-      setPerson1(person);
-      if (person2) {
-        navigateToSEOUrl(person.slug, person2.slug);
-      } else {
-        updateUrlParams(person.slug, person2Id);
-      }
-    } else if (activePersonSelect === 'p2') {
-      setPerson2(person);
-      if (person1) {
-        navigateToSEOUrl(person1.slug, person.slug);
-      } else {
-        updateUrlParams(person1Id, person.slug);
-      }
-    }
-
-    setActivePersonSelect(null);
-    setSearchTerm("");
-    setSearchResults([]);
   };
 
   const getSalaryDifferencePercentage = () => {
@@ -256,6 +233,45 @@ const CompareCelebritySalaries = () => {
   const percentageDifferenceValue = getSalaryDifferencePercentage();
   const comparisonTextValue = generateComparisonText();
 
+  // Generate a random comparison when clicking on "Select First/Second Celebrity"
+  const handleSelectCelebrity = (position: 'first' | 'second') => {
+    // Get current selected celebrities
+    const currentFirstId = person1?.id;
+    const currentSecondId = person2?.id;
+    
+    // Filter out existing selected celebrity and get a random new one
+    const availableCelebrities = allPeople.filter(celeb => {
+      if (position === 'first') {
+        return celeb.id !== currentSecondId;
+      } else {
+        return celeb.id !== currentFirstId;
+      }
+    });
+    
+    if (availableCelebrities.length > 0) {
+      const randomIndex = Math.floor(Math.random() * availableCelebrities.length);
+      const selectedCelebrity = availableCelebrities[randomIndex];
+      
+      if (position === 'first') {
+        if (person2) {
+          navigateToSEOUrl(selectedCelebrity.slug, person2.slug);
+        } else if (allPeople.length >= 2) {
+          // If no person2, select a second random celebrity
+          const secondPerson = allPeople.find(p => p.id !== selectedCelebrity.id) || allPeople[1];
+          navigateToSEOUrl(selectedCelebrity.slug, secondPerson.slug);
+        }
+      } else {
+        if (person1) {
+          navigateToSEOUrl(person1.slug, selectedCelebrity.slug);
+        } else if (allPeople.length >= 2) {
+          // If no person1, select a second random celebrity
+          const firstPerson = allPeople.find(p => p.id !== selectedCelebrity.id) || allPeople[0];
+          navigateToSEOUrl(firstPerson.slug, selectedCelebrity.slug);
+        }
+      }
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-[#f6f6f0]">
@@ -343,157 +359,79 @@ const CompareCelebritySalaries = () => {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <Dialog open={activePersonSelect === 'p1'} onOpenChange={(open) => !open && setActivePersonSelect(null)}>
-                <DialogTrigger asChild>
-                  <Card
-                    className="cursor-pointer hover:shadow-md transition-shadow"
-                    onClick={() => setActivePersonSelect('p1')}
-                  >
-                    <CardContent className="p-6">
-                      {person1 ? (
-                        <div className="flex items-center">
-                          <Avatar className="h-16 w-16 mr-4 flex-shrink-0">
-                            <AvatarImage src={person1.imageUrl || "/placeholder.svg"} alt={person1.name} />
-                            <AvatarFallback>{getInitials(person1.name)}</AvatarFallback>
-                          </Avatar>
-                          <div>
-                            <h3 className="text-lg font-bold mb-1">{person1.name}</h3>
-                            <p className="text-gray-600 text-sm">{person1.occupation}</p>
-                            <p className="text-lg font-semibold mt-1">{formatSalary(person1.salary, person1.currency)}</p>
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="flex items-center justify-center h-24">
-                          <div className="text-center">
-                            <User className="h-8 w-8 mx-auto mb-2 text-gray-400" />
-                            <p>Select First Celebrity</p>
-                          </div>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-md">
-                  <DialogHeader>
-                    <DialogTitle>Select First Person to Compare</DialogTitle>
-                  </DialogHeader>
-                  <div className="space-y-4 py-4">
-                    <div className="flex items-center space-x-2">
-                      <Search className="h-4 w-4 text-gray-400" />
-                      <Input
-                        placeholder="Search by name, occupation, industry..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="flex-1"
-                      />
+              <Card
+                className="cursor-pointer hover:shadow-md transition-shadow"
+                onClick={() => handleSelectCelebrity('first')}
+              >
+                <CardContent className="p-6">
+                  {person1 ? (
+                    <div className="flex items-center">
+                      <Avatar className="h-16 w-16 mr-4 flex-shrink-0">
+                        <AvatarImage src={person1.imageUrl || "/placeholder.svg"} alt={person1.name} />
+                        <AvatarFallback>{getInitials(person1.name)}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <h3 className="text-lg font-bold mb-1">
+                          <Link 
+                            to={`/celebrities/${person1.slug}`} 
+                            className="hover:underline flex items-center" 
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {person1.name}
+                            <ExternalLink className="ml-1 h-4 w-4 text-gray-500" />
+                          </Link>
+                        </h3>
+                        <p className="text-gray-600 text-sm">{person1.occupation}</p>
+                        <p className="text-lg font-semibold mt-1">{formatSalary(person1.salary, person1.currency)}</p>
+                      </div>
                     </div>
-                    <div className="border rounded-md overflow-hidden max-h-60 overflow-y-auto">
-                      {searchResults.length > 0 ? (
-                        <div className="divide-y">
-                          {searchResults.map(person => (
-                            <div
-                              key={person.id}
-                              className="p-3 hover:bg-gray-50 cursor-pointer flex items-center"
-                              onClick={() => selectPerson(person)}
-                            >
-                              <Avatar className="h-10 w-10 mr-3 flex-shrink-0">
-                                <AvatarImage src={person.imageUrl || "/placeholder.svg"} alt={person.name} />
-                                <AvatarFallback>{getInitials(person.name)}</AvatarFallback>
-                              </Avatar>
-                              <div>
-                                <p className="font-medium">{person.name}</p>
-                                <p className="text-sm text-gray-500">{formatSalary(person.salary, person.currency)} • {person.industry}</p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      ) : searchTerm.length > 1 ? (
-                        <p className="p-3 text-center text-gray-500">No results found</p>
-                      ) : (
-                        <div className="p-3 text-center text-gray-500">
-                          Type to search for people
-                        </div>
-                      )}
+                  ) : (
+                    <div className="flex items-center justify-center h-24">
+                      <div className="text-center">
+                        <User className="h-8 w-8 mx-auto mb-2 text-gray-400" />
+                        <p>Click to get random celebrity</p>
+                      </div>
                     </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
+                  )}
+                </CardContent>
+              </Card>
 
-              <Dialog open={activePersonSelect === 'p2'} onOpenChange={(open) => !open && setActivePersonSelect(null)}>
-                <DialogTrigger asChild>
-                  <Card
-                    className="cursor-pointer hover:shadow-md transition-shadow"
-                    onClick={() => setActivePersonSelect('p2')}
-                  >
-                    <CardContent className="p-6">
-                      {person2 ? (
-                        <div className="flex items-center">
-                          <Avatar className="h-16 w-16 mr-4 flex-shrink-0">
-                            <AvatarImage src={person2.imageUrl || "/placeholder.svg"} alt={person2.name} />
-                            <AvatarFallback>{getInitials(person2.name)}</AvatarFallback>
-                          </Avatar>
-                          <div>
-                            <h3 className="text-lg font-bold mb-1">{person2.name}</h3>
-                            <p className="text-gray-600 text-sm">{person2.occupation}</p>
-                            <p className="text-lg font-semibold mt-1">{formatSalary(person2.salary, person2.currency)}</p>
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="flex items-center justify-center h-24">
-                          <div className="text-center">
-                            <User className="h-8 w-8 mx-auto mb-2 text-gray-400" />
-                            <p>Select Second Celebrity</p>
-                          </div>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-md">
-                  <DialogHeader>
-                    <DialogTitle>Select Second Person to Compare</DialogTitle>
-                  </DialogHeader>
-                  <div className="space-y-4 py-4">
-                    <div className="flex items-center space-x-2">
-                      <Search className="h-4 w-4 text-gray-400" />
-                      <Input
-                        placeholder="Search by name, occupation, industry..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="flex-1"
-                      />
+              <Card
+                className="cursor-pointer hover:shadow-md transition-shadow"
+                onClick={() => handleSelectCelebrity('second')}
+              >
+                <CardContent className="p-6">
+                  {person2 ? (
+                    <div className="flex items-center">
+                      <Avatar className="h-16 w-16 mr-4 flex-shrink-0">
+                        <AvatarImage src={person2.imageUrl || "/placeholder.svg"} alt={person2.name} />
+                        <AvatarFallback>{getInitials(person2.name)}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <h3 className="text-lg font-bold mb-1">
+                          <Link 
+                            to={`/celebrities/${person2.slug}`} 
+                            className="hover:underline flex items-center"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {person2.name}
+                            <ExternalLink className="ml-1 h-4 w-4 text-gray-500" />
+                          </Link>
+                        </h3>
+                        <p className="text-gray-600 text-sm">{person2.occupation}</p>
+                        <p className="text-lg font-semibold mt-1">{formatSalary(person2.salary, person2.currency)}</p>
+                      </div>
                     </div>
-                    <div className="border rounded-md overflow-hidden max-h-60 overflow-y-auto">
-                      {searchResults.length > 0 ? (
-                        <div className="divide-y">
-                          {searchResults.map(person => (
-                            <div
-                              key={person.id}
-                              className="p-3 hover:bg-gray-50 cursor-pointer flex items-center"
-                              onClick={() => selectPerson(person)}
-                            >
-                              <Avatar className="h-10 w-10 mr-3 flex-shrink-0">
-                                <AvatarImage src={person.imageUrl || "/placeholder.svg"} alt={person.name} />
-                                <AvatarFallback>{getInitials(person.name)}</AvatarFallback>
-                              </Avatar>
-                              <div>
-                                <p className="font-medium">{person.name}</p>
-                                <p className="text-sm text-gray-500">{formatSalary(person.salary, person.currency)} • {person.industry}</p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      ) : searchTerm.length > 1 ? (
-                        <p className="p-3 text-center text-gray-500">No results found</p>
-                      ) : (
-                        <div className="p-3 text-center text-gray-500">
-                          Type to search for people
-                        </div>
-                      )}
+                  ) : (
+                    <div className="flex items-center justify-center h-24">
+                      <div className="text-center">
+                        <User className="h-8 w-8 mx-auto mb-2 text-gray-400" />
+                        <p>Click to get random celebrity</p>
+                      </div>
                     </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
+                  )}
+                </CardContent>
+              </Card>
             </div>
 
             {person1 && person2 && (
