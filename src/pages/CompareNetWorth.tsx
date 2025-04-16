@@ -18,6 +18,7 @@ import {
   netWorthPeople,
   formatNetWorth,
 } from "../utils/netWorthData";
+import { createComparisonUrl } from "../utils/utils";
 
 interface NetWorthPerson {
   id: string;
@@ -37,9 +38,16 @@ interface NetWorthPerson {
 const CompareNetWorth = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const { person1: person1Slug, person2: person2Slug } = useParams();
-  const [person1Id, setPerson1Id] = useState<string | null>(person1Slug || searchParams.get("p1"));
-  const [person2Id, setPerson2Id] = useState<string | null>(person2Slug || searchParams.get("p2"));
+  const { person1: oldPerson1Slug, person2: oldPerson2Slug, comparison } = useParams();
+  
+  const [person1Slug, person2Slug] = comparison ? comparison.split('-vs-') : [null, null];
+  
+  const [person1Id, setPerson1Id] = useState<string | null>(
+    person1Slug || oldPerson1Slug || searchParams.get("p1")
+  );
+  const [person2Id, setPerson2Id] = useState<string | null>(
+    person2Slug || oldPerson2Slug || searchParams.get("p2")
+  );
   const [person1, setPerson1] = useState<NetWorthPerson | null>(null);
   const [person2, setPerson2] = useState<NetWorthPerson | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -111,7 +119,7 @@ const CompareNetWorth = () => {
   };
   
   const navigateToSEOUrl = (p1: string, p2: string) => {
-    navigate(`/compare/${p1}/${p2}`);
+    navigate(createComparisonUrl(p1, p2));
   };
   
   const selectPerson = (person: NetWorthPerson) => {
@@ -252,7 +260,7 @@ const CompareNetWorth = () => {
       <SEO 
         title={person1 && person2 ? `${person1.name} vs ${person2.name} Net Worth - Who is Richer?` : "Wealth Comparison"}
         description={person1 && person2 ? `Compare the net worth of ${person1.name} (${formatNetWorth(person1.netWorth, person1.currency)}) and ${person2.name} (${formatNetWorth(person2.netWorth, person2.currency)}). Find out who is richer by how much.` : "Compare the net worth of wealthy individuals."}
-        canonicalUrl={person1 && person2 ? `/compare/${person1.slug}/${person2.slug}` : "/comparison"}
+        canonicalUrl={person1 && person2 ? `/compare/${person1.slug}-vs-${person2.slug}` : "/comparison"}
       />
       
       <Header />

@@ -44,5 +44,5 @@ export const formatCurrency = (amount: number | string, currency: string = 'ZAR'
  * @returns Formatted URL string
  */
 export const createComparisonUrl = (person1: string, person2: string): string => {
-  return `/compare/${person1}/${person2}`;
+  return `/compare/${person1}-vs-${person2}`;
 };
