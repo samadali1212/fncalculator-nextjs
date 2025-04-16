@@ -1,4 +1,3 @@
-
 /**
  * Converts a string to a URL-friendly slug
  * @param text The text to convert to a slug
@@ -39,10 +38,14 @@ export const formatCurrency = (amount: number | string, currency: string = 'ZAR'
 
 /**
  * Creates SEO-friendly URL for comparison pages
- * @param person1 First person's slug
- * @param person2 Second person's slug
+ * @param person1Slug First person's slug
+ * @param person2Slug Second person's slug
+ * @param isCelebrity Whether the comparison is for celebrities
  * @returns Formatted URL string
  */
-export const createComparisonUrl = (person1: string, person2: string): string => {
-  return `/compare/${person1}-vs-${person2}`;
+export const createComparisonUrl = (person1Slug: string, person2Slug: string, isCelebrity: boolean = false) => {
+  if (isCelebrity) {
+    return `/compare-celebrities/${person1Slug}-vs-${person2Slug}`;
+  }
+  return `/compare/${person1Slug}-vs-${person2Slug}`;
 };

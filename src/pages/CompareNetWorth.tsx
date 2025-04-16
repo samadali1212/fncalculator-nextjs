@@ -119,7 +119,7 @@ const CompareNetWorth = () => {
   };
   
   const navigateToSEOUrl = (p1: string, p2: string) => {
-    navigate(createComparisonUrl(p1, p2));
+    navigate(createComparisonUrl(p1, p2, false));
   };
   
   const selectPerson = (person: NetWorthPerson) => {

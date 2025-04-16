@@ -40,7 +40,6 @@ const CompareCelebrities = () => {
   const [activeSearch, setActiveSearch] = useState<'p1' | 'p2' | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   
-  // Use the imported celebrities directly
   const allPeople = celebrities;
   
   const findPersonBySlug = (slug: string): Celebrity | null => {
@@ -103,7 +102,7 @@ const CompareCelebrities = () => {
   };
   
   const navigateToSEOUrl = (p1: string, p2: string) => {
-    navigate(createComparisonUrl(p1, p2));
+    navigate(createComparisonUrl(p1, p2, true));
   };
   
   const selectPerson = (person: Celebrity, target: 'p1' | 'p2') => {
