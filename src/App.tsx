@@ -10,6 +10,7 @@ import TaxCalculator from "./pages/TaxCalculator";
 import TaxCalculationDetail from "./pages/TaxCalculationDetail";
 import Celebrities from "./pages/Celebrities";
 import CelebrityDetail from "./pages/CelebrityDetail";
+import CompareCelebrities from "./pages/CompareCelebrities";
 import NetWorth from "./pages/NetWorth";
 import NetWorthDetail from "./pages/NetWorthDetail";
 import CompareNetWorth from "./pages/CompareNetWorth";
@@ -58,6 +59,10 @@ const App = () => (
         <Route path="/categories" element={<StandaloneCategories />} />
         <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
         <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
+        
+        {/* Celebrity Comparison Routes */}
+        <Route path="/compare-celebrities" element={<CompareCelebrities />} />
+        <Route path="/compare-celebrities/:comparison" element={<CompareCelebrities />} />
         
         {/* General Knowledge Routes */}
         <Route path="/general-knowledge" element={<GeneralKnowledge />} />
