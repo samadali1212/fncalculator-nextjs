@@ -275,7 +275,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: "16",
     name: "DJ Uncle Waffles",
-    netWorth: 150000,
+    netWorth: 1500000,
     currency: "USD",
     occupation: "DJ & Record Producer",
     age: 24,
@@ -3552,28 +3552,28 @@ export interface CategoryMetadata {
 export const categoryDefinitions: Record<string, CategoryMetadata> = {
   "djs": {
     id: "cat2",
-    title: "50 Richest DJs in South Africa",
+    title: "25 Richest DJs in South Africa",
     description: "South Africa's top earning disc jockeys who have made their fortunes in the music industry.",
     slug: "richest-south-african-djs",
     imageUrl: "https://djmag.com/sites/default/files/styles/djm_23_1005x565/public/article/image/black-coffee-1-sonar-bcn-2018.jpg.webp"
   },
   "rappers": {
     id: "cat3",
-    title: "50 Richest Rappers in South Africa",
+    title: "20 Richest Rappers in South Africa",
     description: "The highest-earning hip-hop artists and rappers who have built their wealth through music and business ventures.",
     slug: "richest-south-african-rappers",
     imageUrl: "https://i.ytimg.com/vi/Mso5Ex7BbpY/maxresdefault.jpg"
   },
   "football-clubs": {
     id: "cat4",
-    title: "50 Richest Football Clubs in South Africa",
+    title: "18 Richest Football Clubs in South Africa",
     description: "South Africa’s wealthiest soccer teams dominate the local football with strong financial backing, lucrative sponsorships, and top-tier talent. These teams boast high market values, successful histories, and large fan bases.",
     slug: "richest-football-clubs-in-south-africa",
     imageUrl: "https://a.espncdn.com/photo/2025/0206/r1448240_1296x518_5-2.jpg"
   },
     "football-club-owner": {
     id: "cat5",
-    title: "50 Richest Football Club Owners in South Africa",
+    title: "25 Richest Football Club Owners in South Africa",
     description: "Here is a list of the wealthiest football club owners in South Africa, who have made significant investments in the sport, fueling the growth and success of their teams. This list highlights individuals whose financial backing has played a pivotal role in shaping the South African soccer.",
     slug: "richest-football-club-owners-in-south-africa",
     imageUrl: "https://www.cafonline.com/media/hhbjswlz/motsepe-speech.jpg"
@@ -3601,7 +3601,7 @@ export const categoryDefinitions: Record<string, CategoryMetadata> = {
   },
    "actors": {
     id: "cat9",
-    title: "50 Richest Actors in South Africa",
+    title: "20 Richest Actors in South Africa",
     description: "This page lists and profiles the wealthiest and most successful actors in South Africa based on their estimated net worth. This compilation provides insights into the financial success of prominent South African talents in the entertainment industry.",
     slug: "richest-actors-in-south-africa",
     imageUrl: "https://storage.googleapis.com/pr-newsroom-wp/1/2023/06/Press-Shot-2-Photo-Credit-Spotify-1-1440x733.jpg"
