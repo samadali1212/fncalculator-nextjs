@@ -14,7 +14,8 @@
  Allow: /net-worth/
  Allow: /categories/
  Allow: /general-knowledge/
- Allow: /blog/
+ Allow: /hourly-rates/
+ Allow: /tax-calculator/
 
  User-agent: Bingbot
  Allow: /
