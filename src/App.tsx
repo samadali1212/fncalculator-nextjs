@@ -51,14 +51,16 @@ const App = () => (
         <Route path="/celebrity-categories" element={<StandaloneCelebrityCategories />} />
         <Route path="/celebrities/category/:slug" element={<CelebrityCategory />} />
         <Route path="/net-worth" element={<NetWorth />} />
-        <Route path="/comparison" element={<CompareNetWorth />} />
-        {/* Routes for celebrity salary comparison */}
+        
+        {/* Celebrity salary comparison routes */}
         <Route path="/compare-celebrities" element={<CompareCelebrities />} />
         <Route path="/compare-celebrities/:comparison" element={<CompareCelebrities />} />
-        {/* Update SEO-friendly route for comparisons with vs format */}
+        
+        {/* Net worth comparison routes */}
+        <Route path="/comparison" element={<CompareNetWorth />} />
         <Route path="/compare/:comparison" element={<CompareNetWorth />} />
-        {/* Maintain backward compatibility with the previous format */}
         <Route path="/compare/:person1/:person2" element={<CompareNetWorth />} />
+        
         <Route path="/categories" element={<StandaloneCategories />} />
         <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
         <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
