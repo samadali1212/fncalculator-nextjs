@@ -63,9 +63,9 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-1">
           {menuItems.map((item) => (
-            <a
+            <Link
               key={item.path}
-              href={item.path}
+              to={item.path}
               className={`px-3 py-2 rounded-md text-sm font-medium ${
                 isActive(item.path)
                   ? "text-[#1a1f2c] bg-white shadow-sm"
@@ -73,7 +73,7 @@ const Header = () => {
               }`}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -100,9 +100,9 @@ const Header = () => {
         >
           <div className="bg-white px-4 pt-2 pb-3 space-y-1 shadow-lg">
             {menuItems.map((item) => (
-              <a
+              <Link
                 key={item.path}
-                href={item.path}
+                to={item.path}
                 onClick={() => setIsOpen(false)}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive(item.path)
@@ -111,7 +111,7 @@ const Header = () => {
                 }`}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
         </motion.div>

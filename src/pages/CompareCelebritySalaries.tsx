@@ -42,7 +42,10 @@ const CompareCelebritySalaries = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { comparison } = useParams<{ comparison: string }>();
 
-  const [person1Slug, person2Slug] = comparison ? comparison.split('-vs-') : [null, null];
+  const [person1Slug, person2Slug] = comparison && comparison.includes('-vs-') 
+    ? comparison.split('-vs-') 
+    : [null, null];
+    
   const [person1Id, setPerson1Id] = useState<string | null>(person1Slug || searchParams.get("p1"));
   const [person2Id, setPerson2Id] = useState<string | null>(person2Slug || searchParams.get("p2"));
   const [person1, setPerson1] = useState<Celebrity | null>(null);
@@ -77,13 +80,13 @@ const CompareCelebritySalaries = () => {
       setPerson2(null);
     }
 
-    if (!comparison && !person1Id && !person2Id && allPeople.length >= 2) {
-      setPerson1(allPeople[0]);
-      setPerson2(allPeople[1]);
-      navigateToSEOUrl(allPeople[0].slug, allPeople[1].slug);
-    } else if (person1Id && !foundP1) {
+    if (location.pathname === '/compare-salaries' && !comparison) {
+      setPerson1(null);
+      setPerson2(null);
+    } 
+    else if (comparison && (person1Id && !foundP1)) {
       console.warn(`Person 1 with slug ${person1Id} not found.`);
-    } else if (person2Id && !foundP2) {
+    } else if (comparison && (person2Id && !foundP2)) {
       console.warn(`Person 2 with slug ${person2Id} not found.`);
     }
 
@@ -300,13 +303,13 @@ const CompareCelebritySalaries = () => {
 
           <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-center mb-2">
-              {person1 && person2 ? `${person1.name} vs ${person2.name} - Who Earns More?` : "Salary Comparison"}
+              {person1 && person2 ? `${person1.name} vs ${person2.name} - Who Earns More?` : "Celebrity Salary Comparison"}
             </h1>
 
             <p className="text-gray-600 text-center mb-8">
               {person1 && person2
                 ? `Compare the salary and career details between ${person1.name} and ${person2.name}.`
-                : "Select two individuals to compare their salaries."}
+                : "Select two celebrities to compare their salaries."}
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -314,11 +317,11 @@ const CompareCelebritySalaries = () => {
                 <DialogTrigger asChild>
                   <Card
                     className="cursor-pointer hover:shadow-md transition-shadow"
-                    onClick={() => !person1 && setActivePersonSelect('p1')}
+                    onClick={() => setActivePersonSelect('p1')}
                   >
                     <CardContent className="p-6">
                       {person1 ? (
-                        <div className="flex items-center" onClick={() => setActivePersonSelect('p1')}>
+                        <div className="flex items-center">
                           <Avatar className="h-16 w-16 mr-4 flex-shrink-0">
                             <AvatarImage src={person1.imageUrl || "/placeholder.svg"} alt={person1.name} />
                             <AvatarFallback>{getInitials(person1.name)}</AvatarFallback>
@@ -331,13 +334,10 @@ const CompareCelebritySalaries = () => {
                         </div>
                       ) : (
                         <div className="flex items-center justify-center h-24">
-                          <Button
-                            variant="outline"
-                            onClick={(e) => { e.stopPropagation(); setActivePersonSelect('p1'); }}
-                          >
-                            <User className="h-4 w-4 mr-2" />
-                            Select Person 1
-                          </Button>
+                          <div className="text-center">
+                            <User className="h-8 w-8 mx-auto mb-2 text-gray-400" />
+                            <p>Select First Celebrity</p>
+                          </div>
                         </div>
                       )}
                     </CardContent>
@@ -393,11 +393,11 @@ const CompareCelebritySalaries = () => {
                 <DialogTrigger asChild>
                   <Card
                     className="cursor-pointer hover:shadow-md transition-shadow"
-                    onClick={() => !person2 && setActivePersonSelect('p2')}
+                    onClick={() => setActivePersonSelect('p2')}
                   >
                     <CardContent className="p-6">
                       {person2 ? (
-                        <div className="flex items-center" onClick={() => setActivePersonSelect('p2')}>
+                        <div className="flex items-center">
                           <Avatar className="h-16 w-16 mr-4 flex-shrink-0">
                             <AvatarImage src={person2.imageUrl || "/placeholder.svg"} alt={person2.name} />
                             <AvatarFallback>{getInitials(person2.name)}</AvatarFallback>
@@ -410,13 +410,10 @@ const CompareCelebritySalaries = () => {
                         </div>
                       ) : (
                         <div className="flex items-center justify-center h-24">
-                          <Button
-                            variant="outline"
-                            onClick={(e) => { e.stopPropagation(); setActivePersonSelect('p2'); }}
-                          >
-                            <User className="h-4 w-4 mr-2" />
-                            Select Person 2
-                          </Button>
+                          <div className="text-center">
+                            <User className="h-8 w-8 mx-auto mb-2 text-gray-400" />
+                            <p>Select Second Celebrity</p>
+                          </div>
                         </div>
                       )}
                     </CardContent>
