@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate, useSearchParams, useParams } from 'react-router-dom';
+import { useNavigate, useSearchParams, useParams, Link } from 'react-router-dom';
 import Header from '../components/Header';
 import SEO from '../components/SEO';
 import ShareButton from '../components/ShareButton';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, TrendingUp, TrendingDown, Activity, User, MapPin, Building, Banknote, Search } from "lucide-react";
+import { ChevronLeft, TrendingUp, TrendingDown, Activity, User, MapPin, Building, Banknote, Search, ExternalLink } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -312,7 +312,15 @@ const CompareNetWorth = () => {
                             <AvatarFallback>{getInitials(person1.name)}</AvatarFallback>
                           </Avatar>
                           <div>
-                            <h3 className="text-lg font-bold mb-1">{person1.name}</h3>
+                            <h3 className="text-lg font-bold mb-1">
+                              <Link 
+                                to={`/net-worth/${person1.slug}`} 
+                                className="hover:text-blog-accent transition-colors flex items-center"
+                              >
+                                {person1.name}
+                                <ExternalLink className="ml-1 h-3.5 w-3.5 opacity-70" />
+                              </Link>
+                            </h3>
                             <p className="text-gray-600 text-sm">{person1.occupation}</p>
                             <p className="text-lg font-semibold mt-1">{formatNetWorth(person1.netWorth, person1.currency)}</p>
                           </div>
@@ -388,7 +396,15 @@ const CompareNetWorth = () => {
                             <AvatarFallback>{getInitials(person2.name)}</AvatarFallback>
                           </Avatar>
                           <div>
-                            <h3 className="text-lg font-bold mb-1">{person2.name}</h3>
+                            <h3 className="text-lg font-bold mb-1">
+                              <Link 
+                                to={`/net-worth/${person2.slug}`} 
+                                className="hover:text-blog-accent transition-colors flex items-center"
+                              >
+                                {person2.name}
+                                <ExternalLink className="ml-1 h-3.5 w-3.5 opacity-70" />
+                              </Link>
+                            </h3>
                             <p className="text-gray-600 text-sm">{person2.occupation}</p>
                             <p className="text-lg font-semibold mt-1">{formatNetWorth(person2.netWorth, person2.currency)}</p>
                           </div>
@@ -482,12 +498,28 @@ const CompareNetWorth = () => {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="bg-white p-4 rounded-lg border">
-                        <h4 className="font-semibold mb-2">{person1.name}</h4>
+                        <h4 className="font-semibold mb-2">
+                          <Link 
+                            to={`/net-worth/${person1.slug}`} 
+                            className="hover:text-blog-accent transition-colors flex items-center"
+                          >
+                            {person1.name}
+                            <ExternalLink className="ml-1 h-3.5 w-3.5 opacity-70" />
+                          </Link>
+                        </h4>
                         <p className="text-lg font-bold">{formatNetWorth(person1.netWorth, person1.currency)}</p>
                         <p className="text-sm text-gray-600">{person1.industry} • {person1.occupation}</p>
                       </div>
                       <div className="bg-white p-4 rounded-lg border">
-                        <h4 className="font-semibold mb-2">{person2.name}</h4>
+                        <h4 className="font-semibold mb-2">
+                          <Link 
+                            to={`/net-worth/${person2.slug}`} 
+                            className="hover:text-blog-accent transition-colors flex items-center"
+                          >
+                            {person2.name}
+                            <ExternalLink className="ml-1 h-3.5 w-3.5 opacity-70" />
+                          </Link>
+                        </h4>
                         <p className="text-lg font-bold">{formatNetWorth(person2.netWorth, person2.currency)}</p>
                         <p className="text-sm text-gray-600">{person2.industry} • {person2.occupation}</p>
                       </div>
@@ -505,8 +537,24 @@ const CompareNetWorth = () => {
                     <TableHeader>
                       <TableRow>
                         <TableHead>Category</TableHead>
-                        <TableHead>{person1.name}</TableHead>
-                        <TableHead>{person2.name}</TableHead>
+                        <TableHead>
+                          <Link 
+                            to={`/net-worth/${person1.slug}`} 
+                            className="hover:text-blog-accent transition-colors flex items-center"
+                          >
+                            {person1.name}
+                            <ExternalLink className="ml-1 h-3.5 w-3.5 opacity-70" />
+                          </Link>
+                        </TableHead>
+                        <TableHead>
+                          <Link 
+                            to={`/net-worth/${person2.slug}`} 
+                            className="hover:text-blog-accent transition-colors flex items-center"
+                          >
+                            {person2.name}
+                            <ExternalLink className="ml-1 h-3.5 w-3.5 opacity-70" />
+                          </Link>
+                        </TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
