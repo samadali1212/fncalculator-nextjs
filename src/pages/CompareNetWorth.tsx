@@ -505,6 +505,10 @@ const CompareNetWorth = () => {
                       </div>
                     </div>
 
+            <div className="mb-4">
+            <AdSense slot="9889084223" format="auto" className="py-3" />
+          </div>
+
                     <div className="bg-white p-4 rounded-lg border mb-4">
                       <p className="text-gray-700 leading-relaxed">
                         {comparisonText}
