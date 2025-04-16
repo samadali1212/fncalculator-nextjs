@@ -1,6 +1,3 @@
-
-// src/pages/CompareCelebritySalaries.tsx
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
@@ -18,6 +15,8 @@ import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Skeleton } from "@/components/ui/skeleton";
 import AdSense from "../components/AdSense";
+import { Link } from 'react-router-dom';
+import { ExternalLink } from 'lucide-react';
 
 import { celebrities } from "../utils/celebrityData";
 import { formatCurrency, createComparisonUrl } from "../utils/utils";
@@ -44,7 +43,6 @@ const CompareCelebritySalaries = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   
-  // Parse the comparison slug or use query parameters
   const [person1Slug, person2Slug] = comparison && comparison.includes('-vs-') 
     ? comparison.split('-vs-') 
     : [null, null];
@@ -82,17 +80,14 @@ const CompareCelebritySalaries = () => {
       setPerson2(foundP2);
     }
     
-    // Select default celebrities if none are specified
     if (!person1Id && !person2Id && allPeople.length >= 2) {
       setPerson1(allPeople[0]);
       setPerson2(allPeople[1]);
-      // Redirect to SEO-friendly URL with default celebrities
       navigateToSEOUrl(allPeople[0].slug, allPeople[1].slug);
     } else if (!person1Id && allPeople.length >= 1) {
       setPerson1(allPeople[0]);
       updateUrlParams(allPeople[0].slug, person2Id);
     } else if (!person2Id && allPeople.length >= 2) {
-      // Find a different person than person1 for person2
       const differentPerson = person1Id 
         ? allPeople.find(p => p.slug !== person1Id) || allPeople[1] 
         : allPeople[1];
@@ -542,13 +537,29 @@ const CompareCelebritySalaries = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="bg-white p-4 rounded-lg border">
-                        <h4 className="font-semibold mb-2">{person1.name}</h4>
+                        <h4 className="font-semibold mb-2 flex items-center">
+                          <Link 
+                            to={`/celebrities/${person1.slug}`} 
+                            className="hover:underline flex items-center"
+                          >
+                            {person1.name}
+                            <ExternalLink className="ml-1 h-4 w-4 text-gray-500" />
+                          </Link>
+                        </h4>
                         <p className="text-lg font-bold">{formatSalary(person1.salary, person1.currency)}</p>
                         <p className="text-sm text-gray-600">{person1.industry} • {person1.occupation}</p>
                         {person1.company && <p className="text-sm text-gray-500">Company: {person1.company}</p>}
                       </div>
                       <div className="bg-white p-4 rounded-lg border">
-                        <h4 className="font-semibold mb-2">{person2.name}</h4>
+                        <h4 className="font-semibold mb-2 flex items-center">
+                          <Link 
+                            to={`/celebrities/${person2.slug}`} 
+                            className="hover:underline flex items-center"
+                          >
+                            {person2.name}
+                            <ExternalLink className="ml-1 h-4 w-4 text-gray-500" />
+                          </Link>
+                        </h4>
                         <p className="text-lg font-bold">{formatSalary(person2.salary, person2.currency)}</p>
                         <p className="text-sm text-gray-600">{person2.industry} • {person2.occupation}</p>
                         {person2.company && <p className="text-sm text-gray-500">Company: {person2.company}</p>}
@@ -567,8 +578,24 @@ const CompareCelebritySalaries = () => {
                     <TableHeader>
                       <TableRow>
                         <TableHead className="w-[150px]">Category</TableHead>
-                        <TableHead>{person1.name}</TableHead>
-                        <TableHead>{person2.name}</TableHead>
+                        <TableHead>
+                          <Link 
+                            to={`/celebrities/${person1.slug}`} 
+                            className="hover:underline flex items-center"
+                          >
+                            {person1.name}
+                            <ExternalLink className="ml-1 h-4 w-4 text-gray-500" />
+                          </Link>
+                        </TableHead>
+                        <TableHead>
+                          <Link 
+                            to={`/celebrities/${person2.slug}`} 
+                            className="hover:underline flex items-center"
+                          >
+                            {person2.name}
+                            <ExternalLink className="ml-1 h-4 w-4 text-gray-500" />
+                          </Link>
+                        </TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -623,4 +650,3 @@ const CompareCelebritySalaries = () => {
 };
 
 export default CompareCelebritySalaries;
-
