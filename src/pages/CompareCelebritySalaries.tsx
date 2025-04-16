@@ -1,8 +1,9 @@
+
 // src/pages/CompareCelebritySalaries.tsx
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import SEO from '../components/SEO';
 import ShareButton from '../components/ShareButton';
@@ -39,6 +40,7 @@ interface Celebrity {
 
 const CompareCelebritySalaries = () => {
   const { comparison } = useParams<{ comparison: string }>();
+  const navigate = useNavigate();
 
   const [person1Slug, person2Slug] = comparison && comparison.includes('-vs-') 
     ? comparison.split('-vs-') 
@@ -86,7 +88,7 @@ const CompareCelebritySalaries = () => {
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 800);
 
     return () => clearTimeout(timer);
   }, [person1Id, person2Id, comparison]);
@@ -237,7 +239,7 @@ const CompareCelebritySalaries = () => {
         <main className="pt-20 pb-16">
           <div className="container mx-auto px-4 max-w-5xl">
             <div className="flex justify-center items-center h-64">
-              <p className="text-gray-500">Loading comparison...</p>
+              <div className="w-16 h-16 border-4 border-blog-accent border-t-transparent rounded-full animate-spin"></div>
             </div>
           </div>
         </main>
@@ -563,7 +565,7 @@ const CompareCelebritySalaries = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Your Website Name. All rights reserved.
+            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
           </p>
         </div>
       </footer>
