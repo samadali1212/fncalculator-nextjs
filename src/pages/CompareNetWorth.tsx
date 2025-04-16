@@ -4,6 +4,7 @@ import { useNavigate, useSearchParams, useParams, Link } from 'react-router-dom'
 import Header from '../components/Header';
 import SEO from '../components/SEO';
 import ShareButton from '../components/ShareButton';
+import RelatedComparisons from '../components/RelatedComparisons';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, TrendingUp, TrendingDown, Activity, User, MapPin, Building, Banknote, Search, ExternalLink } from "lucide-react";
