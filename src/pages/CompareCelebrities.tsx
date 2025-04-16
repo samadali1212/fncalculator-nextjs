@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useSearchParams, useParams } from 'react-router-dom';
@@ -18,11 +17,9 @@ import AdSense from "../components/AdSense";
 import { 
   celebrities,
   formatSalary,
+  Celebrity
 } from "../utils/celebrityData";
 import { createComparisonUrl } from "../utils/utils";
-
-// Import the Celebrity type directly from the source
-import type { Celebrity } from "../utils/celebrityData";
 
 const CompareCelebrities = () => {
   const navigate = useNavigate();
@@ -86,7 +83,6 @@ const CompareCelebrities = () => {
       const results = allPeople
         .filter(person => 
           person.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          person.profession.toLowerCase().includes(searchTerm.toLowerCase()) ||
           person.industry.toLowerCase().includes(searchTerm.toLowerCase())
         )
         .slice(0, 5);
@@ -303,7 +299,7 @@ const CompareCelebrities = () => {
                           </Avatar>
                           <div>
                             <h3 className="text-lg font-bold mb-1">{person1.name}</h3>
-                            <p className="text-gray-600 text-sm">{person1.profession}</p>
+                            <p className="text-gray-600 text-sm">{person1.industry}</p>
                             <p className="text-lg font-semibold mt-1">{formatSalary(person1.salary, "yearly")}</p>
                           </div>
                         </div>
@@ -329,7 +325,7 @@ const CompareCelebrities = () => {
                     <div className="flex items-center space-x-2">
                       <Search className="h-4 w-4 text-gray-400" />
                       <Input 
-                        placeholder="Search by name, profession, or industry..." 
+                        placeholder="Search by name or industry..." 
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="flex-1"
@@ -379,7 +375,7 @@ const CompareCelebrities = () => {
                           </Avatar>
                           <div>
                             <h3 className="text-lg font-bold mb-1">{person2.name}</h3>
-                            <p className="text-gray-600 text-sm">{person2.profession}</p>
+                            <p className="text-gray-600 text-sm">{person2.industry}</p>
                             <p className="text-lg font-semibold mt-1">{formatSalary(person2.salary, "yearly")}</p>
                           </div>
                         </div>
@@ -405,7 +401,7 @@ const CompareCelebrities = () => {
                     <div className="flex items-center space-x-2">
                       <Search className="h-4 w-4 text-gray-400" />
                       <Input 
-                        placeholder="Search by name, profession, or industry..." 
+                        placeholder="Search by name or industry..." 
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="flex-1"
@@ -474,12 +470,12 @@ const CompareCelebrities = () => {
                       <div className="bg-white p-4 rounded-lg border">
                         <h4 className="font-semibold mb-2">{person1.name}</h4>
                         <p className="text-lg font-bold">{formatSalary(person1.salary, "yearly")}</p>
-                        <p className="text-sm text-gray-600">{person1.industry} • {person1.profession}</p>
+                        <p className="text-sm text-gray-600">{person1.industry}</p>
                       </div>
                       <div className="bg-white p-4 rounded-lg border">
                         <h4 className="font-semibold mb-2">{person2.name}</h4>
                         <p className="text-lg font-bold">{formatSalary(person2.salary, "yearly")}</p>
-                        <p className="text-sm text-gray-600">{person2.industry} • {person2.profession}</p>
+                        <p className="text-sm text-gray-600">{person2.industry}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -511,9 +507,9 @@ const CompareCelebrities = () => {
                         <TableCell>{person2.industry}</TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell className="font-medium">Profession</TableCell>
-                        <TableCell>{person1.profession}</TableCell>
-                        <TableCell>{person2.profession}</TableCell>
+                        <TableCell className="font-medium">Role</TableCell>
+                        <TableCell>{person1.industry}</TableCell>
+                        <TableCell>{person2.industry}</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell className="font-medium">Company/Show</TableCell>
