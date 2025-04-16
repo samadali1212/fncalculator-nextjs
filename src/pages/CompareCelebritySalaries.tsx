@@ -275,7 +275,7 @@ const CompareCelebritySalaries = () => {
     );
     
     const relatedPairs = [];
-    const maxPairs = Math.min(5, otherCelebrities.length);
+    const maxPairs = Math.min(10, otherCelebrities.length);
     
     for (let i = 0; i < maxPairs; i++) {
       const randomIndex = Math.floor(Math.random() * otherCelebrities.length);
