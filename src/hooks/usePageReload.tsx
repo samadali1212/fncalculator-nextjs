@@ -1,15 +1,31 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 
 /**
  * Custom hook to handle page reloads and ad refreshing when navigating between pages
- * @returns An object containing the pageKey and a setIsLoading function
+ * @returns An object containing the pageKey and loading state functions
  */
 export const usePageReload = () => {
   const [pageKey, setPageKey] = useState(Date.now());
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
+
+  // Function to force refresh ads
+  const refreshAds = useCallback(() => {
+    if (typeof window !== 'undefined') {
+      // Try to refresh Google AdSense ads
+      try {
+        if (window.adsbygoogle && window.adsbygoogle.push) {
+          // Force refresh of ad units
+          window.adsbygoogle.push({});
+          console.log('Ad refresh triggered');
+        }
+      } catch (e) {
+        console.error('Error refreshing ads:', e);
+      }
+    }
+  }, []);
 
   // Reset component state and force reload when location changes
   useEffect(() => {
@@ -25,19 +41,13 @@ export const usePageReload = () => {
       window.scrollTo(0, 0);
       
       // Force refresh of ad units
-      if (typeof window !== 'undefined' && window.adsbygoogle) {
-        try {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (e) {
-          console.error('Error refreshing ads:', e);
-        }
-      }
+      refreshAds();
       
       setIsLoading(false);
     }, 500);
     
     return () => clearTimeout(timer);
-  }, [location.pathname]);
+  }, [location.pathname, refreshAds]);
 
-  return { pageKey, isLoading, setIsLoading };
+  return { pageKey, isLoading, setIsLoading, refreshAds };
 };
