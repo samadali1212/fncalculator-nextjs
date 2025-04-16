@@ -53,7 +53,7 @@ const Header = () => {
           href="/" 
           className="flex items-center gap-2 font-bold text-2xl"
         >
-          <img src="/sassainsiderlogo.png" alt="Sassa Insider" className="h-6" />
+          <img src="/SalaryListlogo.webp" alt="SalaryList" className="h-6" />
         </a>
 
         {/* Desktop Navigation */}
