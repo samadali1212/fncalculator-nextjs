@@ -10,7 +10,7 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const { pageKey, refreshAds } = usePageReload();
+  const { pageKey } = usePageReload();
 
   return (
     <TooltipProvider>
