@@ -41,8 +41,12 @@ export const formatCurrency = (amount: number | string, currency: string = 'ZAR'
  * Creates SEO-friendly URL for comparison pages
  * @param person1 First person's slug
  * @param person2 Second person's slug
+ * @param type Type of comparison ('net-worth' or 'salary')
  * @returns Formatted URL string
  */
-export const createComparisonUrl = (person1: string, person2: string): string => {
+export const createComparisonUrl = (person1: string, person2: string, type: 'net-worth' | 'salary' = 'net-worth'): string => {
+  if (type === 'salary') {
+    return `/compare-salaries/${person1}-vs-${person2}`;
+  }
   return `/compare/${person1}-vs-${person2}`;
 };

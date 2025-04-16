@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -41,6 +41,7 @@ const Header = () => {
   const isActive = (path: string) => {
     if (path === "/branch-codes" && (location.pathname === "/" || location.pathname === "/branch-codes")) return true;
     if (path === "/comparison" && location.pathname.startsWith("/compare/")) return true;
+    if (path === "/compare-salaries" && location.pathname.startsWith("/compare-salaries/")) return true;
     return location.pathname.startsWith(path);
   };
 
