@@ -20,13 +20,27 @@ export const slugify = (text: string): string => {
 /**
  * Format a currency amount with the appropriate symbol
  * @param amount The amount to format
- * @param currency The currency code (e.g., ZAR, USD)
+ * @param currency The currency code (e.g., ZAR, USD) or time period (yearly, monthly)
  * @returns Formatted currency string
  */
 export const formatCurrency = (amount: number | string, currency: string = 'ZAR'): string => {
   // Convert amount to number if it's a string
   const numericAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
   
+  // Check if the currency parameter is actually a time period
+  if (currency === 'yearly' || currency === 'monthly' || currency === 'hourly') {
+    // Default to ZAR for time periods
+    const formatter = new Intl.NumberFormat('en-ZA', {
+      style: 'currency',
+      currency: 'ZAR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+    
+    return formatter.format(numericAmount);
+  }
+  
+  // Regular currency formatting
   const formatter = new Intl.NumberFormat('en-ZA', {
     style: 'currency',
     currency: currency,
