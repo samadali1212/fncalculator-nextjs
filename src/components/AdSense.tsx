@@ -1,6 +1,5 @@
 
 import { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
 type AdFormat = 'auto' | 'horizontal' | 'vertical' | 'rectangle' | 'leaderboard';
 
@@ -26,55 +25,29 @@ const AdSense = ({
   layout = 'normal'
 }: AdSenseProps) => {
   const adRef = useRef<HTMLDivElement>(null);
-  const [adKey, setAdKey] = useState(Date.now());
-  const location = useLocation();
   const [adLoaded, setAdLoaded] = useState(false);
-  
-  // Reset the ad when the route changes
-  useEffect(() => {
-    setAdKey(Date.now());
-    setAdLoaded(false);
-  }, [location.pathname]);
   
   useEffect(() => {
     try {
       if (adRef.current && typeof window !== 'undefined') {
-        // Verbose logging for AdSense initialization
-        console.log(`Initializing AdSense for slot: ${slot} at ${location.pathname}`);
+        console.log(`Initializing AdSense for slot: ${slot}`);
         
-        // Traditional way to push ads
         if (window.adsbygoogle) {
           try {
             window.adsbygoogle.push({});
-            console.log(`AdSense ad successfully pushed for slot: ${slot}`);
+            console.log(`AdSense ad pushed for slot: ${slot}`);
             setAdLoaded(true);
           } catch (pushError) {
             console.error(`Error pushing AdSense ad for slot ${slot}:`, pushError);
           }
         } else {
-          console.warn('AdSense not available yet - will rely on traditional page load');
-          
-          // Set up a fallback timer to try again
-          const fallbackTimer = setTimeout(() => {
-            if (window.adsbygoogle) {
-              try {
-                window.adsbygoogle.push({});
-                console.log(`AdSense ad pushed via fallback for slot: ${slot}`);
-                setAdLoaded(true);
-              } catch (e) {
-                console.error('Fallback ad push error:', e);
-              }
-            }
-          }, 1000);
-          
-          return () => clearTimeout(fallbackTimer);
+          console.warn('AdSense not available yet');
         }
       }
     } catch (error) {
       console.error('Critical AdSense initialization error:', error);
     }
     
-    // Add event listener for ad load/error
     const handleAdLoad = () => {
       console.log(`Ad in slot ${slot} loaded successfully`);
       setAdLoaded(true);
@@ -83,19 +56,18 @@ const AdSense = ({
     const adElement = adRef.current;
     if (adElement) {
       adElement.addEventListener('load', handleAdLoad);
-      
       return () => {
         adElement.removeEventListener('load', handleAdLoad);
       };
     }
-  }, [slot, adKey, location.pathname]);
+  }, [slot]);
 
   // For display ads with no specific format
   const isDisplayAd = slot === "9889084223";
   
   if (isDisplayAd) {
     return (
-      <div className={className} key={adKey}>
+      <div className={className}>
         <ins
           ref={adRef as any}
           className="adsbygoogle"
@@ -140,7 +112,6 @@ const AdSense = ({
       'data-full-width-responsive': responsive ? 'true' : 'false',
     };
     
-    // Add layout-specific attributes
     if (layout === 'in-article') {
       attributes['data-ad-layout'] = 'in-article';
       attributes['data-ad-format'] = 'fluid';
@@ -153,7 +124,7 @@ const AdSense = ({
   };
 
   return (
-    <div className={`${containerClasses} ${sizeClass}`} key={adKey}>
+    <div className={`${containerClasses} ${sizeClass}`}>
       <ins
         ref={adRef as any}
         className="adsbygoogle"

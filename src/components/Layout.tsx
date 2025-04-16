@@ -1,5 +1,5 @@
 
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,19 +11,6 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const { pageKey, refreshAds } = usePageReload();
-
-  // Initial ad load and periodic refresh
-  useEffect(() => {
-    // Initial ad refresh when page loads
-    refreshAds();
-
-    // Refresh ads periodically (every 60 seconds)
-    const periodicRefresh = setInterval(() => {
-      refreshAds();
-    }, 60000);
-
-    return () => clearInterval(periodicRefresh);
-  }, [refreshAds]);
 
   return (
     <TooltipProvider>
