@@ -16,6 +16,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Skeleton } from "@/components/ui/skeleton";
 import AdSense from "../components/AdSense";
 
 import { celebrities } from "../utils/celebrityData";
@@ -238,8 +239,28 @@ const CompareCelebritySalaries = () => {
         <Header />
         <main className="pt-20 pb-16">
           <div className="container mx-auto px-4 max-w-5xl">
-            <div className="flex justify-center items-center h-64">
-              <div className="w-16 h-16 border-4 border-blog-accent border-t-transparent rounded-full animate-spin"></div>
+            <div className="h-8 mb-6"></div>
+            <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
+              <Skeleton className="h-10 w-3/4 mb-4" />
+              <div className="flex flex-wrap items-center gap-3 mb-6 pb-6 border-b border-gray-200">
+                <Skeleton className="h-5 w-24" />
+                <Skeleton className="h-5 w-20" />
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <Skeleton className="h-32 w-full rounded-md" />
+                <Skeleton className="h-32 w-full rounded-md" />
+              </div>
+              
+              <Skeleton className="h-24 w-full mb-8" />
+              
+              <div className="space-y-4">
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-5/6" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-4/5" />
+              </div>
             </div>
           </div>
         </main>
