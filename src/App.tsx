@@ -51,6 +51,8 @@ const App = () => (
         <Route path="/celebrities/category/:slug" element={<CelebrityCategory />} />
         <Route path="/net-worth" element={<NetWorth />} />
         <Route path="/comparison" element={<CompareNetWorth />} />
+        {/* New SEO-friendly route for comparisons */}
+        <Route path="/compare/:person1/:person2" element={<CompareNetWorth />} />
         <Route path="/categories" element={<StandaloneCategories />} />
         <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
         <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />

@@ -36,3 +36,13 @@ export const formatCurrency = (amount: number | string, currency: string = 'ZAR'
   
   return formatter.format(numericAmount);
 };
+
+/**
+ * Creates SEO-friendly URL for comparison pages
+ * @param person1 First person's slug
+ * @param person2 Second person's slug
+ * @returns Formatted URL string
+ */
+export const createComparisonUrl = (person1: string, person2: string): string => {
+  return `/compare/${person1}/${person2}`;
+};
