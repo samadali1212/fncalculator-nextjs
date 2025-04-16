@@ -15,6 +15,7 @@ import NetWorthDetail from "./pages/NetWorthDetail";
 import CompareNetWorth from "./pages/CompareNetWorth";
 import CompareCelebritySalaries from "./pages/CompareCelebritySalaries";
 import SalaryComparisonList from "./pages/SalaryComparisonList";
+import NetWorthComparisonList from "./pages/NetWorthComparisonList";
 import NetWorthCategory from "./pages/NetWorthCategory";
 import StandaloneCategories from "./pages/StandaloneCategories";
 import StandaloneCelebrityCategories from "./pages/StandaloneCelebrityCategories";
@@ -67,7 +68,8 @@ const App = () => {
           <Route path="/net-worth" element={<NetWorth />} />
           
           {/* Net Worth comparison routes */}
-          <Route path="/comparison" element={<Navigate to="/compare/patrice-motsepe-vs-johann-rupert" replace />} />
+          <Route path="/comparison" element={<Navigate to="/compare" replace />} />
+          <Route path="/compare" element={<NetWorthComparisonList />} />
           <Route path="/compare/:comparison" element={<CompareNetWorth />} />
           <Route path="/compare/:person1/:person2" element={<CompareNetWorth />} />
           
