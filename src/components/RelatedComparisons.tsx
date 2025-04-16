@@ -45,10 +45,14 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
       .substring(0, 2);
   };
 
-  // Handle comparison click with navigate instead of relying on Link component
-  const handleComparisonClick = (e: React.MouseEvent, url: string) => {
-    e.preventDefault();
+  // Handle comparison click with navigate
+  const handleComparisonClick = (url: string) => {
     navigate(url);
+  };
+
+  // Handle view more click
+  const handleViewMoreClick = () => {
+    navigate(viewMoreLink);
   };
 
   if (comparisons.length === 0) {
@@ -141,7 +145,7 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
                   <Button 
                     variant="link" 
                     className="text-blog-accent hover:text-blog-accent-hover hover:underline transition-colors p-0 h-auto"
-                    onClick={(e) => handleComparisonClick(e, comparison.comparisonUrl)}
+                    onClick={() => handleComparisonClick(comparison.comparisonUrl)}
                   >
                     Compare
                   </Button>
@@ -155,7 +159,7 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
       <div className="text-center">
         <Button 
           variant="outline" 
-          onClick={() => navigate(viewMoreLink)}
+          onClick={handleViewMoreClick}
         >
           View More Comparisons
         </Button>
