@@ -52,13 +52,13 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        {/* Use regular anchor for the logo/homepage link */}
-        <a 
-          href="/" 
+        {/* Use Link component for the logo/homepage link */}
+        <Link 
+          to="/" 
           className="flex items-center gap-2 font-bold text-2xl"
         >
           <img src="/SalaryListlogo.webp" alt="SalaryList" className="h-6" />
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-1">

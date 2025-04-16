@@ -69,25 +69,26 @@ const CompareCelebritySalaries = () => {
     if (person1Id) {
       foundP1 = findPersonBySlug(person1Id);
       setPerson1(foundP1);
-    } else {
-      setPerson1(null);
     }
-
+    
     if (person2Id) {
       foundP2 = findPersonBySlug(person2Id);
       setPerson2(foundP2);
-    } else {
-      setPerson2(null);
     }
-
-    if (location.pathname === '/compare-salaries' && !comparison) {
-      setPerson1(null);
-      setPerson2(null);
-    } 
-    else if (comparison && (person1Id && !foundP1)) {
-      console.warn(`Person 1 with slug ${person1Id} not found.`);
-    } else if (comparison && (person2Id && !foundP2)) {
-      console.warn(`Person 2 with slug ${person2Id} not found.`);
+    
+    if (!person1Id && !person2Id && allPeople.length >= 2) {
+      setPerson1(allPeople[0]);
+      setPerson2(allPeople[1]);
+      navigateToSEOUrl(allPeople[0].slug, allPeople[1].slug);
+    } else if (!person1Id && allPeople.length >= 1) {
+      setPerson1(allPeople[0]);
+      updateUrlParams(allPeople[0].slug, person2Id);
+    } else if (!person2Id && allPeople.length >= 2) {
+      const differentPerson = person1Id 
+        ? allPeople.find(p => p.slug !== person1Id) || allPeople[1] 
+        : allPeople[1];
+      setPerson2(differentPerson);
+      updateUrlParams(person1Id, differentPerson.slug);
     }
 
     const timer = setTimeout(() => {
@@ -115,10 +116,14 @@ const CompareCelebritySalaries = () => {
   }, [searchTerm, allPeople]);
 
   const updateUrlParams = (p1: string | null, p2: string | null) => {
-    const params: Record<string, string> = {};
-    if (p1) params.p1 = p1;
-    if (p2) params.p2 = p2;
-    setSearchParams(params, { replace: true });
+    if (p1 && p2) {
+      navigateToSEOUrl(p1, p2);
+    } else {
+      const params: Record<string, string> = {};
+      if (p1) params.p1 = p1;
+      if (p2) params.p2 = p2;
+      setSearchParams(params, { replace: true });
+    }
   };
 
   const navigateToSEOUrl = (p1Slug: string, p2Slug: string) => {
@@ -131,14 +136,14 @@ const CompareCelebritySalaries = () => {
       if (person2) {
         navigateToSEOUrl(person.slug, person2.slug);
       } else {
-        setPerson1Id(person.slug);
+        updateUrlParams(person.slug, person2Id);
       }
     } else if (activePersonSelect === 'p2') {
       setPerson2(person);
       if (person1) {
         navigateToSEOUrl(person1.slug, person.slug);
       } else {
-        setPerson2Id(person.slug);
+        updateUrlParams(person1Id, person.slug);
       }
     }
 
