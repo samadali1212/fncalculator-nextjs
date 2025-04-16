@@ -113,7 +113,7 @@ const CompareCelebritySalaries = () => {
 
   const navigateToSEOUrl = (p1Slug: string, p2Slug: string) => {
     const url = createComparisonUrl(p1Slug, p2Slug, 'salary');
-    window.location.href = url;
+    navigate(url);
   };
 
   const selectPerson = (person: Celebrity) => {
@@ -121,11 +121,15 @@ const CompareCelebritySalaries = () => {
       setPerson1(person);
       if (person2) {
         navigateToSEOUrl(person.slug, person2.slug);
+      } else {
+        setPerson1Id(person.slug);
       }
     } else if (activePersonSelect === 'p2') {
       setPerson2(person);
       if (person1) {
         navigateToSEOUrl(person1.slug, person.slug);
+      } else {
+        setPerson2Id(person.slug);
       }
     }
 
@@ -291,7 +295,7 @@ const CompareCelebritySalaries = () => {
               <Button
                 variant="ghost"
                 className="text-sm text-[#000000] hover:bg-white/60 mr-2"
-                onClick={() => window.location.href = '/celebrities'}
+                onClick={() => navigate('/celebrities')}
               >
                 <ChevronLeft className="h-4 w-4 mr-1" />
                 Back to Celebrity List
