@@ -110,7 +110,7 @@ const CompareNetWorth = () => {
     
     const comparisons: {person1: NetWorthPerson, person2: NetWorthPerson}[] = [];
     
-    for (let i = 0; i < Math.min(2, sameIndustryPeople.length); i++) {
+    for (let i = 0; i < Math.min(10, sameIndustryPeople.length); i++) {
       comparisons.push({
         person1: person1,
         person2: sameIndustryPeople[i]
