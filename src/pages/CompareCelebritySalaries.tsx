@@ -354,7 +354,7 @@ const CompareCelebritySalaries = () => {
           </div>
 
           <div className="mb-4">
-            <AdSense slot="YOUR_AD_SLOT_ID_1" format="auto" className="py-3" />
+            <AdSense slot="9889084223" format="auto" className="py-3" />
           </div>
 
           <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
@@ -477,6 +477,10 @@ const CompareCelebritySalaries = () => {
                       </div>
                     </div>
 
+          <div className="mb-4">
+            <AdSense slot="9889084223" format="auto" className="py-3" />
+          </div>
+
                     <div className="bg-white p-4 rounded-lg border mb-6">
                       <p className="text-gray-700 leading-relaxed">
                         {comparisonTextValue}
@@ -516,9 +520,9 @@ const CompareCelebritySalaries = () => {
                   </CardContent>
                 </Card>
 
-                <div className="mb-4">
-                  <AdSense slot="YOUR_AD_SLOT_ID_2" format="auto" className="py-3" />
-                </div>
+          <div className="mb-4">
+            <AdSense slot="9889084223" format="auto" className="py-3" />
+          </div>
 
                 <div className="mb-8">
                   <h3 className="text-xl font-bold mb-4">Detailed Comparison</h3>
