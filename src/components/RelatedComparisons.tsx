@@ -5,6 +5,15 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { ArrowRight, ExternalLink } from "lucide-react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 interface ComparisonPerson {
   id: string;
@@ -12,6 +21,7 @@ interface ComparisonPerson {
   name: string;
   imageUrl?: string;
   industry?: string;
+  occupation?: string;
 }
 
 interface RelatedComparisonsProps {
@@ -43,50 +53,98 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
     <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
       <h2 className="text-xl font-bold mb-6">Related Comparisons</h2>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {comparisons.map((comparison, index) => (
-          <Link 
-            key={`${comparison.person1.id}-${comparison.person2.id}-${index}`}
-            to={comparison.comparisonUrl}
-            className="block"
-          >
-            <Card className="hover:shadow-md transition-shadow h-full">
-              <CardContent className="p-4">
-                <div className="flex items-center mb-3">
-                  <Avatar className="h-8 w-8 mr-2">
-                    <AvatarImage src={comparison.person1.imageUrl || "/placeholder.svg"} alt={comparison.person1.name} />
-                    <AvatarFallback>{getInitials(comparison.person1.name)}</AvatarFallback>
-                  </Avatar>
-                  <div className="truncate flex-1">
-                    <p className="font-medium text-sm truncate">{comparison.person1.name}</p>
+      <div className="bg-white rounded-sm shadow-sm border border-gray-200 overflow-hidden mb-6">
+        <Table>
+          <TableHeader>
+            <TableRow className="bg-gray-50">
+              <TableHead>Person 1</TableHead>
+              <TableHead className="w-12 text-center">VS</TableHead>
+              <TableHead>Person 2</TableHead>
+              <TableHead className="text-right">Actions</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {comparisons.map((comparison, index) => (
+              <TableRow key={`${comparison.person1.id}-${comparison.person2.id}-${index}`} className="group">
+                <TableCell>
+                  <div className="flex items-center">
+                    <Avatar className="h-8 w-8 mr-3">
+                      <AvatarImage 
+                        src={comparison.person1.imageUrl || "/placeholder.svg"} 
+                        alt={comparison.person1.name}
+                        className="object-cover"
+                      />
+                      <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
+                        {getInitials(comparison.person1.name)}
+                      </AvatarFallback>
+                    </Avatar>
+                    
+                    <div>
+                      <Link 
+                        to={`/${type === 'net-worth' ? 'net-worth' : 'celebrities'}/${comparison.person1.slug}`}
+                        className="text-[#333] hover:underline text-base font-medium transition-colors hover:text-blog-accent flex items-center"
+                      >
+                        {comparison.person1.name}
+                        <ExternalLink className="h-3.5 w-3.5 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </Link>
+                      <div className="text-xs text-gray-500">
+                        {comparison.person1.occupation || comparison.person1.industry || "Public Figure"}
+                      </div>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="flex justify-center my-1">
-                  <Badge variant="outline" className="text-xs">
-                    VS
-                  </Badge>
-                </div>
-                
-                <div className="flex items-center mt-3">
-                  <Avatar className="h-8 w-8 mr-2">
-                    <AvatarImage src={comparison.person2.imageUrl || "/placeholder.svg"} alt={comparison.person2.name} />
-                    <AvatarFallback>{getInitials(comparison.person2.name)}</AvatarFallback>
-                  </Avatar>
-                  <div className="truncate flex-1">
-                    <p className="font-medium text-sm truncate">{comparison.person2.name}</p>
+                </TableCell>
+                <TableCell className="text-center">
+                  <div className="flex items-center justify-center">
+                    <div className="bg-gray-100 rounded-full w-8 h-8 flex items-center justify-center">
+                      <ArrowRight className="h-4 w-4 text-gray-600" />
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
+                </TableCell>
+                <TableCell>
+                  <div className="flex items-center">
+                    <Avatar className="h-8 w-8 mr-3">
+                      <AvatarImage 
+                        src={comparison.person2.imageUrl || "/placeholder.svg"} 
+                        alt={comparison.person2.name}
+                        className="object-cover"
+                      />
+                      <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-xs">
+                        {getInitials(comparison.person2.name)}
+                      </AvatarFallback>
+                    </Avatar>
+                    
+                    <div>
+                      <Link 
+                        to={`/${type === 'net-worth' ? 'net-worth' : 'celebrities'}/${comparison.person2.slug}`}
+                        className="text-[#333] hover:underline text-base font-medium transition-colors hover:text-blog-accent flex items-center"
+                      >
+                        {comparison.person2.name}
+                        <ExternalLink className="h-3.5 w-3.5 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </Link>
+                      <div className="text-xs text-gray-500">
+                        {comparison.person2.occupation || comparison.person2.industry || "Public Figure"}
+                      </div>
+                    </div>
+                  </div>
+                </TableCell>
+                <TableCell className="text-right">
+                  <Link 
+                    to={comparison.comparisonUrl}
+                    className="text-blog-accent hover:text-blog-accent-hover hover:underline transition-colors"
+                  >
+                    Compare
+                  </Link>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </div>
       
-      <div className="mt-6 text-center">
+      <div className="text-center">
         <Button 
           variant="outline" 
-          onClick={() => {}}
+          asChild
         >
           <Link to={viewMoreLink}>View More Comparisons</Link>
         </Button>

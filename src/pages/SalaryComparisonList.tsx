@@ -10,7 +10,6 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { celebrities } from "../utils/celebrityData";
 import { createComparisonUrl, getRandomInt } from "../utils/utils";
-import RelatedComparisons from "../components/RelatedComparisons";
 import {
   Table,
   TableBody,
@@ -29,7 +28,6 @@ const SalaryComparisonList = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [itemsToShow, setItemsToShow] = useState(20);
   const [isLoading, setIsLoading] = useState(true);
-  const [featuredComparisons, setFeaturedComparisons] = useState<{person1: any, person2: any, comparisonUrl: string}[]>([]);
   const navigate = useNavigate();
 
   // Get initials for avatar fallback
@@ -75,31 +73,6 @@ const SalaryComparisonList = () => {
       (a.person1.salary + a.person2.salary)
     );
   };
-  
-  // Generate featured comparisons when the component mounts
-  useEffect(() => {
-    if (celebrities.length >= 8) {
-      const shuffled = [...celebrities].sort(() => 0.5 - Math.random());
-      const featured = [];
-      
-      // Create 4 random comparison pairs
-      for (let i = 0; i < 4; i++) {
-        if (i * 2 + 1 < shuffled.length) {
-          featured.push({
-            person1: shuffled[i * 2],
-            person2: shuffled[i * 2 + 1],
-            comparisonUrl: createComparisonUrl(
-              shuffled[i * 2].slug,
-              shuffled[i * 2 + 1].slug,
-              'salary'
-            )
-          });
-        }
-      }
-      
-      setFeaturedComparisons(featured);
-    }
-  }, []);
   
   const comparisonPairs = generateComparisonPairs();
   const displayedPairs = comparisonPairs.slice(0, itemsToShow);
@@ -298,17 +271,6 @@ const SalaryComparisonList = () => {
                 </PaginationContent>
               </Pagination>
             )}
-          </div>
-        )}
-        
-        {/* Featured Comparisons Section */}
-        {featuredComparisons.length > 0 && searchQuery === "" && (
-          <div className="mt-12">
-            <RelatedComparisons 
-              comparisons={featuredComparisons}
-              type="salary"
-              viewMoreLink="/compare-salaries"
-            />
           </div>
         )}
       </main>
