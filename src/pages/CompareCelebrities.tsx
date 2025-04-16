@@ -21,22 +21,8 @@ import {
 } from "../utils/celebrityData";
 import { createComparisonUrl } from "../utils/utils";
 
-// Define the Celebrity type with the properties we need
-interface Celebrity {
-  id: string;
-  slug: string;
-  name: string;
-  salary: number;
-  salaryType: string;
-  profession: string;
-  industry: string;
-  company?: string;
-  country: string;
-  age: number;
-  description: string;
-  imageUrl?: string;
-  bio?: string;
-}
+// Import the Celebrity type directly from the source
+import type { Celebrity } from "../utils/celebrityData";
 
 const CompareCelebrities = () => {
   const navigate = useNavigate();
@@ -58,7 +44,8 @@ const CompareCelebrities = () => {
   const [activePersonSelect, setActivePersonSelect] = useState<'p1' | 'p2' | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   
-  const allPeople = celebrities as Celebrity[];
+  // Use the imported celebrities directly
+  const allPeople = celebrities;
   
   const findPersonBySlug = (slug: string): Celebrity | null => {
     return allPeople.find(person => person.slug === slug) || null;
@@ -191,9 +178,9 @@ const CompareCelebrities = () => {
     const difference = getSalaryDifference();
     const percentage = getSalaryDifferencePercentage();
     
-    let text = `${higher?.name} earns more than ${lower?.name} with a salary of ${formatSalary(higher?.salary || 0)}. `;
+    let text = `${higher?.name} earns more than ${lower?.name} with a salary of ${formatSalary(higher?.salary || 0, "yearly")}. `;
     
-    text += `This is ${formatSalary(difference)} or ${percentage}% more than ${lower?.name}'s salary of ${formatSalary(lower?.salary || 0)}. `;
+    text += `This is ${formatSalary(difference, "yearly")} or ${percentage}% more than ${lower?.name}'s salary of ${formatSalary(lower?.salary || 0, "yearly")}. `;
     
     if (higher?.industry === lower?.industry) {
       text += `Both celebrities work in the ${higher?.industry} industry. `;
@@ -262,7 +249,7 @@ const CompareCelebrities = () => {
     >
       <SEO 
         title={person1 && person2 ? `${person1.name} vs ${person2.name} Salary - Who Earns More?` : "Celebrity Salary Comparison"}
-        description={person1 && person2 ? `Compare the salary of ${person1.name} (${formatSalary(person1.salary)}) and ${person2.name} (${formatSalary(person2.salary)}). Find out who earns more and by how much.` : "Compare the salaries of celebrities and famous individuals."}
+        description={person1 && person2 ? `Compare the salary of ${person1.name} (${formatSalary(person1.salary, "yearly")}) and ${person2.name} (${formatSalary(person2.salary, "yearly")}). Find out who earns more and by how much.` : "Compare the salaries of celebrities and famous individuals."}
         canonicalUrl={person1 && person2 ? `/compare-celebrities/${person1.slug}-vs-${person2.slug}` : "/compare-celebrities"}
       />
       
@@ -317,7 +304,7 @@ const CompareCelebrities = () => {
                           <div>
                             <h3 className="text-lg font-bold mb-1">{person1.name}</h3>
                             <p className="text-gray-600 text-sm">{person1.profession}</p>
-                            <p className="text-lg font-semibold mt-1">{formatSalary(person1.salary)}</p>
+                            <p className="text-lg font-semibold mt-1">{formatSalary(person1.salary, "yearly")}</p>
                           </div>
                         </div>
                       ) : (
@@ -363,7 +350,7 @@ const CompareCelebrities = () => {
                               </Avatar>
                               <div>
                                 <p className="font-medium">{person.name}</p>
-                                <p className="text-sm text-gray-500">{formatSalary(person.salary)} • {person.industry}</p>
+                                <p className="text-sm text-gray-500">{formatSalary(person.salary, "yearly")} • {person.industry}</p>
                               </div>
                             </div>
                           ))}
@@ -393,7 +380,7 @@ const CompareCelebrities = () => {
                           <div>
                             <h3 className="text-lg font-bold mb-1">{person2.name}</h3>
                             <p className="text-gray-600 text-sm">{person2.profession}</p>
-                            <p className="text-lg font-semibold mt-1">{formatSalary(person2.salary)}</p>
+                            <p className="text-lg font-semibold mt-1">{formatSalary(person2.salary, "yearly")}</p>
                           </div>
                         </div>
                       ) : (
@@ -439,7 +426,7 @@ const CompareCelebrities = () => {
                               </Avatar>
                               <div>
                                 <p className="font-medium">{person.name}</p>
-                                <p className="text-sm text-gray-500">{formatSalary(person.salary)} • {person.industry}</p>
+                                <p className="text-sm text-gray-500">{formatSalary(person.salary, "yearly")} • {person.industry}</p>
                               </div>
                             </div>
                           ))}
@@ -469,7 +456,7 @@ const CompareCelebrities = () => {
                           {higherEarningPerson?.name} Earns More
                         </Badge>
                         <h3 className="text-lg font-bold mb-1">
-                          {higherEarningPerson?.name} earns more by {formatSalary(salaryDifference)}
+                          {higherEarningPerson?.name} earns more by {formatSalary(salaryDifference, "yearly")}
                         </h3>
                         <p className="text-gray-600">
                           That's {percentageDifference}% more earnings
@@ -486,12 +473,12 @@ const CompareCelebrities = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="bg-white p-4 rounded-lg border">
                         <h4 className="font-semibold mb-2">{person1.name}</h4>
-                        <p className="text-lg font-bold">{formatSalary(person1.salary)}</p>
+                        <p className="text-lg font-bold">{formatSalary(person1.salary, "yearly")}</p>
                         <p className="text-sm text-gray-600">{person1.industry} • {person1.profession}</p>
                       </div>
                       <div className="bg-white p-4 rounded-lg border">
                         <h4 className="font-semibold mb-2">{person2.name}</h4>
-                        <p className="text-lg font-bold">{formatSalary(person2.salary)}</p>
+                        <p className="text-lg font-bold">{formatSalary(person2.salary, "yearly")}</p>
                         <p className="text-sm text-gray-600">{person2.industry} • {person2.profession}</p>
                       </div>
                     </div>
@@ -515,8 +502,8 @@ const CompareCelebrities = () => {
                     <TableBody>
                       <TableRow>
                         <TableCell className="font-medium">Salary</TableCell>
-                        <TableCell>{formatSalary(person1.salary)}</TableCell>
-                        <TableCell>{formatSalary(person2.salary)}</TableCell>
+                        <TableCell>{formatSalary(person1.salary, "yearly")}</TableCell>
+                        <TableCell>{formatSalary(person2.salary, "yearly")}</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell className="font-medium">Industry</TableCell>
