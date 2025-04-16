@@ -1,10 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import Header from '../components/Header';
 import SEO from '../components/SEO';
 import ShareButton from '../components/ShareButton';
+import RelatedComparisons from '../components/RelatedComparisons';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, TrendingUp, TrendingDown, Activity, User, MapPin, Building, Banknote, Search, Briefcase, Landmark } from "lucide-react";
@@ -233,13 +233,10 @@ const CompareCelebritySalaries = () => {
   const percentageDifferenceValue = getSalaryDifferencePercentage();
   const comparisonTextValue = generateComparisonText();
 
-  // Generate a random comparison when clicking on "Select First/Second Celebrity"
   const handleSelectCelebrity = (position: 'first' | 'second') => {
-    // Get current selected celebrities
     const currentFirstId = person1?.id;
     const currentSecondId = person2?.id;
     
-    // Filter out existing selected celebrity and get a random new one
     const availableCelebrities = allPeople.filter(celeb => {
       if (position === 'first') {
         return celeb.id !== currentSecondId;
@@ -256,7 +253,6 @@ const CompareCelebritySalaries = () => {
         if (person2) {
           navigateToSEOUrl(selectedCelebrity.slug, person2.slug);
         } else if (allPeople.length >= 2) {
-          // If no person2, select a second random celebrity
           const secondPerson = allPeople.find(p => p.id !== selectedCelebrity.id) || allPeople[1];
           navigateToSEOUrl(selectedCelebrity.slug, secondPerson.slug);
         }
@@ -264,13 +260,44 @@ const CompareCelebritySalaries = () => {
         if (person1) {
           navigateToSEOUrl(person1.slug, selectedCelebrity.slug);
         } else if (allPeople.length >= 2) {
-          // If no person1, select a second random celebrity
           const firstPerson = allPeople.find(p => p.id !== selectedCelebrity.id) || allPeople[0];
           navigateToSEOUrl(firstPerson.slug, selectedCelebrity.slug);
         }
       }
     }
   };
+
+  const generateRelatedComparisons = () => {
+    if (!person1 || !person2) return [];
+    
+    const otherCelebrities = allPeople.filter(
+      celeb => celeb.id !== person1.id && celeb.id !== person2.id
+    );
+    
+    const relatedPairs = [];
+    const maxPairs = Math.min(5, otherCelebrities.length);
+    
+    for (let i = 0; i < maxPairs; i++) {
+      const randomIndex = Math.floor(Math.random() * otherCelebrities.length);
+      const randomCeleb = otherCelebrities[randomIndex];
+      
+      const secondPerson = i % 2 === 0 ? person1 : person2;
+      
+      relatedPairs.push({
+        person1: randomCeleb,
+        person2: secondPerson,
+        comparisonUrl: createComparisonUrl(randomCeleb.slug, secondPerson.slug, 'salary')
+      });
+      
+      otherCelebrities.splice(randomIndex, 1);
+      
+      if (otherCelebrities.length === 0) break;
+    }
+    
+    return relatedPairs;
+  };
+  
+  const relatedComparisons = generateRelatedComparisons();
 
   if (isLoading) {
     return (
@@ -570,6 +597,14 @@ const CompareCelebritySalaries = () => {
                     </TableBody>
                   </Table>
                 </div>
+
+                {relatedComparisons.length > 0 && (
+                  <RelatedComparisons 
+                    comparisons={relatedComparisons}
+                    type="salary"
+                    viewMoreLink="/compare-salaries"
+                  />
+                )}
               </>
             )}
           </div>
