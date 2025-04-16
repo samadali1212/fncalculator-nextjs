@@ -1,8 +1,6 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { ArrowRight, ExternalLink } from "lucide-react";
@@ -57,6 +55,7 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
         <Table>
           <TableHeader>
             <TableRow className="bg-gray-50">
+              <TableHead className="w-12">#</TableHead>
               <TableHead>Person 1</TableHead>
               <TableHead className="w-12 text-center">VS</TableHead>
               <TableHead>Person 2</TableHead>
@@ -66,6 +65,7 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
           <TableBody>
             {comparisons.map((comparison, index) => (
               <TableRow key={`${comparison.person1.id}-${comparison.person2.id}-${index}`} className="group">
+                <TableCell className="text-gray-500 text-sm">{index + 1}</TableCell>
                 <TableCell>
                   <div className="flex items-center">
                     <Avatar className="h-8 w-8 mr-3">
