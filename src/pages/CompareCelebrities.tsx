@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { 
@@ -25,8 +26,8 @@ interface Celebrity {
   occupation: string;
   company?: string;
   industry?: string;
-  image?: string; // Add the missing property
-  bio?: string;   // Add the missing property
+  image?: string;
+  bio?: string;
 }
 
 const CelebrityComparison = () => {
