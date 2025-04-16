@@ -54,6 +54,7 @@ const CompareNetWorth = () => {
   const [searchResults, setSearchResults] = useState<NetWorthPerson[]>([]);
   const [activePersonSelect, setActivePersonSelect] = useState<'p1' | 'p2' | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [relatedComparisons, setRelatedComparisons] = useState<{person1: NetWorthPerson, person2: NetWorthPerson}[]>([]);
   
   const allPeople = netWorthPeople;
   
@@ -90,6 +91,55 @@ const CompareNetWorth = () => {
     
     return () => clearTimeout(timer);
   }, [person1Id, person2Id]);
+  
+  useEffect(() => {
+    if (person1 && person2) {
+      generateRelatedComparisons();
+    }
+  }, [person1, person2]);
+  
+  const generateRelatedComparisons = () => {
+    if (!person1 || !person2) return;
+    
+    const sameIndustryPeople = allPeople.filter(person => 
+      (person.industry === person1.industry || person.industry === person2.industry) && 
+      person.id !== person1.id && 
+      person.id !== person2.id
+    ).slice(0, 10);
+    
+    const comparisons: {person1: NetWorthPerson, person2: NetWorthPerson}[] = [];
+    
+    for (let i = 0; i < Math.min(2, sameIndustryPeople.length); i++) {
+      comparisons.push({
+        person1: person1,
+        person2: sameIndustryPeople[i]
+      });
+    }
+    
+    for (let i = 2; i < Math.min(4, sameIndustryPeople.length); i++) {
+      comparisons.push({
+        person1: person2,
+        person2: sameIndustryPeople[i]
+      });
+    }
+    
+    if (comparisons.length < 4 && allPeople.length >= 6) {
+      const shuffled = [...allPeople]
+        .filter(p => p.id !== person1.id && p.id !== person2.id)
+        .sort(() => 0.5 - Math.random());
+      
+      for (let i = 0; i < Math.min(4 - comparisons.length, shuffled.length / 2); i++) {
+        if (i * 2 + 1 < shuffled.length) {
+          comparisons.push({
+            person1: shuffled[i * 2],
+            person2: shuffled[i * 2 + 1]
+          });
+        }
+      }
+    }
+    
+    setRelatedComparisons(comparisons);
+  };
   
   useEffect(() => {
     if (searchTerm.length > 1) {
@@ -594,6 +644,61 @@ const CompareNetWorth = () => {
               </>
             )}
           </div>
+          
+          {person1 && person2 && relatedComparisons.length > 0 && (
+            <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
+              <h2 className="text-xl font-bold mb-6">Related Comparisons</h2>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {relatedComparisons.map((comparison, index) => (
+                  <Link 
+                    key={`${comparison.person1.id}-${comparison.person2.id}-${index}`}
+                    to={createComparisonUrl(comparison.person1.slug, comparison.person2.slug)}
+                    className="block"
+                  >
+                    <Card className="hover:shadow-md transition-shadow h-full">
+                      <CardContent className="p-4">
+                        <div className="flex items-center mb-3">
+                          <Avatar className="h-8 w-8 mr-2">
+                            <AvatarImage src={comparison.person1.imageUrl || "/placeholder.svg"} alt={comparison.person1.name} />
+                            <AvatarFallback>{getInitials(comparison.person1.name)}</AvatarFallback>
+                          </Avatar>
+                          <div className="truncate flex-1">
+                            <p className="font-medium text-sm truncate">{comparison.person1.name}</p>
+                          </div>
+                        </div>
+                        
+                        <div className="flex justify-center my-1">
+                          <Badge variant="outline" className="text-xs">
+                            VS
+                          </Badge>
+                        </div>
+                        
+                        <div className="flex items-center mt-3">
+                          <Avatar className="h-8 w-8 mr-2">
+                            <AvatarImage src={comparison.person2.imageUrl || "/placeholder.svg"} alt={comparison.person2.name} />
+                            <AvatarFallback>{getInitials(comparison.person2.name)}</AvatarFallback>
+                          </Avatar>
+                          <div className="truncate flex-1">
+                            <p className="font-medium text-sm truncate">{comparison.person2.name}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+              
+              <div className="mt-6 text-center">
+                <Button 
+                  variant="outline" 
+                  onClick={() => navigate('/compare')}
+                >
+                  View More Comparisons
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </main>
 

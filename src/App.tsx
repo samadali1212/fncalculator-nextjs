@@ -74,6 +74,7 @@ const App = () => {
           {/* Salary comparison routes - add direct navigation to default comparison */}
           <Route path="/compare-salaries" element={<SalaryComparisonList />} />
           <Route path="/compare-salaries/:comparison" element={<CompareCelebritySalaries />} />
+          <Route path="/salary-comparison" element={<Navigate to="/compare-salaries" replace />} />
           
           <Route path="/categories" element={<StandaloneCategories />} />
           <Route path="/net-worth/:slug" element={<NetWorthDetail />} />

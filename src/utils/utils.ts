@@ -50,3 +50,15 @@ export const createComparisonUrl = (person1: string, person2: string, type: 'net
   }
   return `/compare/${person1}-vs-${person2}`;
 };
+
+/**
+ * Generate a random integer between min and max (inclusive)
+ * @param min Minimum value
+ * @param max Maximum value
+ * @returns Random integer
+ */
+export const getRandomInt = (min: number, max: number): number => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
