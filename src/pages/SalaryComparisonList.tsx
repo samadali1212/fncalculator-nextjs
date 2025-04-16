@@ -79,7 +79,7 @@ const SalaryComparisonList = () => {
   const hasMorePairs = displayedPairs.length < comparisonPairs.length;
   
   const loadMore = () => {
-    setItemsToShow(prevItemsToShow => prevItemsToShow + 20);
+    setItemsToShow(prevItemsToShow => prevItemsToShow + 100);
   };
 
   // Generate a random comparison
