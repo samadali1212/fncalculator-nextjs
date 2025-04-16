@@ -26,7 +26,7 @@ import {
 
 const NetWorthComparisonList = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [itemsToShow, setItemsToShow] = useState(20);
+  const [itemsToShow, setItemsToShow] = useState(100);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
