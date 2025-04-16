@@ -14,6 +14,7 @@ import NetWorth from "./pages/NetWorth";
 import NetWorthDetail from "./pages/NetWorthDetail";
 import CompareNetWorth from "./pages/CompareNetWorth";
 import CompareCelebritySalaries from "./pages/CompareCelebritySalaries";
+import SalaryComparisonList from "./pages/SalaryComparisonList";
 import NetWorthCategory from "./pages/NetWorthCategory";
 import StandaloneCategories from "./pages/StandaloneCategories";
 import StandaloneCelebrityCategories from "./pages/StandaloneCelebrityCategories";
@@ -71,10 +72,7 @@ const App = () => {
           <Route path="/compare/:person1/:person2" element={<CompareNetWorth />} />
           
           {/* Salary comparison routes - add direct navigation to default comparison */}
-          <Route 
-            path="/compare-salaries" 
-            element={<Navigate to={`/compare-salaries/${defaultCelebrityComparison}`} replace />} 
-          />
+          <Route path="/compare-salaries" element={<SalaryComparisonList />} />
           <Route path="/compare-salaries/:comparison" element={<CompareCelebritySalaries />} />
           
           <Route path="/categories" element={<StandaloneCategories />} />
