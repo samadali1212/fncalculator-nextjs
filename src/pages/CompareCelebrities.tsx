@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { 
@@ -26,7 +25,7 @@ interface Celebrity {
   occupation: string;
   company?: string;
   industry?: string;
-  image: string;
+  image?: string;
   bio?: string;
 }
 
@@ -170,7 +169,6 @@ const CelebrityComparison = () => {
   const getSalaryRatio = () => {
     if (!celebrity1 || !celebrity2) return 0;
     
-    // Avoid division by zero
     if (celebrity2.salary === 0) return Infinity;
     if (celebrity1.salary === 0) return 0;
     
@@ -206,7 +204,6 @@ const CelebrityComparison = () => {
     const richerOccupation = celebrity1.salary > celebrity2.salary ? celebrity1.occupation : celebrity2.occupation;
     const lesserOccupation = celebrity1.salary < celebrity2.salary ? celebrity1.occupation : celebrity2.occupation;
     
-    // Format the difference for display
     const formattedDifference = formatCurrency(difference, richerCurrency);
     
     let comparisonText = `According to our data, ${richerName} earns more than ${lesserName} with a salary of ${formatCurrency(richerSalary, richerCurrency)}. `;
@@ -254,7 +251,7 @@ const CelebrityComparison = () => {
             {searchResults.map((celeb) => (
               <li key={celeb.id} className="px-3 py-2 hover:bg-gray-100 cursor-pointer" onClick={() => selectCelebrity(celeb)}>
                 <div className="flex items-center">
-                  <img src={celeb.image} alt={celeb.name} className="w-10 h-10 rounded-full object-cover mr-3" />
+                  <img src={celeb.image || "/placeholder.svg"} alt={celeb.name} className="w-10 h-10 rounded-full object-cover mr-3" />
                   <div>
                     <div className="font-medium">{celeb.name}</div>
                     <div className="text-sm text-gray-500">
@@ -315,7 +312,7 @@ const CelebrityComparison = () => {
               <Card className="p-6 shadow-md">
                 <div className="flex flex-col items-center">
                   <img 
-                    src={celebrity1.image} 
+                    src={celebrity1.image || "/placeholder.svg"} 
                     alt={celebrity1.name} 
                     className="w-32 h-32 rounded-full object-cover mb-4" 
                   />
@@ -334,7 +331,7 @@ const CelebrityComparison = () => {
               <Card className="p-6 shadow-md">
                 <div className="flex flex-col items-center">
                   <img 
-                    src={celebrity2.image} 
+                    src={celebrity2.image || "/placeholder.svg"} 
                     alt={celebrity2.name} 
                     className="w-32 h-32 rounded-full object-cover mb-4" 
                   />
@@ -430,7 +427,7 @@ const CelebrityComparison = () => {
                   >
                     {celebrity1 ? (
                       <div className="flex items-center">
-                        <img src={celebrity1.image} alt={celebrity1.name} className="w-8 h-8 rounded-full mr-3" />
+                        <img src={celebrity1.image || "/placeholder.svg"} alt={celebrity1.name} className="w-8 h-8 rounded-full mr-3" />
                         <span>{celebrity1.name}</span>
                       </div>
                     ) : (
@@ -450,7 +447,7 @@ const CelebrityComparison = () => {
                   >
                     {celebrity2 ? (
                       <div className="flex items-center">
-                        <img src={celebrity2.image} alt={celebrity2.name} className="w-8 h-8 rounded-full mr-3" />
+                        <img src={celebrity2.image || "/placeholder.svg"} alt={celebrity2.name} className="w-8 h-8 rounded-full mr-3" />
                         <span>{celebrity2.name}</span>
                       </div>
                     ) : (
