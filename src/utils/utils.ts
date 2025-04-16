@@ -60,6 +60,7 @@ export const formatCurrency = (amount: number | string, currency: string = 'ZAR'
  * @returns Formatted URL string
  */
 export const createComparisonUrl = (person1: string, person2: string, type: 'networth' | 'salary' = 'networth'): string => {
+  // Fix: Return the correct URL based on the type parameter
   if (type === 'salary') {
     return `/compare-salaries/${person1}-vs-${person2}`;
   }

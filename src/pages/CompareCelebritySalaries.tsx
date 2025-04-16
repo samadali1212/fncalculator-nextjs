@@ -119,7 +119,7 @@ const CompareCelebritySalaries = () => {
   };
 
   const navigateToSEOUrl = (p1Slug: string, p2Slug: string) => {
-    navigate(createComparisonUrl(p1Slug, p2Slug), { replace: true });
+    navigate(createComparisonUrl(p1Slug, p2Slug, 'salary'), { replace: true });
   };
 
   const selectPerson = (person: Celebrity) => {
@@ -237,6 +237,12 @@ const CompareCelebritySalaries = () => {
     return formatCurrency(value, currency);
   };
 
+  const salaryDifferenceValue = getSalaryDifference();
+  const higherPaidPersonValue = getHigherPaidPerson();
+  const lowerPaidPersonValue = getLowerPaidPerson();
+  const percentageDifferenceValue = getSalaryDifferencePercentage();
+  const comparisonTextValue = generateComparisonText();
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-[#f6f6f0]">
@@ -263,7 +269,7 @@ const CompareCelebritySalaries = () => {
       <SEO
         title={person1 && person2 ? `${person1.name} vs ${person2.name} Salary - Who Earns More?` : "Salary Comparison"}
         description={person1 && person2 ? `Compare the salary of ${person1.name} (${formatSalary(person1.salary, person1.currency)}) and ${person2.name} (${formatSalary(person2.salary, person2.currency)}). Find out who earns more.` : "Compare the salaries of highly paid individuals."}
-        canonicalUrl={person1 && person2 ? `/compare/${person1.slug}-vs-${person2.slug}` : "/comparison"}
+        canonicalUrl={person1 && person2 ? `/compare-salaries/${person1.slug}-vs-${person2.slug}` : "/compare-salaries"}
       />
 
       <Header />
@@ -471,25 +477,25 @@ const CompareCelebritySalaries = () => {
 
                     <div className="bg-white p-4 rounded-lg border mb-4">
                       <div className="text-center">
-                        {salaryDifference === 0 ? (
+                        {salaryDifferenceValue === 0 ? (
                             <Badge className="mb-2" variant="secondary">Salaries are Equal</Badge>
                           ) : (
                             <Badge className="mb-2" variant="outline">
-                              {higherPaidPerson?.name} Earns More
+                              {higherPaidPersonValue?.name} Earns More
                             </Badge>
                           )}
 
-                        {salaryDifference === 0 ? (
+                        {salaryDifferenceValue === 0 ? (
                             <h3 className="text-lg font-bold mb-1">
                                 Both earn {formatSalary(person1.salary, person1.currency)}
                             </h3>
                           ) : (
                             <>
                               <h3 className="text-lg font-bold mb-1">
-                                {higherPaidPerson?.name} earns {formatSalary(salaryDifference, higherPaidPerson?.currency || "USD")} more
+                                {higherPaidPersonValue?.name} earns {formatSalary(salaryDifferenceValue, higherPaidPersonValue?.currency || "USD")} more
                               </h3>
                               <p className="text-gray-600">
-                                That's {percentageDifference}% more salary
+                                That's {percentageDifferenceValue}% more salary
                               </p>
                             </>
                           )}
@@ -498,7 +504,7 @@ const CompareCelebritySalaries = () => {
 
                     <div className="bg-white p-4 rounded-lg border mb-6">
                       <p className="text-gray-700 leading-relaxed">
-                        {comparisonText}
+                        {comparisonTextValue}
                       </p>
                     </div>
 
