@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { ArrowRight, ExternalLink } from "lucide-react";
@@ -33,6 +33,8 @@ interface RelatedComparisonsProps {
 }
 
 const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparisonsProps) => {
+  const navigate = useNavigate();
+  
   // Get initials for avatar fallback
   const getInitials = (name: string) => {
     return name
@@ -41,6 +43,12 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
       .join('')
       .toUpperCase()
       .substring(0, 2);
+  };
+
+  // Handle comparison click with navigate instead of relying on Link component
+  const handleComparisonClick = (e: React.MouseEvent, url: string) => {
+    e.preventDefault();
+    navigate(url);
   };
 
   if (comparisons.length === 0) {
@@ -83,6 +91,7 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
                       <Link 
                         to={`/${type === 'net-worth' ? 'net-worth' : 'celebrities'}/${comparison.person1.slug}`}
                         className="text-[#333] hover:underline text-base font-medium transition-colors hover:text-blog-accent flex items-center"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         {comparison.person1.name}
                         <ExternalLink className="h-3.5 w-3.5 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -117,6 +126,7 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
                       <Link 
                         to={`/${type === 'net-worth' ? 'net-worth' : 'celebrities'}/${comparison.person2.slug}`}
                         className="text-[#333] hover:underline text-base font-medium transition-colors hover:text-blog-accent flex items-center"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         {comparison.person2.name}
                         <ExternalLink className="h-3.5 w-3.5 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -128,12 +138,13 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
                   </div>
                 </TableCell>
                 <TableCell className="text-right">
-                  <Link 
-                    to={comparison.comparisonUrl}
-                    className="text-blog-accent hover:text-blog-accent-hover hover:underline transition-colors"
+                  <Button 
+                    variant="link" 
+                    className="text-blog-accent hover:text-blog-accent-hover hover:underline transition-colors p-0 h-auto"
+                    onClick={(e) => handleComparisonClick(e, comparison.comparisonUrl)}
                   >
                     Compare
-                  </Link>
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}
@@ -144,9 +155,9 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
       <div className="text-center">
         <Button 
           variant="outline" 
-          asChild
+          onClick={() => navigate(viewMoreLink)}
         >
-          <Link to={viewMoreLink}>View More Comparisons</Link>
+          View More Comparisons
         </Button>
       </div>
     </div>
