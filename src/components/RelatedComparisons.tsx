@@ -45,16 +45,17 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
       .substring(0, 2);
   };
 
-  // Handle comparison click with direct navigation
-  const handleComparisonClick = (url: string) => {
+  // Handle comparison click - using Link component instead of direct navigation
+  const handleComparisonClick = (e: React.MouseEvent, url: string) => {
+    e.preventDefault();
     console.log("Navigating to comparison URL:", url);
-    navigate(url);
+    window.location.href = url; // Force full page reload like other detail pages
   };
 
   // Handle view more click
   const handleViewMoreClick = () => {
     console.log("Navigating to view more URL:", viewMoreLink);
-    navigate(viewMoreLink);
+    window.location.href = viewMoreLink; // Force full page reload
   };
 
   if (comparisons.length === 0) {
@@ -81,10 +82,9 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
               <TableRow 
                 key={`${comparison.person1.id}-${comparison.person2.id}-${index}`} 
                 className="group cursor-pointer"
-                onClick={() => handleComparisonClick(comparison.comparisonUrl)}
               >
                 <TableCell className="text-gray-500 text-sm">{index + 1}</TableCell>
-                <TableCell onClick={(e) => e.stopPropagation()}>
+                <TableCell>
                   <div className="flex items-center">
                     <Avatar className="h-8 w-8 mr-3">
                       <AvatarImage 
@@ -98,14 +98,13 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
                     </Avatar>
                     
                     <div>
-                      <Link 
-                        to={`/${type === 'net-worth' ? 'net-worth' : 'celebrities'}/${comparison.person1.slug}`}
+                      <a 
+                        href={`/${type === 'net-worth' ? 'net-worth' : 'celebrities'}/${comparison.person1.slug}`}
                         className="text-[#333] hover:underline text-base font-medium transition-colors hover:text-blog-accent flex items-center"
-                        onClick={(e) => e.stopPropagation()}
                       >
                         {comparison.person1.name}
                         <ExternalLink className="h-3.5 w-3.5 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </Link>
+                      </a>
                       <div className="text-xs text-gray-500">
                         {comparison.person1.occupation || comparison.person1.industry || "Public Figure"}
                       </div>
@@ -119,7 +118,7 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
                     </div>
                   </div>
                 </TableCell>
-                <TableCell onClick={(e) => e.stopPropagation()}>
+                <TableCell>
                   <div className="flex items-center">
                     <Avatar className="h-8 w-8 mr-3">
                       <AvatarImage 
@@ -133,14 +132,13 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
                     </Avatar>
                     
                     <div>
-                      <Link 
-                        to={`/${type === 'net-worth' ? 'net-worth' : 'celebrities'}/${comparison.person2.slug}`}
+                      <a 
+                        href={`/${type === 'net-worth' ? 'net-worth' : 'celebrities'}/${comparison.person2.slug}`}
                         className="text-[#333] hover:underline text-base font-medium transition-colors hover:text-blog-accent flex items-center"
-                        onClick={(e) => e.stopPropagation()}
                       >
                         {comparison.person2.name}
                         <ExternalLink className="h-3.5 w-3.5 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </Link>
+                      </a>
                       <div className="text-xs text-gray-500">
                         {comparison.person2.occupation || comparison.person2.industry || "Public Figure"}
                       </div>
@@ -148,16 +146,13 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
                   </div>
                 </TableCell>
                 <TableCell className="text-right">
-                  <Button 
-                    variant="link" 
-                    className="text-blog-accent hover:text-blog-accent-hover hover:underline transition-colors p-0 h-auto"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleComparisonClick(comparison.comparisonUrl);
-                    }}
+                  <a 
+                    href={comparison.comparisonUrl}
+                    className="text-blog-accent hover:text-blog-accent-hover hover:underline transition-colors p-0 h-auto cursor-pointer"
+                    onClick={(e) => handleComparisonClick(e, comparison.comparisonUrl)}
                   >
                     Compare
-                  </Button>
+                  </a>
                 </TableCell>
               </TableRow>
             ))}
@@ -166,12 +161,16 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
       </div>
       
       <div className="text-center">
-        <Button 
-          variant="outline" 
-          onClick={handleViewMoreClick}
+        <a 
+          href={viewMoreLink}
+          className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+          onClick={(e) => {
+            e.preventDefault();
+            handleViewMoreClick();
+          }}
         >
           View More Comparisons
-        </Button>
+        </a>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate, useSearchParams, useParams, Link } from 'react-router-dom';
+import { useNavigate, useSearchParams, useParams, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import SEO from '../components/SEO';
 import ShareButton from '../components/ShareButton';
@@ -40,6 +40,18 @@ const CompareNetWorth = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const { person1: oldPerson1Slug, person2: oldPerson2Slug, comparison } = useParams();
+  const location = useLocation();
+  
+  useEffect(() => {
+    const handlePopState = () => {
+      window.location.reload();
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
   
   const [person1Slug, person2Slug] = comparison ? comparison.split('-vs-') : [null, null];
   
@@ -160,7 +172,8 @@ const CompareNetWorth = () => {
   
   const updateUrlParams = (p1: string | null, p2: string | null) => {
     if (p1 && p2) {
-      navigateToSEOUrl(p1, p2);
+      const newUrl = createComparisonUrl(p1, p2);
+      window.location.href = newUrl;
     } else {
       const params: Record<string, string> = {};
       if (p1) params.p1 = p1;
@@ -170,7 +183,8 @@ const CompareNetWorth = () => {
   };
   
   const navigateToSEOUrl = (p1: string, p2: string) => {
-    navigate(createComparisonUrl(p1, p2));
+    const url = createComparisonUrl(p1, p2);
+    window.location.href = url;
   };
   
   const selectPerson = (person: NetWorthPerson) => {
@@ -300,6 +314,11 @@ const CompareNetWorth = () => {
     );
   }
   
+  const handleBackClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.href = '/net-worth';
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -320,14 +339,14 @@ const CompareNetWorth = () => {
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
-              <Button 
-                variant="ghost" 
-                className="text-sm text-[#000000] hover:bg-white/60 mr-2"
-                onClick={() => navigate('/net-worth')}
+              <a 
+                href="/net-worth"
+                className="inline-flex items-center justify-center text-sm text-[#000000] hover:bg-white/60 mr-2 px-4 py-2 rounded-md"
+                onClick={handleBackClick}
               >
                 <ChevronLeft className="h-4 w-4 mr-1" />
                 Back to Net Worth List
-              </Button>
+              </a>
             </div>
             
             <ShareButton 

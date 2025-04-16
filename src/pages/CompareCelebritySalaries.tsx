@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import SEO from '../components/SEO';
 import ShareButton from '../components/ShareButton';
@@ -15,8 +15,6 @@ import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import AdSense from "../components/AdSense";
-import { Link } from 'react-router-dom';
-import { ExternalLink } from 'lucide-react';
 
 import { celebrities } from "../utils/celebrityData";
 import { formatCurrency, createComparisonUrl } from "../utils/utils";
@@ -42,6 +40,18 @@ const CompareCelebritySalaries = () => {
   const { comparison } = useParams<{ comparison: string }>();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  
+  useEffect(() => {
+    const handlePopState = () => {
+      window.location.reload();
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
   
   const [person1Slug, person2Slug] = comparison && comparison.includes('-vs-') 
     ? comparison.split('-vs-') 
@@ -120,7 +130,8 @@ const CompareCelebritySalaries = () => {
 
   const updateUrlParams = (p1: string | null, p2: string | null) => {
     if (p1 && p2) {
-      navigateToSEOUrl(p1, p2);
+      const newUrl = createComparisonUrl(p1, p2, 'salary');
+      window.location.href = newUrl;
     } else {
       const params: Record<string, string> = {};
       if (p1) params.p1 = p1;
@@ -131,8 +142,13 @@ const CompareCelebritySalaries = () => {
 
   const navigateToSEOUrl = (p1Slug: string, p2Slug: string) => {
     const url = createComparisonUrl(p1Slug, p2Slug, 'salary');
-    navigate(url);
+    window.location.href = url;
   };
+
+  const handleBackClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.href = '/celebrities';
+  }
 
   const getSalaryDifferencePercentage = () => {
     if (!person1 || !person2) return 0;
@@ -354,14 +370,14 @@ const CompareCelebritySalaries = () => {
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
-              <Button
-                variant="ghost"
-                className="text-sm text-[#000000] hover:bg-white/60 mr-2"
-                onClick={() => navigate('/celebrities')}
+              <a
+                href="/celebrities"
+                className="inline-flex items-center justify-center text-sm text-[#000000] hover:bg-white/60 mr-2 px-4 py-2 rounded-md"
+                onClick={handleBackClick}
               >
                 <ChevronLeft className="h-4 w-4 mr-1" />
                 Back to Celebrity List
-              </Button>
+              </a>
             </div>
 
             <ShareButton
