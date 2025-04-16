@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useSearchParams, useParams, useLocation, Link } from 'react-router-dom';
+import { usePageReload } from '../hooks/usePageReload';
 import Header from '../components/Header';
 import SEO from '../components/SEO';
 import ShareButton from '../components/ShareButton';
@@ -42,17 +42,7 @@ const CompareNetWorth = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { person1: oldPerson1Slug, person2: oldPerson2Slug, comparison } = useParams();
   const location = useLocation();
-  
-  useEffect(() => {
-    const handlePopState = () => {
-      window.location.reload();
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-    };
-  }, []);
+  const { pageKey, isLoading, setIsLoading } = usePageReload();
   
   const [person1Slug, person2Slug] = comparison ? comparison.split('-vs-') : [null, null];
   
@@ -63,11 +53,11 @@ const CompareNetWorth = () => {
     person2Slug || oldPerson2Slug || searchParams.get("p2")
   );
   const [person1, setPerson1] = useState<NetWorthPerson | null>(null);
-  const [person2, setPerson2] = useState<NetWorthPerson | null>(null);
+  const [person2, setPerson2] = useState<NetW WorthPerson | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<NetWorthPerson[]>([]);
   const [activePersonSelect, setActivePersonSelect] = useState<'p1' | 'p2' | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [localLoading, setLocalLoading] = useState(true);
   const [relatedComparisons, setRelatedComparisons] = useState<{person1: NetWorthPerson, person2: NetWorthPerson}[]>([]);
   
   const allPeople = netWorthPeople;
@@ -77,6 +67,9 @@ const CompareNetWorth = () => {
   };
   
   useEffect(() => {
+    setLocalLoading(true);
+    setIsLoading(true);
+    
     if (person1Id) {
       const found = findPersonBySlug(person1Id);
       if (found) setPerson1(found);
@@ -100,11 +93,13 @@ const CompareNetWorth = () => {
     }
     
     const timer = setTimeout(() => {
+      setLocalLoading(false);
       setIsLoading(false);
+      window.scrollTo(0, 0);
     }, 800);
     
     return () => clearTimeout(timer);
-  }, [person1Id, person2Id]);
+  }, [person1Id, person2Id, comparison, pageKey]);
   
   useEffect(() => {
     if (person1 && person2) {
@@ -284,7 +279,7 @@ const CompareNetWorth = () => {
   const percentageDifference = getWealthDifferencePercentage();
   const comparisonText = generateComparisonText();
   
-  if (isLoading) {
+  if (isLoading || localLoading) {
     return (
       <div className="min-h-screen bg-[#f6f6f0]">
         <Header />

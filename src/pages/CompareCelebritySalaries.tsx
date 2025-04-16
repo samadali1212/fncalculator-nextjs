@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, useNavigate, useSearchParams, useLocation, Link } from 'react-router-dom';
+import { usePageReload } from '../hooks/usePageReload';
 import Header from '../components/Header';
 import SEO from '../components/SEO';
 import ShareButton from '../components/ShareButton';
@@ -42,17 +42,7 @@ const CompareCelebritySalaries = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
-  
-  useEffect(() => {
-    const handlePopState = () => {
-      window.location.reload();
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-    };
-  }, []);
+  const { pageKey, isLoading, setIsLoading } = usePageReload();
   
   const [person1Slug, person2Slug] = comparison && comparison.includes('-vs-') 
     ? comparison.split('-vs-') 
@@ -68,7 +58,7 @@ const CompareCelebritySalaries = () => {
   const [person2, setPerson2] = useState<Celebrity | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<Celebrity[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [localLoading, setLocalLoading] = useState(true);
 
   const allPeople: Celebrity[] = celebrities;
 
@@ -77,7 +67,9 @@ const CompareCelebritySalaries = () => {
   };
 
   useEffect(() => {
+    setLocalLoading(true);
     setIsLoading(true);
+    
     let foundP1: Celebrity | null = null;
     let foundP2: Celebrity | null = null;
 
@@ -106,28 +98,13 @@ const CompareCelebritySalaries = () => {
     }
 
     const timer = setTimeout(() => {
+      setLocalLoading(false);
       setIsLoading(false);
+      window.scrollTo(0, 0);
     }, 800);
 
     return () => clearTimeout(timer);
-  }, [person1Id, person2Id, comparison]);
-
-  useEffect(() => {
-    if (searchTerm.length > 1) {
-      const results = allPeople
-        .filter(person =>
-          person.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          person.occupation.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          person.industry.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          (person.company && person.company.toLowerCase().includes(searchTerm.toLowerCase()))
-        )
-        .slice(0, 5);
-
-      setSearchResults(results);
-    } else {
-      setSearchResults([]);
-    }
-  }, [searchTerm, allPeople]);
+  }, [person1Id, person2Id, comparison, pageKey]);
 
   const updateUrlParams = (p1: string | null, p2: string | null) => {
     if (p1 && p2) {
@@ -316,7 +293,7 @@ const CompareCelebritySalaries = () => {
   
   const relatedComparisons = generateRelatedComparisons();
 
-  if (isLoading) {
+  if (isLoading || localLoading) {
     return (
       <div className="min-h-screen bg-[#f6f6f0]">
         <Header />
