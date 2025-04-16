@@ -597,17 +597,17 @@ const CompareCelebritySalaries = () => {
                     </TableBody>
                   </Table>
                 </div>
-
-                {relatedComparisons.length > 0 && (
-                  <RelatedComparisons 
-                    comparisons={relatedComparisons}
-                    type="salary"
-                    viewMoreLink="/compare-salaries"
-                  />
-                )}
               </>
             )}
           </div>
+
+          {person1 && person2 && relatedComparisons.length > 0 && (
+            <RelatedComparisons 
+              comparisons={relatedComparisons}
+              type="salary"
+              viewMoreLink="/compare-salaries"
+            />
+          )}
         </div>
       </main>
 
