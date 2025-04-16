@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -16,12 +15,24 @@ import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import AdSense from "../components/AdSense";
 import { 
-  getAllNetWorthPeople,
-  findPersonById,
-  findPersonBySlug,
+  netWorthPeople,
   formatNetWorth,
-  NetWorthPerson
 } from "../utils/netWorthData";
+
+interface NetWorthPerson {
+  id: string;
+  slug: string;
+  name: string;
+  netWorth: number;
+  currency: string;
+  occupation: string;
+  industry: string;
+  company?: string;
+  country: string;
+  age: number;
+  description: string;
+  imageUrl?: string;
+}
 
 const CompareNetWorth = () => {
   const navigate = useNavigate();
@@ -35,9 +46,12 @@ const CompareNetWorth = () => {
   const [activePersonSelect, setActivePersonSelect] = useState<'p1' | 'p2' | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   
-  const allPeople = getAllNetWorthPeople();
+  const allPeople = netWorthPeople;
   
-  // Load people data based on URL params
+  const findPersonBySlug = (slug: string): NetWorthPerson | null => {
+    return allPeople.find(person => person.slug === slug) || null;
+  };
+  
   useEffect(() => {
     if (person1Id) {
       const found = findPersonBySlug(person1Id);
@@ -49,7 +63,6 @@ const CompareNetWorth = () => {
       if (found) setPerson2(found);
     }
     
-    // Default to the first two people if none are specified
     if (!person1Id && !person2Id && allPeople.length >= 2) {
       setPerson1(allPeople[0]);
       setPerson2(allPeople[1]);
@@ -69,7 +82,6 @@ const CompareNetWorth = () => {
     return () => clearTimeout(timer);
   }, [person1Id, person2Id]);
   
-  // Handle search
   useEffect(() => {
     if (searchTerm.length > 1) {
       const results = allPeople
@@ -86,7 +98,6 @@ const CompareNetWorth = () => {
     }
   }, [searchTerm]);
   
-  // Update URL params when people change
   const updateSearchParams = (p1: string | null, p2: string | null) => {
     const params: Record<string, string> = {};
     if (p1) params.p1 = p1;
@@ -94,7 +105,6 @@ const CompareNetWorth = () => {
     setSearchParams(params);
   };
   
-  // Handle selection of a person
   const selectPerson = (person: NetWorthPerson) => {
     if (activePersonSelect === 'p1') {
       setPerson1(person);
@@ -226,9 +236,7 @@ const CompareNetWorth = () => {
                 : "Select two individuals to compare their wealth."}
             </p>
             
-            {/* Comparison Selection */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              {/* Person 1 Selector */}
               <Dialog open={activePersonSelect === 'p1'} onOpenChange={(open) => !open && setActivePersonSelect(null)}>
                 <DialogTrigger asChild>
                   <Card className="cursor-pointer hover:shadow-md transition-shadow">
@@ -305,7 +313,6 @@ const CompareNetWorth = () => {
                 </DialogContent>
               </Dialog>
 
-              {/* Person 2 Selector */}
               <Dialog open={activePersonSelect === 'p2'} onOpenChange={(open) => !open && setActivePersonSelect(null)}>
                 <DialogTrigger asChild>
                   <Card className="cursor-pointer hover:shadow-md transition-shadow">
@@ -385,7 +392,6 @@ const CompareNetWorth = () => {
             
             {person1 && person2 && (
               <>
-                {/* Result Card */}
                 <Card className="mb-8 bg-gray-50">
                   <CardContent className="p-6">
                     <h2 className="text-xl font-bold text-center mb-6">Comparison Results</h2>
@@ -423,7 +429,6 @@ const CompareNetWorth = () => {
                   <AdSense slot="9889084223" format="auto" className="py-3" />
                 </div>
                 
-                {/* Detailed Comparison */}
                 <div className="mb-8">
                   <h3 className="text-xl font-bold mb-4">Detailed Comparison</h3>
                   <Table>
@@ -469,7 +474,6 @@ const CompareNetWorth = () => {
                   </Table>
                 </div>
                 
-                {/* Description Section */}
                 <div className="mb-8">
                   <h3 className="text-xl font-bold mb-4">About {person1.name} and {person2.name}</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -487,7 +491,6 @@ const CompareNetWorth = () => {
             )}
           </div>
           
-          {/* SEO Content */}
           <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm">
             <h2 className="text-xl font-bold mb-4">Compare Net Worth of Wealthy Individuals</h2>
             <p className="mb-4 text-gray-700">
