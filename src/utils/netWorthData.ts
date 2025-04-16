@@ -3611,7 +3611,7 @@ export const categoryDefinitions: Record<string, CategoryMetadata> = {
     title: "50 Richest Musicians in South Africa",
     description: "South Africa has no shortage of musical legends. From jazz and gospel to pop and soul, these artists didn’t just create unforgettable songs—they turned their talent into serious money. Here’s a look at some of the richest musicians in South Africa and how they made it happen.",
     slug: "richest-musicians-in-south-africa",
-    imageUrl: "https://cms.groupeditors.com/img/4343267c-8f24-43cf-9441-1cef04ab21a5.jpg"
+    imageUrl: "https://media.cnn.com/api/v1/images/stellar/prod/201016111353-avcm-master-kg.jpg?q=w_1280,h_853,x_0,y_0,c_fill"
   },
 };
 
