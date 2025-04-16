@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ExternalLink, ArrowRight } from "lucide-react";
@@ -32,7 +31,6 @@ const NetWorthComparisonList = () => {
   const [featuredComparisons, setFeaturedComparisons] = useState<{person1: any, person2: any, comparisonUrl: string}[]>([]);
   const navigate = useNavigate();
 
-  // Get initials for avatar fallback
   const getInitials = (name: string) => {
     return name
       .split(' ')
@@ -42,11 +40,9 @@ const NetWorthComparisonList = () => {
       .substring(0, 2);
   };
 
-  // Generate comparison pairs (all possible pairs)
   const generateComparisonPairs = () => {
     const pairs = [];
     
-    // Filter people based on search query
     const filteredPeople = netWorthPeople.filter(person => {
       return searchQuery 
         ? person.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -54,7 +50,6 @@ const NetWorthComparisonList = () => {
         : true;
     });
     
-    // Generate all possible combinations
     for (let i = 0; i < filteredPeople.length; i++) {
       for (let j = i + 1; j < filteredPeople.length; j++) {
         pairs.push({
@@ -68,20 +63,17 @@ const NetWorthComparisonList = () => {
       }
     }
     
-    // Sort pairs by combined net worth (descending)
     return pairs.sort((a, b) => 
       ((b.person1.netWorth || 0) + (b.person2.netWorth || 0)) - 
       ((a.person1.netWorth || 0) + (a.person2.netWorth || 0))
     );
   };
-  
-  // Generate featured comparisons when the component mounts
+
   useEffect(() => {
     if (netWorthPeople.length >= 8) {
       const shuffled = [...netWorthPeople].sort(() => 0.5 - Math.random());
       const featured = [];
       
-      // Create 4 random comparison pairs
       for (let i = 0; i < 4; i++) {
         if (i * 2 + 1 < shuffled.length) {
           featured.push({
@@ -98,7 +90,7 @@ const NetWorthComparisonList = () => {
       setFeaturedComparisons(featured);
     }
   }, []);
-  
+
   const comparisonPairs = generateComparisonPairs();
   const displayedPairs = comparisonPairs.slice(0, itemsToShow);
   const hasMorePairs = displayedPairs.length < comparisonPairs.length;
@@ -107,19 +99,15 @@ const NetWorthComparisonList = () => {
     setItemsToShow(prevItemsToShow => prevItemsToShow + 20);
   };
 
-  // Generate a random comparison
   const generateRandomComparison = () => {
     if (netWorthPeople.length < 2) return;
     
-    // Select two random people
     const shuffled = [...netWorthPeople].sort(() => 0.5 - Math.random());
     const randomPair = shuffled.slice(0, 2);
     
-    // Navigate to the comparison page
     navigate(createComparisonUrl(randomPair[0].slug, randomPair[1].slug));
   };
 
-  // Simulate loading state
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -299,12 +287,11 @@ const NetWorthComparisonList = () => {
           </div>
         )}
         
-        {/* Featured Comparisons Section */}
         {featuredComparisons.length > 0 && searchQuery === "" && (
           <div className="mt-12">
             <RelatedComparisons 
               comparisons={featuredComparisons}
-              type="networth"
+              type="net-worth"
               viewMoreLink="/compare"
             />
           </div>
