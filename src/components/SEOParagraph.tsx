@@ -29,7 +29,7 @@ const SEOParagraph: React.FC<SEOParagraphProps> = ({ branchCode, bank }) => {
     return (
       <div className="prose max-w-none mb-8 text-gray-700">
         <p>
-          If you are looking for {bank.name} branch codes, Sassa Insider provides a comprehensive 
+          If you are looking for {bank.name} branch codes, SalaryList provides a comprehensive 
           list of all {bank.name} branch codes to facilitate your banking transactions. {bank.description} With our up-to-date database, 
           you can easily find the correct branch code for any {bank.name} location across South Africa, 
           whether you need it for EFT transfers, debit orders, or other banking activities.
