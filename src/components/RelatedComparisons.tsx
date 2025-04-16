@@ -45,13 +45,15 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
       .substring(0, 2);
   };
 
-  // Handle comparison click with navigate
+  // Handle comparison click with direct navigation
   const handleComparisonClick = (url: string) => {
+    console.log("Navigating to comparison URL:", url);
     navigate(url);
   };
 
   // Handle view more click
   const handleViewMoreClick = () => {
+    console.log("Navigating to view more URL:", viewMoreLink);
     navigate(viewMoreLink);
   };
 
@@ -76,9 +78,13 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
           </TableHeader>
           <TableBody>
             {comparisons.map((comparison, index) => (
-              <TableRow key={`${comparison.person1.id}-${comparison.person2.id}-${index}`} className="group">
+              <TableRow 
+                key={`${comparison.person1.id}-${comparison.person2.id}-${index}`} 
+                className="group cursor-pointer"
+                onClick={() => handleComparisonClick(comparison.comparisonUrl)}
+              >
                 <TableCell className="text-gray-500 text-sm">{index + 1}</TableCell>
-                <TableCell>
+                <TableCell onClick={(e) => e.stopPropagation()}>
                   <div className="flex items-center">
                     <Avatar className="h-8 w-8 mr-3">
                       <AvatarImage 
@@ -113,7 +119,7 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
                     </div>
                   </div>
                 </TableCell>
-                <TableCell>
+                <TableCell onClick={(e) => e.stopPropagation()}>
                   <div className="flex items-center">
                     <Avatar className="h-8 w-8 mr-3">
                       <AvatarImage 
@@ -145,7 +151,10 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
                   <Button 
                     variant="link" 
                     className="text-blog-accent hover:text-blog-accent-hover hover:underline transition-colors p-0 h-auto"
-                    onClick={() => handleComparisonClick(comparison.comparisonUrl)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleComparisonClick(comparison.comparisonUrl);
+                    }}
                   >
                     Compare
                   </Button>
