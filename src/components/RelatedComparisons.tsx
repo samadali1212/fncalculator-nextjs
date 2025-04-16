@@ -35,6 +35,12 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
       .substring(0, 2);
   };
 
+  // Handle comparison click to ensure proper page reload
+  const handleComparisonClick = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
+    e.preventDefault();
+    window.location.href = url;
+  };
+
   if (comparisons.length === 0) {
     return null;
   }
@@ -45,9 +51,10 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {comparisons.map((comparison, index) => (
-          <Link 
+          <a 
             key={`${comparison.person1.id}-${comparison.person2.id}-${index}`}
-            to={comparison.comparisonUrl}
+            href={comparison.comparisonUrl}
+            onClick={(e) => handleComparisonClick(e, comparison.comparisonUrl)}
             className="block"
           >
             <Card className="hover:shadow-md transition-shadow h-full">
@@ -79,16 +86,16 @@ const RelatedComparisons = ({ comparisons, type, viewMoreLink }: RelatedComparis
                 </div>
               </CardContent>
             </Card>
-          </Link>
+          </a>
         ))}
       </div>
       
       <div className="mt-6 text-center">
         <Button 
           variant="outline" 
-          onClick={() => {}}
+          onClick={() => window.location.href = viewMoreLink}
         >
-          <Link to={viewMoreLink}>View More Comparisons</Link>
+          View More Comparisons
         </Button>
       </div>
     </div>
