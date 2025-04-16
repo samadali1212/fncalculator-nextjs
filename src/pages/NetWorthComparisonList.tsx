@@ -6,7 +6,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "@/components/ui/pagination";
 import SEO from '../components/SEO';
-import { celebrities } from '../utils/celebrityData';
+import { netWorthPeople } from '../utils/netWorthData';
 import { createComparisonUrl, getRandomInt } from '../utils/utils';
 
 const NetWorthComparisonList = () => {
@@ -15,37 +15,37 @@ const NetWorthComparisonList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
 
-  // Filter celebrities based on search term
-  const filteredCelebrities = celebrities.filter(celebrity => 
-    celebrity.name.toLowerCase().includes(searchTerm.toLowerCase())
+  // Filter people based on search term
+  const filteredPeople = netWorthPeople.filter(person => 
+    person.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Get current page's data
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentCelebrities = filteredCelebrities.slice(indexOfFirstItem, indexOfLastItem);
+  const currentPeople = filteredPeople.slice(indexOfFirstItem, indexOfLastItem);
 
   // Handle navigating to a comparison
-  const handleCompare = (celebrity1: string, celebrity2: string) => {
-    navigate(`/compare/${celebrity1}-vs-${celebrity2}`);
+  const handleCompare = (person1: string, person2: string) => {
+    navigate(`/compare/${person1}-vs-${person2}`);
   };
 
-  // Generate a random comparison between two celebrities
+  // Generate a random comparison between two people
   const handleRandomComparison = () => {
-    if (celebrities.length < 2) return;
+    if (netWorthPeople.length < 2) return;
     
-    const index1 = getRandomInt(0, celebrities.length - 1);
-    let index2 = getRandomInt(0, celebrities.length - 1);
+    const index1 = getRandomInt(0, netWorthPeople.length - 1);
+    let index2 = getRandomInt(0, netWorthPeople.length - 1);
     
-    // Ensure we don't compare the same celebrity
+    // Ensure we don't compare the same person
     while (index1 === index2) {
-      index2 = getRandomInt(0, celebrities.length - 1);
+      index2 = getRandomInt(0, netWorthPeople.length - 1);
     }
     
-    const celebrity1 = celebrities[index1].slug;
-    const celebrity2 = celebrities[index2].slug;
+    const person1 = netWorthPeople[index1].slug;
+    const person2 = netWorthPeople[index2].slug;
     
-    navigate(`/compare/${celebrity1}-vs-${celebrity2}`);
+    navigate(`/compare/${person1}-vs-${person2}`);
   };
 
   return (
@@ -60,7 +60,7 @@ const NetWorthComparisonList = () => {
       
       <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
         <p className="text-gray-700 mb-4">
-          Select any two celebrities or wealthy individuals from our database to compare their net worth. 
+          Select any two wealthy individuals from our database to compare their net worth. 
           See the differences in wealth, income sources, and more.
         </p>
         
@@ -71,7 +71,7 @@ const NetWorthComparisonList = () => {
             </div>
             <input
               type="text"
-              placeholder="Search celebrities..."
+              placeholder="Search by name..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
@@ -83,7 +83,7 @@ const NetWorthComparisonList = () => {
           </Button>
         </div>
         
-        {/* Table of celebrities */}
+        {/* Table of wealthy individuals */}
         <div className="overflow-x-auto rounded-md border">
           <Table>
             <TableHeader>
@@ -95,26 +95,26 @@ const NetWorthComparisonList = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {currentCelebrities.map(celebrity => (
-                <TableRow key={celebrity.id}>
+              {currentPeople.map(person => (
+                <TableRow key={person.id}>
                   <TableCell>
-                    <div className="font-medium">{celebrity.name}</div>
+                    <div className="font-medium">{person.name}</div>
                   </TableCell>
-                  <TableCell>${celebrity.netWorth?.toLocaleString() || 'Unknown'}</TableCell>
-                  <TableCell>{celebrity.occupation || 'Celebrity'}</TableCell>
+                  <TableCell>${person.netWorth?.toLocaleString() || 'Unknown'}</TableCell>
+                  <TableCell>{person.occupation || 'Celebrity'}</TableCell>
                   <TableCell className="text-right">
                     <Button
                       variant="outline"
                       size="sm"
                       onClick={() => {
-                        // Find a random celebrity to compare with
-                        let randomIndex = getRandomInt(0, celebrities.length - 1);
-                        // Ensure it's not the same celebrity
-                        while (celebrities[randomIndex].id === celebrity.id) {
-                          randomIndex = getRandomInt(0, celebrities.length - 1);
+                        // Find a random person to compare with
+                        let randomIndex = getRandomInt(0, netWorthPeople.length - 1);
+                        // Ensure it's not the same person
+                        while (netWorthPeople[randomIndex].id === person.id) {
+                          randomIndex = getRandomInt(0, netWorthPeople.length - 1);
                         }
                         
-                        handleCompare(celebrity.slug, celebrities[randomIndex].slug);
+                        handleCompare(person.slug, netWorthPeople[randomIndex].slug);
                       }}
                     >
                       Compare
@@ -127,10 +127,10 @@ const NetWorthComparisonList = () => {
         </div>
         
         {/* Pagination */}
-        {filteredCelebrities.length > itemsPerPage && (
+        {filteredPeople.length > itemsPerPage && (
           <Pagination className="mt-6">
             <PaginationContent>
-              {Array.from({ length: Math.ceil(filteredCelebrities.length / itemsPerPage) }).map((_, index) => (
+              {Array.from({ length: Math.ceil(filteredPeople.length / itemsPerPage) }).map((_, index) => (
                 <PaginationItem key={index}>
                   <PaginationLink
                     isActive={currentPage === index + 1}
@@ -148,17 +148,17 @@ const NetWorthComparisonList = () => {
       <div className="bg-white rounded-lg shadow-sm p-6">
         <h2 className="text-xl font-bold mb-4">Popular Net Worth Comparisons</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {celebrities.slice(0, 6).map((celebrity, index) => {
-            // Get the next celebrity for comparison, or the first one if we're at the end
-            const nextCelebrity = celebrities[(index + 1) % celebrities.length];
+          {netWorthPeople.slice(0, 6).map((person, index) => {
+            // Get the next person for comparison, or the first one if we're at the end
+            const nextPerson = netWorthPeople[(index + 1) % netWorthPeople.length];
             
             return (
               <div 
-                key={celebrity.id} 
+                key={person.id} 
                 className="p-4 border rounded-md hover:shadow-md transition-shadow cursor-pointer"
-                onClick={() => handleCompare(celebrity.slug, nextCelebrity.slug)}
+                onClick={() => handleCompare(person.slug, nextPerson.slug)}
               >
-                <p className="font-medium text-center">{celebrity.name} vs {nextCelebrity.name}</p>
+                <p className="font-medium text-center">{person.name} vs {nextPerson.name}</p>
               </div>
             );
           })}
