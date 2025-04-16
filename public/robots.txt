@@ -1,8 +1,8 @@
-# Sassa Insider Robots.txt
+# SalaryList Robots.txt
  User-agent: *
  Allow: /
  
- Sitemap: https://sassainsider.co.za/sitemap.xml
+ Sitemap: https://salarylist.co.za/sitemap.xml
  
  # Allow crawling of important directories
  User-agent: Googlebot
