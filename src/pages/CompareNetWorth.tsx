@@ -1,10 +1,9 @@
-
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import Header from "../components/Header";
-import SEO from "../components/SEO";
-import ShareButton from "../components/ShareButton";
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { useNavigate, useSearchParams, useParams } from 'react-router-dom';
+import Header from '../components/Header';
+import SEO from '../components/SEO';
+import ShareButton from '../components/ShareButton';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, TrendingUp, TrendingDown, Activity, User, MapPin, Building, Banknote, Search } from "lucide-react";
@@ -16,18 +15,39 @@ import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import AdSense from "../components/AdSense";
 import { 
-  getAllNetWorthPeople,
-  findPersonById,
-  findPersonBySlug,
+  netWorthPeople,
   formatNetWorth,
-  NetWorthPerson
 } from "../utils/netWorthData";
+import { createComparisonUrl } from "../utils/utils";
+
+interface NetWorthPerson {
+  id: string;
+  slug: string;
+  name: string;
+  netWorth: number;
+  currency: string;
+  occupation: string;
+  industry: string;
+  company?: string;
+  country: string;
+  age: number;
+  description: string;
+  imageUrl?: string;
+}
 
 const CompareNetWorth = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [person1Id, setPerson1Id] = useState<string | null>(searchParams.get("p1"));
-  const [person2Id, setPerson2Id] = useState<string | null>(searchParams.get("p2"));
+  const { person1: oldPerson1Slug, person2: oldPerson2Slug, comparison } = useParams();
+  
+  const [person1Slug, person2Slug] = comparison ? comparison.split('-vs-') : [null, null];
+  
+  const [person1Id, setPerson1Id] = useState<string | null>(
+    person1Slug || oldPerson1Slug || searchParams.get("p1")
+  );
+  const [person2Id, setPerson2Id] = useState<string | null>(
+    person2Slug || oldPerson2Slug || searchParams.get("p2")
+  );
   const [person1, setPerson1] = useState<NetWorthPerson | null>(null);
   const [person2, setPerson2] = useState<NetWorthPerson | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,9 +55,12 @@ const CompareNetWorth = () => {
   const [activePersonSelect, setActivePersonSelect] = useState<'p1' | 'p2' | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   
-  const allPeople = getAllNetWorthPeople();
+  const allPeople = netWorthPeople;
   
-  // Load people data based on URL params
+  const findPersonBySlug = (slug: string): NetWorthPerson | null => {
+    return allPeople.find(person => person.slug === slug) || null;
+  };
+  
   useEffect(() => {
     if (person1Id) {
       const found = findPersonBySlug(person1Id);
@@ -49,17 +72,16 @@ const CompareNetWorth = () => {
       if (found) setPerson2(found);
     }
     
-    // Default to the first two people if none are specified
     if (!person1Id && !person2Id && allPeople.length >= 2) {
       setPerson1(allPeople[0]);
       setPerson2(allPeople[1]);
-      setSearchParams({ p1: allPeople[0].slug, p2: allPeople[1].slug });
+      navigateToSEOUrl(allPeople[0].slug, allPeople[1].slug);
     } else if (!person1Id && allPeople.length >= 1) {
       setPerson1(allPeople[0]);
-      updateSearchParams(allPeople[0].slug, person2Id);
+      updateUrlParams(allPeople[0].slug, person2Id);
     } else if (!person2Id && allPeople.length >= 2) {
       setPerson2(allPeople[1]);
-      updateSearchParams(person1Id, allPeople[1].slug);
+      updateUrlParams(person1Id, allPeople[1].slug);
     }
     
     const timer = setTimeout(() => {
@@ -69,7 +91,6 @@ const CompareNetWorth = () => {
     return () => clearTimeout(timer);
   }, [person1Id, person2Id]);
   
-  // Handle search
   useEffect(() => {
     if (searchTerm.length > 1) {
       const results = allPeople
@@ -86,22 +107,36 @@ const CompareNetWorth = () => {
     }
   }, [searchTerm]);
   
-  // Update URL params when people change
-  const updateSearchParams = (p1: string | null, p2: string | null) => {
-    const params: Record<string, string> = {};
-    if (p1) params.p1 = p1;
-    if (p2) params.p2 = p2;
-    setSearchParams(params);
+  const updateUrlParams = (p1: string | null, p2: string | null) => {
+    if (p1 && p2) {
+      navigateToSEOUrl(p1, p2);
+    } else {
+      const params: Record<string, string> = {};
+      if (p1) params.p1 = p1;
+      if (p2) params.p2 = p2;
+      setSearchParams(params);
+    }
   };
   
-  // Handle selection of a person
+  const navigateToSEOUrl = (p1: string, p2: string) => {
+    navigate(createComparisonUrl(p1, p2));
+  };
+  
   const selectPerson = (person: NetWorthPerson) => {
     if (activePersonSelect === 'p1') {
       setPerson1(person);
-      updateSearchParams(person.slug, person2Id);
+      if (person2) {
+        navigateToSEOUrl(person.slug, person2.slug);
+      } else {
+        updateUrlParams(person.slug, person2Id);
+      }
     } else if (activePersonSelect === 'p2') {
       setPerson2(person);
-      updateSearchParams(person1Id, person.slug);
+      if (person1) {
+        navigateToSEOUrl(person1.slug, person.slug);
+      } else {
+        updateUrlParams(person1Id, person.slug);
+      }
     }
     
     setActivePersonSelect(null);
@@ -130,6 +165,11 @@ const CompareNetWorth = () => {
     if (!person1 || !person2) return null;
     return person1.netWorth > person2.netWorth ? person1 : person2;
   };
+
+  const getPoorerPerson = () => {
+    if (!person1 || !person2) return null;
+    return person1.netWorth < person2.netWorth ? person1 : person2;
+  };
   
   const getInitials = (name: string) => {
     return name
@@ -139,10 +179,44 @@ const CompareNetWorth = () => {
       .toUpperCase()
       .substring(0, 2);
   };
+
+  const generateComparisonText = () => {
+    if (!person1 || !person2) return "";
+    
+    const richer = getRicherPerson();
+    const poorer = getPoorerPerson();
+    const difference = getWealthDifference();
+    const percentage = getWealthDifferencePercentage();
+    
+    let text = `${richer?.name} is richer than ${poorer?.name} with a net worth of ${formatNetWorth(richer?.netWorth || 0, richer?.currency || "USD")}. `;
+    
+    text += `This is ${formatNetWorth(difference, richer?.currency || "USD")} or ${percentage}% more than ${poorer?.name}'s net worth of ${formatNetWorth(poorer?.netWorth || 0, poorer?.currency || "USD")}. `;
+    
+    if (richer?.industry === poorer?.industry) {
+      text += `Both individuals made their fortune in the ${richer?.industry} industry. `;
+    } else {
+      text += `While ${richer?.name} made their fortune in the ${richer?.industry} industry, ${poorer?.name} accumulated wealth in the ${poorer?.industry} sector. `;
+    }
+    
+    if (richer?.country === poorer?.country) {
+      text += `Both are from ${richer?.country}. `;
+    } else {
+      text += `${richer?.name} is from ${richer?.country}, while ${poorer?.name} is from ${poorer?.country}. `;
+    }
+    
+    const ageDiff = Math.abs(richer?.age - (poorer?.age || 0));
+    if (ageDiff > 0) {
+      text += `There is a ${ageDiff} year age difference between them, with ${richer?.name} being ${richer?.age > (poorer?.age || 0) ? 'older' : 'younger'}. `;
+    }
+    
+    return text;
+  };
   
   const richerPerson = getRicherPerson();
+  const poorerPerson = getPoorerPerson();
   const wealthDifference = getWealthDifference();
   const percentageDifference = getWealthDifferencePercentage();
+  const comparisonText = generateComparisonText();
   
   if (isLoading) {
     return (
@@ -184,9 +258,9 @@ const CompareNetWorth = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={person1 && person2 ? `${person1.name} vs ${person2.name} - Net Worth Comparison` : "Wealth Comparison"}
-        description={person1 && person2 ? `Compare the net worth of ${person1.name} (${formatNetWorth(person1.netWorth, person1.currency)}) and ${person2.name} (${formatNetWorth(person2.netWorth, person2.currency)}). See who is richer by how much.` : "Compare the net worth of wealthy individuals."}
-        canonicalUrl={"/comparison"}
+        title={person1 && person2 ? `${person1.name} vs ${person2.name} Net Worth - Who is Richer?` : "Wealth Comparison"}
+        description={person1 && person2 ? `Compare the net worth of ${person1.name} (${formatNetWorth(person1.netWorth, person1.currency)}) and ${person2.name} (${formatNetWorth(person2.netWorth, person2.currency)}). Find out who is richer by how much.` : "Compare the net worth of wealthy individuals."}
+        canonicalUrl={person1 && person2 ? `/compare/${person1.slug}-vs-${person2.slug}` : "/comparison"}
       />
       
       <Header />
@@ -217,7 +291,7 @@ const CompareNetWorth = () => {
           
           <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-center mb-2">
-              {person1 && person2 ? `${person1.name} vs ${person2.name}` : "Wealth Comparison"}
+              {person1 && person2 ? `${person1.name} vs ${person2.name} - Who is Richer?` : "Wealth Comparison"}
             </h1>
             
             <p className="text-gray-600 text-center mb-8">
@@ -226,9 +300,7 @@ const CompareNetWorth = () => {
                 : "Select two individuals to compare their wealth."}
             </p>
             
-            {/* Comparison Selection */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              {/* Person 1 Selector */}
               <Dialog open={activePersonSelect === 'p1'} onOpenChange={(open) => !open && setActivePersonSelect(null)}>
                 <DialogTrigger asChild>
                   <Card className="cursor-pointer hover:shadow-md transition-shadow">
@@ -305,7 +377,6 @@ const CompareNetWorth = () => {
                 </DialogContent>
               </Dialog>
 
-              {/* Person 2 Selector */}
               <Dialog open={activePersonSelect === 'p2'} onOpenChange={(open) => !open && setActivePersonSelect(null)}>
                 <DialogTrigger asChild>
                   <Card className="cursor-pointer hover:shadow-md transition-shadow">
@@ -385,7 +456,6 @@ const CompareNetWorth = () => {
             
             {person1 && person2 && (
               <>
-                {/* Result Card */}
                 <Card className="mb-8 bg-gray-50">
                   <CardContent className="p-6">
                     <h2 className="text-xl font-bold text-center mb-6">Comparison Results</h2>
@@ -393,7 +463,7 @@ const CompareNetWorth = () => {
                     <div className="bg-white p-4 rounded-lg border mb-4">
                       <div className="text-center">
                         <Badge className="mb-2" variant="outline">
-                          {richerPerson?.name === person1?.name ? "Person 1 is Richer" : "Person 2 is Richer"}
+                          {richerPerson?.name} is Richer
                         </Badge>
                         <h3 className="text-lg font-bold mb-1">
                           {richerPerson?.name} is richer by {formatNetWorth(wealthDifference, richerPerson?.currency || "USD")}
@@ -402,6 +472,12 @@ const CompareNetWorth = () => {
                           That's {percentageDifference}% more wealth
                         </p>
                       </div>
+                    </div>
+
+                    <div className="bg-white p-4 rounded-lg border mb-4">
+                      <p className="text-gray-700 leading-relaxed">
+                        {comparisonText}
+                      </p>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -423,7 +499,6 @@ const CompareNetWorth = () => {
                   <AdSense slot="9889084223" format="auto" className="py-3" />
                 </div>
                 
-                {/* Detailed Comparison */}
                 <div className="mb-8">
                   <h3 className="text-xl font-bold mb-4">Detailed Comparison</h3>
                   <Table>
@@ -468,40 +543,8 @@ const CompareNetWorth = () => {
                     </TableBody>
                   </Table>
                 </div>
-                
-                {/* Description Section */}
-                <div className="mb-8">
-                  <h3 className="text-xl font-bold mb-4">About {person1.name} and {person2.name}</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-white p-4 rounded-lg border">
-                      <h4 className="font-semibold mb-2">{person1.name}</h4>
-                      <p className="text-gray-700">{person1.description}</p>
-                    </div>
-                    <div className="bg-white p-4 rounded-lg border">
-                      <h4 className="font-semibold mb-2">{person2.name}</h4>
-                      <p className="text-gray-700">{person2.description}</p>
-                    </div>
-                  </div>
-                </div>
               </>
             )}
-          </div>
-          
-          {/* SEO Content */}
-          <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm">
-            <h2 className="text-xl font-bold mb-4">Compare Net Worth of Wealthy Individuals</h2>
-            <p className="mb-4 text-gray-700">
-              Our wealth comparison tool allows you to compare the net worth of different wealthy individuals side by side. 
-              See who is richer, by how much, and learn about their sources of wealth, industries, and background.
-            </p>
-            <p className="mb-4 text-gray-700">
-              Whether you're curious about business magnates, tech entrepreneurs, celebrities, or sports stars, this 
-              comparison tool provides detailed insights into their relative wealth.
-            </p>
-            <p className="text-gray-700">
-              Simply select the two individuals you want to compare using the search tool above, and get a comprehensive 
-              breakdown of their wealth differences, complete with percentages and detailed comparisons across various factors.
-            </p>
           </div>
         </div>
       </main>
