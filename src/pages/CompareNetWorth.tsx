@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useSearchParams, useParams, Link } from 'react-router-dom';
@@ -15,7 +16,6 @@ import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import AdSense from "../components/AdSense";
 import { usePageReload } from "../hooks/usePageReload";
-import RelatedComparisons from "../components/RelatedComparisons";
 import { 
   netWorthPeople,
   formatNetWorth,
@@ -57,7 +57,6 @@ const CompareNetWorth = () => {
   const [searchResults, setSearchResults] = useState<NetWorthPerson[]>([]);
   const [activePersonSelect, setActivePersonSelect] = useState<'p1' | 'p2' | null>(null);
   const [localLoading, setLocalLoading] = useState(true);
-  const [relatedComparisons, setRelatedComparisons] = useState<{person1: NetWorthPerson, person2: NetWorthPerson}[]>([]);
   
   const allPeople = netWorthPeople;
   
@@ -99,55 +98,6 @@ const CompareNetWorth = () => {
     
     return () => clearTimeout(timer);
   }, [person1Id, person2Id, comparison, pageKey]);
-  
-  useEffect(() => {
-    if (person1 && person2) {
-      generateRelatedComparisons();
-    }
-  }, [person1, person2]);
-  
-  const generateRelatedComparisons = () => {
-    if (!person1 || !person2) return;
-    
-    const sameIndustryPeople = allPeople.filter(person => 
-      (person.industry === person1.industry || person.industry === person2.industry) && 
-      person.id !== person1.id && 
-      person.id !== person2.id
-    ).slice(0, 10);
-    
-    const comparisons: {person1: NetWorthPerson, person2: NetWorthPerson}[] = [];
-    
-    for (let i = 0; i < Math.min(2, sameIndustryPeople.length); i++) {
-      comparisons.push({
-        person1: person1,
-        person2: sameIndustryPeople[i]
-      });
-    }
-    
-    for (let i = 2; i < Math.min(4, sameIndustryPeople.length); i++) {
-      comparisons.push({
-        person1: person2,
-        person2: sameIndustryPeople[i]
-      });
-    }
-    
-    if (comparisons.length < 4 && allPeople.length >= 6) {
-      const shuffled = [...allPeople]
-        .filter(p => p.id !== person1.id && p.id !== person2.id)
-        .sort(() => 0.5 - Math.random());
-      
-      for (let i = 0; i < Math.min(4 - comparisons.length, shuffled.length / 2); i++) {
-        if (i * 2 + 1 < shuffled.length) {
-          comparisons.push({
-            person1: shuffled[i * 2],
-            person2: shuffled[i * 2 + 1]
-          });
-        }
-      }
-    }
-    
-    setRelatedComparisons(comparisons);
-  };
   
   useEffect(() => {
     if (searchTerm.length > 1) {
@@ -659,18 +609,6 @@ const CompareNetWorth = () => {
               </>
             )}
           </div>
-          
-          {person1 && person2 && relatedComparisons.length > 0 && (
-            <RelatedComparisons
-              comparisons={relatedComparisons.map(comparison => ({
-                person1: comparison.person1,
-                person2: comparison.person2,
-                comparisonUrl: createComparisonUrl(comparison.person1.slug, comparison.person2.slug)
-              }))}
-              type="net-worth"
-              viewMoreLink="/compare"
-            />
-          )}
         </div>
       </main>
 

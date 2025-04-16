@@ -1,3 +1,3 @@
 
-// This file is kept empty as we're removing the RelatedComparisons feature
-// The component is no longer used in the application
+// RelatedComparisons component has been removed from the application
+export {};
