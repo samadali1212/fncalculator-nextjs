@@ -53,7 +53,7 @@ const CompareNetWorth = () => {
     person2Slug || oldPerson2Slug || searchParams.get("p2")
   );
   const [person1, setPerson1] = useState<NetWorthPerson | null>(null);
-  const [person2, setPerson2] = useState<NetW WorthPerson | null>(null);
+  const [person2, setPerson2] = useState<NetWorthPerson | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<NetWorthPerson[]>([]);
   const [activePersonSelect, setActivePersonSelect] = useState<'p1' | 'p2' | null>(null);
@@ -273,6 +273,7 @@ const CompareNetWorth = () => {
     return text;
   };
   
+  const allPeople = netWorthPeople;
   const richerPerson = getRicherPerson();
   const poorerPerson = getPoorerPerson();
   const wealthDifference = getWealthDifference();
