@@ -273,7 +273,6 @@ const CompareNetWorth = () => {
     return text;
   };
   
-  const allPeople = netWorthPeople;
   const richerPerson = getRicherPerson();
   const poorerPerson = getPoorerPerson();
   const wealthDifference = getWealthDifference();
