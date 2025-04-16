@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate, useSearchParams, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import SEO from '../components/SEO';
 import ShareButton from '../components/ShareButton';
@@ -38,16 +38,14 @@ interface Celebrity {
 }
 
 const CompareCelebritySalaries = () => {
-  const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
   const { comparison } = useParams<{ comparison: string }>();
 
   const [person1Slug, person2Slug] = comparison && comparison.includes('-vs-') 
     ? comparison.split('-vs-') 
     : [null, null];
     
-  const [person1Id, setPerson1Id] = useState<string | null>(person1Slug || searchParams.get("p1"));
-  const [person2Id, setPerson2Id] = useState<string | null>(person2Slug || searchParams.get("p2"));
+  const [person1Id, setPerson1Id] = useState<string | null>(person1Slug);
+  const [person2Id, setPerson2Id] = useState<string | null>(person2Slug);
   const [person1, setPerson1] = useState<Celebrity | null>(null);
   const [person2, setPerson2] = useState<Celebrity | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -77,16 +75,13 @@ const CompareCelebritySalaries = () => {
     if (!person1Id && !person2Id && allPeople.length >= 2) {
       setPerson1(allPeople[0]);
       setPerson2(allPeople[1]);
-      navigateToSEOUrl(allPeople[0].slug, allPeople[1].slug);
     } else if (!person1Id && allPeople.length >= 1) {
       setPerson1(allPeople[0]);
-      updateUrlParams(allPeople[0].slug, person2Id);
     } else if (!person2Id && allPeople.length >= 2) {
       const differentPerson = person1Id 
         ? allPeople.find(p => p.slug !== person1Id) || allPeople[1] 
         : allPeople[1];
       setPerson2(differentPerson);
-      updateUrlParams(person1Id, differentPerson.slug);
     }
 
     const timer = setTimeout(() => {
@@ -113,19 +108,9 @@ const CompareCelebritySalaries = () => {
     }
   }, [searchTerm, allPeople]);
 
-  const updateUrlParams = (p1: string | null, p2: string | null) => {
-    if (p1 && p2) {
-      navigateToSEOUrl(p1, p2);
-    } else {
-      const params: Record<string, string> = {};
-      if (p1) params.p1 = p1;
-      if (p2) params.p2 = p2;
-      setSearchParams(params, { replace: true });
-    }
-  };
-
   const navigateToSEOUrl = (p1Slug: string, p2Slug: string) => {
-    navigate(createComparisonUrl(p1Slug, p2Slug, 'salary'), { replace: true });
+    const url = createComparisonUrl(p1Slug, p2Slug, 'salary');
+    window.location.href = url;
   };
 
   const selectPerson = (person: Celebrity) => {
@@ -133,15 +118,11 @@ const CompareCelebritySalaries = () => {
       setPerson1(person);
       if (person2) {
         navigateToSEOUrl(person.slug, person2.slug);
-      } else {
-        updateUrlParams(person.slug, person2Id);
       }
     } else if (activePersonSelect === 'p2') {
       setPerson2(person);
       if (person1) {
         navigateToSEOUrl(person1.slug, person.slug);
-      } else {
-        updateUrlParams(person1Id, person.slug);
       }
     }
 
@@ -287,7 +268,7 @@ const CompareCelebritySalaries = () => {
               <Button
                 variant="ghost"
                 className="text-sm text-[#000000] hover:bg-white/60 mr-2"
-                onClick={() => navigate('/celebrities')}
+                onClick={() => window.location.href = '/celebrities'}
               >
                 <ChevronLeft className="h-4 w-4 mr-1" />
                 Back to Celebrity List
