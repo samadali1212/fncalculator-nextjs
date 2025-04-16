@@ -26,9 +26,22 @@ const HourlyRates = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [itemsToShow, setItemsToShow] = useState(50);
   const [isLoading, setIsLoading] = useState(true);
+  const [hourlyRates, setHourlyRates] = useState([]);
   
-  // Generate hourly rates
-  const hourlyRates = generateHourlyRates();
+  // Load data with simulated network delay
+  useEffect(() => {
+    setIsLoading(true);
+    
+    // Simulate a network request
+    const timer = setTimeout(() => {
+      // Generate hourly rates
+      const rates = generateHourlyRates();
+      setHourlyRates(rates);
+      setIsLoading(false);
+    }, 800);
+    
+    return () => clearTimeout(timer);
+  }, []);
   
   // Filter hourly rates based on search query
   const filteredRates = searchQuery
@@ -39,16 +52,6 @@ const HourlyRates = () => {
     
   const displayedRates = filteredRates.slice(0, itemsToShow);
   const hasMoreRates = displayedRates.length < filteredRates.length;
-  
-  // Simulate loading from API
-  useEffect(() => {
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
-    
-    return () => clearTimeout(timer);
-  }, []);
   
   const loadMore = () => {
     setItemsToShow(prevItemsToShow => prevItemsToShow + 50);

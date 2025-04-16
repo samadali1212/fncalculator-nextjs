@@ -42,6 +42,7 @@ const TaxCalculator = () => {
   const [itemsToShow, setItemsToShow] = useState(50);
   const [ageGroup, setAgeGroup] = useState<AgeGroup>("below65");
   const [isLoading, setIsLoading] = useState(true);
+  const [taxResults, setTaxResults] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
   
@@ -49,13 +50,26 @@ const TaxCalculator = () => {
     ? "yearly" 
     : "monthly";
   
-  const taxResults = generateTaxCalculations(
-    timeFrame === "monthly" ? 4000 : 48000,    // Min: R4,000 monthly / R48,000 yearly
-    timeFrame === "monthly" ? 650000 : 7800000, // Max: R600,000 monthly / R7,200,000 yearly
-    timeFrame === "monthly" ? 100 : 1200,       // Step: R100 monthly / R1,200 yearly
-    ageGroup,
-    timeFrame
-  );
+  // Load data with traditional loading approach
+  useEffect(() => {
+    setIsLoading(true);
+    
+    // Simulate network delay
+    const timer = setTimeout(() => {
+      const results = generateTaxCalculations(
+        timeFrame === "monthly" ? 4000 : 48000,    // Min: R4,000 monthly / R48,000 yearly
+        timeFrame === "monthly" ? 650000 : 7800000, // Max: R600,000 monthly / R7,200,000 yearly
+        timeFrame === "monthly" ? 100 : 1200,       // Step: R100 monthly / R1,200 yearly
+        ageGroup,
+        timeFrame
+      );
+      
+      setTaxResults(results);
+      setIsLoading(false);
+    }, 800);
+    
+    return () => clearTimeout(timer);
+  }, [ageGroup, timeFrame]);
   
   const filteredResults = searchQuery
     ? taxResults.filter(result => 
@@ -65,16 +79,6 @@ const TaxCalculator = () => {
     
   const displayedResults = filteredResults.slice(0, itemsToShow);
   const hasMoreResults = displayedResults.length < filteredResults.length;
-  
-  // Simulate loading from API
-  useEffect(() => {
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
-    
-    return () => clearTimeout(timer);
-  }, [ageGroup, timeFrame]);
   
   const loadMore = () => {
     setItemsToShow(prevItemsToShow => prevItemsToShow + 50);
