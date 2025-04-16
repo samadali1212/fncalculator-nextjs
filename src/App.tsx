@@ -63,6 +63,7 @@ const App = () => (
         <Route path="/categories" element={<StandaloneCategories />} />
         <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
         <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
+        <Route path="/compare/:person1/:person2" element={<CompareCelebritySalaries />} />
         
         {/* General Knowledge Routes */}
         <Route path="/general-knowledge" element={<GeneralKnowledge />} />
