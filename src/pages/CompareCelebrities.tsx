@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useSearchParams, useParams } from 'react-router-dom';
@@ -6,13 +7,12 @@ import SEO from '../components/SEO';
 import ShareButton from '../components/ShareButton';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, TrendingUp, TrendingDown, Activity, User, MapPin, Building, Banknote, Search } from "lucide-react";
+import { ChevronLeft, TrendingUp, TrendingDown, Activity, Search, ArrowUpRight } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Separator } from "@/components/ui/separator";
 import AdSense from "../components/AdSense";
 import { 
   celebrities,
@@ -36,9 +36,9 @@ const CompareCelebrities = () => {
   );
   const [person1, setPerson1] = useState<Celebrity | null>(null);
   const [person2, setPerson2] = useState<Celebrity | null>(null);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<Celebrity[]>([]);
-  const [activePersonSelect, setActivePersonSelect] = useState<'p1' | 'p2' | null>(null);
+  const [activeSearch, setActiveSearch] = useState<'p1' | 'p2' | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   
   // Use the imported celebrities directly
@@ -79,19 +79,19 @@ const CompareCelebrities = () => {
   }, [person1Id, person2Id]);
   
   useEffect(() => {
-    if (searchTerm.length > 1) {
+    if (searchQuery.length > 1) {
       const results = allPeople
         .filter(person => 
-          person.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          person.industry.toLowerCase().includes(searchTerm.toLowerCase())
+          person.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          person.industry.toLowerCase().includes(searchQuery.toLowerCase())
         )
-        .slice(0, 5);
+        .slice(0, 10);
       
       setSearchResults(results);
     } else {
       setSearchResults([]);
     }
-  }, [searchTerm]);
+  }, [searchQuery]);
   
   const updateUrlParams = (p1: string | null, p2: string | null) => {
     if (p1 && p2) {
@@ -105,28 +105,20 @@ const CompareCelebrities = () => {
   };
   
   const navigateToSEOUrl = (p1: string, p2: string) => {
-    navigate(createComparisonUrl(p1, p2));
+    navigate(createComparisonUrl(p1, p2, "compare-celebrities"));
   };
   
-  const selectPerson = (person: Celebrity) => {
-    if (activePersonSelect === 'p1') {
+  const selectPerson = (person: Celebrity, target: 'p1' | 'p2') => {
+    if (target === 'p1') {
       setPerson1(person);
-      if (person2) {
-        navigateToSEOUrl(person.slug, person2.slug);
-      } else {
-        updateUrlParams(person.slug, person2Id);
-      }
-    } else if (activePersonSelect === 'p2') {
+      updateUrlParams(person.slug, person2Id);
+    } else {
       setPerson2(person);
-      if (person1) {
-        navigateToSEOUrl(person1.slug, person.slug);
-      } else {
-        updateUrlParams(person1Id, person.slug);
-      }
+      updateUrlParams(person1Id, person.slug);
     }
     
-    setActivePersonSelect(null);
-    setSearchTerm("");
+    setSearchQuery("");
+    setActiveSearch(null);
   };
   
   const getSalaryDifferencePercentage = () => {
@@ -244,7 +236,7 @@ const CompareCelebrities = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={person1 && person2 ? `${person1.name} vs ${person2.name} Salary - Who Earns More?` : "Celebrity Salary Comparison"}
+        title={person1 && person2 ? `${person1.name} vs ${person2.name} Salary Comparison` : "Celebrity Salary Comparison"}
         description={person1 && person2 ? `Compare the salary of ${person1.name} (${formatSalary(person1.salary, "yearly")}) and ${person2.name} (${formatSalary(person2.salary, "yearly")}). Find out who earns more and by how much.` : "Compare the salaries of celebrities and famous individuals."}
         canonicalUrl={person1 && person2 ? `/compare-celebrities/${person1.slug}-vs-${person2.slug}` : "/compare-celebrities"}
       />
@@ -275,263 +267,225 @@ const CompareCelebrities = () => {
             <AdSense slot="9889084223" format="auto" className="py-3" />
           </div>
           
-          <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
-            <h1 className="text-2xl sm:text-3xl font-bold text-center mb-2">
-              {person1 && person2 ? `${person1.name} vs ${person2.name} - Who Earns More?` : "Celebrity Salary Comparison"}
-            </h1>
-            
-            <p className="text-gray-600 text-center mb-8">
-              {person1 && person2 
-                ? `Compare the salary and details between ${person1.name} and ${person2.name}.` 
-                : "Select two celebrities to compare their earnings."}
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <Dialog open={activePersonSelect === 'p1'} onOpenChange={(open) => !open && setActivePersonSelect(null)}>
-                <DialogTrigger asChild>
-                  <Card className="cursor-pointer hover:shadow-md transition-shadow">
-                    <CardContent className="p-6">
-                      {person1 ? (
-                        <div className="flex items-center">
-                          <Avatar className="h-16 w-16 mr-4">
-                            <AvatarImage src={person1.imageUrl || "/placeholder.svg"} alt={person1.name} />
-                            <AvatarFallback>{getInitials(person1.name)}</AvatarFallback>
-                          </Avatar>
-                          <div>
-                            <h3 className="text-lg font-bold mb-1">{person1.name}</h3>
-                            <p className="text-gray-600 text-sm">{person1.industry}</p>
-                            <p className="text-lg font-semibold mt-1">{formatSalary(person1.salary, "yearly")}</p>
-                          </div>
+          <Card className="shadow-sm mb-8">
+            <CardContent className="p-6 sm:p-8">
+              <h1 className="text-2xl sm:text-3xl font-bold text-center mb-2">
+                {person1 && person2 ? `${person1.name} vs ${person2.name} - Salary Comparison` : "Celebrity Salary Comparison"}
+              </h1>
+              
+              <p className="text-gray-600 text-center mb-6">
+                {person1 && person2 
+                  ? `Compare the earnings between ${person1.name} and ${person2.name}.` 
+                  : "Select two celebrities to compare their earnings."}
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div className="space-y-4">
+                  <h3 className="font-medium text-gray-600">First Celebrity</h3>
+                  {person1 ? (
+                    <Card className="relative hover:shadow-md transition-shadow group cursor-pointer" onClick={() => setActiveSearch('p1')}>
+                      <CardContent className="p-4 flex items-center">
+                        <Avatar className="h-12 w-12 mr-4">
+                          <AvatarImage src={person1.imageUrl || "/placeholder.svg"} alt={person1.name} />
+                          <AvatarFallback>{getInitials(person1.name)}</AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1">
+                          <div className="font-medium">{person1.name}</div>
+                          <div className="text-sm text-gray-500">{person1.industry}</div>
+                          <div className="font-semibold text-[#333]">{formatSalary(person1.salary, "yearly")}</div>
                         </div>
-                      ) : (
-                        <div className="flex items-center justify-center h-24">
-                          <Button 
-                            variant="outline" 
-                            onClick={() => setActivePersonSelect('p1')}
-                          >
-                            <User className="h-4 w-4 mr-2" />
-                            Select Celebrity 1
-                          </Button>
+                        <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 text-gray-400" />
+                      </CardContent>
+                    </Card>
+                  ) : (
+                    <Card className="cursor-pointer hover:shadow-md transition-shadow" onClick={() => setActiveSearch('p1')}>
+                      <CardContent className="p-6 flex items-center justify-center">
+                        <Button variant="outline">Select First Celebrity</Button>
+                      </CardContent>
+                    </Card>
+                  )}
+                </div>
+                
+                <div className="space-y-4">
+                  <h3 className="font-medium text-gray-600">Second Celebrity</h3>
+                  {person2 ? (
+                    <Card className="relative hover:shadow-md transition-shadow group cursor-pointer" onClick={() => setActiveSearch('p2')}>
+                      <CardContent className="p-4 flex items-center">
+                        <Avatar className="h-12 w-12 mr-4">
+                          <AvatarImage src={person2.imageUrl || "/placeholder.svg"} alt={person2.name} />
+                          <AvatarFallback>{getInitials(person2.name)}</AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1">
+                          <div className="font-medium">{person2.name}</div>
+                          <div className="text-sm text-gray-500">{person2.industry}</div>
+                          <div className="font-semibold text-[#333]">{formatSalary(person2.salary, "yearly")}</div>
                         </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-md">
-                  <DialogHeader>
-                    <DialogTitle>Select First Celebrity to Compare</DialogTitle>
-                  </DialogHeader>
-                  <div className="space-y-4 py-4">
-                    <div className="flex items-center space-x-2">
+                        <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 text-gray-400" />
+                      </CardContent>
+                    </Card>
+                  ) : (
+                    <Card className="cursor-pointer hover:shadow-md transition-shadow" onClick={() => setActiveSearch('p2')}>
+                      <CardContent className="p-6 flex items-center justify-center">
+                        <Button variant="outline">Select Second Celebrity</Button>
+                      </CardContent>
+                    </Card>
+                  )}
+                </div>
+              </div>
+              
+              {activeSearch && (
+                <div className="mb-6">
+                  <h3 className="font-medium text-gray-700 mb-3">Search Celebrities</h3>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                       <Search className="h-4 w-4 text-gray-400" />
-                      <Input 
-                        placeholder="Search by name or industry..." 
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="flex-1"
-                      />
                     </div>
-                    <div className="border rounded-md overflow-hidden">
-                      {searchResults.length > 0 ? (
-                        <div className="divide-y">
-                          {searchResults.map(person => (
-                            <div 
-                              key={person.id} 
-                              className="p-3 hover:bg-gray-50 cursor-pointer flex items-center"
-                              onClick={() => selectPerson(person)}
-                            >
-                              <Avatar className="h-10 w-10 mr-3">
-                                <AvatarImage src={person.imageUrl || "/placeholder.svg"} alt={person.name} />
-                                <AvatarFallback>{getInitials(person.name)}</AvatarFallback>
-                              </Avatar>
-                              <div>
-                                <p className="font-medium">{person.name}</p>
-                                <p className="text-sm text-gray-500">{formatSalary(person.salary, "yearly")} • {person.industry}</p>
+                    <Input
+                      type="text"
+                      placeholder="Search by name or industry..."
+                      className="pl-10"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </div>
+                  {searchResults.length > 0 && (
+                    <Card className="mt-2 max-h-80 overflow-y-auto shadow-md">
+                      <div className="p-1">
+                        {searchResults.map((person) => (
+                          <div
+                            key={person.id}
+                            className="p-2 hover:bg-gray-50 cursor-pointer rounded flex items-center"
+                            onClick={() => selectPerson(person, activeSearch)}
+                          >
+                            <Avatar className="h-8 w-8 mr-2">
+                              <AvatarImage src={person.imageUrl || "/placeholder.svg"} alt={person.name} />
+                              <AvatarFallback>{getInitials(person.name)}</AvatarFallback>
+                            </Avatar>
+                            <div>
+                              <div className="text-sm font-medium">{person.name}</div>
+                              <div className="text-xs text-gray-500">
+                                {formatSalary(person.salary, "yearly")} • {person.industry}
                               </div>
                             </div>
-                          ))}
-                        </div>
-                      ) : searchTerm.length > 1 ? (
-                        <p className="p-3 text-center text-gray-500">No results found</p>
-                      ) : (
-                        <div className="p-3 text-center text-gray-500">
-                          Type to search for celebrities
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
-
-              <Dialog open={activePersonSelect === 'p2'} onOpenChange={(open) => !open && setActivePersonSelect(null)}>
-                <DialogTrigger asChild>
-                  <Card className="cursor-pointer hover:shadow-md transition-shadow">
-                    <CardContent className="p-6">
-                      {person2 ? (
-                        <div className="flex items-center">
-                          <Avatar className="h-16 w-16 mr-4">
-                            <AvatarImage src={person2.imageUrl || "/placeholder.svg"} alt={person2.name} />
-                            <AvatarFallback>{getInitials(person2.name)}</AvatarFallback>
-                          </Avatar>
-                          <div>
-                            <h3 className="text-lg font-bold mb-1">{person2.name}</h3>
-                            <p className="text-gray-600 text-sm">{person2.industry}</p>
-                            <p className="text-lg font-semibold mt-1">{formatSalary(person2.salary, "yearly")}</p>
                           </div>
-                        </div>
-                      ) : (
-                        <div className="flex items-center justify-center h-24">
-                          <Button 
-                            variant="outline" 
-                            onClick={() => setActivePersonSelect('p2')}
-                          >
-                            <User className="h-4 w-4 mr-2" />
-                            Select Celebrity 2
-                          </Button>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-md">
-                  <DialogHeader>
-                    <DialogTitle>Select Second Celebrity to Compare</DialogTitle>
-                  </DialogHeader>
-                  <div className="space-y-4 py-4">
-                    <div className="flex items-center space-x-2">
-                      <Search className="h-4 w-4 text-gray-400" />
-                      <Input 
-                        placeholder="Search by name or industry..." 
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="flex-1"
-                      />
-                    </div>
-                    <div className="border rounded-md overflow-hidden">
-                      {searchResults.length > 0 ? (
-                        <div className="divide-y">
-                          {searchResults.map(person => (
-                            <div 
-                              key={person.id} 
-                              className="p-3 hover:bg-gray-50 cursor-pointer flex items-center"
-                              onClick={() => selectPerson(person)}
-                            >
-                              <Avatar className="h-10 w-10 mr-3">
-                                <AvatarImage src={person.imageUrl || "/placeholder.svg"} alt={person.name} />
-                                <AvatarFallback>{getInitials(person.name)}</AvatarFallback>
-                              </Avatar>
-                              <div>
-                                <p className="font-medium">{person.name}</p>
-                                <p className="text-sm text-gray-500">{formatSalary(person.salary, "yearly")} • {person.industry}</p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      ) : searchTerm.length > 1 ? (
-                        <p className="p-3 text-center text-gray-500">No results found</p>
-                      ) : (
-                        <div className="p-3 text-center text-gray-500">
-                          Type to search for celebrities
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
-            </div>
-            
-            {person1 && person2 && (
-              <>
-                <Card className="mb-8 bg-gray-50">
-                  <CardContent className="p-6">
-                    <h2 className="text-xl font-bold text-center mb-6">Comparison Results</h2>
-                    
-                    <div className="bg-white p-4 rounded-lg border mb-4">
-                      <div className="text-center">
-                        <Badge className="mb-2" variant="outline">
-                          {higherEarningPerson?.name} Earns More
-                        </Badge>
-                        <h3 className="text-lg font-bold mb-1">
-                          {higherEarningPerson?.name} earns more by {formatSalary(salaryDifference, "yearly")}
-                        </h3>
-                        <p className="text-gray-600">
-                          That's {percentageDifference}% more earnings
-                        </p>
+                        ))}
                       </div>
+                    </Card>
+                  )}
+                </div>
+              )}
+              
+              {person1 && person2 && (
+                <>
+                  <Separator className="my-6" />
+                  
+                  <div className="bg-gray-50 p-4 sm:p-6 rounded-lg mb-6">
+                    <h2 className="text-xl font-bold mb-4">Comparison Results</h2>
+                    
+                    <div className="bg-white p-4 rounded border mb-4">
+                      <Badge className="mb-2" variant={person1.salary > person2.salary ? "default" : "secondary"}>
+                        {higherEarningPerson?.name} Earns More
+                      </Badge>
+                      <h3 className="text-lg font-bold mb-1">
+                        {higherEarningPerson?.name} earns {formatSalary(salaryDifference, "yearly")} more than {lowerEarningPerson?.name}
+                      </h3>
+                      <p className="text-sm text-gray-600">
+                        That's {percentageDifference}% higher earnings
+                      </p>
                     </div>
-
-                    <div className="bg-white p-4 rounded-lg border mb-4">
-                      <p className="text-gray-700 leading-relaxed">
+                    
+                    <div className="bg-white p-4 rounded border mb-4">
+                      <p className="text-gray-700 text-sm leading-relaxed">
                         {comparisonText}
                       </p>
                     </div>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="bg-white p-4 rounded-lg border">
-                        <h4 className="font-semibold mb-2">{person1.name}</h4>
-                        <p className="text-lg font-bold">{formatSalary(person1.salary, "yearly")}</p>
-                        <p className="text-sm text-gray-600">{person1.industry}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="bg-white p-4 rounded border">
+                        <h4 className="font-medium text-sm text-gray-500 mb-1">Yearly Salary</h4>
+                        <div className="flex items-end justify-between">
+                          <div>
+                            <p className="text-lg font-bold">{formatSalary(person1.salary, "yearly")}</p>
+                            <p className="text-sm">{person1.name}</p>
+                          </div>
+                          {person1.salary > person2.salary && (
+                            <Badge variant="outline" className="text-green-600 bg-green-50">
+                              <TrendingUp className="h-3 w-3 mr-1" />
+                              Higher
+                            </Badge>
+                          )}
+                        </div>
                       </div>
-                      <div className="bg-white p-4 rounded-lg border">
-                        <h4 className="font-semibold mb-2">{person2.name}</h4>
-                        <p className="text-lg font-bold">{formatSalary(person2.salary, "yearly")}</p>
-                        <p className="text-sm text-gray-600">{person2.industry}</p>
+                      <div className="bg-white p-4 rounded border">
+                        <h4 className="font-medium text-sm text-gray-500 mb-1">Yearly Salary</h4>
+                        <div className="flex items-end justify-between">
+                          <div>
+                            <p className="text-lg font-bold">{formatSalary(person2.salary, "yearly")}</p>
+                            <p className="text-sm">{person2.name}</p>
+                          </div>
+                          {person2.salary > person1.salary && (
+                            <Badge variant="outline" className="text-green-600 bg-green-50">
+                              <TrendingUp className="h-3 w-3 mr-1" />
+                              Higher
+                            </Badge>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-                
-                <div className="mb-4">
-                  <AdSense slot="9889084223" format="auto" className="py-3" />
-                </div>
-                
-                <div className="mb-8">
-                  <h3 className="text-xl font-bold mb-4">Detailed Comparison</h3>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Category</TableHead>
-                        <TableHead>{person1.name}</TableHead>
-                        <TableHead>{person2.name}</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell className="font-medium">Salary</TableCell>
-                        <TableCell>{formatSalary(person1.salary, "yearly")}</TableCell>
-                        <TableCell>{formatSalary(person2.salary, "yearly")}</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-medium">Industry</TableCell>
-                        <TableCell>{person1.industry}</TableCell>
-                        <TableCell>{person2.industry}</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-medium">Role</TableCell>
-                        <TableCell>{person1.industry}</TableCell>
-                        <TableCell>{person2.industry}</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-medium">Company/Show</TableCell>
-                        <TableCell>{person1.company || "Multiple projects"}</TableCell>
-                        <TableCell>{person2.company || "Multiple projects"}</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-medium">Country</TableCell>
-                        <TableCell>{person1.country}</TableCell>
-                        <TableCell>{person2.country}</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell className="font-medium">Age</TableCell>
-                        <TableCell>{person1.age} years</TableCell>
-                        <TableCell>{person2.age} years</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </div>
-              </>
-            )}
-          </div>
+                  </div>
+                  
+                  <div className="mb-4">
+                    <AdSense slot="9889084223" format="auto" className="py-3" />
+                  </div>
+                  
+                  <div className="mb-6">
+                    <h3 className="text-xl font-bold mb-4">Detailed Comparison</h3>
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Category</TableHead>
+                          <TableHead>{person1.name}</TableHead>
+                          <TableHead>{person2.name}</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        <TableRow>
+                          <TableCell className="font-medium">Yearly Salary</TableCell>
+                          <TableCell>{formatSalary(person1.salary, "yearly")}</TableCell>
+                          <TableCell>{formatSalary(person2.salary, "yearly")}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">Monthly Salary</TableCell>
+                          <TableCell>{formatSalary(person1.salary / 12, "monthly")}</TableCell>
+                          <TableCell>{formatSalary(person2.salary / 12, "monthly")}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">Industry</TableCell>
+                          <TableCell>{person1.industry}</TableCell>
+                          <TableCell>{person2.industry}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">Company/Show</TableCell>
+                          <TableCell>{person1.company || "Multiple projects"}</TableCell>
+                          <TableCell>{person2.company || "Multiple projects"}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">Country</TableCell>
+                          <TableCell>{person1.country}</TableCell>
+                          <TableCell>{person2.country}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell className="font-medium">Age</TableCell>
+                          <TableCell>{person1.age} years</TableCell>
+                          <TableCell>{person2.age} years</TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </div>
+                </>
+              )}
+            </CardContent>
+          </Card>
         </div>
       </main>
 
