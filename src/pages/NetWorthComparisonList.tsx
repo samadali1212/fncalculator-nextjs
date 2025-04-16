@@ -1,13 +1,18 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search } from 'lucide-react';
+import { Search, Random, User, ExternalLink } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "@/components/ui/pagination";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import SEO from '../components/SEO';
 import { netWorthPeople } from '../utils/netWorthData';
-import { createComparisonUrl, getRandomInt } from '../utils/utils';
+import { formatCurrency, createComparisonUrl, getRandomInt } from '../utils/utils';
+import { Link } from 'react-router-dom';
 
 const NetWorthComparisonList = () => {
   const navigate = useNavigate();
@@ -48,6 +53,15 @@ const NetWorthComparisonList = () => {
     navigate(`/compare/${person1}-vs-${person2}`);
   };
 
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(part => part[0])
+      .join('')
+      .toUpperCase()
+      .substring(0, 2);
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <SEO
@@ -69,12 +83,12 @@ const NetWorthComparisonList = () => {
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <Search className="h-5 w-5 text-gray-400" />
             </div>
-            <input
+            <Input
               type="text"
               placeholder="Search by name..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              className="pl-10 pr-4 py-2 w-full"
             />
           </div>
           
@@ -98,7 +112,15 @@ const NetWorthComparisonList = () => {
               {currentPeople.map(person => (
                 <TableRow key={person.id}>
                   <TableCell>
-                    <div className="font-medium">{person.name}</div>
+                    <div className="flex items-center gap-2">
+                      <Avatar className="h-8 w-8">
+                        <AvatarImage src={person.imageUrl} alt={person.name} />
+                        <AvatarFallback>{getInitials(person.name)}</AvatarFallback>
+                      </Avatar>
+                      <Link to={`/net-worth/${person.slug}`} className="font-medium hover:underline">
+                        {person.name}
+                      </Link>
+                    </div>
                   </TableCell>
                   <TableCell>${person.netWorth?.toLocaleString() || 'Unknown'}</TableCell>
                   <TableCell>{person.occupation || 'Celebrity'}</TableCell>
@@ -153,13 +175,31 @@ const NetWorthComparisonList = () => {
             const nextPerson = netWorthPeople[(index + 1) % netWorthPeople.length];
             
             return (
-              <div 
+              <Card 
                 key={person.id} 
-                className="p-4 border rounded-md hover:shadow-md transition-shadow cursor-pointer"
+                className="cursor-pointer hover:shadow-md transition-shadow"
                 onClick={() => handleCompare(person.slug, nextPerson.slug)}
               >
-                <p className="font-medium text-center">{person.name} vs {nextPerson.name}</p>
-              </div>
+                <CardContent className="p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <Avatar className="h-10 w-10 mr-2">
+                        <AvatarImage src={person.imageUrl} alt={person.name} />
+                        <AvatarFallback>{getInitials(person.name)}</AvatarFallback>
+                      </Avatar>
+                      <span className="text-sm font-medium">{person.name}</span>
+                    </div>
+                    <span className="text-xs">vs</span>
+                    <div className="flex items-center">
+                      <span className="text-sm font-medium mr-2">{nextPerson.name}</span>
+                      <Avatar className="h-10 w-10">
+                        <AvatarImage src={nextPerson.imageUrl} alt={nextPerson.name} />
+                        <AvatarFallback>{getInitials(nextPerson.name)}</AvatarFallback>
+                      </Avatar>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             );
           })}
         </div>
