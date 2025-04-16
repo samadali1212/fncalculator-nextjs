@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useSearchParams, useParams } from 'react-router-dom';
@@ -15,23 +16,27 @@ import { Separator } from "@/components/ui/separator";
 import AdSense from "../components/AdSense";
 import { 
   celebrities,
-  formatSalary,
   Celebrity
 } from "../utils/celebrityData";
-import { createComparisonUrl } from "../utils/utils";
+import { createComparisonUrl, formatCurrency } from "../utils/utils";
+
+// Safe function to format salary that uses our util
+const formatSalary = (amount: number, period: string = 'yearly') => {
+  return formatCurrency(amount, period);
+};
 
 const CompareCelebrities = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const { person1: oldPerson1Slug, person2: oldPerson2Slug, comparison } = useParams();
+  const { comparison } = useParams();
   
   const [person1Slug, person2Slug] = comparison ? comparison.split('-vs-') : [null, null];
   
   const [person1Id, setPerson1Id] = useState<string | null>(
-    person1Slug || oldPerson1Slug || searchParams.get("p1")
+    person1Slug || searchParams.get("p1")
   );
   const [person2Id, setPerson2Id] = useState<string | null>(
-    person2Slug || oldPerson2Slug || searchParams.get("p2")
+    person2Slug || searchParams.get("p2")
   );
   const [person1, setPerson1] = useState<Celebrity | null>(null);
   const [person2, setPerson2] = useState<Celebrity | null>(null);
@@ -163,9 +168,9 @@ const CompareCelebrities = () => {
     const difference = getSalaryDifference();
     const percentage = getSalaryDifferencePercentage();
     
-    let text = `${higher?.name} earns more than ${lower?.name} with a salary of ${formatSalary(higher?.salary || 0, "yearly")}. `;
+    let text = `${higher?.name} earns more than ${lower?.name} with a salary of ${formatSalary(higher?.salary || 0)}. `;
     
-    text += `This is ${formatSalary(difference, "yearly")} or ${percentage}% more than ${lower?.name}'s salary of ${formatSalary(lower?.salary || 0, "yearly")}. `;
+    text += `This is ${formatSalary(difference)} or ${percentage}% more than ${lower?.name}'s salary of ${formatSalary(lower?.salary || 0)}. `;
     
     if (higher?.industry === lower?.industry) {
       text += `Both celebrities work in the ${higher?.industry} industry. `;
@@ -234,7 +239,7 @@ const CompareCelebrities = () => {
     >
       <SEO 
         title={person1 && person2 ? `${person1.name} vs ${person2.name} Salary Comparison` : "Celebrity Salary Comparison"}
-        description={person1 && person2 ? `Compare the salary of ${person1.name} (${formatSalary(person1.salary, "yearly")}) and ${person2.name} (${formatSalary(person2.salary, "yearly")}). Find out who earns more and by how much.` : "Compare the salaries of celebrities and famous individuals."}
+        description={person1 && person2 ? `Compare the salary of ${person1.name} (${formatSalary(person1.salary)}) and ${person2.name} (${formatSalary(person2.salary)}). Find out who earns more and by how much.` : "Compare the salaries of celebrities and famous individuals."}
         canonicalUrl={person1 && person2 ? `/compare-celebrities/${person1.slug}-vs-${person2.slug}` : "/compare-celebrities"}
       />
       
@@ -289,7 +294,7 @@ const CompareCelebrities = () => {
                         <div className="flex-1">
                           <div className="font-medium">{person1.name}</div>
                           <div className="text-sm text-gray-500">{person1.industry}</div>
-                          <div className="font-semibold text-[#333]">{formatSalary(person1.salary, "yearly")}</div>
+                          <div className="font-semibold text-[#333]">{formatSalary(person1.salary)}</div>
                         </div>
                         <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 text-gray-400" />
                       </CardContent>
@@ -315,7 +320,7 @@ const CompareCelebrities = () => {
                         <div className="flex-1">
                           <div className="font-medium">{person2.name}</div>
                           <div className="text-sm text-gray-500">{person2.industry}</div>
-                          <div className="font-semibold text-[#333]">{formatSalary(person2.salary, "yearly")}</div>
+                          <div className="font-semibold text-[#333]">{formatSalary(person2.salary)}</div>
                         </div>
                         <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 text-gray-400" />
                       </CardContent>
@@ -361,7 +366,7 @@ const CompareCelebrities = () => {
                             <div>
                               <div className="text-sm font-medium">{person.name}</div>
                               <div className="text-xs text-gray-500">
-                                {formatSalary(person.salary, "yearly")} • {person.industry}
+                                {formatSalary(person.salary)} • {person.industry}
                               </div>
                             </div>
                           </div>
@@ -384,7 +389,7 @@ const CompareCelebrities = () => {
                         {higherEarningPerson?.name} Earns More
                       </Badge>
                       <h3 className="text-lg font-bold mb-1">
-                        {higherEarningPerson?.name} earns {formatSalary(salaryDifference, "yearly")} more than {lowerEarningPerson?.name}
+                        {higherEarningPerson?.name} earns {formatSalary(salaryDifference)} more than {lowerEarningPerson?.name}
                       </h3>
                       <p className="text-sm text-gray-600">
                         That's {percentageDifference}% higher earnings
@@ -402,7 +407,7 @@ const CompareCelebrities = () => {
                         <h4 className="font-medium text-sm text-gray-500 mb-1">Yearly Salary</h4>
                         <div className="flex items-end justify-between">
                           <div>
-                            <p className="text-lg font-bold">{formatSalary(person1.salary, "yearly")}</p>
+                            <p className="text-lg font-bold">{formatSalary(person1.salary)}</p>
                             <p className="text-sm">{person1.name}</p>
                           </div>
                           {person1.salary > person2.salary && (
@@ -417,7 +422,7 @@ const CompareCelebrities = () => {
                         <h4 className="font-medium text-sm text-gray-500 mb-1">Yearly Salary</h4>
                         <div className="flex items-end justify-between">
                           <div>
-                            <p className="text-lg font-bold">{formatSalary(person2.salary, "yearly")}</p>
+                            <p className="text-lg font-bold">{formatSalary(person2.salary)}</p>
                             <p className="text-sm">{person2.name}</p>
                           </div>
                           {person2.salary > person1.salary && (
@@ -448,8 +453,8 @@ const CompareCelebrities = () => {
                       <TableBody>
                         <TableRow>
                           <TableCell className="font-medium">Yearly Salary</TableCell>
-                          <TableCell>{formatSalary(person1.salary, "yearly")}</TableCell>
-                          <TableCell>{formatSalary(person2.salary, "yearly")}</TableCell>
+                          <TableCell>{formatSalary(person1.salary)}</TableCell>
+                          <TableCell>{formatSalary(person2.salary)}</TableCell>
                         </TableRow>
                         <TableRow>
                           <TableCell className="font-medium">Monthly Salary</TableCell>
