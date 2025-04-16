@@ -16,6 +16,8 @@
  Allow: /general-knowledge/
  Allow: /hourly-rates/
  Allow: /tax-calculator/
+ Allow: /compare-salaries/
+ Allow: /compare/
 
  User-agent: Bingbot
  Allow: /
