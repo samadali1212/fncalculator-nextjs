@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, useNavigate, useSearchParams, Link } from 'react-router-dom';
@@ -15,7 +16,6 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import AdSense from "../components/AdSense";
 import { usePageReload } from "../hooks/usePageReload";
-import RelatedComparisons from "../components/RelatedComparisons";
 
 import { celebrities } from "../utils/celebrityData";
 import { formatCurrency, createComparisonUrl } from "../utils/utils";
@@ -585,26 +585,6 @@ const CompareCelebritySalaries = () => {
           </div>
         </div>
       </main>
-
-      {person1 && person2 && allPeople.length >= 4 && (
-        <div className="mt-8">
-          <RelatedComparisons 
-            comparisons={[
-              ...allPeople
-                .filter(celeb => celeb.id !== person1.id && celeb.id !== person2.id)
-                .sort(() => 0.5 - Math.random())
-                .slice(0, 4)
-                .map(randomCeleb => ({
-                  person1: randomCeleb,
-                  person2: person1,
-                  comparisonUrl: createComparisonUrl(randomCeleb.slug, person1.slug, 'salary')
-                }))
-            ]}
-            type="salary"
-            viewMoreLink="/compare-salaries"
-          />
-        </div>
-      )}
 
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
