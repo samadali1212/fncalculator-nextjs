@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useSearchParams, useParams } from 'react-router-dom';
@@ -61,7 +60,6 @@ const CompareCelebrities = () => {
     
     if (!person1Id && !person2Id && allPeople.length >= 2) {
       setPerson1(allPeople[0]);
-      setPerson2(allPeople[1]);
       navigateToSEOUrl(allPeople[0].slug, allPeople[1].slug);
     } else if (!person1Id && allPeople.length >= 1) {
       setPerson1(allPeople[0]);
@@ -105,7 +103,7 @@ const CompareCelebrities = () => {
   };
   
   const navigateToSEOUrl = (p1: string, p2: string) => {
-    navigate(createComparisonUrl(p1, p2, "compare-celebrities"));
+    navigate(createComparisonUrl(p1, p2));
   };
   
   const selectPerson = (person: Celebrity, target: 'p1' | 'p2') => {
