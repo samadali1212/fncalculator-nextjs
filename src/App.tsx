@@ -23,8 +23,6 @@ import GeneralKnowledgeCategories from "./pages/GeneralKnowledgeCategories";
 import NotFound from "./pages/NotFound";
 import BranchCodes from "./pages/BranchCodes";
 import BranchCodeDetail from "./pages/BranchCodeDetail";
-import Blog from "./pages/Blog";
-import BlogDetail from "./pages/BlogDetail";
 
 const App = () => (
   <BrowserRouter>
@@ -60,10 +58,6 @@ const App = () => (
         <Route path="/general-knowledge/:slug" element={<GeneralKnowledgeDetail />} />
         <Route path="/general-knowledge/category/:slug" element={<GeneralKnowledgeCategory />} />
         <Route path="/categories/general-knowledge" element={<GeneralKnowledgeCategories />} />
-        
-        {/* Blog Routes */}
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:slug" element={<BlogDetail />} />
                 
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
