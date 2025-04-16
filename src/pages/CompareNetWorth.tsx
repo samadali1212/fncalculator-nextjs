@@ -1,10 +1,9 @@
-
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { useNavigate, useSearchParams, useParams } from "react-router-dom";
-import Header from "../components/Header";
-import SEO from "../components/SEO";
-import ShareButton from "../components/ShareButton";
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { useNavigate, useSearchParams, useParams } from 'react-router-dom';
+import Header from '../components/Header';
+import SEO from '../components/SEO';
+import ShareButton from '../components/ShareButton';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, TrendingUp, TrendingDown, Activity, User, MapPin, Building, Banknote, Search } from "lucide-react";
@@ -535,20 +534,6 @@ const CompareNetWorth = () => {
                       </TableRow>
                     </TableBody>
                   </Table>
-                </div>
-                
-                <div className="mb-8">
-                  <h3 className="text-xl font-bold mb-4">About {person1.name} and {person2.name}</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-white p-4 rounded-lg border">
-                      <h4 className="font-semibold mb-2">{person1.name}</h4>
-                      <p className="text-gray-700">{person1.description}</p>
-                    </div>
-                    <div className="bg-white p-4 rounded-lg border">
-                      <h4 className="font-semibold mb-2">{person2.name}</h4>
-                      <p className="text-gray-700">{person2.description}</p>
-                    </div>
-                  </div>
                 </div>
               </>
             )}
