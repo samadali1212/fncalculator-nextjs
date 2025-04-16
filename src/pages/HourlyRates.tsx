@@ -1,107 +1,165 @@
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Helmet } from 'react-helmet-async';
-import { generateHourlyRates, formatWithSpaces, HourlyRate } from '@/utils/hourlyConverter';
-import { Separator } from '@/components/ui/separator';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Search, Filter, ArrowUpRight } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import SEO from "../components/SEO";
+import { 
+  Card, 
+  CardContent, 
+  CardHeader, 
+  CardTitle, 
+  CardDescription 
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { generateHourlyRates } from "../utils/hourlyConverter";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+} from "@/components/ui/pagination";
 
-const HourlyRates: React.FC = () => {
-  const [filteredRates, setFilteredRates] = useState<HourlyRate[]>([]);
-  const [searchValue, setSearchValue] = useState<string>('');
-  const allRates = generateHourlyRates(20, 500, 10);
+const HourlyRates = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [itemsToShow, setItemsToShow] = useState(50);
   
-  const handleSearch = () => {
-    const numValue = parseFloat(searchValue);
-    if (!isNaN(numValue)) {
-      // Find the closest rates to the searched value
-      const sortedRates = [...allRates].sort((a, b) => 
-        Math.abs(a.hourlyRate - numValue) - Math.abs(b.hourlyRate - numValue)
-      );
-      setFilteredRates(sortedRates.slice(0, 20));
-    }
+  // Generate hourly rates
+  const hourlyRates = generateHourlyRates();
+  
+  // Filter hourly rates based on search query
+  const filteredRates = searchQuery
+    ? hourlyRates.filter(rate => 
+        rate.hourlyRate.toString().includes(searchQuery) ||
+        rate.monthlyEquivalent.toString().includes(searchQuery))
+    : hourlyRates;
+    
+  const displayedRates = filteredRates.slice(0, itemsToShow);
+  const hasMoreRates = displayedRates.length < filteredRates.length;
+  
+  const loadMore = () => {
+    setItemsToShow(prevItemsToShow => prevItemsToShow + 50);
   };
-  
-  // Show some initial rates if no search has been performed
-  const ratesToDisplay = filteredRates.length > 0 ? filteredRates : allRates.slice(0, 20);
-  
+
+  // Function to format with space as thousand separator
+  const formatWithSpaces = (value: number): string => {
+    return value.toLocaleString().replace(/,/g, ' ');
+  };
+
   return (
-    <div className="container mx-auto py-8">
-      <Helmet>
-        <title>South African Hourly Rate Calculator | SASSA Insider</title>
-        <meta name="description" content="Convert hourly rates to monthly and yearly salaries with our South African hourly rate calculator. Find out the equivalent income for different hourly rates." />
-        <meta name="keywords" content="hourly rate calculator, South Africa hourly pay, salary conversion, ZAR hourly rate" />
-      </Helmet>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="min-h-screen bg-[#f6f6f0]"
+    >
+      <SEO 
+        title="Hourly to Monthly Salary Converter" 
+        description="Convert hourly rates to monthly and yearly salaries in South Africa. Find out what your hourly rate means in terms of monthly and annual income."
+        canonicalUrl="/hourly-rates"
+      />
+      <Header />
       
-      <h1 className="text-3xl font-bold mb-6">South African Hourly Rate Calculator</h1>
-      
-      <Card className="mb-8">
-        <CardHeader>
-          <CardTitle>Find Hourly Rate Conversions</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-col sm:flex-row gap-4">
+      <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
+        <h1 className="text-3xl font-bold mb-2">Hourly to Monthly Salary Converter</h1>
+        <p className="text-gray-600 mb-6">
+          See how hourly rates translate to monthly and yearly salaries in South Africa
+        </p>
+        
+        <motion.div 
+          className="mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Search className="h-4 w-4 text-gray-400" />
+            </div>
             <Input
-              type="number"
-              placeholder="Enter hourly rate in ZAR"
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              className="flex-1"
+              type="text"
+              placeholder="Search rate (e.g. 150)..."
+              className="pl-10"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <Button onClick={handleSearch}>Calculate</Button>
           </div>
-          <p className="mt-4 text-sm text-gray-500">
-            Enter an hourly rate to see the monthly and yearly equivalents. Default calculations are based on 40 working hours per week and 48 working weeks per year.
+        </motion.div>
+
+        <div className="bg-white rounded-sm shadow-sm border border-gray-200">
+          {filteredRates.length === 0 ? (
+            <div className="p-6 text-center text-gray-500">
+              No rates found matching "{searchQuery}"
+            </div>
+          ) : (
+            <>
+              {displayedRates.map((rate, index) => (
+                <motion.div 
+                  key={rate.hourlyRate}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className={`group px-4 py-3 ${index !== displayedRates.length - 1 ? 'border-b border-gray-100' : ''}`}
+                >
+                  <div className="flex items-start">
+                    <div className="pr-3 text-center hidden sm:block">
+                      <span className="text-gray-500 text-sm">{index + 1}</span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-baseline gap-2 mb-1">
+                        <Link 
+                          to={`/hourly-rates/${rate.hourlyRate}`}
+                          className="text-[#333] hover:underline text-base sm:text-lg font-medium transition-colors group-hover:text-blog-accent"
+                        >
+                          R{rate.hourlyRate} per hour
+                        </Link>
+                        <ArrowUpRight 
+                          className="h-3.5 w-3.5 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
+                        />
+                      </div>
+                      
+                      <div className="flex items-center text-xs text-[#828282]">
+                        <span>R{formatWithSpaces(rate.monthlyEquivalent)} per month</span>
+                        <span className="mx-1">•</span>
+                        <span>R{formatWithSpaces(rate.yearlySalary)} per year</span>
+                        <span className="mx-1">•</span>
+                        <span className="px-1.5 py-0.5 bg-gray-100 rounded text-[#666] text-xs">
+                          {rate.workHoursPerWeek}h/week
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+              
+              {hasMoreRates && (
+                <Pagination className="py-5">
+                  <PaginationContent>
+                    <PaginationItem className="w-full">
+                      <Button 
+                        variant="outline" 
+                        onClick={loadMore} 
+                        className="w-full"
+                      >
+                        Load More Rates
+                      </Button>
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
+              )}
+            </>
+          )}
+        </div>
+      </main>
+
+      <footer className="border-t border-gray-300 py-8 bg-white">
+        <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
+          <p>
+            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
           </p>
-        </CardContent>
-      </Card>
-      
-      <h2 className="text-2xl font-semibold mb-4">Hourly Rate Conversions</h2>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {ratesToDisplay.map((rate) => (
-          <Link to={`/hourly-rates/${rate.hourlyRate}`} key={rate.hourlyRate}>
-            <Card className="h-full hover:shadow-md transition-shadow">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-xl">
-                  R{formatWithSpaces(rate.hourlyRate)}/hour
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <div>
-                    <span className="text-gray-500">Monthly:</span>{" "}
-                    <span className="font-medium">R{formatWithSpaces(rate.monthlyEquivalent)}</span>
-                  </div>
-                  <Separator />
-                  <div>
-                    <span className="text-gray-500">Yearly:</span>{" "}
-                    <span className="font-medium">R{formatWithSpaces(rate.yearlySalary)}</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
-      </div>
-      
-      <div className="mt-8 text-gray-600">
-        <h3 className="text-xl font-semibold mb-4">About Hourly Rate Calculations</h3>
-        <p className="mb-4">
-          These calculations convert hourly rates to monthly and yearly equivalents based on standard South African working hours. The default calculations assume:
-        </p>
-        <ul className="list-disc pl-5 mb-4 space-y-2">
-          <li>40 working hours per week</li>
-          <li>4 weeks per month</li>
-          <li>48 working weeks per year (accounting for leave and holidays)</li>
-        </ul>
-        <p>
-          Click on any hourly rate to see more detailed calculations and to adjust the working hours and weeks.
-        </p>
-      </div>
-    </div>
+        </div>
+      </footer>
+    </motion.div>
   );
 };
 
