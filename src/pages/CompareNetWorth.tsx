@@ -646,58 +646,15 @@ const CompareNetWorth = () => {
           </div>
           
           {person1 && person2 && relatedComparisons.length > 0 && (
-            <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
-              <h2 className="text-xl font-bold mb-6">Related Comparisons</h2>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {relatedComparisons.map((comparison, index) => (
-                  <Link 
-                    key={`${comparison.person1.id}-${comparison.person2.id}-${index}`}
-                    to={createComparisonUrl(comparison.person1.slug, comparison.person2.slug)}
-                    className="block"
-                  >
-                    <Card className="hover:shadow-md transition-shadow h-full">
-                      <CardContent className="p-4">
-                        <div className="flex items-center mb-3">
-                          <Avatar className="h-8 w-8 mr-2">
-                            <AvatarImage src={comparison.person1.imageUrl || "/placeholder.svg"} alt={comparison.person1.name} />
-                            <AvatarFallback>{getInitials(comparison.person1.name)}</AvatarFallback>
-                          </Avatar>
-                          <div className="truncate flex-1">
-                            <p className="font-medium text-sm truncate">{comparison.person1.name}</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex justify-center my-1">
-                          <Badge variant="outline" className="text-xs">
-                            VS
-                          </Badge>
-                        </div>
-                        
-                        <div className="flex items-center mt-3">
-                          <Avatar className="h-8 w-8 mr-2">
-                            <AvatarImage src={comparison.person2.imageUrl || "/placeholder.svg"} alt={comparison.person2.name} />
-                            <AvatarFallback>{getInitials(comparison.person2.name)}</AvatarFallback>
-                          </Avatar>
-                          <div className="truncate flex-1">
-                            <p className="font-medium text-sm truncate">{comparison.person2.name}</p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-              
-              <div className="mt-6 text-center">
-                <Button 
-                  variant="outline" 
-                  onClick={() => navigate('/compare')}
-                >
-                  View More Comparisons
-                </Button>
-              </div>
-            </div>
+            <RelatedComparisons
+              comparisons={relatedComparisons.map(comparison => ({
+                person1: comparison.person1,
+                person2: comparison.person2,
+                comparisonUrl: createComparisonUrl(comparison.person1.slug, comparison.person2.slug)
+              }))}
+              type="net-worth"
+              viewMoreLink="/compare"
+            />
           )}
         </div>
       </main>
