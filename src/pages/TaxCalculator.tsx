@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ArrowUpRight } from "lucide-react";
@@ -6,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
-import AdSense from "../components/AdSense";
 import { 
   Card, 
   CardContent, 
@@ -35,14 +33,11 @@ import {
   PaginationItem,
 } from "@/components/ui/pagination";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Skeleton } from "@/components/ui/skeleton";
 
 const TaxCalculator = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [itemsToShow, setItemsToShow] = useState(50);
   const [ageGroup, setAgeGroup] = useState<AgeGroup>("below65");
-  const [isLoading, setIsLoading] = useState(true);
-  const [taxResults, setTaxResults] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
   
@@ -50,26 +45,13 @@ const TaxCalculator = () => {
     ? "yearly" 
     : "monthly";
   
-  // Load data with traditional loading approach
-  useEffect(() => {
-    setIsLoading(true);
-    
-    // Simulate network delay
-    const timer = setTimeout(() => {
-      const results = generateTaxCalculations(
-        timeFrame === "monthly" ? 4000 : 48000,    // Min: R4,000 monthly / R48,000 yearly
-        timeFrame === "monthly" ? 650000 : 7800000, // Max: R600,000 monthly / R7,200,000 yearly
-        timeFrame === "monthly" ? 100 : 1200,       // Step: R100 monthly / R1,200 yearly
-        ageGroup,
-        timeFrame
-      );
-      
-      setTaxResults(results);
-      setIsLoading(false);
-    }, 800);
-    
-    return () => clearTimeout(timer);
-  }, [ageGroup, timeFrame]);
+  const taxResults = generateTaxCalculations(
+    timeFrame === "monthly" ? 4000 : 48000,    // Min: R4,000 monthly / R48,000 yearly
+    timeFrame === "monthly" ? 650000 : 7800000, // Max: R600,000 monthly / R7,200,000 yearly
+    timeFrame === "monthly" ? 100 : 1200,       // Step: R100 monthly / R1,200 yearly
+    ageGroup,
+    timeFrame
+  );
   
   const filteredResults = searchQuery
     ? taxResults.filter(result => 
@@ -94,50 +76,6 @@ const TaxCalculator = () => {
     }
   };
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-[#f6f6f0]">
-        <SEO 
-          title="2025/2026 SARS Income Tax Calculator in South Africa" 
-          description="Calculate your take-home pay after PAYE tax in South Africa with our 2025/2026 SARS income tax calculator. Monthly and annual income tax calculations."
-          canonicalUrl={`/tax-calculator${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
-        />
-        <Header />
-        
-        <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-          <h1 className="text-3xl font-bold mb-2">2025/2026 SARS Income Tax Calculator</h1>
-          <p className="text-gray-600 mb-6">
-            See how {timeFrame === "monthly" ? "monthly" : "annual"} income gets taxed and what your take-home pay would be after PAYE in South Africa (2026 Tax Year)
-          </p>
-          
-          <div className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Skeleton className="h-10 w-full" />
-            <Skeleton className="h-10 w-full" />
-            <Skeleton className="h-10 w-full" />
-          </div>
-          
-          <div className="bg-white rounded-sm shadow-sm border border-gray-200">
-            <div className="p-4 border-b border-gray-100 bg-gray-50">
-              <div className="grid grid-cols-12 text-xs font-medium text-gray-600">
-                <div className="col-span-4 md:col-span-3">{timeFrame === "monthly" ? "Monthly" : "Annual"} Income</div>
-                <div className="col-span-4 md:col-span-3">After Tax</div>
-                <div className="hidden md:block md:col-span-2">Tax Amount</div>
-                <div className="col-span-3 md:col-span-2">Tax Rate</div>
-                <div className="hidden md:block md:col-span-2">Marginal Rate</div>
-              </div>
-            </div>
-            
-            <div className="space-y-4 p-4">
-              {Array(10).fill(0).map((_, i) => (
-                <Skeleton key={i} className="h-12 w-full" />
-              ))}
-            </div>
-          </div>
-        </main>
-      </div>
-    );
-  }
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -156,11 +94,6 @@ const TaxCalculator = () => {
         <p className="text-gray-600 mb-6">
           See how {timeFrame === "monthly" ? "monthly" : "annual"} income gets taxed and what your take-home pay would be after PAYE in South Africa (2026 Tax Year)
         </p>
-        
-        {/* Top Ad */}
-        <div className="mb-6">
-          <AdSense slot="9889084223" format="auto" className="py-3" />
-        </div>
         
         <motion.div 
           className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4"
@@ -231,11 +164,6 @@ const TaxCalculator = () => {
                 </div>
               </div>
               
-              {/* First Ad after the header */}
-              <div className="px-4 py-3 border-b border-gray-100">
-                <AdSense slot="job-list-ad-9" format="auto" className="py-1" />
-              </div>
-              
               {displayedResults.map((result, index) => (
                 <motion.div 
                   key={result.grossIncome}
@@ -275,49 +203,26 @@ const TaxCalculator = () => {
                       <span className="text-sm">{result.marginalTaxRate}%</span>
                     </div>
                   </div>
-                  
-                  {/* Add ad slots at strategic positions */}
-                  {(index === 24) && (
-                    <div className="py-3 col-span-12 mt-3">
-                      <AdSense slot="job-list-ad-24" format="auto" className="py-1" />
-                    </div>
-                  )}
-                  
-                  {(index === 39) && (
-                    <div className="py-3 col-span-12 mt-3">
-                      <AdSense slot="job-list-ad-39" format="auto" className="py-1" />
-                    </div>
-                  )}
                 </motion.div>
               ))}
               
               {hasMoreResults && (
-                <>
-                  <div className="p-4 border-t border-gray-100">
-                    <AdSense slot="job-list-load-more" format="auto" className="py-1" />
-                  </div>
-                  <Pagination className="py-5">
-                    <PaginationContent>
-                      <PaginationItem className="w-full">
-                        <Button 
-                          variant="outline" 
-                          onClick={loadMore} 
-                          className="w-full"
-                        >
-                          Load More Results
-                        </Button>
-                      </PaginationItem>
-                    </PaginationContent>
-                  </Pagination>
-                </>
+                <Pagination className="py-5">
+                  <PaginationContent>
+                    <PaginationItem className="w-full">
+                      <Button 
+                        variant="outline" 
+                        onClick={loadMore} 
+                        className="w-full"
+                      >
+                        Load More Results
+                      </Button>
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
               )}
             </>
           )}
-        </div>
-        
-        {/* Bottom Ad */}
-        <div className="mt-6">
-          <AdSense slot="9889084223" format="auto" className="py-3" />
         </div>
       </main>
 

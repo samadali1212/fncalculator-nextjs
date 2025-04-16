@@ -1,12 +1,11 @@
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search, Filter, ArrowUpRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
-import AdSense from "../components/AdSense";
 import { 
   Card, 
   CardContent, 
@@ -25,23 +24,9 @@ import {
 const HourlyRates = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [itemsToShow, setItemsToShow] = useState(50);
-  const [isLoading, setIsLoading] = useState(true);
-  const [hourlyRates, setHourlyRates] = useState([]);
   
-  // Load data with simulated network delay
-  useEffect(() => {
-    setIsLoading(true);
-    
-    // Simulate a network request
-    const timer = setTimeout(() => {
-      // Generate hourly rates
-      const rates = generateHourlyRates();
-      setHourlyRates(rates);
-      setIsLoading(false);
-    }, 800);
-    
-    return () => clearTimeout(timer);
-  }, []);
+  // Generate hourly rates
+  const hourlyRates = generateHourlyRates();
   
   // Filter hourly rates based on search query
   const filteredRates = searchQuery
@@ -62,35 +47,6 @@ const HourlyRates = () => {
     return value.toLocaleString().replace(/,/g, ' ');
   };
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-[#f6f6f0]">
-        <SEO 
-          title="Hourly to Monthly Salary Converter" 
-          description="Convert hourly rates to monthly and yearly salaries in South Africa. Find out what your hourly rate means in terms of monthly and annual income."
-          canonicalUrl="/hourly-rates"
-        />
-        <Header />
-        <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-          <h1 className="text-3xl font-bold mb-2">Hourly to Monthly Salary Converter</h1>
-          <p className="text-gray-600 mb-6">
-            See how hourly rates translate to monthly and yearly salaries in South Africa
-          </p>
-          
-          <div className="mb-6 h-10 w-full bg-gray-200 animate-pulse rounded"></div>
-          
-          <div className="bg-white rounded-sm shadow-sm border border-gray-200 p-6">
-            <div className="space-y-4">
-              {Array(10).fill(0).map((_, i) => (
-                <div key={i} className="w-full h-16 bg-gray-100 animate-pulse rounded"></div>
-              ))}
-            </div>
-          </div>
-        </main>
-      </div>
-    );
-  }
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -109,11 +65,6 @@ const HourlyRates = () => {
         <p className="text-gray-600 mb-6">
           See how hourly rates translate to monthly and yearly salaries in South Africa
         </p>
-        
-        {/* Top Ad */}
-        <div className="mb-6">
-          <AdSense slot="9889084223" format="auto" className="py-3" />
-        </div>
         
         <motion.div 
           className="mb-6"
@@ -142,13 +93,6 @@ const HourlyRates = () => {
             </div>
           ) : (
             <>
-              {/* Middle Ad after ~15 items */}
-              {displayedRates.length > 0 && (
-                <div className="px-4 py-3 border-b border-gray-100">
-                  <AdSense slot="job-list-ad-9" format="auto" className="py-1" />
-                </div>
-              )}
-              
               {displayedRates.map((rate, index) => (
                 <motion.div 
                   key={rate.hourlyRate}
@@ -188,47 +132,23 @@ const HourlyRates = () => {
                 </motion.div>
               ))}
               
-              {/* Middle Ad after ~25 items */}
-              {displayedRates.length > 24 && (
-                <div className="px-4 py-3 border-b border-gray-100">
-                  <AdSense slot="job-list-ad-24" format="auto" className="py-1" />
-                </div>
-              )}
-              
-              {/* Middle Ad after ~40 items */}
-              {displayedRates.length > 39 && (
-                <div className="px-4 py-3 border-b border-gray-100">
-                  <AdSense slot="job-list-ad-39" format="auto" className="py-1" />
-                </div>
-              )}
-              
               {hasMoreRates && (
-                <>
-                  <div className="p-4 border-t border-gray-100">
-                    <AdSense slot="job-list-load-more" format="auto" className="py-1" />
-                  </div>
-                  <Pagination className="py-5">
-                    <PaginationContent>
-                      <PaginationItem className="w-full">
-                        <Button 
-                          variant="outline" 
-                          onClick={loadMore} 
-                          className="w-full"
-                        >
-                          Load More Rates
-                        </Button>
-                      </PaginationItem>
-                    </PaginationContent>
-                  </Pagination>
-                </>
+                <Pagination className="py-5">
+                  <PaginationContent>
+                    <PaginationItem className="w-full">
+                      <Button 
+                        variant="outline" 
+                        onClick={loadMore} 
+                        className="w-full"
+                      >
+                        Load More Rates
+                      </Button>
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
               )}
             </>
           )}
-        </div>
-        
-        {/* Bottom Ad */}
-        <div className="mt-6">
-          <AdSense slot="9889084223" format="auto" className="py-3" />
         </div>
       </main>
 

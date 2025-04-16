@@ -1,5 +1,6 @@
 
 import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 type AdFormat = 'auto' | 'horizontal' | 'vertical' | 'rectangle' | 'leaderboard';
 
@@ -25,49 +26,44 @@ const AdSense = ({
   layout = 'normal'
 }: AdSenseProps) => {
   const adRef = useRef<HTMLDivElement>(null);
-  const [adLoaded, setAdLoaded] = useState(false);
+  const [adKey, setAdKey] = useState(Date.now());
+  const location = useLocation();
+  
+  // Reset the ad when the route changes
+  useEffect(() => {
+    setAdKey(Date.now());
+  }, [location.pathname]);
   
   useEffect(() => {
     try {
       if (adRef.current && typeof window !== 'undefined') {
+        // Verbose logging for AdSense initialization
         console.log(`Initializing AdSense for slot: ${slot}`);
+        console.log(`Current pathname: ${location.pathname}`);
         
+        // Simple push without retries for traditional page loads
         if (window.adsbygoogle) {
           try {
             window.adsbygoogle.push({});
-            console.log(`AdSense ad pushed for slot: ${slot}`);
-            setAdLoaded(true);
+            console.log(`AdSense ad successfully pushed for slot: ${slot}`);
           } catch (pushError) {
             console.error(`Error pushing AdSense ad for slot ${slot}:`, pushError);
           }
         } else {
-          console.warn('AdSense not available yet');
+          console.warn('AdSense not available - will rely on traditional page load');
         }
       }
     } catch (error) {
       console.error('Critical AdSense initialization error:', error);
     }
-    
-    const handleAdLoad = () => {
-      console.log(`Ad in slot ${slot} loaded successfully`);
-      setAdLoaded(true);
-    };
-    
-    const adElement = adRef.current;
-    if (adElement) {
-      adElement.addEventListener('load', handleAdLoad);
-      return () => {
-        adElement.removeEventListener('load', handleAdLoad);
-      };
-    }
-  }, [slot]);
+  }, [slot, adKey, location.pathname]);
 
   // For display ads with no specific format
   const isDisplayAd = slot === "9889084223";
   
   if (isDisplayAd) {
     return (
-      <div className={className}>
+      <div className={className} key={adKey}>
         <ins
           ref={adRef as any}
           className="adsbygoogle"
@@ -77,13 +73,6 @@ const AdSense = ({
           data-ad-format="auto"
           data-full-width-responsive="true"
         />
-        {!adLoaded && (
-          <div className="h-20 w-full bg-gray-100 animate-pulse rounded">
-            <div className="flex items-center justify-center h-full">
-              <span className="text-xs text-gray-400">Advertisement loading...</span>
-            </div>
-          </div>
-        )}
       </div>
     );
   }
@@ -112,6 +101,7 @@ const AdSense = ({
       'data-full-width-responsive': responsive ? 'true' : 'false',
     };
     
+    // Add layout-specific attributes
     if (layout === 'in-article') {
       attributes['data-ad-layout'] = 'in-article';
       attributes['data-ad-format'] = 'fluid';
@@ -124,20 +114,13 @@ const AdSense = ({
   };
 
   return (
-    <div className={`${containerClasses} ${sizeClass}`}>
+    <div className={`${containerClasses} ${sizeClass}`} key={adKey}>
       <ins
         ref={adRef as any}
         className="adsbygoogle"
         style={{ display: 'block' }}
         {...getAdAttributes()}
       />
-      {!adLoaded && (
-        <div className="h-20 w-full bg-gray-100 animate-pulse rounded">
-          <div className="flex items-center justify-center h-full">
-            <span className="text-xs text-gray-400">Advertisement loading...</span>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
