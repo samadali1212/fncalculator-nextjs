@@ -1,4 +1,3 @@
-
 // src/pages/CompareCelebritySalaries.tsx
 
 import React, { useState, useEffect } from 'react';
@@ -77,7 +76,6 @@ const CompareCelebritySalaries = () => {
       setPerson2(foundP2);
     }
     
-    // Automatically load two random people if none are specified, like the net worth page does
     if (!person1Id && !person2Id && allPeople.length >= 2) {
       setPerson1(allPeople[0]);
       setPerson2(allPeople[1]);
@@ -86,7 +84,6 @@ const CompareCelebritySalaries = () => {
       setPerson1(allPeople[0]);
       updateUrlParams(allPeople[0].slug, person2Id);
     } else if (!person2Id && allPeople.length >= 2) {
-      // Find a celebrity that's different from person1
       const differentPerson = person1Id 
         ? allPeople.find(p => p.slug !== person1Id) || allPeople[1] 
         : allPeople[1];
@@ -475,7 +472,110 @@ const CompareCelebritySalaries = () => {
             </div>
 
             {person1 && person2 && (
-              // ... keep existing code (comparison results section)
+              <>
+                <Card className="mb-8 bg-gray-50">
+                  <CardContent className="p-6">
+                    <h2 className="text-xl font-bold text-center mb-6">Comparison Results</h2>
+
+                    <div className="bg-white p-4 rounded-lg border mb-4">
+                      <div className="text-center">
+                        {salaryDifferenceValue === 0 ? (
+                            <Badge className="mb-2" variant="secondary">Salaries are Equal</Badge>
+                          ) : (
+                            <Badge className="mb-2" variant="outline">
+                              {higherPaidPersonValue?.name} Earns More
+                            </Badge>
+                          )}
+
+                        {salaryDifferenceValue === 0 ? (
+                            <h3 className="text-lg font-bold mb-1">
+                                Both earn {formatSalary(person1.salary, person1.currency)}
+                            </h3>
+                          ) : (
+                            <>
+                              <h3 className="text-lg font-bold mb-1">
+                                {higherPaidPersonValue?.name} earns {formatSalary(salaryDifferenceValue, higherPaidPersonValue?.currency || "USD")} more
+                              </h3>
+                              <p className="text-gray-600">
+                                That's {percentageDifferenceValue}% more salary
+                              </p>
+                            </>
+                          )}
+                      </div>
+                    </div>
+
+                    <div className="bg-white p-4 rounded-lg border mb-6">
+                      <p className="text-gray-700 leading-relaxed">
+                        {comparisonTextValue}
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="bg-white p-4 rounded-lg border">
+                        <h4 className="font-semibold mb-2">{person1.name}</h4>
+                        <p className="text-lg font-bold">{formatSalary(person1.salary, person1.currency)}</p>
+                        <p className="text-sm text-gray-600">{person1.industry} • {person1.occupation}</p>
+                        {person1.company && <p className="text-sm text-gray-500">Company: {person1.company}</p>}
+                      </div>
+                      <div className="bg-white p-4 rounded-lg border">
+                        <h4 className="font-semibold mb-2">{person2.name}</h4>
+                        <p className="text-lg font-bold">{formatSalary(person2.salary, person2.currency)}</p>
+                        <p className="text-sm text-gray-600">{person2.industry} • {person2.occupation}</p>
+                        {person2.company && <p className="text-sm text-gray-500">Company: {person2.company}</p>}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <div className="mb-4">
+                  <AdSense slot="YOUR_AD_SLOT_ID_2" format="auto" className="py-3" />
+                </div>
+
+                <div className="mb-8">
+                  <h3 className="text-xl font-bold mb-4">Detailed Comparison</h3>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="w-[150px]">Category</TableHead>
+                        <TableHead>{person1.name}</TableHead>
+                        <TableHead>{person2.name}</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      <TableRow>
+                        <TableCell className="font-medium"><Banknote className="inline h-4 w-4 mr-1"/> Salary</TableCell>
+                        <TableCell>{formatSalary(person1.salary, person1.currency)}</TableCell>
+                        <TableCell>{formatSalary(person2.salary, person2.currency)}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell className="font-medium"><Activity className="inline h-4 w-4 mr-1"/> Industry</TableCell>
+                        <TableCell>{person1.industry}</TableCell>
+                        <TableCell>{person2.industry}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell className="font-medium"><Briefcase className="inline h-4 w-4 mr-1"/> Occupation</TableCell>
+                        <TableCell>{person1.occupation}</TableCell>
+                        <TableCell>{person2.occupation}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell className="font-medium"><Landmark className="inline h-4 w-4 mr-1"/> Company</TableCell>
+                        <TableCell>{person1.company || "N/A"}</TableCell>
+                        <TableCell>{person2.company || "N/A"}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell className="font-medium"><MapPin className="inline h-4 w-4 mr-1"/> Country</TableCell>
+                        <TableCell>{person1.country}</TableCell>
+                        <TableCell>{person2.country}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell className="font-medium"><User className="inline h-4 w-4 mr-1"/> Age</TableCell>
+                        <TableCell>{person1.age} years</TableCell>
+                        <TableCell>{person2.age} years</TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </div>
+              </>
             )}
           </div>
         </div>
