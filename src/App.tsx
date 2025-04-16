@@ -38,6 +38,14 @@ const App = () => (
         <Route path="/about" element={<About />} />
         <Route path="/branch-codes" element={<BranchCodes />} />
         <Route path="/salaries/:jobId" element={<JobDetail />} />
+        <Route path="/hourly-rates" element={<HourlyRates />} />
+        <Route path="/hourly-rates/:rateId" element={<HourlyRateDetail />} />
+        <Route path="/tax-calculator" element={<TaxCalculator />} />
+        <Route path="/tax-calculator/monthly" element={<TaxCalculator />} />
+        <Route path="/tax-calculator/yearly" element={<TaxCalculator />} />
+        <Route path="/tax-calculator/monthly/:incomeId" element={<TaxCalculationDetail />} />
+        <Route path="/tax-calculator/yearly/:incomeId" element={<TaxCalculationDetail />} />
+        <Route path="/tax-calculator/:incomeId" element={<TaxCalculationDetail />} />
         <Route path="/celebrities" element={<Celebrities />} />
         <Route path="/celebrities/:slug" element={<CelebrityDetail />} />
         <Route path="/celebrity-categories" element={<StandaloneCelebrityCategories />} />
@@ -56,17 +64,7 @@ const App = () => (
         {/* Blog Routes */}
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogDetail />} />
-        
-        {/* Tax Calculator & Hourly Rates Routes */}
-        <Route path="/hourly-rates" element={<HourlyRates />} />
-        <Route path="/hourly-rates/:rateId" element={<HourlyRateDetail />} />
-        <Route path="/tax-calculator" element={<TaxCalculator />} />
-        <Route path="/tax-calculator/monthly" element={<TaxCalculator />} />
-        <Route path="/tax-calculator/yearly" element={<TaxCalculator />} />
-        <Route path="/tax-calculator/monthly/:incomeId" element={<TaxCalculationDetail />} />
-        <Route path="/tax-calculator/yearly/:incomeId" element={<TaxCalculationDetail />} />
-        <Route path="/tax-calculator/:incomeId" element={<TaxCalculationDetail />} />
-        
+                
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
