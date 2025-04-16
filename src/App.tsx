@@ -52,12 +52,12 @@ const App = () => (
         <Route path="/celebrities/category/:slug" element={<CelebrityCategory />} />
         <Route path="/net-worth" element={<NetWorth />} />
         
-        {/* Celebrity salary comparison routes - PLACE THESE BEFORE THE NET WORTH ROUTES */}
+        {/* Celebrity comparison routes */}
         <Route path="/compare-celebrities" element={<CompareCelebrities />} />
         <Route path="/compare-celebrities/:comparison" element={<CompareCelebrities />} />
         
-        {/* Net worth comparison routes */}
-        <Route path="/comparison" element={<CompareNetWorth />} />
+        {/* Net worth comparison routes - completely separate */}
+        <Route path="/compare" element={<CompareNetWorth />} />
         <Route path="/compare/:comparison" element={<CompareNetWorth />} />
         <Route path="/compare/:person1/:person2" element={<CompareNetWorth />} />
         
