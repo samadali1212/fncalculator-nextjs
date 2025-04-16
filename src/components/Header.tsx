@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
@@ -41,6 +40,7 @@ const Header = () => {
   const isActive = (path: string) => {
     if (path === "/branch-codes" && (location.pathname === "/" || location.pathname === "/branch-codes")) return true;
     if (path === "/comparison" && location.pathname.startsWith("/compare/")) return true;
+    if (path === "/compare-salaries" && location.pathname.startsWith("/compare-salaries/")) return true;
     return location.pathname.startsWith(path);
   };
 
@@ -51,20 +51,20 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        {/* Use regular anchor for the logo/homepage link */}
-        <a 
-          href="/" 
+        {/* Use Link component for the logo/homepage link */}
+        <Link 
+          to="/" 
           className="flex items-center gap-2 font-bold text-2xl"
         >
           <img src="/SalaryListlogo.webp" alt="SalaryList" className="h-6" />
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-1">
           {menuItems.map((item) => (
-            <a
+            <Link
               key={item.path}
-              href={item.path}
+              to={item.path}
               className={`px-3 py-2 rounded-md text-sm font-medium ${
                 isActive(item.path)
                   ? "text-[#1a1f2c] bg-white shadow-sm"
@@ -72,7 +72,7 @@ const Header = () => {
               }`}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -99,9 +99,9 @@ const Header = () => {
         >
           <div className="bg-white px-4 pt-2 pb-3 space-y-1 shadow-lg">
             {menuItems.map((item) => (
-              <a
+              <Link
                 key={item.path}
-                href={item.path}
+                to={item.path}
                 onClick={() => setIsOpen(false)}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive(item.path)
@@ -110,7 +110,7 @@ const Header = () => {
                 }`}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
         </motion.div>
