@@ -1,3 +1,5 @@
+// src/pages/CompareCelebritySalaries.tsx
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useSearchParams, useParams } from 'react-router-dom';
@@ -68,12 +70,10 @@ const CompareCelebritySalaries = () => {
       foundP1 = findPersonBySlug(person1Id);
       setPerson1(foundP1);
     }
-    
     if (person2Id) {
       foundP2 = findPersonBySlug(person2Id);
       setPerson2(foundP2);
     }
-    
     if (!person1Id && !person2Id && allPeople.length >= 2) {
       setPerson1(allPeople[0]);
       setPerson2(allPeople[1]);
