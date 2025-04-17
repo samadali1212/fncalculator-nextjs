@@ -27,13 +27,10 @@ const Header = () => {
   }, []);
 
   const menuItems = [
-    { path: "/celebrities", label: "Celebrities" },
+    { path: "/celebrities", label: "celebs Salary" },
     { path: "/celebrity-categories", label: "Highest-Paid" },
-    { path: "/net-worth", label: "South African" },
-    { path: "/global-net-worth", label: "Global Wealth" },
-    { path: "/compare", label: "SA Comparisons" },
-    { path: "/compare-global", label: "Global Comparisons" },
-    { path: "/categories", label: "Richest" },
+    { path: "/net-worth", label: "SA Net Worth" },
+    { path: "/global-net-worth", label: "Net Worth" },
     { path: "/hourly-rates", label: "Hourly Rates" },
     { path: "/tax-calculator", label: "Tax Calculator" },
     { path: "/branch-codes", label: "Branch Codes" },
