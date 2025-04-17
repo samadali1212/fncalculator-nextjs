@@ -29,7 +29,8 @@ const Header = () => {
   const menuItems = [
     { path: "/celebrities", label: "Celebrities" },
     { path: "/celebrity-categories", label: "Highest-Paid" },
-    { path: "/net-worth", label: "Net Worth" },
+    { path: "/net-worth", label: "South African" },
+    { path: "/global-net-worth", label: "Global Wealth" },
     { path: "/categories", label: "Richest" },
     { path: "/hourly-rates", label: "Hourly Rates" },
     { path: "/tax-calculator", label: "Tax Calculator" },
