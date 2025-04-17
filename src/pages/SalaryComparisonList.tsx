@@ -40,7 +40,7 @@ const SalaryComparisonList = () => {
       .substring(0, 2);
   };
 
-  // Generate comparison pairs (all possible pairs)
+  // Generate comparison pairs (unique pairs only)
   const generateComparisonPairs = () => {
     const pairs = [];
     
@@ -52,11 +52,12 @@ const SalaryComparisonList = () => {
         : true;
     });
     
-    // Generate all possible combinations
+    // Generate unique combinations (no duplicates like A-B and B-A)
     for (let i = 0; i < filteredCelebrities.length; i++) {
       for (let j = 0; j < filteredCelebrities.length; j++) {
-        // Skip comparing a celebrity to themselves
-        if (i !== j) {
+        // Skip comparing a celebrity to themselves and avoid duplicates
+        // We only want each unique pair once
+        if (i < j) {
           pairs.push({
             person1: filteredCelebrities[i],
             person2: filteredCelebrities[j],

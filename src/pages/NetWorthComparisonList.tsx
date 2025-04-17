@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ExternalLink, ArrowRight } from "lucide-react";
@@ -49,11 +48,12 @@ const NetWorthComparisonList = () => {
         : true;
     });
     
-    // Generate all possible combinations
+    // Generate unique combinations (no duplicates like A-B and B-A)
     for (let i = 0; i < filteredPeople.length; i++) {
       for (let j = 0; j < filteredPeople.length; j++) {
-        // Skip comparing a person to themselves
-        if (i !== j) {
+        // Skip comparing a person to themselves and avoid duplicates
+        // We only want each unique pair once
+        if (i < j) {
           pairs.push({
             person1: filteredPeople[i],
             person2: filteredPeople[j],
