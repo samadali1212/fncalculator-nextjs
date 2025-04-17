@@ -49,19 +49,24 @@ const NetWorthComparisonList = () => {
         : true;
     });
     
+    // Generate all possible combinations
     for (let i = 0; i < filteredPeople.length; i++) {
-      for (let j = i + 1; j < filteredPeople.length; j++) {
-        pairs.push({
-          person1: filteredPeople[i],
-          person2: filteredPeople[j],
-          comparisonUrl: createComparisonUrl(
-            filteredPeople[i].slug, 
-            filteredPeople[j].slug
-          )
-        });
+      for (let j = 0; j < filteredPeople.length; j++) {
+        // Skip comparing a person to themselves
+        if (i !== j) {
+          pairs.push({
+            person1: filteredPeople[i],
+            person2: filteredPeople[j],
+            comparisonUrl: createComparisonUrl(
+              filteredPeople[i].slug, 
+              filteredPeople[j].slug
+            )
+          });
+        }
       }
     }
     
+    // Sort pairs by combined net worth (descending)
     return pairs.sort((a, b) => 
       ((b.person1.netWorth || 0) + (b.person2.netWorth || 0)) - 
       ((a.person1.netWorth || 0) + (a.person2.netWorth || 0))

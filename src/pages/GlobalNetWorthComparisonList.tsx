@@ -48,20 +48,27 @@ const GlobalNetWorthComparisonList = () => {
     const filteredPeople = globalNetWorthPeople.filter(person => {
       return searchQuery 
         ? person.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-          (person.occupation && person.occupation.toLowerCase().includes(searchQuery.toLowerCase()))
+          (person.occupation && person.occupation.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (person.industry && person.industry.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (person.country && person.country.toLowerCase().includes(searchQuery.toLowerCase()))
         : true;
     });
     
+    // Generate all possible combinations
     for (let i = 0; i < filteredPeople.length; i++) {
-      for (let j = i + 1; j < filteredPeople.length; j++) {
-        pairs.push({
-          person1: filteredPeople[i],
-          person2: filteredPeople[j],
-          comparisonUrl: `/compare-global/${filteredPeople[i].slug}-vs-${filteredPeople[j].slug}`
-        });
+      for (let j = 0; j < filteredPeople.length; j++) {
+        // Skip comparing a person to themselves
+        if (i !== j) {
+          pairs.push({
+            person1: filteredPeople[i],
+            person2: filteredPeople[j],
+            comparisonUrl: `/compare-global/${filteredPeople[i].slug}-vs-${filteredPeople[j].slug}`
+          });
+        }
       }
     }
     
+    // Sort pairs by combined net worth (descending)
     return pairs.sort((a, b) => 
       ((b.person1.netWorth || 0) + (b.person2.netWorth || 0)) - 
       ((a.person1.netWorth || 0) + (a.person2.netWorth || 0))

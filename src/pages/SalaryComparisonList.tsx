@@ -54,16 +54,19 @@ const SalaryComparisonList = () => {
     
     // Generate all possible combinations
     for (let i = 0; i < filteredCelebrities.length; i++) {
-      for (let j = i + 1; j < filteredCelebrities.length; j++) {
-        pairs.push({
-          person1: filteredCelebrities[i],
-          person2: filteredCelebrities[j],
-          comparisonUrl: createComparisonUrl(
-            filteredCelebrities[i].slug, 
-            filteredCelebrities[j].slug, 
-            'salary'
-          )
-        });
+      for (let j = 0; j < filteredCelebrities.length; j++) {
+        // Skip comparing a celebrity to themselves
+        if (i !== j) {
+          pairs.push({
+            person1: filteredCelebrities[i],
+            person2: filteredCelebrities[j],
+            comparisonUrl: createComparisonUrl(
+              filteredCelebrities[i].slug, 
+              filteredCelebrities[j].slug, 
+              'salary'
+            )
+          });
+        }
       }
     }
     
