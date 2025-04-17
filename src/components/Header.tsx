@@ -38,7 +38,7 @@ const Header = () => {
   ];
 
   const isActive = (path: string) => {
-    if (path === "/branch-codes" && (location.pathname === "/" || location.pathname === "/branch-codes")) return true;
+    if (path === "/salaries" && (location.pathname === "/" || location.pathname === "/salaries")) return true;
     if (path === "/comparison" && location.pathname.startsWith("/compare/")) return true;
     if (path === "/compare-salaries" && location.pathname.startsWith("/compare-salaries/")) return true;
     return location.pathname.startsWith(path);
