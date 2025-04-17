@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -13,7 +12,33 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import AdSense from "../components/AdSense";
-import { findGlobalPersonBySlug, getSimilarGlobalPeople } from "./GlobalNetWorth";
+import { netWorthPeople } from "../utils/netWorthData";
+
+// Helper function to find person by slug
+export const findGlobalPersonBySlug = (slug: string) => {
+  return netWorthPeople.find(person => person.slug === slug) || null;
+};
+
+// Helper function to get similar people
+export const getSimilarGlobalPeople = (person: any, limit: number) => {
+  if (!person) return [];
+  
+  const similar = netWorthPeople
+    .filter(p => p.id !== person.id)
+    .sort((a, b) => {
+      // Prioritize same industry
+      if (a.industry === person.industry && b.industry !== person.industry) return -1;
+      if (a.industry !== person.industry && b.industry === person.industry) return 1;
+      
+      // Then sort by net worth difference
+      const aDiff = Math.abs(a.netWorth - person.netWorth);
+      const bDiff = Math.abs(b.netWorth - person.netWorth);
+      return aDiff - bDiff;
+    })
+    .slice(0, limit);
+    
+  return similar;
+};
 
 const GlobalNetWorthDetail = () => {
   const { slug } = useParams<{ slug: string }>();

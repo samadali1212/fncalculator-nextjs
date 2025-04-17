@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useSearchParams, useParams, Link } from 'react-router-dom';
@@ -17,7 +16,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import AdSense from "../components/AdSense";
 import { usePageReload } from "../hooks/usePageReload";
 import { 
-  globalNetWorthPeople,
+  netWorthPeople,
   formatNetWorth,
 } from "../utils/netWorthData";
 
@@ -57,7 +56,7 @@ const CompareGlobalNetWorth = () => {
   const [activePersonSelect, setActivePersonSelect] = useState<'p1' | 'p2' | null>(null);
   const [localLoading, setLocalLoading] = useState(true);
   
-  const allPeople = globalNetWorthPeople;
+  const allPeople = netWorthPeople;
   
   const findPersonBySlug = (slug: string): NetWorthPerson | null => {
     return allPeople.find(person => person.slug === slug) || null;

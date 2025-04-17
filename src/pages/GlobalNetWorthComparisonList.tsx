@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ExternalLink, ArrowRight } from "lucide-react";
@@ -8,7 +7,7 @@ import Header from "../components/Header";
 import SEO from "../components/SEO";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { globalNetWorthPeople } from "../utils/netWorthData";
+import { netWorthPeople } from "../utils/netWorthData";
 import { createComparisonUrl, getRandomInt, formatCurrency } from "../utils/utils";
 import {
   Table,
@@ -42,7 +41,7 @@ const GlobalNetWorthComparisonList = () => {
   const generateComparisonPairs = () => {
     const pairs = [];
     
-    const filteredPeople = globalNetWorthPeople.filter(person => {
+    const filteredPeople = netWorthPeople.filter(person => {
       return searchQuery 
         ? person.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
           (person.occupation && person.occupation.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -74,9 +73,9 @@ const GlobalNetWorthComparisonList = () => {
   };
 
   const generateRandomComparison = () => {
-    if (globalNetWorthPeople.length < 2) return;
+    if (netWorthPeople.length < 2) return;
     
-    const shuffled = [...globalNetWorthPeople].sort(() => 0.5 - Math.random());
+    const shuffled = [...netWorthPeople].sort(() => 0.5 - Math.random());
     const randomPair = shuffled.slice(0, 2);
     
     navigate(`/compare-global/${randomPair[0].slug}-vs-${randomPair[1].slug}`);
