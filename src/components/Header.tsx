@@ -31,6 +31,8 @@ const Header = () => {
     { path: "/celebrity-categories", label: "Highest-Paid" },
     { path: "/net-worth", label: "South African" },
     { path: "/global-net-worth", label: "Global Wealth" },
+    { path: "/compare", label: "SA Comparisons" },
+    { path: "/compare-global", label: "Global Comparisons" },
     { path: "/categories", label: "Richest" },
     { path: "/hourly-rates", label: "Hourly Rates" },
     { path: "/tax-calculator", label: "Tax Calculator" },
@@ -41,6 +43,8 @@ const Header = () => {
   const isActive = (path: string) => {
     if (path === "/salaries" && (location.pathname === "/" || location.pathname === "/salaries")) return true;
     if (path === "/comparison" && location.pathname.startsWith("/compare/")) return true;
+    if (path === "/compare" && location.pathname.startsWith("/compare/")) return true;
+    if (path === "/compare-global" && location.pathname.startsWith("/compare-global/")) return true;
     if (path === "/compare-salaries" && location.pathname.startsWith("/compare-salaries/")) return true;
     return location.pathname.startsWith(path);
   };
