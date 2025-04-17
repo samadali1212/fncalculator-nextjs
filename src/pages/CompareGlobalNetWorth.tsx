@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useSearchParams, useParams, Link } from 'react-router-dom';
@@ -16,24 +17,11 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import AdSense from "../components/AdSense";
 import { usePageReload } from "../hooks/usePageReload";
 import { 
-  netWorthPeople,
-  formatNetWorth,
-} from "../utils/netWorthData";
-
-interface NetWorthPerson {
-  id: string;
-  slug: string;
-  name: string;
-  netWorth: number;
-  currency: string;
-  occupation: string;
-  industry: string;
-  company?: string;
-  country: string;
-  age: number;
-  description: string;
-  imageUrl?: string;
-}
+  globalNetWorthPeople,
+  formatGlobalNetWorth,
+  findGlobalPersonBySlug,
+  GlobalNetWorthPerson
+} from "../utils/globalNetWorthData";
 
 const CompareGlobalNetWorth = () => {
   const navigate = useNavigate();
@@ -49,30 +37,26 @@ const CompareGlobalNetWorth = () => {
   const [person2Id, setPerson2Id] = useState<string | null>(
     person2Slug || searchParams.get("p2")
   );
-  const [person1, setPerson1] = useState<NetWorthPerson | null>(null);
-  const [person2, setPerson2] = useState<NetWorthPerson | null>(null);
+  const [person1, setPerson1] = useState<GlobalNetWorthPerson | null>(null);
+  const [person2, setPerson2] = useState<GlobalNetWorthPerson | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState<NetWorthPerson[]>([]);
+  const [searchResults, setSearchResults] = useState<GlobalNetWorthPerson[]>([]);
   const [activePersonSelect, setActivePersonSelect] = useState<'p1' | 'p2' | null>(null);
   const [localLoading, setLocalLoading] = useState(true);
   
-  const allPeople = netWorthPeople;
-  
-  const findPersonBySlug = (slug: string): NetWorthPerson | null => {
-    return allPeople.find(person => person.slug === slug) || null;
-  };
+  const allPeople = globalNetWorthPeople;
   
   useEffect(() => {
     setLocalLoading(true);
     setIsLoading(true);
     
     if (person1Id) {
-      const found = findPersonBySlug(person1Id);
+      const found = findGlobalPersonBySlug(person1Id);
       if (found) setPerson1(found);
     }
     
     if (person2Id) {
-      const found = findPersonBySlug(person2Id);
+      const found = findGlobalPersonBySlug(person2Id);
       if (found) setPerson2(found);
     }
     
@@ -129,7 +113,7 @@ const CompareGlobalNetWorth = () => {
     window.location.href = url;
   };
   
-  const selectPerson = (person: NetWorthPerson) => {
+  const selectPerson = (person: GlobalNetWorthPerson) => {
     if (activePersonSelect === 'p1') {
       setPerson1(person);
       if (person2) {
@@ -195,9 +179,9 @@ const CompareGlobalNetWorth = () => {
     const difference = getWealthDifference();
     const percentage = getWealthDifferencePercentage();
     
-    let text = `${richer?.name} is richer than ${poorer?.name} with a net worth of ${formatNetWorth(richer?.netWorth || 0, richer?.currency || "USD")}. `;
+    let text = `${richer?.name} is richer than ${poorer?.name} with a net worth of ${formatGlobalNetWorth(richer?.netWorth || 0, richer?.currency || "USD")}. `;
     
-    text += `This is ${formatNetWorth(difference, richer?.currency || "USD")} or ${percentage}% more than ${poorer?.name}'s net worth of ${formatNetWorth(poorer?.netWorth || 0, poorer?.currency || "USD")}. `;
+    text += `This is ${formatGlobalNetWorth(difference, richer?.currency || "USD")} or ${percentage}% more than ${poorer?.name}'s net worth of ${formatGlobalNetWorth(poorer?.netWorth || 0, poorer?.currency || "USD")}. `;
     
     if (richer?.industry === poorer?.industry) {
       text += `Both individuals made their fortune in the ${richer?.industry} industry. `;
@@ -272,7 +256,7 @@ const CompareGlobalNetWorth = () => {
     >
       <SEO 
         title={person1 && person2 ? `${person1.name} vs ${person2.name} Net Worth - Who is Richer?` : "Global Wealth Comparison"}
-        description={person1 && person2 ? `Compare the net worth of ${person1.name} (${formatNetWorth(person1.netWorth, person1.currency)}) and ${person2.name} (${formatNetWorth(person2.netWorth, person2.currency)}). Find out who is richer by how much.` : "Compare the net worth of wealthy individuals from around the world."}
+        description={person1 && person2 ? `Compare the net worth of ${person1.name} (${formatGlobalNetWorth(person1.netWorth, person1.currency)}) and ${person2.name} (${formatGlobalNetWorth(person2.netWorth, person2.currency)}). Find out who is richer by how much.` : "Compare the net worth of wealthy individuals from around the world."}
         canonicalUrl={person1 && person2 ? `/compare-global/${person1.slug}-vs-${person2.slug}` : "/compare-global"}
       />
       
@@ -335,7 +319,7 @@ const CompareGlobalNetWorth = () => {
                               </Link>
                             </h3>
                             <p className="text-gray-600 text-sm">{person1.occupation}</p>
-                            <p className="text-lg font-semibold mt-1">{formatNetWorth(person1.netWorth, person1.currency)}</p>
+                            <p className="text-lg font-semibold mt-1">{formatGlobalNetWorth(person1.netWorth, person1.currency)}</p>
                           </div>
                         </div>
                       ) : (
@@ -381,7 +365,7 @@ const CompareGlobalNetWorth = () => {
                               </Avatar>
                               <div>
                                 <p className="font-medium">{person.name}</p>
-                                <p className="text-sm text-gray-500">{formatNetWorth(person.netWorth, person.currency)} • {person.industry}</p>
+                                <p className="text-sm text-gray-500">{formatGlobalNetWorth(person.netWorth, person.currency)} • {person.industry}</p>
                               </div>
                             </div>
                           ))}
@@ -419,7 +403,7 @@ const CompareGlobalNetWorth = () => {
                               </Link>
                             </h3>
                             <p className="text-gray-600 text-sm">{person2.occupation}</p>
-                            <p className="text-lg font-semibold mt-1">{formatNetWorth(person2.netWorth, person2.currency)}</p>
+                            <p className="text-lg font-semibold mt-1">{formatGlobalNetWorth(person2.netWorth, person2.currency)}</p>
                           </div>
                         </div>
                       ) : (
@@ -465,7 +449,7 @@ const CompareGlobalNetWorth = () => {
                               </Avatar>
                               <div>
                                 <p className="font-medium">{person.name}</p>
-                                <p className="text-sm text-gray-500">{formatNetWorth(person.netWorth, person.currency)} • {person.industry}</p>
+                                <p className="text-sm text-gray-500">{formatGlobalNetWorth(person.netWorth, person.currency)} • {person.industry}</p>
                               </div>
                             </div>
                           ))}
@@ -495,7 +479,7 @@ const CompareGlobalNetWorth = () => {
                           {richerPerson?.name} is Richer
                         </Badge>
                         <h3 className="text-lg font-bold mb-1">
-                          {richerPerson?.name} is richer by {formatNetWorth(wealthDifference, richerPerson?.currency || "USD")}
+                          {richerPerson?.name} is richer by {formatGlobalNetWorth(wealthDifference, richerPerson?.currency || "USD")}
                         </h3>
                         <p className="text-gray-600">
                           That's {percentageDifference}% more wealth
@@ -524,7 +508,7 @@ const CompareGlobalNetWorth = () => {
                             <ExternalLink className="ml-1 h-3.5 w-3.5 opacity-70" />
                           </Link>
                         </h4>
-                        <p className="text-lg font-bold">{formatNetWorth(person1.netWorth, person1.currency)}</p>
+                        <p className="text-lg font-bold">{formatGlobalNetWorth(person1.netWorth, person1.currency)}</p>
                         <p className="text-sm text-gray-600">{person1.industry} • {person1.occupation}</p>
                       </div>
                       <div className="bg-white p-4 rounded-lg border">
@@ -537,7 +521,7 @@ const CompareGlobalNetWorth = () => {
                             <ExternalLink className="ml-1 h-3.5 w-3.5 opacity-70" />
                           </Link>
                         </h4>
-                        <p className="text-lg font-bold">{formatNetWorth(person2.netWorth, person2.currency)}</p>
+                        <p className="text-lg font-bold">{formatGlobalNetWorth(person2.netWorth, person2.currency)}</p>
                         <p className="text-sm text-gray-600">{person2.industry} • {person2.occupation}</p>
                       </div>
                     </div>
@@ -577,8 +561,8 @@ const CompareGlobalNetWorth = () => {
                     <TableBody>
                       <TableRow>
                         <TableCell className="font-medium">Net Worth</TableCell>
-                        <TableCell>{formatNetWorth(person1.netWorth, person1.currency)}</TableCell>
-                        <TableCell>{formatNetWorth(person2.netWorth, person2.currency)}</TableCell>
+                        <TableCell>{formatGlobalNetWorth(person1.netWorth, person1.currency)}</TableCell>
+                        <TableCell>{formatGlobalNetWorth(person2.netWorth, person2.currency)}</TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell className="font-medium">Industry</TableCell>

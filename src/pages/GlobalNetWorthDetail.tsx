@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -12,33 +13,12 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import AdSense from "../components/AdSense";
-import { netWorthPeople } from "../utils/netWorthData";
-
-// Helper function to find person by slug
-export const findGlobalPersonBySlug = (slug: string) => {
-  return netWorthPeople.find(person => person.slug === slug) || null;
-};
-
-// Helper function to get similar people
-export const getSimilarGlobalPeople = (person: any, limit: number) => {
-  if (!person) return [];
-  
-  const similar = netWorthPeople
-    .filter(p => p.id !== person.id)
-    .sort((a, b) => {
-      // Prioritize same industry
-      if (a.industry === person.industry && b.industry !== person.industry) return -1;
-      if (a.industry !== person.industry && b.industry === person.industry) return 1;
-      
-      // Then sort by net worth difference
-      const aDiff = Math.abs(a.netWorth - person.netWorth);
-      const bDiff = Math.abs(b.netWorth - person.netWorth);
-      return aDiff - bDiff;
-    })
-    .slice(0, limit);
-    
-  return similar;
-};
+import { 
+  findGlobalPersonBySlug,
+  getSimilarGlobalPeople,
+  formatGlobalNetWorth,
+  GlobalNetWorthPerson
+} from "../utils/globalNetWorthData";
 
 const GlobalNetWorthDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -56,17 +36,6 @@ const GlobalNetWorthDetail = () => {
     
     return () => clearTimeout(timer);
   }, [slug]);
-
-  // Function to format net worth
-  const formatNetWorth = (amount: number, currency: string): string => {
-    if (amount >= 1000000000) {
-      return `${(amount / 1000000000).toFixed(1)}B ${currency}`;
-    } else if (amount >= 1000000) {
-      return `${(amount / 1000000).toFixed(1)}M ${currency}`;
-    } else {
-      return `${amount.toLocaleString()} ${currency}`;
-    }
-  };
   
   if (isLoading) {
     return (
@@ -118,7 +87,7 @@ const GlobalNetWorthDetail = () => {
     );
   }
 
-  const formattedNetWorthForTitle = formatNetWorth(person.netWorth, person.currency).replace(/\s/g, "");
+  const formattedNetWorthForTitle = formatGlobalNetWorth(person.netWorth, person.currency).replace(/\s/g, "");
   
   const getInitials = (name: string) => {
     return name
@@ -139,7 +108,7 @@ const GlobalNetWorthDetail = () => {
     >
       <SEO 
         title={`${person.name} Net Worth: ${formattedNetWorthForTitle}`}
-        description={`${person.name}'s estimated net worth is ${formatNetWorth(person.netWorth, person.currency)}. Learn about their wealth, career, and ${person.industry} business ventures.`}
+        description={`${person.name}'s estimated net worth is ${formatGlobalNetWorth(person.netWorth, person.currency)}. Learn about their wealth, career, and ${person.industry} business ventures.`}
         canonicalUrl={`/global-net-worth/${person.slug}`}
       />
       
@@ -203,7 +172,7 @@ const GlobalNetWorthDetail = () => {
                 </div>
                 
                 <div className="text-xl font-semibold text-[#333]">
-                  {formatNetWorth(person.netWorth, person.currency)}
+                  {formatGlobalNetWorth(person.netWorth, person.currency)}
                 </div>
                 
                 <div className="flex items-center mt-1">
@@ -219,7 +188,7 @@ const GlobalNetWorthDetail = () => {
               <div className="grid md:grid-cols-3 gap-2">
                 <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
                   <div className="text-gray-600 text-sm mb-1">Net Worth</div>
-                  <div className="text-xl font-bold">{formatNetWorth(person.netWorth, person.currency)}</div>
+                  <div className="text-xl font-bold">{formatGlobalNetWorth(person.netWorth, person.currency)}</div>
                   <div className="text-gray-500 text-xs mt-1">Source: {person.source}</div>
                 </div>
                 <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
@@ -258,7 +227,7 @@ const GlobalNetWorthDetail = () => {
                 <TableBody>
                   <TableRow>
                     <TableCell>Estimated Net Worth</TableCell>
-                    <TableCell className="text-right font-medium">{formatNetWorth(person.netWorth, person.currency)}</TableCell>
+                    <TableCell className="text-right font-medium">{formatGlobalNetWorth(person.netWorth, person.currency)}</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>Primary Industry</TableCell>
@@ -346,7 +315,7 @@ const GlobalNetWorthDetail = () => {
                         </Link>
                         
                         <div className="flex items-center text-xs text-[#828282]">
-                          <span>{formatNetWorth(similarPerson.netWorth, similarPerson.currency)}</span>
+                          <span>{formatGlobalNetWorth(similarPerson.netWorth, similarPerson.currency)}</span>
                           <span className="mx-1">•</span>
                           <span className="font-medium text-[#555]">{similarPerson.industry}</span>
                         </div>

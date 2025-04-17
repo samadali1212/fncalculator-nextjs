@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ArrowUpRight, ListFilter } from "lucide-react";
@@ -24,47 +25,10 @@ import {
   PaginationContent,
   PaginationItem,
 } from "@/components/ui/pagination";
-import { netWorthPeople } from "../utils/netWorthData";
-
-// Use the existing netWorthPeople data
-const globalNetWorthPeople = netWorthPeople;
-
-// Helper function to format net worth
-const formatGlobalNetWorth = (amount: number, currency: string): string => {
-  if (amount >= 1000000000) {
-    return `${(amount / 1000000000).toFixed(1)}B ${currency}`;
-  } else if (amount >= 1000000) {
-    return `${(amount / 1000000).toFixed(1)}M ${currency}`;
-  } else {
-    return `${amount.toLocaleString()} ${currency}`;
-  }
-};
-
-// Helper function to find person by slug
-export const findGlobalPersonBySlug = (slug: string) => {
-  return globalNetWorthPeople.find(person => person.slug === slug) || null;
-};
-
-// Helper function to get similar people
-export const getSimilarGlobalPeople = (person: any, limit: number) => {
-  if (!person) return [];
-  
-  const similar = globalNetWorthPeople
-    .filter(p => p.id !== person.id)
-    .sort((a, b) => {
-      // Prioritize same industry
-      if (a.industry === person.industry && b.industry !== person.industry) return -1;
-      if (a.industry !== person.industry && b.industry === person.industry) return 1;
-      
-      // Then sort by net worth difference
-      const aDiff = Math.abs(a.netWorth - person.netWorth);
-      const bDiff = Math.abs(b.netWorth - person.netWorth);
-      return aDiff - bDiff;
-    })
-    .slice(0, limit);
-    
-  return similar;
-};
+import { 
+  globalNetWorthPeople,
+  formatGlobalNetWorth
+} from "../utils/globalNetWorthData";
 
 const GlobalNetWorth = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -147,7 +111,7 @@ const GlobalNetWorth = () => {
             </p>
           </div>
           <Link 
-            to="/compare"
+            to="/compare-global"
             className="mt-4 md:mt-0 inline-flex items-center text-blog-accent hover:text-blog-accent-hover transition-colors"
           >
             <ListFilter className="h-4 w-4 mr-1.5" />
