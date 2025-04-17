@@ -28,7 +28,6 @@ const Header = () => {
 
   const menuItems = [
     { path: "/celebrities", label: "celebs Salary" },
-    { path: "/celebrity-categories", label: "Highest-Paid" },
     { path: "/net-worth", label: "SA Net Worth" },
     { path: "/global-net-worth", label: "Net Worth" },
     { path: "/hourly-rates", label: "Hourly Rates" },
