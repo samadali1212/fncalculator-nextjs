@@ -28,7 +28,7 @@ const Header = () => {
 
   const menuItems = [
     { path: "/categories/general-knowledge", label: "Rankings" },
-    { path: "/celebrities", label: "celebs Salary" },
+    { path: "/celebrities", label: "Celebs Salary" },
     { path: "/net-worth", label: "Net Worth" },
     { path: "/hourly-rates", label: "Hourly Rates" },
     { path: "/tax-calculator", label: "Tax Calculator" },
