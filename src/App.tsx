@@ -12,14 +12,10 @@ import Celebrities from "./pages/Celebrities";
 import CelebrityDetail from "./pages/CelebrityDetail";
 import NetWorth from "./pages/NetWorth";
 import NetWorthDetail from "./pages/NetWorthDetail";
-import GlobalNetWorth from "./pages/GlobalNetWorth";
-import GlobalNetWorthDetail from "./pages/GlobalNetWorthDetail";
 import CompareNetWorth from "./pages/CompareNetWorth";
 import CompareCelebritySalaries from "./pages/CompareCelebritySalaries";
 import SalaryComparisonList from "./pages/SalaryComparisonList";
 import NetWorthComparisonList from "./pages/NetWorthComparisonList";
-import GlobalNetWorthComparisonList from "./pages/GlobalNetWorthComparisonList";
-import CompareGlobalNetWorth from "./pages/CompareGlobalNetWorth";
 import NetWorthCategory from "./pages/NetWorthCategory";
 import StandaloneCategories from "./pages/StandaloneCategories";
 import StandaloneCelebrityCategories from "./pages/StandaloneCelebrityCategories";
@@ -71,21 +67,13 @@ const App = () => {
           <Route path="/celebrities/category/:slug" element={<CelebrityCategory />} />
           <Route path="/net-worth" element={<NetWorth />} />
           <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
-          
-          {/* Global Net Worth Routes */}
-          <Route path="/global-net-worth" element={<GlobalNetWorth />} />
-          <Route path="/global-net-worth/:slug" element={<GlobalNetWorthDetail />} />
-          
+                    
           {/* South African Net Worth comparison routes */}
           <Route path="/comparison" element={<Navigate to="/compare" replace />} />
           <Route path="/compare" element={<NetWorthComparisonList />} />
           <Route path="/compare/:comparison" element={<CompareNetWorth />} />
           <Route path="/compare/:person1/:person2" element={<CompareNetWorth />} />
-          
-          {/* Global Net Worth comparison routes */}
-          <Route path="/compare-global" element={<GlobalNetWorthComparisonList />} />
-          <Route path="/compare-global/:comparison" element={<CompareGlobalNetWorth />} />
-          
+                  
           {/* Salary comparison routes - add direct navigation to default comparison */}
           <Route path="/compare-salaries" element={<SalaryComparisonList />} />
           <Route path="/compare-salaries/:comparison" element={<CompareCelebritySalaries />} />
