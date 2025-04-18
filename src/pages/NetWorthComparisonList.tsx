@@ -25,7 +25,8 @@ import {
 
 const NetWorthComparisonList = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [itemsToShow, setItemsToShow] = useState(20);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(50);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -38,22 +39,22 @@ const NetWorthComparisonList = () => {
       .substring(0, 2);
   };
 
+  const filteredPeople = netWorthPeople.filter(person => {
+    return searchQuery
+      ? person.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        (person.occupation && person.occupation.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (person.industry && person.industry.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (person.company && person.company.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (person.country && person.country.toLowerCase().includes(searchQuery.toLowerCase()))
+      : true;
+  });
+
   const generateComparisonPairs = () => {
     const pairs = [];
     
-    const filteredPeople = netWorthPeople.filter(person => {
-      return searchQuery 
-        ? person.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-          (person.occupation && person.occupation.toLowerCase().includes(searchQuery.toLowerCase()))
-        : true;
-    });
-    
-    // Generate unique combinations (no duplicates like A-B and B-A)
     for (let i = 0; i < filteredPeople.length; i++) {
       for (let j = 0; j < filteredPeople.length; j++) {
-        // Skip comparing a person to themselves and avoid duplicates
-        // We only want each unique pair once
-        if (i < j) {
+        if (i !== j) {
           pairs.push({
             person1: filteredPeople[i],
             person2: filteredPeople[j],
@@ -66,7 +67,6 @@ const NetWorthComparisonList = () => {
       }
     }
     
-    // Sort pairs by combined net worth (descending)
     return pairs.sort((a, b) => 
       ((b.person1.netWorth || 0) + (b.person2.netWorth || 0)) - 
       ((a.person1.netWorth || 0) + (a.person2.netWorth || 0))
@@ -74,11 +74,16 @@ const NetWorthComparisonList = () => {
   };
 
   const comparisonPairs = generateComparisonPairs();
-  const displayedPairs = comparisonPairs.slice(0, itemsToShow);
-  const hasMorePairs = displayedPairs.length < comparisonPairs.length;
+  
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentPairs = comparisonPairs.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(comparisonPairs.length / itemsPerPage);
   
   const loadMore = () => {
-    setItemsToShow(prevItemsToShow => prevItemsToShow + 20);
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
   };
 
   const generateRandomComparison = () => {
@@ -153,7 +158,7 @@ const NetWorthComparisonList = () => {
             </div>
             <Input
               type="text"
-              placeholder="Search by name or occupation..."
+              placeholder="Search by name, occupation, industry, country..."
               className="pl-10"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -161,9 +166,18 @@ const NetWorthComparisonList = () => {
           </div>
         </motion.div>
 
-        {comparisonPairs.length === 0 ? (
+        {currentPairs.length === 0 ? (
           <div className="bg-white p-8 rounded-sm shadow-sm border border-gray-200 text-center">
-            <p className="text-gray-500">No comparison pairs found matching "{searchQuery}"</p>
+            {searchQuery.trim() !== '' ? (
+              <div>
+                <p className="text-gray-500 mb-2">No comparison pairs found matching "{searchQuery}"</p>
+                <p className="text-sm text-gray-400">
+                  Try searching for different terms or check your spelling
+                </p>
+              </div>
+            ) : (
+              <p className="text-gray-500">No comparison pairs available</p>
+            )}
           </div>
         ) : (
           <div className="bg-white rounded-sm shadow-sm border border-gray-200 overflow-hidden">
@@ -178,9 +192,9 @@ const NetWorthComparisonList = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {displayedPairs.map((pair, index) => (
-                  <TableRow key={`${pair.person1.id}-${pair.person2.id}`} className="group">
-                    <TableCell className="text-gray-500 text-sm">{index + 1}</TableCell>
+                {currentPairs.map((pair, index) => (
+                  <TableRow key={`${pair.person1.id}-${pair.person2.id}-${index}`} className="group">
+                    <TableCell className="text-gray-500 text-sm">{indexOfFirstItem + index + 1}</TableCell>
                     <TableCell>
                       <div className="flex items-center">
                         <Avatar className="h-8 w-8 mr-3">
@@ -251,7 +265,7 @@ const NetWorthComparisonList = () => {
               </TableBody>
             </Table>
             
-            {hasMorePairs && (
+            {currentPage < totalPages && (
               <Pagination className="py-5">
                 <PaginationContent>
                   <PaginationItem className="w-full">
@@ -260,7 +274,7 @@ const NetWorthComparisonList = () => {
                       onClick={loadMore} 
                       className="w-full"
                     >
-                      Load More Comparisons
+                      Load More Comparisons ({currentPairs.length} of {comparisonPairs.length})
                     </Button>
                   </PaginationItem>
                 </PaginationContent>
@@ -282,3 +296,4 @@ const NetWorthComparisonList = () => {
 };
 
 export default NetWorthComparisonList;
+
