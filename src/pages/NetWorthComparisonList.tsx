@@ -274,7 +274,7 @@ const NetWorthComparisonList = () => {
                       onClick={loadMore} 
                       className="w-full"
                     >
-                      Load More Comparisons ({currentPairs.length} of {comparisonPairs.length})
+                      Load More Comparisons
                     </Button>
                   </PaginationItem>
                 </PaginationContent>
