@@ -124,7 +124,7 @@ const GeneralKnowledgeDetail = () => {
               </Link>
             ) : (
               <Link 
-                to="/general-knowledge"
+                to="categories/general-knowledge"
                 className="inline-flex items-center text-sm text-[#000000] hover:underline"
               >
                 <ChevronLeft className="h-4 w-4 mr-1" />
