@@ -54,7 +54,7 @@ const NetWorthComparisonList = () => {
     
     for (let i = 0; i < filteredPeople.length; i++) {
       for (let j = 0; j < filteredPeople.length; j++) {
-        if (i !== j) {
+        if (i < j) {
           pairs.push({
             person1: filteredPeople[i],
             person2: filteredPeople[j],
@@ -296,4 +296,3 @@ const NetWorthComparisonList = () => {
 };
 
 export default NetWorthComparisonList;
-

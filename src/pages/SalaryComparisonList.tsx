@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ExternalLink, ArrowRight } from "lucide-react";
@@ -56,7 +55,7 @@ const SalaryComparisonList = () => {
     for (let i = 0; i < filteredCelebrities.length; i++) {
       for (let j = 0; j < filteredCelebrities.length; j++) {
         // Skip comparing a celebrity to themselves and avoid duplicates
-        // We only want each unique pair once
+        // We only want each unique pair once (i < j ensures no duplicates)
         if (i < j) {
           pairs.push({
             person1: filteredCelebrities[i],
