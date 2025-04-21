@@ -287,7 +287,7 @@ const GlobalCompareNetWorth = () => {
   
   const handleBackClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    window.location.href = '/net-worth';
+    window.location.href = '/global-net-worth';
   }
 
   return (
@@ -312,7 +312,7 @@ const GlobalCompareNetWorth = () => {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
               <a 
-                href="/net-worth"
+                href="/global-net-worth"
                 className="inline-flex items-center justify-center text-sm text-[#000000] hover:bg-white/60 mr-2 px-4 py-2 rounded-md"
                 onClick={handleBackClick}
               >
@@ -356,7 +356,7 @@ const GlobalCompareNetWorth = () => {
                           <div>
                             <h3 className="text-lg font-bold mb-1">
                               <Link 
-                                to={`/net-worth/${person1.slug}`} 
+                                to={`/global-net-worth/${person1.slug}`} 
                                 className="hover:text-blog-accent transition-colors flex items-center"
                               >
                                 {person1.name}
@@ -440,7 +440,7 @@ const GlobalCompareNetWorth = () => {
                           <div>
                             <h3 className="text-lg font-bold mb-1">
                               <Link 
-                                to={`/net-worth/${person2.slug}`} 
+                                to={`/global-net-worth/${person2.slug}`} 
                                 className="hover:text-blog-accent transition-colors flex items-center"
                               >
                                 {person2.name}
@@ -546,7 +546,7 @@ const GlobalCompareNetWorth = () => {
                       <div className="bg-white p-4 rounded-lg border">
                         <h4 className="font-semibold mb-2">
                           <Link 
-                            to={`/net-worth/${person1.slug}`} 
+                            to={`/global-net-worth/${person1.slug}`} 
                             className="hover:text-blog-accent transition-colors flex items-center"
                           >
                             {person1.name}
@@ -559,7 +559,7 @@ const GlobalCompareNetWorth = () => {
                       <div className="bg-white p-4 rounded-lg border">
                         <h4 className="font-semibold mb-2">
                           <Link 
-                            to={`/net-worth/${person2.slug}`} 
+                            to={`/global-net-worth/${person2.slug}`} 
                             className="hover:text-blog-accent transition-colors flex items-center"
                           >
                             {person2.name}
@@ -585,7 +585,7 @@ const GlobalCompareNetWorth = () => {
                         <TableHead>Category</TableHead>
                         <TableHead>
                           <Link 
-                            to={`/net-worth/${person1.slug}`} 
+                            to={`/global-net-worth/${person1.slug}`} 
                             className="hover:text-blog-accent transition-colors flex items-center"
                           >
                             {person1.name}
@@ -594,7 +594,7 @@ const GlobalCompareNetWorth = () => {
                         </TableHead>
                         <TableHead>
                           <Link 
-                            to={`/net-worth/${person2.slug}`} 
+                            to={`/global-net-worth/${person2.slug}`} 
                             className="hover:text-blog-accent transition-colors flex items-center"
                           >
                             {person2.name}
