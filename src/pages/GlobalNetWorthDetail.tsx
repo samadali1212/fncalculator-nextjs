@@ -33,7 +33,7 @@ const GlobalNetWorthDetail = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <motion.div
-          initial={{ opacity: a0 }}
+          initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="w-16 h-16 border-4 border-blog-accent border-t-transparent rounded-full animate-spin"
         ></motion.div>
@@ -195,3 +195,4 @@ const GlobalNetWorthDetail = () => {
 };
 
 export default GlobalNetWorthDetail;
+
