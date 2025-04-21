@@ -132,7 +132,7 @@ const HourlyRateDetail = () => {
   if (!rateDetails) {
     return (
       <div className="min-h-screen bg-[#f6f6f0] flex items-center justify-center">
-        <SEO title="Rate Not Found | SalaryList" description="The hourly rate you're looking for doesn't exist or is invalid." canonicalUrl="/hourly-rates" />
+        <SEO title="Rate Not Found | Sassa Insider" description="The hourly rate you're looking for doesn't exist or is invalid." canonicalUrl="/hourly-rates" />
         <Card>
           <CardContent className="p-6">
             <p>Rate not found. Please try another rate.</p>
@@ -172,7 +172,7 @@ const HourlyRateDetail = () => {
             </Link>
             
             <ShareButton 
-              title={`R${hourlyRate} Per Hour to Monthly Salary - SalaryList`} 
+              title={`R${hourlyRate} Per Hour to Monthly Salary - Sassa Insider`} 
               variant="outline"
             />
           </div>
@@ -391,7 +391,7 @@ const HourlyRateDetail = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
+            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
           </p>
         </div>
       </footer>
