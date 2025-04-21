@@ -302,7 +302,7 @@ const GlobalCompareNetWorth = () => {
       <SEO 
         title={person1 && person2 ? `${person1.name} vs ${person2.name} Net Worth - Who is Richer?` : "Wealth Comparison"}
         description={person1 && person2 ? `Compare the net worth of ${person1.name} (${formatNetWorth(person1.netWorth, person1.currency)}) and ${person2.name} (${formatNetWorth(person2.netWorth, person2.currency)}). Find out who is richer by how much.` : "Compare the net worth of wealthy individuals."}
-        canonicalUrl={person1 && person2 ? `/compare/${person1.slug}-vs-${person2.slug}` : "/comparison"}
+        canonicalUrl={person1 && person2 ? `/global-compare/${person1.slug}-vs-${person2.slug}` : "/comparison"}
       />
       
       <Header />
