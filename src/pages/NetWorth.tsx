@@ -30,7 +30,7 @@ import {
 
 const NetWorth = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [itemsToShow, setItemsToShow] = useState(50);
+  const [itemsToShow, setItemsToShow] = useState(200);
   const [industryFilter, setIndustryFilter] = useState<string>("all");
   const [isLoading, setIsLoading] = useState(true);
 
