@@ -33,6 +33,7 @@ const Header = () => {
     { path: "/hourly-rates", label: "Hourly Rates" },
     { path: "/tax-calculator", label: "Tax Calculator" },
     { path: "/branch-codes", label: "Branch Codes" },
+    { path: "/blog", label: "Blog" },
     { path: "/about", label: "About" },
   ];
 
