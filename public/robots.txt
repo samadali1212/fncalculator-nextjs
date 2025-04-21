@@ -6,10 +6,21 @@
  
  # Allow crawling of important directories
  User-agent: Googlebot
- Allow: /about/
+ Allow: /branch-codes/
+ Allow: /salaries/
+ Allow: /celebrities/
+ Allow: /celebrity-categories/
  Allow: /net-worth/
  Allow: /categories/
+ Allow: /general-knowledge/
+ Allow: /hourly-rates/
+ Allow: /tax-calculator/
+ Allow: /compare-salaries/
  Allow: /compare/
+ Allow: /global-compare/
+ Allow: /global-categories/
+ Allow: /about/
+ Allow: /blog/
 
  User-agent: Bingbot
  Allow: /
