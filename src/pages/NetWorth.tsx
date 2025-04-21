@@ -233,9 +233,9 @@ const NetWorth = () => {
                     </div>
                   </motion.div>
                   {(index + 1) % 12 === 0 && index !== displayedPeople.length - 1 && (
-                    <div className="py-4 border-b border-gray-100 flex justify-center">
-                      <AdSense slot="9889084223" format="auto" className="max-w-full" />
-                    </div>
+                  <div className="my-6">
+                  <AdSense slot="9889084223" format="auto" className="py-3" />
+                  </div>
                   )}
                 </React.Fragment>
               ))}
