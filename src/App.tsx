@@ -47,10 +47,10 @@ const App = () => {
     <BrowserRouter>
       <Layout>
         <Routes>
-          {/* Set BranchCodes as the explicit homepage */}
-          <Route path="/" element={<Salaries />} />
-          {/* Ensure branch-codes path also works and doesn't create duplicate content */}
-          <Route path="/salaries" element={<Navigate to="/" replace />} />
+          {/* Set NetWorth as the explicit homepage */}
+          <Route path="/" element={<NetWorth />} />
+          {/* Ensure net-worth path also works and doesn't create duplicate content */}
+          <Route path="/net-worth" element={<Navigate to="/" replace />} />
           <Route path="/branch-codes/:slug" element={<BranchCodeDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/branch-codes" element={<BranchCodes />} />
