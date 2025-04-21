@@ -170,7 +170,7 @@ const TaxCalculationDetail = () => {
             </Link>
             
             <ShareButton 
-              title={`Paye on ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary - SalaryList`} 
+              title={`Paye on ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary - Sassa Insider`} 
               variant="outline"
             />
           </div>
@@ -383,7 +383,7 @@ const TaxCalculationDetail = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
+            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
           </p>
         </div>
       </footer>
