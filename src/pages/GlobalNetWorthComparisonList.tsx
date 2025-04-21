@@ -141,7 +141,7 @@ const GlobalNetWorthComparisonList = () => {
       <SEO 
         title="Compare Net Worth" 
         description="Compare the net worth of celebrities, business leaders, and public figures side by side. See who has more wealth and analyze the differences between various wealthy individuals."
-        canonicalUrl="/compare"
+        canonicalUrl="/global-compare"
       />
       <Header />
       
