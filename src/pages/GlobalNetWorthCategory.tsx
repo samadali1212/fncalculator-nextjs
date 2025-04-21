@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
@@ -26,14 +27,17 @@ import {
   getPeopleByCategory
 } from "../utils/globalNetWorthData";
 
-const NetWorthCategory = () => {
+const GlobalNetWorthCategory = () => {
   const { slug } = useParams<{ slug: string }>();
   const location = useLocation();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [itemsToShow, setItemsToShow] = useState(50);
-  const [sortField, setSortField] = useState<string>("GlobalNetWorth");
+  const [sortField, setSortField] = useState<string>("netWorth");
+  
+  const isDirectAccess = location.pathname === "/global-executives";
+  const categorySlug = isDirectAccess ? "richest-global-executives" : slug;
   
   const category = categorySlug ? findCategoryBySlug(categorySlug) : undefined;
   const categoryId = categorySlug ? getCategoryIdBySlug(categorySlug) : undefined;
@@ -110,7 +114,7 @@ const NetWorthCategory = () => {
         <div className="bg-white p-6 rounded-md shadow-sm">
           <h2 className="text-xl font-semibold mb-4">Category Not Found</h2>
           <p className="mb-4">The category you're looking for doesn't exist.</p>
-          <Button onClick={() => navigate('/categories')}>
+          <Button onClick={() => navigate('/global-categories')}>
             All Categories
           </Button>
         </div>
@@ -125,9 +129,9 @@ const NetWorthCategory = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${category.title} | South Africa's Wealthiest`}
+        title={`${category.title} | World's Wealthiest`}
         description={category.description}
-        canonicalUrl={isDirectAccess ? "/insurance-executives" : `/net-worth/category/${slug}`}
+        canonicalUrl={isDirectAccess ? "/global-executives" : `/global-net-worth/category/${slug}`}
       />
       <Header />
       
@@ -135,7 +139,7 @@ const NetWorthCategory = () => {
         {!isDirectAccess && (
           <div className="mb-6">
             <Link 
-              to="/categories"
+              to="/global-categories"
               className="inline-flex items-center text-sm text-[#000000] hover:underline"
             >
               <ChevronLeft className="h-4 w-4 mr-1" />
@@ -154,7 +158,7 @@ const NetWorthCategory = () => {
           
           {!isDirectAccess && (
             <Link 
-              to="/categories"
+              to="/global-categories"
               className="mt-4 md:mt-0 inline-flex items-center text-blog-accent hover:text-blog-accent-hover transition-colors"
             >
               <ListFilter className="h-4 w-4 mr-1.5" />
@@ -262,7 +266,7 @@ const NetWorthCategory = () => {
                         
                         <div>
                           <Link 
-                            to={`/net-worth/${person.slug}`}
+                            to={`/global-net-worth/${person.slug}`}
                             className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                           >
                             {person.name}
@@ -319,9 +323,9 @@ const NetWorthCategory = () => {
         </div>
       </main>
 
-         <div className="mb-6">
+      <div className="mb-6">
          <AdSense slot="9889084223" format="auto" className="py-3" />
-         </div>
+      </div>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">

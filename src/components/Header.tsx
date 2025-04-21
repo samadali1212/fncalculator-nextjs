@@ -29,6 +29,7 @@ const Header = () => {
   const menuItems = [
     { path: "/celebrities", label: "Celebs Salary" },
     { path: "/net-worth", label: "Net Worth" },
+    { path: "/global-net-worth", label: "Global Worth" },
     { path: "/branch-codes", label: "Branch Codes" },
     { path: "/blog", label: "Blog" },
     { path: "/about", label: "About" },
@@ -40,6 +41,7 @@ const Header = () => {
     if (path === "/compare" && location.pathname.startsWith("/compare/")) return true;
     if (path === "/compare-global" && location.pathname.startsWith("/compare-global/")) return true;
     if (path === "/compare-salaries" && location.pathname.startsWith("/compare-salaries/")) return true;
+    if (path === "/global-net-worth" && location.pathname.startsWith("/global-")) return true;
     return location.pathname.startsWith(path);
   };
 

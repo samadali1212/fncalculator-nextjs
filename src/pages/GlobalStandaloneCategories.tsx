@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ArrowUpRight, ListFilter, ChevronRight } from "lucide-react";
@@ -29,7 +30,7 @@ import {
   PaginationItem,
 } from "@/components/ui/pagination";
 
-const StandaloneCategories = () => {
+const GlobalStandaloneCategories = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState<CategoryMetadata[]>([]);
@@ -79,21 +80,21 @@ const StandaloneCategories = () => {
       <SEO 
         title="Rankings of the Wealthy People in the World" 
         description="Explore World's wealthiest individuals by categories - from business tycoons to sports stars and entertainers."
-        canonicalUrl="/categories"
+        canonicalUrl="/global-categories"
       />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
           <div>
-            <h1 className="text-3xl font-bold mb-2">Rankings of The Wealth People in South Africa</h1>
+            <h1 className="text-3xl font-bold mb-2">Rankings of The Wealthy People in the World</h1>
             <p className="text-gray-600">
-              Explore South Africa's wealthiest individuals organized by different categories
+              Explore the world's wealthiest individuals organized by different categories
             </p>
           </div>
           
           <Link 
-            to="/net-worth"
+            to="/global-net-worth"
             className="mt-4 md:mt-0 inline-flex items-center text-blog-accent hover:text-blog-accent-hover transition-colors"
           >
             <ListFilter className="h-4 w-4 mr-1.5" />
@@ -163,7 +164,7 @@ const StandaloneCategories = () => {
                         
                         <div>
                           <Link 
-                            to={`/net-worth/category/${category.slug}`}
+                            to={`/global-net-worth/category/${category.slug}`}
                             className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                           >
                             {category.title}
@@ -178,7 +179,7 @@ const StandaloneCategories = () => {
                     <div className="col-span-5 md:col-span-6">
                       <p className="text-sm text-gray-600 line-clamp-2">{category.description}</p>
                       <Link 
-                        to={`/net-worth/category/${category.slug}`}
+                        to={`/global-net-worth/category/${category.slug}`}
                         className="text-xs text-blog-accent hover:underline mt-1 inline-flex items-center"
                       >
                         View List

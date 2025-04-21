@@ -31,6 +31,14 @@ import { celebrities } from "./utils/celebrityData";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 
+// Global net worth pages
+import GlobalNetWorth from "./pages/GlobalNetWorth";
+import GlobalNetWorthDetail from "./pages/GlobalNetWorthDetail";
+import GlobalNetWorthCategory from "./pages/GlobalNetWorthCategory";
+import GlobalStandaloneCategories from "./pages/GlobalStandaloneCategories";
+import GlobalNetWorthComparisonList from "./pages/GlobalNetWorthComparisonList";
+import GlobalCompareNetWorth from "./pages/GlobalCompareNetWorth";
+
 // Get the first two celebrities from the data file for default comparison
 const getDefaultCelebrities = () => {
   if (celebrities.length >= 2) {
@@ -83,6 +91,15 @@ const App = () => {
           
           <Route path="/categories" element={<StandaloneCategories />} />
           <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
+          
+          {/* Global Net Worth Routes */}
+          <Route path="/global-net-worth" element={<GlobalNetWorth />} />
+          <Route path="/global-net-worth/:slug" element={<GlobalNetWorthDetail />} />
+          <Route path="/global-categories" element={<GlobalStandaloneCategories />} />
+          <Route path="/global-net-worth/category/:slug" element={<GlobalNetWorthCategory />} />
+          <Route path="/global-compare" element={<GlobalNetWorthComparisonList />} />
+          <Route path="/global-compare/:comparison" element={<GlobalCompareNetWorth />} />
+          <Route path="/global-compare/:person1/:person2" element={<GlobalCompareNetWorth />} />
           
           {/* General Knowledge Routes */}
           <Route path="/general-knowledge" element={<GeneralKnowledge />} />
