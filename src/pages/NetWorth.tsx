@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
+import AdSense from "../components/AdSense";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { 
   Card, 
@@ -115,6 +116,11 @@ const NetWorth = () => {
             Top 10
           </Link>
         </div>
+
+                 
+          <div className="my-6">
+            <AdSense slot="9889084223" format="horizontal" className="py-3" />
+          </div>
         
         <motion.div 
           className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4"
