@@ -101,6 +101,11 @@ const App = () => {
           <Route path="/global-compare/:comparison" element={<GlobalCompareNetWorth />} />
           <Route path="/global-compare/:person1/:person2" element={<GlobalCompareNetWorth />} />
           
+          {/* Add a new route for compare-global */}
+          <Route path="/compare-global" element={<Navigate to="/global-compare" replace />} />
+          <Route path="/compare-global/:comparison" element={<GlobalCompareNetWorth />} />
+          <Route path="/compare-global/:person1/:person2" element={<GlobalCompareNetWorth />} />
+          
           {/* General Knowledge Routes */}
           <Route path="/general-knowledge" element={<GeneralKnowledge />} />
           <Route path="/general-knowledge/:slug" element={<GeneralKnowledgeDetail />} />
