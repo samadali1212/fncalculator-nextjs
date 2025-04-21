@@ -1,4 +1,3 @@
-
 # Sassa Insider Robots.txt
 User-agent: *
 Allow: /
@@ -9,7 +8,6 @@ Sitemap: https://sassainsider.co.za/sitemap.xml
 User-agent: Googlebot
 Allow: /branch-codes/
 Allow: /salaries/
-Allow: /about/
 Allow: /celebrities/
 Allow: /celebrity-categories/
 Allow: /net-worth/
@@ -20,6 +18,8 @@ Allow: /tax-calculator/
 Allow: /compare-salaries/
 Allow: /compare/
 Allow: /global-compare/
+Allow: /global-categories/
+Allow: /about/
 Allow: /blog/
 
 User-agent: Bingbot
