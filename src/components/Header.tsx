@@ -28,8 +28,7 @@ const Header = () => {
 
   const menuItems = [
     { path: "/celebrities", label: "Celebs Salary" },
-    { path: "/net-worth", label: "Net Worth" },
-    { path: "/global-net-worth", label: "Global Worth" },
+    { path: "/global-net-worth", label: "Net Worth" },
     { path: "/branch-codes", label: "Branch Codes" },
     { path: "/blog", label: "Blog" },
     { path: "/about", label: "About" },
