@@ -3578,13 +3578,6 @@ export const categoryDefinitions: Record<string, CategoryMetadata> = {
     slug: "richest-football-club-owners-in-south-africa",
     imageUrl: "https://www.cafonline.com/media/hhbjswlz/motsepe-speech.jpg"
   },
-    "entrepreneurs": {
-    id: "cat6",
-    title: "50 Richest People in South Africa",
-    description: "A ranking of the most affluent people in South Africa, typically based on their estimated net worth. This often includes entrepreneurs, investors, and individuals who have built significant fortunes through various industries.",
-    slug: "richest-people-south-africa",
-    imageUrl: "https://s.abcnews.com/images/Business/elon-musk-file-gty-jef-220711_1657563938913_hpMain_16x9_1600.jpg"
-  },
     "artists": {
     id: "cat7",
     title: "50 Richest Artists in South Africa",
