@@ -1,8 +1,8 @@
-# SoExpensive Robots.txt
+# SassaInsider Robots.txt
  User-agent: *
  Allow: /
  
- Sitemap: https://soexpensive.org/sitemap.xml
+ Sitemap: https://sassainsider.co.za/sitemap.xml
  
  # Allow crawling of important directories
  User-agent: Googlebot
@@ -32,41 +32,3 @@
  Allow: /
  User-agent: DuckDuckBot
  Allow: /
-
-
-
-
-# SassaInsider Robots.txt
-User-agent: *
-Allow: /
-
-Sitemap: https://sassainsider.co.za/sitemap.xml
-
-# Allow crawling of important directories
-User-agent: Googlebot
-Allow: /branch-codes/
-Allow: /salaries/
-Allow: /celebrities/
-Allow: /celebrity-categories/
-Allow: /net-worth/
-Allow: /categories/
-Allow: /general-knowledge/
-Allow: /hourly-rates/
-Allow: /tax-calculator/
-Allow: /compare-salaries/
-Allow: /compare/
-Allow: /global-compare/
-Allow: /global-categories/
-Allow: /about/
-Allow: /blog/
-
-User-agent: Bingbot
-Allow: /
-User-agent: Yandexbot
-Allow: /
-User-agent: Slurp
-Allow: /
-User-agent: Baiduspider
-Allow: /
-User-agent: DuckDuckBot
-Allow: /
