@@ -95,7 +95,7 @@ const GlobalNetWorth = () => {
       <SEO 
         title="Net Worth of Your Favorite Public Figures" 
         description="Explore up-to-date net worth figures of top public figures in entertainment, sports, business, and more. Discover who's rising and their current value."
-        canonicalUrl="/net-worth"
+        canonicalUrl="/global-net-worth"
       />
       <Header />
       
@@ -199,7 +199,7 @@ const GlobalNetWorth = () => {
                         
                         <div>
                           <Link 
-                            to={`/net-worth/${person.slug}`}
+                            to={`/global-net-worth/${person.slug}`}
                             className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                           >
                             {person.name}
