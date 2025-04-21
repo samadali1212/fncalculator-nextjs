@@ -73,7 +73,8 @@ const GlobalNetWorthComparisonList = () => {
             person2: secondPerson,
             comparisonUrl: createComparisonUrl(
               firstPerson.slug, 
-              secondPerson.slug
+              secondPerson.slug,
+              'global-net-worth'
             )
           });
         }
@@ -109,7 +110,7 @@ const GlobalNetWorthComparisonList = () => {
       ? [randomPair[0], randomPair[1]]
       : [randomPair[1], randomPair[0]];
     
-    navigate(createComparisonUrl(person1.slug, person2.slug));
+    navigate(createComparisonUrl(person1.slug, person2.slug, 'global-net-worth'));
   };
 
   useEffect(() => {

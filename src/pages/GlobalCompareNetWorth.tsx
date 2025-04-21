@@ -117,7 +117,7 @@ const GlobalCompareNetWorth = () => {
   };
   
   const navigateToSEOUrl = (p1: string, p2: string) => {
-    const url = createComparisonUrl(p1, p2);
+    const url = createComparisonUrl(p1, p2, 'global-net-worth');
     window.location.href = url;
   };
   
