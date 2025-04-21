@@ -227,7 +227,7 @@ const GlobalNetWorthComparisonList = () => {
                         
                         <div>
                           <Link 
-                            to={`/net-worth/${pair.person1.slug}`}
+                            to={`/global-net-worth/${pair.person1.slug}`}
                             className="text-[#333] hover:underline text-base font-medium transition-colors hover:text-blog-accent flex items-center"
                           >
                             {pair.person1.name}
@@ -259,7 +259,7 @@ const GlobalNetWorthComparisonList = () => {
                         
                         <div>
                           <Link 
-                            to={`/net-worth/${pair.person2.slug}`}
+                            to={`/global-net-worth/${pair.person2.slug}`}
                             className="text-[#333] hover:underline text-base font-medium transition-colors hover:text-blog-accent flex items-center"
                           >
                             {pair.person2.name}
