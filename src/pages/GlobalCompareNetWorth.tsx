@@ -646,7 +646,7 @@ const GlobalCompareNetWorth = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} SoExpensive. All rights reserved.
+            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
           </p>
         </div>
       </footer>
