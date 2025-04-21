@@ -94,8 +94,8 @@ const NetWorth = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Richest People in South Africa" 
-        description="This list features South Africa’s wealthiest individuals from various backgrounds, including business tycoons, DJs, rappers, actors, athletes, and influencers. Each person has built a fortune through talent, hustle, and smart ventures. "
+        title="Richest People in South Africa and Their Net Worths" 
+        description="This list features South Africa’s wealthiest people and their net worth, including business tycoons, DJs, rappers, actors, athletes, and influencers. Each person has built a fortune through talent, hustle, and smart ventures. "
         canonicalUrl="/net-worth"
       />
       <Header />
