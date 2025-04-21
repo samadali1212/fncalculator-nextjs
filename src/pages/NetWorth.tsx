@@ -177,7 +177,7 @@ const NetWorth = () => {
               </div>
               
               {displayedPeople.map((person, index) => (
-                <div key={`person-row-${person.id}`}>
+                <React.Fragment key={`person-row-${person.id}`}>
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -232,12 +232,12 @@ const NetWorth = () => {
                       </div>
                     </div>
                   </motion.div>
-                  {index === 11 && (
+                  {(index + 1) % 12 === 0 && index !== displayedPeople.length - 1 && (
                     <div className="py-4 border-b border-gray-100 flex justify-center">
                       <AdSense slot="9889084223" format="horizontal" className="max-w-full" />
                     </div>
                   )}
-                </div>
+                </React.Fragment>
               ))}
               
               {hasMorePeople && (
