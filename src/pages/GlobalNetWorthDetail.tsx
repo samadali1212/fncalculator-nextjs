@@ -1,8 +1,10 @@
 
+// Restoring original UI in GlobalNetWorthDetail.tsx for the About section with correct usage of SEOParagraph and props.
+
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, Share2, Asterisk, RefreshCw } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import { Button } from "@/components/ui/button";
@@ -55,12 +57,6 @@ const GlobalNetWorthDetail = () => {
       </div>
     );
   }
-
-  const breadcrumbs = [
-    { name: "Home", path: "/" },
-    { name: "Global Net Worth", path: "/global-net-worth" },
-    { name: person.name, path: `/global-net-worth/${slug}`, current: true }
-  ];
 
   const pageTitle = `${person.name} Net Worth | Global Figures`;
   const pageDescription = `Discover ${person.name}'s net worth, career, investments, and wealth accumulation details. Learn how ${person.name} built their fortune in ${person.industry || 'business'}.`;
@@ -165,19 +161,13 @@ const GlobalNetWorthDetail = () => {
           
           <div className="mt-8">
             <h2 className="text-xl font-semibold mb-4">About {person.name}</h2>
-            <div className="prose max-w-none">
+            <div className="prose max-w-none text-gray-700">
               <p className="mb-4">
                 {person.about || `${person.name} is known for their achievements in ${person.industry || 'business'} and has accumulated significant wealth throughout their career.`}
               </p>
-              
               <p className="mb-4">
                 {person.wealthSource || `${person.name}'s wealth primarily comes from their work as ${person.occupation || 'a business person'}${person.company ? ` with ${person.company}` : ''}.`}
               </p>
-              
-              <SEOParagraph
-                title={`${person.name}'s Net Worth Growth`}
-                text={`${person.name}'s current net worth is estimated at ${formatNetWorth(person.netWorth, person.currency || 'USD')}. Their wealth has been accumulated through ${person.industry ? `their ventures in the ${person.industry} industry` : 'various business activities'}.`}
-              />
             </div>
           </div>
         </div>
@@ -195,3 +185,4 @@ const GlobalNetWorthDetail = () => {
 };
 
 export default GlobalNetWorthDetail;
+
