@@ -36,7 +36,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-01",
     imageUrl: "https://vz.cnwimg.com/thm/MeqK3Ua4jLTaxZv8ZMZgoAdEa2I=/400x400/center/top/filters:format(webp)/2013/01/CNW-Woman-4.png",
     slug: "keyra-agustina-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 2,
@@ -54,7 +54,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-02",
     imageUrl: "https://vz.cnwimg.com/thm/F5tfpDpoY1tMkxumGzptVlnrk5w=/600x300/center/top/filters:format(webp)/2021/08/asa-akira.jpg",
     slug: "asa-akira-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 3,
@@ -72,7 +72,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-03",
     imageUrl: "https://vz.cnwimg.com/thm/eTDbTjht4Z1vmfM5ejqLK4qF_fg=/600x300/center/top/filters:format(webp)/2010/03/Alessandra-Ambrosio.jpg",
     slug: "alessandra-ambrosio-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 5,
@@ -90,7 +90,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-05",
     imageUrl: "https://vz.cnwimg.com/thm/qiFvQXrvOViwzFdQcEuCb-WyGrY=/600x300/center/top/filters:format(webp)/2019/02/jalex.jpg",
     slug: "j.-alexander-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 6,
@@ -108,7 +108,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-06",
     imageUrl: "https://vz.cnwimg.com/thm/bMVVlzpc3kWiFvv7h8KSh8dSlcY=/400x400/center/top/filters:format(webp)/2013/09/amy.jpg",
     slug: "air-force-amy-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 7,
@@ -126,7 +126,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-07",
     imageUrl: "https://vz.cnwimg.com/thm/8S31NTPP8GqK0oW5rdACp648c54=/400x400/center/top/filters:format(webp)/2018/05/ma.jpg",
     slug: "monique-alexander-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 8,
@@ -144,7 +144,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-08",
     imageUrl: "https://vz.cnwimg.com/thm/G2YG6n7cXm2irvpCPxkJUiKvUGI=/400x400/center/top/filters:format(webp)/2013/07/abella.jpg",
     slug: "abella-anderson-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 9,
@@ -162,7 +162,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-09",
     imageUrl: "https://vz.cnwimg.com/thm/EsuvDRo-rqOHyzTGJ3e4xRfUgGo=/600x300/center/top/filters:format(webp)/2017/04/na.jpg",
     slug: "nadia-ali-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 10,
@@ -180,7 +180,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-10",
     imageUrl: "https://vz.cnwimg.com/thm/RpLmGViJyVuzoBRxwL3GEjmybtc=/400x400/center/top/filters:format(webp)/2013/01/GettyImages-107052112.jpg",
     slug: "capri-anderson-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 11,
@@ -198,7 +198,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-11",
     imageUrl: "https://vz.cnwimg.com/thm/WExAV9xWr2sEWqI-uO5FO_Y5JqE=/400x400/center/top/filters:format(webp)/2020/08/ta.jpg",
     slug: "tracy-anderson-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 12,
@@ -216,7 +216,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-12",
     imageUrl: "https://vz.cnwimg.com/thm/EXtSJGqmmWjNv8zVx2-p4jzTtMA=/400x400/center/top/filters:format(webp)/2017/06/GettyImages-51501963.jpg",
     slug: "fifi-abdou-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 13,
@@ -234,7 +234,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-13",
     imageUrl: "https://vz.cnwimg.com/thm/8Zd3apm5sa-O7Es5BKTTSovFwUk=/600x300/center/top/filters:format(webp)/2015/06/GettyImages-164117061.jpg",
     slug: "jake-abel-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 14,
@@ -252,7 +252,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-14",
     imageUrl: "https://vz.cnwimg.com/thm/EwQlfmZtm1z9HZHSpcsbSomzV74=/600x300/center/top/filters:format(webp)/2011/07/Farrah-Abraham1.jpg",
     slug: "farrah-abraham",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 15,
@@ -270,7 +270,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-15",
     imageUrl: "https://vz.cnwimg.com/thm/tVaJMwl3gC_ioSp2UEgJaHmkS50=/600x300/center/top/filters:format(webp)/2012/12/Carol-Alt.jpg",
     slug: "carol-alt-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 16,
@@ -288,7 +288,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-16",
     imageUrl: "https://vz.cnwimg.com/thm/9q52D0kFM19LdyFA1M9-JOOYDY4=/400x400/center/top/filters:format(webp)/2013/08/Sophie-Anderton-e1621119608257.jpg",
     slug: "sophie-anderton-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 17,
@@ -306,7 +306,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-17",
     imageUrl: "https://vz.cnwimg.com/thm/QfPQKysZnKl_8eQqH70C88iy0HI=/600x300/center/top/filters:format(webp)/2019/10/Joanna-Angel.jpg",
     slug: "joanna-angel",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 18,
@@ -324,7 +324,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-18",
     imageUrl: "https://vz.cnwimg.com/thm/HFsUGAlftziaxm1gq5HPqLDgIxg=/600x300/center/top/filters:format(webp)/2014/03/angela.jpg",
     slug: "angelababy-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 19,
@@ -342,7 +342,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-19",
     imageUrl: "https://vz.cnwimg.com/thm/PsP20MvD29jQyo-U6NsY-L1kNa0=/400x400/center/top/filters:format(webp)/2013/12/Irina-Abramovich.jpg",
     slug: "irina-abramovich-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 20,
@@ -360,7 +360,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-20",
     imageUrl: "https://vz.cnwimg.com/thm/qtJk8XpGvbJvrtxKHj-AMIomiqk=/600x300/center/top/filters:format(webp)/2014/02/Angelyne.jpg",
     slug: "angelyne-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 22,
@@ -378,7 +378,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-22",
     imageUrl: "https://vz.cnwimg.com/thm/UG81NDTn0qY-RXoIOJHO6JJk2Ps=/600x300/center/top/filters:format(webp)/2022/05/anna-anka.jpg",
     slug: "anna-anka-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 23,
@@ -396,7 +396,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-23",
     imageUrl: "https://vz.cnwimg.com/thm/3yOs0_IIkeLMPTRBSu5nYjgkNFI=/400x400/center/top/filters:format(webp)/2014/11/Wanda-Acuna.jpg",
     slug: "wanda-acuna-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 24,
@@ -414,7 +414,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-24",
     imageUrl: "https://vz.cnwimg.com/thm/AaC7ScgypsWW0ou5C6ZWwpv_AC4=/600x300/center/top/filters:format(webp)/2020/10/Kamiah-Adams.jpg",
     slug: "kamiah-adams-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 25,
@@ -432,7 +432,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-25",
     imageUrl: "https://vz.cnwimg.com/thm/zLeHQ8Pq-K8qSGXfEC0tGspR010=/600x300/center/top/filters:format(webp)/2019/12/Lisa-Ann.jpg",
     slug: "lisa-ann-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 27,
@@ -450,7 +450,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-27",
     imageUrl: "https://vz.cnwimg.com/thm/GT16x784ZssrZDyyI81Pl57kLmM=/600x300/center/top/filters:format(webp)/2012/12/Karima-Adebibe.jpg",
     slug: "karima-adebibe-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 28,
@@ -468,7 +468,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-28",
     imageUrl: "https://vz.cnwimg.com/thm/2ZreZVLuF1q9I3WXU07sAKloe0w=/400x400/center/top/filters:format(webp)/2019/11/nina-agdal.jpg",
     slug: "nina-agdal-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 29,
@@ -486,7 +486,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-29",
     imageUrl: "https://vz.cnwimg.com/thm/PbXYcSoapPzywEGb7g82X5rhf70=/400x400/center/top/filters:format(webp)/2012/05/Robin-Antin-e1486854164319.jpg",
     slug: "robin-antin-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 30,
@@ -504,7 +504,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-30",
     imageUrl: "https://vz.cnwimg.com/thm/HCbfYY-PBCutFZxTDVB_FIZxeBw=/600x300/center/top/filters:format(webp)/2021/06/Devon-Aoki.jpg",
     slug: "devon-aoki-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 31,
@@ -522,7 +522,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-01-31",
     imageUrl: "https://vz.cnwimg.com/thm/gj10kho_wNIW3c71R3j6DBkWBII=/400x400/center/top/filters:format(webp)/2015/07/GettyImages-463919650.jpg",
     slug: "moran-atias-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 33,
@@ -540,7 +540,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-02",
     imageUrl: "https://vz.cnwimg.com/thm/PcDmMy-X61WU9QKSeFZKxaMZqDA=/400x400/center/top/filters:format(webp)/2016/01/GettyImages-490790272-e1587142186879.jpg",
     slug: "austin-armacost-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 34,
@@ -558,7 +558,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-03",
     imageUrl: "https://vz.cnwimg.com/thm/nsAYLNVqcOlXsJln_f3nouKZ5m0=/600x300/center/top/filters:format(webp)/2010/10/ts.png",
     slug: "taylor-armstrong-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 35,
@@ -576,7 +576,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-04",
     imageUrl: "https://vz.cnwimg.com/thm/5CJS_4ahjO_q7qNTjnAn3Gim1uw=/400x400/center/top/filters:format(webp)/2016/01/GettyImages-145435978.jpg",
     slug: "summer-altice-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 36,
@@ -594,7 +594,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-05",
     imageUrl: "https://vz.cnwimg.com/thm/K0VchImWKSbnIHn2t3_W3UJTs0w=/400x400/center/top/filters:format(webp)/2018/07/shane.jpg",
     slug: "shane-barbi-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 37,
@@ -612,7 +612,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-06",
     imageUrl: "https://vz.cnwimg.com/thm/J3K9DxvaQgWOHblgeH1QJx-hkSA=/400x400/center/top/filters:format(webp)/2012/07/Brooke-Bailey-e1614350278297.jpg",
     slug: "brooke-bailey-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 38,
@@ -630,7 +630,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-07",
     imageUrl: "https://vz.cnwimg.com/thm/ksoXZLdyO-O2ndK6aeAcYTawUkE=/400x400/center/top/filters:format(webp)/2018/07/sia.jpg",
     slug: "sia-barbi-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 39,
@@ -648,7 +648,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-08",
     imageUrl: "https://vz.cnwimg.com/thm/AGAgPkIBZwd4UjBGj0LaLMMBbGU=/600x300/center/top/filters:format(webp)/2020/05/cynthia.jpg",
     slug: "cynthia-bailey-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 40,
@@ -666,7 +666,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-09",
     imageUrl: "https://vz.cnwimg.com/thm/jMjL-vN0cVs8Q6f3tzFdLFsIyL8=/600x300/center/top/filters:format(webp)/2018/07/Hailey-Baldwin-1.jpg",
     slug: "hailey-bieber-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 41,
@@ -684,7 +684,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-10",
     imageUrl: "https://vz.cnwimg.com/thm/aWC8jioMxPk8faf9EKPb7AMQSZg=/400x400/center/top/filters:format(webp)/2014/07/Paula-Barbieri.jpg",
     slug: "paula-barbieri-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 42,
@@ -702,7 +702,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-11",
     imageUrl: "https://vz.cnwimg.com/thm/AXzDmjYyYw4q790iZTby2avduJw=/600x300/center/top/filters:format(webp)/2011/02/Brigitte-Bardot.jpg",
     slug: "brigitte-bardot-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 44,
@@ -720,7 +720,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-13",
     imageUrl: "https://vz.cnwimg.com/thm/WCnT5Ddpwf9_QXMslaz5k9D4ID8=/600x300/center/top/filters:format(webp)/2012/08/Ana-Beatriz-Barros-1.jpg",
     slug: "ana-beatriz-barros-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 45,
@@ -738,7 +738,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-14",
     imageUrl: "https://vz.cnwimg.com/thm/QZx4OqDs0nSqoLPon4soxr43Rgo=/400x400/center/top/filters:format(webp)/2020/02/dv.png",
     slug: "derrick-barry-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 46,
@@ -756,7 +756,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-15",
     imageUrl: "https://vz.cnwimg.com/thm/BgADjyfAoHaXFvsGrSfwhDmCHHs=/600x300/center/top/filters:format(webp)/2013/02/GettyImages-459560686.jpg",
     slug: "bipasha-basu-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 47,
@@ -774,7 +774,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-16",
     imageUrl: "https://vz.cnwimg.com/thm/MErKaB0PQlQ0ia2WcuF-a0wEyNM=/400x400/center/top/filters:format(webp)/2013/07/CNW-Woman.png",
     slug: "zakia-baum-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 48,
@@ -792,7 +792,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-17",
     imageUrl: "https://vz.cnwimg.com/thm/Rsh95p4Z53jAO3AwnWGMVcSAlmI=/600x300/center/top/filters:format(webp)/2014/08/GettyImages-657127724-e1740430044667.jpg",
     slug: "ireland-baldwin-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 49,
@@ -810,7 +810,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-18",
     imageUrl: "https://vz.cnwimg.com/thm/X0chbbop4HVAsOhqcW60Kkfcf48=/600x300/center/top/filters:format(webp)/2012/07/Adiz-Bambi.jpg",
     slug: "bambi-benson-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 51,
@@ -828,7 +828,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-20",
     imageUrl: "https://vz.cnwimg.com/thm/JZqANvrTmjCQRxxvBdLRGhm40sI=/600x300/center/top/filters:format(webp)/2018/04/GettyImages-942450576.jpg",
     slug: "tyra-banks-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 52,
@@ -846,7 +846,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-21",
     imageUrl: "https://vz.cnwimg.com/thm/s-1HBLczxAc0Y58-pD2_wBA_xjM=/400x400/center/top/filters:format(webp)/2010/01/GettyImages-95566248.jpg",
     slug: "stephanie-beacham-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 53,
@@ -864,7 +864,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-22",
     imageUrl: "https://vz.cnwimg.com/thm/hGeD_TNjLbe5brVWG6ShEkM1GxU=/600x300/center/top/filters:format(webp)/2010/11/Tyson-Beckford.jpg",
     slug: "tyson-beckford-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 54,
@@ -882,7 +882,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-23",
     imageUrl: "https://vz.cnwimg.com/thm/tlMqzXpOJP08b1_Q-ERTCEJ8J1I=/400x400/center/top/filters:format(webp)/2014/10/Michelle-Beisner.jpg",
     slug: "michelle-beisner-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 55,
@@ -900,7 +900,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-24",
     imageUrl: "https://vz.cnwimg.com/thm/ED2XFAS3OVlH3WHlN2MnjZM_p4k=/400x400/center/top/filters:format(webp)/2014/09/mal.jpg",
     slug: "ma?gosia-bela-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 56,
@@ -918,7 +918,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-25",
     imageUrl: "https://vz.cnwimg.com/thm/BQ-CXi7QiJ37oR54L9V-V2tTdIk=/400x400/center/top/filters:format(webp)/2012/05/GettyImages-73354085.jpg",
     slug: "kenya-bell-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 57,
@@ -936,7 +936,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-26",
     imageUrl: "https://vz.cnwimg.com/thm/uJHDKUQ8f2XBBXvwfanTi8iSct0=/400x400/center/top/filters:format(webp)/2012/12/gemma.jpg",
     slug: "gemma-atkinson-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 58,
@@ -954,7 +954,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-02-27",
     imageUrl: "https://vz.cnwimg.com/thm/2Rc0xvDkqJbEC__UFSdckZ4gIfY=/600x300/center/top/filters:format(webp)/2020/08/coco.jpg",
     slug: "nicole-\"coco\"-austin-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 60,
@@ -972,7 +972,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-01",
     imageUrl: "https://vz.cnwimg.com/thm/FLaQGYpL3nTucYyuINUVICVgM2I=/600x300/center/top/filters:format(webp)/2020/05/Azzyland.jpg",
     slug: "azzyland-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 61,
@@ -990,7 +990,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-02",
     imageUrl: "https://vz.cnwimg.com/thm/liwQNj7-eAL2Mh972YFXsYJP9H0=/600x300/center/top/filters:format(webp)/2013/07/lb.jpg",
     slug: "lexi-belle-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 62,
@@ -1008,7 +1008,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-03",
     imageUrl: "https://vz.cnwimg.com/thm/y7FyNBxWGo9MjggMVlUcH25V4mI=/600x300/center/top/filters:format(webp)/2021/10/alexis-bellino.jpg",
     slug: "alexis-bellino-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 63,
@@ -1026,7 +1026,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-04",
     imageUrl: "https://vz.cnwimg.com/thm/A21PWxSQfU3-Rltl20N7MKzP7nY=/400x400/center/top/filters:format(webp)/2019/01/br.jpg",
     slug: "bridgette-b-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 64,
@@ -1062,7 +1062,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-06",
     imageUrl: "https://vz.cnwimg.com/thm/fI7qcWCUha-btTvMB4sQC8sDvx8=/600x300/center/top/filters:format(webp)/2014/02/GettyImages-547466764.jpg",
     slug: "barbara-bach-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 66,
@@ -1080,7 +1080,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-07",
     imageUrl: "https://vz.cnwimg.com/thm/-ApaqDhl6jgJrJz-ZhkARStrId8=/600x300/center/top/filters:format(webp)/2016/08/Brooke-Banner.jpg",
     slug: "brooke-banner-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 67,
@@ -1098,7 +1098,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-08",
     imageUrl: "https://vz.cnwimg.com/thm/e11oCmolOiAsE5ItTGxQFI3Uf-g=/400x400/center/top/filters:format(webp)/2011/12/anna.jpg",
     slug: "anna-benson-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 68,
@@ -1116,7 +1116,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-09",
     imageUrl: "https://vz.cnwimg.com/thm/RQ9lsIuNiOSUYv5tEQDhtolnCfQ=/600x300/center/top/filters:format(webp)/2022/03/Barbi-Benton.jpg",
     slug: "barbi-benton-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 69,
@@ -1134,7 +1134,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-10",
     imageUrl: "https://vz.cnwimg.com/thm/r1TxJPuejEU7UpO6kJNVxnVewPw=/600x300/center/top/filters:format(webp)/2013/07/Nikki-Benz.jpg",
     slug: "nikki-benz-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 70,
@@ -1152,7 +1152,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-11",
     imageUrl: "https://vz.cnwimg.com/thm/Nf3S32aT-VzfOyo9b8G2V_K1_gw=/400x400/center/top/filters:format(webp)/2018/01/carm.jpg",
     slug: "carmella-bing-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 71,
@@ -1170,7 +1170,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-12",
     imageUrl: "https://vz.cnwimg.com/thm/Ubufoor03sdWmoNIs20Q0W8y_4M=/600x300/center/top/filters:format(webp)/2020/05/pl.jpg",
     slug: "paris-berelc-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 72,
@@ -1188,7 +1188,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-13",
     imageUrl: "https://vz.cnwimg.com/thm/QnH5scT5bQ0HohioSO7KqZDHXC0=/600x300/center/top/filters:format(webp)/2022/09/Traci-Bingham.jpg",
     slug: "traci-bingham-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 73,
@@ -1206,7 +1206,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-14",
     imageUrl: "https://vz.cnwimg.com/thm/aMOD4kuvBWAPeW_g8E9NFf8n5as=/600x300/center/top/filters:format(webp)/2013/08/GettyImages-166313285.jpg",
     slug: "nabilla-benattia-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 74,
@@ -1224,7 +1224,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-15",
     imageUrl: "https://vz.cnwimg.com/thm/oHZel06WUY3-wFZ44UyW-keuBpc=/600x300/center/top/filters:format(webp)/2012/06/Lara-Bingle-1.jpg",
     slug: "lara-bingle-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 75,
@@ -1242,7 +1242,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-16",
     imageUrl: "https://vz.cnwimg.com/thm/9ecSFc5auQ1DreUjHiXFYyMVYI0=/400x400/center/top/filters:format(webp)/2012/02/les.jpg",
     slug: "leslie-birkland-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 76,
@@ -1260,7 +1260,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-17",
     imageUrl: "https://vz.cnwimg.com/thm/sSsAEBRu17tgNNMkqzP2moH3siY=/400x400/center/top/filters:format(webp)/2011/05/ab.jpg",
     slug: "audrey-bitoni-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 77,
@@ -1278,7 +1278,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-18",
     imageUrl: "https://vz.cnwimg.com/thm/hHIcxv5AJ9zygqBxaTTRaaXGefs=/400x400/center/top/filters:format(webp)/2020/03/asb.jpg",
     slug: "anna-sophia-berglund-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 78,
@@ -1296,7 +1296,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-19",
     imageUrl: "https://vz.cnwimg.com/thm/N6i1S0xbMwnXZ5mIqXJxtWrvuwY=/400x400/center/top/filters:format(webp)/2012/06/Julissa-Bermudez.jpg",
     slug: "julissa-bermudez-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 79,
@@ -1314,7 +1314,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-20",
     imageUrl: "https://vz.cnwimg.com/thm/xoVmfL5sSQA7LFFdEYOVQYCQQuM=/600x300/center/top/filters:format(webp)/2019/04/ariana.jpg",
     slug: "ariana-biermann-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 80,
@@ -1332,7 +1332,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-21",
     imageUrl: "https://vz.cnwimg.com/thm/ORMrKMUUBSQ0We-ARQREOY1HN24=/600x300/center/top/filters:format(webp)/2019/03/Brielle-Biermann.jpg",
     slug: "brielle-biermann-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 81,
@@ -1350,7 +1350,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-22",
     imageUrl: "https://vz.cnwimg.com/thm/s56bKy0DdTwl2pfocdTlOa8gwDo=/400x400/center/top/filters:format(webp)/2015/07/sina.jpg",
     slug: "sina-bina-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 82,
@@ -1368,7 +1368,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-23",
     imageUrl: "https://vz.cnwimg.com/thm/oz2-jz17e6ohyKfSUavoEh6eC7k=/400x400/center/top/filters:format(webp)/2014/06/vb.jpg",
     slug: "vanessa-blue-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 83,
@@ -1386,7 +1386,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-24",
     imageUrl: "https://vz.cnwimg.com/thm/9BbPB8j5ptA2kz4gN6tZCl757mk=/600x300/center/top/filters:format(webp)/2014/07/GettyImages-515985230.jpg",
     slug: "amber-le-bon-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 84,
@@ -1404,7 +1404,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-25",
     imageUrl: "https://vz.cnwimg.com/thm/mpGJVkV2n1ClOtMif_b9crcnHF8=/600x300/center/top/filters:format(webp)/2023/08/tori-black.jpg",
     slug: "tori-black-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 85,
@@ -1422,7 +1422,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-26",
     imageUrl: "https://vz.cnwimg.com/thm/YCKhF7aQzPXWV7umzbk56B3PH-A=/600x300/center/top/filters:format(webp)/2014/06/GettyImages-538300084.jpg",
     slug: "alana-blanchard-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 86,
@@ -1440,7 +1440,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-27",
     imageUrl: "https://vz.cnwimg.com/thm/zxJgvobY0iripjPRdDyW2jsN7yQ=/600x300/center/top/filters:format(webp)/2014/06/GettyImages-491571462.jpg",
     slug: "cressida-bonas-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 87,
@@ -1458,7 +1458,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-28",
     imageUrl: "https://vz.cnwimg.com/thm/X-3v-7z17SK86X713YIUCqvkwFE=/600x300/center/top/filters:format(webp)/2019/09/Beverly-Bond.jpg",
     slug: "beverly-bond-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 89,
@@ -1476,7 +1476,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-30",
     imageUrl: "https://vz.cnwimg.com/thm/AoPLPch5qr2Hfr2gzWxrwkcft-4=/400x400/center/top/filters:format(webp)/2013/01/CNW-Woman-2.png",
     slug: "vikki-blows-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 90,
@@ -1494,7 +1494,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-03-31",
     imageUrl: "https://vz.cnwimg.com/thm/b4NlVWASs97W8fFBsfmPFDA9xJk=/400x400/center/top/filters:format(webp)/2014/02/GettyImages-450768000-e1607816808383.jpg",
     slug: "laila-boonyasak-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 91,
@@ -1512,7 +1512,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-04-01",
     imageUrl: "https://vz.cnwimg.com/thm/uqgAAgufJw08TDzygaLczpqoshI=/400x400/center/top/filters:format(webp)/2014/12/GettyImages-167512159-e1535417125629.jpg",
     slug: "liannet-borrego-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 92,
@@ -1530,7 +1530,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-04-02",
     imageUrl: "https://vz.cnwimg.com/thm/MhoPnVFENLpAn5-ANCPtczbmqag=/600x300/center/top/filters:format(webp)/2014/05/GettyImages-71766298.jpg",
     slug: "caprice-bourret-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 93,
@@ -1548,7 +1548,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-04-03",
     imageUrl: "https://vz.cnwimg.com/thm/L-EduY8dICmT06Y2hOp1BSBHvjg=/600x300/center/top/filters:format(webp)/2022/08/ashlynn2.jpg",
     slug: "ashlynn-brooke-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 94,
@@ -1566,7 +1566,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-04-04",
     imageUrl: "https://vz.cnwimg.com/thm/9UUhJtWwCbUGHK5gDxKtJtC0r2Y=/400x400/center/top/filters:format(webp)/2017/04/Denise-Boutte-e1611252106799.jpg",
     slug: "denise-boutte-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 95,
@@ -1584,7 +1584,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-04-05",
     imageUrl: "https://vz.cnwimg.com/thm/ZJZ0ARa93j5kBkx5q7kiq7_HO5g=/600x300/center/top/filters:format(webp)/2016/01/angie.jpg",
     slug: "angela-bowie-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 96,
@@ -1602,7 +1602,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-04-06",
     imageUrl: "https://vz.cnwimg.com/thm/2iiqTWseV70-FRSe1RT1cxysj-4=/400x400/center/top/filters:format(webp)/2013/01/CNW-Woman.png",
     slug: "heather-brooke-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 97,
@@ -1620,7 +1620,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-04-07",
     imageUrl: "https://vz.cnwimg.com/thm/h399wN00VH3jt6ZwReqwxK9TYJw=/400x400/center/top/filters:format(webp)/2015/02/GettyImages-167507595-e1535933475239.jpg",
     slug: "emilio-caballero-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 98,
@@ -1638,7 +1638,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-04-08",
     imageUrl: "https://vz.cnwimg.com/thm/uL-vknNEA-rm9IVlyuVLPb8TrV0=/400x400/center/top/filters:format(webp)/2014/03/GettyImages-117113067.jpg",
     slug: "alyssa-campanella-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 99,
@@ -1656,7 +1656,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-04-09",
     imageUrl: "https://vz.cnwimg.com/thm/wbchDFFKMNEwWTPw19XbflaYflo=/600x300/center/top/filters:format(webp)/2019/12/nc.jpg",
     slug: "naomi-campbell-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   },
   {
     id: 100,
@@ -1674,7 +1674,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     lastUpdated: "2025-04-10",
     imageUrl: "https://vz.cnwimg.com/thm/iVrt207iSY4KmlGc7fXWTEiMqtQ=/600x300/center/top/filters:format(webp)/2014/04/GettyImages-71208291.jpg",
     slug: "rebecca-broussard-net-worth",
-    categories: ["elebrities", "models"]
+    categories: ["celebrities", "models"]
   }
 
 ];
