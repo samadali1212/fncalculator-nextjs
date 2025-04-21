@@ -80,7 +80,7 @@ const GlobalNetWorthDetail = () => {
         <Card>
           <CardContent className="p-6">
             <p>Person not found. Please try another search.</p>
-            <Button onClick={() => navigate('/net-worth')} className="mt-4">
+            <Button onClick={() => navigate('/global-net-worth')} className="mt-4">
               Back to Net Worth List
             </Button>
           </CardContent>
@@ -120,7 +120,7 @@ const GlobalNetWorthDetail = () => {
       <SEO 
         title={`${person.name} Net Worth: ${formattedNetWorthForTitle}`}
         description={`${person.name}'s estimated net worth is ${formatNetWorth(person.netWorth, person.currency)}. Learn about their wealth, career, and ${person.industry} business ventures.`}
-        canonicalUrl={`/net-worth/${person.slug}`}
+        canonicalUrl={`/global-net-worth/${person.slug}`}
       />
       
       <Header />
@@ -129,7 +129,7 @@ const GlobalNetWorthDetail = () => {
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="flex items-center justify-between mb-6">
             <Link 
-              to="/net-worth"
+              to="/global-net-worth"
               className="inline-flex items-center text-sm text-[#000000] hover:underline"
             >
               <ChevronLeft className="h-4 w-4 mr-1" />
@@ -366,7 +366,7 @@ const GlobalNetWorthDetail = () => {
                       
                       <div className="flex-1">
                         <Link 
-                          to={`/net-worth/${similarPerson.slug}`}
+                          to={`/global-net-worth/${similarPerson.slug}`}
                           className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent"
                         >
                           {similarPerson.name}
@@ -388,7 +388,7 @@ const GlobalNetWorthDetail = () => {
                 <Button 
                   variant="outline" 
                   className="w-full"
-                  onClick={() => navigate('/net-worth')}
+                  onClick={() => navigate('/global-net-worth')}
                 >
                   View All Wealthy Individuals
                 </Button>
