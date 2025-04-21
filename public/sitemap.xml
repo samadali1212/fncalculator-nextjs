@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -15,32 +16,32 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-    <url>
+  <url>
     <loc>https://sassainsider.co.za/celebrities</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-      <url>
+  <url>
     <loc>https://sassainsider.co.za/celebrity-categories</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-      <url>
+  <url>
     <loc>https://sassainsider.co.za/net-worth</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-      <url>
+  <url>
     <loc>https://sassainsider.co.za/categories</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-    <url>
+  <url>
     <loc>https://sassainsider.co.za/branch-codes</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-      <url>
+  <url>
     <loc>https://sassainsider.co.za/general-knowledge</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -55,7 +56,7 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-    <url>
+  <url>
     <loc>https://sassainsider.co.za/compare-salaries</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -65,7 +66,12 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-    <url>
+  <url>
+    <loc>https://sassainsider.co.za/global-compare</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://sassainsider.co.za/blog</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
