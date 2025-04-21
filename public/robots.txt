@@ -1,4 +1,4 @@
-# Sassa Insider Robots.txt
+# SassaInsider Robots.txt
 User-agent: *
 Allow: /
 
