@@ -48,9 +48,7 @@ export const createComparisonUrl = (person1: string, person2: string, type: 'net
   if (type === 'salary') {
     return `/compare-salaries/${person1}-vs-${person2}`;
   }
-  return `/compare/${person1}-vs-${person2}`;
-}
-return `/global-compare/${person1}-vs-${person2}`;
+  return `/global-compare/${person1}-vs-${person2}`;
 };
 
 /**
