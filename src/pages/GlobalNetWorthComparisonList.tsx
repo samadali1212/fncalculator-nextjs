@@ -23,7 +23,7 @@ import {
   PaginationItem,
 } from "@/components/ui/pagination";
 
-const NetWorthComparisonList = () => {
+const GlobalNetWorthComparisonList = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(50);

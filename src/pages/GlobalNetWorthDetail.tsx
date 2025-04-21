@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -22,7 +21,7 @@ import {
   generateDynamicDescription
 } from "../utils/globalNetWorthData";
 
-const NetWorthDetail = () => {
+const GlobalNetWorthDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);

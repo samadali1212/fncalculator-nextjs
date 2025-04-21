@@ -28,7 +28,7 @@ import {
   PaginationItem,
 } from "@/components/ui/pagination";
 
-const NetWorth = () => {
+const GlobalNetWorth = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [itemsToShow, setItemsToShow] = useState(100);
   const [industryFilter, setIndustryFilter] = useState<string>("all");
