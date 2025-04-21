@@ -154,7 +154,7 @@ const BranchCodeDetail = () => {
           </div>
          
           <div className="my-6">
-            <AdSense slot="9889084223" format="horizontal" className="py-3" />
+            <AdSense slot="9889084223" format="auto" className="py-3" />
           </div>
           
           <motion.div
