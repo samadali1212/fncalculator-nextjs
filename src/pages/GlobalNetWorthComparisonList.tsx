@@ -55,21 +55,15 @@ const GlobalNetWorthComparisonList = () => {
     
     for (let i = 0; i < filteredPeople.length; i++) {
       for (let j = i + 1; j < filteredPeople.length; j++) {
-        // Create a unique identifier for this pair (regardless of order)
-        // Using person IDs to create a consistent pair key
         const person1 = filteredPeople[i];
         const person2 = filteredPeople[j];
         
-        // Sort IDs to ensure consistency (so A-B and B-A are considered the same)
         const slugs = [person1.slug, person2.slug].sort();
         const pairKey = `${slugs[0]}-${slugs[1]}`;
         
-        // Only add if we haven't seen this pair before
         if (!pairTracker.has(pairKey)) {
           pairTracker.add(pairKey);
           
-          // For URL purposes, sort by net worth (higher net worth first)
-          // This creates a consistent URL pattern
           const [firstPerson, secondPerson] = person1.netWorth >= person2.netWorth
             ? [person1, person2]
             : [person2, person1];
@@ -86,7 +80,6 @@ const GlobalNetWorthComparisonList = () => {
       }
     }
     
-    // Sort by combined net worth (highest total first)
     return pairs.sort((a, b) => 
       ((b.person1.netWorth || 0) + (b.person2.netWorth || 0)) - 
       ((a.person1.netWorth || 0) + (a.person2.netWorth || 0))
@@ -109,11 +102,9 @@ const GlobalNetWorthComparisonList = () => {
   const generateRandomComparison = () => {
     if (netWorthPeople.length < 2) return;
     
-    // Pick two different random people
     const shuffled = [...netWorthPeople].sort(() => 0.5 - Math.random());
     const randomPair = shuffled.slice(0, 2);
     
-    // Sort by net worth to maintain consistency with our list
     const [person1, person2] = randomPair[0].netWorth >= randomPair[1].netWorth
       ? [randomPair[0], randomPair[1]]
       : [randomPair[1], randomPair[0]];
