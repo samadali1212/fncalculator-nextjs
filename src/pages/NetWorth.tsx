@@ -94,7 +94,7 @@ const NetWorth = () => {
     >
       <SEO 
         title="Richest People in South Africa" 
-        description="Explore the net worth of South Africa's richest individuals. Updated list of millionaires and billionaires with detailed wealth information."
+        description="This list features South Africa’s wealthiest individuals from various backgrounds, including business tycoons, DJs, rappers, actors, athletes, and influencers. Each person has built a fortune through talent, hustle, and smart ventures. "
         canonicalUrl="/net-worth"
       />
       <Header />
@@ -104,7 +104,7 @@ const NetWorth = () => {
           <div>
             <h1 className="text-3xl font-bold mb-2">South Africa's Richest People</h1>
             <p className="text-gray-600">
-              Explore the net worth of South Africa's wealthiest individuals
+              This list features South Africa’s wealthiest individuals from various backgrounds, including business tycoons, DJs, rappers, actors, athletes, and influencers. Each person has built a fortune through talent, hustle, and smart ventures. 
             </p>
           </div>
           <Link 
