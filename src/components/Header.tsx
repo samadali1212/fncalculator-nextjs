@@ -27,11 +27,8 @@ const Header = () => {
   }, []);
 
   const menuItems = [
-    { path: "/categories/general-knowledge", label: "Rankings" },
     { path: "/celebrities", label: "Celebs Salary" },
     { path: "/net-worth", label: "Net Worth" },
-    { path: "/hourly-rates", label: "Hourly Rates" },
-    { path: "/tax-calculator", label: "Tax Calculator" },
     { path: "/branch-codes", label: "Branch Codes" },
     { path: "/blog", label: "Blog" },
     { path: "/about", label: "About" },
@@ -58,7 +55,7 @@ const Header = () => {
           href="/" 
           className="flex items-center gap-2 font-bold text-2xl"
         >
-          <img src="/SalaryListlogo.webp" alt="SalaryList" className="h-6" />
+          <img src="/sassainsiderlogo.png" alt="Sassa Insider" className="h-6" />
         </a>
 
         {/* Desktop Navigation */}
