@@ -7,7 +7,7 @@ import Header from "../components/Header";
 import SEO from "../components/SEO";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { netWorthPeople } from "../data/networth";
+import { netWorthPeople } from "../utils/globalNetWorthData";
 import { createComparisonUrl, getRandomInt, formatCurrency } from "../utils/utils";
 import {
   Table,

@@ -13,18 +13,14 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import AdSense from "../components/AdSense";
-import { findPersonBySlug, getSimilarPeople, formatNetWorth, NetWorthPerson } from "../data/networth";
-
-// Helper function to format birth date to age
-const formatAge = (dateString?: string): string => {
-  if (!dateString) return "N/A";
-  
-  const birthDate = new Date(dateString);
-  const today = new Date();
-  
-  // Simple year extraction for display
-  return birthDate.getFullYear().toString();
-};
+import { 
+  findPersonBySlug,
+  formatNetWorth,
+  getSimilarPeople,
+  NetWorthPerson,
+  formatAge,
+  generateDynamicDescription
+} from "../utils/globalNetWorthData";
 
 const GlobalNetWorthDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -106,7 +102,7 @@ const GlobalNetWorthDetail = () => {
 
   const getFormattedDescription = (person: NetWorthPerson) => {
     const birthYear = formatAge(person.dateOfBirth);
-    const isFemale = person.gender === 'female';
+    const isFemale = person.gender.toLowerCase() === 'female';
     const pronoun = isFemale ? 'she' : 'he';
     const possessive = isFemale ? 'her' : 'his';
     
