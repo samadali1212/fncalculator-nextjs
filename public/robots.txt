@@ -13,8 +13,6 @@
  Allow: /net-worth/
  Allow: /categories/
  Allow: /general-knowledge/
- Allow: /hourly-rates/
- Allow: /tax-calculator/
  Allow: /compare-salaries/
  Allow: /compare/
  Allow: /global-compare/
