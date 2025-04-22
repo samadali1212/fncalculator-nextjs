@@ -3794,7 +3794,7 @@ export const netWorthPeople: NetWorthPerson[] = [
     country: "Sweden",
     industry: "Disc jockey",
     company: "Pryda Recordings",
-    description: ["Eric Prydz is a Swedish DJ and producer who has a net worth of $10 million. Eric Prydz rose to fame in 2004 with his hit single \"Call on Me.\" He continued to achieve success with such singles as \"Proper Education", "\" \"Pjanoo", "\" and \"Opus", "\" the latter of which was featured on his debut studio album of the same name. Prydz has won many accolades over the course of his career", "including DJ of the Year at the Electronic Music Awards in 2017."],
+    description: "Eric Prydz is a Swedish DJ and producer who has a net worth of $10 million. Eric Prydz rose to fame in 2004 with his hit single \"Call on Me.\" He continued to achieve success with such singles as \"Proper Education", "\" \"Pjanoo", "\" and \"Opus", "\" the latter of which was featured on his debut studio album of the same name. Prydz has won many accolades over the course of his career", "including DJ of the Year at the Electronic Music Awards in 2017.",
     source: "Celebrity Net Worth",
     lastUpdated: "2025-02-26",
     imageUrl: "https://vz.cnwimg.com/thm/XS-2n2tn81ifd94OQSLmDQhbazU=/400x400/center/top/filters:format(webp)/2013/06/GettyImages-120094568.jpg",
