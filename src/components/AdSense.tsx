@@ -28,43 +28,35 @@ const AdSense = ({
   const adRef = useRef<HTMLDivElement>(null);
   const [adKey, setAdKey] = useState(Date.now());
   const location = useLocation();
-  const [hasInitialized, setHasInitialized] = useState(false);
   
   // Reset the ad when the route changes
   useEffect(() => {
     setAdKey(Date.now());
-    setHasInitialized(false);
   }, [location.pathname]);
   
   useEffect(() => {
     try {
-      if (adRef.current && typeof window !== 'undefined' && !hasInitialized) {
-        // Only log in development
-        if (process.env.NODE_ENV === 'development') {
-          console.log(`Initializing AdSense for slot: ${slot}`);
-        }
+      if (adRef.current && typeof window !== 'undefined') {
+        // Verbose logging for AdSense initialization
+        console.log(`Initializing AdSense for slot: ${slot}`);
+        console.log(`Current pathname: ${location.pathname}`);
         
         // Simple push without retries for traditional page loads
         if (window.adsbygoogle) {
           try {
             window.adsbygoogle.push({});
-            setHasInitialized(true);
-            if (process.env.NODE_ENV === 'development') {
-              console.log(`AdSense ad successfully pushed for slot: ${slot}`);
-            }
+            console.log(`AdSense ad successfully pushed for slot: ${slot}`);
           } catch (pushError) {
             console.error(`Error pushing AdSense ad for slot ${slot}:`, pushError);
           }
         } else {
-          if (process.env.NODE_ENV === 'development') {
-            console.warn('AdSense not available - will rely on traditional page load');
-          }
+          console.warn('AdSense not available - will rely on traditional page load');
         }
       }
     } catch (error) {
       console.error('Critical AdSense initialization error:', error);
     }
-  }, [slot, adKey, location.pathname, hasInitialized]);
+  }, [slot, adKey, location.pathname]);
 
   // For display ads with no specific format
   const isDisplayAd = slot === "9889084223";
