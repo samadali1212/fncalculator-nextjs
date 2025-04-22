@@ -2,7 +2,7 @@ import { NetWorthPerson } from './index';
 
 export const djs: NetWorthPerson[] = [
   {
-    id: 264,
+    id: "djs-1",
     name: "DJ Vlad",
     gender: "male",
     netWorth: 10000000,
@@ -20,7 +20,7 @@ export const djs: NetWorthPerson[] = [
     categories: ["celebrities", "djs"]
   },
   {
-    id: 265,
+    id: "djs-1",
     name: "Alan Walker",
     gender: "male",
     netWorth: 15000000,
@@ -38,7 +38,7 @@ export const djs: NetWorthPerson[] = [
     categories: ["celebrities", "djs"]
   },
   {
-    id: 267,
+    id: "djs-1",
     name: "Tim Westwood",
     gender: "male",
     netWorth: 8000000,
@@ -56,7 +56,7 @@ export const djs: NetWorthPerson[] = [
     categories: ["celebrities", "djs"]
   },
   {
-    id: 268,
+    id: "djs-1",
     name: "Steve Wright",
     gender: "male",
     netWorth: 6000000,
