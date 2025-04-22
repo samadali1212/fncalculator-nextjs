@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Search, ArrowUpRight, ListFilter, ChevronLeft } from "lucide-react";
@@ -231,6 +231,7 @@ const CelebrityCategory = () => {
               </div>
               
               {displayedCelebrities.map((celebrity, index) => (
+              <React.Fragment key={`person-row-${person.id}`}>
                 <motion.div 
                   key={celebrity.id}
                   initial={{ opacity: 0, y: 20 }}
@@ -286,6 +287,12 @@ const CelebrityCategory = () => {
                     </div>
                   </div>
                 </motion.div>
+                  {(index + 1) % 12 === 0 && index !== displayedPeople.length - 1 && (
+                  <div className="my-6">
+                    <AdSense slot="9889084223" format="auto" className="py-3" />
+                  </div>
+                  )}
+                </React.Fragment>
               ))}
               
               {hasMoreCelebrities && (
