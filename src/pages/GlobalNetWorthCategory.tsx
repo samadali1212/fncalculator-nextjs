@@ -24,7 +24,7 @@ import {
   findCategoryBySlug, 
   getCategoryIdBySlug,
   getPeopleByCategory
-} from "../utils/globalNetWorthData";
+} from '../utils/networth';
 
 const GlobalNetWorthCategory = () => {
   const { slug } = useParams<{ slug: string }>();
