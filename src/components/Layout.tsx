@@ -10,17 +10,15 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <>
-      <TooltipProvider>
-        <div className="bg-[#f6f6f0] min-h-screen">
-          <Toaster />
-          <Sonner />
-          <div>
-            {children}
-          </div>
+    <TooltipProvider>
+      <div className="bg-[#f6f6f0] min-h-screen">
+        <Toaster />
+        <Sonner />
+        <div>
+          {children}
         </div>
-      </TooltipProvider>
-    </>
+      </div>
+    </TooltipProvider>
   );
 };
 

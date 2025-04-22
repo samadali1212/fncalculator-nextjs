@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { netWorthPeople, formatNetWorth } from '../utils/networth';
+import { netWorthPeople, formatNetWorth } from "../utils/globalNetWorthData";
 import {
   Pagination,
   PaginationContent,
