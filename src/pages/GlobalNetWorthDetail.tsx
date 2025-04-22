@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -13,14 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import AdSense from "../components/AdSense";
-import { 
-  findPersonBySlug,
-  formatNetWorth,
-  getSimilarPeople,
-  NetWorthPerson,
-  formatAge,
-  generateDynamicDescription
-} from "../utils/globalNetWorthData";
+import { findPersonBySlug, getSimilarPeople, formatNetWorth } from "../data/networth";
 
 const GlobalNetWorthDetail = () => {
   const { slug } = useParams<{ slug: string }>();

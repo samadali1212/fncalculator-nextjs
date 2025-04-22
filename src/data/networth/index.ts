@@ -19,10 +19,6 @@ export const netWorthPeople = [
 export { djs, actors, athletes, businessMen, politicians };
 
 // Utility functions
-import { formatNetWorth } from '../../utils/globalNetWorthData';
-export { formatNetWorth };
-
-// Export types
 export type NetWorthPerson = {
   id: string;
   name: string;
@@ -125,3 +121,6 @@ export const getSimilarPeople = (person: NetWorthPerson, limit: number = 3): Net
     })
     .slice(0, limit);
 };
+
+// Export the format utility
+export { formatNetWorth } from '../../utils/globalNetWorthData';
