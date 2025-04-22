@@ -46,16 +46,6 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://sassainsider.co.za/tax-calculator</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://sassainsider.co.za/hourly-rates</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
     <loc>https://sassainsider.co.za/compare-salaries</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
