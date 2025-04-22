@@ -238,7 +238,6 @@ const NetWorthCategory = () => {
               </div>
               
               {displayedPeople.map((person, index) => (
-               <React.Fragment key={`person-row-${person.id}`}>
                 <motion.div 
                   key={person.id}
                   initial={{ opacity: 0, y: 20 }}
@@ -301,12 +300,6 @@ const NetWorthCategory = () => {
                     </div>
                   </div>
                 </motion.div>
-                  {(index + 1) % 12 === 0 && index !== displayedPeople.length - 1 && (
-                  <div className="my-6">
-                  <AdSense slot="9889084223" format="auto" className="py-3" />
-                  </div>
-                  )}
-                </React.Fragment>
               ))}
               
               {hasMorePeople && (
