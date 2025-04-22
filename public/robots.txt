@@ -13,9 +13,6 @@
  Allow: /net-worth/
  Allow: /categories/
  Allow: /general-knowledge/
- Allow: /compare-salaries/
- Allow: /compare/
- Allow: /global-compare/
  Allow: /global-categories/
  Allow: /about/
  Allow: /blog/
