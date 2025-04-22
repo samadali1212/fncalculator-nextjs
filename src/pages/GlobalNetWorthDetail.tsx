@@ -21,12 +21,14 @@ import {
   formatAge,
   generateDynamicDescription
 } from "../utils/globalNetWorthData";
+import { usePageReload } from "../hooks/usePageReload";
 
 const GlobalNetWorthDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
-  
+  const { pageKey } = usePageReload(); // <--- add this line
+
   const person = findPersonBySlug(slug || "");
   const similarPeople = person ? getSimilarPeople(person, 10) : [];
   
@@ -111,6 +113,7 @@ const GlobalNetWorthDetail = () => {
 
   return (
     <motion.div
+      key={pageKey} // <-- force remount on route change
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

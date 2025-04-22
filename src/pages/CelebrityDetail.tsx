@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -18,12 +19,14 @@ import {
   getSimilarCelebrities,
   Celebrity
 } from "../utils/celebrityData";
+import { usePageReload } from "../hooks/usePageReload";
 
 const CelebrityDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
-  
+  const { pageKey } = usePageReload(); // <--- add this line
+
   const celebrity = findCelebrityBySlug(slug || "");
   const similarCelebrities = celebrity ? getSimilarCelebrities(celebrity, 10) : [];
   
@@ -114,6 +117,7 @@ const CelebrityDetail = () => {
 
   return (
     <motion.div
+      key={pageKey} // <-- force remount on route change
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
