@@ -1,4 +1,3 @@
-
 // Import all category data
 import { djs } from './djs';
 import { actors } from './actors';
@@ -25,16 +24,21 @@ export { formatNetWorth };
 // Export types
 export type NetWorthPerson = {
   id: string;
-  slug: string;
   name: string;
   netWorth: number;
   currency: string;
   occupation: string;
+  dateOfBirth?: string; // ISO date string format
+  country?: string;
   industry: string;
   company?: string;
-  country?: string;
+  description?: string;
+  source?: string;
+  lastUpdated?: string;
   imageUrl?: string;
+  slug: string;
   categories?: string[];
+  gender?: 'male' | 'female';
 };
 
 // Category type
