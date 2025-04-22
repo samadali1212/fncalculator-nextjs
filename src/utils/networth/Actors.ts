@@ -2,7 +2,7 @@ import { NetWorthPerson } from './index';
 
 export const actors: NetWorthPerson[] = [
 {
-    id: 6,
+    id: "actor-1",
     name: "Air Force Amy",
     gender: "female",
     netWorth: 1000000,
@@ -20,7 +20,7 @@ export const actors: NetWorthPerson[] = [
     categories: ["celebrities", "models"]
   },
   {
-    id: 7,
+    id: "actor-2",
     name: "Monique Alexander",
     gender: "female",
     netWorth: 2000000,
@@ -35,24 +35,6 @@ export const actors: NetWorthPerson[] = [
     lastUpdated: "2025-01-07",
     imageUrl: "https://vz.cnwimg.com/thm/8S31NTPP8GqK0oW5rdACp648c54=/400x400/center/top/filters:format(webp)/2018/05/ma.jpg",
     slug: "monique-alexander-net-worth",
-    categories: ["celebrities", "models"]
-  },
-  {
-    id: 8,
-    name: "Abella Anderson",
-    gender: "female",
-    netWorth: 600000,
-    currency: "USD",
-    occupation: "Pornographic actor",
-    dateOfBirth: "1988-05-16",
-    country: "United States of America",
-    industry: "Adult Entertainment",
-    company: "Bang Bros",
-    description: "Abella Anderson is an Cuban-American adult film star who has a net worth of $600 thousand. Abella Anderson was born on May 16, 1988 in Cuba. She moved to the United States with her family at a very young age. Abella Anderson has appeared in more than 30 adult movies in her short career.",
-    source: "Idol Net Worth",
-    lastUpdated: "2025-01-08",
-    imageUrl: "https://vz.cnwimg.com/thm/G2YG6n7cXm2irvpCPxkJUiKvUGI=/400x400/center/top/filters:format(webp)/2013/07/abella.jpg",
-    slug: "abella-anderson-net-worth",
     categories: ["celebrities", "models"]
   }
 ];
