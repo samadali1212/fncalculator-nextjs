@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -7,7 +8,9 @@ import SEO from "../components/SEO";
 import { Button } from "@/components/ui/button";
 import { findPersonBySlug, NetWorthPerson, formatNetWorth, formatAge } from "../utils/networth";
 
+// Fix the Params interface to satisfy the constraint
 interface Params {
+  [key: string]: string | undefined;
   person1Slug?: string;
   person2Slug?: string;
 }
