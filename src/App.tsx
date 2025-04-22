@@ -8,10 +8,6 @@ import Celebrities from "./pages/Celebrities";
 import CelebrityDetail from "./pages/CelebrityDetail";
 import NetWorth from "./pages/NetWorth";
 import NetWorthDetail from "./pages/NetWorthDetail";
-import CompareNetWorth from "./pages/CompareNetWorth";
-import CompareCelebritySalaries from "./pages/CompareCelebritySalaries";
-import SalaryComparisonList from "./pages/SalaryComparisonList";
-import NetWorthComparisonList from "./pages/NetWorthComparisonList";
 import NetWorthCategory from "./pages/NetWorthCategory";
 import StandaloneCategories from "./pages/StandaloneCategories";
 import StandaloneCelebrityCategories from "./pages/StandaloneCelebrityCategories";
@@ -32,8 +28,6 @@ import GlobalNetWorth from "./pages/GlobalNetWorth";
 import GlobalNetWorthDetail from "./pages/GlobalNetWorthDetail";
 import GlobalNetWorthCategory from "./pages/GlobalNetWorthCategory";
 import GlobalStandaloneCategories from "./pages/GlobalStandaloneCategories";
-import GlobalNetWorthComparisonList from "./pages/GlobalNetWorthComparisonList";
-import GlobalCompareNetWorth from "./pages/GlobalCompareNetWorth";
 
 // Get the first two celebrities from the data file for default comparison
 const getDefaultCelebrities = () => {
@@ -42,10 +36,6 @@ const getDefaultCelebrities = () => {
   }
   return "";
 };
-
-const App = () => {
-  // Get default celebrities for comparison
-  const defaultCelebrityComparison = getDefaultCelebrities();
   
   return (
     <BrowserRouter>
@@ -66,17 +56,6 @@ const App = () => {
           <Route path="/net-worth" element={<NetWorth />} />
           <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
                     
-          {/* South African Net Worth comparison routes */}
-          <Route path="/comparison" element={<Navigate to="/compare" replace />} />
-          <Route path="/compare" element={<NetWorthComparisonList />} />
-          <Route path="/compare/:comparison" element={<CompareNetWorth />} />
-          <Route path="/compare/:person1/:person2" element={<CompareNetWorth />} />
-                  
-          {/* Salary comparison routes - add direct navigation to default comparison */}
-          <Route path="/compare-salaries" element={<SalaryComparisonList />} />
-          <Route path="/compare-salaries/:comparison" element={<CompareCelebritySalaries />} />
-          <Route path="/salary-comparison" element={<Navigate to="/compare-salaries" replace />} />
-          
           <Route path="/categories" element={<StandaloneCategories />} />
           <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
           
@@ -84,15 +63,7 @@ const App = () => {
           <Route path="/global-net-worth" element={<GlobalNetWorth />} />
           <Route path="/global-net-worth/:slug" element={<GlobalNetWorthDetail />} />
           <Route path="/global-categories" element={<GlobalStandaloneCategories />} />
-          <Route path="/global-net-worth/category/:slug" element={<GlobalNetWorthCategory />} />
-          <Route path="/global-compare" element={<GlobalNetWorthComparisonList />} />
-          <Route path="/global-compare/:comparison" element={<GlobalCompareNetWorth />} />
-          <Route path="/global-compare/:person1/:person2" element={<GlobalCompareNetWorth />} />
-          
-          {/* Add a new route for compare-global */}
-          <Route path="/compare-global" element={<Navigate to="/global-compare" replace />} />
-          <Route path="/compare-global/:comparison" element={<GlobalCompareNetWorth />} />
-          <Route path="/compare-global/:person1/:person2" element={<GlobalCompareNetWorth />} />
+          <Route path="/global-net-worth/category/:slug" element={<GlobalNetWorthCategory />} />        
           
           {/* General Knowledge Routes */}
           <Route path="/general-knowledge" element={<GeneralKnowledge />} />
