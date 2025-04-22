@@ -1680,7 +1680,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 101,
     name: "Steve Angello",
-    gender: "Male",
+    gender: "male",
     netWorth: 40000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Remixer, Electronic musician",
@@ -1698,7 +1698,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 102,
     name: "Steve Aoki",
-    gender: "Male",
+    gender: "male",
     netWorth: 120000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Musician",
@@ -1716,7 +1716,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 103,
     name: "Heather B",
-    gender: "Female",
+    gender: "female",
     netWorth: 300000,
     currency: "USD",
     occupation: "Actor, Singer",
@@ -1734,7 +1734,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 104,
     name: "A-Trak",
-    gender: "Male",
+    gender: "male",
     netWorth: 12000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Turntablist, Entrepreneur",
@@ -1752,7 +1752,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 105,
     name: "Afrojack",
-    gender: "Male",
+    gender: "male",
     netWorth: 60000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Remixer",
@@ -1770,7 +1770,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 106,
     name: "Clean Bandit",
-    gender: "Female",
+    gender: "female",
     netWorth: 10000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -1788,7 +1788,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 107,
     name: "Thomas Bangalter",
-    gender: "Male",
+    gender: "male",
     netWorth: 90000000,
     currency: "USD",
     occupation: "Composer, Electronic musician, Bassist, Keyboard Player",
@@ -1806,7 +1806,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 108,
     name: "Tom Barnard ",
-    gender: "Male",
+    gender: "male",
     netWorth: 2000000,
     currency: "USD",
     occupation: "United States of America",
@@ -1824,7 +1824,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 109,
     name: "Avicii",
-    gender: "Male",
+    gender: "male",
     netWorth: 50000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Electronic musician",
@@ -1842,7 +1842,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 110,
     name: "Axwell",
-    gender: "Male",
+    gender: "male",
     netWorth: 40000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey, Remixer, Entrepreneur",
@@ -1860,7 +1860,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 111,
     name: "Benny Benassi",
-    gender: "Male",
+    gender: "male",
     netWorth: 16000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey, Remixer",
@@ -1878,7 +1878,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 112,
     name: "Rodney Bingenheimer",
-    gender: "Male",
+    gender: "male",
     netWorth: 2000000,
     currency: "USD",
     occupation: "Radio personality, Disc jockey, Actor",
@@ -1896,7 +1896,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 113,
     name: "The Chemical Brothers",
-    gender: "Male",
+    gender: "male",
     netWorth: 22000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -1914,7 +1914,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 114,
     name: "Downtown Julie Brown",
-    gender: "Female",
+    gender: "female",
     netWorth: 5000000,
     currency: "USD",
     occupation: "Presenter, Actor",
@@ -1932,7 +1932,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 115,
     name: "Tony Blackburn",
-    gender: "Male",
+    gender: "male",
     netWorth: 5000000,
     currency: "USD",
     occupation: "Presenter, Disc jockey, Actor",
@@ -1950,7 +1950,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 116,
     name: "Richard Blade",
-    gender: "Male",
+    gender: "male",
     netWorth: 2000000,
     currency: "USD",
     occupation: "Actor, Disc jockey, Television Producer and Television Director",
@@ -1968,7 +1968,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 117,
     name: "James Blake",
-    gender: "Male",
+    gender: "male",
     netWorth: 8000000,
     currency: "USD",
     occupation: "Record producer, Singer-songwriter, Musician",
@@ -1986,7 +1986,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 118,
     name: "Jerry Blavat",
-    gender: "Male",
+    gender: "male",
     netWorth: 1500000,
     currency: "USD",
     occupation: "Disc jockey, Radio personality, Actor",
@@ -2004,7 +2004,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 119,
     name: "Bobby Bones",
-    gender: "Male",
+    gender: "male",
     netWorth: 14000000,
     currency: "USD",
     occupation: "Radio personality",
@@ -2022,7 +2022,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 120,
     name: "Big Boy",
-    gender: "Male",
+    gender: "male",
     netWorth: 9000000,
     currency: "USD",
     occupation: "Actor, Film Producer, Radio personality",
@@ -2040,7 +2040,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 121,
     name: "Billy Costa",
-    gender: "Male",
+    gender: "male",
     netWorth: 4000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -2058,7 +2058,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 122,
     name: "Alan Cox",
-    gender: "Male",
+    gender: "male",
     netWorth: 3000000,
     currency: "USD",
     occupation: "Radio personality",
@@ -2076,7 +2076,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 123,
     name: "Carnage",
-    gender: "Male",
+    gender: "male",
     netWorth: 8000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -2094,7 +2094,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 124,
     name: "Justin Caruso",
-    gender: "Male",
+    gender: "male",
     netWorth: 9000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -2112,7 +2112,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 125,
     name: "Havana Brown",
-    gender: "Female",
+    gender: "female",
     netWorth: 5000000,
     currency: "USD",
     occupation: "Disc jockey, Singer, Dancer",
@@ -2130,7 +2130,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 126,
     name: "Lady Bunny",
-    gender: "Male",
+    gender: "male",
     netWorth: 400000,
     currency: "USD",
     occupation: "Drag queen, Actor, Journalist, Disc jockey, Promoter",
@@ -2148,7 +2148,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 127,
     name: "Carl Cox",
-    gender: "Male",
+    gender: "male",
     netWorth: 16000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer",
@@ -2166,7 +2166,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 128,
     name: "DJ Craze",
-    gender: "Male",
+    gender: "male",
     netWorth: 3000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer",
@@ -2184,7 +2184,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 129,
     name: "Armin Van Buuren",
-    gender: "Male",
+    gender: "male",
     netWorth: 55000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Composer, Songwriter",
@@ -2202,7 +2202,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 130,
     name: "Ian Carey",
-    gender: "Male",
+    gender: "male",
     netWorth: 4000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey, Songwriter",
@@ -2220,7 +2220,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 131,
     name: "Gene \"Bean\" Baxter",
-    gender: "Male",
+    gender: "male",
     netWorth: 10000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -2238,7 +2238,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 132,
     name: "Connor Cruise",
-    gender: "Male",
+    gender: "male",
     netWorth: 5000000,
     currency: "USD",
     occupation: "Actor",
@@ -2256,7 +2256,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 133,
     name: "Pauly D",
-    gender: "Male",
+    gender: "male",
     netWorth: 20000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -2274,7 +2274,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 134,
     name: "Gigi D'Agostino",
-    gender: "Male",
+    gender: "male",
     netWorth: 6000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Remixer",
@@ -2292,7 +2292,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 135,
     name: "Caroline D'Amore",
-    gender: "Female",
+    gender: "female",
     netWorth: 2000000,
     currency: "USD",
     occupation: "Actor, Model, Socialite, Disc jockey, Songwriter",
@@ -2310,7 +2310,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 136,
     name: "Johnny Dare",
-    gender: "Male",
+    gender: "male",
     netWorth: 6000000,
     currency: "USD",
     occupation: "Actor",
@@ -2328,7 +2328,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 137,
     name: "Darude",
-    gender: "Male",
+    gender: "male",
     netWorth: 12000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey, Composer",
@@ -2346,7 +2346,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 138,
     name: "Angelo Cataldi",
-    gender: "Male",
+    gender: "male",
     netWorth: 1500000,
     currency: "USD",
     occupation: "Italian American",
@@ -2364,7 +2364,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 139,
     name: "Datsik",
-    gender: "Male",
+    gender: "male",
     netWorth: 8000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey",
@@ -2382,7 +2382,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 140,
     name: "Deadmau5",
-    gender: "Male",
+    gender: "male",
     netWorth: 50000000,
     currency: "USD",
     occupation: "Disc jockey, Musician, Record producer",
@@ -2400,7 +2400,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 141,
     name: "George Dunham",
-    gender: "Male",
+    gender: "male",
     netWorth: 5000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -2418,7 +2418,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 142,
     name: "Gareth Emery",
-    gender: "Male",
+    gender: "male",
     netWorth: 16000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer",
@@ -2436,7 +2436,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 143,
     name: "Sasha the Diva",
-    gender: "Female",
+    gender: "female",
     netWorth: 300000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -2454,7 +2454,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 144,
     name: "Paul Fisher",
-    gender: "Male",
+    gender: "male",
     netWorth: 4000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -2472,7 +2472,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 145,
     name: "John R. Gambling",
-    gender: "Male",
+    gender: "male",
     netWorth: 15000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -2490,7 +2490,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 146,
     name: "Joachim Garraud",
-    gender: "Male",
+    gender: "male",
     netWorth: 10000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey, Remixer",
@@ -2508,7 +2508,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 147,
     name: "John Digweed",
-    gender: "Male",
+    gender: "male",
     netWorth: 48000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Actor, Businessperson",
@@ -2526,7 +2526,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 148,
     name: "Martin Garrix",
-    gender: "Male",
+    gender: "male",
     netWorth: 30000000,
     currency: "USD",
     occupation: "Musician, Disc jockey, Record producer",
@@ -2544,7 +2544,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 149,
     name: "Sascha Gerecht",
-    gender: "Male",
+    gender: "male",
     netWorth: 2000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -2562,7 +2562,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 150,
     name: "Flume",
-    gender: "Male",
+    gender: "male",
     netWorth: 10000000,
     currency: "USD",
     occupation: "Musician",
@@ -2580,7 +2580,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 151,
     name: "Dillon Francis",
-    gender: "Male",
+    gender: "male",
     netWorth: 9000000,
     currency: "USD",
     occupation: "DJ, record producer",
@@ -2598,7 +2598,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 152,
     name: "Jono Grant",
-    gender: "Male",
+    gender: "male",
     netWorth: 13000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Musician",
@@ -2616,7 +2616,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 153,
     name: "Tom Griswold",
-    gender: "Male",
+    gender: "male",
     netWorth: 15000000,
     currency: "USD",
     occupation: "Film Producer, Screenwriter, Actor",
@@ -2634,7 +2634,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 154,
     name: "Goldie",
-    gender: "Male",
+    gender: "male",
     netWorth: 8000000,
     currency: "USD",
     occupation: "Disc jockey, Actor, Musician, Artist",
@@ -2652,7 +2652,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 155,
     name: "Jon Gooch",
-    gender: "Male",
+    gender: "male",
     netWorth: 3000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey",
@@ -2670,7 +2670,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 156,
     name: "David Guetta",
-    gender: "Male",
+    gender: "male",
     netWorth: 200000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Songwriter, Remixer, Composer",
@@ -2688,7 +2688,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 157,
     name: "Joe Hahn",
-    gender: "Male",
+    gender: "male",
     netWorth: 25000000,
     currency: "USD",
     occupation: "Music Video Director, Musician, Film Director, Disc jockey",
@@ -2706,7 +2706,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 158,
     name: "Scott Hansen",
-    gender: "Male",
+    gender: "male",
     netWorth: 2000000,
     currency: "USD",
     occupation: "United States of America",
@@ -2724,7 +2724,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 159,
     name: "Hardwell",
-    gender: "Male",
+    gender: "male",
     netWorth: 23000000,
     currency: "USD",
     occupation: "Musician, Record producer, Disc jockey, Music Producer, Remixer",
@@ -2742,7 +2742,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 160,
     name: "Don Geronimo",
-    gender: "Male",
+    gender: "male",
     netWorth: 10000000,
     currency: "USD",
     occupation: "United States of America",
@@ -2760,7 +2760,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 161,
     name: "Calvin Harris",
-    gender: "Male",
+    gender: "male",
     netWorth: 300000000,
     currency: "USD",
     occupation: "Record producer, Musician, Disc jockey, Singer, Songwriter",
@@ -2778,7 +2778,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 162,
     name: "Paul Harvey",
-    gender: "Male",
+    gender: "male",
     netWorth: 150000000,
     currency: "USD",
     occupation: "Radio personality, Actor, Newscaster, Commentator",
@@ -2796,7 +2796,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 163,
     name: "DJ Kool Herc",
-    gender: "Male",
+    gender: "male",
     netWorth: 3000000,
     currency: "USD",
     occupation: "Rapper",
@@ -2814,7 +2814,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 164,
     name: "Guy-Manuel de Homem-Christo",
-    gender: "Male",
+    gender: "male",
     netWorth: 90000000,
     currency: "USD",
     occupation: "Record producer, Electronic musician, Screenwriter",
@@ -2832,7 +2832,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 165,
     name: "Richie Hawtin",
-    gender: "Male",
+    gender: "male",
     netWorth: 11000000,
     currency: "USD",
     occupation: "Electronic musician, Disc jockey",
@@ -2850,7 +2850,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 166,
     name: "Brennan Heart",
-    gender: "Male",
+    gender: "male",
     netWorth: 10000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey",
@@ -2868,7 +2868,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 167,
     name: "Sebastian Ingrosso",
-    gender: "Male",
+    gender: "male",
     netWorth: 40000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Electronic musician, Remixer",
@@ -2886,7 +2886,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 168,
     name: "Wolfman Jack",
-    gender: "Male",
+    gender: "male",
     netWorth: 1000000,
     currency: "USD",
     occupation: "Radio personality, Presenter, Actor, Disc jockey",
@@ -2904,7 +2904,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 169,
     name: "DJ Jazzy Jeff",
-    gender: "Male",
+    gender: "male",
     netWorth: 2500000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Musician, Actor, Turntablist",
@@ -2922,7 +2922,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 170,
     name: "John St. John",
-    gender: "Male",
+    gender: "male",
     netWorth: 1000000,
     currency: "USD",
     occupation: "Actor",
@@ -2940,7 +2940,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 171,
     name: "Tom Joyner",
-    gender: "Male",
+    gender: "male",
     netWorth: 80000000,
     currency: "USD",
     occupation: "Radio personality, Television producer, Actor",
@@ -2958,7 +2958,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 172,
     name: "Rude Jude",
-    gender: "Male",
+    gender: "male",
     netWorth: 3000000,
     currency: "USD",
     occupation: "United States of America",
@@ -2976,7 +2976,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 173,
     name: "Peter Hook",
-    gender: "Male",
+    gender: "male",
     netWorth: 20000000,
     currency: "USD",
     occupation: "Bassist, Musician, Composer, Disc jockey, Entrepreneur, Author",
@@ -2994,7 +2994,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 174,
     name: "Alan Hunter",
-    gender: "Male",
+    gender: "male",
     netWorth: 2000000,
     currency: "USD",
     occupation: "Radio personality, Actor, VJ, Presenter, Film Producer",
@@ -3012,7 +3012,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 175,
     name: "Joji",
-    gender: "Male",
+    gender: "male",
     netWorth: 8000000,
     currency: "USD",
     occupation: "Singer, songwriter, rapper, comedian",
@@ -3030,7 +3030,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 176,
     name: "Jamie Jones",
-    gender: "Male",
+    gender: "male",
     netWorth: 6000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3048,7 +3048,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 177,
     name: "Kaskade",
-    gender: "Male",
+    gender: "male",
     netWorth: 60000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey",
@@ -3066,7 +3066,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 178,
     name: "Gordon Keith",
-    gender: "Male",
+    gender: "male",
     netWorth: 3000000,
     currency: "USD",
     occupation: "Actor, Radio personality, Television Show Host",
@@ -3084,7 +3084,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 179,
     name: "Roman Kemp",
-    gender: "Male",
+    gender: "male",
     netWorth: 1500000,
     currency: "USD",
     occupation: "Radio presenter",
@@ -3102,7 +3102,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 180,
     name: "Bob Kevoian",
-    gender: "Male",
+    gender: "male",
     netWorth: 15000000,
     currency: "USD",
     occupation: "Film Producer, Screenwriter, Film director",
@@ -3120,7 +3120,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 181,
     name: "DJ Khalil",
-    gender: "Male",
+    gender: "male",
     netWorth: 8000000,
     currency: "USD",
     occupation: "Record producer, Singer, Music Producer, Disc jockey",
@@ -3138,7 +3138,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 182,
     name: "DJ Whoo Kid",
-    gender: "Male",
+    gender: "male",
     netWorth: 300000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Singer",
@@ -3156,7 +3156,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 183,
     name: "Bounty Killer",
-    gender: "Male",
+    gender: "male",
     netWorth: 1000000,
     currency: "USD",
     occupation: "Singer, Artist",
@@ -3174,7 +3174,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 184,
     name: "Kidd Kraddick",
-    gender: "Male",
+    gender: "male",
     netWorth: 30000000,
     currency: "USD",
     occupation: "Radio personality",
@@ -3192,7 +3192,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 185,
     name: "Kygo ",
-    gender: "Male",
+    gender: "male",
     netWorth: 25000000,
     currency: "USD",
     occupation: "Musician, Remixer, Music Producer",
@@ -3210,7 +3210,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 187,
     name: "Jim Lange",
-    gender: "Male",
+    gender: "male",
     netWorth: 5000000,
     currency: "USD",
     occupation: "Presenter, Disc jockey, Radio personality, Actor",
@@ -3228,7 +3228,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 188,
     name: "DJ Green Lantern",
-    gender: "Male",
+    gender: "male",
     netWorth: 9000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey, Artist, Singer, Rapper",
@@ -3246,7 +3246,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 189,
     name: "Judge Jules",
-    gender: "Male",
+    gender: "male",
     netWorth: 42000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3264,7 +3264,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 190,
     name: "Vic Latino",
-    gender: "Male",
+    gender: "male",
     netWorth: 3000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3282,7 +3282,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 191,
     name: "John Laws",
-    gender: "Male",
+    gender: "male",
     netWorth: 20000000,
     currency: "USD",
     occupation: "Radio personality, Actor",
@@ -3300,7 +3300,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 192,
     name: "DJ Laz",
-    gender: "Female",
+    gender: "female",
     netWorth: 2000000,
     currency: "USD",
     occupation: "Disc jockey, Rapper",
@@ -3318,7 +3318,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 193,
     name: "Kim Lee",
-    gender: "Female",
+    gender: "female",
     netWorth: 500000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3336,7 +3336,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 194,
     name: "Ryan Lewis",
-    gender: "Male",
+    gender: "male",
     netWorth: 22000000,
     currency: "USD",
     occupation: "Musician, Photographer, Music Video Director, Graphic Designer",
@@ -3354,7 +3354,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 195,
     name: "Zane Lowe",
-    gender: "Male",
+    gender: "male",
     netWorth: 5000000,
     currency: "USD",
     occupation: "Actor, Presenter",
@@ -3372,7 +3372,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 196,
     name: "Laidback Luke",
-    gender: "Female",
+    gender: "female",
     netWorth: 10000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey",
@@ -3390,7 +3390,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 197,
     name: "Annie Mac",
-    gender: "Male",
+    gender: "male",
     netWorth: 8000000,
     currency: "USD",
     occupation: "United Kingdom",
@@ -3408,7 +3408,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 199,
     name: "Marshmello",
-    gender: "Male",
+    gender: "male",
     netWorth: 50000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3426,7 +3426,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 200,
     name: "Bob McCown",
-    gender: "Male",
+    gender: "male",
     netWorth: 3500000,
     currency: "USD",
     occupation: "Sports commentator",
@@ -3444,7 +3444,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 201,
     name: "Dan McDowell",
-    gender: "Male",
+    gender: "male",
     netWorth: 500000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3462,7 +3462,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 202,
     name: "Chick McGee",
-    gender: "Female",
+    gender: "female",
     netWorth: 3000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3480,7 +3480,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 204,
     name: "Jeff Mills",
-    gender: "Male",
+    gender: "male",
     netWorth: 1000000,
     currency: "USD",
     occupation: "Disc jockey, Musician",
@@ -3498,7 +3498,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 205,
     name: "Moby",
-    gender: "Male",
+    gender: "male",
     netWorth: 25000000,
     currency: "USD",
     occupation: "Disc jockey, Musician, Singer-songwriter, Film Score Composer",
@@ -3516,7 +3516,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 206,
     name: "John Monoky",
-    gender: "Male",
+    gender: "male",
     netWorth: 7500000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3534,7 +3534,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 207,
     name: "Erick Morillo",
-    gender: "Male",
+    gender: "male",
     netWorth: 25000000,
     currency: "USD",
     occupation: "Disc jockey, Composer, Music Producer, Record producer",
@@ -3552,7 +3552,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 208,
     name: "Robert Miles",
-    gender: "Male",
+    gender: "male",
     netWorth: 8000000,
     currency: "USD",
     occupation: "Disc jockey, Composer, Musician, Record producer",
@@ -3570,7 +3570,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 209,
     name: "Craig \"Junior\" Miller",
-    gender: "Male",
+    gender: "male",
     netWorth: 3500000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3588,7 +3588,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 210,
     name: "Ninjaman",
-    gender: "Male",
+    gender: "male",
     netWorth: 1000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3606,7 +3606,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 211,
     name: "George Noory",
-    gender: "Male",
+    gender: "male",
     netWorth: 5000000,
     currency: "USD",
     occupation: "Sailor, Ufologists",
@@ -3624,7 +3624,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 212,
     name: "Netsky",
-    gender: "Male",
+    gender: "male",
     netWorth: 12000000,
     currency: "USD",
     occupation: "Songwriter, Record producer, Disc jockey, Mixing engineer",
@@ -3642,7 +3642,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 213,
     name: "Nghtmre",
-    gender: "Male",
+    gender: "male",
     netWorth: 6000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3660,7 +3660,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 214,
     name: "Mike O'Meara",
-    gender: "Male",
+    gender: "male",
     netWorth: 10000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3678,7 +3678,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 215,
     name: "Paul Oakenfold",
-    gender: "Female",
+    gender: "female",
     netWorth: 50000000,
     currency: "USD",
     occupation: "Actor, Disc jockey, Record producer, Chef, Film Score Composer",
@@ -3696,7 +3696,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 216,
     name: "DJ Yesi Ortiz",
-    gender: "Female",
+    gender: "female",
     netWorth: 300000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3714,7 +3714,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 218,
     name: "Matt Pinfield",
-    gender: "Male",
+    gender: "male",
     netWorth: 2000000,
     currency: "USD",
     occupation: "VJ, Presenter",
@@ -3732,7 +3732,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 219,
     name: "Gabry Ponte",
-    gender: "Male",
+    gender: "male",
     netWorth: 10000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3750,7 +3750,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 220,
     name: "Flux Pavillion",
-    gender: "Male",
+    gender: "male",
     netWorth: 8000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3768,7 +3768,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 221,
     name: "Regi Penxten",
-    gender: "Male",
+    gender: "male",
     netWorth: 7000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey, Songwriter",
@@ -3786,7 +3786,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 222,
     name: "Eric Prydz",
-    gender: "Male",
+    gender: "male",
     netWorth: 10000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Musician",
@@ -3804,7 +3804,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 223,
     name: "Questlove",
-    gender: "Male",
+    gender: "male",
     netWorth: 14000000,
     currency: "USD",
     occupation: "Drummer, Disc jockey, Journalist, Record producer",
@@ -3822,7 +3822,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 224,
     name: "DJ Quik",
-    gender: "Female",
+    gender: "female",
     netWorth: 3000000,
     currency: "USD",
     occupation: "Keyboard Player, Disc jockey, Actor, Record producer",
@@ -3840,7 +3840,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 225,
     name: "Kellie Rasberry",
-    gender: "Male",
+    gender: "male",
     netWorth: 5000000,
     currency: "USD",
     occupation: "United States of America",
@@ -3858,7 +3858,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 226,
     name: "Russ Parr",
-    gender: "Female",
+    gender: "female",
     netWorth: 4000000,
     currency: "USD",
     occupation: "Film director, Film Producer, Screenwriter, Actor",
@@ -3876,7 +3876,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 227,
     name: "Diane Rehm",
-    gender: "Male",
+    gender: "male",
     netWorth: 3000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3894,7 +3894,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 228,
     name: "Porter Robinson",
-    gender: "Male",
+    gender: "male",
     netWorth: 20000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3912,7 +3912,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 229,
     name: "Chris Rose",
-    gender: "Male",
+    gender: "male",
     netWorth: 3000000,
     currency: "USD",
     occupation: "Journalist, Sports commentator, Presenter",
@@ -3930,7 +3930,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 230,
     name: "DJ Royale",
-    gender: "Male",
+    gender: "male",
     netWorth: 3000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -3948,7 +3948,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 231,
     name: "Nicky Romero",
-    gender: "Male",
+    gender: "male",
     netWorth: 10000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey, Musician",
@@ -3966,7 +3966,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 232,
     name: "Mark Ronson",
-    gender: "Male",
+    gender: "male",
     netWorth: 20000000,
     currency: "USD",
     occupation: "Singer, Disc jockey, Record producer, Musician, Guitarist",
@@ -3984,7 +3984,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 233,
     name: "Kyle Sandilands",
-    gender: "Male",
+    gender: "male",
     netWorth: 40000000,
     currency: "USD",
     occupation: "Judge, Radio personality",
@@ -4002,7 +4002,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 234,
     name: "Sasha (DJ) Net",
-    gender: "Male",
+    gender: "male",
     netWorth: 40000000,
     currency: "USD",
     occupation: "Electronic musician, Record producer, Disc jockey",
@@ -4020,7 +4020,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 235,
     name: "DJ Self",
-    gender: "Male",
+    gender: "male",
     netWorth: 3000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -4038,7 +4038,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 236,
     name: "DJ Shadow",
-    gender: "Male",
+    gender: "male",
     netWorth: 3000000,
     currency: "USD",
     occupation: "Turntablist, Disc jockey, Record producer, Actor, Musician",
@@ -4056,7 +4056,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 237,
     name: "Todd Schnitt",
-    gender: "Male",
+    gender: "male",
     netWorth: 2000000,
     currency: "USD",
     occupation: "Male",
@@ -4074,7 +4074,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 238,
     name: "Paavo Siljamaki",
-    gender: "Male",
+    gender: "male",
     netWorth: 13000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Musician",
@@ -4092,7 +4092,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 239,
     name: "Dee Jay Silver",
-    gender: "Male",
+    gender: "male",
     netWorth: 5000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -4110,7 +4110,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 240,
     name: "Mark Simone",
-    gender: "Male",
+    gender: "male",
     netWorth: 20000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -4128,7 +4128,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 241,
     name: "Scott Shannon",
-    gender: "Male",
+    gender: "male",
     netWorth: 5000000,
     currency: "USD",
     occupation: "Male",
@@ -4146,7 +4146,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 242,
     name: "Donnie Simpson",
-    gender: "Male",
+    gender: "male",
     netWorth: 5000000,
     currency: "USD",
     occupation: "Actor, Disc jockey",
@@ -4164,7 +4164,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 243,
     name: "Hot Since 82",
-    gender: "Male",
+    gender: "male",
     netWorth: 10000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -4182,7 +4182,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 244,
     name: "Bob Sinclar",
-    gender: "Male",
+    gender: "male",
     netWorth: 8000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey, Remixer, Businessperson",
@@ -4200,7 +4200,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 245,
     name: "Charlie Sloth",
-    gender: "Male",
+    gender: "male",
     netWorth: 30000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -4218,7 +4218,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 246,
     name: "DJ Snake",
-    gender: "Male",
+    gender: "male",
     netWorth: 8000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey, Songwriter, Musician",
@@ -4236,7 +4236,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 247,
     name: "Martin Solveig",
-    gender: "Male",
+    gender: "male",
     netWorth: 6500000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Singer-songwriter",
@@ -4254,7 +4254,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 248,
     name: "Eddie Sotelo",
-    gender: "Male",
+    gender: "male",
     netWorth: 25000000,
     currency: "USD",
     occupation: "Radio personality, Actor, Voice Actor",
@@ -4272,7 +4272,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 249,
     name: "Skrillex",
-    gender: "Male",
+    gender: "male",
     netWorth: 70000000,
     currency: "USD",
     occupation: "Guitarist, Singer, Disc jockey, Musician, Record producer",
@@ -4290,7 +4290,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 250,
     name: "Fatboy Slim",
-    gender: "Male",
+    gender: "male",
     netWorth: 20000000,
     currency: "USD",
     occupation: "Keyboard Player, Disc jockey, Musician, Record producer",
@@ -4308,7 +4308,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 251,
     name: "Cipha Sounds",
-    gender: "Male",
+    gender: "male",
     netWorth: 2000000,
     currency: "USD",
     occupation: "Record producer, Actor",
@@ -4326,7 +4326,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 252,
     name: "Clinton Sparks",
-    gender: "Female",
+    gender: "female",
     netWorth: 8000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -4344,7 +4344,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 253,
     name: "DJ Traci Steele",
-    gender: "Female",
+    gender: "female",
     netWorth: 400000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -4362,7 +4362,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 254,
     name: "Jeffrey Sutorius",
-    gender: "Male",
+    gender: "male",
     netWorth: 13500000,
     currency: "USD",
     occupation: "Disc jockey, Record producer",
@@ -4380,7 +4380,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 255,
     name: "Danny Tenaglia",
-    gender: "Male",
+    gender: "male",
     netWorth: 5000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer",
@@ -4398,7 +4398,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 256,
     name: "DJ Tiësto",
-    gender: "Male",
+    gender: "male",
     netWorth: 170000000,
     currency: "USD",
     occupation: "Record producer, Disc jockey, Electronic musician, Musician",
@@ -4416,7 +4416,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 257,
     name: "Andrew Taggart",
-    gender: "Male",
+    gender: "male",
     netWorth: 80000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -4434,7 +4434,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 258,
     name: "Andre Tanneberger",
-    gender: "Male",
+    gender: "male",
     netWorth: 12000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer, Musician, Remixer",
@@ -4452,7 +4452,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 259,
     name: "Jordan Ullman",
-    gender: "Male",
+    gender: "male",
     netWorth: 4000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -4470,7 +4470,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 260,
     name: "Gianluca Vacchi",
-    gender: "Male",
+    gender: "male",
     netWorth: 200000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -4488,7 +4488,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 261,
     name: "Sven Vath",
-    gender: "Female",
+    gender: "female",
     netWorth: 14000000,
     currency: "USD",
     occupation: "Disc jockey, Record producer",
@@ -4506,7 +4506,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 262,
     name: "Michelle Visage",
-    gender: "Male",
+    gender: "male",
     netWorth: 5000000,
     currency: "USD",
     occupation: "Singer, Actor",
@@ -4524,7 +4524,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 263,
     name: "Eddie Trunk",
-    gender: "Male",
+    gender: "male",
     netWorth: 1000000,
     currency: "USD",
     occupation: "Radio personality, Author, Actor, Television Producer",
@@ -4542,7 +4542,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 264,
     name: "DJ Vlad",
-    gender: "Male",
+    gender: "male",
     netWorth: 10000000,
     currency: "USD",
     occupation: "Interviewer, journalist, director",
@@ -4560,7 +4560,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 265,
     name: "Alan Walker",
-    gender: "Male",
+    gender: "male",
     netWorth: 15000000,
     currency: "USD",
     occupation: "Disc jockey",
@@ -4578,7 +4578,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 267,
     name: "Tim Westwood",
-    gender: "Male",
+    gender: "male",
     netWorth: 8000000,
     currency: "USD",
     occupation: "Presenter, Disc jockey, Radio personality",
@@ -4596,7 +4596,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 268,
     name: "Steve Wright",
-    gender: "Male",
+    gender: "male",
     netWorth: 6000000,
     currency: "USD",
     occupation: "Radio personality",
@@ -4614,7 +4614,7 @@ export const netWorthPeople: NetWorthPerson[] = [
   {
     id: 269,
     name: "Yellowman",
-    gender: "Male",
+    gender: "male",
     netWorth: 500000,
     currency: "USD",
     occupation: "Singer, Musician, Songwriter",
