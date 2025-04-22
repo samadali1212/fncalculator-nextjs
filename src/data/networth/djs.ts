@@ -1,3 +1,4 @@
+
 import { NetWorthPerson } from './index';
 
 export const djs: NetWorthPerson[] = [
