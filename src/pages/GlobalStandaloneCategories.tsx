@@ -22,7 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { getAllCategories, CategoryMetadata } from "../utils/globalNetWorthData";
+import { categories, CategoryMetadata } from "../utils/networth";
 import {
   Pagination,
   PaginationContent,
@@ -37,7 +37,7 @@ const GlobalStandaloneCategories = () => {
   
   useEffect(() => {
     const timer = setTimeout(() => {
-      setCategories(getAllCategories());
+      setCategories(categories);
       setIsLoading(false);
     }, 300);
     

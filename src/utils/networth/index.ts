@@ -1,6 +1,6 @@
 
 // Re-export all data
-import { actors } from './actors';
+import { actors } from './Actors'; // Fixed capitalization
 import { businessMen } from './businessMen';
 import { djs } from './djs';
 import { politicians } from './politicians';
@@ -127,4 +127,3 @@ export const getPeopleByCategory = (categoryId: string): NetWorthPerson[] => {
     default: return [];
   }
 };
-
