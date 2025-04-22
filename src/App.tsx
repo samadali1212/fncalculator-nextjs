@@ -29,14 +29,7 @@ import GlobalNetWorthDetail from "./pages/GlobalNetWorthDetail";
 import GlobalNetWorthCategory from "./pages/GlobalNetWorthCategory";
 import GlobalStandaloneCategories from "./pages/GlobalStandaloneCategories";
 
-// Get the first two celebrities from the data file for default comparison
-const getDefaultCelebrities = () => {
-  if (celebrities.length >= 2) {
-    return `${celebrities[0].slug}-vs-${celebrities[1].slug}`;
-  }
-  return "";
-};
-  
+const App = () => {
   return (
     <BrowserRouter>
       <Layout>
