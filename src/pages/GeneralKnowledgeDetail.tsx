@@ -120,7 +120,7 @@ const GeneralKnowledgeDetail = () => {
                 className="inline-flex items-center text-sm text-[#000000] hover:underline"
               >
                 <ChevronLeft className="h-4 w-4 mr-1" />
-                Back to {category.title}
+                Back to All Rankings
               </Link>
             ) : (
             )}
