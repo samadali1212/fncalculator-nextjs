@@ -124,7 +124,7 @@ const GeneralKnowledgeDetail = () => {
                 Back to All Rankings
               </Link>
             ) : (
-              <div></div> {/* Fixed the empty conditional return */}
+              <div></div>
             )}
             
             <ShareButton 
