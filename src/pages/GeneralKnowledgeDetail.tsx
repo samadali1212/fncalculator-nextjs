@@ -121,8 +121,8 @@ const GeneralKnowledgeDetail = () => {
             <ChevronLeft className="h-4 w-4 mr-1" />
             All Categories
           </Link>
-        </div>
-            
+        
+          <div className="flex justify-end">
             <ShareButton 
               title={`${item.title} | Sassa Insider`} 
               variant="outline"
