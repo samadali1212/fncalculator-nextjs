@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -123,6 +124,7 @@ const GeneralKnowledgeDetail = () => {
                 Back to All Rankings
               </Link>
             ) : (
+              <div></div> {/* Fixed the empty conditional return */}
             )}
             
             <ShareButton 
