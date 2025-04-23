@@ -112,22 +112,16 @@ const GeneralKnowledgeDetail = () => {
       
       <Header />
       
-      <main className="pt-20 pb-16">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <div className="flex items-center justify-between mb-6">
-            {category ? (
-            ) : (
-              <div>
-                        <Link 
+      <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
+        <div className="mb-6">
+          <Link 
             to="/general-knowledge"
             className="inline-flex items-center text-sm text-[#000000] hover:underline"
           >
             <ChevronLeft className="h-4 w-4 mr-1" />
             All Categories
           </Link>
-              
-              </div>
-            )}
+        </div>
             
             <ShareButton 
               title={`${item.title} | Sassa Insider`} 
