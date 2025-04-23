@@ -116,15 +116,17 @@ const GeneralKnowledgeDetail = () => {
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="flex items-center justify-between mb-6">
             {category ? (
-              <Link 
-                to={`/categories/general-knowledge`}
-                className="inline-flex items-center text-sm text-[#000000] hover:underline"
-              >
-                <ChevronLeft className="h-4 w-4 mr-1" />
-                Back to All Rankings
-              </Link>
             ) : (
-              <div></div>
+              <div>
+                        <Link 
+            to="/general-knowledge"
+            className="inline-flex items-center text-sm text-[#000000] hover:underline"
+          >
+            <ChevronLeft className="h-4 w-4 mr-1" />
+            All Categories
+          </Link>
+              
+              </div>
             )}
             
             <ShareButton 
