@@ -104,7 +104,7 @@ const GeneralKnowledgeDetail = () => {
   return (
     <div className="min-h-screen bg-[#f6f6f0]">
       <SEO 
-        title={`${item.title} | ${item.categoryName}`}
+        title={`${item.title}`}
         description={item.shortDescription}
         canonicalUrl={`/general-knowledge/${item.slug}`}
       />
