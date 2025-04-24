@@ -19,12 +19,11 @@ const SEO = ({
   twitterCard = "summary_large_image"
 }: SEOProps) => {
   const siteUrl = "https://sassainsider.co.za";
-  const fullTitle = title.includes("Sassa Insider") ? `${title} - Sassa Insider`;
   
   return (
     <Helmet>
       {/* Basic Meta Tags */}
-      <title>{fullTitle}</title>
+      <title>{title}</title>
       <meta name="description" content={description} />
       {canonicalUrl && <link rel="canonical" href={`${siteUrl}${canonicalUrl}`} />}
       
@@ -34,7 +33,7 @@ const SEO = ({
       
       {/* OpenGraph Meta Tags */}
       <meta property="og:site_name" content="Sassa Insider" />
-      <meta property="og:title" content={fullTitle} />
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
       {canonicalUrl && <meta property="og:url" content={`${siteUrl}${canonicalUrl}`} />}
@@ -42,7 +41,7 @@ const SEO = ({
       
       {/* Twitter Meta Tags */}
       <meta name="twitter:card" content={twitterCard} />
-      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       {ogImage && <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />}
     </Helmet>
