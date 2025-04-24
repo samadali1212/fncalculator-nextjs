@@ -19,7 +19,7 @@ const SEO = ({
   twitterCard = "summary_large_image"
 }: SEOProps) => {
   const siteUrl = "https://sassainsider.co.za";
-  const fullTitle = title.includes("Sassa Insider") ? title : `${title} - Sassa Insider`;
+  const fullTitle = title.includes("Sassa Insider") ? `${title} - Sassa Insider`;
   
   return (
     <Helmet>
