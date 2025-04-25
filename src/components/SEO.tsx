@@ -17,6 +17,13 @@ interface SEOProps {
     description: string;
     imageUrl?: string;
   };
+  socialMedia?: {
+    headline: string;
+    articleBody: string;
+    datePublished: string;
+    author: string;
+    url: string;
+  };
 }
 
 const SEO = ({
@@ -26,7 +33,8 @@ const SEO = ({
   ogImage = "/sassainsiderfavicon.png", 
   ogType = "website",
   twitterCard = "summary_large_image",
-  person
+  person,
+  socialMedia
 }: SEOProps) => {
   const siteUrl = "https://sassainsider.co.za";
   
@@ -43,6 +51,29 @@ const SEO = ({
           "@type": "MonetaryAmount",
           currency: person.currency,
           value: person.netWorth
+        }
+      };
+    }
+    return null;
+  };
+
+  const getSocialMediaPostingSchema = () => {
+    if (socialMedia) {
+      return {
+        "@context": "https://schema.org",
+        "@type": "SocialMediaPosting",
+        headline: socialMedia.headline,
+        articleBody: socialMedia.articleBody,
+        datePublished: socialMedia.datePublished,
+        author: {
+          "@type": "Person",
+          name: socialMedia.author
+        },
+        url: `${siteUrl}${socialMedia.url}`,
+        sharedContent: {
+          "@type": "WebPage",
+          headline: socialMedia.headline,
+          url: `${siteUrl}${socialMedia.url}`
         }
       };
     }
@@ -78,6 +109,12 @@ const SEO = ({
       {person && (
         <script type="application/ld+json">
           {JSON.stringify(getStructuredData())}
+        </script>
+      )}
+      
+      {socialMedia && (
+        <script type="application/ld+json">
+          {JSON.stringify(getSocialMediaPostingSchema())}
         </script>
       )}
     </Helmet>
