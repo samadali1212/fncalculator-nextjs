@@ -11,6 +11,7 @@ import { ChevronLeft, Calendar, User, BriefcaseBusiness, ArrowRight, ArrowUpRigh
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getSalaryData } from "../utils/salaryData";
+import { usePageReload } from "../hooks/usePageReload";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -211,6 +212,7 @@ const JobDetail = () => {
   const navigate = useNavigate();
   const [displayPeriod, setDisplayPeriod] = useState<SalaryPeriod>("monthly");
   const [isLoading, setIsLoading] = useState(true);
+  const { pageKey } = usePageReload(); // <--- add this line
   
   // Convert URL with hyphens back to job ID with underscores
   const actualJobId = jobId ? jobId.replace(/-/g, "_") : "";
@@ -386,6 +388,7 @@ const JobDetail = () => {
 
   return (
     <motion.div
+      key={pageKey} // <-- force remount on route change
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
