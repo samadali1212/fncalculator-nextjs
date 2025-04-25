@@ -136,7 +136,7 @@ const BranchCodeDetail = () => {
         className="min-h-screen bg-[#f6f6f0]"
       >
         <SEO
-          title={`${bank.name} Branch Codes - South Africa`}
+          title={`${bank.name} Branch Codes`}
           description={`Find all branch codes for ${bank.name} in South Africa. Complete list of branch codes, addresses and contact information.`}
           canonicalUrl={`/branch-codes/${slug}`}
         />
