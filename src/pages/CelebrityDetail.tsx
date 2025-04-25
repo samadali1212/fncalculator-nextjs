@@ -117,17 +117,21 @@ const CelebrityDetail = () => {
 
   return (
     <motion.div
-      key={pageKey} // <-- force remount on route change
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${celebrity.name} Salary Per Month - Sassa Insider`}
-        description={`${celebrity.name}'s estimated salary is ${formatSalary(celebrity.salary, celebrity.currency)}. Learn about their earnings, career, and ${celebrity.industry} ventures.`}
+        title={`${celebrity.name} Salary: ${formatSalary(celebrity.salary, celebrity.currency)}`}
+        description={`${celebrity.name}'s monthly salary is ${formatSalary(celebrity.salary, celebrity.currency)}. Learn about their career, industry roles, and achievements.`}
         canonicalUrl={`/celebrities/${celebrity.slug}`}
+        socialMedia={{
+          headline: `${celebrity.name}'s Monthly Salary: ${formatSalary(celebrity.salary, celebrity.currency)}`,
+          articleBody: `Discover ${celebrity.name}'s career earnings, achievements, and roles in the ${celebrity.industry} industry. Monthly salary: ${formatSalary(celebrity.salary, celebrity.currency)}.`,
+          datePublished: new Date().toISOString(),
+          author: "Sassa Insider",
+          url: `/celebrities/${celebrity.slug}`
+        }}
       />
       
       <Header />

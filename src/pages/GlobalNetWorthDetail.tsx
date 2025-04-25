@@ -113,7 +113,7 @@ const GlobalNetWorthDetail = () => {
 
   return (
     <motion.div
-      key={pageKey} // <-- force remount on route change
+      key={pageKey}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -124,6 +124,21 @@ const GlobalNetWorthDetail = () => {
         title={`${person.name} Net Worth: ${formattedNetWorthForTitle}`}
         description={`${person.name}'s estimated net worth is ${formatNetWorth(person.netWorth, person.currency)}. Learn about their wealth, career, and ${person.industry} business ventures.`}
         canonicalUrl={`/global-net-worth/${person.slug}`}
+        person={{
+          name: person.name,
+          netWorth: person.netWorth,
+          currency: person.currency,
+          occupation: person.occupation,
+          description: person.description,
+          imageUrl: person.imageUrl
+        }}
+        socialMedia={{
+          headline: `${person.name}'s Net Worth: ${formatNetWorth(person.netWorth, person.currency)}`,
+          articleBody: `Discover ${person.name}'s wealth, career achievements, and business ventures in ${person.industry}. Estimated net worth: ${formatNetWorth(person.netWorth, person.currency)}.`,
+          datePublished: new Date().toISOString(),
+          author: "Sassa Insider",
+          url: `/global-net-worth/${person.slug}`
+        }}
       />
       
       <Header />

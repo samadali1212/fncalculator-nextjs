@@ -291,6 +291,13 @@ const BranchCodeDetail = () => {
         title={`${branchCode!.bankName} ${branchCode!.branchName} Branch Code: ${branchCode!.branchCode}`}
         description={`${branchCode!.bankName} ${branchCode!.branchName} branch code is ${branchCode!.branchCode}. Find address, contact details, and BIC/SWIFT code for this branch.`}
         canonicalUrl={`/branch-codes/${slug}`}
+        socialMedia={{
+          headline: `${branchCode!.bankName} ${branchCode!.branchName} Branch Code`,
+          articleBody: `Get all the details for ${branchCode!.bankName} ${branchCode!.branchName} branch. Branch code: ${branchCode!.branchCode}, BIC/SWIFT: ${branchCode!.bicCode}, Location: ${branchCode!.city}.`,
+          datePublished: new Date().toISOString(),
+          author: "Sassa Insider",
+          url: `/branch-codes/${slug}`
+        }}
       />
       <Header />
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
