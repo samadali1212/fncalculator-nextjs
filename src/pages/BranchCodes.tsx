@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import useIsMobile from "@/hooks/use-mobile";
 import { banks, branchCodes, findBankBySlug } from "@/utils/branchCodeData";
+import { usePageReload } from "../hooks/usePageReload";
 
 const BranchCodes = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,6 +19,7 @@ const BranchCodes = () => {
   const [activeTab, setActiveTab] = useState<string>("all");
   const [displayType, setDisplayType] = useState<"banks" | "branches">("banks");
   const isMobile = useIsMobile();
+  const { pageKey } = usePageReload(); // <--- add this line
   
   // Change initial visible count to 150 branches
   const [visibleCount, setVisibleCount] = useState(150);
@@ -71,7 +73,8 @@ const BranchCodes = () => {
   }
 
   return (
-    <motion.div 
+    <motion.div
+      key={pageKey} // <-- force remount on route change
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
