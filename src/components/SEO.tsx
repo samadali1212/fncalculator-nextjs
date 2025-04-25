@@ -8,6 +8,15 @@ interface SEOProps {
   ogImage?: string;
   ogType?: "website" | "article";
   twitterCard?: "summary" | "summary_large_image";
+  structuredData?: any;
+  person?: {
+    name: string;
+    netWorth: number;
+    currency: string;
+    occupation: string;
+    description: string;
+    imageUrl?: string;
+  };
 }
 
 const SEO = ({
@@ -16,10 +25,30 @@ const SEO = ({
   canonicalUrl,
   ogImage = "/sassainsiderfavicon.png", 
   ogType = "website",
-  twitterCard = "summary_large_image"
+  twitterCard = "summary_large_image",
+  person
 }: SEOProps) => {
   const siteUrl = "https://sassainsider.co.za";
   
+  const getStructuredData = () => {
+    if (person) {
+      return {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: person.name,
+        description: person.description,
+        image: person.imageUrl || `${siteUrl}/placeholder.svg`,
+        jobTitle: person.occupation,
+        netWorth: {
+          "@type": "MonetaryAmount",
+          currency: person.currency,
+          value: person.netWorth
+        }
+      };
+    }
+    return null;
+  };
+
   return (
     <Helmet>
       {/* Basic Meta Tags */}
@@ -44,6 +73,13 @@ const SEO = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       {ogImage && <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />}
+
+      {/* Structured Data */}
+      {person && (
+        <script type="application/ld+json">
+          {JSON.stringify(getStructuredData())}
+        </script>
+      )}
     </Helmet>
   );
 };
