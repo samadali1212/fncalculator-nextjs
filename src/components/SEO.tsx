@@ -67,7 +67,8 @@ const SEO = ({
         datePublished: socialMedia.datePublished,
         author: {
           "@type": "Person",
-          name: socialMedia.author
+          name: socialMedia.author,
+          url: `${siteUrl}/about` // Adding the missing url field for author
         },
         url: `${siteUrl}${socialMedia.url}`,
         sharedContent: {
