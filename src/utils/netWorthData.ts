@@ -3898,7 +3898,7 @@ export const categoryDefinitions: Record<string, CategoryMetadata> = {
   },
    "football-player": {
     id: "cat11",
-    title: "15 Richest Footall Players in South Africa",
+    title: "17 Richest Footall Players in South Africa",
     description: "South Africa has produced some of the continent’s finest football talents, many of whom have not only excelled on the pitch but also built impressive fortunes. These players have turned their skills, endorsements, and smart career moves into significant wealth.",
     slug: "richest-football-player-in-south-africa",
     imageUrl: "https://images.supersport.com/media/ilwgcfqx/bernard-parker-attraining-220819-ga-1050.jpg?width=1920&quality=90&format=webp"
