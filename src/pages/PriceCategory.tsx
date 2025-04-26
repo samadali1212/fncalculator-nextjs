@@ -21,7 +21,7 @@ const PriceCategory = () => {
       <SEO 
         title={`${category.name} - Expensive Items`} 
         description={`Explore the most expensive ${category.name.toLowerCase()} items in the world.`} 
-        imageUrl={category.imageUrl}
+        ogImage={category.imageUrl}
       />
       
       <div className="mb-4">

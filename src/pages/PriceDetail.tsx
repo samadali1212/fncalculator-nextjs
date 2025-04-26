@@ -23,7 +23,7 @@ const PriceDetail = () => {
       <SEO 
         title={`${item.title} - Price and Details`} 
         description={item.shortDescription} 
-        imageUrl={item.imageUrl}
+        ogImage={item.imageUrl}
       />
       
       <div className="mb-4">
