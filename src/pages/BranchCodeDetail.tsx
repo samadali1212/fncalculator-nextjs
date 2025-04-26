@@ -19,6 +19,7 @@ import {
   BranchCode,
   Bank
 } from "@/utils/branchCodeData";
+import { usePageReload } from "../hooks/usePageReload";
 import { toast } from "sonner";
 
 const BranchCodeDetail = () => {
@@ -33,6 +34,7 @@ const BranchCodeDetail = () => {
   
   const [visibleBankCount, setVisibleBankCount] = useState(150);
   const [visibleSimilarCount, setVisibleSimilarCount] = useState(20);
+  const { pageKey } = usePageReload(); // <--- add this line
 
   useEffect(() => {
     setIsLoading(true);
@@ -158,6 +160,7 @@ const BranchCodeDetail = () => {
           </div>
           
           <motion.div
+            key={pageKey} // <-- force remount on route change
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -313,6 +316,7 @@ const BranchCodeDetail = () => {
         </div>
 
         <motion.div
+         key={pageKey} // <-- force remount on route change
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
