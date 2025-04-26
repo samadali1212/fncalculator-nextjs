@@ -22,8 +22,6 @@ export interface ExpensiveThing {
   categoryId: string;
   categoryIds: string[];
   facts: Fact[];
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
 }
 
 export interface Category {
