@@ -193,8 +193,8 @@ const CelebrityDetail = () => {
                   </div>
                 </div>
                 
-                <div className="text-xl font-semibold text-[#333]">
-                 {formatSalary(celebrity.salary, celebrity.currency)}
+                <div className="text-xl font-semibold text-green-600">
+                 Estimated Salary of {formatSalary(celebrity.salary, celebrity.currency)} Per Month
                 </div>
                 
                 <div className="flex items-center mt-1">
