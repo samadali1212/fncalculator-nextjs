@@ -29,12 +29,6 @@ import GlobalNetWorthDetail from "./pages/GlobalNetWorthDetail";
 import GlobalNetWorthCategory from "./pages/GlobalNetWorthCategory";
 import GlobalStandaloneCategories from "./pages/GlobalStandaloneCategories";
 
-// Price pages
-import Price from "./pages/Price";
-import PriceDetail from "./pages/PriceDetail";
-import StandalonePrice from "./pages/StandalonePrice";
-import PriceCategory from "./pages/PriceCategory";
-
 const App = () => {
   return (
     <BrowserRouter>
@@ -74,12 +68,6 @@ const App = () => {
           {/* Blog Routes */}
          <Route path="/blog" element={<Blog />} />
          <Route path="/blog/:slug" element={<BlogDetail />} />
-
-          {/* Price Routes */}
-            <Route path="/price" element={<Price />} />
-            <Route path=":slug" element={<PriceDetail />} />
-            <Route path="category/:slug" element={<PriceCategory />} />      
-            <Route path="/price-categories" element={<StandalonePrice />} />
                   
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
