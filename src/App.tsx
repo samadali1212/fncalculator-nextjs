@@ -75,10 +75,10 @@ const App = () => {
          <Route path="/blog" element={<Blog />} />
          <Route path="/blog/:slug" element={<BlogDetail />} />
 
-          {/* Price Routes */}
+          {/* Price Routes - Fixed paths */}
             <Route path="/price" element={<Price />} />
-            <Route path=":slug" element={<PriceDetail />} />
-            <Route path="category/:slug" element={<PriceCategory />} />      
+            <Route path="/price/:slug" element={<PriceDetail />} />
+            <Route path="/price/category/:slug" element={<PriceCategory />} />      
             <Route path="/price-categories" element={<StandalonePrice />} />
                   
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
