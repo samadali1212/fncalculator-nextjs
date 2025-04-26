@@ -22,6 +22,7 @@ export interface ExpensiveThing {
   categoryId: string;
   categoryIds: string[];
   facts: Fact[];
+  createdAt?: Date; // Adding createdAt as an optional property
 }
 
 export interface Category {
