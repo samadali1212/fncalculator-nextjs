@@ -15,32 +15,36 @@ const Price = () => {
         description="Explore the most expensive items in the world and their astonishing prices." 
       />
       
-      <h1 className="text-3xl font-bold mb-6">Most Expensive Things in the World</h1>
-      <p className="text-gray-600 mb-8">Explore extraordinary items with extraordinary price tags.</p>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {expensiveItems.map((item) => (
-          <Link to={`/price/${item.slug}`} key={item.id}>
-            <Card className="h-full hover:shadow-lg transition-shadow">
-              <div className="p-4">
-                {item.imageUrl && (
-                  <div className="h-48 mb-4 overflow-hidden rounded-md">
-                    <img 
-                      src={item.imageUrl} 
-                      alt={item.title} 
-                      className="w-full h-full object-cover"
-                    />
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">Most Expensive Things in the World</h1>
+        <p className="text-lg text-gray-600 mb-8">Explore extraordinary items with extraordinary price tags.</p>
+        
+        <div className="grid gap-6">
+          {expensiveItems.map((item) => (
+            <Link to={`/price/${item.slug}`} key={item.id}>
+              <Card className="transition-all duration-300 hover:shadow-lg">
+                <div className="p-6 flex flex-col md:flex-row gap-6">
+                  {item.imageUrl && (
+                    <div className="w-full md:w-48 h-48">
+                      <img 
+                        src={item.imageUrl} 
+                        alt={item.title} 
+                        className="w-full h-full object-cover rounded-md"
+                      />
+                    </div>
+                  )}
+                  <div className="flex-1">
+                    <h2 className="text-2xl font-semibold text-gray-900 mb-2">{item.title}</h2>
+                    <p className="text-gray-600 mb-4">{item.shortDescription}</p>
+                    <div className="text-xl font-bold text-green-600">
+                      {formatPrice(item.price)}
+                    </div>
                   </div>
-                )}
-                <h2 className="text-xl font-semibold mb-2">{item.title}</h2>
-                <p className="text-gray-600 mb-2 line-clamp-2">{item.shortDescription}</p>
-                <div className="text-lg font-bold text-green-600">
-                  {formatPrice(item.price)}
                 </div>
-              </div>
-            </Card>
-          </Link>
-        ))}
+              </Card>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
