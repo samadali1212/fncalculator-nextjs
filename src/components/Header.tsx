@@ -36,7 +36,6 @@ const Header = () => {
   ];
 
   const isActive = (path: string) => {
-    if (path === "/salaries" && (location.pathname === "/" || location.pathname === "/salaries")) return true;
     if (path === "/comparison" && location.pathname.startsWith("/compare/")) return true;
     if (path === "/compare" && location.pathname.startsWith("/compare/")) return true;
     if (path === "/compare-global" && location.pathname.startsWith("/compare-global/")) return true;
