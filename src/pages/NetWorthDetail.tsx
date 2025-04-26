@@ -185,8 +185,8 @@ const NetWorthDetail = () => {
                   </div>
                 </div>
                 
-                <div className="text-xl font-semibold text-[#333]">
-                  {formatNetWorth(person.netWorth, person.currency)}
+                <div className="text-xl font-semibold text-green-600">
+                  Estimated Net Worth of {formatNetWorth(person.netWorth, person.currency)}
                 </div>
                 
                 <div className="flex items-center mt-1">
