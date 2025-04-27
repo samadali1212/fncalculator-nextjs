@@ -28,7 +28,7 @@ const Header = () => {
 
   const menuItems = [
     { path: "/celebrities", label: "Celebs Salary" },
-    { path: "/epl-players", label: "EPL" },
+    { path: "/epl-players", label: "EPL Salary" },
     { path: "/branch-codes", label: "Branch Codes" },
     { path: "/hourly-rates", label: "Hourly Rates" },
     { path: "/tax-calculator", label: "Tax Calculator" },
