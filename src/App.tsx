@@ -10,6 +10,10 @@ import TaxCalculator from "./pages/TaxCalculator";
 import TaxCalculationDetail from "./pages/TaxCalculationDetail";
 import Celebrities from "./pages/Celebrities";
 import CelebrityDetail from "./pages/CelebrityDetail";
+import NetWorth from "./pages/NetWorth";
+import NetWorthDetail from "./pages/NetWorthDetail";
+import NetWorthCategory from "./pages/NetWorthCategory";
+import StandaloneCategories from "./pages/StandaloneCategories";
 import StandaloneCelebrityCategories from "./pages/StandaloneCelebrityCategories";
 import CelebrityCategory from "./pages/CelebrityCategory";
 import GeneralKnowledge from "./pages/GeneralKnowledge";
@@ -58,6 +62,12 @@ const App = () => {
           <Route path="/celebrities/:slug" element={<CelebrityDetail />} />
           <Route path="/celebrity-categories" element={<StandaloneCelebrityCategories />} />
           <Route path="/celebrities/category/:slug" element={<CelebrityCategory />} />
+          <Route path="/net-worth" element={<NetWorth />} />
+          <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
+                    
+          <Route path="/categories" element={<StandaloneCategories />} />
+          <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
+          
           
           {/* Global Net Worth Routes */}
           <Route path="/global-net-worth" element={<GlobalNetWorth />} />
