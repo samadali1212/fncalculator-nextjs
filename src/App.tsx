@@ -6,10 +6,6 @@ import Salaries from "./pages/Salaries";
 import JobDetail from "./pages/JobDetail";
 import Celebrities from "./pages/Celebrities";
 import CelebrityDetail from "./pages/CelebrityDetail";
-import NetWorth from "./pages/NetWorth";
-import NetWorthDetail from "./pages/NetWorthDetail";
-import NetWorthCategory from "./pages/NetWorthCategory";
-import StandaloneCategories from "./pages/StandaloneCategories";
 import StandaloneCelebrityCategories from "./pages/StandaloneCelebrityCategories";
 import CelebrityCategory from "./pages/CelebrityCategory";
 import GeneralKnowledge from "./pages/GeneralKnowledge";
@@ -35,9 +31,9 @@ const App = () => {
       <Layout>
         <Routes>
           {/* Set NetWorth as the explicit homepage */}
-          <Route path="/" element={<NetWorth />} />
+          <Route path="/" element={<Salaries />} />
           {/* Ensure net-worth path also works and doesn't create duplicate content */}
-          <Route path="/net-worth" element={<Navigate to="/" replace />} />
+          <Route path="/salaries" element={<Navigate to="/" replace />} />
           <Route path="/branch-codes/:slug" element={<BranchCodeDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/branch-codes" element={<BranchCodes />} />
