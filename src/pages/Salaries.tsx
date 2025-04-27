@@ -18,14 +18,14 @@ const Salaries = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="South African Salaries Guide" 
+        title="South African Salary Guide & Career Information" 
         description="Explore salary ranges for various jobs and professions in South Africa. Updated salary information to help with job searches and career planning."
         canonicalUrl="/salaries"
       />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <h1 className="text-3xl font-bold mb-6">South African Salaries Guide</h1>
+        <h1 className="text-3xl font-bold mb-6">South African Salary Guide & Career Information</h1>
         <p className="text-gray-600 mb-4">
           This list covers average Salaries across industries, factors influencing pay, and tips for negotiating better compensation. Stay informed about job market trends and see how your income compares to national standards.
         </p>
