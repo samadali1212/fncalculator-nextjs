@@ -30,13 +30,13 @@ const SEO = ({
   title = "South African Salary Guide & Career Information",
   description = "Access South Africa's most comprehensive salary guide. Find average salaries by profession, hourly rates, tax information, and more to help with your career planning.",
   canonicalUrl,
-  ogImage = "/sassainsiderfavicon.png", 
+  ogImage = "/SalaryList favicon.png", 
   ogType = "website",
   twitterCard = "summary_large_image",
   person,
   socialMedia
 }: SEOProps) => {
-  const siteUrl = "https://sassainsider.co.za";
+  const siteUrl = "https://salarylist.co.za";
   
   const getStructuredData = () => {
     if (person) {
@@ -89,11 +89,11 @@ const SEO = ({
       {canonicalUrl && <link rel="canonical" href={`${siteUrl}${canonicalUrl}`} />}
       
       {/* Favicon */}
-      <link rel="icon" href="/sassainsiderfavicon.png" type="image/png" />
-      <link rel="apple-touch-icon" href="/sassainsiderfavicon.png" />
+      <link rel="icon" href="/SalaryList favicon.png" type="image/png" />
+      <link rel="apple-touch-icon" href="/SalaryList favicon.png" />
       
       {/* OpenGraph Meta Tags */}
-      <meta property="og:site_name" content="Sassa Insider" />
+      <meta property="og:site_name" content="SalaryList" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
