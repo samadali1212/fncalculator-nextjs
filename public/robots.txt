@@ -13,6 +13,8 @@
  Allow: /celebrity-categories/
  Allow: /net-worth/
  Allow: /categories/
+ Allow: /global-net-worth/
+ Allow: /global-categories/
  Allow: /general-knowledge/
  Allow: /hourly-rates/
  Allow: /tax-calculator/
