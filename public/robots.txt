@@ -1,21 +1,23 @@
-# SassaInsider Robots.txt
+# SalaryList Robots.txt
  User-agent: *
  Allow: /
  
- Sitemap: https://sassainsider.co.za/sitemap.xml
+ Sitemap: https://salarylist.co.za/sitemap.xml
  
  # Allow crawling of important directories
  User-agent: Googlebot
  Allow: /branch-codes/
  Allow: /salaries/
+ Allow: /about/
  Allow: /celebrities/
  Allow: /celebrity-categories/
  Allow: /net-worth/
  Allow: /categories/
  Allow: /general-knowledge/
- Allow: /global-categories/
- Allow: /about/
- Allow: /blog/
+ Allow: /hourly-rates/
+ Allow: /tax-calculator/
+ Allow: /compare-salaries/
+ Allow: /compare/
 
  User-agent: Bingbot
  Allow: /
