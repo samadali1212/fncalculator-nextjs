@@ -136,7 +136,7 @@ const GlobalNetWorthDetail = () => {
           headline: `${person.name}'s Net Worth: ${formatNetWorth(person.netWorth, person.currency)}`,
           articleBody: `Discover ${person.name}'s wealth, career achievements, and business ventures in ${person.industry}. Estimated net worth: ${formatNetWorth(person.netWorth, person.currency)}.`,
           datePublished: new Date().toISOString(),
-          author: "Sassa Insider",
+          author: "SalaryList",
           url: `/global-net-worth/${person.slug}`
         }}
       />
@@ -419,7 +419,7 @@ const GlobalNetWorthDetail = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
+            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
           </p>
         </div>
       </footer>
