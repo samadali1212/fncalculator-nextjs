@@ -43,11 +43,6 @@ const App = () => {
           <Route path="/celebrities/:slug" element={<CelebrityDetail />} />
           <Route path="/celebrity-categories" element={<StandaloneCelebrityCategories />} />
           <Route path="/celebrities/category/:slug" element={<CelebrityCategory />} />
-          <Route path="/net-worth" element={<NetWorth />} />
-          <Route path="/net-worth/:slug" element={<NetWorthDetail />} />
-                    
-          <Route path="/categories" element={<StandaloneCategories />} />
-          <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
           
           {/* Global Net Worth Routes */}
           <Route path="/global-net-worth" element={<GlobalNetWorth />} />
