@@ -78,7 +78,7 @@ const App = () => {
           <Route path="/epl-players/:slug" element={<EPLPlayerDetail />} />
           <Route path="/epl-categories" element={<EPLCategories />} />
           <Route path="/epl-players/category/:slug" element={<EPLCategory />} />
-		      <Route path="/epl-players" element={<Popular />} />
+	  <Route path="/epl-players" element={<Popular />} />
           <Route path="/epl-players/:slug" element={<PopularDetail />} />
                   
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
