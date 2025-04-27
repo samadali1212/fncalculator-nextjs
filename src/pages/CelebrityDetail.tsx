@@ -129,7 +129,7 @@ const CelebrityDetail = () => {
           headline: `${celebrity.name}'s Monthly Salary: ${formatSalary(celebrity.salary, celebrity.currency)}`,
           articleBody: `Discover ${celebrity.name}'s career earnings, achievements, and roles in the ${celebrity.industry} industry. Monthly salary: ${formatSalary(celebrity.salary, celebrity.currency)}.`,
           datePublished: new Date().toISOString(),
-          author: "Sassa Insider",
+          author: "SalaryList",
           url: `/celebrities/${celebrity.slug}`
         }}
       />
@@ -148,7 +148,7 @@ const CelebrityDetail = () => {
             </Link>
             
             <ShareButton 
-              title={`${celebrity.name}'s Salary - Sassa Insider`} 
+              title={`${celebrity.name}'s Salary - SalaryList`} 
               variant="outline"
             />
           </div>
@@ -371,7 +371,7 @@ const CelebrityDetail = () => {
       <footer className="border-t border-gray-300 py-6 bg-white">
         <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
+            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
           </p>
         </div>
       </footer>
