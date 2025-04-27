@@ -690,7 +690,7 @@ imageUrl: "https://backend.liverpoolfc.com/sites/default/files/styles/lg/public/
 description: "A young goalkeeper making his way through the Liverpool academy, Harvey Davies is showing promising signs for the future. Developing his technique and gaining experience within the club's youth system, Davies represents another potential option for Liverpool in the goalkeeping department down the line. His continued progress and dedication will be key as he aims to make his mark within the club's ranks.",
 contractUntil: "June 2025",
 transferValue: 2.5,
-jerseyNumber: "-",
+jerseyNumber: "95",
 height: "1.90m",
 accolades: ["FA Youth Cup Finalist"],
 previousClubs: ["Liverpool Youth"],
