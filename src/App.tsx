@@ -25,8 +25,6 @@ import EPLPlayers from "./pages/EPLPlayers";
 import EPLPlayerDetail from "./pages/EPLPlayerDetail";
 import EPLCategories from "./pages/EPLCategories";
 import EPLCategory from "./pages/EPLCategory";
-import Popular from "./pages/Popular";
-import PopularDetail from "./pages/PopularDetail";
 
 // Global net worth pages
 import GlobalNetWorth from "./pages/GlobalNetWorth";
@@ -78,8 +76,6 @@ const App = () => {
           <Route path="/epl-players/:slug" element={<EPLPlayerDetail />} />
           <Route path="/epl-categories" element={<EPLCategories />} />
           <Route path="/epl-players/category/:slug" element={<EPLCategory />} />
-          <Route path="/popular" element={<Popular />} />
-          <Route path="/popular/:slug" element={<PopularDetail />} />
                   
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
