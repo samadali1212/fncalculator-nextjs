@@ -11,13 +11,11 @@
  Allow: /about/
  Allow: /celebrities/
  Allow: /celebrity-categories/
- Allow: /net-worth/
- Allow: /categories/
+ Allow: /global-net-worth/
+ Allow: /global-categories/
  Allow: /general-knowledge/
  Allow: /hourly-rates/
  Allow: /tax-calculator/
- Allow: /compare-salaries/
- Allow: /compare/
 
  User-agent: Bingbot
  Allow: /
