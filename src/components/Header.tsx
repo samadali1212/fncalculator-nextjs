@@ -30,6 +30,7 @@ const Header = () => {
     { path: "/celebrities", label: "Celebs Salary" },
     { path: "/global-net-worth", label: "Net Worth" },
     { path: "/epl-players", label: "EPL" },
+    { path: "/popular", label: "Popular" },
     { path: "/branch-codes", label: "Branch Codes" },
     { path: "/hourly-rates", label: "Hourly Rates" },
     { path: "/tax-calculator", label: "Tax Calculator" },
