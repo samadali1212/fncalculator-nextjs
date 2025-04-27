@@ -4,6 +4,10 @@ import Layout from "./components/Layout";
 import About from "./pages/About";
 import Salaries from "./pages/Salaries";
 import JobDetail from "./pages/JobDetail";
+import HourlyRates from "./pages/HourlyRates";
+import HourlyRateDetail from "./pages/HourlyRateDetail";
+import TaxCalculator from "./pages/TaxCalculator";
+import TaxCalculationDetail from "./pages/TaxCalculationDetail";
 import Celebrities from "./pages/Celebrities";
 import CelebrityDetail from "./pages/CelebrityDetail";
 import StandaloneCelebrityCategories from "./pages/StandaloneCelebrityCategories";
@@ -39,6 +43,14 @@ const App = () => {
           <Route path="/branch-codes" element={<BranchCodes />} />
           <Route path="/salaries" element={<Salaries />} />
           <Route path="/salaries/:jobId" element={<JobDetail />} />
+          <Route path="/hourly-rates" element={<HourlyRates />} />
+          <Route path="/hourly-rates/:rateId" element={<HourlyRateDetail />} />
+          <Route path="/tax-calculator" element={<TaxCalculator />} />
+          <Route path="/tax-calculator/monthly" element={<TaxCalculator />} />
+          <Route path="/tax-calculator/yearly" element={<TaxCalculator />} />
+          <Route path="/tax-calculator/monthly/:incomeId" element={<TaxCalculationDetail />} />
+          <Route path="/tax-calculator/yearly/:incomeId" element={<TaxCalculationDetail />} />
+          <Route path="/tax-calculator/:incomeId" element={<TaxCalculationDetail />} />
           <Route path="/celebrities" element={<Celebrities />} />
           <Route path="/celebrities/:slug" element={<CelebrityDetail />} />
           <Route path="/celebrity-categories" element={<StandaloneCelebrityCategories />} />
