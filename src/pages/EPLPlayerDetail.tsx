@@ -141,7 +141,7 @@ const EPLPlayerDetail = () => {
                 <AvatarImage 
                   src={player.imageUrl || "/placeholder.svg"} 
                   alt={player.name}
-                  className="object-cover rounded-lg"
+                  className="object-contain rounded-lg"
                 />
                 <AvatarFallback className="bg-[#f6f6f0] text-gray-700 text-lg font-medium rounded-lg">
                   {getInitials(player.name)}
