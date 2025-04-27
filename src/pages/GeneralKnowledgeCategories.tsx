@@ -47,7 +47,7 @@ const GeneralKnowledgeCategories = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Knowledge Categories | South African General Knowledge" 
+        title="Interesting Things In South Africa Ranked For You" 
         description="Browse all knowledge categories including valuable coins, shopping malls, best products, top institutions, and more about South Africa."
         canonicalUrl="/categories/general-knowledge"
       />
