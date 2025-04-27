@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -12,47 +13,57 @@
   </url>
   <url>
     <loc>https://salarylist.co.za/about</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
-    <url>
+  <url>
     <loc>https://salarylist.co.za/celebrities</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-      <url>
+  <url>
     <loc>https://salarylist.co.za/celebrity-categories</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://salarylist.co.za/net-worth</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-    <url>
+  <url>
+    <loc>https://salarylist.co.za/categories</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://salarylist.co.za/branch-codes</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
-      <url>
+  <url>
     <loc>https://salarylist.co.za/general-knowledge</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://salarylist.co.za/tax-calculator</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://salarylist.co.za/hourly-rates</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-    <url>
-    <loc>https://salarylist.co.za/epl-categories</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://salarylist.co.za/epl-players</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://salarylist.co.za/epl-categories</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
