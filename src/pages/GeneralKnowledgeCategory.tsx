@@ -110,7 +110,7 @@ const GeneralKnowledgeCategory = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${category.title} | South African General Knowledge`}
+        title={`${category.title}`}
         description={category.description}
         canonicalUrl={`/general-knowledge/category/${slug}`}
       />
