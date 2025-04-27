@@ -20,6 +20,14 @@ import NotFound from "./pages/NotFound";
 import BranchCodes from "./pages/BranchCodes";
 import BranchCodeDetail from "./pages/BranchCodeDetail";
 
+// EPL pages
+import EPLPlayers from "./pages/EPLPlayers";
+import EPLPlayerDetail from "./pages/EPLPlayerDetail";
+import EPLCategories from "./pages/EPLCategories";
+import EPLCategory from "./pages/EPLCategory";
+import EPLPlayers from "./pages/Popular";
+import EPLPlayerDetail from "./pages/PopularDetail";
+
 // Global net worth pages
 import GlobalNetWorth from "./pages/GlobalNetWorth";
 import GlobalNetWorthDetail from "./pages/GlobalNetWorthDetail";
@@ -64,6 +72,14 @@ const App = () => {
           <Route path="/general-knowledge/:slug" element={<GeneralKnowledgeDetail />} />
           <Route path="/general-knowledge/category/:slug" element={<GeneralKnowledgeCategory />} />
           <Route path="/categories/general-knowledge" element={<GeneralKnowledgeCategories />} />
+
+          {/* New EPL Routes */}
+          <Route path="/epl-players" element={<EPLPlayers />} />
+          <Route path="/epl-players/:slug" element={<EPLPlayerDetail />} />
+          <Route path="/epl-categories" element={<EPLCategories />} />
+          <Route path="/epl-players/category/:slug" element={<EPLCategory />} />
+		      <Route path="/epl-players" element={<Popular />} />
+          <Route path="/epl-players/:slug" element={<PopularDetail />} />
                   
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
