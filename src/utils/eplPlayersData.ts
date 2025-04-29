@@ -1,4 +1,31 @@
 
+// Define the EPLPlayer interface first to resolve type errors
+export interface EPLPlayer {
+  id: number;
+  name: string;
+  slug: string;
+  team: string;
+  position: string;
+  age: number;
+  nationality: string;
+  weeklySalary: number;
+  annualSalary: number;
+  contractUntil: string;
+  jerseyNumber?: number;
+  imageUrl?: string;
+  height?: string;
+  transferValue?: string;
+  internationalCaps?: number;
+  previousClubs?: string[];
+  accolades?: string[];
+  description: string;
+  source: string;
+  lastUpdated: string;
+}
+
+// Empty array for EPL players to resolve import errors
+export const eplPlayers: EPLPlayer[] = [];
+
 // Helper functions
 
 // Find a player by slug
