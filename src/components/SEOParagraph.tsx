@@ -5,11 +5,19 @@ import { BranchCode, Bank } from '@/utils/branchCodeData';
 interface SEOParagraphProps {
   branchCode?: BranchCode | null;
   bank?: Bank | null;
+  text?: string;
 }
 
-const SEOParagraph: React.FC<SEOParagraphProps> = ({ branchCode, bank }) => {
-  if (!branchCode && !bank) return null;
-
+const SEOParagraph: React.FC<SEOParagraphProps> = ({ branchCode, bank, text }) => {
+  // If text is provided directly, use that
+  if (text) {
+    return (
+      <div className="prose max-w-none mb-8 text-gray-700">
+        <p>{text}</p>
+      </div>
+    );
+  }
+  
   // Generate paragraph for a specific branch
   if (branchCode) {
     return (

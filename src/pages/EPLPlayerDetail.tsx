@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -90,7 +89,7 @@ const EPLPlayerDetail = () => {
   }
 
   // Format salary for the title without spaces
-  const formattedWeeklySalaryForTitle = formatWeeklySalary(player.weeklySalary, "£").replace(/\s/g, "");
+  const formattedWeeklySalaryForTitle = formatWeeklySalary(player.weeklySalary).replace(/\s/g, "");
   
   // Get initials for avatar fallback
   const getInitials = (name: string) => {
