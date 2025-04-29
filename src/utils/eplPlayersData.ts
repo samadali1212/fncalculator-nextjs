@@ -1,4 +1,3 @@
-
 // EPL Players data
 
 export interface EPLPlayer {
@@ -720,8 +719,12 @@ export function getAllPlayers(): EPLPlayer[] {
 }
 
 // Format weekly salary
-export function formatWeeklySalary(salary: number, currency: string = "£"): string {
-  return `${currency}${salary.toLocaleString()}`;
+export function formatWeeklySalary(salary: number): string {
+  return new Intl.NumberFormat('en-ZA', {
+    style: 'currency',
+    currency: 'ZAR',
+    maximumFractionDigits: 0,
+  }).format(salary);
 }
 
 // Format annual salary

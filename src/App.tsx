@@ -36,6 +36,10 @@ import GlobalNetWorthDetail from "./pages/GlobalNetWorthDetail";
 import GlobalNetWorthCategory from "./pages/GlobalNetWorthCategory";
 import GlobalStandaloneCategories from "./pages/GlobalStandaloneCategories";
 
+// US Congress pages
+import USCongress from "./pages/USCongress";
+import USCongressDetail from "./pages/USCongressDetail";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -81,11 +85,15 @@ const App = () => {
           <Route path="/general-knowledge/category/:slug" element={<GeneralKnowledgeCategory />} />
           <Route path="/categories/general-knowledge" element={<GeneralKnowledgeCategories />} />
 
-          {/* New EPL Routes */}
+          {/* EPL Routes */}
           <Route path="/epl-players" element={<EPLPlayers />} />
           <Route path="/epl-players/:slug" element={<EPLPlayerDetail />} />
           <Route path="/epl-categories" element={<EPLCategories />} />
           <Route path="/epl-players/category/:slug" element={<EPLCategory />} />
+          
+          {/* US Congress Routes */}
+          <Route path="/uscongress" element={<USCongress />} />
+          <Route path="/uscongress/:slug" element={<USCongressDetail />} />
                   
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
