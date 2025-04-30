@@ -18,8 +18,7 @@
  Allow: /general-knowledge/
  Allow: /hourly-rates/
  Allow: /tax-calculator/
- Allow: /epl-players/
- Allow: /epl-categories/
+ Allow: /uscongress/
 
  User-agent: Bingbot
  Allow: /
