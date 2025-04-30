@@ -28,15 +28,12 @@ import { usePageReload } from "../hooks/usePageReload";
 
 const USCongressDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [isLoading, setIsLoading] = useState(true);
-  const [member, setMember] = useState(getCongressMemberBySlug(slug || ""));
-  const { pageKey } = usePageReload(); // Add the usePageReload hook
-  
-  // Get related members (same party) - limit to 9 as requested
-  const relatedMembers = member ? getRelatedCongressMembers(member, 9) : [];
+  const { pageKey, isLoading, setIsLoading } = usePageReload(); // Updated to use all hook properties
+  const [member, setMember] = useState(null);
+  const [relatedMembers, setRelatedMembers] = useState([]);
   
   // Get initials for avatar fallback
-  const getInitials = (name: string) => {
+  const getInitials = (name) => {
     return name
       .split(' ')
       .map(part => part[0])
@@ -45,13 +42,27 @@ const USCongressDetail = () => {
       .substring(0, 2);
   };
   
+  // Fetch member data when slug changes or page reloads
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
+    setIsLoading(true);
     
-    return () => clearTimeout(timer);
-  }, []);
+    const fetchData = () => {
+      const memberData = getCongressMemberBySlug(slug || "");
+      setMember(memberData);
+      
+      if (memberData) {
+        const related = getRelatedCongressMembers(memberData, 9);
+        setRelatedMembers(related);
+      }
+      
+      // Simulate loading delay for consistent experience
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+    };
+    
+    fetchData();
+  }, [slug, setIsLoading, pageKey]); // Add pageKey to dependencies
 
   if (isLoading) {
     return (
@@ -89,7 +100,7 @@ const USCongressDetail = () => {
 
   return (
     <motion.div
-      key={pageKey} // Add pageKey to force remount on route change
+      key={pageKey} // Force remount on route change
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
@@ -167,12 +178,14 @@ const USCongressDetail = () => {
                 </div>
               </div>
               
-              <SEOParagraph>{member.description}</SEOParagraph>
+              <div className="prose max-w-none mb-8 text-gray-700">
+                <p>{member.description}</p>
+              </div>
             </div>
           </div>
         </motion.div>
         
-        {/* Changed from Committee Memberships to Member Details */}
+        {/* Member Details */}
         <motion.div 
           className="bg-white rounded-sm shadow-sm border border-gray-200 p-6 mb-6"
           initial={{ opacity: 0, y: 20 }}
