@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Share, Users } from "lucide-react";
@@ -30,8 +29,8 @@ const USCongressDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [member, setMember] = useState(getCongressMemberBySlug(slug || ""));
   
-  // Get related members (same party)
-  const relatedMembers = member ? getRelatedCongressMembers(member) : [];
+  // Get related members (same party) - limit to 9 as requested
+  const relatedMembers = member ? getRelatedCongressMembers(member, 9) : [];
   
   // Get initials for avatar fallback
   const getInitials = (name: string) => {
@@ -164,35 +163,60 @@ const USCongressDetail = () => {
                 </div>
               </div>
               
-              <SEOParagraph text={member.description} />
+              <SEOParagraph>{member.description}</SEOParagraph>
             </div>
           </div>
         </motion.div>
         
-        {member.committees && member.committees.length > 0 && (
-          <motion.div 
-            className="bg-white rounded-sm shadow-sm border border-gray-200 p-6 mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-          >
-            <h2 className="text-xl font-bold mb-4">Committee Memberships</h2>
-            <Table>
-              <TableHeader>
+        {/* Changed from Committee Memberships to Member Details */}
+        <motion.div 
+          className="bg-white rounded-sm shadow-sm border border-gray-200 p-6 mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+        >
+          <h2 className="text-xl font-bold mb-4">Member Details</h2>
+          <Table>
+            <TableBody>
+              {member.party && (
                 <TableRow>
-                  <TableHead>Committee Name</TableHead>
+                  <TableHead className="w-1/3">Party</TableHead>
+                  <TableCell>{member.party}</TableCell>
                 </TableRow>
-              </TableHeader>
-              <TableBody>
-                {member.committees.map((committee, index) => (
-                  <TableRow key={index}>
-                    <TableCell>{committee}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </motion.div>
-        )}
+              )}
+              {member.state && (
+                <TableRow>
+                  <TableHead className="w-1/3">State</TableHead>
+                  <TableCell>{member.state}</TableCell>
+                </TableRow>
+              )}
+              {member.position && (
+                <TableRow>
+                  <TableHead className="w-1/3">Position</TableHead>
+                  <TableCell>{member.position}</TableCell>
+                </TableRow>
+              )}
+              {member.yearsInOffice && (
+                <TableRow>
+                  <TableHead className="w-1/3">Years in Office</TableHead>
+                  <TableCell>{member.yearsInOffice} years</TableCell>
+                </TableRow>
+              )}
+              {member.committees && member.committees.length > 0 && (
+                <TableRow>
+                  <TableHead className="w-1/3">Committees</TableHead>
+                  <TableCell>
+                    <ul className="list-disc pl-5">
+                      {member.committees.map((committee, index) => (
+                        <li key={index}>{committee}</li>
+                      ))}
+                    </ul>
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </motion.div>
         
         {relatedMembers.length > 0 && (
           <motion.div 
