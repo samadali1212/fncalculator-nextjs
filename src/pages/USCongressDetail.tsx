@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Share, Users } from "lucide-react";
@@ -23,11 +24,13 @@ import {
   TableRow 
 } from "@/components/ui/table";
 import { getCongressMemberBySlug, formatCongressSalary, getRelatedCongressMembers } from "../utils/usCongressData";
+import { usePageReload } from "../hooks/usePageReload";
 
 const USCongressDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [isLoading, setIsLoading] = useState(true);
   const [member, setMember] = useState(getCongressMemberBySlug(slug || ""));
+  const { pageKey } = usePageReload(); // Add the usePageReload hook
   
   // Get related members (same party) - limit to 9 as requested
   const relatedMembers = member ? getRelatedCongressMembers(member, 9) : [];
@@ -86,6 +89,7 @@ const USCongressDetail = () => {
 
   return (
     <motion.div
+      key={pageKey} // Add pageKey to force remount on route change
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
