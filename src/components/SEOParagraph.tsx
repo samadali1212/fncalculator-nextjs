@@ -6,14 +6,24 @@ interface SEOParagraphProps {
   branchCode?: BranchCode | null;
   bank?: Bank | null;
   text?: string;
+  children?: React.ReactNode;
 }
 
-const SEOParagraph: React.FC<SEOParagraphProps> = ({ branchCode, bank, text }) => {
+const SEOParagraph: React.FC<SEOParagraphProps> = ({ branchCode, bank, text, children }) => {
   // If text is provided directly, use that
   if (text) {
     return (
       <div className="prose max-w-none mb-8 text-gray-700">
         <p>{text}</p>
+      </div>
+    );
+  }
+  
+  // If children are provided, use those
+  if (children) {
+    return (
+      <div className="prose max-w-none mb-8 text-gray-700">
+        <p>{children}</p>
       </div>
     );
   }
