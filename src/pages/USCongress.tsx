@@ -24,7 +24,7 @@ import {
 
 const USCongress = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [itemsToShow, setItemsToShow] = useState(10);
+  const [itemsToShow, setItemsToShow] = useState(100);
   const [partyFilter, setPartyFilter] = useState<string>("all");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -52,7 +52,7 @@ const USCongress = () => {
   const hasMoreMembers = displayedMembers.length < filteredMembers.length;
   
   const loadMore = () => {
-    setItemsToShow(prevItemsToShow => prevItemsToShow + 10);
+    setItemsToShow(prevItemsToShow => prevItemsToShow + 20);
   };
 
   // Get initials for avatar fallback
