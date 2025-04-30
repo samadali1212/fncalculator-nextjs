@@ -92,7 +92,7 @@ const USCongressDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${member.name} Salary and Position Information`}
+        title={`${member.name} Salary`}
         description={`Learn about ${member.name}'s salary as a ${member.position} representing ${member.state}, along with their background and political career details.`}
         canonicalUrl={`/uscongress/${slug}`}
       />
