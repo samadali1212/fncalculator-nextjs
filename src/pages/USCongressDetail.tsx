@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Share, Users } from "lucide-react";
@@ -23,7 +22,7 @@ import {
   TableHeader, 
   TableRow 
 } from "@/components/ui/table";
-import { getCongressMemberBySlug, formatCongressSalary, getRelatedCongressMembers } from "../utils/usCongressData";
+import { getCongressMemberBySlug, formatCongressSalary, getRelatedCongressMembers, formatNetWorthShort } from "../utils/usCongressData";
 import { usePageReload } from "../hooks/usePageReload";
 
 const USCongressDetail = () => {
@@ -98,6 +97,15 @@ const USCongressDetail = () => {
     );
   }
 
+  // Generate the dynamic salary and net worth paragraph - Updated to follow the required format
+  const getSalaryParagraph = () => {
+    const monthlySalary = formatCongressSalary(member.salary / 12);
+    const annualSalary = formatCongressSalary(member.salary);
+    const netWorth = formatNetWorthShort(member.netWorth); // Using the new short format
+    
+    return `${member.name}, a ${member.party} ${member.position} for ${member.state}, earns an annual salary of ${annualSalary} and has an estimated net worth of $${netWorth}. This salary has been in effect for members of the U.S. ${member.position === "Representative" ? "House of Representatives" : "Senate"} since 2009. Annually, this salary of ${annualSalary} equals ${monthlySalary} per month.`;
+  };
+
   return (
     <motion.div
       key={pageKey} // Force remount on route change
@@ -106,7 +114,7 @@ const USCongressDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${member.name} Salary`}
+        title={`${member.name} Salary And Net Worth`}
         description={`Learn about ${member.name}'s salary as a ${member.position} representing ${member.state}, along with their background and political career details.`}
         canonicalUrl={`/uscongress/${slug}`}
       />
@@ -128,64 +136,72 @@ const USCongressDetail = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="md:w-1/4 flex justify-center">
-              <div className="w-40 h-40 rounded-full overflow-hidden bg-gray-100 border border-gray-200">
-                <Avatar className="w-full h-full">
-                  <AvatarImage 
-                    src={member.imageUrl || "/placeholder.svg"} 
-                    alt={member.name}
-                    className="object-cover w-full h-full"
-                  />
-                  <AvatarFallback className="bg-gray-100 text-gray-700 text-2xl w-full h-full flex items-center justify-center">
-                    {getInitials(member.name)}
-                  </AvatarFallback>
-                </Avatar>
+          {/* Updated layout for personal info section to match other site pages */}
+          <div className="flex flex-col gap-6">
+            <div className="flex items-center gap-4">
+              <Avatar className="w-16 h-16 rounded-full">
+                <AvatarImage 
+                  src={member.imageUrl || "/placeholder.svg"} 
+                  alt={member.name}
+                  className="object-cover w-full h-full"
+                />
+                <AvatarFallback className="bg-gray-100 text-gray-700 text-xl">
+                  {getInitials(member.name)}
+                </AvatarFallback>
+              </Avatar>
+              
+              <div>
+                <h1 className="text-3xl font-bold mb-2">{member.name}</h1>
+                
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
+                    {member.party}
+                  </span>
+                  <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
+                    {member.state}
+                  </span>
+                  <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
+                    {member.position}
+                  </span>
+                  {member.yearsInOffice && (
+                    <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
+                      {member.yearsInOffice} years in office
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
             
-            <div className="md:w-3/4">
-              <h1 className="text-3xl font-bold mb-2">{member.name}</h1>
-              
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
-                  {member.party}
-                </span>
-                <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
-                  {member.state}
-                </span>
-                <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
-                  {member.position}
-                </span>
-                {member.yearsInOffice && (
-                  <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
-                    {member.yearsInOffice} years in office
-                  </span>
-                )}
+            <div className="border-t border-b border-gray-100 py-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <h2 className="text-sm text-gray-500 mb-1">Annual Salary</h2>
+                <p className="text-xl font-bold">{formatCongressSalary(member.salary)}</p>
               </div>
               
-              <div className="border-t border-b border-gray-100 py-4 my-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <h2 className="text-sm text-gray-500 mb-1">Annual Salary</h2>
-                    <p className="text-xl font-bold">{formatCongressSalary(member.salary)}</p>
-                  </div>
-                  
-                  <div>
-                    <h2 className="text-sm text-gray-500 mb-1">Monthly Estimate</h2>
-                    <p className="text-xl font-bold">{formatCongressSalary(member.salary / 12)}</p>
-                  </div>
-                </div>
+              <div>
+                <h2 className="text-sm text-gray-500 mb-1">Monthly Estimate</h2>
+                <p className="text-xl font-bold">{formatCongressSalary(member.salary / 12)}</p>
               </div>
               
-              <div className="prose max-w-none mb-8 text-gray-700">
-                <p>{member.description}</p>
+              <div>
+                <h2 className="text-sm text-gray-500 mb-1">Estimated Net Worth</h2>
+                <p className="text-xl font-bold">${formatNetWorthShort(member.netWorth)}</p>
               </div>
+            </div>
+            
+            {/* Updated dynamic salary paragraph */}
+            <div className="prose max-w-none w-full text-gray-700">
+              <p>{getSalaryParagraph()}</p>
+            </div>
+            
+            {/* Full width paragraph section */}
+            <div className="prose max-w-none w-full text-gray-700">
+              <p>{member.description}</p>
             </div>
           </div>
         </motion.div>
         
-        {/* Member Details */}
+        {/* Member Details with added salary information */}
         <motion.div 
           className="bg-white rounded-sm shadow-sm border border-gray-200 p-6 mb-6"
           initial={{ opacity: 0, y: 20 }}
@@ -213,6 +229,21 @@ const USCongressDetail = () => {
                   <TableCell>{member.position}</TableCell>
                 </TableRow>
               )}
+              {/* Added Annual Salary row */}
+              <TableRow>
+                <TableHead className="w-1/3">Annual Salary</TableHead>
+                <TableCell>{formatCongressSalary(member.salary)}</TableCell>
+              </TableRow>
+              {/* Added Monthly Salary Estimate row */}
+              <TableRow>
+                <TableHead className="w-1/3">Monthly Salary Estimate</TableHead>
+                <TableCell>{formatCongressSalary(member.salary / 12)}</TableCell>
+              </TableRow>
+              {/* Added Net Worth row - Updated to use short format */}
+              <TableRow>
+                <TableHead className="w-1/3">Estimated Net Worth</TableHead>
+                <TableCell>{formatNetWorthShort(member.netWorth)}</TableCell>
+              </TableRow>
               {member.yearsInOffice && (
                 <TableRow>
                   <TableHead className="w-1/3">Years in Office</TableHead>
@@ -235,6 +266,7 @@ const USCongressDetail = () => {
           </Table>
         </motion.div>
         
+        {/* Related Members section - unchanged */}
         {relatedMembers.length > 0 && (
           <motion.div 
             className="bg-white rounded-sm shadow-sm border border-gray-200 p-6"
@@ -281,6 +313,10 @@ const USCongressDetail = () => {
                       <span className="text-gray-500">Salary:</span>{" "}
                       <span className="font-medium">{formatCongressSalary(related.salary)}</span>
                     </div>
+                    <div className="text-sm mt-1">
+                      <span className="text-gray-500">Net Worth:</span>{" "}
+                      <span className="font-medium">{formatNetWorthShort(related.netWorth)}</span>
+                    </div>
                     <div className="text-xs text-gray-500 mt-1">
                       {related.state} • {related.party}
                     </div>
@@ -290,6 +326,16 @@ const USCongressDetail = () => {
             </div>
           </motion.div>
         )}
+        
+        {/* Add disclaimer about net worth */}
+        <motion.div 
+          className="p-4 bg-gray-50 border border-gray-200 rounded-sm mt-6 text-sm text-gray-600"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          <p>Note: Net worth figures for members of Congress are often estimates based on disclosed assets and liabilities.</p>
+        </motion.div>
       </main>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
