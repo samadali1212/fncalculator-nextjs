@@ -16,10 +16,6 @@ import NetWorthCategory from "./pages/NetWorthCategory";
 import StandaloneCategories from "./pages/StandaloneCategories";
 import StandaloneCelebrityCategories from "./pages/StandaloneCelebrityCategories";
 import CelebrityCategory from "./pages/CelebrityCategory";
-import GeneralKnowledge from "./pages/GeneralKnowledge";
-import GeneralKnowledgeDetail from "./pages/GeneralKnowledgeDetail";
-import GeneralKnowledgeCategory from "./pages/GeneralKnowledgeCategory";
-import GeneralKnowledgeCategories from "./pages/GeneralKnowledgeCategories";
 import NotFound from "./pages/NotFound";
 import BranchCodes from "./pages/BranchCodes";
 import BranchCodeDetail from "./pages/BranchCodeDetail";
@@ -72,13 +68,7 @@ const App = () => {
           <Route path="/global-net-worth/:slug" element={<GlobalNetWorthDetail />} />
           <Route path="/global-categories" element={<GlobalStandaloneCategories />} />
           <Route path="/global-net-worth/category/:slug" element={<GlobalNetWorthCategory />} />        
-          
-          {/* General Knowledge Routes */}
-          <Route path="/general-knowledge" element={<GeneralKnowledge />} />
-          <Route path="/general-knowledge/:slug" element={<GeneralKnowledgeDetail />} />
-          <Route path="/general-knowledge/category/:slug" element={<GeneralKnowledgeCategory />} />
-          <Route path="/categories/general-knowledge" element={<GeneralKnowledgeCategories />} />
-          
+                  
           {/* US Congress Routes */}
           <Route path="/uscongress" element={<USCongress />} />
           <Route path="/uscongress/:slug" element={<USCongressDetail />} />
