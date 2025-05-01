@@ -32,7 +32,7 @@ const Header = () => {
     { path: "/branch-codes", label: "Branch Codes" },
     { path: "/hourly-rates", label: "Hourly Rates" },
     { path: "/tax-calculator", label: "Tax Calculator" },
-    { path: "/net-worth", label: "Net Worth" },
+    { path: "/global-net-worth", label: "Net Worth" },
     { path: "/about", label: "About" },
   ];
 
