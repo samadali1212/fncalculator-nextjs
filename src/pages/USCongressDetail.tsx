@@ -103,7 +103,7 @@ const USCongressDetail = () => {
     const annualSalary = formatCongressSalary(member.salary);
     const netWorth = formatNetWorthShort(member.netWorth); // Using the new short format
     
-    return `${member.name}, a ${member.party} ${member.position} for ${member.state}, earns an annual salary of ${annualSalary} and has an estimated net worth of $${netWorth}. Annually, this salary of ${annualSalary} equals ${monthlySalary} per month.`;
+    return `${member.name}, a ${member.party} ${member.position} from ${member.state}, earns an annual salary of ${annualSalary} and has an estimated net worth of $${netWorth}. Annually, this salary of ${annualSalary} equals ${monthlySalary} per month.`;
   };
 
   return (
