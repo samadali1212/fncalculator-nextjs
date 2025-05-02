@@ -1852,15 +1852,26 @@ export const celebrities: Celebrity[] = [
 export const formatSalary = (salary: number, currency: string) => {
   // For South African Rand (ZAR)
   if (currency === 'ZAR') {
-    // Use South African locale with ZAR currency code
-    return salary.toLocaleString('en-ZA', {
-      style: 'currency',
-      currency: 'ZAR',
-      maximumFractionDigits: 0,
-      minimumFractionDigits: 0,
-      notation: 'compact',
-      compactDisplay: 'short',
-    });
+    // For numbers below 1 million, show as whole numbers
+    if (salary < 1000000) {
+      return salary.toLocaleString('en-ZA', {
+        style: 'currency',
+        currency: 'ZAR',
+        maximumFractionDigits: 0,
+        minimumFractionDigits: 0,
+      });
+    } 
+    // For 1 million and above, use compact notation
+    else {
+      return salary.toLocaleString('en-ZA', {
+        style: 'currency',
+        currency: 'ZAR',
+        maximumFractionDigits: 1,
+        minimumFractionDigits: 0,
+        notation: 'compact',
+        compactDisplay: 'short',
+      });
+    }
   }
   
   // For other currencies (keeping your original format)
