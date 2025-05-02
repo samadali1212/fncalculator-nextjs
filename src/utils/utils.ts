@@ -27,6 +27,19 @@ export const formatCurrency = (amount: number | string, currency: string = 'ZAR'
   // Convert amount to number if it's a string
   const numericAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
   
+  // Special handling for ZAR currency
+  if (currency === 'ZAR') {
+    // Format with "R" prefix and K/M suffix for thousands/millions
+    if (numericAmount >= 1000000) {
+      return `R${(numericAmount / 1000000).toFixed(1)}M`;
+    } else if (numericAmount >= 1000) {
+      return `R${(numericAmount / 1000).toFixed(0)}K`;
+    } else {
+      return `R${numericAmount.toFixed(0)}`;
+    }
+  }
+  
+  // Use Intl.NumberFormat for non-ZAR currencies
   const formatter = new Intl.NumberFormat('en-ZA', {
     style: 'currency',
     currency: currency,
