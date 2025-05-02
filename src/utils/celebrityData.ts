@@ -1854,16 +1854,20 @@ export const formatSalary = (salary: number, currency: string) => {
   if (currency === 'ZAR') {
     // For numbers below 1 million, show as whole numbers
     if (salary < 1000000) {
-      return salary.toLocaleString('en-ZA', {
+      // Format with South African locale and then manually replace commas with spaces
+      const formatted = salary.toLocaleString('en-ZA', {
         style: 'currency',
         currency: 'ZAR',
         maximumFractionDigits: 0,
         minimumFractionDigits: 0,
       });
+      
+      // Replace commas with spaces for South African format
+      return formatted.replace(/,/g, ' ');
     } 
     // For 1 million and above, use compact notation
     else {
-      return salary.toLocaleString('en-ZA', {
+      const formatted = salary.toLocaleString('en-ZA', {
         style: 'currency',
         currency: 'ZAR',
         maximumFractionDigits: 1,
@@ -1871,6 +1875,9 @@ export const formatSalary = (salary: number, currency: string) => {
         notation: 'compact',
         compactDisplay: 'short',
       });
+      
+      // Replace commas with spaces if they appear in the compact notation
+      return formatted.replace(/,/g, ' ');
     }
   }
   
