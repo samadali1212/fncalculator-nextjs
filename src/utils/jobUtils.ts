@@ -1,5 +1,5 @@
 
-import { Job, jobsData, JobCategory, JobLocation } from './jobData';
+import { Job, jobsData, JobCategory, JobLocation, ApplicationMethod } from './jobData';
 import { slugify } from './utils';
 
 /**
@@ -115,3 +115,48 @@ export const isJobExpiringSoon = (deadline: string): boolean => {
   return diffDays > 0 && diffDays <= 3;
 };
 
+/**
+ * Get application instructions based on application method
+ * @param method Application method object
+ * @returns Formatted instructions string
+ */
+export const getApplicationInstructions = (method: ApplicationMethod): string => {
+  switch(method.type) {
+    case 'url':
+      return `Apply online at the employer's website.`;
+    case 'email':
+      return `Send your application to ${method.value}.`;
+    case 'phone':
+      return `Call ${method.value} to apply.`;
+    case 'form':
+      return `Complete the application form online.`;
+    case 'other':
+      return method.value;
+    default:
+      return 'Contact the employer directly to apply.';
+  }
+};
+
+/**
+ * Handle job application based on method type
+ * @param method Application method object
+ * @returns Boolean indicating if the application was initiated
+ */
+export const handleJobApplication = (method: ApplicationMethod): boolean => {
+  switch(method.type) {
+    case 'url':
+    case 'form':
+      window.open(method.value, '_blank');
+      return true;
+    case 'email':
+      window.location.href = `mailto:${method.value}?subject=Job Application`;
+      return true;
+    case 'phone':
+      window.location.href = `tel:${method.value}`;
+      return true;
+    case 'other':
+      return false; // Requires manual handling
+    default:
+      return false;
+  }
+};

@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
@@ -15,9 +16,19 @@ import {
   ArrowUpRight, 
   Clock, 
   Building,
-  ExternalLink
+  ExternalLink,
+  Mail,
+  Phone,
+  Info
 } from "lucide-react";
-import { getJobById, getRelatedJobs, formatDate, isJobExpiringSoon } from "../utils/jobUtils";
+import { 
+  getJobById, 
+  getRelatedJobs, 
+  formatDate, 
+  isJobExpiringSoon, 
+  handleJobApplication, 
+  getApplicationInstructions 
+} from "../utils/jobUtils";
 import { Job, JobCategory } from "../utils/jobData";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
@@ -69,10 +80,53 @@ const JobDetail = () => {
   
   const handleApply = () => {
     if (job) {
-      // Open the application URL in a new tab
-      window.open(job.applicationUrl, '_blank');
-      toast.success("Redirecting to application page");
+      const applied = handleJobApplication(job.applicationMethod);
+      
+      if (applied) {
+        toast.success("Redirecting to application");
+      } else {
+        // For application methods that can't be handled automatically
+        toast.info(job.applicationMethod.instructions || getApplicationInstructions(job.applicationMethod));
+      }
     }
+  };
+
+  // Render appropriate application button based on method type
+  const renderApplicationButton = (job: Job) => {
+    const { applicationMethod } = job;
+    
+    let icon;
+    let text;
+    
+    switch(applicationMethod.type) {
+      case 'url':
+      case 'form':
+        icon = <ExternalLink className="h-4 w-4" />;
+        text = "Apply Now";
+        break;
+      case 'email':
+        icon = <Mail className="h-4 w-4" />;
+        text = "Apply via Email";
+        break;
+      case 'phone':
+        icon = <Phone className="h-4 w-4" />;
+        text = "Call to Apply";
+        break;
+      case 'other':
+      default:
+        icon = <Info className="h-4 w-4" />;
+        text = "How to Apply";
+        break;
+    }
+    
+    return (
+      <Button 
+        className="flex-1 gap-2"
+        onClick={handleApply}
+      >
+        {text} {icon}
+      </Button>
+    );
   };
 
   if (isLoading) {
@@ -232,15 +286,15 @@ const JobDetail = () => {
                   <li key={index} className="text-gray-700 mb-2">{responsibility}</li>
                 ))}
               </ul>
+              
+              <h2 className="text-xl font-semibold mb-2">How to Apply</h2>
+              <p className="text-gray-700 mb-6">
+                {job.applicationMethod.instructions || getApplicationInstructions(job.applicationMethod)}
+              </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              <Button 
-                className="flex-1 gap-2"
-                onClick={handleApply}
-              >
-                Apply Now <ExternalLink className="h-4 w-4" />
-              </Button>
+              {renderApplicationButton(job)}
               
               <Button 
                 variant="outline" 
@@ -276,7 +330,7 @@ const JobDetail = () => {
                     className="group p-6"
                   >
                     <Link 
-                      to={`/jobs/${slugify(relatedJob.title)}-${relatedJob.id}`}
+                      to={`/jobs/${relatedJob.id}`}
                       className="block"
                     >
                       <h3 className="text-[#333] hover:underline text-lg font-medium transition-colors group-hover:text-blog-accent">

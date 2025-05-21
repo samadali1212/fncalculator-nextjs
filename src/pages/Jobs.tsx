@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, MapPin, Briefcase, Filter, ArrowRight } from "lucide-react";
@@ -18,7 +19,6 @@ import SEO from "../components/SEO";
 import AdSense from "../components/AdSense";
 import { filterJobs, formatDate, isNewJob, isJobExpiringSoon } from "../utils/jobUtils";
 import { getUniqueCategories, getUniqueLocations, JobCategory, JobLocation } from "../utils/jobData";
-import { slugify } from "../utils/utils";
 
 const Jobs = () => {
   const [searchQuery, setSearchQuery] = useState("");
