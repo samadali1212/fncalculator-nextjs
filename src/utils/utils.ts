@@ -64,3 +64,62 @@ export const getRandomInt = (min: number, max: number): number => {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
+/**
+ * Format a date relative to the current time (e.g., "2 days ago", "Just now")
+ * @param date Date object or string to format
+ * @returns Formatted relative time string
+ */
+export const getRelativeTimeString = (date: Date | string): string => {
+  const now = new Date();
+  const dateObj = typeof date === 'string' ? new Date(date) : date;
+  
+  const diffMs = now.getTime() - dateObj.getTime();
+  const diffSecs = Math.floor(diffMs / 1000);
+  const diffMins = Math.floor(diffSecs / 60);
+  const diffHours = Math.floor(diffMins / 60);
+  const diffDays = Math.floor(diffHours / 24);
+  const diffWeeks = Math.floor(diffDays / 7);
+  const diffMonths = Math.floor(diffDays / 30);
+  
+  if (diffSecs < 60) {
+    return "Just now";
+  } else if (diffMins < 60) {
+    return `${diffMins} minute${diffMins !== 1 ? 's' : ''} ago`;
+  } else if (diffHours < 24) {
+    return `${diffHours} hour${diffHours !== 1 ? 's' : ''} ago`;
+  } else if (diffDays < 7) {
+    return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
+  } else if (diffWeeks < 4) {
+    return `${diffWeeks} week${diffWeeks !== 1 ? 's' : ''} ago`;
+  } else if (diffMonths < 12) {
+    return `${diffMonths} month${diffMonths !== 1 ? 's' : ''} ago`;
+  } else {
+    return dateObj.toLocaleDateString('en-ZA', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  }
+};
+
+/**
+ * Calculate time remaining until a future date
+ * @param endDate Date to calculate time remaining until
+ * @returns Object with days, hours, minutes, seconds remaining
+ */
+export const getTimeRemaining = (endDate: Date | string): {
+  total: number;
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+} => {
+  const total = new Date(endDate).getTime() - new Date().getTime();
+  const seconds = Math.floor((total / 1000) % 60);
+  const minutes = Math.floor((total / 1000 / 60) % 60);
+  const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+  const days = Math.floor(total / (1000 * 60 * 60 * 24));
+  
+  return { total, days, hours, minutes, seconds };
+};

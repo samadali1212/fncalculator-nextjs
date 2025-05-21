@@ -19,6 +19,7 @@ import CelebrityCategory from "./pages/CelebrityCategory";
 import NotFound from "./pages/NotFound";
 import BranchCodes from "./pages/BranchCodes";
 import BranchCodeDetail from "./pages/BranchCodeDetail";
+import Jobs from "./pages/Jobs";
 
 // Global net worth pages
 import GlobalNetWorth from "./pages/GlobalNetWorth";
@@ -62,6 +63,9 @@ const App = () => {
           <Route path="/categories" element={<StandaloneCategories />} />
           <Route path="/net-worth/category/:slug" element={<NetWorthCategory />} />
           
+          {/* Job Listing Routes */}
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs/:jobSlug" element={<JobDetail />} />
           
           {/* Global Net Worth Routes */}
           <Route path="/global-net-worth" element={<GlobalNetWorth />} />
