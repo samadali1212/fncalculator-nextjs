@@ -194,3 +194,90 @@ export const handleJobApplication = (method: ApplicationMethod): boolean => {
       return false;
   }
 };
+
+/**
+ * Parse salary range string into min and max values for schema markup
+ * @param salaryRange Salary range string (e.g., "R25,000 - R35,000 per month")
+ * @returns Object with min, max values and time unit
+ */
+export const parseSalaryRange = (salaryRange: string): { 
+  min?: number; 
+  max?: number; 
+  value?: number; 
+  currency: string; 
+  unitText: "YEAR" | "MONTH" | "WEEK" | "DAY" | "HOUR";
+} => {
+  // Default values
+  const result = {
+    currency: "ZAR",
+    unitText: "MONTH" as const
+  };
+
+  // Extract currency (assuming R for Rand)
+  if (salaryRange.includes("$")) {
+    result.currency = "USD";
+  } else if (salaryRange.includes("€")) {
+    result.currency = "EUR";
+  } else if (salaryRange.includes("£")) {
+    result.currency = "GBP";
+  }
+
+  // Extract time unit
+  if (salaryRange.toLowerCase().includes("per year") || salaryRange.toLowerCase().includes("yearly") || salaryRange.toLowerCase().includes("per annum")) {
+    result.unitText = "YEAR";
+  } else if (salaryRange.toLowerCase().includes("per month") || salaryRange.toLowerCase().includes("monthly")) {
+    result.unitText = "MONTH";
+  } else if (salaryRange.toLowerCase().includes("per week") || salaryRange.toLowerCase().includes("weekly")) {
+    result.unitText = "WEEK";
+  } else if (salaryRange.toLowerCase().includes("per day") || salaryRange.toLowerCase().includes("daily")) {
+    result.unitText = "DAY";
+  } else if (salaryRange.toLowerCase().includes("per hour") || salaryRange.toLowerCase().includes("hourly")) {
+    result.unitText = "HOUR";
+  }
+
+  // Extract numeric values
+  const numbers = salaryRange.match(/\d[\d\s,\.]*\d|\d/g);
+  if (numbers) {
+    // Clean and parse the values (removing commas, spaces, etc.)
+    const cleanNumbers = numbers.map(n => Number(n.replace(/[^\d\.]/g, '')));
+    
+    if (cleanNumbers.length >= 2) {
+      // If we have at least two numbers, assume it's a range
+      result.min = cleanNumbers[0];
+      result.max = cleanNumbers[1];
+    } else if (cleanNumbers.length === 1) {
+      // If only one number, assume it's a fixed value
+      result.value = cleanNumbers[0];
+    }
+  }
+
+  return result;
+};
+
+/**
+ * Map job category to schema.org employmentType
+ * @param category Job category
+ * @returns employmentType string for schema markup
+ */
+export const mapCategoryToEmploymentType = (category: JobCategory): string => {
+  // Map common job categories to schema.org employmentType values
+  // See https://schema.org/employmentType for valid values
+  const categoryMap: Record<string, string> = {
+    "Full-time": "FULL_TIME",
+    "Part-time": "PART_TIME",
+    "Contract": "CONTRACTOR",
+    "Temporary": "TEMPORARY",
+    "Internship": "INTERN",
+    "Volunteer": "VOLUNTEER"
+  };
+  
+  // Look for employmentType keywords in the category
+  for (const [key, value] of Object.entries(categoryMap)) {
+    if (category.toLowerCase().includes(key.toLowerCase())) {
+      return value;
+    }
+  }
+  
+  // Default to FULL_TIME if no match found
+  return "FULL_TIME";
+};

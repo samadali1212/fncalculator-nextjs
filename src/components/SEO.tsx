@@ -24,6 +24,33 @@ interface SEOProps {
     author: string;
     url: string;
   };
+  jobPosting?: {
+    title: string;
+    description: string;
+    datePosted: string;
+    validThrough: string;
+    employmentType?: string;
+    hiringOrganization: {
+      name: string;
+      logo?: string;
+    };
+    jobLocation: {
+      addressLocality: string;
+      addressRegion?: string;
+      addressCountry?: string;
+    };
+    baseSalary?: {
+      currency: string;
+      value: {
+        minValue?: number;
+        maxValue?: number;
+        value?: number;
+      };
+      unitText: "YEAR" | "MONTH" | "WEEK" | "DAY" | "HOUR";
+    };
+    applicantLocationRequirements?: string;
+    jobLocationType?: string;
+  };
 }
 
 const SEO = ({
@@ -34,7 +61,8 @@ const SEO = ({
   ogType = "website",
   twitterCard = "summary_large_image",
   person,
-  socialMedia
+  socialMedia,
+  jobPosting
 }: SEOProps) => {
   const siteUrl = "https://salarylist.co.za";
   
@@ -81,6 +109,57 @@ const SEO = ({
     return null;
   };
 
+  const getJobPostingSchema = () => {
+    if (jobPosting) {
+      return {
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        title: jobPosting.title,
+        description: jobPosting.description,
+        datePosted: jobPosting.datePosted,
+        validThrough: jobPosting.validThrough,
+        employmentType: jobPosting.employmentType,
+        hiringOrganization: {
+          "@type": "Organization",
+          name: jobPosting.hiringOrganization.name,
+          logo: jobPosting.hiringOrganization.logo ? `${siteUrl}${jobPosting.hiringOrganization.logo}` : undefined
+        },
+        jobLocation: {
+          "@type": "Place",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: jobPosting.jobLocation.addressLocality,
+            addressRegion: jobPosting.jobLocation.addressRegion,
+            addressCountry: jobPosting.jobLocation.addressCountry || "South Africa"
+          }
+        },
+        ...(jobPosting.baseSalary && {
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: jobPosting.baseSalary.currency,
+            value: {
+              "@type": "QuantitativeValue",
+              ...(jobPosting.baseSalary.value.minValue && { minValue: jobPosting.baseSalary.value.minValue }),
+              ...(jobPosting.baseSalary.value.maxValue && { maxValue: jobPosting.baseSalary.value.maxValue }),
+              ...(jobPosting.baseSalary.value.value && { value: jobPosting.baseSalary.value.value }),
+              unitText: jobPosting.baseSalary.unitText
+            }
+          }
+        }),
+        ...(jobPosting.applicantLocationRequirements && {
+          applicantLocationRequirements: {
+            "@type": "Country",
+            name: jobPosting.applicantLocationRequirements
+          }
+        }),
+        ...(jobPosting.jobLocationType && {
+          jobLocationType: jobPosting.jobLocationType
+        })
+      };
+    }
+    return null;
+  };
+
   return (
     <Helmet>
       {/* Basic Meta Tags */}
@@ -116,6 +195,12 @@ const SEO = ({
       {socialMedia && (
         <script type="application/ld+json">
           {JSON.stringify(getSocialMediaPostingSchema())}
+        </script>
+      )}
+      
+      {jobPosting && (
+        <script type="application/ld+json">
+          {JSON.stringify(getJobPostingSchema())}
         </script>
       )}
     </Helmet>

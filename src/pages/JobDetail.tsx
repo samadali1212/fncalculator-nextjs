@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
@@ -30,7 +29,9 @@ import {
   formatDate, 
   isJobExpiringSoon, 
   handleJobApplication, 
-  getApplicationInstructions 
+  getApplicationInstructions,
+  parseSalaryRange,
+  mapCategoryToEmploymentType
 } from "../utils/jobUtils";
 import { Job, JobCategory } from "../utils/jobData";
 import { Badge } from "@/components/ui/badge";
@@ -198,6 +199,12 @@ const JobDetail = () => {
     );
   }
 
+  // Prepare salary data for schema markup
+  const salaryData = parseSalaryRange(job.salaryRange);
+  
+  // Determine employment type for schema
+  const employmentType = mapCategoryToEmploymentType(job.category);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -210,7 +217,35 @@ const JobDetail = () => {
         title={`${job.title} at ${job.company} | Job Details`}
         description={job.description}
         canonicalUrl={`/jobs/${jobSlug}`}
+        jobPosting={{
+          title: job.title,
+          description: job.description + "\n\n" + job.requirements.join("\n") + "\n\n" + job.responsibilities.join("\n"),
+          datePosted: job.postedDate,
+          validThrough: job.deadline,
+          employmentType: employmentType,
+          hiringOrganization: {
+            name: job.company,
+            logo: "/SalaryList favicon.png" // Use site logo as company logo
+          },
+          jobLocation: {
+            addressLocality: job.location,
+            addressRegion: "South Africa", // Assuming South Africa as default
+            addressCountry: "South Africa"
+          },
+          baseSalary: {
+            currency: salaryData.currency,
+            value: {
+              minValue: salaryData.min,
+              maxValue: salaryData.max,
+              value: salaryData.value
+            },
+            unitText: salaryData.unitText
+          },
+          applicantLocationRequirements: "South Africa", // Assuming South Africa as default
+          jobLocationType: job.workMode || "TELECOMMUTE" // Use work mode if available, default to TELECOMMUTE
+        }}
       />
+      
       <Header />
       
       <main className="pt-24 pb-16">
