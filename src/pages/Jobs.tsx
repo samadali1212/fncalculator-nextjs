@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, MapPin, Briefcase, Filter, ArrowRight } from "lucide-react";
@@ -84,6 +85,11 @@ const Jobs = () => {
           <AdSense slot="9889084223" format="horizontal" className="py-3" />
         </div>
         
+        {/* Browse By Section */}
+        <div className="mb-8">
+          <JobBrowseBySection />
+        </div>
+        
         {/* Search and Filter Section */}
         <div className="mb-8">
           <Card className="overflow-visible bg-transparent shadow-none border-none">
@@ -157,108 +163,101 @@ const Jobs = () => {
           </Card>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {/* Job browsing sidebar */}
-          <div className="md:col-span-1">
-            <JobBrowseBySection />
-          </div>
-          
-          {/* Job Listings */}
-          <div className="md:col-span-2 space-y-4">
-            {isLoading ? (
-              // Loading state
-              Array.from({ length: 5 }).map((_, index) => (
-                <Card key={index} className="animate-pulse">
+        {/* Job Listings */}
+        <div className="space-y-4">
+          {isLoading ? (
+            // Loading state
+            Array.from({ length: 5 }).map((_, index) => (
+              <Card key={index} className="animate-pulse">
+                <CardContent className="p-6">
+                  <div className="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
+                  <div className="h-4 bg-gray-200 rounded w-1/4 mb-2"></div>
+                  <div className="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
+                  <div className="h-20 bg-gray-200 rounded mb-4"></div>
+                  <div className="flex justify-between items-center">
+                    <div className="h-8 bg-gray-200 rounded w-1/4"></div>
+                    <div className="h-8 bg-gray-200 rounded w-1/6"></div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))
+          ) : filteredJobs.length > 0 ? (
+            filteredJobs.map((job, index) => (
+              <motion.div
+                key={job.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+              >
+                <Card className="group hover:shadow-md transition-shadow">
                   <CardContent className="p-6">
-                    <div className="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
-                    <div className="h-4 bg-gray-200 rounded w-1/4 mb-2"></div>
-                    <div className="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
-                    <div className="h-20 bg-gray-200 rounded mb-4"></div>
-                    <div className="flex justify-between items-center">
-                      <div className="h-8 bg-gray-200 rounded w-1/4"></div>
-                      <div className="h-8 bg-gray-200 rounded w-1/6"></div>
+                    <div className="flex justify-between items-start mb-2">
+                      <h2 className="text-xl font-semibold group-hover:text-blog-accent">
+                        <Link to={`/jobs/${job.id}`} className="hover:underline">
+                          {job.title}
+                        </Link>
+                      </h2>
+                      <div className="flex gap-1">
+                        {isNewJob(job.postedDate) && (
+                          <Badge className="bg-green-500">New</Badge>
+                        )}
+                        {isJobExpiringSoon(job.deadline) && (
+                          <Badge variant="outline" className="text-orange-500 border-orange-500">
+                            Closing Soon
+                          </Badge>
+                        )}
+                        {job.featured && (
+                          <Badge className="bg-blue-500">Featured</Badge>
+                        )}
+                      </div>
+                    </div>
+                    
+                    <div className="text-gray-600 mb-2">
+                      {job.company}
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-3 mb-4 text-sm">
+                      <span className="flex items-center text-gray-500">
+                        <MapPin className="h-3.5 w-3.5 mr-1" /> {job.location}
+                      </span>
+                      <span className="flex items-center text-gray-500">
+                        <Briefcase className="h-3.5 w-3.5 mr-1" /> {job.category}
+                      </span>
+                      <span className="text-gray-500">
+                        Posted: {formatDate(job.postedDate)}
+                      </span>
+                    </div>
+                    
+                    <p className="text-gray-700 mb-6 line-clamp-2 text-sm">
+                      {job.description}
+                    </p>
+                    
+                    <div className="flex items-center justify-between">
+                      <div className="text-primary-500 font-medium">
+                        {job.salaryRange}
+                      </div>
+                      <Link 
+                        to={`/jobs/${job.id}`}
+                        className="inline-flex items-center text-blog-accent text-sm font-medium hover:underline"
+                      >
+                        View Details <ArrowRight className="ml-1 h-4 w-4" />
+                      </Link>
                     </div>
                   </CardContent>
                 </Card>
-              ))
-            ) : filteredJobs.length > 0 ? (
-              filteredJobs.map((job, index) => (
-                <motion.div
-                  key={job.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                >
-                  <Card className="group hover:shadow-md transition-shadow">
-                    <CardContent className="p-6">
-                      <div className="flex justify-between items-start mb-2">
-                        <h2 className="text-xl font-semibold group-hover:text-blog-accent">
-                          <Link to={`/jobs/${job.id}`} className="hover:underline">
-                            {job.title}
-                          </Link>
-                        </h2>
-                        <div className="flex gap-1">
-                          {isNewJob(job.postedDate) && (
-                            <Badge className="bg-green-500">New</Badge>
-                          )}
-                          {isJobExpiringSoon(job.deadline) && (
-                            <Badge variant="outline" className="text-orange-500 border-orange-500">
-                              Closing Soon
-                            </Badge>
-                          )}
-                          {job.featured && (
-                            <Badge className="bg-blue-500">Featured</Badge>
-                          )}
-                        </div>
-                      </div>
-                      
-                      <div className="text-gray-600 mb-2">
-                        {job.company}
-                      </div>
-                      
-                      <div className="flex flex-wrap gap-3 mb-4 text-sm">
-                        <span className="flex items-center text-gray-500">
-                          <MapPin className="h-3.5 w-3.5 mr-1" /> {job.location}
-                        </span>
-                        <span className="flex items-center text-gray-500">
-                          <Briefcase className="h-3.5 w-3.5 mr-1" /> {job.category}
-                        </span>
-                        <span className="text-gray-500">
-                          Posted: {formatDate(job.postedDate)}
-                        </span>
-                      </div>
-                      
-                      <p className="text-gray-700 mb-6 line-clamp-2 text-sm">
-                        {job.description}
-                      </p>
-                      
-                      <div className="flex items-center justify-between">
-                        <div className="text-primary-500 font-medium">
-                          {job.salaryRange}
-                        </div>
-                        <Link 
-                          to={`/jobs/${job.id}`}
-                          className="inline-flex items-center text-blog-accent text-sm font-medium hover:underline"
-                        >
-                          View Details <ArrowRight className="ml-1 h-4 w-4" />
-                        </Link>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))
-            ) : (
-              <Card className="text-center p-8">
-                <CardContent>
-                  <h3 className="text-xl font-medium mb-2">No jobs found</h3>
-                  <p className="text-gray-600 mb-4">
-                    We couldn't find any jobs matching your search criteria.
-                  </p>
-                  <Button onClick={handleReset}>Clear Filters</Button>
-                </CardContent>
-              </Card>
-            )}
-          </div>
+              </motion.div>
+            ))
+          ) : (
+            <Card className="text-center p-8">
+              <CardContent>
+                <h3 className="text-xl font-medium mb-2">No jobs found</h3>
+                <p className="text-gray-600 mb-4">
+                  We couldn't find any jobs matching your search criteria.
+                </p>
+                <Button onClick={handleReset}>Clear Filters</Button>
+              </CardContent>
+            </Card>
+          )}
         </div>
         
         {/* Bottom ad placement */}
