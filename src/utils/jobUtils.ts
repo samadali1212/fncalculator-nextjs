@@ -1,3 +1,4 @@
+
 import { Job, jobsData, JobCategory, JobLocation, ApplicationMethod } from './jobData';
 import { slugify } from './utils';
 
@@ -55,6 +56,81 @@ export const filterJobs = (
     
     return matchesQuery && matchesCategory && matchesLocation;
   });
+};
+
+/**
+ * Get all unique job categories from job data
+ * @returns Array of unique categories
+ */
+export const getUniqueCategories = (): string[] => {
+  const categories = new Set<string>();
+  jobsData.forEach(job => {
+    categories.add(job.category);
+  });
+  return Array.from(categories);
+};
+
+/**
+ * Get all unique job locations from job data
+ * @returns Array of unique locations
+ */
+export const getUniqueLocations = (): string[] => {
+  const locations = new Set<string>();
+  jobsData.forEach(job => {
+    locations.add(job.location);
+  });
+  return Array.from(locations);
+};
+
+/**
+ * Get related jobs based on job category
+ * @param currentJobId Current job ID to exclude
+ * @param category Job category to find similar jobs
+ * @param limit Maximum number of related jobs to return
+ * @returns Array of related jobs
+ */
+export const getRelatedJobs = (
+  currentJobId: string,
+  category: string,
+  limit: number = 5
+): Job[] => {
+  return jobsData
+    .filter(job => job.id !== currentJobId && job.category === category)
+    .slice(0, limit);
+};
+
+/**
+ * Get jobs from the same company
+ * @param currentJobId Current job ID to exclude
+ * @param company Company name to find jobs for
+ * @param limit Maximum number of jobs to return
+ * @returns Array of jobs from the same company
+ */
+export const getJobsFromSameCompany = (
+  currentJobId: string,
+  company: string,
+  limit: number = 5
+): Job[] => {
+  return jobsData
+    .filter(job => job.id !== currentJobId && job.company === company)
+    .slice(0, limit);
+};
+
+/**
+ * Get jobs from the same location
+ * @param currentJobId Current job ID to exclude
+ * @param location Location to find jobs for
+ * @param limit Maximum number of jobs to return
+ * @returns Array of jobs from the same location
+ */
+export const getJobsInSameLocation = (
+  currentJobId: string,
+  location: string,
+  limit: number = 5
+): Job[] => {
+  return jobsData
+    .filter(job => job.id !== currentJobId && job.location === location)
+    .slice(0, limit);
 };
 
 /**
@@ -322,9 +398,15 @@ export const parseSalaryRange = (salaryRange: string): {
   unitText: "YEAR" | "MONTH" | "WEEK" | "DAY" | "HOUR";
 } => {
   // Default values
-  const result = {
+  const result: {
+    min?: number;
+    max?: number;
+    value?: number;
+    currency: string;
+    unitText: "YEAR" | "MONTH" | "WEEK" | "DAY" | "HOUR";
+  } = {
     currency: "ZAR",
-    unitText: "MONTH" as const
+    unitText: "MONTH"
   };
 
   // Extract currency (assuming R for Rand)

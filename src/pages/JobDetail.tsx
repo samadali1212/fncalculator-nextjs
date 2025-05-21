@@ -242,7 +242,7 @@ const JobDetail = () => {
             unitText: salaryData.unitText
           },
           applicantLocationRequirements: "South Africa", // Assuming South Africa as default
-          jobLocationType: job.workMode || "TELECOMMUTE" // Use work mode if available, default to TELECOMMUTE
+          jobLocationType: "TELECOMMUTE" // Default to TELECOMMUTE
         }}
       />
       
