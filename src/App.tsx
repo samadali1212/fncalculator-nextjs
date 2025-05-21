@@ -20,6 +20,9 @@ import NotFound from "./pages/NotFound";
 import BranchCodes from "./pages/BranchCodes";
 import BranchCodeDetail from "./pages/BranchCodeDetail";
 import Jobs from "./pages/Jobs";
+import JobsByProvince from "./pages/JobsByProvince";
+import JobsByCity from "./pages/JobsByCity";
+import JobsByCategory from "./pages/JobsByCategory";
 
 // Global net worth pages
 import GlobalNetWorth from "./pages/GlobalNetWorth";
@@ -66,6 +69,11 @@ const App = () => {
           {/* Job Listing Routes */}
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/:jobSlug" element={<JobDetail />} />
+          
+          {/* New Job SEO Pages */}
+          <Route path="/jobs/province/:provinceSlug" element={<JobsByProvince />} />
+          <Route path="/jobs/city/:citySlug" element={<JobsByCity />} />
+          <Route path="/jobs/category/:categorySlug" element={<JobsByCategory />} />
           
           {/* Global Net Worth Routes */}
           <Route path="/global-net-worth" element={<GlobalNetWorth />} />

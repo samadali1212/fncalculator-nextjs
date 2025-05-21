@@ -51,6 +51,11 @@ interface SEOProps {
     applicantLocationRequirements?: string;
     jobLocationType?: string;
   };
+  jobListing?: {
+    listingType: "province" | "city" | "category";
+    name: string;
+    count: number;
+  };
 }
 
 const SEO = ({
@@ -62,7 +67,8 @@ const SEO = ({
   twitterCard = "summary_large_image",
   person,
   socialMedia,
-  jobPosting
+  jobPosting,
+  jobListing
 }: SEOProps) => {
   const siteUrl = "https://salarylist.co.za";
   
@@ -160,6 +166,44 @@ const SEO = ({
     return null;
   };
 
+  const getJobListingSchema = () => {
+    if (jobListing) {
+      let itemListType;
+      let itemListName;
+      
+      switch(jobListing.listingType) {
+        case "province":
+          itemListType = "JobListingsByProvince";
+          itemListName = `Jobs in ${jobListing.name}, South Africa`;
+          break;
+        case "city":
+          itemListType = "JobListingsByCity";
+          itemListName = `Jobs in ${jobListing.name}, South Africa`;
+          break;
+        case "category":
+          itemListType = "JobListingsByCategory"; 
+          itemListName = `${jobListing.name} Jobs in South Africa`;
+          break;
+      }
+      
+      return {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": itemListName,
+        "numberOfItems": jobListing.count,
+        "itemListOrder": "Descending",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": `${siteUrl}${canonicalUrl}`
+          }
+        ]
+      };
+    }
+    return null;
+  };
+
   return (
     <Helmet>
       {/* Basic Meta Tags */}
@@ -201,6 +245,12 @@ const SEO = ({
       {jobPosting && (
         <script type="application/ld+json">
           {JSON.stringify(getJobPostingSchema())}
+        </script>
+      )}
+      
+      {jobListing && (
+        <script type="application/ld+json">
+          {JSON.stringify(getJobListingSchema())}
         </script>
       )}
     </Helmet>

@@ -1,35 +1,39 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useParams, Link } from "react-router-dom";
 import { Search, MapPin, Briefcase, Filter, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import AdSense from "../components/AdSense";
-import JobBrowseBySection from "../components/JobBrowseBySection";
-import { filterJobs, formatDate, isNewJob, isJobExpiringSoon } from "../utils/jobUtils";
-import { getUniqueCategories, getUniqueLocations, JobCategory, JobLocation } from "../utils/jobData";
+import { 
+  getJobsByProvince, 
+  getCitiesByProvince, 
+  formatDate, 
+  isNewJob, 
+  isJobExpiringSoon,
+  createLocationPageTitle,
+  createLocationPageDescription
+} from "../utils/jobUtils";
+import { Job } from "../utils/jobData";
 
-const Jobs = () => {
+const JobsByProvince = () => {
+  const { provinceSlug } = useParams<{ provinceSlug: string }>();
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<JobCategory | undefined>(undefined);
-  const [selectedLocation, setSelectedLocation] = useState<JobLocation | undefined>(undefined);
-  const [filteredJobs, setFilteredJobs] = useState(filterJobs());
+  const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   
-  const categories = getUniqueCategories();
-  const locations = getUniqueLocations();
+  // Convert slug back to province name
+  const province = provinceSlug ? provinceSlug.split("-").map(word => 
+    word.charAt(0).toUpperCase() + word.slice(1)
+  ).join(" ") : "";
+  
+  const cities = getCitiesByProvince(province);
+  const allJobs = getJobsByProvince(province);
   
   // Apply filters when search inputs change
   useEffect(() => {
@@ -37,29 +41,21 @@ const Jobs = () => {
     
     // Simulate loading for better UX
     const timer = setTimeout(() => {
-      setFilteredJobs(filterJobs(searchQuery, selectedCategory, selectedLocation));
+      const results = searchQuery === '' ? allJobs : allJobs.filter(job => 
+        job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        job.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        job.description.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      
+      setFilteredJobs(results);
       setIsLoading(false);
     }, 300);
     
     return () => clearTimeout(timer);
-  }, [searchQuery, selectedCategory, selectedLocation]);
+  }, [searchQuery, province]);
   
-  // Reset all filters
-  const handleReset = () => {
-    setSearchQuery("");
-    setSelectedCategory(undefined);
-    setSelectedLocation(undefined);
-  };
-
-  // Handle category change
-  const handleCategoryChange = (value: string) => {
-    setSelectedCategory(value === "all" ? undefined : value as JobCategory);
-  };
-
-  // Handle location change
-  const handleLocationChange = (value: string) => {
-    setSelectedLocation(value === "all" ? undefined : value as JobLocation);
-  };
+  const seoTitle = createLocationPageTitle(province);
+  const seoDescription = createLocationPageDescription(province, allJobs.length);
 
   return (
     <motion.div
@@ -68,29 +64,48 @@ const Jobs = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Job Listings | Find Your Next Career Opportunity" 
-        description="Browse job opportunities across South Africa. Find positions in technology, finance, healthcare, and more industries."
-        canonicalUrl="/jobs"
+        title={seoTitle}
+        description={seoDescription}
+        canonicalUrl={`/jobs/province/${provinceSlug}`}
       />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <h1 className="text-3xl font-bold mb-2">Job Listings</h1>
+        <div className="mb-4">
+          <Link to="/jobs" className="text-blog-accent hover:underline text-sm">
+            ← Back to All Jobs
+          </Link>
+        </div>
+      
+        <h1 className="text-3xl font-bold mb-2">Jobs in {province}, South Africa</h1>
         <p className="text-gray-600 mb-6">
-          Find your next career opportunity from our curated list of positions across South Africa.
+          Browse {allJobs.length} job opportunities in {province} across various industries and career levels.
         </p>
+        
+        {/* Cities in this province */}
+        {cities.length > 0 && (
+          <div className="mb-8">
+            <h2 className="text-xl font-semibold mb-3">Cities in {province}</h2>
+            <div className="flex flex-wrap gap-2">
+              {cities.map(city => (
+                <Link 
+                  key={city} 
+                  to={`/jobs/city/${city.toLowerCase().replace(/\s+/g, "-")}`} 
+                  className="px-3 py-1.5 bg-white rounded-md border border-gray-200 text-sm hover:border-blog-accent hover:text-blog-accent transition-colors"
+                >
+                  {city}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
         
         {/* Top ad placement */}
         <div className="my-6">
           <AdSense slot="9889084223" format="horizontal" className="py-3" />
         </div>
         
-        {/* Browse By Section */}
-        <div className="mb-8">
-          <JobBrowseBySection />
-        </div>
-        
-        {/* Search and Filter Section */}
+        {/* Search Section */}
         <div className="mb-8">
           <Card className="overflow-visible bg-transparent shadow-none border-none">
             <CardContent className="p-0 space-y-4">
@@ -107,56 +122,14 @@ const Jobs = () => {
                 />
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="text-sm text-gray-600 flex items-center gap-1">
-                    <Briefcase className="h-4 w-4" /> Category
-                  </label>
-                  <Select 
-                    value={selectedCategory || "all"}
-                    onValueChange={handleCategoryChange}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="All Categories" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All Categories</SelectItem>
-                      {categories.map((category) => (
-                        <SelectItem key={category} value={category}>{category}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                
-                <div className="space-y-2">
-                  <label className="text-sm text-gray-600 flex items-center gap-1">
-                    <MapPin className="h-4 w-4" /> Location
-                  </label>
-                  <Select 
-                    value={selectedLocation || "all"}
-                    onValueChange={handleLocationChange}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="All Locations" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All Locations</SelectItem>
-                      {locations.map((location) => (
-                        <SelectItem key={location} value={location}>{location}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-              
               <div className="flex justify-end">
                 <Button 
                   variant="outline" 
-                  onClick={handleReset}
+                  onClick={() => setSearchQuery("")}
                   className="text-sm"
-                  disabled={!searchQuery && !selectedCategory && !selectedLocation}
+                  disabled={!searchQuery}
                 >
-                  <Filter className="h-4 w-4 mr-1" /> Reset Filters
+                  <Filter className="h-4 w-4 mr-1" /> Reset Search
                 </Button>
               </div>
             </CardContent>
@@ -252,9 +225,9 @@ const Jobs = () => {
               <CardContent>
                 <h3 className="text-xl font-medium mb-2">No jobs found</h3>
                 <p className="text-gray-600 mb-4">
-                  We couldn't find any jobs matching your search criteria.
+                  We couldn't find any jobs matching your search criteria in {province}.
                 </p>
-                <Button onClick={handleReset}>Clear Filters</Button>
+                <Button onClick={() => setSearchQuery("")} disabled={!searchQuery}>Clear Search</Button>
               </CardContent>
             </Card>
           )}
@@ -277,4 +250,4 @@ const Jobs = () => {
   );
 };
 
-export default Jobs;
+export default JobsByProvince;

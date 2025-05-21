@@ -1,4 +1,3 @@
-
 import { Job, jobsData, JobCategory, JobLocation, ApplicationMethod } from './jobData';
 import { slugify } from './utils';
 
@@ -59,54 +58,169 @@ export const filterJobs = (
 };
 
 /**
- * Get related jobs based on category and excluding the current job
- * @param currentJobId ID of the current job to exclude
- * @param category Category to filter by
- * @param limit Maximum number of related jobs to return
- * @returns Array of related jobs
+ * Get all provinces from job locations
+ * @returns Array of unique provinces
  */
-export const getRelatedJobs = (
-  currentJobId: string,
-  category: JobCategory,
-  limit: number = 3
-): Job[] => {
-  return jobsData
-    .filter(job => job.id !== currentJobId && job.category === category)
-    .slice(0, limit);
+export const getProvinces = (): string[] => {
+  // In South Africa, the major provinces are:
+  const provinces = [
+    'Gauteng',
+    'Western Cape',
+    'KwaZulu-Natal',
+    'Eastern Cape',
+    'Free State',
+    'North West',
+    'Mpumalanga',
+    'Limpopo',
+    'Northern Cape'
+  ];
+  
+  return provinces;
 };
 
 /**
- * Get jobs from the same company excluding the current job
- * @param currentJobId ID of the current job to exclude
- * @param company Company name to filter by
- * @param limit Maximum number of related jobs to return
- * @returns Array of jobs from the same company
+ * Get all cities from job data
+ * @returns Array of unique cities
  */
-export const getJobsFromSameCompany = (
-  currentJobId: string,
-  company: string,
-  limit: number = 3
-): Job[] => {
-  return jobsData
-    .filter(job => job.id !== currentJobId && job.company === company)
-    .slice(0, limit);
+export const getCities = (): string[] => {
+  // Extract unique cities from job locations
+  const cities = new Set<string>();
+  
+  jobsData.forEach(job => {
+    // For locations that are cities, add them directly
+    if (job.location !== 'Remote' && job.location !== 'Nationwide') {
+      cities.add(job.location);
+    }
+  });
+  
+  return Array.from(cities);
 };
 
 /**
- * Get jobs in the same location excluding the current job
- * @param currentJobId ID of the current job to exclude
- * @param location Location to filter by
- * @param limit Maximum number of related jobs to return
- * @returns Array of jobs in the same location
+ * Map province to its major cities
+ * @param province Province name
+ * @returns Array of cities in that province
  */
-export const getJobsInSameLocation = (
-  currentJobId: string,
-  location: JobLocation,
-  limit: number = 3
-): Job[] => {
-  return jobsData
-    .filter(job => job.id !== currentJobId && job.location === location)
-    .slice(0, limit);
+export const getCitiesByProvince = (province: string): string[] => {
+  const provinceCityMap: Record<string, string[]> = {
+    'Gauteng': ['Johannesburg', 'Pretoria', 'Centurion', 'Sandton', 'Midrand'],
+    'Western Cape': ['Cape Town', 'Stellenbosch', 'Paarl', 'George'],
+    'KwaZulu-Natal': ['Durban', 'Pietermaritzburg', 'Richards Bay'],
+    'Eastern Cape': ['Port Elizabeth', 'East London', 'Mthatha'],
+    'Free State': ['Bloemfontein', 'Welkom', 'Bethlehem'],
+    'North West': ['Rustenburg', 'Potchefstroom', 'Mahikeng'],
+    'Mpumalanga': ['Nelspruit', 'Witbank', 'Secunda'],
+    'Limpopo': ['Polokwane', 'Tzaneen', 'Musina'],
+    'Northern Cape': ['Kimberley', 'Upington', 'Springbok']
+  };
+  
+  return provinceCityMap[province] || [];
+};
+
+/**
+ * Map city to its province
+ * @param city City name
+ * @returns Province name
+ */
+export const getProvinceByCity = (city: string): string => {
+  const cityProvinceMap: Record<string, string> = {
+    'Johannesburg': 'Gauteng',
+    'Pretoria': 'Gauteng',
+    'Cape Town': 'Western Cape',
+    'Durban': 'KwaZulu-Natal',
+    'Port Elizabeth': 'Eastern Cape',
+    'Bloemfontein': 'Free State',
+    'East London': 'Eastern Cape',
+    'Pietermaritzburg': 'KwaZulu-Natal',
+    'Rustenburg': 'North West',
+    'Nelspruit': 'Mpumalanga',
+    'Polokwane': 'Limpopo',
+    'Kimberley': 'Northern Cape'
+  };
+  
+  return cityProvinceMap[city] || 'Unknown';
+};
+
+/**
+ * Get jobs by province
+ * @param province Province name
+ * @returns Array of jobs in that province
+ */
+export const getJobsByProvince = (province: string): Job[] => {
+  const citiesInProvince = getCitiesByProvince(province);
+  
+  return jobsData.filter(job => {
+    // Include nationwide and remote jobs in all province listings
+    if (job.location === 'Nationwide' || job.location === 'Remote') {
+      return true;
+    }
+    
+    // Check if job is in one of the cities in this province
+    return citiesInProvince.includes(job.location);
+  });
+};
+
+/**
+ * Get jobs by city
+ * @param city City name
+ * @returns Array of jobs in that city
+ */
+export const getJobsByCity = (city: string): Job[] => {
+  return jobsData.filter(job => {
+    // Include nationwide and remote jobs in all city listings
+    if (job.location === 'Nationwide' || job.location === 'Remote') {
+      return true;
+    }
+    
+    return job.location === city;
+  });
+};
+
+/**
+ * Get jobs by category
+ * @param category Job category
+ * @returns Array of jobs in that category
+ */
+export const getJobsByCategory = (category: JobCategory): Job[] => {
+  return jobsData.filter(job => job.category === category);
+};
+
+/**
+ * Create SEO-friendly title for location-based job pages
+ * @param location Location name (province or city)
+ * @returns SEO-friendly title
+ */
+export const createLocationPageTitle = (location: string): string => {
+  return `Jobs in ${location}, South Africa | Latest Vacancies`;
+};
+
+/**
+ * Create SEO-friendly description for location-based job pages
+ * @param location Location name (province or city)
+ * @param jobCount Number of jobs
+ * @returns SEO-friendly description
+ */
+export const createLocationPageDescription = (location: string, jobCount: number): string => {
+  return `Browse ${jobCount} job opportunities in ${location}, South Africa. Find and apply for the latest vacancies in ${location} across various industries and career levels.`;
+};
+
+/**
+ * Create SEO-friendly title for category-based job pages
+ * @param category Job category
+ * @returns SEO-friendly title
+ */
+export const createCategoryPageTitle = (category: string): string => {
+  return `${category} Jobs in South Africa | Latest Vacancies`;
+};
+
+/**
+ * Create SEO-friendly description for category-based job pages
+ * @param category Job category
+ * @param jobCount Number of jobs
+ * @returns SEO-friendly description
+ */
+export const createCategoryPageDescription = (category: string, jobCount: number): string => {
+  return `Browse ${jobCount} ${category.toLowerCase()} job opportunities across South Africa. Find and apply for the latest ${category.toLowerCase()} vacancies for all experience levels.`;
 };
 
 /**
