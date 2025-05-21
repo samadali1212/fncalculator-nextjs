@@ -16,7 +16,11 @@ export const getAllJobs = (): Job[] => {
  * @returns The job object or undefined if not found
  */
 export const getJobById = (id: string): Job | undefined => {
-  return jobsData.find(job => job.id === id);
+  // Clean up the id if needed (some URL formats may add extra characters)
+  const cleanId = id.trim();
+  console.log("Looking for job with clean ID:", cleanId);
+  console.log("Available job IDs:", jobsData.map(job => job.id));
+  return jobsData.find(job => job.id === cleanId);
 };
 
 /**

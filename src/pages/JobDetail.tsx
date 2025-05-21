@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
@@ -35,19 +34,33 @@ const JobDetail = () => {
   useEffect(() => {
     setIsLoading(true);
     
-    // Extract job ID from slug (format: title-id)
+    // Get job ID from the end of the slug - format could be title-id
     const jobId = jobSlug.split('-').pop() || "";
+    
+    console.log("Looking for job with ID:", jobId);
     
     // Simulate API call
     setTimeout(() => {
-      const foundJob = getJobById(jobId);
+      // Try to find the job directly by ID
+      let foundJob = getJobById(jobId);
+      
+      // If not found by direct ID, the ID might be part of a hyphenated slug
+      // like "registered-nurse-job-003" where "job-003" is the ID
+      if (!foundJob && jobSlug.includes('job-')) {
+        const potentialId = "job-" + jobSlug.split('job-')[1];
+        console.log("Trying alternative ID format:", potentialId);
+        foundJob = getJobById(potentialId);
+      }
       
       if (foundJob) {
+        console.log("Found job:", foundJob.title);
         setJob(foundJob);
         // Get related jobs in the same category
         if (foundJob.category) {
           setRelatedJobs(getRelatedJobs(foundJob.id, foundJob.category, 3));
         }
+      } else {
+        console.error("Job not found with ID:", jobId);
       }
       
       setIsLoading(false);

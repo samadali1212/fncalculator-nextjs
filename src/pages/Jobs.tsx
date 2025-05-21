@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, MapPin, Briefcase, Filter, ArrowRight } from "lucide-react";
@@ -188,7 +187,7 @@ const Jobs = () => {
                   <CardContent className="p-6">
                     <div className="flex justify-between items-start mb-2">
                       <h2 className="text-xl font-semibold group-hover:text-blog-accent">
-                        <Link to={`/jobs/${slugify(job.title)}-${job.id}`} className="hover:underline">
+                        <Link to={`/jobs/${job.id}`} className="hover:underline">
                           {job.title}
                         </Link>
                       </h2>
@@ -232,7 +231,7 @@ const Jobs = () => {
                         {job.salaryRange}
                       </div>
                       <Link 
-                        to={`/jobs/${slugify(job.title)}-${job.id}`}
+                        to={`/jobs/${job.id}`}
                         className="inline-flex items-center text-blog-accent text-sm font-medium hover:underline"
                       >
                         View Details <ArrowRight className="ml-1 h-4 w-4" />
