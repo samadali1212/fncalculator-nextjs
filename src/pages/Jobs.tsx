@@ -51,6 +51,16 @@ const Jobs = () => {
     setSelectedLocation(undefined);
   };
 
+  // Handle category change
+  const handleCategoryChange = (value: string) => {
+    setSelectedCategory(value === "all" ? undefined : value as JobCategory);
+  };
+
+  // Handle location change
+  const handleLocationChange = (value: string) => {
+    setSelectedLocation(value === "all" ? undefined : value as JobLocation);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -97,12 +107,15 @@ const Jobs = () => {
                   <label className="text-sm text-gray-600 flex items-center gap-1">
                     <Briefcase className="h-4 w-4" /> Category
                   </label>
-                  <Select value={selectedCategory} onValueChange={(value: JobCategory) => setSelectedCategory(value)}>
+                  <Select 
+                    value={selectedCategory || "all"}
+                    onValueChange={handleCategoryChange}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="All Categories" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All Categories</SelectItem>
+                      <SelectItem value="all">All Categories</SelectItem>
                       {categories.map((category) => (
                         <SelectItem key={category} value={category}>{category}</SelectItem>
                       ))}
@@ -114,12 +127,15 @@ const Jobs = () => {
                   <label className="text-sm text-gray-600 flex items-center gap-1">
                     <MapPin className="h-4 w-4" /> Location
                   </label>
-                  <Select value={selectedLocation} onValueChange={(value: JobLocation) => setSelectedLocation(value)}>
+                  <Select 
+                    value={selectedLocation || "all"}
+                    onValueChange={handleLocationChange}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="All Locations" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All Locations</SelectItem>
+                      <SelectItem value="all">All Locations</SelectItem>
                       {locations.map((location) => (
                         <SelectItem key={location} value={location}>{location}</SelectItem>
                       ))}
