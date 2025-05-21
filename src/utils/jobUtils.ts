@@ -76,6 +76,40 @@ export const getRelatedJobs = (
 };
 
 /**
+ * Get jobs from the same company excluding the current job
+ * @param currentJobId ID of the current job to exclude
+ * @param company Company name to filter by
+ * @param limit Maximum number of related jobs to return
+ * @returns Array of jobs from the same company
+ */
+export const getJobsFromSameCompany = (
+  currentJobId: string,
+  company: string,
+  limit: number = 3
+): Job[] => {
+  return jobsData
+    .filter(job => job.id !== currentJobId && job.company === company)
+    .slice(0, limit);
+};
+
+/**
+ * Get jobs in the same location excluding the current job
+ * @param currentJobId ID of the current job to exclude
+ * @param location Location to filter by
+ * @param limit Maximum number of related jobs to return
+ * @returns Array of jobs in the same location
+ */
+export const getJobsInSameLocation = (
+  currentJobId: string,
+  location: JobLocation,
+  limit: number = 3
+): Job[] => {
+  return jobsData
+    .filter(job => job.id !== currentJobId && job.location === location)
+    .slice(0, limit);
+};
+
+/**
  * Format a date string to display format (e.g., "May 15, 2025")
  * @param dateString Date string in format YYYY-MM-DD
  * @returns Formatted date string
