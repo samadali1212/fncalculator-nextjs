@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import BranchCodes from "./pages/BranchCodes";
 import BranchCodeDetail from "./pages/BranchCodeDetail";
 import Jobs from "./pages/Jobs";
+import JobDetail from "./pages/JobDetail";
 import JobsByProvince from "./pages/JobsByProvince";
 import JobsByCity from "./pages/JobsByCity";
 import JobsByCategory from "./pages/JobsByCategory";
