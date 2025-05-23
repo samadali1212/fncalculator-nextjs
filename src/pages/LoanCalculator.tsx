@@ -34,11 +34,11 @@ const LoanCalculator = () => {
   const [loanTerm, setLoanTerm] = useState<LoanTerm>(36);
   const [interestRate, setInterestRate] = useState(5);
   
-  // Generate loan amounts with default parameters
+  // Generate loan amounts with updated parameters
   const loanCalculations = generateLoanAmounts(
-    10000,      // Min: R10,000
-    1000000,    // Max: R1,000,000
-    10000,      // Step: R10,000
+    5000,       // Min: R5,000
+    2000000,    // Max: R2,000,000
+    5000,       // Step: R5,000
     loanTerm,
     interestRate
   );

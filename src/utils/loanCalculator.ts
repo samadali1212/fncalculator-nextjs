@@ -191,7 +191,7 @@ export function formatDate(date: Date): string {
 // Generate a range of loan amounts with calculations
 export function generateLoanAmounts(
   min: number = 5000,
-  max: number = 1000000,
+  max: number = 2000000,
   step: number = 5000,
   loanTerm: number = 36,
   interestRate: number = 5
