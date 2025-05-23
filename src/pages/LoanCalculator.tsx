@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ArrowUpRight, Calculator } from "lucide-react";
@@ -64,6 +63,11 @@ const LoanCalculator = () => {
 
   const handleInterestRateChange = (value: string) => {
     setInterestRate(parseFloat(value));
+  };
+
+  // Helper function to create SEO-friendly slug
+  const createLoanSlug = (amount: number) => {
+    return `${amount}-loan-repayment`;
   };
 
   return (
@@ -175,7 +179,7 @@ const LoanCalculator = () => {
                   <div className="grid grid-cols-12 items-center">
                     <div className="col-span-4 md:col-span-3">
                       <Link 
-                        to={`/loan-calculator/${calculation.loanAmount}?term=${loanTerm}&rate=${interestRate}`}
+                        to={`/loan-calculator/${createLoanSlug(calculation.loanAmount)}?term=${loanTerm}&rate=${interestRate}`}
                         className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                       >
                         {formatCurrency(calculation.loanAmount)}

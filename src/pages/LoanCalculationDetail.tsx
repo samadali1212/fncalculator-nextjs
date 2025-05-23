@@ -1,4 +1,3 @@
-
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useSearchParams, useNavigate, Link } from "react-router-dom";
@@ -38,7 +37,7 @@ import {
 } from "@/components/ui/collapsible";
 
 const LoanCalculationDetail = () => {
-  const { loanId } = useParams<{ loanId: string }>();
+  const { loanSlug } = useParams<{ loanSlug: string }>();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
@@ -48,7 +47,7 @@ const LoanCalculationDetail = () => {
   const defaultRate = parseFloat(searchParams.get("rate") || "5");
   
   // State for loan parameters
-  const [loanAmount, setLoanAmount] = useState(loanId ? parseInt(loanId) : 0);
+  const [loanAmount, setLoanAmount] = useState(loanSlug ? parseInt(loanSlug.split('-')[0]) : 0);
   const [downPayment, setDownPayment] = useState(0);
   const [loanTerm, setLoanTerm] = useState<LoanTerm>(defaultTerm);
   const [interestRate, setInterestRate] = useState(defaultRate);
@@ -70,6 +69,11 @@ const LoanCalculationDetail = () => {
     [loanAmount, loanTerm, interestRate]
   );
   
+  // Helper function to create SEO-friendly slug
+  const createLoanSlug = (amount: number) => {
+    return `${amount}-loan-repayment`;
+  };
+  
   // Simulate loading for better UX
   useEffect(() => {
     setIsLoading(true);
@@ -78,7 +82,7 @@ const LoanCalculationDetail = () => {
     }, 600);
     
     return () => clearTimeout(timer);
-  }, [loanId]);
+  }, [loanSlug]);
   
   // Handle term change
   const handleTermChange = (value: string) => {
@@ -146,7 +150,7 @@ const LoanCalculationDetail = () => {
       <SEO 
         title={`${formatCurrency(loanAmount)} Loan Repayment Calculator`}
         description={`Calculate monthly repayments for a ${formatCurrency(loanAmount)} loan over ${loanTerm} months at ${interestRate}% interest. Monthly payment: ${formatCurrency(loanDetails.monthlyPayment)}.`}
-        canonicalUrl={`/loan-calculator/${loanId}?term=${loanTerm}&rate=${interestRate}`}
+        canonicalUrl={`/loan-calculator/${createLoanSlug(loanAmount)}?term=${loanTerm}&rate=${interestRate}`}
       />
       <Header />
       
@@ -447,7 +451,7 @@ const LoanCalculationDetail = () => {
                 {relatedLoans.map((loan) => (
                   <Link 
                     key={loan.loanAmount} 
-                    to={`/loan-calculator/${loan.loanAmount}?term=${loanTerm}&rate=${interestRate}`}
+                    to={`/loan-calculator/${createLoanSlug(loan.loanAmount)}?term=${loanTerm}&rate=${interestRate}`}
                     className="group"
                   >
                     <div className="bg-white border border-gray-200 p-4 rounded-md hover:border-primary transition-all hover:shadow-sm">

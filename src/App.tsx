@@ -59,9 +59,9 @@ const App = () => {
           <Route path="/tax-calculator/yearly/:incomeId" element={<TaxCalculationDetail />} />
           <Route path="/tax-calculator/:incomeId" element={<TaxCalculationDetail />} />
           
-          {/* Loan Calculator Routes */}
+          {/* Loan Calculator Routes with SEO-friendly URLs */}
           <Route path="/loan-calculator" element={<LoanCalculator />} />
-          <Route path="/loan-calculator/:loanId" element={<LoanCalculationDetail />} />
+          <Route path="/loan-calculator/:loanSlug" element={<LoanCalculationDetail />} />
           
           <Route path="/celebrities" element={<Celebrities />} />
           <Route path="/celebrities/:slug" element={<CelebrityDetail />} />

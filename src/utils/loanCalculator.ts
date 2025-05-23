@@ -1,4 +1,3 @@
-
 export interface LoanCalculation {
   loanAmount: number;
   downPayment: number;
@@ -235,7 +234,9 @@ export function getRelatedLoanAmounts(
   // Lower amounts
   for (let i = halfCount; i > 0; i--) {
     const amount = Math.max(10000, loanAmount - (i * step));
-    result.push(calculateLoanRepayment(amount, 0, loanTerm, interestRate, 0));
+    if (amount !== loanAmount) { // Exclude current loan amount
+      result.push(calculateLoanRepayment(amount, 0, loanTerm, interestRate, 0));
+    }
   }
   
   // Higher amounts
@@ -244,6 +245,6 @@ export function getRelatedLoanAmounts(
     result.push(calculateLoanRepayment(amount, 0, loanTerm, interestRate, 0));
   }
   
-  // Sort by loan amount
-  return result.sort((a, b) => a.loanAmount - b.loanAmount);
+  // Sort by loan amount and ensure we have exactly the requested count
+  return result.sort((a, b) => a.loanAmount - b.loanAmount).slice(0, count);
 }
