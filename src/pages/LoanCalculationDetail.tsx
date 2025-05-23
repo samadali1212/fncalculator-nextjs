@@ -7,15 +7,16 @@ import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, CreditCard, Clock, Calculator, Percent, ArrowRight } from "lucide-react";
+import { ChevronLeft, CreditCard, Clock, Calendar, Calculator, Percent, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { getLoanCalculation, formatCurrency, LoanCalculation, LoanTerm } from "../utils/loanCalculator";
+import { getLoanCalculation, getRelatedLoanAmounts, formatCurrency, formatDate, LoanCalculation, LoanTerm, AmortizationItem } from "../utils/loanCalculator";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { format } from "date-fns";
 import { 
   Select,
   SelectContent,
@@ -23,6 +24,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Calendar as CalendarComponent } from "@/components/ui/calendar";
+import { cn } from "@/lib/utils";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 const LoanCalculationDetail = () => {
   const { loanId } = useParams<{ loanId: string }>();
@@ -40,11 +53,21 @@ const LoanCalculationDetail = () => {
   const [loanTerm, setLoanTerm] = useState<LoanTerm>(defaultTerm);
   const [interestRate, setInterestRate] = useState(defaultRate);
   const [balloonPayment, setBalloonPayment] = useState(0);
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  
+  // UI state
+  const [isScheduleOpen, setIsScheduleOpen] = useState(false);
   
   // Calculate loan details
   const loanDetails = useMemo(() => 
-    getLoanCalculation(loanAmount, downPayment, loanTerm, interestRate, balloonPayment), 
-    [loanAmount, downPayment, loanTerm, interestRate, balloonPayment]
+    getLoanCalculation(loanAmount, downPayment, loanTerm, interestRate, balloonPayment, startDate), 
+    [loanAmount, downPayment, loanTerm, interestRate, balloonPayment, startDate]
+  );
+  
+  // Get related loan amounts
+  const relatedLoans = useMemo(() => 
+    getRelatedLoanAmounts(loanAmount, 6, loanTerm, interestRate),
+    [loanAmount, loanTerm, interestRate]
   );
   
   // Simulate loading for better UX
@@ -68,50 +91,6 @@ const LoanCalculationDetail = () => {
     const numericValue = value.replace(/[^0-9]/g, '');
     if (!numericValue) return '';
     return formatCurrency(parseInt(numericValue));
-  };
-
-  // Generate monthly repayment table
-  const generateRepaymentSchedule = (calculation: LoanCalculation) => {
-    const { loanAmount, downPayment, loanTerm, interestRate, balloonPayment, monthlyPayment } = calculation;
-    const principal = loanAmount - downPayment;
-    const monthlyInterestRate = (interestRate / 100) / 12;
-    const schedule = [];
-    
-    let remainingBalance = principal;
-    
-    for (let month = 1; month <= loanTerm; month++) {
-      // Calculate interest portion of payment
-      const interestForMonth = remainingBalance * monthlyInterestRate;
-      
-      // Calculate principal portion of payment
-      const principalForMonth = month === loanTerm && balloonPayment > 0
-        ? monthlyPayment - interestForMonth - balloonPayment
-        : monthlyPayment - interestForMonth;
-      
-      // Update remaining balance
-      remainingBalance -= principalForMonth;
-      
-      // Add to schedule if it's one of the months we want to display
-      if (month === 1 || month === 3 || month === 6 || month === 12 || month === 24 || 
-          month === 36 || month === 48 || month === 60 || month === loanTerm) {
-        schedule.push({
-          month,
-          paymentAmount: monthlyPayment + (month === loanTerm ? balloonPayment : 0),
-          interestAmount: interestForMonth,
-          principalAmount: principalForMonth + (month === loanTerm ? balloonPayment : 0),
-          remainingBalance: month === loanTerm ? 0 : remainingBalance
-        });
-      }
-    }
-    
-    return schedule;
-  };
-  
-  const schedule = loanDetails ? generateRepaymentSchedule(loanDetails) : [];
-
-  // Format with spaces as thousand separator
-  const formatWithSpaces = (value: number): string => {
-    return value.toLocaleString().replace(/,/g, ' ');
   };
 
   if (isLoading) {
@@ -202,6 +181,11 @@ const LoanCalculationDetail = () => {
               <div className="flex items-center">
                 <Percent className="h-4 w-4 mr-1 text-[#999]" />
                 <span>{interestRate}% interest rate</span>
+              </div>
+              
+              <div className="flex items-center">
+                <Calendar className="h-4 w-4 mr-1 text-[#999]" />
+                <span>Starting {format(startDate, "dd MMM yyyy")}</span>
               </div>
               
               <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
@@ -331,6 +315,31 @@ const LoanCalculationDetail = () => {
                       <span>25%</span>
                     </div>
                   </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="startDate">Loan Start Date</Label>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          id="startDate"
+                          variant="outline"
+                          className="w-full justify-start text-left font-normal"
+                        >
+                          <Calendar className="mr-2 h-4 w-4" />
+                          {format(startDate, "PPP")}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <CalendarComponent
+                          mode="single"
+                          selected={startDate}
+                          onSelect={(date) => date && setStartDate(date)}
+                          initialFocus
+                          className={cn("p-3 pointer-events-auto")}
+                        />
+                      </PopoverContent>
+                    </Popover>
+                  </div>
                 </div>
               </div>
             </div>
@@ -346,37 +355,65 @@ const LoanCalculationDetail = () => {
                 which includes {formatCurrency(loanDetails.totalInterest)} in interest.
                 {balloonPayment > 0 ? ` Your loan includes a balloon payment of ${formatCurrency(balloonPayment)} at the end of the term.` : ''}
               </p>
+              
+              <div className="mt-4 flex items-center gap-4">
+                <div className="bg-green-50 border border-green-100 rounded-lg px-4 py-3">
+                  <h4 className="text-sm font-medium text-green-800 mb-1">Loan Start Date</h4>
+                  <p className="text-green-700">{formatDate(startDate)}</p>
+                </div>
+                
+                <div className="bg-blue-50 border border-blue-100 rounded-lg px-4 py-3">
+                  <h4 className="text-sm font-medium text-blue-800 mb-1">Estimated Payoff Date</h4>
+                  <p className="text-blue-700">{loanDetails.payoffDate ? formatDate(loanDetails.payoffDate) : 'N/A'}</p>
+                </div>
+              </div>
             </div>
             
             <div className="mb-8">
-              <h3 className="font-semibold text-lg mb-3">Payment Schedule</h3>
-              <div className="overflow-x-auto">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Month</TableHead>
-                      <TableHead>Payment</TableHead>
-                      <TableHead>Principal</TableHead>
-                      <TableHead>Interest</TableHead>
-                      <TableHead>Remaining Balance</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {schedule.map((payment) => (
-                      <TableRow key={payment.month}>
-                        <TableCell>{payment.month}</TableCell>
-                        <TableCell>{formatCurrency(payment.paymentAmount)}</TableCell>
-                        <TableCell>{formatCurrency(payment.principalAmount)}</TableCell>
-                        <TableCell>{formatCurrency(payment.interestAmount)}</TableCell>
-                        <TableCell>{formatCurrency(payment.remainingBalance)}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-              <p className="text-xs text-gray-500 mt-2">
-                * This table shows selected months in the repayment schedule
-              </p>
+              <Collapsible open={isScheduleOpen} onOpenChange={setIsScheduleOpen}>
+                <div className="flex items-center justify-between">
+                  <h3 className="font-semibold text-lg mb-3">Payment Schedule</h3>
+                  <CollapsibleTrigger asChild>
+                    <Button variant="ghost" size="sm">
+                      {isScheduleOpen ? (
+                        <ChevronUp className="h-4 w-4 mr-1" />
+                      ) : (
+                        <ChevronDown className="h-4 w-4 mr-1" />
+                      )}
+                      {isScheduleOpen ? "Hide Schedule" : "Show Complete Schedule"}
+                    </Button>
+                  </CollapsibleTrigger>
+                </div>
+                
+                <CollapsibleContent>
+                  <div className="overflow-x-auto">
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead className="w-[100px]">Payment #</TableHead>
+                          <TableHead>Date</TableHead>
+                          <TableHead>Payment</TableHead>
+                          <TableHead>Principal</TableHead>
+                          <TableHead>Interest</TableHead>
+                          <TableHead>Remaining Balance</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {loanDetails.amortizationSchedule?.map((payment: AmortizationItem) => (
+                          <TableRow key={payment.paymentNumber}>
+                            <TableCell>{payment.paymentNumber}</TableCell>
+                            <TableCell>{formatDate(payment.paymentDate)}</TableCell>
+                            <TableCell>{formatCurrency(payment.paymentAmount)}</TableCell>
+                            <TableCell>{formatCurrency(payment.principalAmount)}</TableCell>
+                            <TableCell>{formatCurrency(payment.interestAmount)}</TableCell>
+                            <TableCell>{formatCurrency(payment.remainingBalance)}</TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
             </div>
             
             <div className="bg-[#fff9e6] p-5 rounded-md">
@@ -400,6 +437,29 @@ const LoanCalculationDetail = () => {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+            
+            {/* Related Loan Amounts Section */}
+            <div className="mt-10">
+              <h3 className="font-semibold text-lg mb-4">Related Loan Amounts</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {relatedLoans.map((loan) => (
+                  <Link 
+                    key={loan.loanAmount} 
+                    to={`/loan-calculator/${loan.loanAmount}?term=${loanTerm}&rate=${interestRate}`}
+                    className="group"
+                  >
+                    <div className="bg-white border border-gray-200 p-4 rounded-md hover:border-primary transition-all hover:shadow-sm">
+                      <p className="text-lg font-semibold group-hover:text-primary transition-colors">
+                        {formatCurrency(loan.loanAmount)}
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        {formatCurrency(loan.monthlyPayment)}/month
+                      </p>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
           </article>

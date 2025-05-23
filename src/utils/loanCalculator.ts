@@ -9,6 +9,18 @@ export interface LoanCalculation {
   totalInterest: number;
   totalCost: number;
   finalPayment: number;
+  startDate?: Date;
+  payoffDate?: Date;
+  amortizationSchedule?: AmortizationItem[];
+}
+
+export interface AmortizationItem {
+  paymentNumber: number;
+  paymentDate: Date;
+  paymentAmount: number;
+  principalAmount: number;
+  interestAmount: number;
+  remainingBalance: number;
 }
 
 export type LoanTerm = 12 | 24 | 36 | 48 | 60 | 72 | 84 | 96;
@@ -20,6 +32,7 @@ export type LoanTerm = 12 | 24 | 36 | 48 | 60 | 72 | 84 | 96;
  * @param loanTerm Loan term in months
  * @param interestRate Annual interest rate (as a percentage)
  * @param balloonPayment Optional balloon payment at the end of the term
+ * @param startDate Optional loan start date
  * @returns Object with loan calculation details
  */
 export function calculateLoanRepayment(
@@ -27,7 +40,8 @@ export function calculateLoanRepayment(
   downPayment: number = 0,
   loanTerm: number = 36,
   interestRate: number = 5,
-  balloonPayment: number = 0
+  balloonPayment: number = 0,
+  startDate: Date = new Date()
 ): LoanCalculation {
   // Calculate principal loan amount after down payment
   const principal = loanAmount - downPayment;
@@ -51,6 +65,20 @@ export function calculateLoanRepayment(
   
   // Calculate final payment
   const finalPayment = monthlyPayment + balloonPayment;
+
+  // Calculate payoff date
+  const payoffDate = new Date(startDate);
+  payoffDate.setMonth(payoffDate.getMonth() + loanTerm);
+
+  // Generate complete amortization schedule
+  const amortizationSchedule = generateAmortizationSchedule(
+    principal, 
+    balloonPayment, 
+    loanTerm, 
+    monthlyInterestRate, 
+    monthlyPayment,
+    startDate
+  );
   
   return {
     loanAmount,
@@ -61,8 +89,68 @@ export function calculateLoanRepayment(
     monthlyPayment,
     totalInterest,
     totalCost,
-    finalPayment
+    finalPayment,
+    startDate,
+    payoffDate,
+    amortizationSchedule
   };
+}
+
+/**
+ * Generate complete amortization schedule for the loan
+ */
+function generateAmortizationSchedule(
+  principal: number,
+  balloonPayment: number,
+  loanTerm: number,
+  monthlyInterestRate: number,
+  monthlyPayment: number,
+  startDate: Date
+): AmortizationItem[] {
+  const schedule: AmortizationItem[] = [];
+  let remainingBalance = principal;
+  const loanStartDate = new Date(startDate);
+  
+  for (let month = 1; month <= loanTerm; month++) {
+    // Calculate payment date
+    const paymentDate = new Date(loanStartDate);
+    paymentDate.setMonth(loanStartDate.getMonth() + month);
+    
+    // Calculate interest portion of payment
+    const interestForMonth = remainingBalance * monthlyInterestRate;
+    
+    // Calculate principal portion of payment
+    let principalForMonth = monthlyPayment - interestForMonth;
+    let paymentAmount = monthlyPayment;
+    
+    // Handle balloon payment for the final payment
+    if (month === loanTerm && balloonPayment > 0) {
+      principalForMonth = remainingBalance;
+      paymentAmount = interestForMonth + principalForMonth;
+    }
+    
+    // Update remaining balance
+    remainingBalance -= principalForMonth;
+    
+    // Handle rounding errors in the final payment
+    if (month === loanTerm) {
+      if (Math.abs(remainingBalance) < 0.01) {
+        remainingBalance = 0;
+      }
+    }
+    
+    // Add to schedule
+    schedule.push({
+      paymentNumber: month,
+      paymentDate,
+      paymentAmount,
+      principalAmount: principalForMonth,
+      interestAmount: interestForMonth,
+      remainingBalance: Math.max(0, remainingBalance)
+    });
+  }
+  
+  return schedule;
 }
 
 /**
@@ -88,6 +176,19 @@ export function parseCurrency(currencyString: string): number {
   return parseFloat(currencyString.replace(/[^0-9.-]+/g, "")) || 0;
 }
 
+/**
+ * Format date to a localized string
+ * @param date The date to format
+ * @returns Formatted date string
+ */
+export function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-ZA', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+
 // Generate a range of loan amounts with calculations
 export function generateLoanAmounts(
   min: number = 10000,
@@ -111,8 +212,38 @@ export function getLoanCalculation(
   downPayment: number = 0,
   loanTerm: number = 36,
   interestRate: number = 5,
-  balloonPayment: number = 0
+  balloonPayment: number = 0,
+  startDate: Date = new Date()
 ): LoanCalculation | null {
   if (isNaN(loanAmount)) return null;
-  return calculateLoanRepayment(loanAmount, downPayment, loanTerm, interestRate, balloonPayment);
+  return calculateLoanRepayment(loanAmount, downPayment, loanTerm, interestRate, balloonPayment, startDate);
+}
+
+// Get related loan amounts
+export function getRelatedLoanAmounts(
+  loanAmount: number,
+  count: number = 6,
+  loanTerm: number = 36,
+  interestRate: number = 5
+): LoanCalculation[] {
+  const result: LoanCalculation[] = [];
+  const step = 10000;
+  
+  // Get 3 lower and 3 higher amounts
+  const halfCount = Math.floor(count / 2);
+  
+  // Lower amounts
+  for (let i = halfCount; i > 0; i--) {
+    const amount = Math.max(10000, loanAmount - (i * step));
+    result.push(calculateLoanRepayment(amount, 0, loanTerm, interestRate, 0));
+  }
+  
+  // Higher amounts
+  for (let i = 1; i <= halfCount; i++) {
+    const amount = loanAmount + (i * step);
+    result.push(calculateLoanRepayment(amount, 0, loanTerm, interestRate, 0));
+  }
+  
+  // Sort by loan amount
+  return result.sort((a, b) => a.loanAmount - b.loanAmount);
 }
