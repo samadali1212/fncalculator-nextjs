@@ -27,12 +27,9 @@ const Header = () => {
   }, []);
 
   const menuItems = [
-    { path: "/celebrities", label: "Celebs Salary" },
-    { path: "/uscongress", label: "US Congress" },
-    { path: "/branch-codes", label: "Branch Codes" },
+    { path: "/loan-calculator", label: "Repayment Calculator" },
     { path: "/hourly-rates", label: "Hourly Rates" },
     { path: "/tax-calculator", label: "Tax Calculator" },
-    { path: "/global-net-worth", label: "Net Worth" },
     { path: "/about", label: "About" },
   ];
 
