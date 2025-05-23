@@ -22,8 +22,8 @@ const App = () => {
     <BrowserRouter>
       <Layout>
         <Routes>
-          {/* Set BranchCodeDetail as the explicit homepage */}
-          <Route path="/" element={<BranchCodeDetail />} />
+          {/* Set BranchCodes as the explicit homepage */}
+          <Route path="/" element={<BranchCodes />} />
           {/* Ensure salaries path also works and doesn't create duplicate content */}
           <Route path="/branch-codes" element={<Navigate to="/" replace />} />
           <Route path="/branch-codes/:slug" element={<BranchCodeDetail />} />
