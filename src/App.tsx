@@ -8,6 +8,8 @@ import HourlyRates from "./pages/HourlyRates";
 import HourlyRateDetail from "./pages/HourlyRateDetail";
 import TaxCalculator from "./pages/TaxCalculator";
 import TaxCalculationDetail from "./pages/TaxCalculationDetail";
+import LoanCalculator from "./pages/LoanCalculator";
+import LoanCalculationDetail from "./pages/LoanCalculationDetail";
 import Celebrities from "./pages/Celebrities";
 import CelebrityDetail from "./pages/CelebrityDetail";
 import NetWorth from "./pages/NetWorth";
@@ -56,6 +58,11 @@ const App = () => {
           <Route path="/tax-calculator/monthly/:incomeId" element={<TaxCalculationDetail />} />
           <Route path="/tax-calculator/yearly/:incomeId" element={<TaxCalculationDetail />} />
           <Route path="/tax-calculator/:incomeId" element={<TaxCalculationDetail />} />
+          
+          {/* Loan Calculator Routes */}
+          <Route path="/loan-calculator" element={<LoanCalculator />} />
+          <Route path="/loan-calculator/:loanId" element={<LoanCalculationDetail />} />
+          
           <Route path="/celebrities" element={<Celebrities />} />
           <Route path="/celebrities/:slug" element={<CelebrityDetail />} />
           <Route path="/celebrity-categories" element={<StandaloneCelebrityCategories />} />
