@@ -190,7 +190,7 @@ export function formatDate(date: Date): string {
 
 // Generate a range of loan amounts with calculations
 export function generateLoanAmounts(
-  min: number = 10000,
+  min: number = 5000,
   max: number = 1000000,
   step: number = 5000,
   loanTerm: number = 36,
@@ -233,7 +233,7 @@ export function getRelatedLoanAmounts(
   
   // Lower amounts
   for (let i = halfCount; i > 0; i--) {
-    const amount = Math.max(10000, loanAmount - (i * step));
+    const amount = Math.max(5000, loanAmount - (i * step));
     if (amount !== loanAmount) { // Exclude current loan amount
       result.push(calculateLoanRepayment(amount, 0, loanTerm, interestRate, 0));
     }
