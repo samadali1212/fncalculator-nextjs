@@ -192,7 +192,7 @@ export function formatDate(date: Date): string {
 export function generateLoanAmounts(
   min: number = 10000,
   max: number = 1000000,
-  step: number = 10000,
+  step: number = 5000,
   loanTerm: number = 36,
   interestRate: number = 5
 ): LoanCalculation[] {
@@ -226,7 +226,7 @@ export function getRelatedLoanAmounts(
   interestRate: number = 5
 ): LoanCalculation[] {
   const result: LoanCalculation[] = [];
-  const step = 10000;
+  const step = 5000;
   
   // Get 3 lower and 3 higher amounts
   const halfCount = Math.floor(count / 2);
