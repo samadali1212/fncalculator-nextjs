@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
@@ -9,13 +8,13 @@ import ShareButton from "../components/ShareButton";
 import CountdownTimer from "../components/CountdownTimer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { 
-  ArrowLeft, 
-  MapPin, 
-  Calendar, 
-  Briefcase, 
-  ArrowUpRight, 
-  Clock, 
+import {
+  ArrowLeft,
+  MapPin,
+  Calendar,
+  Briefcase,
+  ArrowUpRight,
+  Clock,
   Building,
   ExternalLink,
   Mail,
@@ -25,31 +24,32 @@ import {
   List,
   Banknote
 } from "lucide-react";
-import { 
-  getJobById, 
+import {
+  getJobById,
   getRelatedJobs,
   getJobsFromSameCompany,
   getJobsInSameLocation,
-  formatDate, 
-  isJobExpiringSoon, 
-  handleJobApplication, 
+  formatDate, // Original import
+  isJobExpiringSoon,
+  handleJobApplication,
   getApplicationInstructions,
   parseSalaryRange,
   mapCategoryToEmploymentType
 } from "../utils/jobUtils";
-import { Job, JobCategory } from "../utils/jobData";
+import { Job, JobCategory, ApplicationMethod } from "../utils/jobData"; // Ensure ApplicationMethod is imported if needed
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+// Local date formatting (used in JSX)
 const formatJobDate = (dateString: string): string => {
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-GB', { 
-    weekday: 'long', 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
+  return date.toLocaleDateString('en-GB', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   });
 };
 
@@ -62,32 +62,23 @@ const JobDetail = () => {
   const [sameLocationJobs, setSameLocationJobs] = useState<Job[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [visibleJobs, setVisibleJobs] = useState(5);
-  
+
   useEffect(() => {
     setIsLoading(true);
-    
-    // Get job ID from the end of the slug - format could be title-id
     const jobId = jobSlug.split('-').pop() || "";
-    
     console.log("Looking for job with ID:", jobId);
-    
-    // Simulate API call
+
     setTimeout(() => {
-      // Try to find the job directly by ID
       let foundJob = getJobById(jobId);
-      
-      // If not found by direct ID, the ID might be part of a hyphenated slug
-      // like "registered-nurse-job-003" where "job-003" is the ID
       if (!foundJob && jobSlug.includes('job-')) {
         const potentialId = "job-" + jobSlug.split('job-')[1];
         console.log("Trying alternative ID format:", potentialId);
         foundJob = getJobById(potentialId);
       }
-      
+
       if (foundJob) {
         console.log("Found job:", foundJob.title);
         setJob(foundJob);
-        // Get related jobs in the same category
         if (foundJob.category) {
           setRelatedJobs(getRelatedJobs(foundJob.id, foundJob.category, 15));
           setSameCompanyJobs(getJobsFromSameCompany(foundJob.id, foundJob.company, 15));
@@ -96,83 +87,113 @@ const JobDetail = () => {
       } else {
         console.error("Job not found with ID:", jobId);
       }
-      
+
       setIsLoading(false);
     }, 500);
   }, [jobSlug]);
-  
-const handleApply = () => {
-  if (job) {
-    const applied = handleJobApplication(job.applicationMethod, job.title, job.company);
-    
-    if (applied) {
-      // Show appropriate success message based on application type
-      switch(job.applicationMethod.type) {
-        case 'email':
-          toast.success("Opening email client with pre-filled application");
-          break;
-        case 'phone':
-          toast.success("Opening phone dialer");
-          break;
-        case 'url':
-        case 'form':
-          toast.success("Redirecting to application page");
-          break;
-        default:
-          toast.success("Application initiated");
+
+  // This function now primarily handles 'url', 'form', and 'other' types
+  // It will be called via onClick for those buttons.
+  const handleApply = () => {
+    if (job) {
+      const applied = handleJobApplication(job.applicationMethod, job.title, job.company);
+
+      if (applied) {
+        switch(job.applicationMethod.type) {
+          // Email & Phone cases will likely not be hit, but are harmless here.
+          case 'email':
+            toast.success("Opening email client...");
+            break;
+          case 'phone':
+            toast.success("Opening phone dialer...");
+            break;
+          case 'url':
+          case 'form':
+            toast.success("Redirecting to application page");
+            break;
+          default:
+            toast.success("Application initiated");
+        }
+      } else {
+        // This handles 'other' or cases where handleJobApplication returns false.
+        const instructions = job.applicationMethod.instructions || getApplicationInstructions(job.applicationMethod);
+        toast.info(instructions);
       }
-    } else {
-      // For application methods that can't be handled automatically
-      const instructions = job.applicationMethod.instructions || getApplicationInstructions(job.applicationMethod);
-      toast.info(instructions);
     }
-  }
-};
+  };
+
 
   const loadMoreJobs = () => {
     setVisibleJobs(prev => prev + 5);
   };
 
-  // Render appropriate application button based on method type
+  // *** UPDATED: renderApplicationButton uses <a> tags for email/phone ***
   const renderApplicationButton = (job: Job) => {
-    const { applicationMethod } = job;
-    
+    const { applicationMethod, title, company } = job;
+    const { type, value } = applicationMethod;
+
     let icon;
     let text;
-    
-    switch(applicationMethod.type) {
+
+    switch (type) {
       case 'url':
       case 'form':
         icon = <ExternalLink className="h-4 w-4" />;
         text = "Apply Now";
-        break;
+        return (
+          <Button
+            className="flex-1 gap-2"
+            onClick={handleApply} // Use JS handler
+          >
+            {text} {icon}
+          </Button>
+        );
+
       case 'email':
         icon = <Mail className="h-4 w-4" />;
         text = "Apply via Email";
-        break;
+        const subject = title && company ? `Application for ${title} at ${company}` : title ? `Application for ${title}` : 'Job Application';
+        const body = title && company ? `Dear Hiring Manager,\n\nI am writing to express my interest in the ${title} position at ${company}.\n\nPlease find my resume attached. I look forward to hearing from you.\n\nBest regards,` : 'Dear Hiring Manager,\n\nI am writing to express my interest in this position.\n\nPlease find my resume attached. I look forward to hearing from you.\n\nBest regards,';
+        const mailtoUrl = `mailto:${value}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        return (
+          <Button asChild className="flex-1 gap-2">
+            <a href={mailtoUrl}> {/* Use <a> tag */}
+              {text} {icon}
+            </a>
+          </Button>
+        );
+
       case 'phone':
         icon = <Phone className="h-4 w-4" />;
         text = "Call to Apply";
-        break;
+        const telUrl = `tel:${value}`;
+        return (
+          <Button asChild className="flex-1 gap-2">
+            <a href={telUrl}> {/* Use <a> tag */}
+              {text} {icon}
+            </a>
+          </Button>
+        );
+
       case 'other':
       default:
         icon = <Info className="h-4 w-4" />;
         text = "How to Apply";
-        break;
+        return (
+          <Button
+            className="flex-1 gap-2"
+            onClick={handleApply} // Use JS handler
+          >
+            {text} {icon}
+          </Button>
+        );
     }
-    
-    return (
-      <Button 
-        className="flex-1 gap-2"
-        onClick={handleApply}
-      >
-        {text} {icon}
-      </Button>
-    );
   };
+  // *** END: UPDATED renderApplicationButton ***
 
   const getCategoryStyles = (category: string) => {
-    switch(category.toLowerCase()) {
+    switch (category.toLowerCase()) {
       case 'technology':
         return 'bg-blue-100 text-blue-800';
       case 'healthcare':
@@ -204,7 +225,7 @@ const handleApply = () => {
           <div className="mb-6 flex flex-col sm:flex-row justify-between gap-4">
             <Skeleton className="h-10 w-32" />
           </div>
-          
+
           <div className="bg-white rounded-sm shadow-sm border border-gray-200 mb-8">
             <Skeleton className="h-24 w-full" />
             <div className="p-6">
@@ -221,7 +242,7 @@ const handleApply = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white rounded-sm shadow-sm border border-gray-200 mb-8">
             <div className="p-6">
               <Skeleton className="h-6 w-48 mb-4" />
@@ -254,12 +275,8 @@ const handleApply = () => {
     );
   }
 
-  // Prepare salary data for schema markup
   const salaryData = parseSalaryRange(job.salaryRange);
-  
-  // Determine employment type for schema
   const employmentType = mapCategoryToEmploymentType(job.category);
-
   const categoryStyles = getCategoryStyles(job.category);
 
   return (
@@ -270,7 +287,7 @@ const handleApply = () => {
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
-      <SEO 
+      <SEO
         title={`${job.title} at ${job.company} | Job Details`}
         description={job.description}
         canonicalUrl={`/jobs/${jobSlug}`}
@@ -282,11 +299,11 @@ const handleApply = () => {
           employmentType: employmentType,
           hiringOrganization: {
             name: job.company,
-            logo: "/SalaryList favicon.png" // Use site logo as company logo
+            logo: "/SalaryList favicon.png"
           },
           jobLocation: {
             addressLocality: job.location,
-            addressRegion: "South Africa", // Assuming South Africa as default
+            addressRegion: "South Africa",
             addressCountry: "South Africa"
           },
           baseSalary: {
@@ -298,13 +315,13 @@ const handleApply = () => {
             },
             unitText: salaryData.unitText
           },
-          applicantLocationRequirements: "South Africa", // Assuming South Africa as default
-          jobLocationType: "TELECOMMUTE" // Default to TELECOMMUTE
+          applicantLocationRequirements: "South Africa",
+          jobLocationType: "TELECOMMUTE"
         }}
       />
-      
+
       <Header />
-      
+
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -312,7 +329,7 @@ const handleApply = () => {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <Link 
+          <Link
             to="/jobs"
             className="inline-flex"
           >
@@ -322,7 +339,7 @@ const handleApply = () => {
             </Button>
           </Link>
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -347,7 +364,7 @@ const handleApply = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div className="space-y-4">
@@ -355,58 +372,59 @@ const handleApply = () => {
                     <Building className="h-4 w-4 text-gray-500 mr-3" />
                     <span className="text-gray-700 font-medium">{job.company}</span>
                   </div>
-                  
+
                   <div className="flex items-center text-sm">
                     <MapPin className="h-4 w-4 text-gray-500 mr-3" />
                     <span className="text-gray-700">{job.location}</span>
                   </div>
-                  
+
                   <div className="flex items-center text-sm">
                     <Calendar className="h-4 w-4 text-gray-500 mr-3" />
                     <span className="text-gray-700">Posted: {formatJobDate(job.postedDate)}</span>
                   </div>
-                  
+
                   <div className="flex items-center text-sm">
                     <Clock className="h-4 w-4 text-gray-500 mr-3" />
                     <span className="text-gray-700">Deadline: {formatJobDate(job.deadline)}</span>
                   </div>
-                  
+
                   <div className="flex items-center text-sm">
                     <Banknote className="h-4 w-4 text-gray-500 mr-3" />
                     <span className="font-medium text-gray-700">{job.salaryRange}</span>
                   </div>
                 </div>
               </div>
-              
+
               <div className="mb-6">
                 <h3 className="text-sm font-medium text-gray-900 mb-2">Job Description</h3>
                 <p className="text-sm text-gray-700 leading-relaxed mb-4">{job.description}</p>
-                
+
                 <h3 className="text-sm font-medium text-gray-900 mb-2">Requirements</h3>
                 <ul className="list-disc pl-5 mb-4">
                   {job.requirements.map((requirement, index) => (
                     <li key={index} className="text-sm text-gray-700 mb-1">{requirement}</li>
                   ))}
                 </ul>
-                
+
                 <h3 className="text-sm font-medium text-gray-900 mb-2">Responsibilities</h3>
                 <ul className="list-disc pl-5 mb-4">
                   {job.responsibilities.map((responsibility, index) => (
                     <li key={index} className="text-sm text-gray-700 mb-1">{responsibility}</li>
                   ))}
                 </ul>
-                
+
                 <h3 className="text-sm font-medium text-gray-900 mb-2">How to Apply</h3>
                 <p className="text-sm text-gray-700">
                   {job.applicationMethod.instructions || getApplicationInstructions(job.applicationMethod)}
                 </p>
               </div>
-              
+
+              {/* This section now uses the updated renderApplicationButton */}
               <div className="flex flex-col sm:flex-row gap-4">
-                {renderApplicationButton(job)}
-                
-                <Button 
-                  variant="outline" 
+                {renderApplicationButton(job)} {/* <-- Renders the correct button/link */}
+
+                <Button
+                  variant="outline"
                   className="flex-1"
                   onClick={() => navigate('/jobs')}
                 >
@@ -416,7 +434,7 @@ const handleApply = () => {
             </div>
           </div>
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -425,276 +443,276 @@ const handleApply = () => {
         >
           <CountdownTimer targetDate={job.deadline} />
         </motion.div>
-        
+
         <div className="mb-8">
           <AdSense slot="9889084223" format="auto" className="py-3" />
         </div>
-        
+
         {/* Related Jobs Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <div className="bg-white rounded-sm shadow-sm border border-gray-200">
-            <div className="p-4 border-b border-gray-100 bg-gray-50">
-              <div className="flex items-center">
-                <List className="h-5 w-5 text-blog-accent mr-2" />
-                <h2 className="text-xl font-semibold text-blog-accent">Related Jobs</h2>
-              </div>
-              <p className="text-sm text-gray-500 mt-1">
-                Discover other job opportunities that might interest you
-              </p>
+            <div className="bg-white rounded-sm shadow-sm border border-gray-200">
+                <div className="p-4 border-b border-gray-100 bg-gray-50">
+                    <div className="flex items-center">
+                        <List className="h-5 w-5 text-blog-accent mr-2" />
+                        <h2 className="text-xl font-semibold text-blog-accent">Related Jobs</h2>
+                    </div>
+                    <p className="text-sm text-gray-500 mt-1">
+                        Discover other job opportunities that might interest you
+                    </p>
+                </div>
+                
+                <Tabs defaultValue="category">
+                    <div className="px-6 pt-4">
+                        <TabsList className="w-full">
+                            <TabsTrigger value="category" className="flex-1">Same Category</TabsTrigger>
+                            <TabsTrigger value="company" className="flex-1">Same Company</TabsTrigger>
+                            <TabsTrigger value="location" className="flex-1">Same Location</TabsTrigger>
+                        </TabsList>
+                    </div>
+                    
+                    <TabsContent value="category">
+                        {relatedJobs.length > 0 ? (
+                            <div className="divide-y divide-gray-100">
+                                {relatedJobs.slice(0, visibleJobs).map((relatedJob, index) => {
+                                    const relatedCategoryStyles = getCategoryStyles(relatedJob.category);
+                                    
+                                    return (
+                                        <motion.div 
+                                            key={relatedJob.id}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ duration: 0.3, delay: index * 0.1 }}
+                                        >
+                                            <Link 
+                                                to={`/jobs/${relatedJob.id}`}
+                                                className="block p-4 hover:bg-gray-50 transition-colors group"
+                                            >
+                                                <div className="grid grid-cols-10 items-center">
+                                                    <div className="col-span-1 text-sm text-gray-500">
+                                                        {index + 1}
+                                                    </div>
+                                                    
+                                                    <div className="col-span-6">
+                                                        <h4 className="text-sm font-medium text-gray-900 group-hover:text-blog-accent transition-colors">
+                                                            {relatedJob.title}
+                                                        </h4>
+                                                        <div className="flex items-center mt-1 text-xs text-gray-500 gap-x-4">
+                                                            <span>{relatedJob.company}</span>
+                                                            <span>{relatedJob.location}</span>
+                                                            <span className="font-medium text-blog-accent">
+                                                                {relatedJob.salaryRange}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div className="col-span-2">
+                                                        <Badge variant="outline" className={`text-xs ${relatedCategoryStyles}`}>
+                                                            {relatedJob.category}
+                                                        </Badge>
+                                                    </div>
+                                                    
+                                                    <div className="col-span-1 text-right">
+                                                        <Button
+                                                            variant="ghost"
+                                                            size="sm"
+                                                            className="hover:bg-gray-100 px-2 text-xs"
+                                                        >
+                                                            View
+                                                        </Button>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        </motion.div>
+                                    );
+                                })}
+                                
+                                {relatedJobs.length > visibleJobs && (
+                                    <div className="p-4 flex justify-center">
+                                        <Button 
+                                            variant="outline" 
+                                            size="sm"
+                                            onClick={loadMoreJobs}
+                                            className="flex items-center gap-2"
+                                        >
+                                            Show More <ChevronDown className="h-4 w-4" />
+                                        </Button>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="p-6 text-center text-gray-500">
+                                No similar jobs found in this category
+                            </div>
+                        )}
+                    </TabsContent>
+                    
+                    <TabsContent value="company">
+                         {sameCompanyJobs.length > 0 ? (
+                            <div className="divide-y divide-gray-100">
+                                {sameCompanyJobs.slice(0, visibleJobs).map((companyJob, index) => {
+                                    const companyCategoryStyles = getCategoryStyles(companyJob.category);
+                                    
+                                    return (
+                                        <motion.div 
+                                            key={companyJob.id}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ duration: 0.3, delay: index * 0.1 }}
+                                        >
+                                            <Link 
+                                                to={`/jobs/${companyJob.id}`}
+                                                className="block p-4 hover:bg-gray-50 transition-colors group"
+                                            >
+                                                <div className="grid grid-cols-10 items-center">
+                                                     <div className="col-span-1 text-sm text-gray-500">
+                                                        {index + 1}
+                                                    </div>
+                                                    
+                                                    <div className="col-span-6">
+                                                        <h4 className="text-sm font-medium text-gray-900 group-hover:text-blog-accent transition-colors">
+                                                            {companyJob.title}
+                                                        </h4>
+                                                        <div className="flex items-center mt-1 text-xs text-gray-500 gap-x-4">
+                                                             <Badge variant="secondary" className="mr-2">{companyJob.category}</Badge>
+                                                            <span>{companyJob.location}</span>
+                                                            <span className="font-medium text-blog-accent">
+                                                                {companyJob.salaryRange}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                     <div className="col-span-2">
+                                                        <Badge variant="outline" className={`text-xs ${companyCategoryStyles}`}>
+                                                            {companyJob.category}
+                                                        </Badge>
+                                                    </div>
+                                                    
+                                                    <div className="col-span-1 text-right">
+                                                        <Button
+                                                            variant="ghost"
+                                                            size="sm"
+                                                            className="hover:bg-gray-100 px-2 text-xs"
+                                                        >
+                                                            View
+                                                        </Button>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        </motion.div>
+                                    );
+                                })}
+                                
+                                {sameCompanyJobs.length > visibleJobs && (
+                                    <div className="p-4 flex justify-center">
+                                        <Button 
+                                            variant="outline" 
+                                            size="sm"
+                                            onClick={loadMoreJobs}
+                                            className="flex items-center gap-2"
+                                        >
+                                            Show More <ChevronDown className="h-4 w-4" />
+                                        </Button>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                             <div className="p-6 text-center text-gray-500">
+                                No other jobs found at this company
+                            </div>
+                        )}
+                    </TabsContent>
+
+                     <TabsContent value="location">
+                         {sameLocationJobs.length > 0 ? (
+                            <div className="divide-y divide-gray-100">
+                                {sameLocationJobs.slice(0, visibleJobs).map((locationJob, index) => {
+                                    const locationCategoryStyles = getCategoryStyles(locationJob.category);
+                                    
+                                    return (
+                                        <motion.div 
+                                            key={locationJob.id}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ duration: 0.3, delay: index * 0.1 }}
+                                        >
+                                            <Link 
+                                                to={`/jobs/${locationJob.id}`}
+                                                className="block p-4 hover:bg-gray-50 transition-colors group"
+                                            >
+                                                <div className="grid grid-cols-10 items-center">
+                                                     <div className="col-span-1 text-sm text-gray-500">
+                                                        {index + 1}
+                                                    </div>
+                                                    
+                                                    <div className="col-span-6">
+                                                        <h4 className="text-sm font-medium text-gray-900 group-hover:text-blog-accent transition-colors">
+                                                            {locationJob.title}
+                                                        </h4>
+                                                        <div className="flex items-center mt-1 text-xs text-gray-500 gap-x-4">
+                                                             <span>{locationJob.company}</span>
+                                                             <Badge variant="secondary">{locationJob.category}</Badge>
+                                                            <span className="font-medium text-blog-accent">
+                                                                {locationJob.salaryRange}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                     <div className="col-span-2">
+                                                        <Badge variant="outline" className={`text-xs ${locationCategoryStyles}`}>
+                                                            {locationJob.category}
+                                                        </Badge>
+                                                    </div>
+                                                    
+                                                    <div className="col-span-1 text-right">
+                                                        <Button
+                                                            variant="ghost"
+                                                            size="sm"
+                                                            className="hover:bg-gray-100 px-2 text-xs"
+                                                        >
+                                                            View
+                                                        </Button>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        </motion.div>
+                                    );
+                                })}
+                                
+                                {sameLocationJobs.length > visibleJobs && (
+                                    <div className="p-4 flex justify-center">
+                                        <Button 
+                                            variant="outline" 
+                                            size="sm"
+                                            onClick={loadMoreJobs}
+                                            className="flex items-center gap-2"
+                                        >
+                                            Show More <ChevronDown className="h-4 w-4" />
+                                        </Button>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                             <div className="p-6 text-center text-gray-500">
+                                No other jobs found in this location
+                            </div>
+                        )}
+                    </TabsContent>
+                </Tabs>
+                
+                <div className="p-6 border-t border-gray-100">
+                    <Button 
+                        variant="outline" 
+                        className="w-full"
+                        onClick={() => navigate('/jobs')}
+                    >
+                        Browse All Jobs
+                    </Button>
+                </div>
             </div>
-            
-            <Tabs defaultValue="category">
-              <div className="px-6 pt-4">
-                <TabsList className="w-full">
-                  <TabsTrigger value="category" className="flex-1">Same Category</TabsTrigger>
-                  <TabsTrigger value="company" className="flex-1">Same Company</TabsTrigger>
-                  <TabsTrigger value="location" className="flex-1">Same Location</TabsTrigger>
-                </TabsList>
-              </div>
-              
-              <TabsContent value="category">
-                {relatedJobs.length > 0 ? (
-                  <div className="divide-y divide-gray-100">
-                    {relatedJobs.slice(0, visibleJobs).map((relatedJob, index) => {
-                      const relatedCategoryStyles = getCategoryStyles(relatedJob.category);
-                      
-                      return (
-                        <motion.div 
-                          key={relatedJob.id}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: index * 0.1 }}
-                        >
-                          <Link 
-                            to={`/jobs/${relatedJob.id}`}
-                            className="block p-4 hover:bg-gray-50 transition-colors group"
-                          >
-                            <div className="grid grid-cols-10 items-center">
-                              <div className="col-span-1 text-sm text-gray-500">
-                                {index + 1}
-                              </div>
-                              
-                              <div className="col-span-6">
-                                <h4 className="text-sm font-medium text-gray-900 group-hover:text-blog-accent transition-colors">
-                                  {relatedJob.title}
-                                </h4>
-                                <div className="flex items-center mt-1 text-xs text-gray-500 gap-x-4">
-                                  <span>{relatedJob.company}</span>
-                                  <span>{relatedJob.location}</span>
-                                  <span className="font-medium text-blog-accent">
-                                    {relatedJob.salaryRange}
-                                  </span>
-                                </div>
-                              </div>
-                              
-                              <div className="col-span-2">
-                                <Badge variant="outline" className={`text-xs ${relatedCategoryStyles}`}>
-                                  {relatedJob.category}
-                                </Badge>
-                              </div>
-                              
-                              <div className="col-span-1 text-right">
-                                <Button
-                                  variant="ghost"
-                                  size="sm"
-                                  className="hover:bg-gray-100 px-2 text-xs"
-                                >
-                                  View
-                                </Button>
-                              </div>
-                            </div>
-                          </Link>
-                        </motion.div>
-                      );
-                    })}
-                    
-                    {relatedJobs.length > visibleJobs && (
-                      <div className="p-4 flex justify-center">
-                        <Button 
-                          variant="outline" 
-                          size="sm"
-                          onClick={loadMoreJobs}
-                          className="flex items-center gap-2"
-                        >
-                          Show More <ChevronDown className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className="p-6 text-center text-gray-500">
-                    No similar jobs found in this category
-                  </div>
-                )}
-              </TabsContent>
-              
-              <TabsContent value="company">
-                {sameCompanyJobs.length > 0 ? (
-                  <div className="divide-y divide-gray-100">
-                    {sameCompanyJobs.slice(0, visibleJobs).map((companyJob, index) => {
-                      const companyCategoryStyles = getCategoryStyles(companyJob.category);
-                      
-                      return (
-                        <motion.div 
-                          key={companyJob.id}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: index * 0.1 }}
-                        >
-                          <Link 
-                            to={`/jobs/${companyJob.id}`}
-                            className="block p-4 hover:bg-gray-50 transition-colors group"
-                          >
-                            <div className="grid grid-cols-10 items-center">
-                              <div className="col-span-1 text-sm text-gray-500">
-                                {index + 1}
-                              </div>
-                              
-                              <div className="col-span-6">
-                                <h4 className="text-sm font-medium text-gray-900 group-hover:text-blog-accent transition-colors">
-                                  {companyJob.title}
-                                </h4>
-                                <div className="flex items-center mt-1 text-xs text-gray-500 gap-x-4">
-                                  <Badge variant="secondary" className="mr-2">{companyJob.category}</Badge>
-                                  <span>{companyJob.location}</span>
-                                  <span className="font-medium text-blog-accent">
-                                    {companyJob.salaryRange}
-                                  </span>
-                                </div>
-                              </div>
-                              
-                              <div className="col-span-2">
-                                <Badge variant="outline" className={`text-xs ${companyCategoryStyles}`}>
-                                  {companyJob.category}
-                                </Badge>
-                              </div>
-                              
-                              <div className="col-span-1 text-right">
-                                <Button
-                                  variant="ghost"
-                                  size="sm"
-                                  className="hover:bg-gray-100 px-2 text-xs"
-                                >
-                                  View
-                                </Button>
-                              </div>
-                            </div>
-                          </Link>
-                        </motion.div>
-                      );
-                    })}
-                    
-                    {sameCompanyJobs.length > visibleJobs && (
-                      <div className="p-4 flex justify-center">
-                        <Button 
-                          variant="outline" 
-                          size="sm"
-                          onClick={loadMoreJobs}
-                          className="flex items-center gap-2"
-                        >
-                          Show More <ChevronDown className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className="p-6 text-center text-gray-500">
-                    No other jobs found at this company
-                  </div>
-                )}
-              </TabsContent>
-              
-              <TabsContent value="location">
-                {sameLocationJobs.length > 0 ? (
-                  <div className="divide-y divide-gray-100">
-                    {sameLocationJobs.slice(0, visibleJobs).map((locationJob, index) => {
-                      const locationCategoryStyles = getCategoryStyles(locationJob.category);
-                      
-                      return (
-                        <motion.div 
-                          key={locationJob.id}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: index * 0.1 }}
-                        >
-                          <Link 
-                            to={`/jobs/${locationJob.id}`}
-                            className="block p-4 hover:bg-gray-50 transition-colors group"
-                          >
-                            <div className="grid grid-cols-10 items-center">
-                              <div className="col-span-1 text-sm text-gray-500">
-                                {index + 1}
-                              </div>
-                              
-                              <div className="col-span-6">
-                                <h4 className="text-sm font-medium text-gray-900 group-hover:text-blog-accent transition-colors">
-                                  {locationJob.title}
-                                </h4>
-                                <div className="flex items-center mt-1 text-xs text-gray-500 gap-x-4">
-                                  <span>{locationJob.company}</span>
-                                  <Badge variant="secondary">{locationJob.category}</Badge>
-                                  <span className="font-medium text-blog-accent">
-                                    {locationJob.salaryRange}
-                                  </span>
-                                </div>
-                              </div>
-                              
-                              <div className="col-span-2">
-                                <Badge variant="outline" className={`text-xs ${locationCategoryStyles}`}>
-                                  {locationJob.category}
-                                </Badge>
-                              </div>
-                              
-                              <div className="col-span-1 text-right">
-                                <Button
-                                  variant="ghost"
-                                  size="sm"
-                                  className="hover:bg-gray-100 px-2 text-xs"
-                                >
-                                  View
-                                </Button>
-                              </div>
-                            </div>
-                          </Link>
-                        </motion.div>
-                      );
-                    })}
-                    
-                    {sameLocationJobs.length > visibleJobs && (
-                      <div className="p-4 flex justify-center">
-                        <Button 
-                          variant="outline" 
-                          size="sm"
-                          onClick={loadMoreJobs}
-                          className="flex items-center gap-2"
-                        >
-                          Show More <ChevronDown className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className="p-6 text-center text-gray-500">
-                    No other jobs found in this location
-                  </div>
-                )}
-              </TabsContent>
-            </Tabs>
-            
-            <div className="p-6 border-t border-gray-100">
-              <Button 
-                variant="outline" 
-                className="w-full"
-                onClick={() => navigate('/jobs')}
-              >
-                Browse All Jobs
-              </Button>
-            </div>
-          </div>
         </motion.div>
       </main>
 
