@@ -6,7 +6,7 @@ import SEO from "../components/SEO";
 import AdSense from "../components/AdSense";
 import ShareButton from "../components/ShareButton";
 import CountdownTimer from "../components/CountdownTimer";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   ArrowLeft,
@@ -549,108 +549,84 @@ Best regards,`);
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <div className="bg-white rounded-sm shadow-sm border border-gray-200">
-            <div className="p-4 border-b border-gray-100 bg-gray-50">
-              <div className="flex items-center">
-                <List className="h-5 w-5 text-blog-accent mr-2" />
-                <h2 className="text-xl font-semibold text-blog-accent">Jobs in {job.location}</h2>
-              </div>
+          <Card className="bg-white shadow-sm">
+            <CardHeader className="pb-3">
+              <CardTitle className="flex items-center">
+                <MapPin className="h-5 w-5 text-blog-accent mr-2" />
+                Jobs in {job.location}
+              </CardTitle>
               <p className="text-sm text-gray-500 mt-1">
                 Other job opportunities in the same location
               </p>
-            </div>
-            
-            {sameLocationJobs.length > 0 ? (
-              <div className="divide-y divide-gray-100">
-                {sameLocationJobs.slice(0, visibleJobs).map((locationJob, index) => {
-                  const locationCategoryStyles = getCategoryStyles(locationJob.category);
-                  
-                  return (
-                    <motion.div 
-                      key={locationJob.id}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                    >
-                      <Link 
-                        to={`/jobs/${locationJob.id}`}
-                        className="block p-3 sm:p-4 hover:bg-gray-50 transition-colors group"
+            </CardHeader>
+            <CardContent>
+              {sameLocationJobs.length > 0 ? (
+                <div className="grid md:grid-cols-2 gap-4">
+                  {sameLocationJobs.slice(0, visibleJobs).map((locationJob, index) => {
+                    const locationCategoryStyles = getCategoryStyles(locationJob.category);
+                    
+                    return (
+                      <motion.div
+                        key={locationJob.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: index * 0.05 }}
+                        className="p-4 rounded-md border border-gray-200 hover:shadow-sm transition-shadow"
                       >
-                        <div className="flex flex-col sm:grid sm:grid-cols-10 sm:items-center gap-2 sm:gap-0">
-                          <div className="hidden sm:block sm:col-span-1 text-sm text-gray-500">
-                            {index + 1}
-                          </div>
-                          
-                          <div className="sm:col-span-6">
-                            <h4 className="text-sm font-medium text-gray-900 group-hover:text-blog-accent transition-colors">
-                              {locationJob.title}
-                            </h4>
-                            <div className="flex flex-col sm:flex-row sm:items-center mt-1 text-xs text-gray-500 gap-1 sm:gap-x-4">
+                        <div className="flex items-start gap-3">
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-sm font-semibold mb-1 line-clamp-2">{locationJob.title}</h3>
+                            <div className="text-xs text-gray-500 mb-2 flex items-center gap-2">
                               <span>{locationJob.company}</span>
-                              <Badge variant="secondary" className="w-fit">{locationJob.category}</Badge>
-                              <span className="font-medium text-blog-accent">
-                                {locationJob.salaryRange}
-                              </span>
+                              <Badge variant="secondary" className="text-xs">{locationJob.category}</Badge>
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <span className="text-xs font-semibold text-green-600">{locationJob.salaryRange}</span>
+                              <Link
+                                to={`/jobs/${locationJob.id}`}
+                                className="text-blog-accent hover:underline text-xs"
+                              >
+                                View Details
+                              </Link>
                             </div>
                           </div>
-                          
-                          <div className="sm:col-span-2">
-                            <Badge variant="outline" className={`text-xs w-fit ${locationCategoryStyles}`}>
-                              {locationJob.category}
-                            </Badge>
-                          </div>
-                          
-                          <div className="sm:col-span-1 sm:text-right">
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              className="hover:bg-gray-100 px-2 text-xs w-full sm:w-auto"
-                            >
-                              View
-                            </Button>
-                          </div>
                         </div>
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-                
-                {sameLocationJobs.length > visibleJobs && (
-                  <div className="p-4 flex justify-center">
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      onClick={loadMoreJobs}
-                      className="flex items-center gap-2"
-                    >
-                      Show More <ChevronDown className="h-4 w-4" />
-                    </Button>
-                  </div>
-                )}
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div className="text-center py-10">
+                  <p className="text-gray-500">No other jobs found in {job.location}.</p>
+                </div>
+              )}
+              
+              {sameLocationJobs.length > visibleJobs && (
+                <div className="mt-4 mb-2">
+                  <Button 
+                    variant="outline" 
+                    onClick={loadMoreJobs}
+                    className="w-full gap-2"
+                  >
+                    Load More Jobs in {job.location}
+                  </Button>
+                </div>
+              )}
+              
+              <div className="mt-6">
+                <Button variant="outline" className="w-full" asChild>
+                  <Link to="/jobs">View All Jobs</Link>
+                </Button>
               </div>
-            ) : (
-              <div className="p-6 text-center text-gray-500">
-                No other jobs found in {job.location}
-              </div>
-            )}
-            
-            <div className="p-4 sm:p-6 border-t border-gray-100">
-              <Button 
-                variant="outline" 
-                className="w-full"
-                onClick={() => navigate('/jobs')}
-              >
-                Browse All Jobs
-              </Button>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </motion.div>
       </main>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-gray-500 text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
+            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
           </p>
         </div>
       </footer>
