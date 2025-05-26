@@ -36,13 +36,13 @@ export const getJobBySlug = (slug: string): Job | undefined => {
  * Filter jobs based on search query, category, and location
  * @param query Search query string
  * @param category Job category
- * @param location Job location
+ * @param location Job location (can be province, city, or specific location)
  * @returns Filtered array of jobs
  */
 export const filterJobs = (
   query: string = '',
   category?: JobCategory,
-  location?: JobLocation
+  location?: JobLocation | string
 ): Job[] => {
   return jobsData.filter(job => {
     const matchesQuery = query === '' || 
@@ -52,7 +52,20 @@ export const filterJobs = (
     
     const matchesCategory = !category || job.category === category;
     
-    const matchesLocation = !location || job.location === location;
+    let matchesLocation = true;
+    if (location) {
+      // Check if location is a province
+      const citiesInProvince = getCitiesByProvince(location);
+      if (citiesInProvince.length > 0) {
+        // It's a province - check if job is in any city of this province or is nationwide/remote
+        matchesLocation = job.location === 'Nationwide' || 
+                         job.location === 'Remote' || 
+                         citiesInProvince.includes(job.location);
+      } else {
+        // It's a specific location
+        matchesLocation = job.location === location;
+      }
+    }
     
     return matchesQuery && matchesCategory && matchesLocation;
   });
