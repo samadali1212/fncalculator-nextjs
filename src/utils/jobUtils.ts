@@ -377,22 +377,66 @@ export const getApplicationInstructions = (method: ApplicationMethod): string =>
 /**
  * Handle job application based on method type
  * @param method Application method object
+ * @param jobTitle Optional job title for email subject
+ * @param companyName Optional company name for email content
  * @returns Boolean indicating if the application was initiated
  */
-export const handleJobApplication = (method: ApplicationMethod): boolean => {
+export const handleJobApplication = (
+  method: ApplicationMethod, 
+  jobTitle?: string, 
+  companyName?: string
+): boolean => {
   switch(method.type) {
     case 'url':
     case 'form':
-      window.open(method.value, '_blank');
-      return true;
+      if (method.value) {
+        window.open(method.value, '_blank', 'noopener,noreferrer');
+        return true;
+      }
+      return false;
+      
     case 'email':
-      window.location.href = `mailto:${method.value}?subject=Job Application`;
-      return true;
+      if (method.value) {
+        // Create a proper mailto link with subject and body
+        const subject = jobTitle && companyName 
+          ? `Application for ${jobTitle} at ${companyName}`
+          : jobTitle 
+            ? `Application for ${jobTitle}`
+            : 'Job Application';
+            
+        const body = jobTitle && companyName
+          ? `Dear Hiring Manager,\n\nI am writing to express my interest in the ${jobTitle} position at ${companyName}.\n\nPlease find my resume attached. I look forward to hearing from you.\n\nBest regards,`
+          : 'Dear Hiring Manager,\n\nI am writing to express my interest in this position.\n\nPlease find my resume attached. I look forward to hearing from you.\n\nBest regards,';
+        
+        const mailtoUrl = `mailto:${method.value}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        try {
+          // Try window.location.href first (works better on desktop)
+          window.location.href = mailtoUrl;
+          return true;
+        } catch (error) {
+          // Fallback to window.open (better for mobile/some browsers)
+          try {
+            window.open(mailtoUrl, '_blank');
+            return true;
+          } catch (fallbackError) {
+            console.error('Failed to open email client:', fallbackError);
+            return false;
+          }
+        }
+      }
+      return false;
+      
     case 'phone':
-      window.location.href = `tel:${method.value}`;
-      return true;
+      if (method.value) {
+        window.location.href = `tel:${method.value}`;
+        return true;
+      }
+      return false;
+      
     case 'other':
       return false; // Requires manual handling
+      
     default:
       return false;
   }
