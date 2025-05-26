@@ -22,7 +22,8 @@ import {
   Info,
   ChevronDown,
   List,
-  Banknote
+  Banknote,
+  Copy
 } from "lucide-react";
 import {
   getJobById,
@@ -122,75 +123,164 @@ const JobDetail = () => {
     }
   };
 
+  // Enhanced email handling function
+  const handleEmailApplication = (email: string, jobTitle: string, company: string) => {
+    const subject = encodeURIComponent(`Application for ${jobTitle} at ${company}`);
+    const body = encodeURIComponent(`Dear Hiring Manager,
+
+I am writing to express my interest in the ${jobTitle} position at ${company}.
+
+Please find my resume attached. I look forward to hearing from you.
+
+Best regards,`);
+    
+    const mailtoUrl = `mailto:${email}?subject=${subject}&body=${body}`;
+    
+    console.log('Attempting to open email client with URL:', mailtoUrl);
+    
+    // Try multiple methods to open email client
+    try {
+      // Method 1: Direct window.location
+      window.location.href = mailtoUrl;
+      toast.success("Opening email client...");
+    } catch (error) {
+      console.error('Failed to open email client:', error);
+      
+      // Method 2: Fallback - copy email to clipboard and show instructions
+      navigator.clipboard.writeText(email).then(() => {
+        toast.info(`Email copied to clipboard: ${email}. Please open your email client manually.`);
+      }).catch(() => {
+        toast.info(`Please send your application to: ${email}`);
+      });
+    }
+  };
+
+  // Copy to clipboard function
+  const copyToClipboard = async (text: string, type: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast.success(`${type} copied to clipboard!`);
+    } catch (error) {
+      console.error('Failed to copy to clipboard:', error);
+      toast.error(`Failed to copy ${type.toLowerCase()}. Please try again.`);
+    }
+  };
 
   const loadMoreJobs = () => {
     setVisibleJobs(prev => prev + 5);
   };
 
-  // *** UPDATED: renderApplicationButton uses <a> tags for email/phone ***
-  const renderApplicationButton = (job: Job) => {
-    const { applicationMethod, title, company } = job;
-    const { type, value } = applicationMethod;
+  // Render application section instead of buttons
+  const renderApplicationSection = (job: Job) => {
+    const { applicationMethod } = job;
+    const { type, value, instructions } = applicationMethod;
 
-    let icon;
-    let text;
+    return (
+      <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+          <Briefcase className="h-5 w-5 mr-2 text-blue-600" />
+          How to Apply
+        </h3>
+        
+        <div className="space-y-4">
+          {type === 'email' && (
+            <div className="flex items-center justify-between bg-white p-4 rounded-lg border">
+              <div className="flex items-center">
+                <Mail className="h-5 w-5 text-blue-600 mr-3" />
+                <div>
+                  <p className="text-sm font-medium text-gray-900">Email Application</p>
+                  <p className="text-sm text-gray-600">{value}</p>
+                </div>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => copyToClipboard(value, "Email address")}
+                className="ml-4"
+              >
+                <Copy className="h-4 w-4 mr-1" />
+                Copy
+              </Button>
+            </div>
+          )}
 
-    switch (type) {
-      case 'url':
-      case 'form':
-        icon = <ExternalLink className="h-4 w-4" />;
-        text = "Apply Now";
-        return (
-          <Button
-            className="flex-1 gap-2"
-            onClick={handleApply} // Use JS handler
-          >
-            {text} {icon}
-          </Button>
-        );
+          {type === 'phone' && (
+            <div className="flex items-center justify-between bg-white p-4 rounded-lg border">
+              <div className="flex items-center">
+                <Phone className="h-5 w-5 text-green-600 mr-3" />
+                <div>
+                  <p className="text-sm font-medium text-gray-900">Phone Application</p>
+                  <p className="text-sm text-gray-600">{value}</p>
+                </div>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => copyToClipboard(value, "Phone number")}
+                className="ml-4"
+              >
+                <Copy className="h-4 w-4 mr-1" />
+                Copy
+              </Button>
+            </div>
+          )}
 
-      case 'email':
-        icon = <Mail className="h-4 w-4" />;
-        text = "Apply via Email";
-        const subject = title && company ? `Application for ${title} at ${company}` : title ? `Application for ${title}` : 'Job Application';
-        const body = title && company ? `Dear Hiring Manager,\n\nI am writing to express my interest in the ${title} position at ${company}.\n\nPlease find my resume attached. I look forward to hearing from you.\n\nBest regards,` : 'Dear Hiring Manager,\n\nI am writing to express my interest in this position.\n\nPlease find my resume attached. I look forward to hearing from you.\n\nBest regards,';
-        const mailtoUrl = `mailto:${value}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          {(type === 'url' || type === 'form') && (
+            <div className="flex items-center justify-between bg-white p-4 rounded-lg border">
+              <div className="flex items-center">
+                <ExternalLink className="h-5 w-5 text-purple-600 mr-3" />
+                <div>
+                  <p className="text-sm font-medium text-gray-900">Online Application</p>
+                  <p className="text-sm text-gray-600 break-all">{value}</p>
+                </div>
+              </div>
+              <div className="flex gap-2 ml-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => copyToClipboard(value, "Application URL")}
+                >
+                  <Copy className="h-4 w-4 mr-1" />
+                  Copy
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={() => window.open(value, '_blank')}
+                >
+                  <ExternalLink className="h-4 w-4 mr-1" />
+                  Visit
+                </Button>
+              </div>
+            </div>
+          )}
 
-        return (
-          <Button asChild className="flex-1 gap-2">
-            <a href={mailtoUrl}> {/* Use <a> tag */}
-              {text} {icon}
-            </a>
-          </Button>
-        );
+          {type === 'other' && (
+            <div className="bg-white p-4 rounded-lg border">
+              <div className="flex items-start">
+                <Info className="h-5 w-5 text-orange-600 mr-3 mt-0.5" />
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-gray-900 mb-2">Application Instructions</p>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {instructions || getApplicationInstructions(applicationMethod)}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
-      case 'phone':
-        icon = <Phone className="h-4 w-4" />;
-        text = "Call to Apply";
-        const telUrl = `tel:${value}`;
-        return (
-          <Button asChild className="flex-1 gap-2">
-            <a href={telUrl}> {/* Use <a> tag */}
-              {text} {icon}
-            </a>
-          </Button>
-        );
-
-      case 'other':
-      default:
-        icon = <Info className="h-4 w-4" />;
-        text = "How to Apply";
-        return (
-          <Button
-            className="flex-1 gap-2"
-            onClick={handleApply} // Use JS handler
-          >
-            {text} {icon}
-          </Button>
-        );
-    }
+          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+            <h4 className="text-sm font-medium text-blue-900 mb-2">Application Tips</h4>
+            <ul className="text-xs text-blue-800 space-y-1">
+              <li>• Include a tailored cover letter</li>
+              <li>• Attach your updated resume/CV</li>
+              <li>• Reference the job title in your subject line</li>
+              <li>• Follow up after 1-2 weeks if you don't hear back</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
   };
-  // *** END: UPDATED renderApplicationButton ***
 
   const getCategoryStyles = (category: string) => {
     switch (category.toLowerCase()) {
@@ -407,25 +497,20 @@ const JobDetail = () => {
                 </ul>
 
                 <h3 className="text-sm font-medium text-gray-900 mb-2">Responsibilities</h3>
-                <ul className="list-disc pl-5 mb-4">
+                <ul className="list-disc pl-5 mb-6">
                   {job.responsibilities.map((responsibility, index) => (
                     <li key={index} className="text-sm text-gray-700 mb-1">{responsibility}</li>
                   ))}
                 </ul>
-
-                <h3 className="text-sm font-medium text-gray-900 mb-2">How to Apply</h3>
-                <p className="text-sm text-gray-700">
-                  {job.applicationMethod.instructions || getApplicationInstructions(job.applicationMethod)}
-                </p>
               </div>
 
-              {/* This section now uses the updated renderApplicationButton */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                {renderApplicationButton(job)} {/* <-- Renders the correct button/link */}
+              {/* Replace the button section with application section */}
+              {renderApplicationSection(job)}
 
+              <div className="mt-6">
                 <Button
                   variant="outline"
-                  className="flex-1"
+                  className="w-full"
                   onClick={() => navigate('/jobs')}
                 >
                   Browse More Jobs
