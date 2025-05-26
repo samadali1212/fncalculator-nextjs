@@ -382,11 +382,11 @@ export const getApplicationInstructions = (method: ApplicationMethod): string =>
  * @returns Boolean indicating if the application was initiated
  */
 export const handleJobApplication = (
-  method: ApplicationMethod, 
-  jobTitle?: string, 
+  method: ApplicationMethod,
+  jobTitle?: string,
   companyName?: string
 ): boolean => {
-  switch(method.type) {
+  switch (method.type) {
     case 'url':
     case 'form':
       if (method.value) {
@@ -394,49 +394,49 @@ export const handleJobApplication = (
         return true;
       }
       return false;
-      
+
     case 'email':
       if (method.value) {
         // Create a proper mailto link with subject and body
-        const subject = jobTitle && companyName 
+        const subject = jobTitle && companyName
           ? `Application for ${jobTitle} at ${companyName}`
-          : jobTitle 
+          : jobTitle
             ? `Application for ${jobTitle}`
             : 'Job Application';
-            
+
         const body = jobTitle && companyName
           ? `Dear Hiring Manager,\n\nI am writing to express my interest in the ${jobTitle} position at ${companyName}.\n\nPlease find my resume attached. I look forward to hearing from you.\n\nBest regards,`
           : 'Dear Hiring Manager,\n\nI am writing to express my interest in this position.\n\nPlease find my resume attached. I look forward to hearing from you.\n\nBest regards,';
-        
+
         const mailtoUrl = `mailto:${method.value}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        
+
         try {
-          // Try window.location.href first (works better on desktop)
+          // Use window.location.href. This is the most standard and reliable way
+          // to trigger the default email client for mailto links.
           window.location.href = mailtoUrl;
           return true;
         } catch (error) {
-          // Fallback to window.open (better for mobile/some browsers)
-          try {
-            window.open(mailtoUrl, '_blank');
-            return true;
-          } catch (fallbackError) {
-            console.error('Failed to open email client:', fallbackError);
-            return false;
-          }
+          // If window.location.href fails (which is unlikely for mailto but possible
+          // in very restricted environments), log an error. Avoid window.open.
+          console.error('Failed to open email client via window.location.href:', error);
+          // You might want to display an error message to the user here,
+          // suggesting they manually copy the email address.
+          alert(`Could not open email client. Please send your application to: ${method.value}`);
+          return false;
         }
       }
       return false;
-      
+
     case 'phone':
       if (method.value) {
         window.location.href = `tel:${method.value}`;
         return true;
       }
       return false;
-      
+
     case 'other':
       return false; // Requires manual handling
-      
+
     default:
       return false;
   }
