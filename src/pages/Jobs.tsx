@@ -1,84 +1,62 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Search, MapPin, Briefcase, Filter, ArrowRight } from "lucide-react";
+import { Search, ArrowUpRight, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import AdSense from "../components/AdSense";
-import JobBrowseBySection from "../components/JobBrowseBySection";
+import useIsMobile from "@/hooks/use-mobile";
 import { filterJobs, formatDate, isNewJob, isJobExpiringSoon, getProvinces, getCities } from "../utils/jobUtils";
-import { getUniqueCategories, getUniqueLocations, JobCategory, JobLocation } from "../utils/jobData";
+import { getUniqueCategories, JobCategory, JobLocation } from "../utils/jobData";
+import { usePageReload } from "../hooks/usePageReload";
 
 const Jobs = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<JobCategory | undefined>(undefined);
-  const [selectedLocation, setSelectedLocation] = useState<JobLocation | undefined>(undefined);
-  const [filteredJobs, setFilteredJobs] = useState(filterJobs());
   const [isLoading, setIsLoading] = useState(true);
-  const [activeView, setActiveView] = useState("all");
+  const [displayType, setDisplayType] = useState<"categories" | "provinces" | "cities" | "jobs">("categories");
+  const isMobile = useIsMobile();
+  const { pageKey } = usePageReload();
   
+  // Change initial visible count to 150 jobs
+  const [visibleCount, setVisibleCount] = useState(150);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Reset visible count when search or displayType changes
+  useEffect(() => {
+    setVisibleCount(150);
+  }, [searchQuery, displayType]);
+
   const categories = getUniqueCategories();
-  const locations = getUniqueLocations();
   const provinces = getProvinces();
   const cities = getCities();
-  
-  // Apply filters when search inputs change
-  useEffect(() => {
-    setIsLoading(true);
+  const allJobs = filterJobs();
+
+  const filteredJobs = searchQuery
+    ? allJobs.filter(job => 
+        job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        job.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        job.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        job.category.toLowerCase().includes(searchQuery.toLowerCase()))
+    : allJobs;
     
-    // Simulate loading for better UX
-    const timer = setTimeout(() => {
-      setFilteredJobs(filterJobs(searchQuery, selectedCategory, selectedLocation));
-      setIsLoading(false);
-    }, 300);
-    
-    return () => clearTimeout(timer);
-  }, [searchQuery, selectedCategory, selectedLocation]);
-  
-  // Reset all filters
-  const handleReset = () => {
-    setSearchQuery("");
-    setSelectedCategory(undefined);
-    setSelectedLocation(undefined);
+  const visibleJobs = filteredJobs.slice(0, visibleCount);
+
+  const loadMore = () => {
+    setVisibleCount(prev => prev + 150);
   };
 
-  // Handle category change
-  const handleCategoryChange = (value: string) => {
-    setSelectedCategory(value === "all" ? undefined : value as JobCategory);
-  };
-
-  // Handle location change
-  const handleLocationChange = (value: string) => {
-    setSelectedLocation(value === "all" ? undefined : value as JobLocation);
-  };
-
-  // Handle view toggle change
-  const handleViewChange = (value: string) => {
-    if (value) {
-      setActiveView(value);
-      // Reset filters when changing views
-      setSearchQuery("");
-      setSelectedCategory(undefined);
-      setSelectedLocation(undefined);
-    }
-  };
-
-  // Get data based on active view
-  const getViewData = () => {
-    switch (activeView) {
+  const getDisplayData = () => {
+    switch (displayType) {
       case "categories":
         return categories.map(category => ({
           name: category,
@@ -105,299 +83,257 @@ const Jobs = () => {
     }
   };
 
-  const viewData = getViewData();
+  const displayData = getDisplayData();
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[#f6f6f0] pt-20">
+        <Header />
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex justify-center items-center h-64">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="w-16 h-16 border-4 border-blog-accent border-t-transparent rounded-full animate-spin"
+            ></motion.div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <motion.div
+      key={pageKey}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
-      <SEO 
-        title="Job Listings | Find Your Next Career Opportunity" 
-        description="Browse job opportunities across South Africa. Find positions in technology, finance, healthcare, and more industries."
+      <SEO
+        title="South African Job Listings Directory"
+        description="Find job opportunities across South Africa. Search by category, location, or browse all available positions. Your next career move starts here."
         canonicalUrl="/jobs"
       />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <h1 className="text-3xl font-bold mb-2">Job Listings</h1>
-        <p className="text-gray-600 mb-6">
-          Find your next career opportunity from our curated list of positions across South Africa.
-        </p>
-        
-        {/* Top ad placement */}
-        <div className="my-6">
-          <AdSense slot="9889084223" format="horizontal" className="py-3" />
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+          <div>
+            <h1 className="text-3xl font-bold mb-2">South African Job Listings Directory</h1>
+            <p className="text-gray-600">
+              Find job opportunities across South Africa in one place. Easily search for positions by category, location, or company. Simple, comprehensive, and always up to date.
+            </p>
+          </div>
         </div>
 
-        {/* Toggle Navigation */}
-        <div className="mb-8">
-          <Card className="overflow-visible bg-white shadow-sm">
-            <CardContent className="p-6">
-              <div className="flex flex-col items-center space-y-4">
-                <h2 className="text-xl font-semibold text-center">Browse Jobs By</h2>
-                <ToggleGroup 
-                  type="single" 
-                  value={activeView} 
-                  onValueChange={handleViewChange}
-                  className="grid grid-cols-2 md:grid-cols-4 gap-2 w-full max-w-2xl"
-                >
-                  <ToggleGroupItem 
-                    value="categories" 
-                    className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground h-12"
-                  >
-                    Category/Industry
-                  </ToggleGroupItem>
-                  <ToggleGroupItem 
-                    value="provinces" 
-                    className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground h-12"
-                  >
-                    Province
-                  </ToggleGroupItem>
-                  <ToggleGroupItem 
-                    value="cities" 
-                    className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground h-12"
-                  >
-                    Cities
-                  </ToggleGroupItem>
-                  <ToggleGroupItem 
-                    value="all" 
-                    className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground h-12"
-                  >
-                    All Jobs
-                  </ToggleGroupItem>
-                </ToggleGroup>
+        <div className="container mx-auto px-4 pb-8">
+          <AdSense slot="9889084223" format="auto" className="py-4" />
+        </div>
+
+        <motion.div 
+          className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="relative md:col-span-2">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Search className="h-4 w-4 text-gray-400" />
+            </div>
+            <Input
+              type="text"
+              placeholder={displayType === "jobs" ? "Search by job title, company or location..." : "Search..."}
+              className="pl-10"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          
+          <div className="flex gap-2">
+            <Button
+              variant={displayType === "categories" ? "default" : "outline"}
+              onClick={() => setDisplayType("categories")}
+              size="sm"
+              className="flex-1 text-xs"
+            >
+              Categories
+            </Button>
+            <Button
+              variant={displayType === "provinces" ? "default" : "outline"}
+              onClick={() => setDisplayType("provinces")}
+              size="sm"
+              className="flex-1 text-xs"
+            >
+              Provinces
+            </Button>
+            <Button
+              variant={displayType === "cities" ? "default" : "outline"}
+              onClick={() => setDisplayType("cities")}
+              size="sm"
+              className="flex-1 text-xs"
+            >
+              Cities
+            </Button>
+            <Button
+              variant={displayType === "jobs" ? "default" : "outline"}
+              onClick={() => setDisplayType("jobs")}
+              size="sm"
+              className="flex-1 text-xs"
+            >
+              All Jobs
+            </Button>
+          </div>
+        </motion.div>
+
+        {displayType === "jobs" ? (
+          <div className="bg-white rounded-sm shadow-sm border border-gray-200">
+            <div className="p-4 border-b border-gray-100 bg-gray-50">
+              <div className="grid grid-cols-10 text-xs font-medium text-gray-600">
+                <div className="col-span-1">#</div>
+                <div className="col-span-5 md:col-span-5">Job Title</div>
+                <div className="col-span-3 md:col-span-3">Company</div>
+                <div className="col-span-1 md:col-span-1 text-right">Details</div>
               </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Conditional Content Based on Active View */}
-        {activeView !== "all" ? (
-          /* Browse by Category/Province/City View */
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold mb-4">
-              Browse by {activeView === "categories" ? "Category/Industry" : 
-                       activeView === "provinces" ? "Province" : "City"}
-            </h3>
+            </div>
             
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {viewData.map((item) => (
-                <motion.div
+            {visibleJobs.map((job, index) => (
+              <motion.div 
+                key={job.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className={`group px-4 py-3 ${index !== visibleJobs.length - 1 ? 'border-b border-gray-100' : ''}`}
+              >
+                <div className="grid grid-cols-10 items-center">
+                  <div className="col-span-1 text-sm text-gray-500">
+                    {index + 1}
+                  </div>
+                  
+                  <div className="col-span-5 md:col-span-5">
+                    <div className="flex flex-col">
+                      <Link 
+                        to={`/jobs/${job.id}`}
+                        className="text-[#333] hover:underline text-sm font-medium transition-colors group-hover:text-blog-accent flex items-center"
+                      >
+                        {job.title}
+                        <ArrowUpRight 
+                          className="h-3 w-3 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
+                        />
+                      </Link>
+                      <div className="text-xs text-gray-500">{job.location} • {job.category}</div>
+                    </div>
+                  </div>
+                  
+                  <div className="col-span-3 md:col-span-3">
+                    <span className="px-1.5 py-0.5 bg-gray-100 rounded text-[#666] text-xs">
+                      {job.company}
+                    </span>
+                  </div>
+                  
+                  <div className="col-span-1 md:col-span-1 text-right">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      asChild
+                      className="hover:bg-gray-100 px-2"
+                    >
+                      <Link to={`/jobs/${job.id}`}>
+                        View
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+            
+            {visibleJobs.length === 0 && (
+              <div className="text-center py-10">
+                <p className="text-gray-500 mb-2">No jobs found</p>
+                <Button
+                  variant="link"
+                  onClick={() => {
+                    setSearchQuery("");
+                  }}
+                >
+                  Clear filters
+                </Button>
+              </div>
+            )}
+            
+            {/* Load More Button - only show if there are more jobs to load */}
+            {filteredJobs.length > visibleCount && (
+              <div className="flex justify-center p-4 border-t border-gray-100">
+                <Button 
+                  variant="outline" 
+                  onClick={loadMore}
+                  className="gap-2"
+                >
+                  Load More <ChevronDown className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="bg-white rounded-sm shadow-sm border border-gray-200 mb-6">
+            <div className="overflow-x-auto">
+              <div className="p-4 border-b border-gray-100 bg-gray-50">
+                <div className="grid grid-cols-12 text-xs font-medium text-gray-600">
+                  <div className="col-span-1">#</div>
+                  <div className="col-span-7 md:col-span-8">
+                    {displayType === "categories" ? "Category/Industry" : 
+                     displayType === "provinces" ? "Province" : "City"}
+                  </div>
+                  <div className="col-span-4 md:col-span-3 text-right">Jobs Available</div>
+                </div>
+              </div>
+              
+              {displayData.map((item, index) => (
+                <motion.div 
                   key={item.slug}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className={`group px-4 py-3 ${index !== displayData.length - 1 ? 'border-b border-gray-100' : ''}`}
                 >
-                  <Card className="group hover:shadow-md transition-shadow">
-                    <CardContent className="p-4">
-                      <Link 
-                        to={item.url}
-                        className="block"
-                      >
-                        <div className="flex justify-between items-center">
-                          <div className="flex-1">
-                            <h3 className="font-medium text-lg group-hover:text-primary transition-colors">
-                              {item.name}
-                            </h3>
-                            <p className="text-sm text-gray-600 mt-1">
-                              {item.count} {item.count === 1 ? 'job' : 'jobs'} available
-                            </p>
-                          </div>
-                          <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-primary transition-colors" />
+                  <div className="grid grid-cols-12 items-center">
+                    <div className="col-span-1 text-sm text-gray-500">
+                      {index + 1}
+                    </div>
+                    
+                    <div className="col-span-7 md:col-span-8">
+                      <div className="flex items-center">
+                        <div>
+                          <Link 
+                            to={item.url}
+                            className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
+                          >
+                            {item.name}
+                            <ArrowUpRight 
+                              className="h-3.5 w-3.5 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
+                            />
+                          </Link>
                         </div>
-                      </Link>
-                    </CardContent>
-                  </Card>
+                      </div>
+                    </div>
+                    
+                    <div className="col-span-4 md:col-span-3 text-right">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        asChild
+                        className="hover:bg-gray-100"
+                      >
+                        <Link to={item.url}>
+                          {item.count} {item.count === 1 ? 'job' : 'jobs'}
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
-        ) : (
-          /* All Jobs View - Original Job Listings */
-          <>
-            {/* Browse By Section */}
-            <div className="mb-8">
-              <JobBrowseBySection />
-            </div>
-            
-            {/* Search and Filter Section */}
-            <div className="mb-8">
-              <Card className="overflow-visible bg-transparent shadow-none border-none">
-                <CardContent className="p-0 space-y-4">
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <Search className="h-4 w-4 text-gray-400" />
-                    </div>
-                    <Input
-                      type="text"
-                      placeholder="Search jobs by title, company, or keywords..."
-                      className="pl-10"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                    />
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label className="text-sm text-gray-600 flex items-center gap-1">
-                        <Briefcase className="h-4 w-4" /> Category
-                      </label>
-                      <Select 
-                        value={selectedCategory || "all"}
-                        onValueChange={handleCategoryChange}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="All Categories" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="all">All Categories</SelectItem>
-                          {categories.map((category) => (
-                            <SelectItem key={category} value={category}>{category}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <label className="text-sm text-gray-600 flex items-center gap-1">
-                        <MapPin className="h-4 w-4" /> Location
-                      </label>
-                      <Select 
-                        value={selectedLocation || "all"}
-                        onValueChange={handleLocationChange}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="All Locations" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="all">All Locations</SelectItem>
-                          {locations.map((location) => (
-                            <SelectItem key={location} value={location}>{location}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-end">
-                    <Button 
-                      variant="outline" 
-                      onClick={handleReset}
-                      className="text-sm"
-                      disabled={!searchQuery && !selectedCategory && !selectedLocation}
-                    >
-                      <Filter className="h-4 w-4 mr-1" /> Reset Filters
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-            
-            {/* Job Listings */}
-            <div className="space-y-4">
-              {isLoading ? (
-                // Loading state
-                Array.from({ length: 5 }).map((_, index) => (
-                  <Card key={index} className="animate-pulse">
-                    <CardContent className="p-6">
-                      <div className="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
-                      <div className="h-4 bg-gray-200 rounded w-1/4 mb-2"></div>
-                      <div className="h-4 bg-gray-200 rounded w-1/2 mb-4"></div>
-                      <div className="h-20 bg-gray-200 rounded mb-4"></div>
-                      <div className="flex justify-between items-center">
-                        <div className="h-8 bg-gray-200 rounded w-1/4"></div>
-                        <div className="h-8 bg-gray-200 rounded w-1/6"></div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))
-              ) : filteredJobs.length > 0 ? (
-                filteredJobs.map((job, index) => (
-                  <motion.div
-                    key={job.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                  >
-                    <Card className="group hover:shadow-md transition-shadow">
-                      <CardContent className="p-6">
-                        <div className="flex justify-between items-start mb-2">
-                          <h2 className="text-xl font-semibold group-hover:text-blog-accent">
-                            <Link to={`/jobs/${job.id}`} className="hover:underline">
-                              {job.title}
-                            </Link>
-                          </h2>
-                          <div className="flex gap-1">
-                            {isNewJob(job.postedDate) && (
-                              <Badge className="bg-green-500">New</Badge>
-                            )}
-                            {isJobExpiringSoon(job.deadline) && (
-                              <Badge variant="outline" className="text-orange-500 border-orange-500">
-                                Closing Soon
-                              </Badge>
-                            )}
-                            {job.featured && (
-                              <Badge className="bg-blue-500">Featured</Badge>
-                            )}
-                          </div>
-                        </div>
-                        
-                        <div className="text-gray-600 mb-2">
-                          {job.company}
-                        </div>
-                        
-                        <div className="flex flex-wrap gap-3 mb-4 text-sm">
-                          <span className="flex items-center text-gray-500">
-                            <MapPin className="h-3.5 w-3.5 mr-1" /> {job.location}
-                          </span>
-                          <span className="flex items-center text-gray-500">
-                            <Briefcase className="h-3.5 w-3.5 mr-1" /> {job.category}
-                          </span>
-                          <span className="text-gray-500">
-                            Posted: {formatDate(job.postedDate)}
-                          </span>
-                        </div>
-                        
-                        <p className="text-gray-700 mb-6 line-clamp-2 text-sm">
-                          {job.description}
-                        </p>
-                        
-                        <div className="flex items-center justify-between">
-                          <div className="text-primary-500 font-medium">
-                            {job.salaryRange}
-                          </div>
-                          <Link 
-                            to={`/jobs/${job.id}`}
-                            className="inline-flex items-center text-blog-accent text-sm font-medium hover:underline"
-                          >
-                            View Details <ArrowRight className="ml-1 h-4 w-4" />
-                          </Link>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))
-              ) : (
-                <Card className="text-center p-8">
-                  <CardContent>
-                    <h3 className="text-xl font-medium mb-2">No jobs found</h3>
-                    <p className="text-gray-600 mb-4">
-                      We couldn't find any jobs matching your search criteria.
-                    </p>
-                    <Button onClick={handleReset}>Clear Filters</Button>
-                  </CardContent>
-                </Card>
-              )}
-            </div>
-          </>
         )}
-        
-        {/* Bottom ad placement */}
-        <div className="mt-8 mb-4">
-          <AdSense slot="9889084223" format="horizontal" className="py-3" />
-        </div>
       </main>
 
       <footer className="border-t border-gray-300 py-8 bg-white">
