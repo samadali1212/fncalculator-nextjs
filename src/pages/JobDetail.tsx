@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
@@ -5,10 +6,11 @@ import Header from "../components/Header";
 import SEO from "../components/SEO";
 import AdSense from "../components/AdSense";
 import ShareButton from "../components/ShareButton";
+import CountdownTimer from "../components/CountdownTimer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { 
-  ChevronLeft, 
+  ArrowLeft, 
   MapPin, 
   Calendar, 
   Briefcase, 
@@ -19,7 +21,9 @@ import {
   Mail,
   Phone,
   Info,
-  ChevronDown
+  ChevronDown,
+  List,
+  Banknote
 } from "lucide-react";
 import { 
   getJobById, 
@@ -38,6 +42,16 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+const formatJobDate = (dateString: string): string => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-GB', { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+};
 
 const JobDetail = () => {
   const { jobSlug = "" } = useParams<{ jobSlug: string }>();
@@ -75,9 +89,9 @@ const JobDetail = () => {
         setJob(foundJob);
         // Get related jobs in the same category
         if (foundJob.category) {
-          setRelatedJobs(getRelatedJobs(foundJob.id, foundJob.category, 5));
-          setSameCompanyJobs(getJobsFromSameCompany(foundJob.id, foundJob.company, 5));
-          setSameLocationJobs(getJobsInSameLocation(foundJob.id, foundJob.location, 5));
+          setRelatedJobs(getRelatedJobs(foundJob.id, foundJob.category, 15));
+          setSameCompanyJobs(getJobsFromSameCompany(foundJob.id, foundJob.company, 15));
+          setSameLocationJobs(getJobsInSameLocation(foundJob.id, foundJob.location, 15));
         }
       } else {
         console.error("Job not found with ID:", jobId);
@@ -142,27 +156,64 @@ const JobDetail = () => {
     );
   };
 
+  const getCategoryStyles = (category: string) => {
+    switch(category.toLowerCase()) {
+      case 'technology':
+        return 'bg-blue-100 text-blue-800';
+      case 'healthcare':
+        return 'bg-green-100 text-green-800';
+      case 'finance':
+        return 'bg-purple-100 text-purple-800';
+      case 'education':
+        return 'bg-orange-100 text-orange-800';
+      case 'sales':
+        return 'bg-red-100 text-red-800';
+      case 'marketing':
+        return 'bg-pink-100 text-pink-800';
+      case 'administration':
+        return 'bg-indigo-100 text-indigo-800';
+      case 'customer service':
+        return 'bg-teal-100 text-teal-800';
+      case 'engineering':
+        return 'bg-slate-100 text-slate-800';
+      default:
+        return 'bg-yellow-100 text-yellow-800';
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-[#f6f6f0]">
         <Header />
-        <main className="pt-24 pb-16">
-          <div className="container mx-auto px-4 max-w-3xl">
-            <div className="h-8 mb-6"></div>
-            <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
-              <Skeleton className="h-10 w-3/4 mb-4" />
-              <div className="flex flex-wrap items-center gap-3 mb-6 pb-6 border-b border-gray-200">
-                <Skeleton className="h-5 w-24" />
-                <Skeleton className="h-5 w-20" />
-                <Skeleton className="h-5 w-16" />
+        <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
+          <div className="mb-6 flex flex-col sm:flex-row justify-between gap-4">
+            <Skeleton className="h-10 w-32" />
+          </div>
+          
+          <div className="bg-white rounded-sm shadow-sm border border-gray-200 mb-8">
+            <Skeleton className="h-24 w-full" />
+            <div className="p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <Skeleton className="h-6 w-full" />
+                <Skeleton className="h-6 w-full" />
+                <Skeleton className="h-6 w-full" />
+                <Skeleton className="h-6 w-full" />
               </div>
-              <Skeleton className="h-24 w-full mb-8" />
-              <div className="space-y-4">
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-5/6" />
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-4/5" />
+              <Skeleton className="h-20 w-full mb-6" />
+              <div className="flex justify-between items-center">
+                <Skeleton className="h-6 w-20" />
+                <Skeleton className="h-8 w-24" />
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-sm shadow-sm border border-gray-200 mb-8">
+            <div className="p-6">
+              <Skeleton className="h-6 w-48 mb-4" />
+              <div className="grid grid-cols-4 gap-2 md:gap-4">
+                {[...Array(4)].map((_, i) => (
+                  <Skeleton key={i} className="h-20 w-full" />
+                ))}
               </div>
             </div>
           </div>
@@ -173,28 +224,17 @@ const JobDetail = () => {
 
   if (!job) {
     return (
-      <div className="min-h-screen bg-[#f6f6f0] flex items-center justify-center">
+      <div className="min-h-screen bg-[#f6f6f0]">
         <Header />
-        <main className="pt-24 pb-16 px-4">
-          <div className="container mx-auto max-w-xl">
-            <Card className="shadow-md">
-              <CardContent className="p-6">
-                <h1 className="text-xl font-semibold mb-4">Job Not Found</h1>
-                <p className="mb-6 text-gray-600">
-                  We couldn't find the job you're looking for. It may have been removed or the URL might be incorrect.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Button onClick={() => navigate('/jobs')} className="flex-1">
-                    Browse All Jobs
-                  </Button>
-                  <Button variant="outline" onClick={() => window.history.back()} className="flex-1">
-                    Go Back
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-gray-900 mb-2">Job Not Found</h1>
+            <p className="text-gray-600 mb-4">The job you're looking for doesn't exist.</p>
+            <Button asChild>
+              <a href="/jobs">Back to Jobs</a>
+            </Button>
           </div>
-        </main>
+        </div>
       </div>
     );
   }
@@ -204,6 +244,8 @@ const JobDetail = () => {
   
   // Determine employment type for schema
   const employmentType = mapCategoryToEmploymentType(job.category);
+
+  const categoryStyles = getCategoryStyles(job.category);
 
   return (
     <motion.div
@@ -248,121 +290,145 @@ const JobDetail = () => {
       
       <Header />
       
-      <main className="pt-24 pb-16">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <div className="flex items-center justify-between mb-6">
-            <Link 
-              to="/jobs"
-              className="inline-flex items-center text-sm text-[#000000] hover:underline"
-            >
-              <ChevronLeft className="h-4 w-4 mr-1" />
-              All Jobs
-            </Link>
+      <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-6"
+        >
+          <Link 
+            to="/jobs"
+            className="inline-flex"
+          >
+            <Button variant="ghost" className="pl-0 hover:pl-1 transition-all">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Jobs
+            </Button>
+          </Link>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <div className="bg-white rounded-sm shadow-sm border border-gray-200 mb-8">
+            <div className="p-4 border-b border-gray-100 bg-gray-50">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                  <h1 className="text-3xl font-bold text-gray-900">{job.title}</h1>
+                  <p className="text-gray-600 mt-1">Job Details</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  {isJobExpiringSoon(job.deadline) && (
+                    <Badge variant="outline" className="text-orange-500 border-orange-500">
+                      Closing Soon
+                    </Badge>
+                  )}
+                  <Badge variant="outline" className={`text-xs ${categoryStyles}`}>
+                    {job.category}
+                  </Badge>
+                </div>
+              </div>
+            </div>
             
-            <ShareButton 
-              title={`${job.title} at ${job.company} - Job Details`} 
-              variant="outline"
-            />
+            <div className="p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div className="space-y-4">
+                  <div className="flex items-center text-sm">
+                    <Building className="h-4 w-4 text-gray-500 mr-3" />
+                    <span className="text-gray-700 font-medium">{job.company}</span>
+                  </div>
+                  
+                  <div className="flex items-center text-sm">
+                    <MapPin className="h-4 w-4 text-gray-500 mr-3" />
+                    <span className="text-gray-700">{job.location}</span>
+                  </div>
+                  
+                  <div className="flex items-center text-sm">
+                    <Calendar className="h-4 w-4 text-gray-500 mr-3" />
+                    <span className="text-gray-700">Posted: {formatJobDate(job.postedDate)}</span>
+                  </div>
+                  
+                  <div className="flex items-center text-sm">
+                    <Clock className="h-4 w-4 text-gray-500 mr-3" />
+                    <span className="text-gray-700">Deadline: {formatJobDate(job.deadline)}</span>
+                  </div>
+                  
+                  <div className="flex items-center text-sm">
+                    <Banknote className="h-4 w-4 text-gray-500 mr-3" />
+                    <span className="font-medium text-gray-700">{job.salaryRange}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mb-6">
+                <h3 className="text-sm font-medium text-gray-900 mb-2">Job Description</h3>
+                <p className="text-sm text-gray-700 leading-relaxed mb-4">{job.description}</p>
+                
+                <h3 className="text-sm font-medium text-gray-900 mb-2">Requirements</h3>
+                <ul className="list-disc pl-5 mb-4">
+                  {job.requirements.map((requirement, index) => (
+                    <li key={index} className="text-sm text-gray-700 mb-1">{requirement}</li>
+                  ))}
+                </ul>
+                
+                <h3 className="text-sm font-medium text-gray-900 mb-2">Responsibilities</h3>
+                <ul className="list-disc pl-5 mb-4">
+                  {job.responsibilities.map((responsibility, index) => (
+                    <li key={index} className="text-sm text-gray-700 mb-1">{responsibility}</li>
+                  ))}
+                </ul>
+                
+                <h3 className="text-sm font-medium text-gray-900 mb-2">How to Apply</h3>
+                <p className="text-sm text-gray-700">
+                  {job.applicationMethod.instructions || getApplicationInstructions(job.applicationMethod)}
+                </p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                {renderApplicationButton(job)}
+                
+                <Button 
+                  variant="outline" 
+                  className="flex-1"
+                  onClick={() => navigate('/jobs')}
+                >
+                  Browse More Jobs
+                </Button>
+              </div>
+            </div>
           </div>
-          
-          <div className="mb-6">
-            <AdSense slot="9889084223" format="auto" className="py-3" />
-          </div>
-          
-          <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
-            <div className="flex justify-between items-start mb-2">
-              <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-1">
-                {job.title}
-              </h1>
-              
-              {isJobExpiringSoon(job.deadline) && (
-                <Badge variant="outline" className="text-orange-500 border-orange-500">
-                  Closing Soon
-                </Badge>
-              )}
-            </div>
-            
-            <div className="text-xl text-gray-700 mb-6 flex items-center">
-              <Building className="h-5 w-5 mr-2 text-[#666]" />
-              {job.company}
-            </div>
-            
-            <div className="flex flex-wrap items-center gap-4 text-sm text-[#666] mb-6 pb-6 border-b border-gray-200">
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-8"
+        >
+          <CountdownTimer targetDate={job.deadline} />
+        </motion.div>
+        
+        <div className="mb-8">
+          <AdSense slot="9889084223" format="auto" className="py-3" />
+        </div>
+        
+        {/* Related Jobs Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <div className="bg-white rounded-sm shadow-sm border border-gray-200">
+            <div className="p-4 border-b border-gray-100 bg-gray-50">
               <div className="flex items-center">
-                <MapPin className="h-4 w-4 mr-1 text-[#999]" />
-                <span>{job.location}</span>
+                <List className="h-5 w-5 text-blog-accent mr-2" />
+                <h2 className="text-xl font-semibold text-blog-accent">Related Jobs</h2>
               </div>
-              
-              <div className="flex items-center">
-                <Briefcase className="h-4 w-4 mr-1 text-[#999]" />
-                <span>{job.category}</span>
-              </div>
-              
-              <div className="flex items-center">
-                <Calendar className="h-4 w-4 mr-1 text-[#999]" />
-                <span>Posted: {formatDate(job.postedDate)}</span>
-              </div>
-              
-              <div className="flex items-center">
-                <Clock className="h-4 w-4 mr-1 text-[#999]" />
-                <span>Deadline: {formatDate(job.deadline)}</span>
-              </div>
-            </div>
-            
-            <div className="mb-6 p-4 bg-[#f7f7f7] rounded-md">
-              <h3 className="font-semibold mb-2">Salary Range</h3>
-              <p className="text-lg font-medium text-primary">{job.salaryRange}</p>
-            </div>
-            
-            <div className="prose prose-sm sm:prose max-w-none mb-8">
-              <h2 className="text-xl font-semibold mb-2">Job Description</h2>
-              <p className="text-gray-700 mb-6">
-                {job.description}
-              </p>
-              
-              <h2 className="text-xl font-semibold mb-2">Requirements</h2>
-              <ul className="list-disc pl-5 mb-6">
-                {job.requirements.map((requirement, index) => (
-                  <li key={index} className="text-gray-700 mb-2">{requirement}</li>
-                ))}
-              </ul>
-              
-              <h2 className="text-xl font-semibold mb-2">Responsibilities</h2>
-              <ul className="list-disc pl-5 mb-6">
-                {job.responsibilities.map((responsibility, index) => (
-                  <li key={index} className="text-gray-700 mb-2">{responsibility}</li>
-                ))}
-              </ul>
-              
-              <h2 className="text-xl font-semibold mb-2">How to Apply</h2>
-              <p className="text-gray-700 mb-6">
-                {job.applicationMethod.instructions || getApplicationInstructions(job.applicationMethod)}
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              {renderApplicationButton(job)}
-              
-              <Button 
-                variant="outline" 
-                className="flex-1"
-                onClick={() => navigate('/jobs')}
-              >
-                Browse More Jobs
-              </Button>
-            </div>
-          </article>
-
-          <div className="mb-8">
-            <AdSense slot="9889084223" format="auto" className="py-3" />
-          </div>
-          
-          {/* Related Jobs Section */}
-          <div className="bg-white rounded-md shadow-sm overflow-hidden mb-8">
-            <div className="p-6 sm:p-8 border-b border-gray-100">
-              <h2 className="text-xl font-bold mb-2">Related Jobs</h2>
-              <p className="text-sm text-gray-600">
-                Explore other opportunities that might interest you
+              <p className="text-sm text-gray-500 mt-1">
+                Discover other job opportunities that might interest you
               </p>
             </div>
             
@@ -378,37 +444,58 @@ const JobDetail = () => {
               <TabsContent value="category">
                 {relatedJobs.length > 0 ? (
                   <div className="divide-y divide-gray-100">
-                    {relatedJobs.slice(0, visibleJobs).map((relatedJob, index) => (
-                      <motion.div 
-                        key={relatedJob.id}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.05 }}
-                        className="group p-6"
-                      >
-                        <Link 
-                          to={`/jobs/${relatedJob.id}`}
-                          className="block"
+                    {relatedJobs.slice(0, visibleJobs).map((relatedJob, index) => {
+                      const relatedCategoryStyles = getCategoryStyles(relatedJob.category);
+                      
+                      return (
+                        <motion.div 
+                          key={relatedJob.id}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: index * 0.1 }}
                         >
-                          <h3 className="text-[#333] hover:underline text-lg font-medium transition-colors group-hover:text-blog-accent">
-                            {relatedJob.title}
-                          </h3>
-                          
-                          <div className="flex items-center text-sm text-[#828282] mb-1">
-                            <span>{relatedJob.company}</span>
-                            <span className="mx-2">•</span>
-                            <span>{relatedJob.location}</span>
-                          </div>
-                          
-                          <div className="flex items-center justify-between mt-2">
-                            <span className="text-primary-500 font-medium">
-                              {relatedJob.salaryRange}
-                            </span>
-                            <ArrowUpRight className="h-4 w-4 text-[#999] group-hover:text-blog-accent transition-colors opacity-0 group-hover:opacity-100" />
-                          </div>
-                        </Link>
-                      </motion.div>
-                    ))}
+                          <Link 
+                            to={`/jobs/${relatedJob.id}`}
+                            className="block p-4 hover:bg-gray-50 transition-colors group"
+                          >
+                            <div className="grid grid-cols-10 items-center">
+                              <div className="col-span-1 text-sm text-gray-500">
+                                {index + 1}
+                              </div>
+                              
+                              <div className="col-span-6">
+                                <h4 className="text-sm font-medium text-gray-900 group-hover:text-blog-accent transition-colors">
+                                  {relatedJob.title}
+                                </h4>
+                                <div className="flex items-center mt-1 text-xs text-gray-500 gap-x-4">
+                                  <span>{relatedJob.company}</span>
+                                  <span>{relatedJob.location}</span>
+                                  <span className="font-medium text-blog-accent">
+                                    {relatedJob.salaryRange}
+                                  </span>
+                                </div>
+                              </div>
+                              
+                              <div className="col-span-2">
+                                <Badge variant="outline" className={`text-xs ${relatedCategoryStyles}`}>
+                                  {relatedJob.category}
+                                </Badge>
+                              </div>
+                              
+                              <div className="col-span-1 text-right">
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  className="hover:bg-gray-100 px-2 text-xs"
+                                >
+                                  View
+                                </Button>
+                              </div>
+                            </div>
+                          </Link>
+                        </motion.div>
+                      );
+                    })}
                     
                     {relatedJobs.length > visibleJobs && (
                       <div className="p-4 flex justify-center">
@@ -433,36 +520,58 @@ const JobDetail = () => {
               <TabsContent value="company">
                 {sameCompanyJobs.length > 0 ? (
                   <div className="divide-y divide-gray-100">
-                    {sameCompanyJobs.slice(0, visibleJobs).map((companyJob, index) => (
-                      <motion.div 
-                        key={companyJob.id}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.05 }}
-                        className="group p-6"
-                      >
-                        <Link 
-                          to={`/jobs/${companyJob.id}`}
-                          className="block"
+                    {sameCompanyJobs.slice(0, visibleJobs).map((companyJob, index) => {
+                      const companyCategoryStyles = getCategoryStyles(companyJob.category);
+                      
+                      return (
+                        <motion.div 
+                          key={companyJob.id}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: index * 0.1 }}
                         >
-                          <h3 className="text-[#333] hover:underline text-lg font-medium transition-colors group-hover:text-blog-accent">
-                            {companyJob.title}
-                          </h3>
-                          
-                          <div className="flex items-center text-sm text-[#828282] mb-1">
-                            <Badge variant="secondary" className="mr-2">{companyJob.category}</Badge>
-                            <span>{companyJob.location}</span>
-                          </div>
-                          
-                          <div className="flex items-center justify-between mt-2">
-                            <span className="text-primary-500 font-medium">
-                              {companyJob.salaryRange}
-                            </span>
-                            <ArrowUpRight className="h-4 w-4 text-[#999] group-hover:text-blog-accent transition-colors opacity-0 group-hover:opacity-100" />
-                          </div>
-                        </Link>
-                      </motion.div>
-                    ))}
+                          <Link 
+                            to={`/jobs/${companyJob.id}`}
+                            className="block p-4 hover:bg-gray-50 transition-colors group"
+                          >
+                            <div className="grid grid-cols-10 items-center">
+                              <div className="col-span-1 text-sm text-gray-500">
+                                {index + 1}
+                              </div>
+                              
+                              <div className="col-span-6">
+                                <h4 className="text-sm font-medium text-gray-900 group-hover:text-blog-accent transition-colors">
+                                  {companyJob.title}
+                                </h4>
+                                <div className="flex items-center mt-1 text-xs text-gray-500 gap-x-4">
+                                  <Badge variant="secondary" className="mr-2">{companyJob.category}</Badge>
+                                  <span>{companyJob.location}</span>
+                                  <span className="font-medium text-blog-accent">
+                                    {companyJob.salaryRange}
+                                  </span>
+                                </div>
+                              </div>
+                              
+                              <div className="col-span-2">
+                                <Badge variant="outline" className={`text-xs ${companyCategoryStyles}`}>
+                                  {companyJob.category}
+                                </Badge>
+                              </div>
+                              
+                              <div className="col-span-1 text-right">
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  className="hover:bg-gray-100 px-2 text-xs"
+                                >
+                                  View
+                                </Button>
+                              </div>
+                            </div>
+                          </Link>
+                        </motion.div>
+                      );
+                    })}
                     
                     {sameCompanyJobs.length > visibleJobs && (
                       <div className="p-4 flex justify-center">
@@ -487,37 +596,58 @@ const JobDetail = () => {
               <TabsContent value="location">
                 {sameLocationJobs.length > 0 ? (
                   <div className="divide-y divide-gray-100">
-                    {sameLocationJobs.slice(0, visibleJobs).map((locationJob, index) => (
-                      <motion.div 
-                        key={locationJob.id}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.05 }}
-                        className="group p-6"
-                      >
-                        <Link 
-                          to={`/jobs/${locationJob.id}`}
-                          className="block"
+                    {sameLocationJobs.slice(0, visibleJobs).map((locationJob, index) => {
+                      const locationCategoryStyles = getCategoryStyles(locationJob.category);
+                      
+                      return (
+                        <motion.div 
+                          key={locationJob.id}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: index * 0.1 }}
                         >
-                          <h3 className="text-[#333] hover:underline text-lg font-medium transition-colors group-hover:text-blog-accent">
-                            {locationJob.title}
-                          </h3>
-                          
-                          <div className="flex items-center text-sm text-[#828282] mb-1">
-                            <span>{locationJob.company}</span>
-                            <span className="mx-2">•</span>
-                            <Badge variant="secondary">{locationJob.category}</Badge>
-                          </div>
-                          
-                          <div className="flex items-center justify-between mt-2">
-                            <span className="text-primary-500 font-medium">
-                              {locationJob.salaryRange}
-                            </span>
-                            <ArrowUpRight className="h-4 w-4 text-[#999] group-hover:text-blog-accent transition-colors opacity-0 group-hover:opacity-100" />
-                          </div>
-                        </Link>
-                      </motion.div>
-                    ))}
+                          <Link 
+                            to={`/jobs/${locationJob.id}`}
+                            className="block p-4 hover:bg-gray-50 transition-colors group"
+                          >
+                            <div className="grid grid-cols-10 items-center">
+                              <div className="col-span-1 text-sm text-gray-500">
+                                {index + 1}
+                              </div>
+                              
+                              <div className="col-span-6">
+                                <h4 className="text-sm font-medium text-gray-900 group-hover:text-blog-accent transition-colors">
+                                  {locationJob.title}
+                                </h4>
+                                <div className="flex items-center mt-1 text-xs text-gray-500 gap-x-4">
+                                  <span>{locationJob.company}</span>
+                                  <Badge variant="secondary">{locationJob.category}</Badge>
+                                  <span className="font-medium text-blog-accent">
+                                    {locationJob.salaryRange}
+                                  </span>
+                                </div>
+                              </div>
+                              
+                              <div className="col-span-2">
+                                <Badge variant="outline" className={`text-xs ${locationCategoryStyles}`}>
+                                  {locationJob.category}
+                                </Badge>
+                              </div>
+                              
+                              <div className="col-span-1 text-right">
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  className="hover:bg-gray-100 px-2 text-xs"
+                                >
+                                  View
+                                </Button>
+                              </div>
+                            </div>
+                          </Link>
+                        </motion.div>
+                      );
+                    })}
                     
                     {sameLocationJobs.length > visibleJobs && (
                       <div className="p-4 flex justify-center">
@@ -550,11 +680,11 @@ const JobDetail = () => {
               </Button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </main>
 
-      <footer className="border-t border-gray-300 py-6 bg-white">
-        <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
+      <footer className="border-t border-gray-300 py-8 bg-white">
+        <div className="container mx-auto px-4 md:px-6 text-center text-gray-500 text-sm">
           <p>
             &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
           </p>
