@@ -172,6 +172,7 @@ Best regards,`);
           <Briefcase className="h-5 w-5 mr-2 text-blue-600" />
           How to Apply
         </h3>
+        <p className="text-sm text-gray-700 leading-relaxed mb-4">{job.instructions}</p>
         
         <div className="space-y-4">
           {type === 'email' && (
@@ -371,7 +372,7 @@ Best regards,`);
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO
-        title={`${job.title} at ${job.company} | Job Details`}
+        title={`${job.title} at ${job.company}`}
         description={job.description}
         canonicalUrl={`/jobs/${jobSlug}`}
         jobPosting={{
