@@ -23,7 +23,8 @@ import {
   ChevronDown,
   List,
   Banknote,
-  Copy
+  Copy,
+  FileText
 } from "lucide-react";
 import {
   getJobById,
@@ -165,6 +166,7 @@ Best regards,`);
   const renderApplicationSection = (job: Job) => {
     const { applicationMethod } = job;
     const { type, value, instructions } = applicationMethod;
+    const defaultInstructions = getApplicationInstructions(applicationMethod);
 
     return (
       <div className="bg-gray-50 rounded-lg p-4 sm:p-6 border border-gray-200">
@@ -172,7 +174,6 @@ Best regards,`);
           <Briefcase className="h-5 w-5 mr-2 text-blue-600" />
           How to Apply
         </h3>
-        <p className="text-sm text-gray-700 leading-relaxed mb-4">{job.instructions}</p>
         
         <div className="space-y-4">
           {type === 'email' && (
@@ -255,7 +256,22 @@ Best regards,`);
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-gray-900 mb-2">Application Instructions</p>
                   <p className="text-sm text-gray-600 leading-relaxed break-words">
-                    {instructions || getApplicationInstructions(applicationMethod)}
+                    {instructions || defaultInstructions}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Application Instructions Section - Shows for all application types */}
+          {(instructions && instructions !== defaultInstructions) && (
+            <div className="bg-amber-50 p-3 sm:p-4 rounded-lg border border-amber-200">
+              <div className="flex items-start">
+                <FileText className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-amber-900 mb-2">Special Instructions</p>
+                  <p className="text-sm text-amber-800 leading-relaxed break-words">
+                    {instructions}
                   </p>
                 </div>
               </div>
@@ -372,7 +388,7 @@ Best regards,`);
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO
-        title={`${job.title} at ${job.company}`}
+        title={`${job.title} at ${job.company} | Job Details`}
         description={job.description}
         canonicalUrl={`/jobs/${jobSlug}`}
         jobPosting={{
@@ -634,7 +650,7 @@ Best regards,`);
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-gray-500 text-sm">
           <p>
-            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
+            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
           </p>
         </div>
       </footer>
