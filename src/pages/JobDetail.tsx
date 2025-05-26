@@ -8,6 +8,7 @@ import ShareButton from "../components/ShareButton";
 import CountdownTimer from "../components/CountdownTimer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { usePageReload } from "../hooks/usePageReload";
 import {
   ArrowLeft,
   MapPin,
@@ -59,6 +60,7 @@ const JobDetail = () => {
   const [sameLocationJobs, setSameLocationJobs] = useState<Job[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [visibleJobs, setVisibleJobs] = useState(5);
+  const { pageKey } = usePageReload(); // <--- add this line
 
   useEffect(() => {
     setIsLoading(true);
@@ -381,6 +383,7 @@ Best regards,`);
 
   return (
     <motion.div
+      key={pageKey} // <-- force remount on route change
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
