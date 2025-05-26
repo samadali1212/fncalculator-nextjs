@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link } from "react-router-dom";
@@ -168,7 +167,7 @@ Best regards,`);
     const { type, value, instructions } = applicationMethod;
 
     return (
-      <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+      <div className="bg-gray-50 rounded-lg p-4 sm:p-6 border border-gray-200">
         <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
           <Briefcase className="h-5 w-5 mr-2 text-blue-600" />
           How to Apply
@@ -176,19 +175,19 @@ Best regards,`);
         
         <div className="space-y-4">
           {type === 'email' && (
-            <div className="flex items-center justify-between bg-white p-4 rounded-lg border">
-              <div className="flex items-center">
-                <Mail className="h-5 w-5 text-blue-600 mr-3" />
-                <div>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between bg-white p-3 sm:p-4 rounded-lg border gap-3">
+              <div className="flex items-center min-w-0 flex-1">
+                <Mail className="h-5 w-5 text-blue-600 mr-3 flex-shrink-0" />
+                <div className="min-w-0 flex-1">
                   <p className="text-sm font-medium text-gray-900">Email Application</p>
-                  <p className="text-sm text-gray-600">{value}</p>
+                  <p className="text-sm text-gray-600 break-all">{value}</p>
                 </div>
               </div>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => copyToClipboard(value, "Email address")}
-                className="ml-4"
+                className="w-full sm:w-auto flex-shrink-0"
               >
                 <Copy className="h-4 w-4 mr-1" />
                 Copy
@@ -197,10 +196,10 @@ Best regards,`);
           )}
 
           {type === 'phone' && (
-            <div className="flex items-center justify-between bg-white p-4 rounded-lg border">
-              <div className="flex items-center">
-                <Phone className="h-5 w-5 text-green-600 mr-3" />
-                <div>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between bg-white p-3 sm:p-4 rounded-lg border gap-3">
+              <div className="flex items-center min-w-0 flex-1">
+                <Phone className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
+                <div className="min-w-0 flex-1">
                   <p className="text-sm font-medium text-gray-900">Phone Application</p>
                   <p className="text-sm text-gray-600">{value}</p>
                 </div>
@@ -209,7 +208,7 @@ Best regards,`);
                 variant="outline"
                 size="sm"
                 onClick={() => copyToClipboard(value, "Phone number")}
-                className="ml-4"
+                className="w-full sm:w-auto flex-shrink-0"
               >
                 <Copy className="h-4 w-4 mr-1" />
                 Copy
@@ -218,19 +217,20 @@ Best regards,`);
           )}
 
           {(type === 'url' || type === 'form') && (
-            <div className="flex items-center justify-between bg-white p-4 rounded-lg border">
-              <div className="flex items-center">
-                <ExternalLink className="h-5 w-5 text-purple-600 mr-3" />
-                <div>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between bg-white p-3 sm:p-4 rounded-lg border gap-3">
+              <div className="flex items-center min-w-0 flex-1">
+                <ExternalLink className="h-5 w-5 text-purple-600 mr-3 flex-shrink-0" />
+                <div className="min-w-0 flex-1">
                   <p className="text-sm font-medium text-gray-900">Online Application</p>
                   <p className="text-sm text-gray-600 break-all">{value}</p>
                 </div>
               </div>
-              <div className="flex gap-2 ml-4">
+              <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => copyToClipboard(value, "Application URL")}
+                  className="w-full sm:w-auto"
                 >
                   <Copy className="h-4 w-4 mr-1" />
                   Copy
@@ -238,6 +238,7 @@ Best regards,`);
                 <Button
                   size="sm"
                   onClick={() => window.open(value, '_blank')}
+                  className="w-full sm:w-auto"
                 >
                   <ExternalLink className="h-4 w-4 mr-1" />
                   Visit
@@ -247,12 +248,12 @@ Best regards,`);
           )}
 
           {type === 'other' && (
-            <div className="bg-white p-4 rounded-lg border">
+            <div className="bg-white p-3 sm:p-4 rounded-lg border">
               <div className="flex items-start">
-                <Info className="h-5 w-5 text-orange-600 mr-3 mt-0.5" />
-                <div className="flex-1">
+                <Info className="h-5 w-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" />
+                <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-gray-900 mb-2">Application Instructions</p>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <p className="text-sm text-gray-600 leading-relaxed break-words">
                     {instructions || getApplicationInstructions(applicationMethod)}
                   </p>
                 </div>
@@ -260,7 +261,7 @@ Best regards,`);
             </div>
           )}
 
-          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+          <div className="bg-blue-50 p-3 sm:p-4 rounded-lg border border-blue-200">
             <h4 className="text-sm font-medium text-blue-900 mb-2">Application Tips</h4>
             <ul className="text-xs text-blue-800 space-y-1">
               <li>• Include a tailored cover letter</li>
@@ -431,10 +432,10 @@ Best regards,`);
             <div className="p-4 border-b border-gray-100 bg-gray-50">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
-                  <h1 className="text-3xl font-bold text-gray-900">{job.title}</h1>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">{job.title}</h1>
                   <p className="text-gray-600 mt-1">Job Details</p>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   {isJobExpiringSoon(job.deadline) && (
                     <Badge variant="outline" className="text-orange-500 border-orange-500">
                       Closing Soon
@@ -447,31 +448,31 @@ Best regards,`);
               </div>
             </div>
 
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div className="space-y-4">
                   <div className="flex items-center text-sm">
-                    <Building className="h-4 w-4 text-gray-500 mr-3" />
+                    <Building className="h-4 w-4 text-gray-500 mr-3 flex-shrink-0" />
                     <span className="text-gray-700 font-medium">{job.company}</span>
                   </div>
 
                   <div className="flex items-center text-sm">
-                    <MapPin className="h-4 w-4 text-gray-500 mr-3" />
+                    <MapPin className="h-4 w-4 text-gray-500 mr-3 flex-shrink-0" />
                     <span className="text-gray-700">{job.location}</span>
                   </div>
 
                   <div className="flex items-center text-sm">
-                    <Calendar className="h-4 w-4 text-gray-500 mr-3" />
+                    <Calendar className="h-4 w-4 text-gray-500 mr-3 flex-shrink-0" />
                     <span className="text-gray-700">Posted: {formatJobDate(job.postedDate)}</span>
                   </div>
 
                   <div className="flex items-center text-sm">
-                    <Clock className="h-4 w-4 text-gray-500 mr-3" />
+                    <Clock className="h-4 w-4 text-gray-500 mr-3 flex-shrink-0" />
                     <span className="text-gray-700">Deadline: {formatJobDate(job.deadline)}</span>
                   </div>
 
                   <div className="flex items-center text-sm">
-                    <Banknote className="h-4 w-4 text-gray-500 mr-3" />
+                    <Banknote className="h-4 w-4 text-gray-500 mr-3 flex-shrink-0" />
                     <span className="font-medium text-gray-700">{job.salaryRange}</span>
                   </div>
                 </div>
@@ -556,37 +557,37 @@ Best regards,`);
                     >
                       <Link 
                         to={`/jobs/${locationJob.id}`}
-                        className="block p-4 hover:bg-gray-50 transition-colors group"
+                        className="block p-3 sm:p-4 hover:bg-gray-50 transition-colors group"
                       >
-                        <div className="grid grid-cols-10 items-center">
-                          <div className="col-span-1 text-sm text-gray-500">
+                        <div className="flex flex-col sm:grid sm:grid-cols-10 sm:items-center gap-2 sm:gap-0">
+                          <div className="hidden sm:block sm:col-span-1 text-sm text-gray-500">
                             {index + 1}
                           </div>
                           
-                          <div className="col-span-6">
+                          <div className="sm:col-span-6">
                             <h4 className="text-sm font-medium text-gray-900 group-hover:text-blog-accent transition-colors">
                               {locationJob.title}
                             </h4>
-                            <div className="flex items-center mt-1 text-xs text-gray-500 gap-x-4">
+                            <div className="flex flex-col sm:flex-row sm:items-center mt-1 text-xs text-gray-500 gap-1 sm:gap-x-4">
                               <span>{locationJob.company}</span>
-                              <Badge variant="secondary">{locationJob.category}</Badge>
+                              <Badge variant="secondary" className="w-fit">{locationJob.category}</Badge>
                               <span className="font-medium text-blog-accent">
                                 {locationJob.salaryRange}
                               </span>
                             </div>
                           </div>
                           
-                          <div className="col-span-2">
-                            <Badge variant="outline" className={`text-xs ${locationCategoryStyles}`}>
+                          <div className="sm:col-span-2">
+                            <Badge variant="outline" className={`text-xs w-fit ${locationCategoryStyles}`}>
                               {locationJob.category}
                             </Badge>
                           </div>
                           
-                          <div className="col-span-1 text-right">
+                          <div className="sm:col-span-1 sm:text-right">
                             <Button
                               variant="ghost"
                               size="sm"
-                              className="hover:bg-gray-100 px-2 text-xs"
+                              className="hover:bg-gray-100 px-2 text-xs w-full sm:w-auto"
                             >
                               View
                             </Button>
@@ -616,7 +617,7 @@ Best regards,`);
               </div>
             )}
             
-            <div className="p-6 border-t border-gray-100">
+            <div className="p-4 sm:p-6 border-t border-gray-100">
               <Button 
                 variant="outline" 
                 className="w-full"
