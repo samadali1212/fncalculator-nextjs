@@ -101,18 +101,33 @@ const JobDetail = () => {
     }, 500);
   }, [jobSlug]);
   
-  const handleApply = () => {
-    if (job) {
-      const applied = handleJobApplication(job.applicationMethod);
-      
-      if (applied) {
-        toast.success("Redirecting to application");
-      } else {
-        // For application methods that can't be handled automatically
-        toast.info(job.applicationMethod.instructions || getApplicationInstructions(job.applicationMethod));
+const handleApply = () => {
+  if (job) {
+    const applied = handleJobApplication(job.applicationMethod, job.title, job.company);
+    
+    if (applied) {
+      // Show appropriate success message based on application type
+      switch(job.applicationMethod.type) {
+        case 'email':
+          toast.success("Opening email client with pre-filled application");
+          break;
+        case 'phone':
+          toast.success("Opening phone dialer");
+          break;
+        case 'url':
+        case 'form':
+          toast.success("Redirecting to application page");
+          break;
+        default:
+          toast.success("Application initiated");
       }
+    } else {
+      // For application methods that can't be handled automatically
+      const instructions = job.applicationMethod.instructions || getApplicationInstructions(job.applicationMethod);
+      toast.info(instructions);
     }
-  };
+  }
+};
 
   const loadMoreJobs = () => {
     setVisibleJobs(prev => prev + 5);
