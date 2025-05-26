@@ -131,12 +131,12 @@ const Jobs = () => {
         </div>
 
         <motion.div 
-          className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4"
+          className="mb-6 space-y-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="relative md:col-span-2">
+          <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <Search className="h-4 w-4 text-gray-400" />
             </div>
