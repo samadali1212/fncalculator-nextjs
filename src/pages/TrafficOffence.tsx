@@ -159,6 +159,41 @@ const TrafficOffence = () => {
                   </ul>
                 </div>
 
+                                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">M-Pesa (Vodacom)</h4>
+                  <ul className="text-sm text-gray-700 space-y-1">
+ 	<li>Dial <code>*150*00#</code></li>
+ 	<li>Select <strong>Pay with M-Pesa</strong></li>
+ 	<li>Choose <strong>Pay Bills</strong></li>
+ 	<li>Select <strong>Traffic Fines</strong></li>
+ 	<li>Enter the reference (control) number for the fine</li>
+ 	<li>Input the fine amount</li>
+ 	<li>Enter your PIN and confirm the payment</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Airtel Money</h4>
+                  <ul className="text-sm text-gray-700 space-y-1">
+ 	<li>Dial <code>*150*60#</code></li>
+ 	<li>Select <strong>Pay Bill</strong></li>
+ 	<li>Choose <strong>Traffic Fines</strong></li>
+ 	<li>Enter the fine amount and reference (control) number</li>
+ 	<li>Input your PIN and confirm</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Tigo Pesa / Mixx by Yas</h4>
+                  <ul className="text-sm text-gray-700 space-y-1">
+ 	<li>Dial <code>*150*01#</code></li>
+ 	<li>Select <strong>Pay Bill</strong></li>
+ 	<li>Choose <strong>Traffic Fines</strong></li>
+ 	<li>Enter the fine amount and reference (control) number</li>
+ 	<li>Input your PIN and confirm</li>
+                  </ul>
+                </div>
+
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2">Disputing a Fine</h4>
                   <p className="text-sm text-gray-700">
