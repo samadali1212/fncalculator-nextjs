@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import About from "./pages/About";
 import TrafficOffence from "./pages/TrafficOffence";
-import About from "./pages/NotFound";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
