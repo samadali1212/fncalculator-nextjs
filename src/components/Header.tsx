@@ -27,7 +27,7 @@ const Header = () => {
   }, []);
 
   const menuItems = [
-    { path: "/traffic-offence", label: "Traffic Offence" },
+    { path: "/traffic-offence", label: "Traffic Offence" }
   ];
 
   const isActive = (path: string) => {
