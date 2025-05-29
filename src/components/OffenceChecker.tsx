@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Car, CreditCard, Receipt, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -196,9 +195,30 @@ const OffenceChecker = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="bg-gray-50 rounded-sm p-6 mb-6">
+      {/* Disclaimer */}
+      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-8">
+        <div className="flex items-start">
+          <div className="flex-shrink-0">
+            <svg className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+            </svg>
+          </div>
+          <div className="ml-3">
+            <h3 className="text-sm font-medium text-yellow-800">Disclaimer</h3>
+            <div className="mt-2 text-sm text-yellow-700">
+              <p>
+                This website is not affiliated with the Tanzania Police Force or any government agency. 
+                We are an independent service that helps users check for pending traffic offences using 
+                publicly available data from the Tanzania Transport Management System (TMS).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-6">
+          <TabsList className="grid w-full grid-cols-3 mb-8">
             {searchOptions.map((option) => {
               const IconComponent = option.icon;
               return (
@@ -215,36 +235,39 @@ const OffenceChecker = () => {
           </TabsList>
 
           {searchOptions.map((option) => (
-            <TabsContent key={option.id} value={option.id} className="space-y-4">
+            <TabsContent key={option.id} value={option.id} className="space-y-6">
               <div className="text-center">
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {option.title} Search
                 </h3>
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600">
                   {option.description}
                 </p>
               </div>
 
-              <div className="flex gap-2">
-                <Input
-                  type="text"
-                  placeholder={option.placeholder}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="flex-1 h-12 text-lg"
-                  onKeyPress={(e) => {
-                    if (e.key === 'Enter') {
-                      handleSearch();
-                    }
-                  }}
-                />
+              <div className="max-w-2xl mx-auto space-y-4">
+                <div className="relative">
+                  <Input
+                    type="text"
+                    placeholder={option.placeholder}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full h-14 text-lg border-2 border-gray-200 rounded-lg px-4 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') {
+                        handleSearch();
+                      }
+                    }}
+                  />
+                </div>
+                
                 <Button
                   onClick={handleSearch}
                   disabled={loading}
-                  className="h-12 px-6"
+                  className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
                 >
                   <Search size={20} className="mr-2" />
-                  Search
+                  Search for Offences
                 </Button>
               </div>
             </TabsContent>
