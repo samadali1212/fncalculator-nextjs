@@ -48,7 +48,7 @@ const Header = () => {
           href="/" 
           className="flex items-center gap-2 font-bold text-2xl"
         >
-          <img src="/denilagarilogo.png" alt="Deni La Gari" className="h-6" />
+          <img src="/denilagarilogo.png" alt="Deni La Gari" className="h-5" />
         </a>
 
         {/* Desktop Navigation */}
