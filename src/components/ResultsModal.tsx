@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { X } from 'lucide-react';
+import { X, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 interface ResultsModalProps {
   show: boolean;
@@ -22,187 +23,122 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState('pending');
 
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        onClose();
-      }
-    };
-
-    if (show) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
-    };
-  }, [show, onClose]);
-
-  if (!show) return null;
-
   const getStatusBadge = (status: string) => {
     switch (status.toLowerCase()) {
       case 'pending':
-        return <Badge variant="destructive">Pending</Badge>;
+        return <Badge variant="destructive" className="text-xs">Pending</Badge>;
       case 'paid':
-        return <Badge variant="default" className="bg-green-600">Paid</Badge>;
+        return <Badge variant="default" className="bg-green-600 text-xs">Paid</Badge>;
       default:
-        return <Badge variant="secondary">{status}</Badge>;
+        return <Badge variant="secondary" className="text-xs">{status}</Badge>;
     }
   };
 
-  const getTableHeaders = () => {
-    const baseHeaders = ['#', 'Reference', 'Location', 'Offence', 'Charge', 'Penalty', 'Status', 'Date'];
-    
-    if (searchType === 'vehicle') {
-      return ['#', 'Reference', 'License', 'Location', 'Offence', 'Charge', 'Penalty', 'Status', 'Issued Date'];
-    } else if (searchType === 'license') {
-      return ['#', 'Reference', 'Vehicle', 'Location', 'Offence', 'Charge', 'Penalty', 'Status', 'Issued Date'];
-    } else {
-      return ['#', 'Vehicle', 'License', 'Location', 'Offence', 'Charge', 'Penalty', 'Status', 'Issued Date'];
-    }
-  };
-
-  const renderTableRow = (item: any, index: number) => {
-    const commonData = [
-      index + 1,
-      item.reference || 'N/A',
-      item.location || 'N/A',
-      item.offence || 'N/A',
-      item.charge || 'N/A',
-      item.penalty || 'N/A',
-      getStatusBadge(item.status || 'Unknown'),
-      item.issued_date || item.paydate || 'N/A'
-    ];
-
-    if (searchType === 'vehicle') {
-      return [
-        index + 1,
-        item.reference || 'N/A',
-        item.licence || 'N/A',
-        item.location || 'N/A',
-        item.offence || 'N/A',
-        item.charge || 'N/A',
-        item.penalty || 'N/A',
-        getStatusBadge(item.status || 'Unknown'),
-        item.issued_date || item.paydate || 'N/A'
-      ];
-    } else if (searchType === 'license') {
-      return [
-        index + 1,
-        item.reference || 'N/A',
-        item.vehicle || 'N/A',
-        item.location || 'N/A',
-        item.offence || 'N/A',
-        item.charge || 'N/A',
-        item.penalty || 'N/A',
-        getStatusBadge(item.status || 'Unknown'),
-        item.issued_date || item.paydate || 'N/A'
-      ];
-    } else {
-      return [
-        index + 1,
-        item.vehicle || 'N/A',
-        item.licence || 'N/A',
-        item.location || 'N/A',
-        item.offence || 'N/A',
-        item.charge || 'N/A',
-        item.penalty || 'N/A',
-        getStatusBadge(item.status || 'Unknown'),
-        item.issued_date || item.paydate || 'N/A'
-      ];
-    }
+  const renderOffenceCard = (item: any, index: number) => {
+    return (
+      <Card key={index} className="mb-4">
+        <CardContent className="p-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-sm font-medium text-gray-600">#{item.reference || 'N/A'}</span>
+                {getStatusBadge(item.status || 'Unknown')}
+              </div>
+              <h3 className="font-medium text-gray-900 mb-1">{item.offence || 'N/A'}</h3>
+              <p className="text-sm text-gray-600">{item.location || 'N/A'}</p>
+            </div>
+            <div className="text-right">
+              <div className="text-lg font-semibold text-gray-900">{item.penalty || 'N/A'}</div>
+              <div className="text-sm text-gray-500">{item.issued_date || item.paydate || 'N/A'}</div>
+            </div>
+          </div>
+          {(searchType !== 'vehicle' && item.vehicle) && (
+            <div className="mt-2 text-sm text-gray-600">Vehicle: {item.vehicle}</div>
+          )}
+          {(searchType !== 'license' && (item.licence || item.license)) && (
+            <div className="mt-1 text-sm text-gray-600">License: {item.licence || item.license}</div>
+          )}
+        </CardContent>
+      </Card>
+    );
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="w-full max-w-6xl max-h-[90vh] overflow-hidden bg-white rounded-sm shadow-lg">
-        <div className="bg-gray-800 text-white p-4 flex flex-row items-center justify-between">
-          <h2 className="text-xl font-semibold">
+    <Dialog open={show} onOpenChange={onClose}>
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden">
+        <DialogHeader>
+          <DialogTitle className="text-xl">
             Search Results for {searchType.charAt(0).toUpperCase() + searchType.slice(1)}: {searchQuery}
-          </h2>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onClose}
-            className="text-white hover:bg-white/20"
-          >
-            <X size={20} />
-          </Button>
-        </div>
+          </DialogTitle>
+        </DialogHeader>
         
-        <div className="p-6 overflow-auto max-h-[calc(90vh-120px)]">
-          <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="grid w-full grid-cols-2 mb-6">
-              <TabsTrigger value="pending">Pending Offences</TabsTrigger>
-              <TabsTrigger value="status">
-                {searchType === 'vehicle' ? 'Inspection Status' : 'License Status'}
-              </TabsTrigger>
-            </TabsList>
+        <div className="overflow-auto max-h-[calc(90vh-120px)]">
+          {/* Tab Navigation */}
+          <div className="flex gap-2 mb-6 border-b">
+            <button
+              onClick={() => setActiveTab('pending')}
+              className={`px-4 py-2 font-medium text-sm border-b-2 transition-colors ${
+                activeTab === 'pending'
+                  ? 'border-blue-600 text-blue-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              Pending Offences
+            </button>
+            <button
+              onClick={() => setActiveTab('status')}
+              className={`px-4 py-2 font-medium text-sm border-b-2 transition-colors ${
+                activeTab === 'status'
+                  ? 'border-blue-600 text-blue-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              {searchType === 'vehicle' ? 'Inspection Status' : 'License Status'}
+            </button>
+          </div>
 
-            <TabsContent value="pending">
+          {/* Content */}
+          {activeTab === 'pending' && (
+            <div>
               {data?.pending_transactions && data.pending_transactions.length > 0 ? (
-                <div className="overflow-x-auto">
-                  <table className="w-full border-collapse border border-gray-200 rounded-sm overflow-hidden">
-                    <thead>
-                      <tr className="bg-gray-50">
-                        {getTableHeaders().map((header, index) => (
-                          <th key={index} className="border border-gray-200 px-4 py-3 text-left font-semibold text-gray-700">
-                            {header}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {data.pending_transactions.map((item: any, index: number) => (
-                        <tr key={index} className="hover:bg-gray-50 transition-colors">
-                          {renderTableRow(item, index).map((cell, i) => (
-                            <td key={i} className="border border-gray-200 px-4 py-3 text-sm">
-                              {cell}
-                            </td>
-                          ))}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                <div className="space-y-0">
+                  {data.pending_transactions.map((item: any, index: number) => 
+                    renderOffenceCard(item, index)
+                  )}
                 </div>
               ) : (
-                <div className="text-center py-8">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">No Pending Offences</h3>
-                  <p className="text-gray-600">Great news! No pending offences found for this {searchType}.</p>
-                </div>
+                <Card>
+                  <CardContent className="flex flex-col items-center justify-center py-12">
+                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                      <CheckCircle2 className="w-8 h-8 text-green-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">No Pending Offences</h3>
+                    <p className="text-gray-600 text-center">Great news! No pending offences found for this {searchType}.</p>
+                  </CardContent>
+                </Card>
               )}
-            </TabsContent>
+            </div>
+          )}
 
-            <TabsContent value="status">
-              <div className="text-center py-8">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+          {activeTab === 'status' && (
+            <Card>
+              <CardContent className="flex flex-col items-center justify-center py-12">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                  <AlertCircle className="w-8 h-8 text-blue-600" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-800 mb-2">Status Information</h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 text-center">
                   {searchType === 'vehicle' 
                     ? 'Vehicle inspection status information is not available at this time.'
                     : 'License status information is not available at this time.'
                   }
                 </p>
-              </div>
-            </TabsContent>
-          </Tabs>
+              </CardContent>
+            </Card>
+          )}
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 };
 
