@@ -372,7 +372,7 @@ const TrafficOffence = () => {
       <footer className="border-t border-gray-200 py-8 bg-white mt-16">
         <div className="container mx-auto px-4 md:px-6 text-center text-gray-500 text-sm">
           <p>
-            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
+            &copy; {new Date().getFullYear()} denilagari. All rights reserved.
           </p>
         </div>
       </footer>
