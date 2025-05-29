@@ -18,7 +18,7 @@ const About = () => {
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <div className="bg-white p-6 rounded-sm shadow-sm">
-          <h1 className="text-2xl font-bold mb-4">About MoneyWorth</h1>
+          <h1 className="text-2xl font-bold mb-4">About</h1>
           <div className="prose max-w-none">
  <p>
                 This online tool helps drivers in Tanzania check their traffic violations and outstanding fines. 
