@@ -20,17 +20,27 @@ const About = () => {
         <div className="bg-white p-6 rounded-sm shadow-sm">
           <h1 className="text-2xl font-bold mb-4">About MoneyWorth</h1>
           <div className="prose max-w-none">
-            <p className="mb-4">
-MoneyWorth is your go-to platform for financial insights tailored to South Africans. We provide expert advice, practical tools, and the latest updates on personal finance, investments, and economic trends.
-            </p>
-            <p className="mb-4">
-Our mission is to help individuals and businesses make informed financial decisions. From budgeting and saving to investment strategies and market analysis, we cover essential topics to guide you toward financial success.
-            </p>
-            <p className="mb-4">
-Empower yourself with knowledge—because your money is worth more when managed wisely.
-            </p>
-            <h2 className="text-xl font-semibold mt-6 mb-3">Contact</h2>
-            <p>
+ <p>
+                This online tool helps drivers in Tanzania check their traffic violations and outstanding fines. 
+                You can search using your vehicle registration number, driving license number, or violation reference number.
+              </p>
+              
+              <p>
+                The system shows details about any traffic offences including the type of violation, 
+                date it occurred, fine amount, and payment status. This helps you stay updated on your 
+                driving record and avoid any surprises.
+              </p>
+              
+              <p>
+                Payment can be made through M-Pesa, Airtel Money, Tigo Pesa, or Halotel. The tool also 
+                provides information about traffic rules and safe driving practices to help prevent future violations.
+              </p>
+              
+              <p>
+                Regular checking helps maintain a clean driving record and ensures you're aware of any 
+                fines that need to be paid. This prevents issues when renewing your license or during 
+                traffic stops.
+              </p>
               If you have any questions or would like to get in touch, please email:
               <a href="mailto:contact@blogdomain.com" className="text-[#ff6600] hover:underline ml-1">
                 flavianjn@gmail.com
