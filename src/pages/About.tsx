@@ -41,6 +41,7 @@ const About = () => {
                 fines that need to be paid. This prevents issues when renewing your license or during 
                 traffic stops.
               </p>
+            <p>
               If you have any questions or would like to get in touch, please email:
               <a href="mailto:contact@blogdomain.com" className="text-[#ff6600] hover:underline ml-1">
                 flavianjn@gmail.com
