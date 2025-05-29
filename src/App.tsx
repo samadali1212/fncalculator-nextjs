@@ -16,7 +16,7 @@ import JobDetail from "./pages/JobDetail";
 import JobsByProvince from "./pages/JobsByProvince";
 import JobsByCity from "./pages/JobsByCity";
 import JobsByCategory from "./pages/JobsByCategory";
-import Index from "./pages/TrafficOffence";
+import TrafficOffence from "./pages/TrafficOffence";
 
 const App = () => {
   return (
