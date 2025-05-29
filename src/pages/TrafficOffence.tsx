@@ -257,20 +257,19 @@ const TrafficOffence = () => {
                     <li>Be patient with "dala dalas" and "boda bodas"</li>
                   </ul>
                 </div>
-               <div>
+<div>
 <h4 className="font-semibold text-gray-900 mb-3">Key Information</h4>
-<p className="text-sm text-gray-700">Beyond the personal and vehicle documents, every responsible driver in Tanzania should also be familiar with official materials that guide proper driving. Here’s what’s key:</p>
+<p className="text-sm text-gray-700">Beyond the personal and vehicle documents, every responsible driver in Tanzania should also be familiar with official materials that guide proper driving. Here's what's key:</p>
 <ul className="text-sm text-gray-700 space-y-2">
- 	<li><a href="https://trade.tanzania.go.tz/media/Road%20Traffic%20Act%201973%20(1)_2.pdf"><strong>Road Traffic Act</strong></a> → The main legal framework governing road use, traffic offenses, penalties, and vehicle requirements</li>
- 	<li><a href="https://www.mow.go.tz/uploads/documents/sw-1634716378-A%20Guide%20to%20Traffic%20Signing%202009%20V21.pdf"><strong>Guide to Traffic Signing</strong></a> → A government-issued or approved guide detailing all road signs, markings, and their meanings</li>
- 	<li><strong><a href="https://www.mow.go.tz/uploads/documents/sw-1629711171-NATIONAL%20ROAD%20SAFETY%20POLICY.pdf">National Road Safety Policy</a> </strong>→ A national road safety policy is a critical initiative in the effort to elevate road safety issues to a position of high priority on the national agenda.</li>
- 	<li><a href="https://www.nit.ac.tz/program/defensive-driving-training/"><strong>Defensive Driving Guidelines</strong></a> → Training materials or guides promoting accident prevention and safe driving techniques</li>
- 	<li><strong><a href="https://www.latra.go.tz/uploads/documents/sw-1651936304-THE-TRANSPORT-LICENSING-PUBLIC-SERVICE-VEHICLES-REGULATIONS-2020.pdf">Transport Licensing Regulations (2020)</a></strong> → Covers requirements for public service vehicle operations and licensing.</li>
- 	<li><a href="https://www.nemc.or.tz/uploads/publications/sw-1645446559-Air_Quality_Standards_Regulations_2007.pdf"><strong>Environmental and Emission Standards</strong></a> → Documents explaining compliance with pollution and vehicle emissions rules</li>
+ 	<li><a href="https://trade.tanzania.go.tz/media/Road%20Traffic%20Act%201973%20(1)_2.pdf" target="_blank"><strong>Road Traffic Act</strong></a> → The main legal framework governing road use, traffic offenses, penalties, and vehicle requirements</li>
+ 	<li><a href="https://www.mow.go.tz/uploads/documents/sw-1634716378-A%20Guide%20to%20Traffic%20Signing%202009%20V21.pdf" target="_blank"><strong>Guide to Traffic Signing</strong></a> → A government-issued or approved guide detailing all road signs, markings, and their meanings</li>
+ 	<li><strong><a href="https://www.mow.go.tz/uploads/documents/sw-1629711171-NATIONAL%20ROAD%20SAFETY%20POLICY.pdf" target="_blank">National Road Safety Policy</a> </strong>→ A national road safety policy is a critical initiative in the effort to elevate road safety issues to a position of high priority on the national agenda.</li>
+ 	<li><a href="https://www.nit.ac.tz/program/defensive-driving-training/" target="_blank"><strong>Defensive Driving Guidelines</strong></a> → Training materials or guides promoting accident prevention and safe driving techniques</li>
+ 	<li><strong><a href="https://www.latra.go.tz/uploads/documents/sw-1651936304-THE-TRANSPORT-LICENSING-PUBLIC-SERVICE-VEHICLES-REGULATIONS-2020.pdf" target="_blank">Transport Licensing Regulations (2020)</a></strong> → Covers requirements for public service vehicle operations and licensing.</li>
+ 	<li><a href="https://www.nemc.or.tz/uploads/publications/sw-1645446559-Air_Quality_Standards_Regulations_2007.pdf" target="_blank"><strong>Environmental and Emission Standards</strong></a> → Documents explaining compliance with pollution and vehicle emissions rules</li>
 </ul>
 <p className="text-sm text-gray-700">
-  The Traffic Police Department provides official guidelines on road use, enforcement, fines, and safety campaigns. <a href="https://polisi.go.tz/">Visit Tanzania Police Official Site</a>. </p>
-
+  The Traffic Police Department provides official guidelines on road use, enforcement, fines, and safety campaigns. <a href="https://polisi.go.tz/" target="_blank">Visit Tanzania Police Official Site</a>. </p>
 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-3">Vehicle Maintenance</h4>
