@@ -26,21 +26,21 @@ const OffenceChecker = () => {
       id: 'vehicle',
       icon: Car,
       title: 'Vehicle',
-      placeholder: 'Enter registration number (e.g., T359DTT)',
+      placeholder: 'Enter registration number (e.g., T123ABC)',
       description: 'Search by vehicle registration number'
     },
     {
       id: 'license',
       icon: CreditCard,
       title: 'License',
-      placeholder: 'Enter license number (e.g., 4000453134)',
+      placeholder: 'Enter license number (e.g., 4000123456)',
       description: 'Search by driving license number'
     },
     {
       id: 'reference',
       icon: Receipt,
       title: 'Reference',
-      placeholder: 'Enter reference number (e.g., 9910838966983)',
+      placeholder: 'Enter reference number (e.g., 9912345678903)',
       description: 'Search by offence reference number'
     }
   ];
