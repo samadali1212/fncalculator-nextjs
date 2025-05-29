@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 
@@ -121,11 +120,11 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <Card className="w-full max-w-6xl max-h-[90vh] overflow-hidden">
-        <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white flex flex-row items-center justify-between">
-          <CardTitle className="text-xl">
+      <div className="w-full max-w-6xl max-h-[90vh] overflow-hidden bg-white rounded-sm shadow-lg">
+        <div className="bg-gray-800 text-white p-4 flex flex-row items-center justify-between">
+          <h2 className="text-xl font-semibold">
             Search Results for {searchType.charAt(0).toUpperCase() + searchType.slice(1)}: {searchQuery}
-          </CardTitle>
+          </h2>
           <Button
             variant="ghost"
             size="sm"
@@ -134,9 +133,9 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
           >
             <X size={20} />
           </Button>
-        </CardHeader>
+        </div>
         
-        <CardContent className="p-6 overflow-auto max-h-[calc(90vh-120px)]">
+        <div className="p-6 overflow-auto max-h-[calc(90vh-120px)]">
           <Tabs value={activeTab} onValueChange={setActiveTab}>
             <TabsList className="grid w-full grid-cols-2 mb-6">
               <TabsTrigger value="pending">Pending Offences</TabsTrigger>
@@ -148,7 +147,7 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
             <TabsContent value="pending">
               {data?.pending_transactions && data.pending_transactions.length > 0 ? (
                 <div className="overflow-x-auto">
-                  <table className="w-full border-collapse border border-gray-200 rounded-lg overflow-hidden">
+                  <table className="w-full border-collapse border border-gray-200 rounded-sm overflow-hidden">
                     <thead>
                       <tr className="bg-gray-50">
                         {getTableHeaders().map((header, index) => (
@@ -201,8 +200,8 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
               </div>
             </TabsContent>
           </Tabs>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };

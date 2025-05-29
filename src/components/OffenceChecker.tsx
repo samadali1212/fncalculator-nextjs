@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Car, CreditCard, Receipt, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Swal from 'sweetalert2';
 import ResultsModal from './ResultsModal';
@@ -197,72 +196,67 @@ const OffenceChecker = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <Card className="shadow-xl border-0">
-        <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-t-lg">
-          <CardTitle className="text-2xl text-center">Traffic Offence Search</CardTitle>
-        </CardHeader>
-        <CardContent className="p-6">
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-6">
-              {searchOptions.map((option) => {
-                const IconComponent = option.icon;
-                return (
-                  <TabsTrigger
-                    key={option.id}
-                    value={option.id}
-                    className="flex items-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white"
-                  >
-                    <IconComponent size={16} />
-                    <span className="hidden sm:inline">{option.title}</span>
-                  </TabsTrigger>
-                );
-              })}
-            </TabsList>
+      <div className="bg-gray-50 rounded-sm p-6 mb-6">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-3 mb-6">
+            {searchOptions.map((option) => {
+              const IconComponent = option.icon;
+              return (
+                <TabsTrigger
+                  key={option.id}
+                  value={option.id}
+                  className="flex items-center gap-2"
+                >
+                  <IconComponent size={16} />
+                  <span className="hidden sm:inline">{option.title}</span>
+                </TabsTrigger>
+              );
+            })}
+          </TabsList>
 
-            {searchOptions.map((option) => (
-              <TabsContent key={option.id} value={option.id} className="space-y-4">
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                    {option.title} Search
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    {option.description}
-                  </p>
-                </div>
+          {searchOptions.map((option) => (
+            <TabsContent key={option.id} value={option.id} className="space-y-4">
+              <div className="text-center">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  {option.title} Search
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  {option.description}
+                </p>
+              </div>
 
-                <div className="flex gap-2">
-                  <Input
-                    type="text"
-                    placeholder={option.placeholder}
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="flex-1 h-12 text-lg"
-                    onKeyPress={(e) => {
-                      if (e.key === 'Enter') {
-                        handleSearch();
-                      }
-                    }}
-                  />
-                  <Button
-                    onClick={handleSearch}
-                    disabled={loading}
-                    className="h-12 px-6 bg-blue-600 hover:bg-blue-700 text-white"
-                  >
-                    <Search size={20} className="mr-2" />
-                    Search
-                  </Button>
-                </div>
-              </TabsContent>
-            ))}
-          </Tabs>
+              <div className="flex gap-2">
+                <Input
+                  type="text"
+                  placeholder={option.placeholder}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="flex-1 h-12 text-lg"
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      handleSearch();
+                    }
+                  }}
+                />
+                <Button
+                  onClick={handleSearch}
+                  disabled={loading}
+                  className="h-12 px-6"
+                >
+                  <Search size={20} className="mr-2" />
+                  Search
+                </Button>
+              </div>
+            </TabsContent>
+          ))}
+        </Tabs>
 
-          {loading && (
-            <div className="mt-8">
-              <LoadingSpinner />
-            </div>
-          )}
-        </CardContent>
-      </Card>
+        {loading && (
+          <div className="mt-8">
+            <LoadingSpinner />
+          </div>
+        )}
+      </div>
 
       <ResultsModal
         show={modalVisible}
