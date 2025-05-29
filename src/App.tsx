@@ -29,7 +29,6 @@ const App = () => {
           <Route path="/branch-codes" element={<Navigate to="/" replace />} />
           <Route path="/branch-codes/:slug" element={<BranchCodeDetail />} />
           <Route path="/about" element={<About />} />
-          <Route path="/branch-codes" element={<BranchCodes />} />
           <Route path="/hourly-rates" element={<HourlyRates />} />
           <Route path="/hourly-rates/:rateId" element={<HourlyRateDetail />} />
           <Route path="/tax-calculator" element={<TaxCalculator />} />
