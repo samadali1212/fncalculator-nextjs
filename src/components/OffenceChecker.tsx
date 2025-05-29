@@ -4,6 +4,7 @@ import { Car, CreditCard, Receipt, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Swal from 'sweetalert2';
 import ResultsModal from './ResultsModal';
 import LoadingSpinner from './LoadingSpinner';
@@ -195,94 +196,75 @@ const OffenceChecker = () => {
   const currentOption = searchOptions.find(option => option.id === activeTab);
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="space-y-8">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8 bg-black">
-            {searchOptions.map((option) => {
-              const IconComponent = option.icon;
-              return (
-                <TabsTrigger
-                  key={option.id}
-                  value={option.id}
-                  className="flex items-center gap-2 data-[state=active]:bg-white data-[state=active]:text-black text-white"
-                >
-                  <IconComponent size={16} />
-                  <span className="hidden sm:inline">{option.title}</span>
-                </TabsTrigger>
-              );
-            })}
-          </TabsList>
+    <div className="p-8">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <TabsList className="grid w-full grid-cols-3 mb-8 h-12">
+          {searchOptions.map((option) => {
+            const IconComponent = option.icon;
+            return (
+              <TabsTrigger
+                key={option.id}
+                value={option.id}
+                className="flex items-center gap-2 text-sm font-medium"
+              >
+                <IconComponent size={18} />
+                <span className="hidden sm:inline">{option.title}</span>
+              </TabsTrigger>
+            );
+          })}
+        </TabsList>
 
-          {searchOptions.map((option) => (
-            <TabsContent key={option.id} value={option.id} className="space-y-6">
-              <div className="text-center">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+        {searchOptions.map((option) => (
+          <TabsContent key={option.id} value={option.id} className="space-y-8">
+            <Card className="border-gray-200">
+              <CardHeader className="text-center pb-6">
+                <CardTitle className="text-2xl font-bold text-gray-900 flex items-center justify-center gap-3">
+                  <option.icon size={28} className="text-blue-600" />
                   {option.title} Search
-                </h3>
-                <p className="text-gray-600">
+                </CardTitle>
+                <CardDescription className="text-base text-gray-600 mt-2">
                   {option.description}
-                </p>
-              </div>
-
-              <div className="max-w-2xl mx-auto space-y-4">
-                <div className="relative">
-                  <Input
-                    type="text"
-                    placeholder={option.placeholder}
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full h-12 px-4 py-3 border border-gray-300 rounded-md text-base placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    onKeyPress={(e) => {
-                      if (e.key === 'Enter') {
-                        handleSearch();
-                      }
-                    }}
-                  />
+                </CardDescription>
+              </CardHeader>
+              
+              <CardContent className="space-y-6">
+                <div className="max-w-2xl mx-auto space-y-4">
+                  <div className="space-y-2">
+                    <Input
+                      type="text"
+                      placeholder={option.placeholder}
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="h-12 text-base"
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                          handleSearch();
+                        }
+                      }}
+                    />
+                  </div>
+                  
+                  <Button
+                    onClick={handleSearch}
+                    disabled={loading}
+                    className="w-full h-12 text-base font-semibold"
+                    size="lg"
+                  >
+                    <Search size={20} className="mr-2" />
+                    Search for Offences
+                  </Button>
                 </div>
-                
-                <Button
-                  onClick={handleSearch}
-                  disabled={loading}
-                  className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md transition-colors"
-                >
-                  <Search size={20} className="mr-2" />
-                  Search for Offences
-                </Button>
-              </div>
-            </TabsContent>
-          ))}
-        </Tabs>
 
-        {loading && (
-          <div className="mt-8">
-            <LoadingSpinner />
-          </div>
-        )}
-      </div>
-
-      {/* Disclaimer Section */}
-      <div className="mt-12 pt-8 border-t border-gray-200">
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-          <div className="flex items-start">
-            <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <div className="ml-3">
-              <h3 className="text-sm font-medium text-yellow-800">Disclaimer</h3>
-              <div className="mt-2 text-sm text-yellow-700">
-                <p>
-                  This website is not affiliated with the Tanzania Police Force or any government agency. 
-                  We are an independent service that helps users check for pending traffic offences using 
-                  publicly available data from the Tanzania Transport Management System (TMS).
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                {loading && (
+                  <div className="mt-8">
+                    <LoadingSpinner />
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+        ))}
+      </Tabs>
 
       <ResultsModal
         show={modalVisible}
