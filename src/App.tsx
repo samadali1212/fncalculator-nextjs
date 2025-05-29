@@ -42,7 +42,6 @@ const App = () => {
           
           {/* Loan Calculator Routes with SEO-friendly URLs */}
           <Route path="/loan-calculator" element={<LoanCalculator />} />
-          <Route path="/loan-calculator/element={<TrafficOffence />} />
                 
           {/* Job Listing Routes */}
           <Route path="/jobs" element={<Jobs />} />
