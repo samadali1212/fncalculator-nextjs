@@ -195,35 +195,15 @@ const OffenceChecker = () => {
 
   return (
     <div className="space-y-6">
-      {/* Toggle Buttons - Now above search bar */}
-      <div className="flex flex-wrap gap-2 justify-center">
-        {searchOptions.map((option) => {
-          const IconComponent = option.icon;
-          return (
-            <Button
-              key={option.id}
-              variant={activeTab === option.id ? "default" : "outline"}
-              onClick={() => setActiveTab(option.id)}
-              size="sm"
-              className="flex items-center gap-2 px-4 py-2"
-            >
-              <IconComponent size={16} />
-              <span className="hidden sm:inline">{option.title}</span>
-              <span className="sm:hidden">{option.title.charAt(0)}</span>
-            </Button>
-          );
-        })}
-      </div>
-
       {/* Search Input */}
-      <div className="relative max-w-2xl mx-auto">
+      <div className="relative">
         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <Search className="h-5 w-5 text-gray-400" />
+          <Search className="h-4 w-4 text-gray-400" />
         </div>
         <Input
           type="text"
           placeholder={currentOption?.placeholder || "Enter search term..."}
-          className="pl-10 h-12 text-base w-full"
+          className="pl-10"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onKeyPress={(e) => {
@@ -233,19 +213,36 @@ const OffenceChecker = () => {
           }}
         />
       </div>
+      
+      {/* Toggle Buttons */}
+      <div className="flex gap-2">
+        {searchOptions.map((option) => {
+          const IconComponent = option.icon;
+          return (
+            <Button
+              key={option.id}
+              variant={activeTab === option.id ? "default" : "outline"}
+              onClick={() => setActiveTab(option.id)}
+              size="sm"
+              className="flex-1 text-xs"
+            >
+              <IconComponent size={16} className="mr-1" />
+              {option.title}
+            </Button>
+          );
+        })}
+      </div>
 
       {/* Search Button */}
-      <div className="flex justify-center">
-        <Button
-          onClick={handleSearch}
-          disabled={loading}
-          className="px-8 py-3 h-12 text-base font-medium"
-          size="lg"
-        >
-          <Search size={20} className="mr-2" />
-          Search for Offences
-        </Button>
-      </div>
+      <Button
+        onClick={handleSearch}
+        disabled={loading}
+        className="w-full"
+        size="lg"
+      >
+        <Search size={20} className="mr-2" />
+        Search for Offences
+      </Button>
 
       {loading && (
         <div className="mt-6">
