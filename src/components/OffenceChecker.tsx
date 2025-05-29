@@ -1,8 +1,9 @@
-
 import React, { useState } from 'react';
 import { Car, CreditCard, Receipt, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Swal from 'sweetalert2';
 import ResultsModal from './ResultsModal';
 import LoadingSpinner from './LoadingSpinner';
@@ -26,21 +27,21 @@ const OffenceChecker = () => {
     {
       id: 'vehicle',
       icon: Car,
-      title: 'Vehicle',
+      title: 'Vehicle Registration',
       placeholder: 'Enter registration number (e.g., T359DTT)',
       description: 'Search by vehicle registration number'
     },
     {
       id: 'license',
       icon: CreditCard,
-      title: 'License',
+      title: 'Driving License',
       placeholder: 'Enter license number (e.g., 4000453134)',
       description: 'Search by driving license number'
     },
     {
       id: 'reference',
       icon: Receipt,
-      title: 'Reference',
+      title: 'Reference Number',
       placeholder: 'Enter reference number (e.g., 9910838966983)',
       description: 'Search by offence reference number'
     }
@@ -194,61 +195,73 @@ const OffenceChecker = () => {
   const currentOption = searchOptions.find(option => option.id === activeTab);
 
   return (
-    <div className="space-y-6">
-      {/* Search Input */}
-      <div className="relative">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <Search className="h-4 w-4 text-gray-400" />
-        </div>
-        <Input
-          type="text"
-          placeholder={currentOption?.placeholder || "Enter search term..."}
-          className="pl-10"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          onKeyPress={(e) => {
-            if (e.key === 'Enter') {
-              handleSearch();
-            }
-          }}
-        />
-      </div>
-      
-      {/* Toggle Buttons */}
-      <div className="flex gap-2">
-        {searchOptions.map((option) => {
-          const IconComponent = option.icon;
-          return (
-            <Button
-              key={option.id}
-              variant={activeTab === option.id ? "default" : "outline"}
-              onClick={() => setActiveTab(option.id)}
-              size="sm"
-              className="flex-1 text-xs"
-            >
-              <IconComponent size={16} className="mr-1" />
-              {option.title}
-            </Button>
-          );
-        })}
-      </div>
+    <div className="max-w-4xl mx-auto">
+      <Card className="shadow-xl border-0">
+        <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-t-lg">
+          <CardTitle className="text-2xl text-center">Traffic Offence Search</CardTitle>
+        </CardHeader>
+        <CardContent className="p-6">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+            <TabsList className="grid w-full grid-cols-3 mb-6">
+              {searchOptions.map((option) => {
+                const IconComponent = option.icon;
+                return (
+                  <TabsTrigger
+                    key={option.id}
+                    value={option.id}
+                    className="flex items-center gap-2 data-[state=active]:bg-blue-600 data-[state=active]:text-white"
+                  >
+                    <IconComponent size={16} />
+                    <span className="hidden sm:inline">{option.title}</span>
+                  </TabsTrigger>
+                );
+              })}
+            </TabsList>
 
-      {/* Search Button */}
-      <Button
-        onClick={handleSearch}
-        disabled={loading}
-        className="w-full"
-        size="lg"
-      >
-        <Search size={20} className="mr-2" />
-        Search for Offences
-      </Button>
+            {searchOptions.map((option) => (
+              <TabsContent key={option.id} value={option.id} className="space-y-4">
+                <div className="flex gap-2">
+                  <Input
+                    type="text"
+                    placeholder={option.placeholder}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="flex-1 h-12 text-lg"
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') {
+                        handleSearch();
+                      }
+                    }}
+                  />
+                  <Button
+                    onClick={handleSearch}
+                    disabled={loading}
+                    className="h-12 px-6 bg-blue-600 hover:bg-blue-700 text-white"
+                  >
+                    <Search size={20} className="mr-2" />
+                    Search
+                  </Button>
+                </div>
 
-      {loading && (
-        <div className="mt-6">
-          <LoadingSpinner />
-        </div>
-      )}
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                    {option.title} Search
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    {option.description}
+                  </p>
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
+
+          {loading && (
+            <div className="mt-8">
+              <LoadingSpinner />
+            </div>
+          )}
+        </CardContent>
+      </Card>
 
       <ResultsModal
         show={modalVisible}
