@@ -1,3 +1,4 @@
+
 import SEO from "@/components/SEO";
 
 const About = () => {
@@ -18,30 +19,25 @@ const About = () => {
             
             <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
               <p>
-                Welcome to the Traffic Offence Checker, your reliable tool for checking traffic violations 
-                and maintaining road safety compliance in Tanzania. Our platform provides citizens with 
-                easy and secure access to their traffic violation records, helping promote transparency 
-                and road safety awareness.
+                This online tool helps drivers in Tanzania check their traffic violations and outstanding fines. 
+                You can search using your vehicle registration number, driving license number, or violation reference number.
               </p>
               
               <p>
-                This service allows you to quickly check your traffic offences using your vehicle 
-                registration number, driver's license number, or violation reference number. You can 
-                view detailed information about any outstanding fines, violation dates, and payment 
-                options through various mobile money services available in Tanzania.
+                The system shows details about any traffic offences including the type of violation, 
+                date it occurred, fine amount, and payment status. This helps you stay updated on your 
+                driving record and avoid any surprises.
               </p>
               
               <p>
-                We are committed to supporting Tanzania's road safety initiatives by providing accurate, 
-                up-to-date information about traffic violations. Our secure platform ensures your 
-                personal information remains protected while giving you the transparency you need to 
-                stay compliant with traffic regulations.
+                Payment can be made through M-Pesa, Airtel Money, Tigo Pesa, or Halotel. The tool also 
+                provides information about traffic rules and safe driving practices to help prevent future violations.
               </p>
               
               <p>
-                Whether you're checking for outstanding fines, verifying your driving record, or simply 
-                staying informed about your traffic status, our tool provides a convenient and reliable 
-                solution for all Tanzanian drivers and vehicle owners.
+                Regular checking helps maintain a clean driving record and ensures you're aware of any 
+                fines that need to be paid. This prevents issues when renewing your license or during 
+                traffic stops.
               </p>
             </div>
           </div>
