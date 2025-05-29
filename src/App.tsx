@@ -16,6 +16,7 @@ import JobDetail from "./pages/JobDetail";
 import JobsByProvince from "./pages/JobsByProvince";
 import JobsByCity from "./pages/JobsByCity";
 import JobsByCategory from "./pages/JobsByCategory";
+import Index from "./pages/TrafficOffence";
 
 const App = () => {
   return (
@@ -37,10 +38,11 @@ const App = () => {
           <Route path="/tax-calculator/monthly/:incomeId" element={<TaxCalculationDetail />} />
           <Route path="/tax-calculator/yearly/:incomeId" element={<TaxCalculationDetail />} />
           <Route path="/tax-calculator/:incomeId" element={<TaxCalculationDetail />} />
+          <Route path="/traffic-offence" element={<TrafficOffence />} />
           
           {/* Loan Calculator Routes with SEO-friendly URLs */}
           <Route path="/loan-calculator" element={<LoanCalculator />} />
-          <Route path="/loan-calculator/:loanSlug" element={<LoanCalculationDetail />} />
+          <Route path="/loan-calculator/element={<TrafficOffence />} />
                 
           {/* Job Listing Routes */}
           <Route path="/jobs" element={<Jobs />} />
