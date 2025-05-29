@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
@@ -27,16 +26,14 @@ const Header = () => {
   }, []);
 
   const menuItems = [
-    { path: "/traffic-offence", label: "Traffic Offence" }
+    { path: "/", label: "Traffic Offence" },
+    { path: "/about", label: "About" }
   ];
 
   const isActive = (path: string) => {
-    if (path === "/comparison" && location.pathname.startsWith("/compare/")) return true;
-    if (path === "/compare" && location.pathname.startsWith("/compare/")) return true;
-    if (path === "/compare-global" && location.pathname.startsWith("/compare-global/")) return true;
-    if (path === "/compare-salaries" && location.pathname.startsWith("/compare-salaries/")) return true;
-    if (path === "/global-net-worth" && location.pathname.startsWith("/global-")) return true;
-    return location.pathname.startsWith(path);
+    if (path === "/" && location.pathname === "/") return true;
+    if (path !== "/" && location.pathname.startsWith(path)) return true;
+    return false;
   };
 
   return (
