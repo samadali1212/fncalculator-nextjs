@@ -22,6 +22,13 @@ const TrafficOffence = () => {
             with the Tanzania Transport Management System.
           </p>
         </div>
+        <div className="flex-1 flex justify-end">
+              <ShareButton
+                title="Tanzania Traffic Offence Checker"
+                text="Check your traffic violations and fines in Tanzania with this free online tool"
+                className="shadow-sm"
+              />
+        </div>
 
         <OffenceChecker />
 
