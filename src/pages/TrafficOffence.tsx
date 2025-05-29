@@ -15,10 +15,10 @@ const TrafficOffence = () => {
       <div className="container mx-auto px-4 md:px-6 py-8 max-w-4xl">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-2 text-gray-900">
-            Tanzania Traffic Offence Checker
+            Tanzania Traffic Offence Checker (TMS Check)
           </h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Check your vehicle registration, driving license, or reference number for any pending offences
+            Check your vehicle registration, driving license, or reference number for any pending any fines and penalties
             with the Tanzania Transport Management System.
           </p>
         </div>
