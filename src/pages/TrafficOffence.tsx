@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import OffenceChecker from '../components/OffenceChecker';
+import ShareButton from '../components/ShareButton';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown, AlertTriangle, Car, CreditCard, Receipt, Shield, FileText, Phone } from 'lucide-react';
 
@@ -21,6 +22,13 @@ const TrafficOffence = () => {
             Check your vehicle registration, driving license, or reference number for any pending any fines and penalties
             with the Tanzania Transport Management System.
           </p>
+         <div className="flex-1 flex justify-end">
+              <ShareButton
+                title="Tanzania Traffic Offence Checker"
+                text="Check your traffic violations and fines in Tanzania with this free online tool"
+                className="shadow-sm"
+              />
+        </div>
         </div>
 
         <OffenceChecker />
