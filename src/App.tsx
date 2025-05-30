@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import About from "./pages/About";
 import TrafficOffence from "./pages/TrafficOffence";
+import Insurance from "./pages/Insurance";
 import NotFound from "./pages/NotFound";
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/" element={<TrafficOffence />} />
           {/* Ensure salaries path also works and doesn't create duplicate content */}
           <Route path="/traffic-offence" element={<Navigate to="/" replace />} />
+          <Route path="/insurance" element={<Insurance />} />
           <Route path="/about" element={<About />} />
                         
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
