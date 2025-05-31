@@ -1,10 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
-import { X, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { X, AlertCircle, CheckCircle2, CreditCard, Phone, Banknote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 interface ResultsModalProps {
   show: boolean;
@@ -63,6 +63,8 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
     );
   };
 
+  const hasPendingOffences = data?.pending_transactions && data.pending_transactions.length > 0;
+
   return (
     <Dialog open={show} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden">
@@ -85,6 +87,18 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
             >
               Pending Offences
             </button>
+            {hasPendingOffences && (
+              <button
+                onClick={() => setActiveTab('payment')}
+                className={`px-4 py-2 font-medium text-sm border-b-2 transition-colors ${
+                  activeTab === 'payment'
+                    ? 'border-blue-600 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700'
+                }`}
+              >
+                How to Pay
+              </button>
+            )}
             <button
               onClick={() => setActiveTab('status')}
               className={`px-4 py-2 font-medium text-sm border-b-2 transition-colors ${
@@ -100,12 +114,38 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
           {/* Content */}
           {activeTab === 'pending' && (
             <div>
-              {data?.pending_transactions && data.pending_transactions.length > 0 ? (
-                <div className="space-y-0">
-                  {data.pending_transactions.map((item: any, index: number) => 
-                    renderOffenceCard(item, index)
-                  )}
-                </div>
+              {hasPendingOffences ? (
+                <>
+                  <div className="space-y-0">
+                    {data.pending_transactions.map((item: any, index: number) => 
+                      renderOffenceCard(item, index)
+                    )}
+                  </div>
+                  
+                  {/* Quick Payment Reminder */}
+                  <Card className="mt-6 bg-orange-50 border-orange-200">
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                          <CreditCard className="w-5 h-5 text-orange-600" />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-medium text-orange-800">Payment Required</h4>
+                          <p className="text-sm text-orange-700">
+                            You have pending fines that need to be paid. Click the "How to Pay" tab above for detailed payment instructions.
+                          </p>
+                        </div>
+                        <Button 
+                          onClick={() => setActiveTab('payment')}
+                          size="sm"
+                          className="bg-orange-600 hover:bg-orange-700"
+                        >
+                          Payment Guide
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </>
               ) : (
                 <Card>
                   <CardContent className="flex flex-col items-center justify-center py-12">
@@ -117,6 +157,103 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
                   </CardContent>
                 </Card>
               )}
+            </div>
+          )}
+
+          {activeTab === 'payment' && hasPendingOffences && (
+            <div className="space-y-6">
+              {/* Mobile Money Payment Methods */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Phone className="h-5 w-5 text-blue-600" />
+                    Mobile Money Payment Methods
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  {/* M-Pesa */}
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                      <Banknote className="h-4 w-4 text-green-600" />
+                      M-Pesa (Vodacom)
+                    </h4>
+                    <ol className="text-sm text-gray-700 space-y-1 list-decimal list-inside bg-gray-50 p-3 rounded">
+                      <li>Dial <code className="bg-white px-1 rounded">*150*00#</code></li>
+                      <li>Select <strong>Pay with M-Pesa</strong></li>
+                      <li>Choose <strong>Pay Bills</strong></li>
+                      <li>Select <strong>Traffic Fines</strong></li>
+                      <li>Enter the reference (control) number for the fine</li>
+                      <li>Input the fine amount</li>
+                      <li>Enter your PIN and confirm the payment</li>
+                    </ol>
+                  </div>
+
+                  {/* Airtel Money */}
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                      <Banknote className="h-4 w-4 text-red-600" />
+                      Airtel Money
+                    </h4>
+                    <ol className="text-sm text-gray-700 space-y-1 list-decimal list-inside bg-gray-50 p-3 rounded">
+                      <li>Dial <code className="bg-white px-1 rounded">*150*60#</code></li>
+                      <li>Select <strong>Pay Bill</strong></li>
+                      <li>Choose <strong>Traffic Fines</strong></li>
+                      <li>Enter the fine amount and reference (control) number</li>
+                      <li>Input your PIN and confirm</li>
+                    </ol>
+                  </div>
+
+                  {/* Tigo Pesa */}
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                      <Banknote className="h-4 w-4 text-blue-600" />
+                      Tigo Pesa / Mixx by Yas
+                    </h4>
+                    <ol className="text-sm text-gray-700 space-y-1 list-decimal list-inside bg-gray-50 p-3 rounded">
+                      <li>Dial <code className="bg-white px-1 rounded">*150*01#</code></li>
+                      <li>Select <strong>Pay Bill</strong></li>
+                      <li>Choose <strong>Traffic Fines</strong></li>
+                      <li>Enter the fine amount and reference (control) number</li>
+                      <li>Input your PIN and confirm</li>
+                    </ol>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Other Payment Methods */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <CreditCard className="h-5 w-5 text-purple-600" />
+                    Other Payment Methods
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="text-sm text-gray-700 space-y-2">
+                    <li><strong>Bank Deposits:</strong> Visit participating banks with your reference number</li>
+                    <li><strong>Online:</strong> Use government portals like GePG when available</li>
+                    <li><strong>In Person:</strong> Visit designated police stations or revenue authority offices</li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              {/* Important Notes */}
+              <Card className="bg-yellow-50 border-yellow-200">
+                <CardContent className="p-4">
+                  <div className="flex items-start gap-3">
+                    <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5" />
+                    <div>
+                      <h4 className="font-medium text-yellow-800 mb-2">Important Notes</h4>
+                      <ul className="text-sm text-yellow-700 space-y-1">
+                        <li>• Always use the exact reference number shown on your fine</li>
+                        <li>• Keep your payment receipt as proof of payment</li>
+                        <li>• Payment may take up to 24 hours to reflect in the system</li>
+                        <li>• Not paying fines on time may result in increased penalties</li>
+                      </ul>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           )}
 
