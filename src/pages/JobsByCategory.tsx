@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
@@ -18,7 +17,7 @@ import {
   createCategoryPageTitle,
   createCategoryPageDescription,
   getUniqueLocations
-} from "../utils/jobUtils";
+} from "../utils/tanzaniaJobUtils";
 import { Job, JobCategory } from "../utils/jobData";
 
 const JobsByCategory = () => {
@@ -78,9 +77,9 @@ const JobsByCategory = () => {
           </Link>
         </div>
         
-        <h1 className="text-3xl font-bold mb-2">{category} Jobs in South Africa</h1>
+        <h1 className="text-3xl font-bold mb-2">{category} Jobs in Tanzania</h1>
         <p className="text-gray-600 mb-6">
-          Browse {allJobs.length} {category.toLowerCase()} job opportunities across South Africa. Find and apply for the latest vacancies in this field.
+          Browse {allJobs.length} {category.toLowerCase()} job opportunities across Tanzania. Find and apply for the latest vacancies in this field.
         </p>
         
         {/* Locations with jobs in this category */}
@@ -245,16 +244,16 @@ const JobsByCategory = () => {
         
         {/* SEO Content */}
         <div className="mt-12 prose max-w-none">
-          <h2>About {category} Jobs in South Africa</h2>
+          <h2>About {category} Jobs in Tanzania</h2>
           <p>
-            Looking for {category.toLowerCase()} jobs in South Africa? Our job board lists the latest {category.toLowerCase()} 
+            Looking for {category.toLowerCase()} jobs in Tanzania? Our job board lists the latest {category.toLowerCase()} 
             vacancies from top employers across the country. Whether you're an experienced professional or just starting your 
             career in {category.toLowerCase()}, we have opportunities to match your skills and experience level.
           </p>
           <p>
-            {category} roles are in demand across various industries in South Africa. Employers are looking for qualified 
-            candidates with relevant skills and experience. Browse our listings to find positions in Johannesburg, Cape Town, 
-            Durban, Pretoria and other major cities, or explore remote work opportunities that allow you to work from anywhere.
+            {category} roles are in demand across various industries in Tanzania. Employers are looking for qualified 
+            candidates with relevant skills and experience. Browse our listings to find positions in Dar es Salaam, Arusha, 
+            Mwanza, Dodoma and other major cities, or explore remote work opportunities that allow you to work from anywhere.
           </p>
         </div>
       </main>

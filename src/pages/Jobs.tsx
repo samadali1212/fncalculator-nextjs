@@ -9,7 +9,7 @@ import Header from "../components/Header";
 import SEO from "../components/SEO";
 import AdSense from "../components/AdSense";
 import useIsMobile from "@/hooks/use-mobile";
-import { filterJobs, formatDate, isNewJob, isJobExpiringSoon } from "../utils/jobUtils";
+import { filterJobs, formatDate, isNewJob, isJobExpiringSoon } from "../utils/tanzaniaJobUtils";
 import { getUniqueCategories, JobCategory } from "../utils/jobData";
 import { usePageReload } from "../hooks/usePageReload";
 

@@ -5,11 +5,11 @@ export const administrationJobs: Job[] = [
   {
     id: "job-009",
     title: "Office Administrator",
-    company: "Legal Partners",
-    location: "Bloemfontein",
+    company: "Kilimanjaro Legal Associates",
+    location: "Arusha",
     category: "Administration",
-    salaryRange: "R12,000 - R18,000 per month",
-    description: "Legal Partners requires an efficient Office Administrator to maintain office operations and provide administrative support to our legal team.",
+    salaryRange: "TSH 600,000 - 900,000 per month",
+    description: "Kilimanjaro Legal Associates requires an efficient Office Administrator to maintain office operations and provide administrative support to our legal team.",
     requirements: [
       "Diploma in Office Administration or related field",
       "2+ years of administrative experience",
@@ -26,7 +26,7 @@ export const administrationJobs: Job[] = [
     ],
     applicationMethod: {
       type: 'email',
-      value: "hr@legalpartners.co.za",
+      value: "hr@kilimanjarolegal.co.tz",
       instructions: "Email your CV with subject line 'Office Administrator Position'"
     },
     postedDate: "2025-05-25",
