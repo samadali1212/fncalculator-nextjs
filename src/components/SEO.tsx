@@ -68,14 +68,17 @@ const SEO = ({
           address: {
             "@type": "PostalAddress",
             addressLocality: jobPosting.jobLocation.addressLocality,
-            addressRegion: jobPosting.jobLocation.addressRegion || "Tanzania",
-            addressCountry: "Tanzania"
+            addressRegion: "Tanzania",
+            addressCountry: {
+              "@type": "Country",
+              name: "Tanzania"
+            }
           }
         },
         ...(jobPosting.baseSalary && {
           baseSalary: {
             "@type": "MonetaryAmount",
-            currency: "TZS",
+            currency: jobPosting.baseSalary.currency,
             value: {
               "@type": "QuantitativeValue",
               ...(jobPosting.baseSalary.value.minValue && { minValue: jobPosting.baseSalary.value.minValue }),
