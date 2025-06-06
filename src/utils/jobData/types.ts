@@ -3,7 +3,21 @@
  * Job data types for job listings
  */
 
-export type JobLocation = 'Remote' | 'Dar es Salaam' | 'Arusha' | 'Mwanza' | 'Mbeya' | 'Morogoro' | 'Tanga' | 'Dodoma' | 'Moshi' | 'Nationwide';
+export type JobLocation = 
+  | 'Remote' 
+  | 'Dar es Salaam' 
+  | 'Arusha' 
+  | 'Mwanza' 
+  | 'Mbeya' 
+  | 'Morogoro' 
+  | 'Tanga' 
+  | 'Dodoma' 
+  | 'Moshi' 
+  | 'Nationwide'
+  | 'Nkasi District'
+  | 'Mtwara, Tanzania'
+  | 'Dodoma region, Tanzania'
+  | "Chang'ombe, Tanzania";
 
 export type JobCategory = 
   | 'Technology' 
@@ -15,7 +29,12 @@ export type JobCategory =
   | 'Marketing' 
   | 'Customer Service' 
   | 'Administration' 
-  | 'Other';
+  | 'Other'
+  | 'Healthcare/Research'
+  | 'Logistics/Driving'
+  | 'Manufacturing/Engineering'
+  | 'NGO/Community Development'
+  | 'Logistics/Warehouse Operations';
 
 export type ApplicationMethod = {
   type: 'url' | 'email' | 'phone' | 'form' | 'other';
