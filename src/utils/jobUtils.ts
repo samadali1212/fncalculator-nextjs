@@ -1,4 +1,3 @@
-
 import { Job, jobsData, JobCategory, JobLocation, ApplicationMethod } from './jobData';
 import { slugify } from './utils';
 
