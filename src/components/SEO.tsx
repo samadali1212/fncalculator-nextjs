@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
@@ -8,22 +7,6 @@ interface SEOProps {
   ogImage?: string;
   ogType?: "website" | "article";
   twitterCard?: "summary" | "summary_large_image";
-  structuredData?: any;
-  person?: {
-    name: string;
-    netWorth: number;
-    currency: string;
-    occupation: string;
-    description: string;
-    imageUrl?: string;
-  };
-  socialMedia?: {
-    headline: string;
-    articleBody: string;
-    datePublished: string;
-    author: string;
-    url: string;
-  };
   jobPosting?: {
     title: string;
     description: string;
@@ -51,70 +34,19 @@ interface SEOProps {
     applicantLocationRequirements?: string;
     jobLocationType?: string;
   };
-  jobListing?: {
-    listingType: "province" | "city" | "category";
-    name: string;
-    count: number;
-  };
 }
 
 const SEO = ({
-  title = "South African Salary Guide & Career Information",
-  description = "Access South Africa's most comprehensive salary guide. Find average salaries by profession, hourly rates, tax information, and more to help with your career planning.",
+  title = "Tanzania Jobs - Find Latest Job Opportunities",
+  description = "Discover the latest job opportunities across Tanzania. Browse jobs by category, location and apply for positions in Dar es Salaam, Arusha, Mwanza and other cities.",
   canonicalUrl,
   ogImage = "/SalaryList favicon.png", 
   ogType = "website",
   twitterCard = "summary_large_image",
-  person,
-  socialMedia,
-  jobPosting,
-  jobListing
+  jobPosting
 }: SEOProps) => {
   const siteUrl = "https://salarylist.co.za";
   
-  const getStructuredData = () => {
-    if (person) {
-      return {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        name: person.name,
-        description: person.description,
-        image: person.imageUrl || `${siteUrl}/placeholder.svg`,
-        jobTitle: person.occupation,
-        netWorth: {
-          "@type": "MonetaryAmount",
-          currency: person.currency,
-          value: person.netWorth
-        }
-      };
-    }
-    return null;
-  };
-
-  const getSocialMediaPostingSchema = () => {
-    if (socialMedia) {
-      return {
-        "@context": "https://schema.org",
-        "@type": "SocialMediaPosting",
-        headline: socialMedia.headline,
-        articleBody: socialMedia.articleBody,
-        datePublished: socialMedia.datePublished,
-        author: {
-          "@type": "Person",
-          name: socialMedia.author,
-          url: `${siteUrl}/about` // Adding the missing url field for author
-        },
-        url: `${siteUrl}${socialMedia.url}`,
-        sharedContent: {
-          "@type": "WebPage",
-          headline: socialMedia.headline,
-          url: `${siteUrl}${socialMedia.url}`
-        }
-      };
-    }
-    return null;
-  };
-
   const getJobPostingSchema = () => {
     if (jobPosting) {
       return {
@@ -136,7 +68,7 @@ const SEO = ({
             "@type": "PostalAddress",
             addressLocality: jobPosting.jobLocation.addressLocality,
             addressRegion: jobPosting.jobLocation.addressRegion,
-            addressCountry: jobPosting.jobLocation.addressCountry || "South Africa"
+            addressCountry: jobPosting.jobLocation.addressCountry || "Tanzania"
           }
         },
         ...(jobPosting.baseSalary && {
@@ -161,44 +93,6 @@ const SEO = ({
         ...(jobPosting.jobLocationType && {
           jobLocationType: jobPosting.jobLocationType
         })
-      };
-    }
-    return null;
-  };
-
-  const getJobListingSchema = () => {
-    if (jobListing) {
-      let itemListType;
-      let itemListName;
-      
-      switch(jobListing.listingType) {
-        case "province":
-          itemListType = "JobListingsByProvince";
-          itemListName = `Jobs in ${jobListing.name}, South Africa`;
-          break;
-        case "city":
-          itemListType = "JobListingsByCity";
-          itemListName = `Jobs in ${jobListing.name}, South Africa`;
-          break;
-        case "category":
-          itemListType = "JobListingsByCategory"; 
-          itemListName = `${jobListing.name} Jobs in South Africa`;
-          break;
-      }
-      
-      return {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": itemListName,
-        "numberOfItems": jobListing.count,
-        "itemListOrder": "Descending",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "url": `${siteUrl}${canonicalUrl}`
-          }
-        ]
       };
     }
     return null;
@@ -229,28 +123,10 @@ const SEO = ({
       <meta name="twitter:description" content={description} />
       {ogImage && <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />}
 
-      {/* Structured Data */}
-      {person && (
-        <script type="application/ld+json">
-          {JSON.stringify(getStructuredData())}
-        </script>
-      )}
-      
-      {socialMedia && (
-        <script type="application/ld+json">
-          {JSON.stringify(getSocialMediaPostingSchema())}
-        </script>
-      )}
-      
+      {/* Job Posting Structured Data */}
       {jobPosting && (
         <script type="application/ld+json">
           {JSON.stringify(getJobPostingSchema())}
-        </script>
-      )}
-      
-      {jobListing && (
-        <script type="application/ld+json">
-          {JSON.stringify(getJobListingSchema())}
         </script>
       )}
     </Helmet>
