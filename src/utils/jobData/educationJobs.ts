@@ -57,7 +57,7 @@ export const educationJobs: Job[] = [
     "Perform any other duties as assigned by the Supervisor"
   ],
   applicationMethod: {
-    type: 'online',
+    type: 'url',
     value: "https://portal.ajira.go.tz/advert/display_advert/10536",
     instructions: "To submit your application, please follow the provided online link."
   },
@@ -100,7 +100,7 @@ export const educationJobs: Job[] = [
     "Undertake any other duties as directed by the section Head / HOD"
   ],
   applicationMethod: {
-    type: 'online',
+    type: 'url',
     value: "https://apply.workable.com/dangote/j/78E860A0F8/",
     instructions: "Apply directly through the provided online job portal link."
   },
@@ -141,7 +141,7 @@ export const educationJobs: Job[] = [
     "Actively promote gender mainstreaming and inclusivity across all project interventions"
   ],
   applicationMethod: {
-    type: 'online',
+    type: 'url',
     value: "https://krb-xjobs.brassring.com/TGnewUI/Search/Home/HomeWithPreLoad?partnerid=30025&siteid=5750&PageType=searchResults&SearchType=linkquery&LinkID=642#jobDetails=2241913_5750",
     instructions: "Apply through the online application portal using the provided link."
   },
@@ -193,7 +193,7 @@ export const educationJobs: Job[] = [
     "Ensure accuracy and completeness of POS reports"
   ],
   applicationMethod: {
-    type: 'online',
+    type: 'url',
     value: "https://wd1.myworkdaysite.com/en-US/recruiting/abinbev/GHQ/job/TANZANIA-CHANGOMBE/Checker_30083250",
     instructions: "Submit your application directly through the provided online portal link."
   },
