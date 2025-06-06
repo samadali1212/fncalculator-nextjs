@@ -7,6 +7,7 @@
  # Allow crawling of important directories
  User-agent: Googlebot
  Allow: /
+ Allow: /jobs/
 
  User-agent: Bingbot
  Allow: /
