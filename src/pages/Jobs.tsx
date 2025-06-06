@@ -1,26 +1,31 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Search, ArrowUpRight, ChevronDown } from "lucide-react";
+import { Search, MapPin, Building2, Calendar, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import AdSense from "../components/AdSense";
 import useIsMobile from "@/hooks/use-mobile";
 import { filterJobs, formatDate, isNewJob, isJobExpiringSoon } from "../utils/tanzaniaJobUtils";
-import { getUniqueCategories, JobCategory } from "../utils/jobData";
+import { JobCategory } from "../utils/jobData";
 import { usePageReload } from "../hooks/usePageReload";
 
 const Jobs = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<JobCategory | "">("");
   const [isLoading, setIsLoading] = useState(true);
-  const [displayType, setDisplayType] = useState<"categories" | "jobs">("jobs");
   const isMobile = useIsMobile();
   const { pageKey } = usePageReload();
   
-  const [visibleCount, setVisibleCount] = useState(150);
+  const [visibleCount, setVisibleCount] = useState(12);
+
+  // Popular categories
+  const popularCategories: JobCategory[] = ["Technology", "Healthcare", "Education", "Finance", "Engineering"];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -30,41 +35,16 @@ const Jobs = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Reset visible count when search or displayType changes
   useEffect(() => {
-    setVisibleCount(150);
-  }, [searchQuery, displayType]);
+    setVisibleCount(12);
+  }, [searchQuery, selectedCategory]);
 
-  const categories = getUniqueCategories();
-  const allJobs = filterJobs();
-
-  const filteredJobs = searchQuery
-    ? allJobs.filter(job => 
-        job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        job.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        job.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        job.category.toLowerCase().includes(searchQuery.toLowerCase()))
-    : allJobs;
-    
+  const filteredJobs = filterJobs(searchQuery, selectedCategory || undefined);
   const visibleJobs = filteredJobs.slice(0, visibleCount);
 
   const loadMore = () => {
-    setVisibleCount(prev => prev + 150);
+    setVisibleCount(prev => prev + 12);
   };
-
-  const getDisplayData = () => {
-    if (displayType === "categories") {
-      return categories.map(category => ({
-        name: category,
-        count: filterJobs("", category as JobCategory).length,
-        slug: category.toLowerCase().replace(/\s+/g, '-'),
-        url: `/jobs/category/${category.toLowerCase().replace(/\s+/g, '-')}`
-      }));
-    }
-    return [];
-  };
-
-  const displayData = getDisplayData();
 
   if (isLoading) {
     return (
@@ -97,12 +77,12 @@ const Jobs = () => {
       />
       <Header />
       
-      <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+      <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-6xl">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
           <div>
             <h1 className="text-3xl font-bold mb-2">Tanzania Job Listings Directory</h1>
             <p className="text-gray-600">
-              Find job opportunities across Tanzania in one place. Easily search for positions by category, location, or company. Simple, comprehensive, and always up to date.
+              Find job opportunities across Tanzania in one place. Easily search for positions by category, location, or company.
             </p>
           </div>
         </div>
@@ -130,170 +110,147 @@ const Jobs = () => {
             />
           </div>
           
-          <div className="flex gap-2">
+          {/* Popular Categories Toggle */}
+          <div className="flex flex-wrap gap-2">
             <Button
-              variant={displayType === "categories" ? "default" : "outline"}
-              onClick={() => setDisplayType("categories")}
+              variant={selectedCategory === "" ? "default" : "outline"}
+              onClick={() => setSelectedCategory("")}
               size="sm"
-              className="flex-1 text-xs"
-            >
-              Categories
-            </Button>
-            <Button
-              variant={displayType === "jobs" ? "default" : "outline"}
-              onClick={() => setDisplayType("jobs")}
-              size="sm"
-              className="flex-1 text-xs"
             >
               All Jobs
             </Button>
+            {popularCategories.map((category) => (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
+                onClick={() => setSelectedCategory(category)}
+                size="sm"
+              >
+                {category}
+              </Button>
+            ))}
           </div>
         </motion.div>
 
-        {displayType === "jobs" ? (
-          <div className="bg-white rounded-sm shadow-sm border border-gray-200">
-            <div className="p-4 border-b border-gray-100 bg-gray-50">
-              <div className="grid grid-cols-10 text-xs font-medium text-gray-600">
-                <div className="col-span-1">#</div>
-                <div className="col-span-5 md:col-span-5">Job Title</div>
-                <div className="col-span-3 md:col-span-3">Company</div>
-                <div className="col-span-1 md:col-span-1 text-right">Details</div>
-              </div>
-            </div>
-            
-            {visibleJobs.map((job, index) => (
-              <motion.div 
-                key={job.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className={`group px-4 py-3 ${index !== visibleJobs.length - 1 ? 'border-b border-gray-100' : ''}`}
-              >
-                <div className="grid grid-cols-10 items-center">
-                  <div className="col-span-1 text-sm text-gray-500">
-                    {index + 1}
-                  </div>
-                  
-                  <div className="col-span-5 md:col-span-5">
-                    <div className="flex flex-col">
-                      <Link 
-                        to={`/jobs/${job.id}`}
-                        className="text-[#333] hover:underline text-sm font-medium transition-colors group-hover:text-blog-accent flex items-center"
-                      >
-                        {job.title}
-                        <ArrowUpRight 
-                          className="h-3 w-3 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
-                        />
-                      </Link>
-                      <div className="text-xs text-gray-500">{job.location} • {job.category}</div>
-                    </div>
-                  </div>
-                  
-                  <div className="col-span-3 md:col-span-3">
-                    <span className="px-1.5 py-0.5 bg-gray-100 rounded text-[#666] text-xs">
-                      {job.company}
-                    </span>
-                  </div>
-                  
-                  <div className="col-span-1 md:col-span-1 text-right">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      asChild
-                      className="hover:bg-gray-100 px-2"
-                    >
-                      <Link to={`/jobs/${job.id}`}>
-                        View
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-            
-            {visibleJobs.length === 0 && (
-              <div className="text-center py-10">
-                <p className="text-gray-500 mb-2">No jobs found</p>
-                <Button
-                  variant="link"
-                  onClick={() => {
-                    setSearchQuery("");
-                  }}
-                >
-                  Clear filters
-                </Button>
-              </div>
-            )}
-            
-            {/* Load More Button - only show if there are more jobs to load */}
-            {filteredJobs.length > visibleCount && (
-              <div className="flex justify-center p-4 border-t border-gray-100">
-                <Button 
-                  variant="outline" 
-                  onClick={loadMore}
-                  className="gap-2"
-                >
-                  Load More <ChevronDown className="h-4 w-4" />
-                </Button>
-              </div>
-            )}
-          </div>
-        ) : (
-          <div className="bg-white rounded-sm shadow-sm border border-gray-200 mb-6">
-            <div className="overflow-x-auto">
-              <div className="p-4 border-b border-gray-100 bg-gray-50">
-                <div className="grid grid-cols-12 text-xs font-medium text-gray-600">
-                  <div className="col-span-1">#</div>
-                  <div className="col-span-7 md:col-span-8">Category/Industry</div>
-                  <div className="col-span-4 md:col-span-3 text-right">Jobs Available</div>
-                </div>
-              </div>
-              
-              {displayData.map((item, index) => (
-                <motion.div 
-                  key={item.slug}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className={`group px-4 py-3 ${index !== displayData.length - 1 ? 'border-b border-gray-100' : ''}`}
-                >
-                  <div className="grid grid-cols-12 items-center">
-                    <div className="col-span-1 text-sm text-gray-500">
-                      {index + 1}
-                    </div>
-                    
-                    <div className="col-span-7 md:col-span-8">
-                      <div className="flex items-center">
-                        <div>
-                          <Link 
-                            to={item.url}
-                            className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
-                          >
-                            {item.name}
-                            <ArrowUpRight 
-                              className="h-3.5 w-3.5 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
-                            />
-                          </Link>
-                        </div>
+        {/* Jobs Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          {visibleJobs.map((job, index) => (
+            <motion.div
+              key={job.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+            >
+              <Card className="hover:shadow-lg transition-shadow duration-200 h-full">
+                <CardContent className="p-6">
+                  <div className="flex flex-col h-full">
+                    {/* Header with badges */}
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex gap-2">
+                        {isNewJob(job.postedDate) && (
+                          <Badge variant="secondary" className="bg-green-100 text-green-800">
+                            New
+                          </Badge>
+                        )}
+                        {isJobExpiringSoon(job.deadline) && (
+                          <Badge variant="secondary" className="bg-orange-100 text-orange-800">
+                            Urgent
+                          </Badge>
+                        )}
+                        {job.featured && (
+                          <Badge variant="default">
+                            Featured
+                          </Badge>
+                        )}
                       </div>
                     </div>
-                    
-                    <div className="col-span-4 md:col-span-3 text-right">
+
+                    {/* Job Title */}
+                    <Link 
+                      to={`/jobs/${job.id}`}
+                      className="text-lg font-semibold text-gray-900 hover:text-blog-accent transition-colors mb-2 line-clamp-2"
+                    >
+                      {job.title}
+                    </Link>
+
+                    {/* Company and Location */}
+                    <div className="space-y-2 mb-4">
+                      <div className="flex items-center text-gray-600 text-sm">
+                        <Building2 className="h-4 w-4 mr-2" />
+                        {job.company}
+                      </div>
+                      <div className="flex items-center text-gray-600 text-sm">
+                        <MapPin className="h-4 w-4 mr-2" />
+                        {job.location}
+                      </div>
+                    </div>
+
+                    {/* Category and Salary */}
+                    <div className="mb-4">
+                      <Badge variant="outline" className="mb-2">
+                        {job.category}
+                      </Badge>
+                      <p className="text-sm font-medium text-gray-900">
+                        {job.salaryRange}
+                      </p>
+                    </div>
+
+                    {/* Description Preview */}
+                    <p className="text-gray-600 text-sm mb-4 flex-grow line-clamp-3">
+                      {job.description}
+                    </p>
+
+                    {/* Footer */}
+                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                      <div className="flex items-center text-gray-500 text-xs">
+                        <Calendar className="h-3 w-3 mr-1" />
+                        {formatDate(job.postedDate)}
+                      </div>
                       <Button
                         variant="ghost"
                         size="sm"
                         asChild
-                        className="hover:bg-gray-100"
+                        className="text-blog-accent hover:bg-blog-accent hover:text-white"
                       >
-                        <Link to={item.url}>
-                          {item.count} {item.count === 1 ? 'job' : 'jobs'}
+                        <Link to={`/jobs/${job.id}`} className="flex items-center gap-1">
+                          View Details
+                          <ExternalLink className="h-3 w-3" />
                         </Link>
                       </Button>
                     </div>
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* No Jobs Found */}
+        {visibleJobs.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-500 mb-4">No jobs found matching your criteria</p>
+            <Button
+              variant="outline"
+              onClick={() => {
+                setSearchQuery("");
+                setSelectedCategory("");
+              }}
+            >
+              Clear filters
+            </Button>
+          </div>
+        )}
+
+        {/* Load More Button */}
+        {filteredJobs.length > visibleCount && (
+          <div className="flex justify-center">
+            <Button 
+              variant="outline" 
+              onClick={loadMore}
+              className="px-8"
+            >
+              Load More Jobs
+            </Button>
           </div>
         )}
       </main>
