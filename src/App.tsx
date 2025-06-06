@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Jobs from "./pages/Jobs";
 import JobDetail from "./pages/JobDetail";
 import JobsByCategory from "./pages/JobsByCategory";
+import JobsByCity from "./pages/JobsByCity";
 import TrafficOffence from "./pages/TrafficOffence";
 import NotFound from "./pages/NotFound";
 
@@ -23,8 +24,9 @@ const App = () => {
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/:jobSlug" element={<JobDetail />} />
           
-          {/* Job Category Pages */}
+          {/* Job Category and City Pages */}
           <Route path="/jobs/category/:categorySlug" element={<JobsByCategory />} />
+          <Route path="/jobs/city/:citySlug" element={<JobsByCity />} />
                         
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
