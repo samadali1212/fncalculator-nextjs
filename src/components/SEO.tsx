@@ -78,7 +78,7 @@ const SEO = ({
         ...(jobPosting.baseSalary && {
           baseSalary: {
             "@type": "MonetaryAmount",
-            currency: jobPosting.baseSalary.currency,
+            currency: "TZS",
             value: {
               "@type": "QuantitativeValue",
               ...(jobPosting.baseSalary.value.minValue && { minValue: jobPosting.baseSalary.value.minValue }),
