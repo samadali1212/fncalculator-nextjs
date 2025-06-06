@@ -30,5 +30,57 @@ export const administrationJobs: Job[] = [
   postedDate: "2025-06-01",
   deadline: "2025-07-05",
   featured: false
+},
+  {
+  id: "job-015",
+  title: "Raw Materials Controller",
+  company: "AB InBev",
+  location: "Mwanza, Tanzania",
+  category: "Manufacturing",
+  salaryRange: "Not Disclosed",
+  description: "AB InBev is seeking a Raw Materials Controller to foster and maintain a progressive learning environment by delivering effective services across the value chain. This role primarily involves executing and implementing people-focused interventions to enhance performance and morale, with a strong emphasis on raw material management within the manufacturing process.",
+  requirements: [
+    "Preferably a Bachelor's degree in a relevant field",
+    "At least 2-3 years of experience in the manufacturing industry, procurement, or logistics",
+    "Proficiency in PC usage and relevant experience with IBIS/SYSPRO systems",
+    "Understanding of brewing and packaging materials, as well as the brewing and packaging processes, is highly advantageous",
+    "Strong interpersonal and negotiation capabilities",
+    "Aptitude for financial analysis",
+    "Excellent planning and coordination skills",
+    "Ability to perform under pressure with a strong focus on detail and accuracy",
+    "High energy levels",
+    "Effective communication skills across all organizational levels",
+    "Proficiency in problem-solving and performance analysis",
+    "Flexible, innovative, and adaptable mindset"
+  ],
+  responsibilities: [
+    "Contribute to the implementation of the Logistics Pillar and VPO (Voyage to Excellence) initiatives",
+    "Interpret and apply production plans to ensure continuous availability of raw materials",
+    "Maintain high accuracy of stock records in IBIS and SYSPRO systems",
+    "Manage and ensure accuracy of IBIS and SAP master data",
+    "Ensure compliance with Material Requirements Planning (MRP) Key Performance Indicators (KPIs)",
+    "Conduct audits of material stock reconciliation",
+    "Provide essential information to regional, plant, department production planning, divisional planning, and suppliers",
+    "Adhere to relevant audit requirements, including VPO and DPO",
+    "Provide information and actively participate in resolving situational and systemic problems",
+    "Investigate and minimize material transfer losses",
+    "Assist with trials of new materials as required",
+    "Lead and manage team dynamics effectively",
+    "Cultivate and manage relationships with suppliers",
+    "Offer support to the Packaging Manager and Brewing Manager",
+    "Identify and support training and coaching needs",
+    "Ensure adherence to Purchase-to-Pay (PTP) processes and follow up on Goods Receipt/Invoice Receipt (GR/IR)",
+    "Maintain hygiene compliance, 5S standards, and general housekeeping for raw materials storage",
+    "Facilitate the entrenchment of Team Work Practices (TWP)",
+    "Manage associated by-products"
+  ],
+  applicationMethod: {
+    type: 'url',
+    value: "https://wd1.myworkdaysite.com/en-US/recruiting/abinbev/GHQ/job/TANZANIA-MWANZA/Raw-Materials-Controller_30083362",
+    instructions: "Submit your application directly through the provided online job portal link."
+  },
+  postedDate: "2025-06-01",
+  deadline: "2025-06-30",
+  featured: false
 }
 ];
