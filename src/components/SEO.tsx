@@ -1,3 +1,4 @@
+
 import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
@@ -67,14 +68,14 @@ const SEO = ({
           address: {
             "@type": "PostalAddress",
             addressLocality: jobPosting.jobLocation.addressLocality,
-            addressRegion: jobPosting.jobLocation.addressRegion,
-            addressCountry: jobPosting.jobLocation.addressCountry || "Tanzania"
+            addressRegion: jobPosting.jobLocation.addressRegion || "Tanzania",
+            addressCountry: "Tanzania"
           }
         },
         ...(jobPosting.baseSalary && {
           baseSalary: {
             "@type": "MonetaryAmount",
-            currency: jobPosting.baseSalary.currency,
+            currency: "TZS",
             value: {
               "@type": "QuantitativeValue",
               ...(jobPosting.baseSalary.value.minValue && { minValue: jobPosting.baseSalary.value.minValue }),
@@ -84,12 +85,10 @@ const SEO = ({
             }
           }
         }),
-        ...(jobPosting.applicantLocationRequirements && {
-          applicantLocationRequirements: {
-            "@type": "Country",
-            name: jobPosting.applicantLocationRequirements
-          }
-        }),
+        applicantLocationRequirements: {
+          "@type": "Country",
+          name: "Tanzania"
+        },
         ...(jobPosting.jobLocationType && {
           jobLocationType: jobPosting.jobLocationType
         })
