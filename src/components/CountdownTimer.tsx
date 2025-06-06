@@ -96,7 +96,7 @@ const CountdownTimer = ({ targetDate, targetTime = "00:00", onComplete }: Countd
         </div>
       ) : isEventDay && isComplete ? (
         <div className="text-center p-3 bg-green-50 rounded-md border border-green-100">
-          <span className="text-sm font-medium text-green-800">🎉 It's the day of the event! 🎉</span>
+          <span className="text-sm font-medium text-green-800">🎉 It's the last day of the application! 🎉</span>
         </div>
       ) : isEventDay ? (
         <div className="space-y-2">
