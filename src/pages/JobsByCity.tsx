@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
@@ -25,13 +24,22 @@ const JobsByCity = () => {
   const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   
-  // Convert slug back to city name
-  const city = citySlug ? citySlug.split("-").map(word => 
-    word.charAt(0).toUpperCase() + word.slice(1)
-  ).join(" ") as JobLocation : "" as JobLocation;
+  // Convert slug back to city name with proper handling for "Dar es Salaam"
+  const city = citySlug ? (() => {
+    if (citySlug === "dar-es-salaam") {
+      return "Dar es Salaam";
+    }
+    return citySlug.split("-").map(word => 
+      word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(" ");
+  })() as JobLocation : "" as JobLocation;
   
   const categories = getUniqueCategories();
   const allJobs = filterJobs("", undefined, city);
+  
+  console.log("City slug:", citySlug);
+  console.log("Converted city:", city);
+  console.log("All jobs for city:", allJobs);
   
   // Apply filters when search inputs change
   useEffect(() => {
