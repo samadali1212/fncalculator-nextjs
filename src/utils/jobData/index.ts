@@ -1,28 +1,13 @@
 
 import { Job, JobLocation, JobCategory } from './types';
-import { technologyJobs } from './technologyJobs';
-import { financeJobs } from './financeJobs';
-import { healthcareJobs } from './healthcareJobs';
 import { educationJobs } from './educationJobs';
-import { engineeringJobs } from './engineeringJobs';
-import { salesJobs } from './salesJobs';
-import { marketingJobs } from './marketingJobs';
-import { customerServiceJobs } from './customerServiceJobs';
 import { administrationJobs } from './administrationJobs';
-import { otherJobs } from './otherJobs';
 
 // Combine all job data
 export const jobsData: Job[] = [
-  ...technologyJobs,
-  ...financeJobs,
-  ...healthcareJobs,
   ...educationJobs,
-  ...engineeringJobs,
-  ...salesJobs,
-  ...marketingJobs,
-  ...customerServiceJobs,
-  ...administrationJobs,
-  ...otherJobs
+  ...administrationJobs
+
 ];
 
 // Get unique locations from job data
