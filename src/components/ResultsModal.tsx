@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { X, AlertCircle, CheckCircle2, CreditCard, Phone, Banknote, FileText, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -52,7 +53,9 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
               <p className="text-sm text-gray-600">{item.location || 'N/A'}</p>
             </div>
             <div className="text-right">
-              <div className="text-lg font-semibold text-gray-900">{item.penalty || 'N/A'}</div>
+              <div className="text-lg font-semibold text-gray-900">
+                TZS {item.penalty || item.charge || 'N/A'}
+              </div>
               <div className="text-sm text-gray-500">{item.issued_date || item.paydate || 'N/A'}</div>
             </div>
           </div>
@@ -153,6 +156,14 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
   const hasPendingOffences = data?.pending_transactions && data.pending_transactions.length > 0;
   const hasInspectionData = data?.inspection_data && data.inspection_data.length > 0;
 
+  // Determine the correct tab label for inspection based on search type
+  const getInspectionTabLabel = () => {
+    if (searchType === 'license') {
+      return 'License Status';
+    }
+    return searchType === 'vehicle' ? 'Inspection Status' : 'Vehicle Inspection';
+  };
+
   return (
     <Dialog open={show} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden">
@@ -195,7 +206,7 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
                   : 'border-transparent text-gray-500 hover:text-gray-700'
               }`}
             >
-              {searchType === 'vehicle' ? 'Inspection Status' : 'Vehicle Inspection'}
+              {getInspectionTabLabel()}
             </button>
           </div>
 
@@ -359,9 +370,14 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
                     <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                       <FileText className="w-8 h-8 text-blue-600" />
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">No Inspection Data</h3>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                      {searchType === 'license' ? 'No License Data' : 'No Inspection Data'}
+                    </h3>
                     <p className="text-gray-600 text-center">
-                      No vehicle inspection information found for this {searchType}.
+                      {searchType === 'license' 
+                        ? 'No license information found for this license number.'
+                        : `No vehicle inspection information found for this ${searchType}.`
+                      }
                     </p>
                   </CardContent>
                 </Card>
