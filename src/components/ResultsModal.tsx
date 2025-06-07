@@ -56,10 +56,10 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
             </div>
             <div className="text-right">
               <div className="text-lg font-semibold text-gray-900">
-                TZS {penalty.toLocaleString() || 'N/A'}
+                TZS {charge.toLocaleString() || 'N/A'}
               </div>
               <div className="text-xs text-gray-600">
-                Original Charge: TZS {charge.toLocaleString()}
+                Penalty: TZS {penalty.toLocaleString()}
               </div>
               {penalty > charge && (
                 <div className="text-xs text-red-600">
