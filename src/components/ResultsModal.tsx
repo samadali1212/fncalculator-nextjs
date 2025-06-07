@@ -40,6 +40,10 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
   };
 
   const renderOffenceCard = (item: any, index: number) => {
+    const charge = parseFloat(item.charge || '0');
+    const penalty = parseFloat(item.penalty || '0');
+    const hasPenaltyIncrease = penalty > charge;
+
     return (
       <Card key={index} className="mb-4">
         <CardContent className="p-4">
@@ -54,8 +58,18 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
             </div>
             <div className="text-right">
               <div className="text-lg font-semibold text-gray-900">
-                TZS {item.penalty || item.charge || 'N/A'}
+                TZS {penalty.toLocaleString() || 'N/A'}
               </div>
+              {hasPenaltyIncrease && (
+                <div className="text-xs text-red-600">
+                  Original: TZS {charge.toLocaleString()}
+                </div>
+              )}
+              {hasPenaltyIncrease && (
+                <div className="text-xs text-red-600">
+                  +TZS {(penalty - charge).toLocaleString()} penalty
+                </div>
+              )}
               <div className="text-sm text-gray-500">{item.issued_date || item.paydate || 'N/A'}</div>
             </div>
           </div>
@@ -231,7 +245,7 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
                         <div className="flex-1">
                           <h4 className="font-medium text-orange-800">Payment Required</h4>
                           <p className="text-sm text-orange-700">
-                            You have pending fines that need to be paid. Click the "How to Pay" tab above for detailed payment instructions.
+                            You have pending fines that need to be paid. Penalties increase every 7 days for late payment. Click the "How to Pay" tab above for detailed payment instructions.
                           </p>
                         </div>
                         <Button 
