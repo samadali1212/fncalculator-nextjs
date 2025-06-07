@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { X, AlertCircle, CheckCircle2, CreditCard, Phone, Banknote, FileText, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -42,7 +41,6 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
   const renderOffenceCard = (item: any, index: number) => {
     const charge = parseFloat(item.charge || '0');
     const penalty = parseFloat(item.penalty || '0');
-    const hasPenaltyIncrease = penalty > charge;
 
     return (
       <Card key={index} className="mb-4">
@@ -60,12 +58,10 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
               <div className="text-lg font-semibold text-gray-900">
                 TZS {penalty.toLocaleString() || 'N/A'}
               </div>
-              {hasPenaltyIncrease && (
-                <div className="text-xs text-red-600">
-                  Original: TZS {charge.toLocaleString()}
-                </div>
-              )}
-              {hasPenaltyIncrease && (
+              <div className="text-xs text-gray-600">
+                Original Charge: TZS {charge.toLocaleString()}
+              </div>
+              {penalty > charge && (
                 <div className="text-xs text-red-600">
                   +TZS {(penalty - charge).toLocaleString()} penalty
                 </div>
