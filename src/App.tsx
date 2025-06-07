@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import Events from "./pages/Events";
 import EventPage from "./pages/EventPage";
 import YearPage from "./pages/YearPage";
+import MonthPage from "./pages/MonthPage";
 
 const App = () => {
   return (
