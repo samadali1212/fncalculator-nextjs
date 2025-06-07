@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, AlertCircle, CheckCircle2, CreditCard, Phone, Banknote } from 'lucide-react';
+import { X, AlertCircle, CheckCircle2, CreditCard, Phone, Banknote, FileText, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -29,6 +29,10 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
         return <Badge variant="destructive" className="text-xs">Pending</Badge>;
       case 'paid':
         return <Badge variant="default" className="bg-green-600 text-xs">Paid</Badge>;
+      case 'pass':
+        return <Badge variant="default" className="bg-green-600 text-xs">Pass</Badge>;
+      case 'fail':
+        return <Badge variant="destructive" className="text-xs">Fail</Badge>;
       default:
         return <Badge variant="secondary" className="text-xs">{status}</Badge>;
     }
@@ -63,7 +67,91 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
     );
   };
 
+  const renderInspectionCard = (item: any, index: number) => {
+    return (
+      <Card key={index} className="mb-4">
+        <CardContent className="p-4">
+          <div className="flex flex-col gap-4">
+            {/* Header with VIR and Status */}
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-sm font-medium text-gray-600">VIR: {item.vir_no || 'N/A'}</span>
+                  {getStatusBadge(item.finalresult || 'Unknown')}
+                </div>
+                <div className="text-sm text-gray-600">
+                  <div>Region: {item.region || 'N/A'} - {item.district || 'N/A'}</div>
+                  <div>Valid Until: {item.valid_untill || 'N/A'}</div>
+                  <div>Inspector: {item.inspector || 'N/A'}</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Inspection Details */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-xs">
+              <div className="flex justify-between">
+                <span>Speed Test:</span>
+                <span className={item.speed_test === 'Pass' ? 'text-green-600' : 'text-red-600'}>
+                  {item.speed_test || 'N/A'}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span>Electrical:</span>
+                <span className={item.electrical_system === 'Pass' ? 'text-green-600' : 'text-red-600'}>
+                  {item.electrical_system || 'N/A'}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span>Brakes:</span>
+                <span className={item.braking_system === 'Pass' ? 'text-green-600' : 'text-red-600'}>
+                  {item.braking_system || 'N/A'}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span>Wheels:</span>
+                <span className={item.wheels === 'Pass' ? 'text-green-600' : 'text-red-600'}>
+                  {item.wheels || 'N/A'}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span>Suspension:</span>
+                <span className={item.suspension === 'Pass' ? 'text-green-600' : 'text-red-600'}>
+                  {item.suspension || 'N/A'}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span>Steering:</span>
+                <span className={item.steering === 'Pass' ? 'text-green-600' : 'text-red-600'}>
+                  {item.steering || 'N/A'}
+                </span>
+              </div>
+            </div>
+
+            {/* Remarks */}
+            {item.remarks && (
+              <div className="mt-3">
+                <h4 className="font-medium text-gray-900 mb-2">Inspection Remarks:</h4>
+                <div className="text-sm text-gray-700 bg-gray-50 p-3 rounded whitespace-pre-line">
+                  {item.remarks}
+                </div>
+              </div>
+            )}
+
+            {/* Driver Info */}
+            {item.driver_name && (
+              <div className="mt-2 text-sm text-gray-600">
+                <div>Driver: {item.driver_name}</div>
+                {item.licence && <div>License: {item.licence}</div>}
+              </div>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+    );
+  };
+
   const hasPendingOffences = data?.pending_transactions && data.pending_transactions.length > 0;
+  const hasInspectionData = data?.inspection_data && data.inspection_data.length > 0;
 
   return (
     <Dialog open={show} onOpenChange={onClose}>
@@ -100,14 +188,14 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
               </button>
             )}
             <button
-              onClick={() => setActiveTab('status')}
+              onClick={() => setActiveTab('inspection')}
               className={`px-4 py-2 font-medium text-sm border-b-2 transition-colors ${
-                activeTab === 'status'
+                activeTab === 'inspection'
                   ? 'border-blue-600 text-blue-600'
                   : 'border-transparent text-gray-500 hover:text-gray-700'
               }`}
             >
-              {searchType === 'vehicle' ? 'Inspection Status' : 'License Status'}
+              {searchType === 'vehicle' ? 'Inspection Status' : 'Vehicle Inspection'}
             </button>
           </div>
 
@@ -257,21 +345,28 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
             </div>
           )}
 
-          {activeTab === 'status' && (
-            <Card>
-              <CardContent className="flex flex-col items-center justify-center py-12">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                  <AlertCircle className="w-8 h-8 text-blue-600" />
+          {activeTab === 'inspection' && (
+            <div>
+              {hasInspectionData ? (
+                <div className="space-y-0">
+                  {data.inspection_data.map((item: any, index: number) => 
+                    renderInspectionCard(item, index)
+                  )}
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Status Information</h3>
-                <p className="text-gray-600 text-center">
-                  {searchType === 'vehicle' 
-                    ? 'Vehicle inspection status information is not available at this time.'
-                    : 'License status information is not available at this time.'
-                  }
-                </p>
-              </CardContent>
-            </Card>
+              ) : (
+                <Card>
+                  <CardContent className="flex flex-col items-center justify-center py-12">
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                      <FileText className="w-8 h-8 text-blue-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">No Inspection Data</h3>
+                    <p className="text-gray-600 text-center">
+                      No vehicle inspection information found for this {searchType}.
+                    </p>
+                  </CardContent>
+                </Card>
+              )}
+            </div>
           )}
         </div>
       </DialogContent>

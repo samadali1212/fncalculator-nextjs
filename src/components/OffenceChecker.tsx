@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Car, CreditCard, Receipt, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -136,7 +137,7 @@ const OffenceChecker = () => {
       
       setLoading(false);
 
-      if (data && (data.pending_transactions || data.status === 'success')) {
+      if (data && (data.pending_transactions || data.inspection_data || data.status === 'success')) {
         // Add search metadata to the response
         const responseWithMetadata = {
           ...data,
@@ -150,7 +151,7 @@ const OffenceChecker = () => {
         Swal.fire({
           icon: 'info',
           title: 'No Results Found',
-          text: 'No offences found for the provided search term.',
+          text: 'No offences or inspection data found for the provided search term.',
           confirmButtonColor: '#3b82f6'
         });
       }
