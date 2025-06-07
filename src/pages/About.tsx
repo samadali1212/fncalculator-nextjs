@@ -10,8 +10,9 @@ const About = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="About MoneyWorth" 
-        description="Learn about MoneyWorth - your trusted source for financial insights in South Africa. Discover our mission to help South Africans make informed money decisions."
+        title="Denilagari" 
+        description="This online tool helps drivers in Tanzania check their traffic violations and outstanding fines. 
+                You can search using your vehicle registration number, driving license number, or violation reference number."
         canonicalUrl="/about"
       />
       <Header />
