@@ -5,6 +5,7 @@ import TrafficOffence from "./pages/TrafficOffence";
 import NotFound from "./pages/NotFound";
 import Events from "./pages/Events";
 import EventPage from "./pages/EventPage";
+import YearPage from "./pages/YearPage";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           {/* Events routes */}
           <Route path="/events" element={<Events />} />
           <Route path="/events/:eventId" element={<EventPage />} />
+          <Route path="/year/:year" element={<YearPage />} />
                         
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
