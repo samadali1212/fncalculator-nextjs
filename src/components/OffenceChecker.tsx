@@ -190,12 +190,6 @@ const OffenceChecker = () => {
     }
   };
 
-  // Handle input change with automatic uppercase conversion
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.toUpperCase();
-    setSearchQuery(value);
-  };
-
   const currentOption = searchOptions.find(option => option.id === activeTab);
 
   return (
@@ -229,13 +223,12 @@ const OffenceChecker = () => {
           placeholder={currentOption?.placeholder || "Enter search term..."}
           className="pl-10"
           value={searchQuery}
-          onChange={handleInputChange}
+          onChange={(e) => setSearchQuery(e.target.value)}
           onKeyPress={(e) => {
             if (e.key === 'Enter') {
               handleSearch();
             }
           }}
-          style={{ textTransform: 'uppercase' }}
         />
       </div>
 
