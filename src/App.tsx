@@ -21,7 +21,12 @@ const App = () => {
           {/* Events routes */}
           <Route path="/events" element={<Events />} />
           <Route path="/events/:eventId" element={<EventPage />} />
-          <Route path="/year/:year" element={<YearPage />} />
+        
+            {/* Year-specific routes */}
+            <Route path="/year/:year" element={<YearPage />} />
+            
+            {/* SEO-friendly month routes like /january-2025 */}
+            <Route path="/:monthYear" element={<MonthPage />} />
                         
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
