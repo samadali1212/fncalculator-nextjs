@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
@@ -8,98 +7,18 @@ interface SEOProps {
   ogImage?: string;
   ogType?: "website" | "article";
   twitterCard?: "summary" | "summary_large_image";
-  jobPosting?: {
-    title: string;
-    description: string;
-    datePosted: string;
-    validThrough: string;
-    employmentType?: string;
-    hiringOrganization: {
-      name: string;
-      logo?: string;
-    };
-    jobLocation: {
-      addressLocality: string;
-      addressRegion?: string;
-      addressCountry?: string;
-    };
-    baseSalary?: {
-      currency: string;
-      value: {
-        minValue?: number;
-        maxValue?: number;
-        value?: number;
-      };
-      unitText: "YEAR" | "MONTH" | "WEEK" | "DAY" | "HOUR";
-    };
-    applicantLocationRequirements?: string;
-    jobLocationType?: string;
-  };
 }
 
 const SEO = ({
-  title = "Tanzania Jobs - Find Latest Job Opportunities",
-  description = "Discover the latest job opportunities across Tanzania. Browse jobs by category, location and apply for positions in Dar es Salaam, Arusha, Mwanza and other cities.",
+  title = "Deni La Gari - Tanzania Traffic Offence Checker",
+  description = "Check your traffic violations and outstanding fines in Tanzania. Search using your vehicle registration, driving license, or violation reference number.",
   canonicalUrl,
-  ogImage = "/SalaryList favicon.png", 
+  ogImage = "/denilagarifavicon.png", 
   ogType = "website",
-  twitterCard = "summary_large_image",
-  jobPosting
+  twitterCard = "summary_large_image"
 }: SEOProps) => {
-  const siteUrl = "https://salarylist.co.za";
+  const siteUrl = "https://denilagari.com";
   
-  const getJobPostingSchema = () => {
-    if (jobPosting) {
-      return {
-        "@context": "https://schema.org",
-        "@type": "JobPosting",
-        title: jobPosting.title,
-        description: jobPosting.description,
-        datePosted: jobPosting.datePosted,
-        validThrough: jobPosting.validThrough,
-        employmentType: jobPosting.employmentType,
-        hiringOrganization: {
-          "@type": "Organization",
-          name: jobPosting.hiringOrganization.name,
-          logo: jobPosting.hiringOrganization.logo ? `${siteUrl}${jobPosting.hiringOrganization.logo}` : undefined
-        },
-        jobLocation: {
-          "@type": "Place",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: jobPosting.jobLocation.addressLocality,
-            addressRegion: "Tanzania",
-            addressCountry: {
-              "@type": "Country",
-              name: "Tanzania"
-            }
-          }
-        },
-        ...(jobPosting.baseSalary && {
-          baseSalary: {
-            "@type": "MonetaryAmount",
-            currency: "TZS",
-            value: {
-              "@type": "QuantitativeValue",
-              ...(jobPosting.baseSalary.value.minValue && { minValue: jobPosting.baseSalary.value.minValue }),
-              ...(jobPosting.baseSalary.value.maxValue && { maxValue: jobPosting.baseSalary.value.maxValue }),
-              ...(jobPosting.baseSalary.value.value && { value: jobPosting.baseSalary.value.value }),
-              unitText: jobPosting.baseSalary.unitText
-            }
-          }
-        }),
-        applicantLocationRequirements: {
-          "@type": "Country",
-          name: "Tanzania"
-        },
-        ...(jobPosting.jobLocationType && {
-          jobLocationType: jobPosting.jobLocationType
-        })
-      };
-    }
-    return null;
-  };
-
   return (
     <Helmet>
       {/* Basic Meta Tags */}
@@ -108,11 +27,11 @@ const SEO = ({
       {canonicalUrl && <link rel="canonical" href={`${siteUrl}${canonicalUrl}`} />}
       
       {/* Favicon */}
-      <link rel="icon" href="/SalaryList favicon.png" type="image/png" />
-      <link rel="apple-touch-icon" href="/SalaryList favicon.png" />
+      <link rel="icon" href="/denilagarifavicon.png" type="image/png" />
+      <link rel="apple-touch-icon" href="/denilagarifavicon.png" />
       
       {/* OpenGraph Meta Tags */}
-      <meta property="og:site_name" content="SalaryList" />
+      <meta property="og:site_name" content="Deni La Gari" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
@@ -124,13 +43,6 @@ const SEO = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       {ogImage && <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />}
-
-      {/* Job Posting Structured Data */}
-      {jobPosting && (
-        <script type="application/ld+json">
-          {JSON.stringify(getJobPostingSchema())}
-        </script>
-      )}
     </Helmet>
   );
 };
