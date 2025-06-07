@@ -106,7 +106,7 @@ export default {
 				'slide-in-right': 'slide-in-right 0.3s ease-out',
 			},
 			fontFamily: {
-				sans: ['Inter', 'SF Pro Display', 'system-ui', 'sans-serif'],
+				sans: ['DM Sans', 'Inter', 'SF Pro Display', 'system-ui', 'sans-serif'],
 			},
 		}
 	},
