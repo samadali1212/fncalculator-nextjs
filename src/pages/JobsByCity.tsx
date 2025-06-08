@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
@@ -11,7 +12,7 @@ import SEO from "../components/SEO";
 import AdSense from "../components/AdSense";
 import { 
   getJobsByCity, 
-  getProvinceByCity, 
+  getRegionByCity, 
   formatDate, 
   isNewJob, 
   isJobExpiringSoon,
@@ -31,7 +32,7 @@ const JobsByCity = () => {
     word.charAt(0).toUpperCase() + word.slice(1)
   ).join(" ") : "";
   
-  const province = getProvinceByCity(city);
+  const region = getRegionByCity(city);
   const allJobs = getJobsByCity(city);
   
   // Apply filters when search inputs change
@@ -56,7 +57,7 @@ const JobsByCity = () => {
   const seoTitle = createLocationPageTitle(city);
   const seoDescription = createLocationPageDescription(city, allJobs.length);
   
-  const provinceSlug = province.toLowerCase().replace(/\s+/g, "-");
+  const regionSlug = region.toLowerCase().replace(/\s+/g, "-");
 
   return (
     <motion.div
@@ -76,17 +77,17 @@ const JobsByCity = () => {
           <Link to="/jobs" className="text-blog-accent hover:underline text-sm mr-3">
             ← Back to All Jobs
           </Link>
-          {province !== "Unknown" && (
-            <Link to={`/jobs/province/${provinceSlug}`} className="text-blog-accent hover:underline text-sm">
-              View All Jobs in {province}
+          {region !== "Unknown" && (
+            <Link to={`/jobs/region/${regionSlug}`} className="text-blog-accent hover:underline text-sm">
+              View All Jobs in {region} Region
             </Link>
           )}
         </div>
         
-        <h1 className="text-3xl font-bold mb-2">Jobs in {city}, South Africa</h1>
+        <h1 className="text-3xl font-bold mb-2">Jobs in {city}, Tanzania</h1>
         <p className="text-gray-600 mb-6">
           Browse {allJobs.length} job opportunities in {city} across various industries and career levels.
-          {province !== "Unknown" && ` ${city} is located in ${province} province.`}
+          {region !== "Unknown" && ` ${city} is located in ${region} region.`}
         </p>
         
         {/* Top ad placement */}
