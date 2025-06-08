@@ -77,9 +77,9 @@ const JobsByCategory = () => {
           </Link>
         </div>
         
-        <h1 className="text-3xl font-bold mb-2">{category} Jobs in South Africa</h1>
+        <h1 className="text-3xl font-bold mb-2">{category} Jobs in Tanzania</h1>
         <p className="text-gray-600 mb-6">
-          Browse {allJobs.length} {category.toLowerCase()} job opportunities across South Africa. Find and apply for the latest vacancies in this field.
+          Browse {allJobs.length} {category.toLowerCase()} job opportunities across Tanzania. Find and apply for the latest vacancies in this field.
         </p>
         
         {/* Locations with jobs in this category */}
