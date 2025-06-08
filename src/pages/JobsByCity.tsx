@@ -27,13 +27,22 @@ const JobsByCity = () => {
   const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   
-  // Convert slug back to city name
-  const city = citySlug ? citySlug.split("-").map(word => 
-    word.charAt(0).toUpperCase() + word.slice(1)
-  ).join(" ") : "";
+  // Convert slug back to city name with proper handling for "Dar es Salaam"
+  const city = citySlug ? 
+    citySlug === "dar-es-salaam" 
+      ? "Dar es Salaam" 
+      : citySlug.split("-").map(word => 
+          word.charAt(0).toUpperCase() + word.slice(1)
+        ).join(" ") 
+    : "";
+  
+  console.log("City slug:", citySlug);
+  console.log("Converted city:", city);
   
   const region = getRegionByCity(city);
   const allJobs = getJobsByCity(city);
+  
+  console.log("Jobs found for city:", allJobs.length);
   
   // Apply filters when search inputs change
   useEffect(() => {
