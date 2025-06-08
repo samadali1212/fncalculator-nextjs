@@ -16,7 +16,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import AdSense from "../components/AdSense";
-import { filterJobs, formatDate, isNewJob, isJobExpiringSoon } from "../utils/jobUtils";
+import { filterJobs, formatDate, isNewJob, isJobExpiringSoon, getJobSlug } from "../utils/jobUtils";
 import { getUniqueCategories, getUniqueLocations, JobCategory, JobLocation } from "../utils/jobData";
 
 const Jobs = () => {
@@ -202,7 +202,7 @@ const Jobs = () => {
                     {/* Desktop layout - title and badges in same row */}
                     <div className="hidden sm:flex justify-between items-start mb-4">
                       <h2 className="text-xl font-semibold group-hover:text-blog-accent">
-                        <Link to={`/jobs/${job.id}`} className="hover:underline">
+                        <Link to={`/jobs/${getJobSlug(job)}`} className="hover:underline">
                           {job.title}
                         </Link>
                       </h2>
@@ -226,7 +226,7 @@ const Jobs = () => {
                     {/* Mobile layout - title first, then badges below */}
                     <div className="sm:hidden mb-4">
                       <h2 className="text-xl font-semibold group-hover:text-blog-accent mb-3">
-                        <Link to={`/jobs/${job.id}`} className="hover:underline">
+                        <Link to={`/jobs/${getJobSlug(job)}`} className="hover:underline">
                           {job.title}
                         </Link>
                       </h2>
@@ -272,7 +272,7 @@ const Jobs = () => {
                         {job.salaryRange}
                       </div>
                       <Link 
-                        to={`/jobs/${job.id}`}
+                        to={`/jobs/${getJobSlug(job)}`}
                         className="inline-flex items-center text-blog-accent text-sm font-medium hover:underline self-start"
                       >
                         View Details <ArrowRight className="ml-1 h-4 w-4" />

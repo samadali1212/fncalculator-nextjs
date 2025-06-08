@@ -29,13 +29,15 @@ import {
 } from "lucide-react";
 import {
   getJobById,
+  getJobBySlug,
   getJobsInSameLocation,
   formatDate, // Original import
   isJobExpiringSoon,
   handleJobApplication,
   getApplicationInstructions,
   parseSalaryRange,
-  mapCategoryToEmploymentType
+  mapCategoryToEmploymentType,
+  getJobSlug
 } from "../utils/jobUtils";
 import { Job, JobCategory, ApplicationMethod } from "../utils/jobData"; // Ensure ApplicationMethod is imported if needed
 import { Badge } from "@/components/ui/badge";
@@ -64,15 +66,23 @@ const JobDetail = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    const jobId = jobSlug.split('-').pop() || "";
-    console.log("Looking for job with ID:", jobId);
+    console.log("Looking for job with slug:", jobSlug);
 
     setTimeout(() => {
-      let foundJob = getJobById(jobId);
-      if (!foundJob && jobSlug.includes('job-')) {
-        const potentialId = "job-" + jobSlug.split('job-')[1];
-        console.log("Trying alternative ID format:", potentialId);
-        foundJob = getJobById(potentialId);
+      // First try to find by slug
+      let foundJob = getJobBySlug(jobSlug);
+      
+      // If not found by slug, try the old ID-based lookup for backward compatibility
+      if (!foundJob) {
+        const jobId = jobSlug.split('-').pop() || "";
+        console.log("Fallback: Looking for job with ID:", jobId);
+        foundJob = getJobById(jobId);
+        
+        if (!foundJob && jobSlug.includes('job-')) {
+          const potentialId = "job-" + jobSlug.split('job-')[1];
+          console.log("Trying alternative ID format:", potentialId);
+          foundJob = getJobById(potentialId);
+        }
       }
 
       if (foundJob) {
@@ -80,7 +90,7 @@ const JobDetail = () => {
         setJob(foundJob);
         setSameLocationJobs(getJobsInSameLocation(foundJob.id, foundJob.location, 15));
       } else {
-        console.error("Job not found with ID:", jobId);
+        console.error("Job not found with slug:", jobSlug);
       }
 
       setIsLoading(false);
@@ -397,7 +407,7 @@ Best regards,`);
       <SEO
         title={`${job.title} at ${job.company} | Job Details`}
         description={job.description}
-        canonicalUrl={`/jobs/${jobSlug}`}
+        canonicalUrl={`/jobs/${getJobSlug(job)}`}
         jobPosting={{
           title: job.title,
           description: job.description + "\n\n" + job.requirements.join("\n") + "\n\n" + job.responsibilities.join("\n"),
@@ -590,7 +600,7 @@ Best regards,`);
                             <div className="flex items-center justify-between">
                               <span className="text-xs font-semibold text-green-600">{locationJob.salaryRange}</span>
                               <Link
-                                to={`/jobs/${locationJob.id}`}
+                                to={`/jobs/${getJobSlug(locationJob)}`}
                                 className="text-blog-accent hover:underline text-xs"
                               >
                                 View Details

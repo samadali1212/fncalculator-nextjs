@@ -37,6 +37,7 @@ export type ApplicationMethod = {
 
 export interface Job {
   id: string;
+  slug: string; // New field for SEO-friendly URL
   title: string;
   company: string;
   location: JobLocation;

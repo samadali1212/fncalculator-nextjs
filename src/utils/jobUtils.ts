@@ -1,5 +1,6 @@
 import { Job, jobsData, JobCategory, JobLocation, ApplicationMethod } from './jobData';
 import { slugify } from './utils';
+import { createSlugFromJob, extractJobIdFromSlug } from './slugUtils';
 
 /**
  * Get all available jobs
@@ -23,12 +24,49 @@ export const getJobById = (id: string): Job | undefined => {
 };
 
 /**
- * Get a specific job by its slug
+ * Get a specific job by its slug (SEO-friendly URL)
  * @param slug Job slug (URL-friendly version of title)
  * @returns The job object or undefined if not found
  */
 export const getJobBySlug = (slug: string): Job | undefined => {
-  return jobsData.find(job => slugify(job.title) === slug);
+  console.log("Looking for job with slug:", slug);
+  
+  // First, try to find by slug if jobs have slug property
+  let job = jobsData.find(job => job.slug === slug);
+  
+  if (job) {
+    console.log("Found job by slug:", job.title);
+    return job;
+  }
+  
+  // Fallback: try to extract ID from slug and find by ID
+  const extractedId = extractJobIdFromSlug(slug);
+  console.log("Extracted ID from slug:", extractedId);
+  
+  job = jobsData.find(job => job.id === extractedId);
+  
+  if (job) {
+    console.log("Found job by extracted ID:", job.title);
+    return job;
+  }
+  
+  // Additional fallback: try direct ID lookup
+  return getJobById(slug);
+};
+
+/**
+ * Get the slug for a job (generate if not exists)
+ * @param job Job object
+ * @returns SEO-friendly slug
+ */
+export const getJobSlug = (job: Job): string => {
+  // If job already has a slug, use it
+  if (job.slug) {
+    return job.slug;
+  }
+  
+  // Generate slug from job data
+  return createSlugFromJob(job);
 };
 
 /**
