@@ -11,8 +11,8 @@ import Header from "../components/Header";
 import SEO from "../components/SEO";
 import AdSense from "../components/AdSense";
 import { 
-  getJobsByCity, 
-  getRegionByCity, 
+  getJobsByRegion, 
+  getCitiesByRegion, 
   formatDate, 
   isNewJob, 
   isJobExpiringSoon,
@@ -21,28 +21,19 @@ import {
 } from "../utils/jobUtils";
 import { Job } from "../utils/jobData";
 
-const JobsByCity = () => {
-  const { citySlug } = useParams<{ citySlug: string }>();
+const JobsByRegion = () => {
+  const { regionSlug } = useParams<{ regionSlug: string }>();
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   
-  // Convert slug back to city name with proper handling for "Dar es Salaam"
-  const city = citySlug ? 
-    citySlug === "dar-es-salaam" 
-      ? "Dar es Salaam" 
-      : citySlug.split("-").map(word => 
-          word.charAt(0).toUpperCase() + word.slice(1)
-        ).join(" ") 
-    : "";
+  // Convert slug back to region name
+  const region = regionSlug ? regionSlug.split("-").map(word => 
+    word.charAt(0).toUpperCase() + word.slice(1)
+  ).join(" ") : "";
   
-  console.log("City slug:", citySlug);
-  console.log("Converted city:", city);
-  
-  const region = getRegionByCity(city);
-  const allJobs = getJobsByCity(city);
-  
-  console.log("Jobs found for city:", allJobs.length);
+  const cities = getCitiesByRegion(region);
+  const allJobs = getJobsByRegion(region);
   
   // Apply filters when search inputs change
   useEffect(() => {
@@ -61,12 +52,10 @@ const JobsByCity = () => {
     }, 300);
     
     return () => clearTimeout(timer);
-  }, [searchQuery, city]);
+  }, [searchQuery, region]);
 
-  const seoTitle = createLocationPageTitle(city);
-  const seoDescription = createLocationPageDescription(city, allJobs.length);
-  
-  const regionSlug = region.toLowerCase().replace(/\s+/g, "-");
+  const seoTitle = createLocationPageTitle(region);
+  const seoDescription = createLocationPageDescription(region, allJobs.length);
 
   return (
     <motion.div
@@ -77,21 +66,29 @@ const JobsByCity = () => {
       <SEO 
         title={seoTitle}
         description={seoDescription}
-        canonicalUrl={`/jobs/city/${citySlug}`}
+        canonicalUrl={`/jobs/region/${regionSlug}`}
       />
       <Header />
       
-<main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-  <div className="mb-4">
-    <Link to="/jobs" className="text-blog-accent hover:underline text-sm mr-3">
-      ← Back to All Jobs
-    </Link>
-  </div>
+      <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
+        <div className="mb-4">
+          <Link to="/" className="text-blog-accent hover:underline text-sm mr-3">
+            ← Back to Home
+          </Link>
+          <Link to="/jobs" className="text-blog-accent hover:underline text-sm">
+            View All Jobs
+          </Link>
+        </div>
         
-        <h1 className="text-3xl font-bold mb-2">Jobs in {city}, Tanzania</h1>
+        <h1 className="text-3xl font-bold mb-2">Jobs in {region} Region, Tanzania</h1>
         <p className="text-gray-600 mb-6">
-          Browse {allJobs.length} job opportunities in {city} across various industries and career levels.
-          {region !== "Unknown" && ` ${city} is located in ${region} region.`}
+          Browse {allJobs.length} job opportunities in {region} region across various industries and career levels.
+          {cities.length > 0 && (
+            <span className="block mt-2 text-sm">
+              Major cities: {cities.slice(0, 3).join(", ")}
+              {cities.length > 3 && ` and ${cities.length - 3} more`}
+            </span>
+          )}
         </p>
         
         {/* Top ad placement */}
@@ -160,7 +157,7 @@ const JobsByCity = () => {
                   <CardContent className="p-6">
                     <div className="flex justify-between items-start mb-2">
                       <h2 className="text-xl font-semibold group-hover:text-blog-accent">
-                        <Link to={`/jobs/${job.id}`} className="hover:underline">
+                        <Link to={`/jobs/${job.slug}`} className="hover:underline">
                           {job.title}
                         </Link>
                       </h2>
@@ -204,7 +201,7 @@ const JobsByCity = () => {
                         {job.salaryRange}
                       </div>
                       <Link 
-                        to={`/jobs/${job.id}`}
+                        to={`/jobs/${job.slug}`}
                         className="inline-flex items-center text-blog-accent text-sm font-medium hover:underline"
                       >
                         View Details <ArrowRight className="ml-1 h-4 w-4" />
@@ -219,7 +216,7 @@ const JobsByCity = () => {
               <CardContent>
                 <h3 className="text-xl font-medium mb-2">No jobs found</h3>
                 <p className="text-gray-600 mb-4">
-                  We couldn't find any jobs matching your search criteria in {city}.
+                  We couldn't find any jobs matching your search criteria in {region} region.
                 </p>
                 <Button onClick={() => setSearchQuery("")} disabled={!searchQuery}>Clear Search</Button>
               </CardContent>
@@ -244,4 +241,4 @@ const JobsByCity = () => {
   );
 };
 
-export default JobsByCity;
+export default JobsByRegion;

@@ -28,7 +28,7 @@ const MainPage = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Browse Jobs by City and Category in Tanzania"
+        title="Browse Jobs by City and Category in Tanzania | Latest Vacancies"
         description="Find job opportunities across Tanzania by city and category. Browse latest vacancies in Dar es Salaam, Arusha, Mwanza and other cities. Search by Technology, Finance, Healthcare and more."
         canonicalUrl="/jobs-browse"
       />
