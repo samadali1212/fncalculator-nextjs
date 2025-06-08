@@ -275,7 +275,7 @@ export const administrationJobs: Job[] = [
   id: "job-020",
   title: "Agricultural Officer II (Cotton Classers)",
   company: "Cotton Development Trust Fund (CDTF)",
-  location: "Shinyanga, Tanzania",
+  location: "Shinyanga",
   category: "Agriculture",
   salaryRange: "TCB salary scale",
   description: "The Cotton Development Trust Fund (CDTF) is seeking qualified, dynamic Tanzanians for the position of Agricultural Officer II (Cotton Classer). This contractual role is based in Shinyanga and involves classifying cotton according to international standards, conducting machine calibration, and preparing classification reports.",
