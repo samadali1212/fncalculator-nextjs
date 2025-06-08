@@ -172,8 +172,8 @@ const YearPage = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO
-        title={`Holidays In South Africa ${currentYear} - HolidaysDB`}
-        description={`Complete list of South African public holidays for ${currentYear}. Find all national holidays, cultural events, and important dates with detailed information.`}
+        title={`Holidays In Tanzania ${currentYear} - HolidaysDB`}
+        description={`Complete list of Tanzanian public holidays for ${currentYear}. Find all national holidays, cultural events, and important dates with detailed information.`}
         canonicalUrl={`/year/${currentYear}`}
       />
       <Header />
@@ -193,10 +193,10 @@ const YearPage = () => {
               </Button>
             </div>
             <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 flex items-center gap-3">
-              Public Holidays In South Africa {currentYear}
+              Public Holidays In Tanzania {currentYear}
             </h1>
             <p className="text-gray-600">
-              This calendar includes all cultural celebrations, religious and public holidays in South Africa for {currentYear}. Perfect for planning your year, understanding cultural significance, and staying informed about national observances.
+              This calendar includes all cultural celebrations, religious and public holidays in Tanzania for {currentYear}. Perfect for planning your year, understanding cultural significance, and staying informed about national observances.
               </p>
               <p>{yearEvents.length} <strong>holidays found</strong>.</p>
            </div>
