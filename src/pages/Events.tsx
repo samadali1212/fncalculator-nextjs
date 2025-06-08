@@ -165,8 +165,8 @@ const Events = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO
-        title={`Public Holidays Calendar in South Africa For ${yearRange} - HolidaysDB`}
-        description={`Discover all South African public holidays calendar for ${yearRange} including national holidays, cultural events with countdowns and detailed information.`}
+        title={`Public Holidays Calendar in Tanzania For ${yearRange} - HolidaysDB`}
+        description={`Discover all Tanzanian public holidays calendar for ${yearRange} including national holidays, cultural events with countdowns and detailed information.`}
         canonicalUrl="/events"
       />
       <Header />
@@ -175,10 +175,10 @@ const Events = () => {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
           <div>
             <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 flex items-center gap-3">
-              South African Public Holidays Calendar {yearRange}
+              Tanzanian Public Holidays Calendar {yearRange}
             </h1>
             <p className="text-gray-600">
-              Discover South African public holidays for {yearRange} and beyond. Complete calendar with countdowns, detailed information, and cultural significance.
+              Discover Tanzanian public holidays for {yearRange} and beyond. Complete calendar with countdowns, detailed information, and cultural significance.
             </p>
           </div>
         </div>
@@ -455,16 +455,16 @@ const Events = () => {
         <div className="mt-12 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg p-6 border border-gray-200">
           <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
             <Calendar className="h-5 w-5 text-blue-600" />
-            About South African Public Holidays
+            About Tanzanian Public Holidays
           </h3>
           <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
             <div>
               <h4 className="font-medium mb-2">National Holidays</h4>
-              <p>South Africa observes 12 official public holidays annually, including Heritage Day, Freedom Day, and other culturally significant dates that reflect the nation's diverse heritage.</p>
+              <p>Tanzania observes 12 official public holidays annually, including Heritage Day, Freedom Day, and other culturally significant dates that reflect the nation's diverse heritage.</p>
             </div>
             <div>
               <h4 className="font-medium mb-2">Cultural Significance</h4>
-              <p>Each holiday carries deep cultural and historical meaning, commemorating important events in South African history and celebrating the country's rich cultural diversity.</p>
+              <p>Each holiday carries deep cultural and historical meaning, commemorating important events in Tanzanian history and celebrating the country's rich cultural diversity.</p>
             </div>
           </div>
         </div>
