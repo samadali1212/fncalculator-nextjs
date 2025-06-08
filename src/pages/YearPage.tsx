@@ -172,7 +172,7 @@ const YearPage = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO
-        title={`Holidays In Tanzania ${currentYear} - denilagari`}
+        title={`Holidays In Tanzania ${currentYear} - HolidaysDB`}
         description={`Complete list of Tanzanian public holidays for ${currentYear}. Find all national holidays, cultural events, and important dates with detailed information.`}
         canonicalUrl={`/year/${currentYear}`}
       />
@@ -425,7 +425,7 @@ const YearPage = () => {
 
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} denilagari. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} HolidaysDB. All rights reserved.</p>
         </div>
       </footer>
     </motion.div>
