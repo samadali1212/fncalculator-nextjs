@@ -382,7 +382,7 @@ export const educationJobs: Job[] = [
     },
     postedDate: "2025-06-06",
     deadline: "2025-06-16",
-    featured: false
+    featured: true
   },
   {
     id: "job-028",
