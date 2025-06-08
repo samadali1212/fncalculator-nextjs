@@ -35,7 +35,17 @@ const Header = () => {
 
   const isActive = (path: string) => {
     if (path === "/" && location.pathname === "/") return true;
-    if (path !== "/" && location.pathname.startsWith(path)) return true;
+    
+    // Handle exact matches for jobs pages to avoid conflicts
+    if (path === "/jobs" && location.pathname === "/jobs") return true;
+    if (path === "/jobs-browse" && location.pathname === "/jobs-browse") return true;
+    
+    // For other paths, use startsWith but exclude jobs paths to avoid conflicts
+    if (path !== "/" && path !== "/jobs" && path !== "/jobs-browse" && location.pathname.startsWith(path)) return true;
+    
+    // Handle job detail pages and sub-routes for /jobs
+    if (path === "/jobs" && location.pathname.startsWith("/jobs/") && !location.pathname.startsWith("/jobs-browse")) return true;
+    
     return false;
   };
 
