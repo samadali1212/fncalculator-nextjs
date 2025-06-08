@@ -227,7 +227,7 @@ export const administrationJobs: Job[] = [
   id: "job-019",
   title: "Senior Manager, Innovation",
   company: "Equity Bank",
-  location: "Dar es Salaam, Tanzania",
+  location: "Dar es Salaam",
   category: "Finance",
   salaryRange: "Not Disclosed",
   description: "Equity Bank is seeking a Senior Manager, Innovation, to strategically develop, optimize, and innovate the bank’s payment channels. This role is crucial for ensuring seamless, secure, and customer-centric digital payment solutions. The manager will focus on driving revenue growth, enhancing customer experience, and identifying emerging payment trends and technologies to maintain the bank’s competitive edge.",
