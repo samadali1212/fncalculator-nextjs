@@ -558,7 +558,7 @@ export const educationJobs: Job[] = [
   slug: "technical-specialist-infrastructure-service-management-at-dhl-job-033",
   title: "Technical Specialist: Infrastructure & Service Management",
   company: "DHL",
-  location: "Tanzania",
+  location: "Dar es Salaam",
   category: "Technology",
   salaryRange: "Not Disclosed",
   description: "DHL is seeking a Technical Specialist for Infrastructure & Service Management to support the Country ISM Lead in Tanzania. This role is crucial for effectively managing the IT infrastructure and services, ensuring professional and cost-efficient provision to operations, projects, and customers. The specialist is accountable for information asset protection and reputation in line with commercial agreements.",
