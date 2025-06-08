@@ -4,7 +4,7 @@
  */
 
 export type JobLocation = 
-  | 'Arusha' | 'Dar es Salaam' | 'Dodoma' | 'Geita' | 'Iringa' | 'Kagera' | 'Katavi' | 'Kigoma' | 'Kilimanjaro' | 'Lindi' | 'Manyara' | 'Mara' | 'Mbeya' | 'Morogoro' | 'Mtwara' | 'Mwanza' | 'Njombe' | 'Pwani' | 'Rukwa' | 'Ruvuma' | 'Shinyanga' | 'Simiyu' | 'Singida' | 'Songwe' | 'Tabora' | 'Tanga' | 'Zanzibar' | 'Nationwide';
+  | 'Arusha' | 'Dar es Salaam' | 'Dodoma' | 'Geita' | 'Iringa' | 'Kagera' | 'Katavi' | 'Kigoma' | 'Kilimanjaro' | 'Lindi' | 'Manyara' | 'Mara' | 'Mbeya' | 'Morogoro' | 'Mtwara' | 'Mwanza' | 'Njombe' | 'Pwani' | 'Rukwa' | 'Ruvuma' | 'Shinyanga' | 'Simiyu' | 'Singida' | 'Songwe' | 'Tabora' | 'Tanga' | 'Zanzibar' | 'Nationwide' | 'Remote';
 
 export type JobCategory = 
   | 'Technology' 
@@ -26,6 +26,7 @@ export type JobCategory =
   | 'Media'
   | 'Security'
   | 'Procurement'
+  | 'Logistics'
   | 'Other';
 
 export type ApplicationMethod = {
