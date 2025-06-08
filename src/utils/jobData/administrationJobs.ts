@@ -1,9 +1,11 @@
 
 import { Job } from './types';
+import { createSlugFromJob } from '../slugUtils';
 
 export const administrationJobs: Job[] = [
 {
   id: "job-010",
+  slug: "research-nurse-clinician-at-mwanza-intervention-trials-unit-mitu-010",
   title: "Research Nurse/Clinician",
   company: "Mwanza Intervention Trials Unit (MITU)",
   location: "Mwanza",
@@ -25,7 +27,7 @@ export const administrationJobs: Job[] = [
   applicationMethod: {
     type: 'email',
     value: "recruitment@mitu.or.tz",
-    instructions: "Email your letter of application, CV, and copies of all relevant certificates, memberships, and qualifications. Clearly state 'Research Nurse/Clinician' in the subject line. All attached documents (cover letter and CV) should be clearly saved using the applicant’s full name, document type, and date of submission (e.g., First Name_Last name_CV_10Jan2025)."
+    instructions: "Email your letter of application, CV, and copies of all relevant certificates, memberships, and qualifications. Clearly state 'Research Nurse/Clinician' in the subject line. All attached documents (cover letter and CV) should be clearly saved using the applicant's full name, document type, and date of submission (e.g., First Name_Last name_CV_10Jan2025)."
   },
   postedDate: "2025-06-01",
   deadline: "2025-07-05",
@@ -33,6 +35,7 @@ export const administrationJobs: Job[] = [
 },
   {
   id: "job-015",
+  slug: "raw-materials-controller-at-ab-inbev-015",
   title: "Raw Materials Controller",
   company: "AB InBev",
   location: "Mwanza",
@@ -85,6 +88,7 @@ export const administrationJobs: Job[] = [
 },
   {
   id: "job-016",
+  slug: "product-manager-assets-liabilities-at-exim-bank-016",
   title: "Product Manager Assets & Liabilities",
   company: "Exim Bank",
   location: "Dar es Salaam",
@@ -136,6 +140,7 @@ export const administrationJobs: Job[] = [
 },
   {
   id: "job-017",
+  slug: "infrastructure-manager-at-exim-bank-017",
   title: "Infrastructure Manager",
   company: "Exim Bank",
   location: "Dar es Salaam",
@@ -156,15 +161,15 @@ export const administrationJobs: Job[] = [
     "Experience with the adoption and integration of cloud technologies, focusing on optimization and cost management"
   ],
   responsibilities: [
-    "Lead and strategically manage the Infrastructure Unit, ensuring alignment with the bank’s overall IT strategy",
+    "Lead and strategically manage the Infrastructure Unit, ensuring alignment with the bank's overall IT strategy",
     "Develop, implement, and enforce robust policies, procedures, and best practices for infrastructure management",
-    "Oversee and maintain the performance, scalability, and security of the bank’s IT infrastructure, ensuring strict compliance with regulatory requirements",
+    "Oversee and maintain the performance, scalability, and security of the bank's IT infrastructure, ensuring strict compliance with regulatory requirements",
     "Plan and execute all infrastructure-related projects, such as system upgrades, network expansions, and automation initiatives",
     "Provide essential technical support to team members, ensuring smooth operations and prompt issue resolution",
     "Ensure effective operation of the primary data center and the disaster recovery site, maintaining data integrity through efficient backup and recovery solutions",
     "Confirm that each sub-unit within Infrastructure has a continuity plan to address staff unavailability",
     "Establish and monitor Service Level Agreements (SLAs) with Managed Service Providers (MSPs) to guarantee optimal service delivery",
-    "Prepare and meticulously manage the unit’s budget, balancing cost-efficiency with operational needs",
+    "Prepare and meticulously manage the unit's budget, balancing cost-efficiency with operational needs",
     "Conduct regular performance reviews for team members, pinpointing skill gaps and facilitating professional development opportunities",
     "Coordinate seamlessly with other IT units and bank departments to ensure efficient integration of infrastructure services",
     "Oversee the successful adoption and integration of cloud technologies, focusing on optimal utilization and cost control"
@@ -180,6 +185,7 @@ export const administrationJobs: Job[] = [
 },
   {
   id: "job-018",
+  slug: "project-accountant-at-frankfurt-zoological-society-fzs-018",
   title: "Project Accountant",
   company: "Frankfurt Zoological Society (FZS)",
   location: "Arusha",
@@ -225,14 +231,15 @@ export const administrationJobs: Job[] = [
 },
   {
   id: "job-019",
+  slug: "senior-manager-innovation-at-equity-bank-019",
   title: "Senior Manager, Innovation",
   company: "Equity Bank",
   location: "Dar es Salaam",
   category: "Finance",
   salaryRange: "Not Disclosed",
-  description: "Equity Bank is seeking a Senior Manager, Innovation, to strategically develop, optimize, and innovate the bank’s payment channels. This role is crucial for ensuring seamless, secure, and customer-centric digital payment solutions. The manager will focus on driving revenue growth, enhancing customer experience, and identifying emerging payment trends and technologies to maintain the bank’s competitive edge.",
+  description: "Equity Bank is seeking a Senior Manager, Innovation, to strategically develop, optimize, and innovate the bank's payment channels. This role is crucial for ensuring seamless, secure, and customer-centric digital payment solutions. The manager will focus on driving revenue growth, enhancing customer experience, and identifying emerging payment trends and technologies to maintain the bank's competitive edge.",
   requirements: [
-    "Bachelor’s degree in Computer Science, IT, or a related field (MBA is an advantage)",
+    "Bachelor's degree in Computer Science, IT, or a related field (MBA is an advantage)",
     "Minimum of 5-7 years of experience in payments, digital banking, or financial technology",
     "Strong understanding of digital payments ecosystems, including mobile money, card payments, real-time payments, and emerging fintech trends",
     "Experience in managing partnerships with FINTECHs, payment aggregators, and third-party service providers",
@@ -245,14 +252,14 @@ export const administrationJobs: Job[] = [
     "Strong leadership and people management skills"
   ],
   responsibilities: [
-    "Oversee the bank’s digital and electronic payment channels (mobile banking, internet banking, ATMs, POS, agency banking, etc.)",
+    "Oversee the bank's digital and electronic payment channels (mobile banking, internet banking, ATMs, POS, agency banking, etc.)",
     "Ensure optimal performance, uptime, and efficiency of all payment channels to enhance customer satisfaction",
     "Monitor transaction volumes, costs, and revenue from payment channels, implementing strategies to improve profitability",
     "Drive and support the development and implementation of new payment solutions, leveraging emerging technologies like open banking and APIs",
     "Identify and implement improvements in payment processing for enhanced speed, security, and reliability",
     "Collaborate with fintechs, payment service providers, and strategic partners to explore new opportunities in payments innovation",
     "Stay current with industry trends, customer expectations, and regulatory changes to inform product development and strategy",
-    "Develop and execute the payments channels strategy aligned with the bank’s digital banking roadmap",
+    "Develop and execute the payments channels strategy aligned with the bank's digital banking roadmap",
     "Work closely with internal teams (IT, Operations, Risk, Compliance, Business Development/Transactional Banking) for seamless execution",
     "Build and maintain strong relationships with external partners, including payment networks, fintech companies, and regulatory bodies",
     "Ensure all payment channels comply with regulatory requirements, industry standards, and internal policies",
@@ -273,6 +280,7 @@ export const administrationJobs: Job[] = [
 },
   {
   id: "job-020",
+  slug: "agricultural-officer-ii-cotton-classers-at-cotton-development-trust-fund-cdtf-020",
   title: "Agricultural Officer II (Cotton Classers)",
   company: "Cotton Development Trust Fund (CDTF)",
   location: "Shinyanga",
@@ -280,7 +288,7 @@ export const administrationJobs: Job[] = [
   salaryRange: "TCB salary scale",
   description: "The Cotton Development Trust Fund (CDTF) is seeking qualified, dynamic Tanzanians for the position of Agricultural Officer II (Cotton Classer). This contractual role is based in Shinyanga and involves classifying cotton according to international standards, conducting machine calibration, and preparing classification reports.",
   requirements: [
-    "Bachelor’s Degree in Agriculture General, Agronomy, Agriculture Engineering, Irrigation, Agro-mechanization, or a related field from a recognized institution",
+    "Bachelor's Degree in Agriculture General, Agronomy, Agriculture Engineering, Irrigation, Agro-mechanization, or a related field from a recognized institution",
     "Good communication skills",
     "Proficiency in both English and Kiswahili languages",
     "Strong cooperative skills with the ability to work effectively in teams",

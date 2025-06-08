@@ -4,6 +4,7 @@ import { Job } from './types';
 export const educationJobs: Job[] = [
   {
   id: "job-011",
+  slug: "driver-grade-ii-at-nkasi-district-council-011",
   title: "Driver Grade II",
   company: "Nkasi District Council",
   location: "Rukwa",
@@ -36,6 +37,7 @@ export const educationJobs: Job[] = [
 },
   {
   id: "job-012",
+  slug: "process-engineer-ccr-operator-at-dangote-cement-plc-012",
   title: "Process Engineer/CCR Operator",
   company: "Dangote Cement Plc",
   location: "Mtwara",
@@ -79,6 +81,7 @@ export const educationJobs: Job[] = [
 },
   {
   id: "job-013",
+  slug: "project-assistant-at-aga-khan-foundation-013",
   title: "Project Assistant",
   company: "Aga Khan Foundation",
   location: "Dodoma",
@@ -120,6 +123,7 @@ export const educationJobs: Job[] = [
 },
   {
   id: "job-014",
+  slug: "checker-at-ab-inbev-014",
   title: "Checker",
   company: "AB InBev",
   location: "Dar es Salaam",
@@ -172,6 +176,7 @@ export const educationJobs: Job[] = [
 },
     {
     id: "job-021",
+    slug: "learning-support-teacher-at-haven-of-peace-academy-hopac-021",
     title: "Learning Support Teacher",
     company: "Haven of Peace Academy (HOPAC)",
     location: "Dar es Salaam",
@@ -202,6 +207,7 @@ export const educationJobs: Job[] = [
   },
   {
     id: "job-022",
+    slug: "physical-education-teacher-secondary-at-haven-of-peace-academy-hopac-022",
     title: "Physical Education Teacher, Secondary",
     company: "Haven of Peace Academy (HOPAC)",
     location: "Dar es Salaam",
@@ -232,6 +238,7 @@ export const educationJobs: Job[] = [
   },
   {
     id: "job-023",
+    slug: "psychology-sociology-teacher-high-school-at-haven-of-peace-academy-hopac-023",
     title: "Psychology/Sociology Teacher, High School",
     company: "Haven of Peace Academy (HOPAC)",
     location: "Dar es Salaam",
@@ -263,6 +270,7 @@ export const educationJobs: Job[] = [
   },
   {
     id: "job-024",
+    slug: "math-and-science-teacher-secondary-at-haven-of-peace-academy-hopac-024",
     title: "Math and Science Teacher, Secondary",
     company: "Haven of Peace Academy (HOPAC)",
     location: "Dar es Salaam",
@@ -294,6 +302,7 @@ export const educationJobs: Job[] = [
   },
     {
     id: "job-025",
+    slug: "information-communication-technology-officer-ii-networking-at-institute-of-finance-management-ifm-025",
     title: "Information Communication Technology Officer II – Networking",
     company: "Institute of Finance Management (IFM)",
     location: "Dar es Salaam",
@@ -327,6 +336,7 @@ export const educationJobs: Job[] = [
   },
   {
     id: "job-026",
+    slug: "information-communication-technology-officer-ii-programming-at-institute-of-finance-management-ifm-026",
     title: "Information Communication Technology Officer II – Programming",
     company: "Institute of Finance Management (IFM)",
     location: "Dar es Salaam",
@@ -360,6 +370,7 @@ export const educationJobs: Job[] = [
   },
   {
     id: "job-027",
+    slug: "tutorial-assistant-in-insurance-and-risk-management-at-institute-of-finance-management-ifm-027",
     title: "Tutorial Assistant in Insurance and Risk Management",
     company: "Institute of Finance Management (IFM)",
     location: "Dar es Salaam",
@@ -386,6 +397,7 @@ export const educationJobs: Job[] = [
   },
   {
     id: "job-028",
+    slug: "tutorial-assistant-in-accounting-at-institute-of-finance-management-ifm-028",
     title: "Tutorial Assistant in Accounting",
     company: "Institute of Finance Management (IFM)",
     location: "Dar es Salaam",
@@ -412,6 +424,7 @@ export const educationJobs: Job[] = [
   },
   {
     id: "job-029",
+    slug: "tutorial-assistant-in-banking-at-institute-of-finance-management-ifm-029",
     title: "Tutorial Assistant – In Banking",
     company: "Institute of Finance Management (IFM)",
     location: "Dar es Salaam",
@@ -438,6 +451,7 @@ export const educationJobs: Job[] = [
   },
   {
     id: "job-030",
+    slug: "assistant-lecturer-in-accounting-at-institute-of-finance-management-ifm-030",
     title: "Assistant Lecturer – In Accounting",
     company: "Institute of Finance Management (IFM)",
     location: "Dar es Salaam",
@@ -454,7 +468,7 @@ export const educationJobs: Job[] = [
       "Conduct lectures, research, and tutorial seminars",
       "Prepare case studies",
       "Work in cooperation with senior members of staff on specific projects, such as research and and consultancy",
-      "Supervise students’ projects",
+      "Supervise students' projects",
       "Perform other related duties as may be assigned by Supervisor"
     ],
     applicationMethod: {
@@ -468,6 +482,7 @@ export const educationJobs: Job[] = [
   },
   {
     id: "job-031",
+    slug: "assistant-lecturer-in-banking-at-institute-of-finance-management-ifm-031",
     title: "Assistant Lecturer – In Banking",
     company: "Institute of Finance Management (IFM)",
     location: "Dar es Salaam",
@@ -484,7 +499,7 @@ export const educationJobs: Job[] = [
       "Conduct lectures, research, and tutorial seminars",
       "Prepare case studies",
       "Work in cooperation with senior members of staff on specific projects such as research and consultancy",
-      "Supervise students’ projects",
+      "Supervise students' projects",
       "Perform other related duties as may be assigned by Supervisor"
     ],
     applicationMethod: {
