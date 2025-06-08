@@ -29,7 +29,7 @@ const Header = () => {
   const menuItems = [
     { path: "/", label: "Traffic Offence" },
     { path: "/jobs", label: "JOBS" },
-    { path: "/jobs-browse", label: "Browse Jobs" },
+    { path: "/jobs-browse", label: "Browse Regions" },
     { path: "/about", label: "About" }
   ];
 
