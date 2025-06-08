@@ -510,7 +510,292 @@ export const educationJobs: Job[] = [
     postedDate: "2025-06-06",
     deadline: "2025-06-16",
     featured: false
-  }
-
+  },
+  {
+  id: "job-032",
+  slug: "senior-program-officer-coordination-and-logistics-rise-project-at-jhpiego-job-032",
+  title: "Senior Program Officer – Coordination and Logistics – RISE Project",
+  company: "Jhpiego",
+  location: "Iringa, Morogoro, Njombe",
+  category: "Healthcare",
+  salaryRange: "Not Disclosed",
+  description: "Jhpiego is seeking a Senior Program Officer for Coordination and Logistics for its Reaching Impact, Saturation and Epidemic (RISE) project. This central role aligns and harmonizes efforts across RISE and FHI 360’s EpiC project to support community HIV services in Iringa, Morogoro, and Njombe regions. The SPO ensures cohesive implementation, communication, and coordination, serving as the partnership principles custodian and knowledge management champion.",
+  requirements: [
+    "Master’s degree in Public Health, Public Administration, Project Management, or a related field",
+    "At least 5 years of progressive experience in management support, program coordination, or project management in a donor-funded health program, preferably with USAID/PEPFAR funding",
+    "Proven experience in partnership management and engaging high-level stakeholders effectively",
+    "Demonstrated ability to manage complex operational workflows and cross-functional communication",
+    "Strong documentation and writing skills, including experience in reporting and technical writing",
+    "Excellent command of Microsoft Office applications, specifically SharePoint, Word, Excel, and PowerPoint",
+    "Fluency in both written and spoken English and Kiswahili",
+    "Ability to establish and maintain effective working relationships with internal and external customers",
+    "Strong planning and negotiation skills",
+    "Good level of computer literacy, conversant with all Microsoft products"
+  ],
+  responsibilities: [
+    "Serve as the focal point for implementing RISE-EpiC partnership principles, ensuring clear and consistent communication of expectations, deliverables, and decisions",
+    "Manage high-level communication with EpiC, USAID, PEPFAR, MOH, PORALG, and the RISE core team, ensuring accountability for agreed decisions and timelines",
+    "Handle all official project correspondence, ensuring timely responses to incoming letters and email requests, and proper routing for action",
+    "Track emerging implementation issues, route them appropriately, and escalate decisions to the Project Management Team (PMT) for resolution, ensuring timely feedback",
+    "Coordinate the adoption, tracking, and updating of country-level Objectives and Key Results (OKRs), assigning responsibilities and accountability",
+    "Lead project knowledge management efforts, ensuring timely documentation and storage of reports, minutes, letters, and other products on relevant repositories",
+    "Identify and support the development of project learning materials, including donor briefs, social media content, conference abstracts, case studies, and manuscripts",
+    "Coordinate logistical and operational issues, especially those requiring cross-functional coordination (finance, procurement, transport, administration), for timely response and resolution",
+    "Collaborate with technical, M&E, and finance teams to ensure integrated planning and timely tracking of project performance indicators and expenditures",
+    "Perform other duties as assigned by the supervisor"
+  ],
+  applicationMethod: {
+    type: 'url',
+    value: "https://jobs-jhpiego.icims.com/jobs/6937/senior-program-officer-%e2%80%93-coordination-and--logistics-%e2%80%93-rise-project/job",
+    instructions: "Submit your application, including a cover letter, resume, and references, as a single document through the official Jhpiego careers portal."
+  },
+  postedDate: "2025-06-01",
+  deadline: "2025-06-30",
+  featured: false
+},
+{
+  id: "job-033",
+  slug: "technical-specialist-infrastructure-service-management-at-dhl-job-033",
+  title: "Technical Specialist: Infrastructure & Service Management",
+  company: "DHL",
+  location: "Tanzania",
+  category: "Technology",
+  salaryRange: "Not Disclosed",
+  description: "DHL is seeking a Technical Specialist for Infrastructure & Service Management to support the Country ISM Lead in Tanzania. This role is crucial for effectively managing the IT infrastructure and services, ensuring professional and cost-efficient provision to operations, projects, and customers. The specialist is accountable for information asset protection and reputation in line with commercial agreements.",
+  requirements: [
+    "High School Certificate (Matric)",
+    "Bachelor’s degree in Computer Science or relevant education and work experience",
+    "Good knowledge of ISM and related methodologies, including ITIL certification",
+    "Familiarity with project management principles",
+    "Minimum of 2 years of experience in supply chain/logistics or other fast-paced sectors",
+    "Basic to good understanding of complex logistics operations and processes (ideally in DHL core sectors)",
+    "Minimum of 2 years of experience in ISM technical specialist roles",
+    "Some knowledge of IT Infrastructure (Telecoms, Network, Desktop, Hosting)",
+    "Basic to good understanding of the supply chain and its core applications (WMS, TMS, integration, etc.)",
+    "Results-oriented and driven by goal achievement, with a strong focus on high-quality service performance",
+    "Demonstrated ability to work effectively in a multinational environment",
+    "Strong analytical skills",
+    "Ability to maintain effective relationships with customers",
+    "Capacity to develop and deliver high-quality, innovative products, services, or solutions",
+    "Focus on customer needs and ability to gain their commitment",
+    "Aptitude for gaining management and colleague support to meet customer needs",
+    "Basic knowledge of main products, services, and business processes of their key business area",
+    "Fluent in English (verbal and written)"
+  ],
+  responsibilities: [
+    "Support the country IT ISM Lead in meeting goals for quality, budget, and time",
+    "Implement and track long- and medium-term ISM strategy in alignment with regional ISM, ensuring internal customer alignment and communication of benefits",
+    "Provide proper ISM implementation support for existing and new customers on the ground",
+    "Deliver IT Infrastructure and Service Management Services according to agreed SLAs in terms of quality and costs",
+    "Support the implementation of Information Security and risk-related policies, standards, technologies, and processes in the country",
+    "Be accountable for compliance with corporate policies, software licenses, and hardware asset registers",
+    "Support the ISM lead for internal and external suppliers according to SLAs at the local level",
+    "Ensure that IT services per site are documented and maintained",
+    "Provide project-related implementation services",
+    "Ensure all documentation (Work Instructions, SOPs, IT Asset Register, Site Network Documentation, Project plans, Ticket system) are recorded and updated timeously and properly",
+    "Carry out agreed operational procedures of a routine nature",
+    "Contribute to maintenance, installation, and problem resolution",
+    "Ensure incidents are handled according to agreed procedures",
+    "Investigate escalated incidents and seek resolution from responsible service owners",
+    "Facilitate recovery following the resolution of incidents",
+    "Ensure resolved incidents are properly documented and closed",
+    "Analyze causes of incidents to minimize recurrence and contribute to service improvement",
+    "Analyze metrics and report on the performance of the incident management process"
+  ],
+  applicationMethod: {
+    type: 'url',
+    value: "https://careers.dhl.com/global/en/job/DPDHGLOBALAV283091ENGLOBALEXTERNAL/Technical-Specialist%253A-Infrastructure--Service-Management---Tanzania?UTM_Source=0LinkedIn&UTM_Medium=1JobWrapper&UTM_Campaign=2dhl",
+    instructions: "Submit your application through the official DHL careers portal link."
+  },
+  postedDate: "2025-06-01",
+  deadline: "2025-06-30",
+  featured: false
+},
+{
+  id: "job-034",
+  slug: "project-manager-at-helvetas-rtia-project-job-034",
+  title: "Project Manager",
+  company: "HELVETAS Swiss Intercooperation (HELVETAS)",
+  location: "Dodoma, Morogoro, Iringa, Njombe",
+  category: "Other", // Using 'Other' as it's a project management role in an education research context which doesn't fit neatly into the provided list
+  salaryRange: "Very attractive, as per HELVETAS Tanzania rules and regulations",
+  description: "HELVETAS Tanzania is seeking a Project Manager for its 1.5-year Regional Teachers’ Initiative for Africa (RTIA) project, funded by the EU Global Gateway. This role involves overseeing the implementation of an education research project focused on assessing teacher professional development models in Tanzania and Zambia. The manager will ensure project objectives are met and contribute to improving teaching practices.",
+  requirements: [
+    "Qualified and dynamic Tanzanian citizen",
+    "Ability to lead and manage project activities",
+    "Strong organizational and coordination skills",
+    "Experience in education research or related fields is highly beneficial",
+    "Capacity to work effectively in a team and with international partners",
+    "Please refer to the detailed Terms of Reference (ToR) for full qualifications and experience."
+  ],
+  responsibilities: [
+    "Manage the overall implementation of the RTIA project in Tanzania",
+    "Ensure project activities align with research objectives and funding requirements",
+    "Coordinate with project partners: University of Bern, University of Zambia, and Ruaha Catholic University",
+    "Oversee the application of the School-Based In-Service Teachers Training (SITT) model",
+    "Monitor project performance and ensure timely delivery of outputs",
+    "Facilitate effective communication among all project stakeholders",
+    "Prepare project reports and documentation",
+    "Please refer to the detailed Terms of Reference (ToR) for full responsibilities."
+  ],
+  applicationMethod: {
+    type: 'email',
+    value: "tanzania@helvetas.org",
+    instructions: "Request the detailed Terms of Reference (ToR) via email to tanzania@helvetas.org. Submit your application by the deadline."
+  },
+  postedDate: "2025-06-01",
+  deadline: "2025-06-12",
+  featured: false
+},
+{
+  id: "job-036",
+  slug: "territory-manager-bariadi-at-vodacom-job-036",
+  title: "Territory Manager Bariadi",
+  company: "Vodacom",
+  location: "Bariadi",
+  category: "Sales",
+  salaryRange: "Not Disclosed",
+  description: "Vodacom is seeking a Territory Manager for Bariadi to maximize sales revenue through distributors, dealers, and other partners. This role involves active collaboration with partners to achieve targets, monitoring stock levels, identifying distribution chain gaps, and driving direct sales of products and services, while ensuring adherence to retail and operating standards.",
+  requirements: [
+    "University Degree or equivalent training in business or sales management",
+    "Ability to perform effectively under high stress with short-term targets and objectives",
+    "High level of integrity and strong work ethics",
+    "Proficiency in presentation skills and computer literacy (Excel, PowerPoint, Word)",
+    "Capability to operate effectively in a performance-driven organization",
+    "Clean Driving Licence",
+    "Good knowledge of Vodacom’s products/services and pricing practices",
+    "Strong business acumen",
+    "Excellent analytical and problem-solving skills",
+    "Superior planning skills",
+    "High personal standards and integrity",
+    "Effective stakeholder management abilities"
+  ],
+  responsibilities: [
+    "Ensure the achievement of agreed sales and revenue targets through distributors, dealers, and partners within the assigned territory",
+    "Implement sales and distribution activities across the territory",
+    "Coordinate the distribution of Vodacom products to ensure continuous availability within the territory",
+    "Manage the distribution of branding and promotion materials to enhance visibility and build consumer/dealer loyalty",
+    "Identify requirements for trade promotions and recommend actions to the line manager",
+    "Implement and support promotional activities within the territory",
+    "Monitor competitor activity in the region and report findings with recommendations for action",
+    "Work with and support distribution partners, aiding in the development of action plans to achieve targets",
+    "Work alongside dealer staff for coaching and monitoring purposes",
+    "Train all distribution partners on Vodacom’s products and/or services",
+    "Ensure the implementation and maintenance of Retail execution and distributor operating standards (e.g., availability, stocking, pricing, retail POS standards)",
+    "Provide regular reports, including weekly, monthly, and quarterly sales trends for the territory",
+    "Generate weekly reports on dealer performance",
+    "Submit market intelligence reports on competitor activity"
+  ],
+  applicationMethod: {
+    type: 'url',
+    value: "https://jobs.vodafone.com/careers/job/563018686123061?domain=vodafone.com",
+    instructions: "Submit your application by following the provided online link."
+  },
+  postedDate: "2025-06-01",
+  deadline: "2025-06-30",
+  featured: false
+},
+{
+  id: "job-037",
+  slug: "operations-manager-at-forworld-company-limited-job-037",
+  title: "Operations Manager",
+  company: "Forworld Company Limited",
+  location: "Dar es Salaam",
+  category: "Administration",
+  salaryRange: "Not Disclosed",
+  description: "Forworld Company Limited is seeking an Operations Manager to oversee and optimize daily business operations. This role is crucial for managing processes, leveraging IT skills for database development, and ensuring efficiency across multinational import and export activities.",
+  requirements: [
+    "Bachelor’s degree in Business Administration, Business Management, or a closely related field",
+    "2–3 years of experience in multinational business operations",
+    "Strong IT skills, including expertise in database development",
+    "Familiarity with import and export business processes",
+    "Excellent communication skills",
+    "Strong problem-solving abilities"
+  ],
+  responsibilities: [
+    "Oversee and streamline daily business operations to enhance efficiency",
+    "Manage and optimize operational processes to meet company objectives",
+    "Implement and maintain IT systems for operational efficiency, including database development",
+    "Coordinate and manage import and export business activities",
+    "Resolve operational challenges and ensure smooth workflow",
+    "Foster effective communication across various departments",
+    "Provide leadership and support to the operations team"
+  ],
+  applicationMethod: {
+    type: 'email',
+    value: "forworld.co.ltd@gmail.com",
+    instructions: "Submit your application to the provided email address."
+  },
+  postedDate: "2025-06-01",
+  deadline: "2025-06-12",
+  featured: false
+},
+{
+  id: "job-038",
+  slug: "translator-at-forworld-company-limited-job-038",
+  title: "Translator",
+  company: "Forworld Company Limited",
+  location: "Dar es Salaam",
+  category: "Education",
+  salaryRange: "Not Disclosed",
+  description: "Forworld Company Limited is seeking a skilled Translator. This role requires fluency in both Chinese and English, with excellent Chinese writing skills, to facilitate communication and documentation within the company's operations.",
+  requirements: [
+    "Fluency in both Chinese and English languages",
+    "Excellent writing skills in Chinese",
+    "Proficiency in Microsoft Excel and Microsoft Office suite",
+    "Strong communication skills",
+    "A Degree in Translation or a related field is preferred"
+  ],
+  responsibilities: [
+    "Provide accurate and timely translation between Chinese and English for various company documents and communications",
+    "Ensure consistency and cultural appropriateness in all translated materials",
+    "Utilize Microsoft Excel and other Office applications for organizing translated content and administrative tasks",
+    "Collaborate effectively with team members and departments to meet translation needs",
+    "Maintain confidentiality of sensitive information"
+  ],
+  applicationMethod: {
+    type: 'email',
+    value: "forworld.co.ltd@gmail.com",
+    instructions: "Submit your application to the provided email address."
+  },
+  postedDate: "2025-06-01",
+  deadline: "2025-06-12",
+  featured: false
+},
+{
+  id: "job-039",
+  slug: "aquaculture-personnel-at-forworld-company-limited-job-039",
+  title: "Aquaculture Personnel",
+  company: "Forworld Company Limited",
+  location: "Dar es Salaam",
+  category: "Agriculture",
+  salaryRange: "Not Disclosed",
+  description: "Forworld Company Limited is seeking experienced Aquaculture Personnel to join their team in Kigamboni, Dar es Salaam. This role requires a strong understanding of aquaculture farming techniques, including feed management and water quality, with a passion for promoting sustainable practices, especially in lobster farming.",
+  requirements: [
+    "Bachelor’s degree in Aquaculture, Fisheries Science, or a related field",
+    "3 years’ experience in a related field",
+    "Proven experience in aquaculture, with a strong understanding of farming techniques, feed management, and water quality requirements",
+    "Ability to work independently and collaboratively in a dynamic team environment",
+    "Passion for promoting sustainable aquaculture practices",
+    "Knowledge of lobster farming is preferred"
+  ],
+  responsibilities: [
+    "Manage and oversee aquaculture operations",
+    "Implement effective farming techniques, including feed management strategies",
+    "Monitor and maintain optimal water quality for aquatic species",
+    "Contribute to the promotion of sustainable aquaculture practices",
+    "Work independently and collaboratively within a team environment",
+    "Handle tasks related to lobster farming, if applicable",
+    "Perform any other duties as required to ensure successful aquaculture operations"
+  ],
+  applicationMethod: {
+    type: 'email',
+    value: "forworld.co.ltd@gmail.com",
+    instructions: "Submit your application to the provided email address."
+  },
+  postedDate: "2025-06-01",
+  deadline: "2025-06-12",
+  featured: false
+}
 
 ];
