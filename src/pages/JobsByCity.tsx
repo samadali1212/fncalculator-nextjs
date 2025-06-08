@@ -86,10 +86,6 @@ const JobsByCity = () => {
           <Link to="/jobs" className="text-blog-accent hover:underline text-sm mr-3">
             ← Back to All Jobs
           </Link>
-          {region !== "Unknown" && (
-            <Link to={`/jobs/region/${regionSlug}`} className="text-blog-accent hover:underline text-sm">
-              View All Jobs in {region} Region
-            </Link>
           )}
         </div>
         
