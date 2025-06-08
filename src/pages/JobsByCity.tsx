@@ -88,7 +88,7 @@ const JobsByCity = () => {
     </Link>
   </div>
         
-        <h1 className="text-3xl font-bold mb-2">Jobs in {city}, Tanzania</h1>
+        <h1 className="text-3xl font-bold mb-2">Jobs in {city}</h1>
         <p className="text-gray-600 mb-6">
           Browse {allJobs.length} job opportunities in {city} across various industries and career levels.
           {region !== "Unknown" && ` ${city} is located in ${region} region.`}
