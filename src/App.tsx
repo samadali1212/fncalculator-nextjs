@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import About from "./pages/About";
@@ -8,6 +7,7 @@ import Events from "./pages/Events";
 import EventPage from "./pages/EventPage";
 import YearPage from "./pages/YearPage";
 import MonthPage from "./pages/MonthPage";
+import MainPage from "./pages/MainPage";
 import Jobs from "./pages/Jobs";
 import JobDetail from "./pages/JobDetail";
 import JobsByCategory from "./pages/JobsByCategory";
@@ -19,10 +19,16 @@ const App = () => {
     <BrowserRouter>
       <Layout>
         <Routes>
-          {/* Set TrafficOffence as the explicit homepage */}
+          {/* Traffic offence checker as homepage */}
           <Route path="/" element={<TrafficOffence />} />
-          {/* Ensure salaries path also works and doesn't create duplicate content */}
+          
+          {/* Job browsing moved to /jobs-browse */}
+          <Route path="/jobs-browse" element={<MainPage />} />
+          
+          {/* Keep existing traffic offence routes for backward compatibility */}
           <Route path="/traffic-offence" element={<Navigate to="/" replace />} />
+          <Route path="/traffic-offence-checker" element={<Navigate to="/" replace />} />
+          
           <Route path="/about" element={<About />} />
 
           {/* Job Listing Routes */}
@@ -34,20 +40,19 @@ const App = () => {
           
           {/* Job City Pages */}
           <Route path="/jobs/city/:citySlug" element={<JobsByCity />} />
-
+          
           {/* Job Region Pages */}
           <Route path="/jobs/region/:regionSlug" element={<JobsByRegion />} />
-   
 
           {/* Events routes */}
           <Route path="/events" element={<Events />} />
           <Route path="/events/:eventId" element={<EventPage />} />
         
-            {/* Year-specific routes */}
-            <Route path="/year/:year" element={<YearPage />} />
-            
-            {/* SEO-friendly month routes like /january-2025 */}
-            <Route path="/:monthYear" element={<MonthPage />} />
+          {/* Year-specific routes */}
+          <Route path="/year/:year" element={<YearPage />} />
+          
+          {/* SEO-friendly month routes like /january-2025 */}
+          <Route path="/:monthYear" element={<MonthPage />} />
                         
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
