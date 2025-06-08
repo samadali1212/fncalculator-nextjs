@@ -1,3 +1,4 @@
+
 import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
@@ -7,6 +8,39 @@ interface SEOProps {
   ogImage?: string;
   ogType?: "website" | "article";
   twitterCard?: "summary" | "summary_large_image";
+  structuredData?: any;
+  jobPosting?: {
+    title: string;
+    description: string;
+    datePosted: string;
+    validThrough: string;
+    employmentType?: string;
+    hiringOrganization: {
+      name: string;
+      logo?: string;
+    };
+    jobLocation: {
+      addressLocality: string;
+      addressRegion?: string;
+      addressCountry?: string;
+    };
+    baseSalary?: {
+      currency: string;
+      value: {
+        minValue?: number;
+        maxValue?: number;
+        value?: number;
+      };
+      unitText: "YEAR" | "MONTH" | "WEEK" | "DAY" | "HOUR";
+    };
+    applicantLocationRequirements?: string;
+    jobLocationType?: string;
+  };
+  jobListing?: {
+    listingType: "province" | "city" | "category";
+    name: string;
+    count: number;
+  };
 }
 
 const SEO = ({
@@ -19,6 +53,96 @@ const SEO = ({
 }: SEOProps) => {
   const siteUrl = "https://denilagari.com";
   
+
+  const getJobPostingSchema = () => {
+    if (jobPosting) {
+      return {
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        title: jobPosting.title,
+        description: jobPosting.description,
+        datePosted: jobPosting.datePosted,
+        validThrough: jobPosting.validThrough,
+        employmentType: jobPosting.employmentType,
+        hiringOrganization: {
+          "@type": "Organization",
+          name: jobPosting.hiringOrganization.name,
+          logo: jobPosting.hiringOrganization.logo ? `${siteUrl}${jobPosting.hiringOrganization.logo}` : undefined
+        },
+        jobLocation: {
+          "@type": "Place",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: jobPosting.jobLocation.addressLocality,
+            addressRegion: jobPosting.jobLocation.addressRegion,
+            addressCountry: jobPosting.jobLocation.addressCountry || "South Africa"
+          }
+        },
+        ...(jobPosting.baseSalary && {
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: jobPosting.baseSalary.currency,
+            value: {
+              "@type": "QuantitativeValue",
+              ...(jobPosting.baseSalary.value.minValue && { minValue: jobPosting.baseSalary.value.minValue }),
+              ...(jobPosting.baseSalary.value.maxValue && { maxValue: jobPosting.baseSalary.value.maxValue }),
+              ...(jobPosting.baseSalary.value.value && { value: jobPosting.baseSalary.value.value }),
+              unitText: jobPosting.baseSalary.unitText
+            }
+          }
+        }),
+        ...(jobPosting.applicantLocationRequirements && {
+          applicantLocationRequirements: {
+            "@type": "Country",
+            name: jobPosting.applicantLocationRequirements
+          }
+        }),
+        ...(jobPosting.jobLocationType && {
+          jobLocationType: jobPosting.jobLocationType
+        })
+      };
+    }
+    return null;
+  };
+
+  const getJobListingSchema = () => {
+    if (jobListing) {
+      let itemListType;
+      let itemListName;
+      
+      switch(jobListing.listingType) {
+        case "province":
+          itemListType = "JobListingsByProvince";
+          itemListName = `Jobs in ${jobListing.name}, South Africa`;
+          break;
+        case "city":
+          itemListType = "JobListingsByCity";
+          itemListName = `Jobs in ${jobListing.name}, South Africa`;
+          break;
+        case "category":
+          itemListType = "JobListingsByCategory"; 
+          itemListName = `${jobListing.name} Jobs in South Africa`;
+          break;
+      }
+      
+      return {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": itemListName,
+        "numberOfItems": jobListing.count,
+        "itemListOrder": "Descending",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": `${siteUrl}${canonicalUrl}`
+          }
+        ]
+      };
+    }
+    return null;
+  };
+
   return (
     <Helmet>
       {/* Basic Meta Tags */}
@@ -27,11 +151,11 @@ const SEO = ({
       {canonicalUrl && <link rel="canonical" href={`${siteUrl}${canonicalUrl}`} />}
       
       {/* Favicon */}
-      <link rel="icon" href="/denilagarifavicon.png" type="image/png" />
-      <link rel="apple-touch-icon" href="/denilagarifavicon.png" />
+      <link rel="icon" href="/SalaryList favicon.png" type="image/png" />
+      <link rel="apple-touch-icon" href="/SalaryList favicon.png" />
       
       {/* OpenGraph Meta Tags */}
-      <meta property="og:site_name" content="Deni La Gari" />
+      <meta property="og:site_name" content="SalaryList" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
@@ -43,6 +167,31 @@ const SEO = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       {ogImage && <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />}
+
+      {/* Structured Data */}
+      {person && (
+        <script type="application/ld+json">
+          {JSON.stringify(getStructuredData())}
+        </script>
+      )}
+      
+      {socialMedia && (
+        <script type="application/ld+json">
+          {JSON.stringify(getSocialMediaPostingSchema())}
+        </script>
+      )}
+      
+      {jobPosting && (
+        <script type="application/ld+json">
+          {JSON.stringify(getJobPostingSchema())}
+        </script>
+      )}
+      
+      {jobListing && (
+        <script type="application/ld+json">
+          {JSON.stringify(getJobListingSchema())}
+        </script>
+      )}
     </Helmet>
   );
 };
