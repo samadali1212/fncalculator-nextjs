@@ -516,7 +516,7 @@ export const educationJobs: Job[] = [
   slug: "senior-program-officer-coordination-and-logistics-rise-project-at-jhpiego-job-032",
   title: "Senior Program Officer – Coordination and Logistics – RISE Project",
   company: "Jhpiego",
-  location: "Iringa, Morogoro, Njombe",
+  location: "Iringa",
   category: "Healthcare",
   salaryRange: "Not Disclosed",
   description: "Jhpiego is seeking a Senior Program Officer for Coordination and Logistics for its Reaching Impact, Saturation and Epidemic (RISE) project. This central role aligns and harmonizes efforts across RISE and FHI 360’s EpiC project to support community HIV services in Iringa, Morogoro, and Njombe regions. The SPO ensures cohesive implementation, communication, and coordination, serving as the partnership principles custodian and knowledge management champion.",
@@ -616,8 +616,8 @@ export const educationJobs: Job[] = [
   slug: "project-manager-at-helvetas-rtia-project-job-034",
   title: "Project Manager",
   company: "HELVETAS Swiss Intercooperation (HELVETAS)",
-  location: "Dodoma, Morogoro, Iringa, Njombe",
-  category: "Other", // Using 'Other' as it's a project management role in an education research context which doesn't fit neatly into the provided list
+  location: "Dodoma",
+  category: "Administration",
   salaryRange: "Very attractive, as per HELVETAS Tanzania rules and regulations",
   description: "HELVETAS Tanzania is seeking a Project Manager for its 1.5-year Regional Teachers’ Initiative for Africa (RTIA) project, funded by the EU Global Gateway. This role involves overseeing the implementation of an education research project focused on assessing teacher professional development models in Tanzania and Zambia. The manager will ensure project objectives are met and contribute to improving teaching practices.",
   requirements: [
@@ -652,7 +652,7 @@ export const educationJobs: Job[] = [
   slug: "territory-manager-bariadi-at-vodacom-job-036",
   title: "Territory Manager Bariadi",
   company: "Vodacom",
-  location: "Bariadi",
+  location: "Simiyu",
   category: "Sales",
   salaryRange: "Not Disclosed",
   description: "Vodacom is seeking a Territory Manager for Bariadi to maximize sales revenue through distributors, dealers, and other partners. This role involves active collaboration with partners to achieve targets, monitoring stock levels, identifying distribution chain gaps, and driving direct sales of products and services, while ensuring adherence to retail and operating standards.",
