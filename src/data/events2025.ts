@@ -5,7 +5,7 @@ export interface Event {
   time?: string; // Optional time
   location: string;
   description?: string;
-  category: 'holiday' | 'religious-observance' | 'cultural-observance' | 'observance' | 'astronomical-event';
+  category: 'holiday' | 'religious-holiday' | 'cultural-observance' | 'observance' | 'astronomical-event';
 }
 
 export const events2025: Event[] = [
