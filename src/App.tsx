@@ -12,6 +12,7 @@ import Jobs from "./pages/Jobs";
 import JobDetail from "./pages/JobDetail";
 import JobsByCategory from "./pages/JobsByCategory";
 import JobsByCity from "./pages/JobsByCity";
+import JobsByRegion from "./pages/JobsByRegion";
 
 const App = () => {
   return (
@@ -33,6 +34,9 @@ const App = () => {
           
           {/* Job City Pages */}
           <Route path="/jobs/city/:citySlug" element={<JobsByCity />} />
+
+          {/* Job Region Pages */}
+          <Route path="/jobs/region/:regionSlug" element={<JobsByRegion />} />
    
 
           {/* Events routes */}
