@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
@@ -9,6 +8,21 @@ interface SEOProps {
   ogType?: "website" | "article";
   twitterCard?: "summary" | "summary_large_image";
   structuredData?: any;
+  person?: {
+    name: string;
+    netWorth: number;
+    currency: string;
+    occupation: string;
+    description: string;
+    imageUrl?: string;
+  };
+  socialMedia?: {
+    headline: string;
+    articleBody: string;
+    datePublished: string;
+    author: string;
+    url: string;
+  };
   jobPosting?: {
     title: string;
     description: string;
@@ -113,15 +127,15 @@ const SEO = ({
       switch(jobListing.listingType) {
         case "province":
           itemListType = "JobListingsByProvince";
-          itemListName = `Jobs in ${jobListing.name}, South Africa`;
+          itemListName = `Jobs in ${jobListing.name}`;
           break;
         case "city":
           itemListType = "JobListingsByCity";
-          itemListName = `Jobs in ${jobListing.name}, South Africa`;
+          itemListName = `Jobs in ${jobListing.name}`;
           break;
         case "category":
           itemListType = "JobListingsByCategory"; 
-          itemListName = `${jobListing.name} Jobs in South Africa`;
+          itemListName = `${jobListing.name}`;
           break;
       }
       
