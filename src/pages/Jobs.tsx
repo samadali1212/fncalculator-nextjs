@@ -89,8 +89,8 @@ const Jobs = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Job Listings | Find Your Next Career Opportunity" 
-        description="Browse job opportunities across Tanzania. Find positions in technology, finance, healthcare, and more industries."
+        title="Latest Jobs In Tanzania: Find Your Next Career Opportunity" 
+        description="Find job opportunities across Tanzania in one place. Easily search for positions by category, location, or company. Simple, comprehensive, and always up to date."
         canonicalUrl="/jobs"
       />
       <Header />
@@ -98,7 +98,7 @@ const Jobs = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <h1 className="text-3xl font-bold mb-2">Job Listings</h1>
         <p className="text-gray-600 mb-6">
-          Find your next career opportunity from our curated list of positions across Tanzania.
+          Find your next career opportunity from our curated list of positions across Tanzania. Easily search for positions by category, location, or company. Simple, comprehensive, and always up to date 
         </p>
         
         {/* Top ad placement */}
