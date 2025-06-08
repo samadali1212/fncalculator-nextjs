@@ -1,3 +1,4 @@
+
 import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
@@ -63,10 +64,50 @@ const SEO = ({
   canonicalUrl,
   ogImage = "/denilagarifavicon.png", 
   ogType = "website",
-  twitterCard = "summary_large_image"
+  twitterCard = "summary_large_image",
+  person,
+  socialMedia,
+  jobPosting,
+  jobListing
 }: SEOProps) => {
   const siteUrl = "https://denilagari.com";
-  
+
+  const getStructuredData = () => {
+    if (person) {
+      return {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": person.name,
+        "netWorth": {
+          "@type": "MonetaryAmount",
+          "currency": person.currency,
+          "value": person.netWorth
+        },
+        "jobTitle": person.occupation,
+        "description": person.description,
+        ...(person.imageUrl && { "image": `${siteUrl}${person.imageUrl}` })
+      };
+    }
+    return null;
+  };
+
+  const getSocialMediaPostingSchema = () => {
+    if (socialMedia) {
+      return {
+        "@context": "https://schema.org",
+        "@type": "SocialMediaPosting",
+        "headline": socialMedia.headline,
+        "articleBody": socialMedia.articleBody,
+        "datePublished": socialMedia.datePublished,
+        "author": {
+          "@type": "Person",
+          "name": socialMedia.author
+        },
+        "url": socialMedia.url
+      };
+    }
+    return null;
+  };
 
   const getJobPostingSchema = () => {
     if (jobPosting) {
@@ -89,7 +130,7 @@ const SEO = ({
             "@type": "PostalAddress",
             addressLocality: jobPosting.jobLocation.addressLocality,
             addressRegion: jobPosting.jobLocation.addressRegion,
-            addressCountry: jobPosting.jobLocation.addressCountry || "South Africa"
+            addressCountry: jobPosting.jobLocation.addressCountry || "Tanzania"
           }
         },
         ...(jobPosting.baseSalary && {

@@ -3,7 +3,7 @@
  * Job data types for job listings
  */
 
-export type JobLocation = 'Remote' | 'Dar es Salaam' | 'Arusha' | 'Mwanza' | 'Mbeya' | 'Morogoro' | 'Tanga' | 'Dodoma' | 'Nationwide';
+export type JobLocation = 'Remote' | 'Dar es Salaam' | 'Arusha' | 'Mwanza' | 'Mbeya' | 'Morogoro' | 'Tanga' | 'Dodoma' | 'Nationwide' | 'Pretoria' | 'Bloemfontein';
 
 export type JobCategory = 
   | 'Technology' 

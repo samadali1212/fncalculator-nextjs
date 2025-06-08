@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, MapPin, Briefcase, Filter, ArrowRight } from "lucide-react";
@@ -17,7 +16,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import AdSense from "../components/AdSense";
-import JobBrowseBySection from "../components/JobBrowseBySection";
 import { filterJobs, formatDate, isNewJob, isJobExpiringSoon } from "../utils/jobUtils";
 import { getUniqueCategories, getUniqueLocations, JobCategory, JobLocation } from "../utils/jobData";
 
