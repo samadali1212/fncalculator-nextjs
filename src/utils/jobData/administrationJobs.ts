@@ -29,7 +29,7 @@ export const administrationJobs: Job[] = [
   },
   postedDate: "2025-06-01",
   deadline: "2025-07-05",
-  featured: false
+  featured: true
 },
   {
   id: "job-015",
