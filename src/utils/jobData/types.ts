@@ -3,7 +3,7 @@
  * Job data types for job listings
  */
 
-export type JobLocation = 'Remote' | 'Dar es Salaam' | 'Arusha' | 'Mwanza' | 'Mbeya' | 'Morogoro' | 'Tanga' | 'Dodoma' | 'Nationwide' | 'Pretoria' | 'Bloemfontein';
+| 'Arusha' | 'Dar es Salaam' | 'Dodoma' | 'Geita' | 'Iringa' | 'Kagera' | 'Katavi' | 'Kigoma' | 'Kilimanjaro' | 'Lindi' | 'Manyara' | 'Mara' | 'Mbeya' | 'Morogoro' | 'Mtwara' | 'Mwanza' | 'Njombe' | 'Pwani' | 'Rukwa' | 'Ruvuma' | 'Shinyanga' | 'Simiyu' | 'Singida' | 'Songwe' | 'Tabora' | 'Tanga' | 'Zanzibar' | 'Nationwide';
 
 export type JobCategory = 
   | 'Technology' 
@@ -15,6 +15,16 @@ export type JobCategory =
   | 'Marketing' 
   | 'Customer Service' 
   | 'Administration' 
+  | 'Construction'
+  | 'Hospitality'
+  | 'Legal'
+  | 'Human Resources'
+  | 'Transportation'
+  | 'Manufacturing'
+  | 'Agriculture'
+  | 'Media'
+  | 'Security'
+  | 'Procurement'
   | 'Other';
 
 export type ApplicationMethod = {
