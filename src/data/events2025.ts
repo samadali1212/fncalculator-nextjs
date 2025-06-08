@@ -5,7 +5,7 @@ export interface Event {
   time?: string; // Optional time
   location: string;
   description?: string;
-  category: 'holiday' | 'religious-holiday' | 'cultural-observance' | 'observance' | 'astronomical-event';
+  category: 'holiday' | 'religious-holiday' | 'observance';
 }
 
 export const events2025: Event[] = [
@@ -103,7 +103,7 @@ export const events2025: Event[] = [
     date: '2026-03-19',
     location: 'Tanzania',
     description: 'Eid ul-Fitr, meaning "Festival of Breaking the Fast," is one of the two major Islamic holidays celebrated annually worldwide, including by the significant Muslim community in Tanzania. Sundown of Thursday, Mar 19, 2026 to Friday, Mar 20, 2026 (the exact date may vary slightly based on lunar sightings). This joyous occasion marks the culmination of Ramadan, the Islamic holy month of fasting, prayer, reflection, and community. Eid al-Fitr is a time of great celebration and gratitude, symbolising spiritual renewal and the successful completion of a month of devotion. Muslim communities in Tanzania begin the day with communal prayers at mosques, followed by festive gatherings with family and friends. Traditional elaborate meals are prepared and shared, and gifts are exchanged, particularly for children. A key aspect of Eid al-Fitr is the emphasis on charity (Zakat ul-Fitr), ensuring that even the less fortunate can partake in the celebrations, fostering a strong sense of community, compassion, and shared blessings among believers.',
-    category: 'religious-observance'
+    category: 'religious-holiday'
   },
   {
     id: 'palm-sunday-2026',
@@ -111,7 +111,7 @@ export const events2025: Event[] = [
     date: '2026-03-29',
     location: 'Tanzania',
     description: 'Palm Sunday, falling on Sunday, March 29, 2026, is a Christian moveable feast that marks the beginning of Holy Week, the final week of Lent leading up to Easter. It commemorates Jesus Christ\'s triumphant entry into Jerusalem, where, according to the Gospels, crowds greeted him by waving palm branches and laying cloaks on the ground, hailing him as a king. For Christians in Tanzania, Palm Sunday is a day of spiritual significance, reflecting on this momentous event and the path towards Jesus\' crucifixion and resurrection. Special church services are held across the country, where congregants often receive small crosses made of palm leaves or actual palm branches, which they carry in procession as a symbol of their faith and the joyous entry into Jerusalem. The atmosphere in churches is often a mix of celebration and solemn anticipation as believers prepare for the deeper spiritual journey of Holy Week, which includes Maundy Thursday, Good Friday, and ultimately Easter Sunday.',
-    category: 'religious-observance'
+    category: 'religious-holiday'
   },
   {
     id: 'good-friday-2026',
@@ -127,7 +127,7 @@ export const events2025: Event[] = [
     date: '2026-04-04',
     location: 'Tanzania',
     description: 'Holy Saturday will be held on Saturday, April 4, 2026, this is the day immediately preceding Easter Sunday in the Christian Holy Week. It is a solemn day for Christians in Tanzania, marking the time when Jesus Christ\'s body lay in the tomb after his crucifixion on Good Friday. The day is traditionally a period of quiet reflection, prayer, and anticipation, as believers await the joyous celebration of the Resurrection. While no Masses or major liturgical celebrations are held during the day, many churches may offer services of quiet contemplation or prepare for the Easter Vigil, which typically begins after sundown on Holy Saturday. The Easter Vigil is the most important liturgy of the entire Christian year, celebrating the resurrection of Jesus and welcoming new members into the Church through baptism and confirmation. Holy Saturday is a day of spiritual rest and preparation, bridging the sorrow of Good Friday with the triumph of Easter, emphasizing the transition from darkness to light and from death to new life in the Christian faith.',
-    category: 'religious-observance'
+    category: 'religious-holiday'
   },
   {
     id: 'easter-sunday-2026',
@@ -135,7 +135,7 @@ export const events2025: Event[] = [
     date: '2026-04-05',
     location: 'Tanzania',
     description: 'Easter Sunday, falling on Sunday, April 5th, 2026, is a paramount Christian holiday commemorating the resurrection of Jesus Christ from the dead. It is the culmination of the Holy Week, following Good Friday, and is regarded as the most joyous and important feast in the Christian calendar, celebrating the victory of life over death. Although widely observed by Christians throughout Tanzania with elaborate church services, hymns, and celebrations of new life, it is important to note that Easter Sunday itself is not formally designated as a public holiday in Tanzania. Instead, Family Day, the Monday immediately following Easter Sunday, is the official public holiday, extending the weekend for families. Nevertheless, churches across the nation hold special services, often filled with vibrant decorations, music, and gatherings to celebrate the central tenet of Christian faith, bringing together communities for spiritual renewal and fellowship. Many families also engage in traditional activities like Easter egg hunts and shared meals, marking a time of joy and togetherness.',
-    category: 'religious-observance'
+    category: 'religious-holiday'
   },
     {
     id: 'easter-monday-tanzania-2026',
@@ -183,7 +183,7 @@ export const events2025: Event[] = [
     date: '2026-05-14',
     location: 'Tanzania',
     description: 'Ascension Day will take place on Thursday, May 14, 2026, is a significant Christian holiday that commemorates the bodily Ascension of Jesus Christ into heaven. This event, described in the New Testament, occurred 40 days after Jesus\' resurrection on Easter Sunday, signifying the completion of his earthly ministry and his return to God the Father. For Christians in Tanzania, Ascension Day is a time of spiritual reflection and reaffirmation of faith in Christ\'s divine nature and his promise of eternal life. Many Christian denominations hold special church services, often marked by readings from the Bible pertaining to the Ascension, prayers, and hymns. While not a public holiday in Tanzania, it is widely observed by devout Christians who may take time off work or attend evening services. It serves as a reminder of the heavenly hope that is central to Christian belief and a bridge between the celebration of Easter and the anticipation of Pentecost, which marks the descent of the Holy Spirit.',
-    category: 'religious-observance'
+    category: 'religious-holiday'
   },
   {
     id: 'eid-al-adha-tanzania-2026',
