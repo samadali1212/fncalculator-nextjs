@@ -199,7 +199,7 @@ const EventPage = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO
-        title={`${event.title} - HolidaysDB`}
+        title={`${event.title} - denilagari`}
         description={`Countdown to ${event.title} on ${formatEventDate(event.date)} at ${event.location}. View details and other Tanzanian events.`}
         canonicalUrl={`/events/${event.id}`}
       />
@@ -215,7 +215,7 @@ const EventPage = () => {
               </Button>
             </a>
             <ShareButton 
-              title={`${event.title} - HolidaysDB`} 
+              title={`${event.title} - denilagari`} 
               variant="outline"
             />
           </div>
@@ -384,7 +384,7 @@ const EventPage = () => {
 
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} HolidaysDB. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} denilagari. All rights reserved.</p>
         </div>
       </footer>
     </motion.div>
