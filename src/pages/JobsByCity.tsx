@@ -65,16 +65,29 @@ const JobsByCity = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title=Jobs In {seoTitle}
+        title={seoTitle}
         description={seoDescription}
         canonicalUrl={`/jobs/city/${citySlug}`}
       />
       <Header />
+      
+      <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
+        <div className="mb-4">
+          <Link to="/jobs" className="text-blog-accent hover:underline text-sm mr-3">
+            ← Back to All Jobs
+          </Link>
+          {province !== "Unknown" && (
+            <Link to={`/jobs/province/${provinceSlug}`} className="text-blog-accent hover:underline text-sm">
+              View All Jobs in {province}
+            </Link>
+          )}
+        </div>
         
-        <h1 className="text-3xl font-bold mb-2">Jobs in {city}</h1>
+        <h1 className="text-3xl font-bold mb-2">Jobs in {city}, South Africa</h1>
         <p className="text-gray-600 mb-6">
           Browse {allJobs.length} job opportunities in {city} across various industries and career levels.
-         </p>
+          {province !== "Unknown" && ` ${city} is located in ${province} province.`}
+        </p>
         
         {/* Top ad placement */}
         <div className="my-6">
