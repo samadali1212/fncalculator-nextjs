@@ -111,14 +111,14 @@ const NotFound = () => {
             </Link>
             
             <div className="flex flex-col md:flex-row gap-4">
-              <Link to="/events" className="flex-1">
+              <Link to="/jobs" className="flex-1">
                 <Button 
                   variant="outline" 
                   size="lg"
                   className="w-full border-purple-500/30 text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300 transform hover:scale-105 group backdrop-blur-sm"
                 >
                   <Search className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
-                  Events
+                  Check Out Latest Jobs
                 </Button>
               </Link>
               
