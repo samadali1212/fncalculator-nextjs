@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, MapPin, Briefcase, Filter, ArrowRight } from "lucide-react";
@@ -200,16 +199,39 @@ const Jobs = () => {
               >
                 <Card className={`group hover:shadow-md transition-shadow ${job.featured ? 'ring-2 ring-blue-200 bg-blue-50/30' : ''}`}>
                   <CardContent className="p-6">
-                    {/* Mobile-first responsive header */}
-                    <div className="flex flex-col space-y-3 sm:space-y-0 mb-4">
-                      {/* Job title */}
+                    {/* Desktop layout - title and badges in same row */}
+                    <div className="hidden sm:flex justify-between items-start mb-4">
                       <h2 className="text-xl font-semibold group-hover:text-blog-accent">
                         <Link to={`/jobs/${job.id}`} className="hover:underline">
                           {job.title}
                         </Link>
                       </h2>
                       
-                      {/* Badges - stack on mobile, inline on larger screens */}
+                      {/* Badges positioned at top right on desktop */}
+                      <div className="flex gap-2 ml-4">
+                        {job.featured && (
+                          <Badge className="bg-blue-500 text-xs">Featured</Badge>
+                        )}
+                        {isNewJob(job.postedDate) && (
+                          <Badge className="bg-green-500 text-xs">New</Badge>
+                        )}
+                        {isJobExpiringSoon(job.deadline) && (
+                          <Badge variant="outline" className="text-orange-500 border-orange-500 text-xs">
+                            Closing Soon
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Mobile layout - title first, then badges below */}
+                    <div className="sm:hidden mb-4">
+                      <h2 className="text-xl font-semibold group-hover:text-blog-accent mb-3">
+                        <Link to={`/jobs/${job.id}`} className="hover:underline">
+                          {job.title}
+                        </Link>
+                      </h2>
+                      
+                      {/* Badges below title on mobile */}
                       <div className="flex flex-wrap gap-2">
                         {job.featured && (
                           <Badge className="bg-blue-500 text-xs">Featured</Badge>
