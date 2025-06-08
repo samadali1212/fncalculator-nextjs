@@ -416,7 +416,7 @@ Best regards,`);
           employmentType: employmentType,
           hiringOrganization: {
             name: job.company,
-            logo: "/SalaryList favicon.png"
+            logo: "/denilagari favicon.png"
           },
           jobLocation: {
             addressLocality: job.location,
@@ -643,7 +643,7 @@ Best regards,`);
       <footer className="border-t border-gray-300 py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-gray-500 text-sm">
           <p>
-            &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
+            &copy; {new Date().getFullYear()} denilagari. All rights reserved.
           </p>
         </div>
       </footer>
