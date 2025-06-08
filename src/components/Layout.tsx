@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Header from "./Header";
 
 interface LayoutProps {
   children: ReactNode;
@@ -31,8 +30,7 @@ const Layout = ({ children }: LayoutProps) => {
       <div className="bg-[#f6f6f0] min-h-screen">
         <Toaster />
         <Sonner />
-        <Header />
-        <main className="pt-16">
+        <main>
           {children}
         </main>
       </div>
