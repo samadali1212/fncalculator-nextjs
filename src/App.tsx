@@ -7,6 +7,9 @@ import Events from "./pages/Events";
 import EventPage from "./pages/EventPage";
 import YearPage from "./pages/YearPage";
 import MonthPage from "./pages/MonthPage";
+import Jobs from "./pages/Jobs";
+import JobDetail from "./pages/JobDetail";
+import JobsByCategory from "./pages/JobsByCategory";
 
 const App = () => {
   return (
@@ -18,6 +21,14 @@ const App = () => {
           {/* Ensure salaries path also works and doesn't create duplicate content */}
           <Route path="/traffic-offence" element={<Navigate to="/" replace />} />
           <Route path="/about" element={<About />} />
+
+          {/* Job Listing Routes */}
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs/:jobSlug" element={<JobDetail />} />
+          
+          {/* Job Category Pages */}
+          <Route path="/jobs/category/:categorySlug" element={<JobsByCategory />} />
+   
 
           {/* Events routes */}
           <Route path="/events" element={<Events />} />
