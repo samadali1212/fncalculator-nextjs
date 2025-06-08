@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, MapPin, Briefcase, Filter, ArrowRight } from "lucide-react";
@@ -199,21 +200,25 @@ const Jobs = () => {
               >
                 <Card className={`group hover:shadow-md transition-shadow ${job.featured ? 'ring-2 ring-blue-200 bg-blue-50/30' : ''}`}>
                   <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-2">
+                    {/* Mobile-first responsive header */}
+                    <div className="flex flex-col space-y-3 sm:space-y-0 mb-4">
+                      {/* Job title */}
                       <h2 className="text-xl font-semibold group-hover:text-blog-accent">
                         <Link to={`/jobs/${job.id}`} className="hover:underline">
                           {job.title}
                         </Link>
                       </h2>
-                      <div className="flex gap-1">
+                      
+                      {/* Badges - stack on mobile, inline on larger screens */}
+                      <div className="flex flex-wrap gap-2">
                         {job.featured && (
-                          <Badge className="bg-blue-500">Featured</Badge>
+                          <Badge className="bg-blue-500 text-xs">Featured</Badge>
                         )}
                         {isNewJob(job.postedDate) && (
-                          <Badge className="bg-green-500">New</Badge>
+                          <Badge className="bg-green-500 text-xs">New</Badge>
                         )}
                         {isJobExpiringSoon(job.deadline) && (
-                          <Badge variant="outline" className="text-orange-500 border-orange-500">
+                          <Badge variant="outline" className="text-orange-500 border-orange-500 text-xs">
                             Closing Soon
                           </Badge>
                         )}
@@ -240,13 +245,13 @@ const Jobs = () => {
                       {job.description}
                     </p>
                     
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                       <div className="text-primary-500 font-medium">
                         {job.salaryRange}
                       </div>
                       <Link 
                         to={`/jobs/${job.id}`}
-                        className="inline-flex items-center text-blog-accent text-sm font-medium hover:underline"
+                        className="inline-flex items-center text-blog-accent text-sm font-medium hover:underline self-start"
                       >
                         View Details <ArrowRight className="ml-1 h-4 w-4" />
                       </Link>
