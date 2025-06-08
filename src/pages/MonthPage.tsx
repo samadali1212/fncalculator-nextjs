@@ -248,8 +248,8 @@ const MonthPage = () => {
   }
 
   const pageTitle = selectedYear === "all" 
-    ? `${monthName} Holidays in South Africa` 
-    : `${monthName} Holidays in South Africa ${selectedYear}`;
+    ? `${monthName} Holidays in Tanzania` 
+    : `${monthName} Holidays in Tanzania ${selectedYear}`;
 
   // Update canonical URL for SEO-friendly format
   const canonicalUrl = yearNumber 
@@ -265,7 +265,7 @@ const MonthPage = () => {
     >
       <SEO
         title={`${pageTitle} - HolidaysDB`}
-        description={`Complete list of South African public holidays and events in ${monthName}${selectedYear !== "all" ? ` ${selectedYear}` : ""}. Find all national holidays and cultural events.`}
+        description={`Complete list of Tanzanian public holidays and events in ${monthName}${selectedYear !== "all" ? ` ${selectedYear}` : ""}. Find all national holidays and cultural events.`}
         canonicalUrl={canonicalUrl}
       />
       <Header />
@@ -288,7 +288,7 @@ const MonthPage = () => {
               {pageTitle}
             </h1>
             <p>
-              This is a complete calendar of cultural celebrations, religious and public holidays in South Africa for {monthName}
+              This is a complete calendar of cultural celebrations, religious and public holidays in Tanzania for {monthName}
               {selectedYear !== "all" ? ` ${selectedYear}` : " across all years"}. Perfect for planning your month, understanding cultural significance, and staying informed about national observances.
             </p>
             <p><strong>
