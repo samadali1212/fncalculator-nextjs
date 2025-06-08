@@ -8,6 +8,10 @@
  User-agent: Googlebot
  Allow: /
  Allow: /jobs/
+ Allow: /jobs-browse/
+ Allow: /events/
+ Allow: /year/2025
+ Allow: /year/2026
 
  User-agent: Bingbot
  Allow: /
