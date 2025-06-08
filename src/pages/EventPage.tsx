@@ -15,7 +15,7 @@ import { getSouthAfricaTime } from '../utils/timeUtils';
 
 const formatEventDate = (dateString) => {
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
+  return date.toLocaleDateString('en-TZ', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
