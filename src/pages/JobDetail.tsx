@@ -405,7 +405,7 @@ Best regards,`);
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO
-        title={`${job.title} at ${job.company} | Job Details`}
+        title={`${job.title}`}
         description={job.description}
         canonicalUrl={`/jobs/${getJobSlug(job)}`}
         jobPosting={{
