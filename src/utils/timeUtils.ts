@@ -1,23 +1,23 @@
-// Get the current Tanzania time using UTC offset method
-export const getTanzaniaTime = (): Date => {
+// Get the current South Africa time using UTC offset method
+export const getSouthAfricaTime = (): Date => {
   // Get current date in UTC
   const now = new Date();
   
   // Get UTC timestamp (milliseconds since Epoch in UTC)
   const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
   
-  // Apply East Africa Time offset (UTC+3)
+  // Apply Tanzania/East Africa Time offset (UTC+3)
   // Tanzania is UTC+3 (3 hours ahead of UTC)
-  const tanzaniaOffset = 3 * 60 * 60 * 1000; // 3 hours in milliseconds
+  const southAfricaOffset = 3 * 60 * 60 * 1000; // 3 hours in milliseconds
   
-  // Create Tanzania time by adding the offset to UTC time
-  const tanzaniaTime = new Date(utcTime + tanzaniaOffset);
+  // Create South Africa time by adding the offset to UTC time
+  const southAfricaTime = new Date(utcTime + southAfricaOffset);
   
-  return tanzaniaTime;
+  return southAfricaTime;
 };
 
-// Check if a date is during East Africa Time (EAT)
-function isDateInEAT(date: Date): boolean {
+// Check if a date is during South African Standard Time (SAST)
+function isDateInSAST(date: Date): boolean {
   // Tanzania doesn't observe daylight saving time
   // They permanently use East Africa Time (GMT+3)
   return true;
@@ -33,10 +33,10 @@ export const getUserTimeZone = (): string => {
   return Intl.DateTimeFormat().resolvedOptions().timeZone;
 };
 
-// Calculate time difference between local time and Tanzania time
+// Calculate time difference between local time and South Africa time
 export const getTimeDifference = (): number => {
   const localTime = getLocalTime();
-  const tanzaniaTime = getTanzaniaTime();
+  const southAfricaTime = getSouthAfricaTime();
   
   // Convert both times to minutes since midnight
   const localMinutes = localTime.getHours() * 60 + localTime.getMinutes();
@@ -80,8 +80,7 @@ export const formatDate = (date: Date): string => {
     day: 'numeric' 
   };
   
-  // Using 'en-TZ' for Tanzania locale, fallback to 'en-US' if not supported
-  return date.toLocaleDateString('en-TZ', options) || date.toLocaleDateString('en-US', options);
+  return date.toLocaleDateString('en-ZA', options);
 };
 
 // Format time in 24-hour format with seconds
