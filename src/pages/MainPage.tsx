@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { MapPin, Briefcase, ArrowRight } from "lucide-react";
@@ -6,18 +5,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import AdSense from "../components/AdSense";
-import { getRegions, getUniqueCategories, getJobsByRegion, getJobsByCategory } from "../utils/jobUtils";
+import { getUniqueCategories, getUniqueLocations, getJobsByCategory, getJobsByCity } from "../utils/jobUtils";
 import { JobCategory } from "../utils/jobData";
 
 const MainPage = () => {
-  const regions = getRegions();
+  const cities = getUniqueLocations();
   const categories = getUniqueCategories();
 
-  // Get job counts for each region and category
-  const getRegionJobCount = (region: string) => getJobsByRegion(region).length;
+  // Get job counts for each city and category
+  const getCityJobCount = (city: string) => {
+    return getJobsByCity(city).length;
+  };
   const getCategoryJobCount = (category: string) => getJobsByCategory(category as JobCategory).length;
 
-  const createRegionSlug = (region: string) => region.toLowerCase().replace(/\s+/g, "-");
+  const createCitySlug = (city: string) => city.toLowerCase().replace(/\s+/g, "-");
   const createCategorySlug = (category: string) => category.toLowerCase().replace(/\s+/g, "-");
 
   return (
@@ -27,9 +28,9 @@ const MainPage = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Browse Jobs by Region and Category in Tanzania | Latest Vacancies"
-        description="Find job opportunities across Tanzania by region and category. Browse latest vacancies in Dar es Salaam, Arusha, Mwanza and other regions. Search by Technology, Finance, Healthcare and more."
-        canonicalUrl="/"
+        title="Browse Jobs by City and Category in Tanzania | Latest Vacancies"
+        description="Find job opportunities across Tanzania by city and category. Browse latest vacancies in Dar es Salaam, Arusha, Mwanza and other cities. Search by Technology, Finance, Healthcare and more."
+        canonicalUrl="/jobs-browse"
       />
       <Header />
       
@@ -37,7 +38,7 @@ const MainPage = () => {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Find Jobs in Tanzania</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover job opportunities across Tanzania's regions and industries. Browse by location or category to find your next career opportunity.
+            Discover job opportunities across Tanzania's cities and industries. Browse by location or category to find your next career opportunity.
           </p>
         </div>
 
@@ -46,30 +47,30 @@ const MainPage = () => {
           <AdSense slot="9889084223" format="horizontal" className="py-3" />
         </div>
 
-        {/* Browse by Regions Section */}
+        {/* Browse by Cities Section */}
         <section className="mb-16">
           <div className="flex items-center mb-8">
             <MapPin className="h-6 w-6 text-blog-accent mr-2" />
-            <h2 className="text-3xl font-bold">Browse Jobs by Region</h2>
+            <h2 className="text-3xl font-bold">Browse Jobs by City</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {regions.map((region, index) => {
-              const jobCount = getRegionJobCount(region);
-              const regionSlug = createRegionSlug(region);
+            {cities.map((city, index) => {
+              const jobCount = getCityJobCount(city);
+              const citySlug = createCitySlug(city);
               
               return (
                 <motion.div
-                  key={region}
+                  key={city}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
-                  <Link to={`/jobs/region/${regionSlug}`}>
+                  <Link to={`/jobs/city/${citySlug}`}>
                     <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer">
                       <CardHeader className="pb-3">
                         <CardTitle className="text-lg group-hover:text-blog-accent transition-colors">
-                          {region}
+                          {city}
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
