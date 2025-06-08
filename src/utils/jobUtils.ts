@@ -260,11 +260,11 @@ export const getCitiesByRegion = (region: string): string[] => {
 };
 
 /**
- * Map city to its region (renamed from getRegionByCity to match import)
+ * Map city to its region
  * @param city City name
  * @returns Region name
  */
-export const getProvinceByCity = (city: string): string => {
+export const getRegionByCity = (city: string): string => {
   const cityRegionMap: Record<string, string> = {
     'Dar es Salaam': 'Dar es Salaam',
     'Arusha': 'Arusha',
@@ -283,11 +283,11 @@ export const getProvinceByCity = (city: string): string => {
 };
 
 /**
- * Get jobs by region (renamed from getJobsByRegion to match import)
+ * Get jobs by region
  * @param region Region name
  * @returns Array of jobs in that region
  */
-export const getJobsByProvince = (region: string): Job[] => {
+export const getJobsByRegion = (region: string): Job[] => {
   const citiesInRegion = getCitiesByRegion(region);
   
   return jobsData.filter(job => {
@@ -299,15 +299,6 @@ export const getJobsByProvince = (region: string): Job[] => {
     // Check if job is in one of the cities in this region
     return citiesInRegion.includes(job.location);
   });
-};
-
-/**
- * Alias for getCitiesByRegion to match import
- * @param region Region name
- * @returns Array of cities in that region
- */
-export const getCitiesByProvince = (region: string): string[] => {
-  return getCitiesByRegion(region);
 };
 
 /**
