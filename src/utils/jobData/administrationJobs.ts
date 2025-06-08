@@ -300,37 +300,5 @@ export const administrationJobs: Job[] = [
   postedDate: "2025-06-01",
   deadline: "2025-06-13",
   featured: false
-},
-    {
-    id: "government-record-clerk-job-0101",
-    title: "Government Records Clerk",
-    company: "Ministry of Education",
-    location: "Dar es Salaam",
-    category: "Administration",
-    salaryRange: "TSh 800,000 - TSh 1,200,000 per month",
-    description: "The Ministry of Education is seeking a dedicated Records Clerk to manage and maintain official government documents and correspondence.",
-    requirements: [
-      "Certificate in Records Management or related field",
-      "2+ years of experience in records management",
-      "Knowledge of government filing systems",
-      "Computer literacy",
-      "Strong attention to detail"
-    ],
-    responsibilities: [
-      "Maintain and organize official records",
-      "Process incoming and outgoing correspondence",
-      "Ensure proper documentation procedures",
-      "Assist with archive management",
-      "Support administrative staff with document retrieval"
-    ],
-    applicationMethod: {
-      type: 'letter',
-      value: "Human Resources Department\nMinistry of Education\nP.O. Box 9121\nDar es Salaam, Tanzania\n\nAttn: Records Clerk Position",
-      instructions: "Send your application letter with copies of certificates and CV"
-    },
-    postedDate: "2025-06-01",
-    deadline: "2025-07-01",
-    featured: true
-  }
-
+}
 ];
