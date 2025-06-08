@@ -60,18 +60,18 @@ const generateEventSEOContent = (event: Event): string => {
   if (isPastEvent) {
     // Past event variations
     const pastSentences = [
-      `${event.title} was celebrated on ${formattedDate} in ${event.location}, marking an important ${categoryTerm} that brought together South Africans nationwide.`,
-      `${event.title} took place on ${formattedDate} in ${event.location}, serving as a memorable ${categoryTerm} for the South African community.`,
-      `${event.title} was observed on ${formattedDate}, representing a significant ${categoryTerm} in South Africa's calendar.`
+      `${event.title} was celebrated on ${formattedDate} in ${event.location}, marking an important ${categoryTerm} that brought together Tanzanians nationwide.`,
+      `${event.title} took place on ${formattedDate} in ${event.location}, serving as a memorable ${categoryTerm} for the Tanzanian community.`,
+      `${event.title} was observed on ${formattedDate}, representing a significant ${categoryTerm} in Tanzania's calendar.`
     ];
     sentence1 = pastSentences[Math.floor(Math.random() * pastSentences.length)];
     
   } else if (isToday) {
     // Present/today variations
     const todaySentences = [
-`${event.title} Is underway at this very moment, ${formattedDate}, in ${event.location} — a major ${categoryTerm} drawing attention across South Africa.`,
-`${event.title} is happening today, ${formattedDate}, in ${event.location}. South Africans are coming together to celebrate this special ${categoryTerm}.`,
-`${event.title} is underway right now ${formattedDate} in ${event.location}, offering South Africans a chance to join this meaningful ${categoryTerm}.`,
+`${event.title} Is underway at this very moment, ${formattedDate}, in ${event.location} — a major ${categoryTerm} drawing attention across Tanzania.`,
+`${event.title} is happening today, ${formattedDate}, in ${event.location}. Tanzanians are coming together to celebrate this special ${categoryTerm}.`,
+`${event.title} is underway right now ${formattedDate} in ${event.location}, offering Tanzanians a chance to join this meaningful ${categoryTerm}.`,
 `${event.title} is happening right now as you read this in ${event.location} for a standout ${categoryTerm} on ${formattedDate}.`
     ];
     sentence1 = todaySentences[Math.floor(Math.random() * todaySentences.length)];
@@ -79,10 +79,10 @@ const generateEventSEOContent = (event: Event): string => {
   } else {
     // Future event variations
     const futureSentences = [
-`${event.title} takes place on ${formattedDate} in ${event.location}, expected to be a major ${categoryTerm} many South Africans are talking about.`,
+`${event.title} takes place on ${formattedDate} in ${event.location}, expected to be a major ${categoryTerm} many Tanzanians are talking about.`,
 `${event.title} will fall on ${formattedDate} in ${event.location} — a standout ${categoryTerm} bringing people together.`,
-`${event.title} is set to take place on ${formattedDate} in ${event.location}, giving South Africans a chance to enjoy a key ${categoryTerm}.`,
-`${event.title} will be observed on ${formattedDate} in ${event.location}, this is a can't-miss ${categoryTerm} for South Africans everywhere.`
+`${event.title} is set to take place on ${formattedDate} in ${event.location}, giving Tanzanians a chance to enjoy a key ${categoryTerm}.`,
+`${event.title} will be observed on ${formattedDate} in ${event.location}, this is a can't-miss ${categoryTerm} for Tanzanians everywhere.`
     ];
     sentence1 = futureSentences[Math.floor(Math.random() * futureSentences.length)];
   }
@@ -200,7 +200,7 @@ const EventPage = () => {
     >
       <SEO
         title={`${event.title} - HolidaysDB`}
-        description={`Countdown to ${event.title} on ${formatEventDate(event.date)} at ${event.location}. View details and other South African events.`}
+        description={`Countdown to ${event.title} on ${formatEventDate(event.date)} at ${event.location}. View details and other Tanzanian events.`}
         canonicalUrl={`/events/${event.id}`}
       />
       <Header />
@@ -286,7 +286,7 @@ const EventPage = () => {
                   </h2>
                 </div>
                 <p className="text-sm text-gray-500 mt-1">
-                  Discover other {event.category} events in South Africa
+                  Discover other {event.category} events in Tanzania
                 </p>
               </div>
 
