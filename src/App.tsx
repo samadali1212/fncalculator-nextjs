@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import About from "./pages/About";
@@ -10,6 +11,7 @@ import MonthPage from "./pages/MonthPage";
 import Jobs from "./pages/Jobs";
 import JobDetail from "./pages/JobDetail";
 import JobsByCategory from "./pages/JobsByCategory";
+import JobsByCity from "./pages/JobsByCity";
 
 const App = () => {
   return (
@@ -28,6 +30,9 @@ const App = () => {
           
           {/* Job Category Pages */}
           <Route path="/jobs/category/:categorySlug" element={<JobsByCategory />} />
+          
+          {/* Job City Pages */}
+          <Route path="/jobs/city/:citySlug" element={<JobsByCity />} />
    
 
           {/* Events routes */}

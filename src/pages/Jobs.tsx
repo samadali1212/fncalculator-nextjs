@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, MapPin, Briefcase, Filter, ArrowRight } from "lucide-react";
@@ -27,16 +28,25 @@ const Jobs = () => {
   const [filteredJobs, setFilteredJobs] = useState(filterJobs());
   const [isLoading, setIsLoading] = useState(true);
   
+  console.log("Jobs component mounted");
+  console.log("Initial filtered jobs:", filteredJobs);
+  
   const categories = getUniqueCategories();
   const locations = getUniqueLocations();
   
+  console.log("Available categories:", categories);
+  console.log("Available locations:", locations);
+  
   // Apply filters when search inputs change
   useEffect(() => {
+    console.log("Applying filters - searchQuery:", searchQuery, "category:", selectedCategory, "location:", selectedLocation);
     setIsLoading(true);
     
     // Simulate loading for better UX
     const timer = setTimeout(() => {
       const jobs = filterJobs(searchQuery, selectedCategory, selectedLocation);
+      console.log("Filtered jobs result:", jobs);
+      
       // Sort jobs with featured jobs first, then by posted date (newest first)
       const sortedJobs = jobs.sort((a, b) => {
         // Featured jobs always come first
@@ -47,6 +57,7 @@ const Jobs = () => {
         return new Date(b.postedDate).getTime() - new Date(a.postedDate).getTime();
       });
       
+      console.log("Final sorted jobs:", sortedJobs);
       setFilteredJobs(sortedJobs);
       setIsLoading(false);
     }, 300);
@@ -70,6 +81,8 @@ const Jobs = () => {
   const handleLocationChange = (value: string) => {
     setSelectedLocation(value === "all" ? undefined : value as JobLocation);
   };
+
+  console.log("Rendering Jobs component with", filteredJobs.length, "jobs");
 
   return (
     <motion.div
