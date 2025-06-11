@@ -21,21 +21,28 @@ const TrafficOffence = () => {
         canonicalUrl="/"
       />
       <Header />
-      <div className="container mx-auto px-4 md:px-6 py-8 max-w-4xl pt-24">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-2 text-gray-900">
-            Tanzania Road Traffic Offence Check (TMS Check)
-          </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-TMS check is the easiest way to know deni la gari in Tanzania, including traffic fines and penalties. Whether you want to check deni la gari before buying a vehicle or need to confirm if your car has any traffic fines, Denilagari.com provides quick and accurate results.
-          </p>
-         <div className="flex-1 flex justify-end">
+<div className="container mx-auto px-4 md:px-6 py-8 max-w-4xl pt-24">
+        <div className="mb-8">
+          {/* Header row with title and share button */}
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 gap-4">
+            <div>
+              <h1 className="text-3xl font-bold mb-2 text-gray-900">
+                Tanzania Road Traffic Offence Check (TMS Check)
+              </h1>
+            </div>
+            <div className="flex-shrink-0">
               <ShareButton
                 title="Tanzania Traffic Offence Checker"
                 text="Check your traffic violations and fines in Tanzania with this free online tool"
                 className="shadow-sm"
               />
-        </div>
+            </div>
+          </div>
+          
+          {/* Description paragraph */}
+          <p className="text-gray-600 leading-relaxed">
+            TMS check is the easiest way to know deni la gari in Tanzania, including traffic fines and penalties. Whether you want to check deni la gari before buying a vehicle or need to confirm if your car has any traffic fines, Denilagari.com provides quick and accurate results.
+          </p>
         </div>
 
         <OffenceChecker />
