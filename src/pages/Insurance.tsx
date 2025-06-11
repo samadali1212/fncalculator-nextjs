@@ -60,11 +60,10 @@ function Insurance() {
       <div className="container mx-auto px-4 md:px-6 py-8 max-w-4xl pt-24">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-2 text-gray-900">
-            Tanzania Insurance Verification Portal
+            Tira Mis FREE Insurance Check Online
           </h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Verify your insurance coverage status, download certificates, and ensure compliance 
-            with Tanzania's insurance requirements in real-time using official TIRA data.
+TIRA MIS offers a simple way to check insurance details online. Use the denilagari.com to perform a bima ya gari check by vehicle number, get your TIRA MIS sticker, and confirm coverage status in tanzania. Whenever you need to verify with tira insurance check online, or searching for information through tira miss, this app provides fast, accurate access. 
           </p>
           <div className="flex-1 flex justify-end">
             <ShareButton
