@@ -62,7 +62,7 @@ function Insurance() {
           <h1 className="text-3xl font-bold mb-2">
             Tira Mis FREE Insurance Check Online
           </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600">
 TIRA MIS offers a simple way to check insurance details online. Use the denilagari.com to perform a bima ya gari check by vehicle number, get your TIRA MIS sticker, and confirm coverage status in tanzania. Whenever you need to verify with tira insurance check online, or searching for information through tira miss, this app provides fast, accurate access. 
           </p>
           <div className="flex-1 flex justify-end">
