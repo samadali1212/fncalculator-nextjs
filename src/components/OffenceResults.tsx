@@ -122,9 +122,6 @@ const OffenceResults: React.FC<OffenceResultsProps> = ({ results, loading, error
           <CardHeader className="bg-gradient-to-r from-red-50 to-red-100/50 border-b border-red-200/50">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-3 sm:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-red-600 flex items-center justify-center flex-shrink-0">
-                  <AlertTriangle className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-                </div>
                 <div className="min-w-0 flex-1">
                   <h3 className="text-lg sm:text-xl font-semibold text-gray-900 truncate">Pending Offences Found</h3>
                   <p className="text-xs sm:text-sm text-gray-600 truncate">
@@ -143,9 +140,6 @@ const OffenceResults: React.FC<OffenceResultsProps> = ({ results, loading, error
             {results.totalPendingAmount && (
               <div className="mt-4 pt-4 border-t border-red-200/50">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center">
-                    <CreditCard className="h-4 w-4 text-white" />
-                  </div>
                   <div>
                     <h4 className="text-sm font-semibold text-red-900">Total Pending Amount</h4>
                     <p className="text-xl font-bold text-red-700">
