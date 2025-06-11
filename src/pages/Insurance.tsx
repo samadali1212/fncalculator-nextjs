@@ -7,7 +7,7 @@ import SearchResults from '../components/SearchResults';
 import StatsCard from '../components/StatsCard';
 import ShareButton from '../components/ShareButton';
 import Header from '../components/Header';
-import Header from '../components/SEO';
+import SEO from '../components/SEO';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { verifyInsurance, getParamType, CoverNoteData } from '../services/tiraApi';
 
