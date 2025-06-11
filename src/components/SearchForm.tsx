@@ -70,15 +70,15 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch, loading }) => {
   const getPlaceholder = () => {
     switch (searchType) {
       case 'policy':
-        return 'Cover Note Reference number';
+        return 'Cover Note Reference Number';
       case 'vehicle':
-        return 'Enter vehicle registration (e.g., T123ABC)';
+        return 'Enter Vehicle Registration (e.g., T123ABC)';
       case 'sticker':
-        return 'Enter sticker number';
+        return 'Enter Sticker Number';
       case 'chassis':
-        return 'Enter chassis number (e.g., JN1AZ4EH7DM123456)';
+        return 'Enter Chassis Number (e.g., JN1AZ4EH7DM123456)';
       default:
-        return 'Enter search value';
+        return 'Enter Search Value';
     }
   };
 
