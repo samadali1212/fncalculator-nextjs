@@ -15,14 +15,19 @@ const TrafficOffence = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
+            <SEO 
+        title="TMS Traffic Fines Check: Kuangalia Deni La Gari" 
+        description="TMS check makes it easy to know your deni la gari, view traffic fines, and confirm car ownership in Tanzania. Instantly check deni la gari via denilagari.com and get accurate updates on your vehicle’s status."
+        canonicalUrl="/"
+      />
+      <Header />
       <div className="container mx-auto px-4 md:px-6 py-8 max-w-4xl">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-2 text-gray-900">
             Tanzania Road Traffic Offence Check (TMS Check)
           </h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Check your vehicle registration, driving license, or reference number for any pending any fines and penalties
-            with the Tanzania Transport Management System.
+TMS check is the easiest way to know deni la gari in Tanzania, including traffic fines and penalties. Whether you want to check deni la gari before buying a vehicle or need to confirm if your car has any traffic fines, Denilagari.com provides quick and accurate results.
           </p>
          <div className="flex-1 flex justify-end">
               <ShareButton
