@@ -163,7 +163,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch, loading }) => {
         size="lg"
       >
         <Search size={20} className="mr-2" />
-        {loading ? 'Verifying...' : 'Verify Insurance'}
+        {loading ? 'Verifying...' : 'Verify Insurance Policy'}
       </Button>
     </div>
   );
