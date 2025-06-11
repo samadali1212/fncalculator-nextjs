@@ -6,6 +6,7 @@ import SearchForm, { SearchData } from '../components/SearchForm';
 import SearchResults from '../components/SearchResults';
 import StatsCard from '../components/StatsCard';
 import ShareButton from '../components/ShareButton';
+import Header from '../components/Header';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { verifyInsurance, getParamType, CoverNoteData } from '../services/tiraApi';
 
