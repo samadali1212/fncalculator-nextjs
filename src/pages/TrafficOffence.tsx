@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import OffenceChecker from '../components/OffenceChecker';
 import ShareButton from '../components/ShareButton';
 import Header from '../components/Header';
-import Header from '../components/SEO';
+import SEO from '../components/SEO';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown, AlertTriangle, Car, CreditCard, Receipt, Shield, FileText, Phone } from 'lucide-react';
 
