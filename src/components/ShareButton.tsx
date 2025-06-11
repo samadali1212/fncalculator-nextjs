@@ -1,5 +1,5 @@
-import { useState, ReactNode } from "react";
-import { Share2, Copy, MessageCircle, Facebook, Twitter, Mail, Link } from "lucide-react";
+import { useState, ReactNode, useMemo } from "react";
+import { Share2, Copy, MessageCircle, Facebook, Twitter, Mail, Link, Linkedin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import {
@@ -16,6 +16,7 @@ interface ShareButtonProps {
   className?: string;
   children?: ReactNode;
   variant?: "default" | "outline" | "ghost" | "secondary" | "link" | "destructive";
+  enabledOptions?: string[];
 }
 
 const ShareButton = ({
@@ -24,15 +25,17 @@ const ShareButton = ({
   url,
   className,
   children,
-  variant = "outline"
+  variant = "outline",
+  enabledOptions = ["copy", "whatsapp", "facebook", "twitter", "linkedin", "telegram", "email", "native"]
 }: ShareButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
   
-  const shareableUrl = url || window.location.href;
-  const shareText = text || title;
+  const shareableUrl = useMemo(() => url || window.location.href, [url]);
+  const shareText = useMemo(() => text || title, [text, title]);
   
-  const shareOptions = [
+  const allShareOptions = [
     {
+      id: "copy",
       name: "Copy Link",
       icon: Copy,
       color: "text-gray-600",
@@ -47,6 +50,7 @@ const ShareButton = ({
       }
     },
     {
+      id: "whatsapp",
       name: "WhatsApp",
       icon: MessageCircle,
       color: "text-green-600",
@@ -56,6 +60,7 @@ const ShareButton = ({
       }
     },
     {
+      id: "facebook",
       name: "Facebook",
       icon: Facebook,
       color: "text-blue-600",
@@ -65,6 +70,7 @@ const ShareButton = ({
       }
     },
     {
+      id: "twitter",
       name: "Twitter",
       icon: Twitter,
       color: "text-blue-400",
@@ -74,6 +80,27 @@ const ShareButton = ({
       }
     },
     {
+      id: "linkedin",
+      name: "LinkedIn",
+      icon: Linkedin,
+      color: "text-blue-700",
+      action: () => {
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareableUrl)}`, "_blank");
+        setIsOpen(false);
+      }
+    },
+    {
+      id: "telegram",
+      name: "Telegram",
+      icon: Send,
+      color: "text-blue-500",
+      action: () => {
+        window.open(`https://t.me/share/url?url=${encodeURIComponent(shareableUrl)}&text=${encodeURIComponent(shareText)}`, "_blank");
+        setIsOpen(false);
+      }
+    },
+    {
+      id: "email",
       name: "Email",
       icon: Mail,
       color: "text-gray-600",
@@ -83,6 +110,7 @@ const ShareButton = ({
       }
     },
     {
+      id: "native",
       name: "Share via...",
       icon: Link,
       color: "text-indigo-600",
@@ -104,6 +132,8 @@ const ShareButton = ({
       }
     }
   ];
+
+  const shareOptions = allShareOptions.filter(option => enabledOptions.includes(option.id));
 
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
@@ -129,7 +159,7 @@ const ShareButton = ({
             const IconComponent = option.icon;
             return (
               <Button 
-                key={option.name} 
+                key={option.id} 
                 variant="ghost" 
                 className="w-full justify-start text-sm h-auto py-2.5 hover:bg-gray-50" 
                 onClick={option.action}
