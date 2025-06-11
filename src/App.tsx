@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import About from "./pages/About";
 import TrafficOffence from "./pages/TrafficOffence";
+import Insurance from "./pages/Insurance";
 import NotFound from "./pages/NotFound";
 import Events from "./pages/Events";
 import EventPage from "./pages/EventPage";
@@ -21,6 +22,9 @@ const App = () => {
           <Route path="/traffic-offence-checker" element={<Navigate to="/" replace />} />
           
           <Route path="/about" element={<About />} />
+
+          {/* New Insurance Page Route */}
+          <Route path="/insurance" element={<Insurance />} />
 
           {/* Events routes */}
           <Route path="/events" element={<Events />} />
