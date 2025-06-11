@@ -21,7 +21,7 @@ const TrafficOffence = () => {
         canonicalUrl="/"
       />
       <Header />
-      <div className="container mx-auto px-4 md:px-6 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 md:px-6 py-8 max-w-4xl pt-24">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-2 text-gray-900">
             Tanzania Road Traffic Offence Check (TMS Check)
