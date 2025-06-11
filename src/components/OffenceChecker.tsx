@@ -1,9 +1,10 @@
+
 import React, { useState } from 'react';
-import { Car, CreditCard, Receipt, Search } from 'lucide-react';
+import { Car, CreditCard, Receipt, Search, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import Swal from 'sweetalert2';
-import ResultsModal from './ResultsModal';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import OffenceResults from './OffenceResults';
 import LoadingSpinner from './LoadingSpinner';
 
 interface SearchOption {
@@ -18,8 +19,10 @@ const OffenceChecker = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('vehicle');
   const [loading, setLoading] = useState(false);
-  const [modalData, setModalData] = useState(null);
-  const [modalVisible, setModalVisible] = useState(false);
+  const [searchResults, setSearchResults] = useState<any>(null);
+  const [hasSearched, setHasSearched] = useState(false);
+  const [error, setError] = useState<string>('');
+  const [validationError, setValidationError] = useState<string>('');
 
   const searchOptions: SearchOption[] = [
     {
@@ -47,46 +50,26 @@ const OffenceChecker = () => {
 
   const validateSearch = (type: string, query: string): boolean => {
     if (!query.trim()) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Input Required',
-        text: 'Please enter a search term.',
-        confirmButtonColor: '#3b82f6'
-      });
+      setValidationError('Please enter a search term.');
       return false;
     }
 
     switch (type) {
       case 'vehicle':
         if (!/^[A-Za-z0-9]{7}$/.test(query)) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Invalid Vehicle Registration',
-            text: 'Please enter a valid 7-character vehicle registration number (e.g., T849EDY).',
-            confirmButtonColor: '#3b82f6'
-          });
+          setValidationError('Please enter a valid 7-character vehicle registration number (e.g., T849EDY).');
           return false;
         }
         break;
       case 'license':
         if (!/^\d{10,}$/.test(query)) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Invalid License Number',
-            text: 'Please enter a valid license number with at least 10 digits.',
-            confirmButtonColor: '#3b82f6'
-          });
+          setValidationError('Please enter a valid license number with at least 10 digits.');
           return false;
         }
         break;
       case 'reference':
         if (!/^\d{12,}$/.test(query)) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Invalid Reference Number',
-            text: 'Please enter a valid reference number with at least 12 digits.',
-            confirmButtonColor: '#3b82f6'
-          });
+          setValidationError('Please enter a valid reference number with at least 12 digits.');
           return false;
         }
         break;
@@ -95,9 +78,12 @@ const OffenceChecker = () => {
   };
 
   const handleSearch = async () => {
+    setValidationError('');
     if (!validateSearch(activeTab, searchQuery)) return;
 
     setLoading(true);
+    setHasSearched(true);
+    setError('');
     console.log(`Searching for ${activeTab}: ${searchQuery}`);
 
     try {
@@ -144,49 +130,34 @@ const OffenceChecker = () => {
           searchQuery: searchQuery
         };
         
-        setModalData(responseWithMetadata);
-        setModalVisible(true);
+        setSearchResults(responseWithMetadata);
       } else {
-        Swal.fire({
-          icon: 'info',
-          title: 'No Results Found',
-          text: 'No offences or inspection data found for the provided search term.',
-          confirmButtonColor: '#3b82f6'
-        });
+        setSearchResults(null);
       }
     } catch (error) {
       setLoading(false);
       console.error('Search error:', error);
       
       if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Connection Error',
-          html: `
-            <p>Unable to connect to the TMS API. This could be due to:</p>
-            <ul style="text-align: left; margin-top: 10px;">
-              <li>• CORS restrictions from the external API</li>
-              <li>• Network connectivity issues</li>
-              <li>• API server maintenance</li>
-            </ul>
-            <p style="margin-top: 15px;"><strong>Suggested Solutions:</strong></p>
-            <ul style="text-align: left;">
-              <li>• Use a backend proxy server</li>
-              <li>• Install a CORS browser extension temporarily</li>
-              <li>• Contact TMS for API access permissions</li>
-              <li>• Try again later</li>
-            </ul>
-          `,
-          confirmButtonColor: '#3b82f6'
-        });
+        setError('Unable to connect to the TMS API. This could be due to CORS restrictions, network connectivity issues, or API server maintenance.');
       } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'API Error',
-          text: `An error occurred while searching: ${error.message}`,
-          confirmButtonColor: '#3b82f6'
-        });
+        setError(`An error occurred while searching: ${error.message}`);
       }
+      setSearchResults(null);
+    }
+  };
+
+  const handleInputChange = (value: string) => {
+    setSearchQuery(value);
+    if (validationError) {
+      setValidationError('');
+    }
+  };
+
+  const handleTabChange = (tabId: string) => {
+    setActiveTab(tabId);
+    if (validationError) {
+      setValidationError('');
     }
   };
 
@@ -202,7 +173,7 @@ const OffenceChecker = () => {
             <Button
               key={option.id}
               variant={activeTab === option.id ? "default" : "outline"}
-              onClick={() => setActiveTab(option.id)}
+              onClick={() => handleTabChange(option.id)}
               size="sm"
               className="flex-1 text-xs"
             >
@@ -223,7 +194,7 @@ const OffenceChecker = () => {
           placeholder={currentOption?.placeholder || "Enter search term..."}
           className="pl-10"
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e) => handleInputChange(e.target.value)}
           onKeyPress={(e) => {
             if (e.key === 'Enter') {
               handleSearch();
@@ -231,6 +202,14 @@ const OffenceChecker = () => {
           }}
         />
       </div>
+
+      {/* Validation Error Alert */}
+      {validationError && (
+        <Alert variant="destructive">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>{validationError}</AlertDescription>
+        </Alert>
+      )}
 
       {/* Search Button */}
       <Button
@@ -243,19 +222,16 @@ const OffenceChecker = () => {
         Search for Offences
       </Button>
 
-      {loading && (
-        <div className="mt-6">
-          <LoadingSpinner />
-        </div>
+      {/* Search Results */}
+      {hasSearched && (
+        <OffenceResults 
+          results={searchResults} 
+          loading={loading} 
+          error={error}
+          searchType={activeTab}
+          searchQuery={searchQuery}
+        />
       )}
-
-      <ResultsModal
-        show={modalVisible}
-        data={modalData}
-        onClose={() => setModalVisible(false)}
-        searchType={activeTab}
-        searchQuery={searchQuery}
-      />
     </div>
   );
 };
