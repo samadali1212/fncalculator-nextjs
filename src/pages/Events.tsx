@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Event, events2025 } from "../data/events2025";
@@ -17,12 +16,12 @@ const EVENTS_PER_PAGE = 150;
 
 const Events = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
   const [showPastEvents, setShowPastEvents] = useState(true);
   const [selectedYear, setSelectedYear] = useState("all");
   const [selectedMonth, setSelectedMonth] = useState("all");
   const [visibleCount, setVisibleCount] = useState(EVENTS_PER_PAGE);
   const { pageKey } = usePageReload();
+  const [isLoading, setIsLoading] = useState(true);
 
   // Get available years and months for quick filter links
   const availableYears = [...new Set(events2025.map(event => new Date(event.date).getFullYear()))].sort((a, b) => a - b);
