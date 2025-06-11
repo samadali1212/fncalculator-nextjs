@@ -24,8 +24,8 @@ const TrafficOffence = () => {
 <div className="container mx-auto px-4 md:px-6 py-8 max-w-4xl pt-24">
         <div className="mb-8">
           {/* Header row with title and share button */}
-          <div className="flex flex-row items-start justify-between mb-4 gap-4">
-            <div className="flex-1">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 gap-4">
+            <div>
               <h1 className="text-3xl font-bold mb-2 text-gray-900">
                 Tanzania Road Traffic Offence Check (TMS Check)
               </h1>
