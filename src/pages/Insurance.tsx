@@ -62,7 +62,7 @@ function Insurance() {
           {/* Header row with title and share button */}
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 gap-4">
             <h1 className="text-3xl font-bold">
-              Tira Mis FREE Insurance Check Online
+              TIRA MIS Free Insurance Sticker Check Online In Tanzania
             </h1>
             <div className="flex-shrink-0">
               <ShareButton
