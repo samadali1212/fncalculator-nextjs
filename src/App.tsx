@@ -1,7 +1,5 @@
-
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
-import PrerendererFix from "./components/PrerendererFix";
 import About from "./pages/About";
 import TrafficOffence from "./pages/TrafficOffence";
 import Insurance from "./pages/Insurance";
@@ -15,7 +13,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <Layout>
-        <PrerendererFix />
         <Routes>
           {/* Traffic offence checker as homepage */}
           <Route path="/" element={<TrafficOffence />} />
