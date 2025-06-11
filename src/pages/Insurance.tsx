@@ -48,6 +48,13 @@ function Insurance() {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
+    <SEO 
+        title="TIRA MIS Insurance Check: Kuangalia Bima Ya Gari" 
+        description="Access the TIRA MIS via Denilagari.com to perform an insurance check online, search by vehicle number, get your TIRA MIS sticker, and explore your Bima ya gari. Simple, fast, and reliable access to everything from TIRA mis updates to insurance checks."
+        canonicalUrl="/insurance"
+      />
+      <Header />
+      
       <div className="container mx-auto px-4 md:px-6 py-8 max-w-4xl">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-2 text-gray-900">
