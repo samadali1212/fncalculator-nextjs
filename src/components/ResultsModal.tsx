@@ -1,428 +1,419 @@
-import React, { useState, useEffect } from 'react';
-import { X, AlertCircle, CheckCircle2, CreditCard, Phone, Banknote, FileText, Calendar } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import React, { useState } from 'react';
+import { Shield, CheckCircle, XCircle, Calendar, Car, AlertTriangle, Building, FileText, CreditCard, Hash, Clock } from 'lucide-react';
+import LoadingSpinner from './LoadingSpinner';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Table, TableBody, TableRow, TableCell } from '@/components/ui/table';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
-interface ResultsModalProps {
-  show: boolean;
-  data: any;
-  onClose: () => void;
+interface OffenceResultsProps {
+  results: any;
+  loading: boolean;
+  error?: string;
   searchType: string;
   searchQuery: string;
 }
 
-const ResultsModal: React.FC<ResultsModalProps> = ({
-  show,
-  data,
-  onClose,
-  searchType,
-  searchQuery
-}) => {
-  const [activeTab, setActiveTab] = useState('pending');
+const OffenceResults: React.FC<OffenceResultsProps> = ({ results, loading, error, searchType, searchQuery }) => {
+  if (loading) {
+    return (
+      <div className="mt-8">
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
-  const getStatusBadge = (status: string) => {
-    switch (status.toLowerCase()) {
-      case 'pending':
-        return <Badge variant="destructive" className="text-xs">Pending</Badge>;
-      case 'paid':
-        return <Badge variant="default" className="bg-green-600 text-xs">Paid</Badge>;
-      case 'pass':
-        return <Badge variant="default" className="bg-green-600 text-xs">Pass</Badge>;
-      case 'fail':
-        return <Badge variant="destructive" className="text-xs">Fail</Badge>;
+  if (error) {
+    return (
+      <div className="mt-8">
+        <Card className="max-w-md mx-auto text-center">
+          <CardContent className="pt-8 pb-6">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-50 flex items-center justify-center">
+              <XCircle className="h-8 w-8 text-red-500" />
+            </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Search Failed</h3>
+            <p className="text-gray-600 text-sm mb-4">{error}</p>
+            <p className="text-xs text-gray-500">Please check your search parameters and try again.</p>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  if (!results || (!results.pending_transactions && !results.inspection_data && !results.license_status && !results.inspection_status)) {
+    return (
+      <div className="mt-8">
+        <Card className="max-w-md mx-auto text-center">
+          <CardContent className="pt-8 pb-6">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-50 flex items-center justify-center">
+              <CheckCircle className="h-8 w-8 text-green-500" />
+            </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">No Results Found</h3>
+            <p className="text-gray-600 text-sm mb-4">No information found for the provided search criteria.</p>
+            <p className="text-xs text-gray-500">Please verify your search parameters and try again.</p>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-TZ', {
+      style: 'currency',
+      currency: 'TZS',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
+  };
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    });
+  };
+
+  const getSearchTypeIcon = () => {
+    switch (searchType) {
+      case 'vehicle':
+        return <Car className="h-5 w-5 sm:h-6 sm:w-6 text-white" />;
+      case 'license':
+        return <CreditCard className="h-5 w-5 sm:h-6 sm:w-6 text-white" />;
+      case 'reference':
+        return <FileText className="h-5 w-5 sm:h-6 sm:w-6 text-white" />;
       default:
-        return <Badge variant="secondary" className="text-xs">{status}</Badge>;
+        return <Shield className="h-5 w-5 sm:h-6 sm:w-6 text-white" />;
     }
   };
 
-  const renderOffenceCard = (item: any, index: number) => {
-    const charge = parseFloat(item.charge || '0');
-    const penalty = parseFloat(item.penalty || '0');
+  const getSearchTypeLabel = () => {
+    switch (searchType) {
+      case 'vehicle':
+        return 'Vehicle Registration';
+      case 'license':
+        return 'License Number';
+      case 'reference':
+        return 'Reference Number';
+      default:
+        return 'Search Result';
+    }
+  };
 
-    return (
-      <Card key={index} className="mb-4">
-        <CardContent className="p-3 sm:p-4">
-          {/* Mobile-first layout */}
-          <div className="space-y-3">
-            {/* Header section - Reference and Status */}
-            <div className="flex items-center justify-between">
-              <span className="text-xs sm:text-sm font-medium text-gray-600">
-                #{item.reference || 'N/A'}
-              </span>
-              {getStatusBadge(item.status || 'Unknown')}
+  const getSecondTabLabel = () => {
+    switch (searchType) {
+      case 'license':
+        return 'License Status';
+      case 'vehicle':
+        return 'Inspection Status';
+      default:
+        return 'Additional Info';
+    }
+  };
+
+  const hasPendingOffences = results.pending_transactions && results.pending_transactions.length > 0;
+  const hasSecondaryData = (searchType === 'license' && results.license_status) || 
+                          (searchType === 'vehicle' && (results.inspection_data || results.inspection_status)) ||
+                          (searchType === 'reference' && results.inspection_data);
+
+  const renderPendingOffences = () => (
+    <div className="space-y-6">
+      {hasPendingOffences ? (
+        <Card className="overflow-hidden shadow-lg">
+          <CardHeader className="bg-gradient-to-r from-red-50 to-red-100/50 border-b border-red-200/50">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-red-600 flex items-center justify-center flex-shrink-0">
+                  <AlertTriangle className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 truncate">Pending Offences Found</h3>
+                  <p className="text-xs sm:text-sm text-gray-600 truncate">
+                    {results.pending_transactions.length} pending fine(s) for {getSearchTypeLabel()}: {searchQuery}
+                  </p>
+                </div>
+              </div>
+              <div className="flex-shrink-0 self-start sm:self-center">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-200">
+                  <AlertTriangle className="h-3 w-3 flex-shrink-0" />
+                  <span>Payment Required</span>
+                </div>
+              </div>
             </div>
             
-            {/* Offence title */}
-            <div>
-              <h3 className="text-sm sm:text-base font-medium text-gray-900 leading-snug mb-1">
-                {item.offence || 'N/A'}
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-600">{item.location || 'N/A'}</p>
-            </div>
-            
-            {/* Amount section - stacked on mobile, side by side on larger screens */}
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
-              <div className="flex flex-col space-y-1">
-                <div className="text-base sm:text-lg font-semibold text-gray-900">
-                  TZS {charge.toLocaleString() || 'N/A'}
-                </div>
-                <div className="text-xs text-gray-600">
-                  Penalty: TZS {penalty.toLocaleString()}
-                </div>
-                {penalty > charge && (
-                  <div className="text-xs text-red-600">
-                    +TZS {(penalty - charge).toLocaleString()} penalty
+            {results.totalPendingAmount && (
+              <div className="mt-4 pt-4 border-t border-red-200/50">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center">
+                    <CreditCard className="h-4 w-4 text-white" />
                   </div>
-                )}
-              </div>
-              <div className="text-xs sm:text-sm text-gray-500 sm:text-right">
-                {item.issued_date || item.paydate || 'N/A'}
-              </div>
-            </div>
-            
-            {/* Additional info section */}
-            <div className="space-y-1 pt-2 border-t border-gray-100">
-              {(searchType !== 'vehicle' && item.vehicle) && (
-                <div className="text-xs sm:text-sm text-gray-600">
-                  <span className="font-medium">Vehicle:</span> {item.vehicle}
-                </div>
-              )}
-              {(searchType !== 'license' && (item.licence || item.license)) && (
-                <div className="text-xs sm:text-sm text-gray-600">
-                  <span className="font-medium">License:</span> {item.licence || item.license}
-                </div>
-              )}
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    );
-  };
-
-  const renderInspectionCard = (item: any, index: number) => {
-    return (
-      <Card key={index} className="mb-4">
-        <CardContent className="p-3 sm:p-4">
-          <div className="flex flex-col gap-4">
-            {/* Header with VIR and Status */}
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs sm:text-sm font-medium text-gray-600">
-                  VIR: {item.vir_no || 'N/A'}
-                </span>
-                {getStatusBadge(item.finalresult || 'Unknown')}
-              </div>
-              <div className="text-xs sm:text-sm text-gray-600 space-y-1">
-                <div>Region: {item.region || 'N/A'} - {item.district || 'N/A'}</div>
-                <div>Valid Until: {item.valid_untill || 'N/A'}</div>
-                <div>Inspector: {item.inspector || 'N/A'}</div>
-              </div>
-            </div>
-
-            {/* Inspection Details - Responsive grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-xs">
-              <div className="flex justify-between py-1">
-                <span>Speed Test:</span>
-                <span className={item.speed_test === 'Pass' ? 'text-green-600 font-medium' : 'text-red-600 font-medium'}>
-                  {item.speed_test || 'N/A'}
-                </span>
-              </div>
-              <div className="flex justify-between py-1">
-                <span>Electrical:</span>
-                <span className={item.electrical_system === 'Pass' ? 'text-green-600 font-medium' : 'text-red-600 font-medium'}>
-                  {item.electrical_system || 'N/A'}
-                </span>
-              </div>
-              <div className="flex justify-between py-1">
-                <span>Brakes:</span>
-                <span className={item.braking_system === 'Pass' ? 'text-green-600 font-medium' : 'text-red-600 font-medium'}>
-                  {item.braking_system || 'N/A'}
-                </span>
-              </div>
-              <div className="flex justify-between py-1">
-                <span>Wheels:</span>
-                <span className={item.wheels === 'Pass' ? 'text-green-600 font-medium' : 'text-red-600 font-medium'}>
-                  {item.wheels || 'N/A'}
-                </span>
-              </div>
-              <div className="flex justify-between py-1">
-                <span>Suspension:</span>
-                <span className={item.suspension === 'Pass' ? 'text-green-600 font-medium' : 'text-red-600 font-medium'}>
-                  {item.suspension || 'N/A'}
-                </span>
-              </div>
-              <div className="flex justify-between py-1">
-                <span>Steering:</span>
-                <span className={item.steering === 'Pass' ? 'text-green-600 font-medium' : 'text-red-600 font-medium'}>
-                  {item.steering || 'N/A'}
-                </span>
-              </div>
-            </div>
-
-            {/* Remarks */}
-            {item.remarks && (
-              <div className="mt-3">
-                <h4 className="text-sm sm:text-base font-medium text-gray-900 mb-2">Inspection Remarks:</h4>
-                <div className="text-xs sm:text-sm text-gray-700 bg-gray-50 p-3 rounded whitespace-pre-line">
-                  {item.remarks}
+                  <div>
+                    <h4 className="text-sm font-semibold text-red-900">Total Pending Amount</h4>
+                    <p className="text-xl font-bold text-red-700">
+                      {formatCurrency(Number(results.totalPendingAmount))}
+                    </p>
+                  </div>
                 </div>
               </div>
             )}
+          </CardHeader>
 
-            {/* Driver Info */}
-            {item.driver_name && (
-              <div className="mt-2 text-xs sm:text-sm text-gray-600 space-y-1">
-                <div><span className="font-medium">Driver:</span> {item.driver_name}</div>
-                {item.licence && <div><span className="font-medium">License:</span> {item.licence}</div>}
+          <CardContent className="p-0">
+            <div className="bg-white rounded-lg overflow-hidden">
+              <Table>
+                <TableBody>
+                  {results.pending_transactions.map((transaction: any, index: number) => (
+                    <React.Fragment key={index}>
+                      <TableRow className="bg-gray-50">
+                        <TableCell colSpan={2} className="font-semibold text-gray-900 py-4 px-6">
+                          Offence #{index + 1}
+                        </TableCell>
+                      </TableRow>
+                      
+                      {Object.entries(transaction).map(([key, value]) => {
+                        if (value === null || value === undefined) return null;
+                        
+                        const displayKey = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                        
+                        let displayValue = String(value);
+                        if (key.includes('date') && value) {
+                          try {
+                            displayValue = formatDate(String(value));
+                          } catch (e) {
+                            displayValue = String(value);
+                          }
+                        } else if ((key.includes('amount') || key.includes('charge') || key.includes('penalty')) && value) {
+                          try {
+                            displayValue = formatCurrency(Number(value));
+                          } catch (e) {
+                            displayValue = String(value);
+                          }
+                        }
+                        
+                        let icon;
+                        if (key.includes('reference')) icon = <Hash className="h-4 w-4 text-red-600" />;
+                        else if (key.includes('date')) icon = <Calendar className="h-4 w-4 text-red-600" />;
+                        else if (key.includes('amount') || key.includes('charge') || key.includes('penalty')) icon = <CreditCard className="h-4 w-4 text-red-600" />;
+                        else if (key.includes('vehicle')) icon = <Car className="h-4 w-4 text-red-600" />;
+                        else if (key.includes('location')) icon = <Building className="h-4 w-4 text-red-600" />;
+                        else if (key.includes('operator')) icon = <Shield className="h-4 w-4 text-red-600" />;
+                        else icon = <FileText className="h-4 w-4 text-red-600" />;
+                        
+                        return (
+                          <TableRow key={`${index}-${key}`} className="hover:bg-gray-50/50 transition-colors">
+                            <TableCell className="font-medium text-gray-700 py-4 px-6 w-1/3">
+                              <div className="flex items-center gap-2">
+                                {icon}
+                                {displayKey}
+                              </div>
+                            </TableCell>
+                            <TableCell className={`text-gray-900 py-4 px-6 ${
+                              (key.includes('amount') || key.includes('charge') || key.includes('penalty')) 
+                                ? 'font-semibold text-red-600' 
+                                : key === 'status' && value === 'PENDING' 
+                                  ? 'font-medium' 
+                                  : ''
+                            }`}>
+                              {key === 'status' ? (
+                                <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-200">
+                                  {displayValue}
+                                </span>
+                              ) : (
+                                displayValue
+                              )}
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
+                      
+                      {index < results.pending_transactions.length - 1 && (
+                        <TableRow>
+                          <TableCell colSpan={2} className="border-b-2 border-gray-200"></TableCell>
+                        </TableRow>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </CardContent>
+        </Card>
+      ) : (
+        <Card className="max-w-md mx-auto text-center">
+          <CardContent className="pt-8 pb-6">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-50 flex items-center justify-center">
+              <CheckCircle className="h-8 w-8 text-green-500" />
+            </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">No Pending Offences</h3>
+            <p className="text-gray-600 text-sm mb-4">No pending offences found for the provided search criteria.</p>
+            <p className="text-xs text-gray-500">This is good news! Your record appears to be clean.</p>
+          </CardContent>
+        </Card>
+      )}
+    </div>
+  );
+
+  const renderSecondaryData = () => {
+    if (searchType === 'license' && results.license_status) {
+      return (
+        <Card className="overflow-hidden shadow-lg">
+          <CardHeader className="bg-gradient-to-r from-blue-50 to-blue-100/50 border-b border-blue-200/50">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
+                <CreditCard className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
               </div>
-            )}
-          </div>
-        </CardContent>
-      </Card>
-    );
-  };
+              <div className="min-w-0 flex-1">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900">License Status</h3>
+                <p className="text-xs sm:text-sm text-gray-600">
+                  Status for License: {searchQuery}
+                </p>
+              </div>
+            </div>
+          </CardHeader>
 
-  const hasPendingOffences = data?.pending_transactions && data.pending_transactions.length > 0;
-  const hasInspectionData = data?.inspection_data && data.inspection_data.length > 0;
-
-  // Determine the correct tab label for inspection based on search type
-  const getInspectionTabLabel = () => {
-    if (searchType === 'license') {
-      return 'License Status';
+          <CardContent className="p-6">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center">
+                <CreditCard className="h-4 w-4 text-blue-600" />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-gray-700">License Status</p>
+                <p className="text-lg font-semibold text-blue-600">{results.license_status}</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      );
     }
-    return searchType === 'vehicle' ? 'Inspection Status' : 'Vehicle Inspection';
+
+    if (searchType === 'vehicle' && (results.inspection_data || results.inspection_status)) {
+      return (
+        <div className="space-y-6">
+          {results.inspection_status && (
+            <Card className="overflow-hidden shadow-lg">
+              <CardHeader className="bg-gradient-to-r from-blue-50 to-blue-100/50 border-b border-blue-200/50">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
+                    <Car className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Inspection Status</h3>
+                    <p className="text-xs sm:text-sm text-gray-600">
+                      Status for Vehicle: {searchQuery}
+                    </p>
+                  </div>
+                </div>
+              </CardHeader>
+
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center">
+                    <Car className="h-4 w-4 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-700">Inspection Status</p>
+                    <p className="text-lg font-semibold text-blue-600">{results.inspection_status}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {results.inspection_data && results.inspection_data.length > 0 && (
+            <Card className="overflow-hidden shadow-lg">
+              <CardHeader className="bg-gradient-to-r from-blue-50 to-blue-100/50 border-b border-blue-200/50">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
+                      <Car className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 truncate">Vehicle Inspection Data</h3>
+                      <p className="text-xs sm:text-sm text-gray-600 truncate">
+                        Detailed inspection information for Vehicle: {searchQuery}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+
+              <CardContent className="p-0">
+                <div className="bg-white rounded-lg overflow-hidden">
+                  <Table>
+                    <TableBody>
+                      {results.inspection_data.map((inspection: any, inspectionIndex: number) => (
+                        <React.Fragment key={inspectionIndex}>
+                          <TableRow className="bg-gray-50">
+                            <TableCell colSpan={2} className="font-semibold text-gray-900 py-4 px-6">
+                              Vehicle Inspection Report #{inspectionIndex + 1}
+                            </TableCell>
+                          </TableRow>
+                          {Object.entries(inspection).map(([key, value], index) => (
+                            <TableRow key={`${inspectionIndex}-${index}`} className="hover:bg-gray-50/50 transition-colors">
+                              <TableCell className="font-medium text-gray-700 py-4 px-6 w-1/3">
+                                <div className="flex items-center gap-2">
+                                  <FileText className="h-4 w-4 text-blue-600" />
+                                  {key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                                </div>
+                              </TableCell>
+                              <TableCell className="text-gray-900 py-4 px-6">
+                                {value ? String(value) : 'Not Available'}
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                          {inspectionIndex < results.inspection_data.length - 1 && (
+                            <TableRow>
+                              <TableCell colSpan={2} className="border-b-2 border-gray-200"></TableCell>
+                            </TableRow>
+                          )}
+                        </React.Fragment>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </div>
+      );
+    }
+
+    return (
+      <Card className="max-w-md mx-auto text-center">
+        <CardContent className="pt-8 pb-6">
+          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-50 flex items-center justify-center">
+            <FileText className="h-8 w-8 text-gray-400" />
+          </div>
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">No Additional Data</h3>
+          <p className="text-gray-600 text-sm mb-4">No additional information available for this search.</p>
+        </CardContent>
+      </Card>
+    );
   };
 
   return (
-    <Dialog open={show} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden w-[95vw] sm:w-full">
-        <DialogHeader>
-          <DialogTitle className="text-base sm:text-xl pr-8">
-            Search Results for {searchType.charAt(0).toUpperCase() + searchType.slice(1)}: 
-            <span className="block sm:inline sm:ml-1 text-sm sm:text-xl font-normal text-gray-600 mt-1 sm:mt-0">
-              {searchQuery}
-            </span>
-          </DialogTitle>
-        </DialogHeader>
+    <div className="mt-8 space-y-6">
+      <Tabs defaultValue="pending" className="w-full">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="pending" className="flex items-center gap-2">
+            <AlertTriangle className="h-4 w-4" />
+            Pending Offences
+          </TabsTrigger>
+          <TabsTrigger value="secondary" className="flex items-center gap-2">
+            {searchType === 'license' ? <CreditCard className="h-4 w-4" /> : <Car className="h-4 w-4" />}
+            {getSecondTabLabel()}
+          </TabsTrigger>
+        </TabsList>
         
-        <div className="overflow-auto max-h-[calc(90vh-120px)]">
-          {/* Tab Navigation - Responsive */}
-          <div className="flex gap-1 sm:gap-2 mb-4 sm:mb-6 border-b overflow-x-auto">
-            <button
-              onClick={() => setActiveTab('pending')}
-              className={`px-2 sm:px-4 py-2 font-medium text-xs sm:text-sm border-b-2 transition-colors whitespace-nowrap ${
-                activeTab === 'pending'
-                  ? 'border-blue-600 text-blue-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700'
-              }`}
-            >
-              Pending Offences
-            </button>
-            {hasPendingOffences && (
-              <button
-                onClick={() => setActiveTab('payment')}
-                className={`px-2 sm:px-4 py-2 font-medium text-xs sm:text-sm border-b-2 transition-colors whitespace-nowrap ${
-                  activeTab === 'payment'
-                    ? 'border-blue-600 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                How to Pay
-              </button>
-            )}
-            <button
-              onClick={() => setActiveTab('inspection')}
-              className={`px-2 sm:px-4 py-2 font-medium text-xs sm:text-sm border-b-2 transition-colors whitespace-nowrap ${
-                activeTab === 'inspection'
-                  ? 'border-blue-600 text-blue-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700'
-              }`}
-            >
-              {getInspectionTabLabel()}
-            </button>
-          </div>
-
-          {/* Content */}
-          {activeTab === 'pending' && (
-            <div>
-              {hasPendingOffences ? (
-                <>
-                  <div className="space-y-0">
-                    {data.pending_transactions.map((item: any, index: number) => 
-                      renderOffenceCard(item, index)
-                    )}
-                  </div>
-                  
-                  {/* Quick Payment Reminder - Mobile optimized */}
-                  <Card className="mt-6 bg-orange-50 border-orange-200">
-                    <CardContent className="p-3 sm:p-4">
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-                        <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                          <CreditCard className="w-5 h-5 text-orange-600" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h4 className="text-sm sm:text-base font-medium text-orange-800 mb-1">Payment Required</h4>
-                          <p className="text-xs sm:text-sm text-orange-700">
-                            You have pending fines that need to be paid. Penalties increase every 7 days for late payment. Click the "How to Pay" tab above for detailed payment instructions.
-                          </p>
-                        </div>
-                        <Button 
-                          onClick={() => setActiveTab('payment')}
-                          size="sm"
-                          className="bg-orange-600 hover:bg-orange-700 text-xs sm:text-sm w-full sm:w-auto"
-                        >
-                          Payment Guide
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </>
-              ) : (
-                <Card>
-                  <CardContent className="flex flex-col items-center justify-center py-8 sm:py-12">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                      <CheckCircle2 className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" />
-                    </div>
-                    <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-2">No Pending Offences</h3>
-                    <p className="text-sm sm:text-base text-gray-600 text-center">Great news! No pending offences found for this {searchType}.</p>
-                  </CardContent>
-                </Card>
-              )}
-            </div>
-          )}
-
-          {activeTab === 'payment' && hasPendingOffences && (
-            <div className="space-y-4 sm:space-y-6">
-              {/* Mobile Money Payment Methods */}
-              <Card>
-                <CardHeader className="pb-3 sm:pb-6">
-                  <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
-                    <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
-                    Mobile Money Payment Methods
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4 sm:space-y-6">
-                  {/* M-Pesa */}
-                  <div>
-                    <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                      <Banknote className="h-3 w-3 sm:h-4 sm:w-4 text-green-600" />
-                      M-Pesa (Vodacom)
-                    </h4>
-                    <ol className="text-xs sm:text-sm text-gray-700 space-y-1 list-decimal list-inside bg-gray-50 p-3 rounded">
-                      <li>Dial <code className="bg-white px-1 rounded text-xs">*150*00#</code></li>
-                      <li>Select <strong>Pay with M-Pesa</strong></li>
-                      <li>Choose <strong>Pay Bills</strong></li>
-                      <li>Select <strong>Traffic Fines</strong></li>
-                      <li>Enter the reference (control) number for the fine</li>
-                      <li>Input the fine amount</li>
-                      <li>Enter your PIN and confirm the payment</li>
-                    </ol>
-                  </div>
-
-                  {/* Airtel Money */}
-                  <div>
-                    <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                      <Banknote className="h-3 w-3 sm:h-4 sm:w-4 text-red-600" />
-                      Airtel Money
-                    </h4>
-                    <ol className="text-xs sm:text-sm text-gray-700 space-y-1 list-decimal list-inside bg-gray-50 p-3 rounded">
-                      <li>Dial <code className="bg-white px-1 rounded text-xs">*150*60#</code></li>
-                      <li>Select <strong>Pay Bill</strong></li>
-                      <li>Choose <strong>Traffic Fines</strong></li>
-                      <li>Enter the fine amount and reference (control) number</li>
-                      <li>Input your PIN and confirm</li>
-                    </ol>
-                  </div>
-
-                  {/* Tigo Pesa */}
-                  <div>
-                    <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                      <Banknote className="h-3 w-3 sm:h-4 sm:w-4 text-blue-600" />
-                      Tigo Pesa / Mixx by Yas
-                    </h4>
-                    <ol className="text-xs sm:text-sm text-gray-700 space-y-1 list-decimal list-inside bg-gray-50 p-3 rounded">
-                      <li>Dial <code className="bg-white px-1 rounded text-xs">*150*01#</code></li>
-                      <li>Select <strong>Pay Bill</strong></li>
-                      <li>Choose <strong>Traffic Fines</strong></li>
-                      <li>Enter the fine amount and reference (control) number</li>
-                      <li>Input your PIN and confirm</li>
-                    </ol>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Other Payment Methods */}
-              <Card>
-                <CardHeader className="pb-3 sm:pb-6">
-                  <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
-                    <CreditCard className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
-                    Other Payment Methods
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="text-xs sm:text-sm text-gray-700 space-y-2">
-                    <li><strong>Bank Deposits:</strong> Visit participating banks with your reference number</li>
-                    <li><strong>Online:</strong> Use government portals like GePG when available</li>
-                    <li><strong>In Person:</strong> Visit designated police stations or revenue authority offices</li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              {/* Important Notes */}
-              <Card className="bg-yellow-50 border-yellow-200">
-                <CardContent className="p-3 sm:p-4">
-                  <div className="flex items-start gap-3">
-                    <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-600 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h4 className="text-sm sm:text-base font-medium text-yellow-800 mb-2">Important Notes</h4>
-                      <ul className="text-xs sm:text-sm text-yellow-700 space-y-1">
-                        <li>• Always use the exact reference number shown on your fine</li>
-                        <li>• Keep your payment receipt as proof of payment</li>
-                        <li>• Payment may take up to 24 hours to reflect in the system</li>
-                        <li>• Not paying fines on time may result in increased penalties</li>
-                      </ul>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          )}
-
-          {activeTab === 'inspection' && (
-            <div>
-              {hasInspectionData ? (
-                <div className="space-y-0">
-                  {data.inspection_data.map((item: any, index: number) => 
-                    renderInspectionCard(item, index)
-                  )}
-                </div>
-              ) : (
-                <Card>
-                  <CardContent className="flex flex-col items-center justify-center py-8 sm:py-12">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                      <FileText className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" />
-                    </div>
-                    <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-2">
-                      {searchType === 'license' ? 'No License Data' : 'No Inspection Data'}
-                    </h3>
-                    <p className="text-sm sm:text-base text-gray-600 text-center">
-                      {searchType === 'license' 
-                        ? 'No license information found for this license number.'
-                        : `No vehicle inspection information found for this ${searchType}.`
-                      }
-                    </p>
-                  </CardContent>
-                </Card>
-              )}
-            </div>
-          )}
-        </div>
-      </DialogContent>
-    </Dialog>
+        <TabsContent value="pending" className="mt-6">
+          {renderPendingOffences()}
+        </TabsContent>
+        
+        <TabsContent value="secondary" className="mt-6">
+          {renderSecondaryData()}
+        </TabsContent>
+      </Tabs>
+    </div>
   );
 };
 
-export default ResultsModal;
+export default OffenceResults;
