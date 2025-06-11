@@ -7,12 +7,6 @@ import Events from "./pages/Events";
 import EventPage from "./pages/EventPage";
 import YearPage from "./pages/YearPage";
 import MonthPage from "./pages/MonthPage";
-import MainPage from "./pages/MainPage";
-import Jobs from "./pages/Jobs";
-import JobDetail from "./pages/JobDetail";
-import JobsByCategory from "./pages/JobsByCategory";
-import JobsByCity from "./pages/JobsByCity";
-import JobsByRegion from "./pages/JobsByRegion";
 
 const App = () => {
   return (
@@ -22,27 +16,11 @@ const App = () => {
           {/* Traffic offence checker as homepage */}
           <Route path="/" element={<TrafficOffence />} />
           
-          {/* Job browsing moved to /jobs-browse */}
-          <Route path="/jobs-browse" element={<MainPage />} />
-          
           {/* Keep existing traffic offence routes for backward compatibility */}
           <Route path="/traffic-offence" element={<Navigate to="/" replace />} />
           <Route path="/traffic-offence-checker" element={<Navigate to="/" replace />} />
           
           <Route path="/about" element={<About />} />
-
-          {/* Job Listing Routes */}
-          <Route path="/jobs" element={<Jobs />} />
-          <Route path="/jobs/:jobSlug" element={<JobDetail />} />
-          
-          {/* Job Category Pages */}
-          <Route path="/jobs/category/:categorySlug" element={<JobsByCategory />} />
-          
-          {/* Job City Pages */}
-          <Route path="/jobs/city/:citySlug" element={<JobsByCity />} />
-          
-          {/* Job Region Pages */}
-          <Route path="/jobs/region/:regionSlug" element={<JobsByRegion />} />
 
           {/* Events routes */}
           <Route path="/events" element={<Events />} />
