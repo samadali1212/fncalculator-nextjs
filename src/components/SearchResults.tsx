@@ -123,9 +123,6 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results, loading, error }
             <CardHeader className="bg-gradient-to-r from-blue-50 to-blue-100/50 border-b border-blue-200/50">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
-                    <Shield className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-                  </div>
                   <div className="min-w-0 flex-1">
                     <h3 className="text-lg sm:text-xl font-semibold text-gray-900 truncate">Insurance Verified</h3>
                     <p className="text-xs sm:text-sm text-gray-600 truncate">Cover Note #{coverNote.coverNoteNumber}</p>
