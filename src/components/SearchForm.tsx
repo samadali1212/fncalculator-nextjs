@@ -70,9 +70,9 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch, loading }) => {
   const getPlaceholder = () => {
     switch (searchType) {
       case 'policy':
-        return 'Enter policy/cover note number';
+        return 'Cover Note Reference number';
       case 'vehicle':
-        return 'Enter vehicle registration (e.g., T661DQL)';
+        return 'Enter vehicle registration (e.g., T123ABC)';
       case 'sticker':
         return 'Enter sticker number';
       case 'chassis':
@@ -92,7 +92,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch, loading }) => {
     {
       id: 'policy' as const,
       icon: FileText,
-      title: 'Policy/Cover Note',
+      title: 'Cover Note Reference',
       description: 'Search by policy number'
     },
     {
