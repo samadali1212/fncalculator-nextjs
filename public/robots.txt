@@ -7,8 +7,7 @@
  # Allow crawling of important directories
  User-agent: Googlebot
  Allow: /
- Allow: /jobs/
- Allow: /jobs-browse/
+ Allow: /insurance/
  Allow: /events/
  Allow: /year/2025
  Allow: /year/2026
