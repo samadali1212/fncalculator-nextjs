@@ -86,7 +86,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch, loading }) => {
     {
       id: 'vehicle' as const,
       icon: Car,
-      title: 'Vehicle',
+      title: 'Registration Number',
       description: 'Search by registration number'
     },
     {
@@ -98,13 +98,13 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch, loading }) => {
     {
       id: 'sticker' as const,
       icon: Hash,
-      title: 'Sticker',
+      title: 'Sticker Number',
       description: 'Search by sticker ID'
     },
     {
       id: 'chassis' as const,
       icon: Wrench,
-      title: 'Chassis',
+      title: 'Chassis Number',
       description: 'Search by chassis number'
     }
   ];
