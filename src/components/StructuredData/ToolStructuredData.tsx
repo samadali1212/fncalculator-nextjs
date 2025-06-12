@@ -18,10 +18,10 @@ const ToolStructuredData = ({ toolType }: ToolStructuredDataProps) => {
         "url": "https://denilagari.com/",
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": 4.6,
-          "ratingCount": 6801,
+          "ratingValue": 4.9,
+          "ratingCount": 139,
           "bestRating": 5,
-          "worstRating": 1
+          "worstRating": 3
         },
         "offers": {
           "@type": "Offer",
@@ -47,10 +47,10 @@ const ToolStructuredData = ({ toolType }: ToolStructuredDataProps) => {
         "url": "https://denilagari.com/insurance",
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": 4.7,
-          "ratingCount": 4892,
+          "ratingValue": 4.9,
+          "ratingCount": 115,
           "bestRating": 5,
-          "worstRating": 1
+          "worstRating": 2
         },
         "offers": {
           "@type": "Offer",
