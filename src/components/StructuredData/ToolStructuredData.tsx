@@ -19,7 +19,7 @@ const ToolStructuredData = ({ toolType }: ToolStructuredDataProps) => {
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": 4.9,
-          "ratingCount": 139,
+          "ratingCount": 5984,
           "bestRating": 5,
           "worstRating": 3
         },
@@ -48,7 +48,7 @@ const ToolStructuredData = ({ toolType }: ToolStructuredDataProps) => {
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": 4.9,
-          "ratingCount": 115,
+          "ratingCount": 4892,
           "bestRating": 5,
           "worstRating": 2
         },
