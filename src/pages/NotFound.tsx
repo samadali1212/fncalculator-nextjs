@@ -115,7 +115,7 @@ const NotFound = () => {
                 <Button 
                   variant="outline" 
                   size="lg"
-                  className="w-full border-purple-500/30 text-purple-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300 transform hover:scale-105 group backdrop-blur-sm"
+                  className="w-full border-purple-500/30 text-black-300 hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300 transform hover:scale-105 group backdrop-blur-sm"
                 >
                   <Search className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
                   Check Your Insurance
