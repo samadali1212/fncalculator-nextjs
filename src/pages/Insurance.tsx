@@ -111,7 +111,7 @@ function Insurance() {
           <h2 className="text-2xl font-bold text-gray-900 mb-6">How to Use This Tool & Insurance Guide</h2>
           
           {/* Search Methods Guide */}
-          <Collapsible open=true>
+          <Collapsible open={true}>
             <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
               <div className="flex items-center gap-3">
                 <Car className="h-5 w-5 text-blue-600" />
