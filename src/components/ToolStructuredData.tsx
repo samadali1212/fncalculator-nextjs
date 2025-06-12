@@ -11,7 +11,7 @@ const ToolStructuredData = ({ toolType }: ToolStructuredDataProps) => {
       return {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "Tanzania Traffic Violation Checker",
+        "name": "TMS Traffic Fine Check - Denilagari",
         "description": "Free online tool to check traffic violations and outstanding fines in Tanzania using official TMS data. Search by vehicle registration, driving license, or violation reference number.",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": ["Web"],
@@ -19,7 +19,7 @@ const ToolStructuredData = ({ toolType }: ToolStructuredDataProps) => {
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": 4.6,
-          "ratingCount": 2847,
+          "ratingCount": 6801,
           "bestRating": 5,
           "worstRating": 1
         },
@@ -40,7 +40,7 @@ const ToolStructuredData = ({ toolType }: ToolStructuredDataProps) => {
       return {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "Tanzania Insurance Verification Portal",
+        "name": "TIRA Insurance Check - Denilagari",
         "description": "Free online tool to verify vehicle insurance coverage status in Tanzania using official TIRA data. Check insurance by vehicle registration, policy number, or sticker number.",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": ["Web"],
@@ -48,7 +48,7 @@ const ToolStructuredData = ({ toolType }: ToolStructuredDataProps) => {
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": 4.7,
-          "ratingCount": 1923,
+          "ratingCount": 4892,
           "bestRating": 5,
           "worstRating": 1
         },
