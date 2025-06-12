@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Shield, FileText, Users, AlertTriangle, ChevronDown, Car, CreditCard, Receipt, Phone } from 'lucide-react';
 import SearchForm, { SearchData } from '../components/SearchForm';
 import SearchResults from '../components/SearchResults';
-import StatsCard from '../components/StatsCard';
 import ShareButton from '../components/ShareButton';
 import Header from '../components/Header';
 import SEO from '../components/SEO';
