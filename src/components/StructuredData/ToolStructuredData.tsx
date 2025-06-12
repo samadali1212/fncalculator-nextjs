@@ -11,7 +11,7 @@ const ToolStructuredData = ({ toolType }: ToolStructuredDataProps) => {
       return {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "TMS Traffic Fine Check - Denilagari",
+        "name": "TMS Traffic Fine Check - Deni La Gari",
         "description": "Free online tool to check traffic violations and outstanding fines in Tanzania using official TMS data. Search by vehicle registration, driving license, or violation reference number.",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": ["Web"],
@@ -40,7 +40,7 @@ const ToolStructuredData = ({ toolType }: ToolStructuredDataProps) => {
       return {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "TIRA Insurance Check - Denilagari",
+        "name": "TIRA MIS Free Insurance Sticker Check - Bima Ya Gari",
         "description": "Free online tool to verify vehicle insurance coverage status in Tanzania using official TIRA data. Check insurance by vehicle registration, policy number, or sticker number.",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": ["Web"],
