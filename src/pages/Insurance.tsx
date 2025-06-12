@@ -8,6 +8,7 @@ import ShareButton from '../components/ShareButton';
 import Header from '../components/Header';
 import SEO from '../components/SEO';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import ToolStructuredData from '../components/StructuredData/ToolStructuredData';
 import { verifyInsurance, getParamType, CoverNoteData } from '../services/tiraApi';
 
 function Insurance() {
@@ -49,6 +50,7 @@ function Insurance() {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
+   <ToolStructuredData toolType="insurance" />
     <SEO 
         title="TIRA MIS Insurance Check: Kuangalia Bima Ya Gari" 
         description="Access the TIRA MIS via Denilagari.com to perform an insurance check online, search by vehicle number, get your TIRA MIS sticker, and explore your Bima ya gari. Simple, fast, and reliable access to everything from TIRA mis updates to insurance checks."
