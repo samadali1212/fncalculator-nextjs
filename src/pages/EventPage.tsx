@@ -263,7 +263,7 @@ const EventPage = () => {
                   <p className="text-sm text-gray-700 leading-relaxed mb-3">
                     {generateEventSEOContent(event)}
                   </p>
-                  <p className="text-sm text-gray-700 leading-relaxed">{event.description}</p>
+                  <p className="text-gray-700 leading-relaxed">{event.description}</p>
                 </div>
               )}
             </div>
