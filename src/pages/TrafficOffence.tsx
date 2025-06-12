@@ -6,6 +6,7 @@ import ShareButton from '../components/ShareButton';
 import Header from '../components/Header';
 import SEO from '../components/SEO';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import ToolStructuredData from '../components/StructuredData/ToolStructuredData';
 import { ChevronDown, AlertTriangle, Car, CreditCard, Receipt, Shield, FileText, Phone } from 'lucide-react';
 
 const TrafficOffence = () => {
@@ -15,7 +16,8 @@ const TrafficOffence = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
-            <SEO 
+     <ToolStructuredData toolType="traffic" />
+       <SEO 
         title="TMS Traffic Fines Check: Kuangalia Deni La Gari" 
         description="TMS check makes it easy to know your deni la gari, view traffic fines, and confirm car ownership in Tanzania. Instantly check deni la gari via denilagari.com and get accurate updates on your vehicle’s status."
         canonicalUrl="/"
