@@ -53,7 +53,7 @@ const BlogSchema = ({
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Sassa Insider",
+      "name": "Deni La Gari",
       "logo": {
         "@type": "ImageObject",
         "url": `${siteUrl}/denilagarilogo.png`
@@ -65,7 +65,7 @@ const BlogSchema = ({
     },
     "articleSection": category,
     "wordCount": wordCount,
-    "inLanguage": "en-ZA"
+    "inLanguage": "en-TZ"
   };
 
   // Add image if available
@@ -74,7 +74,7 @@ const BlogSchema = ({
       "@type": "ImageObject",
       "url": imageUrl.startsWith('http') ? imageUrl : `${siteUrl}${imageUrl}`,
       "width": 1200,
-      "height": 630
+      "height": 720
     };
   }
 
