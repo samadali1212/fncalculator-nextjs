@@ -21,52 +21,52 @@ const blogPosts: BlogPost[] = [
         content: `
       <p>Having reliable insurance offers vital protection and peace of mind. It’s like having a sturdy umbrella in a sudden downpour. Choosing the right insurance provider in Tanzania is a crucial decision. Tanzania's insurance sector is developing and growing, with many companies providing comprehensive and accessible coverage. To help you make this important choice, we've put together a list of leading insurance companies. These companies are known for their trust, service, and wide range of offerings.</p>
 
-      <h2>Jubilee Insurance</h2>
+      <h2>1. Jubilee Insurance</h2>
       <p>Jubilee Insurance is a prominent name across East Africa. It offers a wide range of products. These include life, medical, general, and even specialized agricultural insurance. They have a long history of serving Tanzanians. Jubilee is known for innovative solutions. They focus strongly on customer satisfaction. They provide comprehensive coverage for diverse needs.</p>
 
-      <h2>Britam Insurance Tanzania</h2>
+      <h2>2. Britam Insurance Tanzania</h2>
       <p>Britam has become a key player in Tanzania. They offer a diverse portfolio of insurance products. These cover personal, commercial, and niche areas. Britam emphasizes digital solutions. They provide accessible services. This makes them a popular choice. They safeguard individuals and businesses. Britam ensures comprehensive protection for its clients.</p>
 
-      <h2>Alliance Insurance Corporation Ltd.</h2>
+      <h2>3. Alliance Insurance Corporation Ltd.</h2>
       <p>Alliance Insurance is known for its strong and dependable services. They cater to a wide range of clients. This includes individuals and large corporations. They provide a full suite of general insurance products. These are designed to meet various needs. Alliance offers solid financial protection. They prioritize client security and satisfaction.</p>
 
-      <h2>NIC Insurance (National Insurance Corporation)</h2>
+      <h2>4. NIC Insurance (National Insurance Corporation)</h2>
       <p>NIC Insurance is one of Tanzania's oldest and largest providers. They have extensive experience in the local market. They offer a broad range of life and general insurance products. NIC serves both public and private sectors. They have a strong national presence. They are a reliable choice for comprehensive coverage.</p>
 
-      <h2>Heritage Insurance Company Tanzania</h2>
+      <h2>5. Heritage Insurance Company Tanzania</h2>
       <p>Heritage Insurance is recognized for its personalized service and flexible insurance solutions. They provide various general insurance covers, designed to fit different situations. Their main focus is on tailored policies that truly meet each client's specific requirements. Heritage ensures clients receive customized protection, prioritizing individual needs and preferences to offer true peace of mind.</p>
 
-      <h2>Zanzibar Insurance Corporation</h2>
+      <h2>6. Zanzibar Insurance Corporation</h2>
       <p>Zanzibar Insurance Corporation is very important for residents and businesses in Zanzibar. They offer specialized insurance solutions, created specifically for the island's unique economic and social situation. They play a vital role in ensuring local protection and stability for the community. ZIC is a key provider for the Zanzibari people, offering essential coverage.</p>
 
-      <h2>GA Insurance Tanzania Ltd</h2>
+      <h2>7. GA Insurance Tanzania Ltd</h2>
       <p>GA Insurance is a growing force in the Tanzanian market. They are known for their commitment to customer satisfaction. They deliver efficient service. They offer a range of general insurance products. They continuously adapt to market demands. This ensures relevant and effective coverage. GA Insurance focuses on client needs.</p>
 
-      <h2>Mayfair Insurance Company Tanzania</h2>
+      <h2>8. Mayfair Insurance Company Tanzania</h2>
       <p>Mayfair Insurance offers a dynamic approach. They provide various general insurance products. They prioritize quick claims processing. Accessible customer support is a key feature. They aim to make insurance easy to understand. They strive for a hassle-free experience. Mayfair focuses on client convenience and efficiency.</p>
 
-      <h2>Bumaco Insurance Company Ltd</h2>
+      <h2>9. Bumaco Insurance Company Ltd</h2>
       <p>Bumaco Insurance has a strong and reliable presence in Tanzania. They provide dependable insurance services across various sectors. They are committed to offering secure and comprehensive coverage options. This ensures their clients' financial well-being and provides a sense of security. Bumaco focuses on complete protection, making them a trusted partner for diverse insurance needs.</p>
 
       <h2>Leading Insurance Brokers in Tanzania</h2>
       <p>Beyond insurance companies, brokers help you find the best coverage. They work with multiple insurers. Here are some prominent brokers in Tanzania:</p>
 
-      <h2>Howden Puri Insurance Brokers / Howden Tanzania</h2>
+      <h2>10. Howden Puri Insurance Brokers / Howden Tanzania</h2>
       <p>Howden Puri brings global expertise. They combine it with local insights. They are part of an international network. They specialize in complex risk management. They offer bespoke insurance solutions. These cater to businesses and individuals. Howden Puri provides expert brokerage services. They navigate intricate insurance needs.</p>
 
-      <h2>Impex Insurance Brokers Limited</h2>
+      <h2>11. Impex Insurance Brokers Limited</h2>
       <p>Impex Insurance Brokers are fully dedicated to advocating for their clients. They work to ensure clients receive the most suitable and cost-effective insurance plans available in the market. Impex helps both individuals and businesses find the best coverage options. They consistently prioritize client interests, aiming for optimal protection and value in every policy.</p>
 
-      <h2>Milmar Insurance Consultants Ltd</h2>
+      <h2>12. Milmar Insurance Consultants Ltd</h2>
       <p>Milmar offers expert insurance consultancy services. They guide clients through the complexities of various policies. Their goal is to help clients make informed decisions about their coverage needs. This ensures optimal protection. Milmar provides clear, simple advice. They simplify the insurance selection process, acting as trusted advisors for a complete understanding.</p>
 
-      <h2>Equity Group TZ Limited (Equity Insurance)</h2>
+      <h2>13. Equity Group TZ Limited (Equity Insurance)</h2>
       <p>Equity Group in Tanzania provides reliable insurance solutions. They use their strong background in financial services. They offer a seamless experience for clients. This means financial and protection services are integrated smoothly. Equity provides comprehensive coverage options. They focus on accessible and unified financial solutions, making insurance easy to manage with other banking needs.</p>
 
-      <h2>Chippings TZ Limited</h2>
+      <h2>14. Chippings TZ Limited</h2>
       <p>Chippings TZ Limited is a respected insurance broker. They offer tailored advice to suit individual needs. They provide access to a wide range of insurance products. They ensure comprehensive protection that meets specific client requirements. Chippings focuses on providing personalized service, always working to help clients secure the most suitable coverage for their assets and peace of mind.</p>
 
-      <h2>African Alliance TZ Limited</h2>
+      <h2>15. African Alliance TZ Limited</h2>
       <p>African Alliance is a reputable financial services group. They extend their expertise to insurance brokerage. They offer clients strategic advice. They provide access to suitable insurance solutions. These cover both personal and corporate needs. African Alliance is a trusted partner. They help clients achieve financial security.</p>
 
       <p>Choosing an insurance provider or broker depends on your individual needs and preferences. It's always a good idea to research, compare quotes, and perhaps even speak directly with representatives to ensure you find the perfect fit for your insurance journey in Tanzania.</p>
