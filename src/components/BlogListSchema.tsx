@@ -27,15 +27,15 @@ const BlogListSchema = ({ blogPosts }: BlogListSchemaProps) => {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "name": "Sassa Insider Blog",
-    "description": "Latest news, insights, and guides about South African salaries, SASSA benefits, and career information",
+    "name": "Deni La Gari",
+    "description": "Latest news, insights, and guides about, finance, automobile and public affairs in Tanzania",
     "url": `${siteUrl}/blog`,
     "publisher": {
       "@type": "Organization",
-      "name": "Sassa Insider",
+      "name": "Deni La Gari",
       "logo": {
         "@type": "ImageObject",
-        "url": `${siteUrl}/sassainsiderlogo.png`
+        "url": `${siteUrl}/denilagarilogo.png`
       }
     },
     "blogPost": blogPosts.slice(0, 10).map(post => ({
