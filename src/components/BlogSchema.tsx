@@ -24,7 +24,7 @@ const BlogSchema = ({
   slug,
   content
 }: BlogSchemaProps) => {
-  const siteUrl = "https://sassainsider.co.za";
+  const siteUrl = "https://denilagari.com";
   const articleUrl = `${siteUrl}/blog/${slug}`;
   
   // Convert date to ISO 8601 format with timezone
@@ -56,7 +56,7 @@ const BlogSchema = ({
       "name": "Sassa Insider",
       "logo": {
         "@type": "ImageObject",
-        "url": `${siteUrl}/sassainsiderlogo.png`
+        "url": `${siteUrl}/denilagarilogo.png`
       }
     },
     "mainEntityOfPage": {
