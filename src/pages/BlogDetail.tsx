@@ -149,13 +149,7 @@ const BlogDetail = () => {
       <Header />
       
       <main className="container mx-auto pt-20 sm:pt-24 px-4 md:px-6 pb-12 sm:pb-16 max-w-4xl">
-        <div className="mb-6">
-<Button asChild className="gap-1 mb-6">
-  <Link to="/blog">
-    <ArrowLeft className="h-4 w-4" /> Back to Blog
-  </Link>
-</Button>
-          
+        <div className="mb-6">  
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
