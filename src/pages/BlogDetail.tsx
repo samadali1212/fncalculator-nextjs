@@ -157,9 +157,6 @@ const BlogDetail = () => {
           >
             <div className="mb-8">
               <div className="flex flex-col">
-                <div className="flex flex-wrap gap-2 mb-2">
-                  <Badge className="bg-white text-gray-700 border border-gray-200">{blogPost.category}</Badge>
-                </div>
                 <h1 className="text-2xl sm:text-3xl font-bold mb-3 text-[#1a1a1a]">{blogPost.title}</h1>
                 <div className="flex flex-wrap items-center text-sm text-gray-600 mb-6 gap-4">
                   <div className="flex items-center">
