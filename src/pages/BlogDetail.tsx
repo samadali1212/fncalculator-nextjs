@@ -151,9 +151,7 @@ const BlogDetail = () => {
       <main className="container mx-auto pt-20 sm:pt-24 px-4 md:px-6 pb-12 sm:pb-16 max-w-4xl">
         <div className="mb-6">
           <Button
-            variant="outline"
-            size="sm"
-            onClick={() => window.history.back()}
+            <Link to="/blog">
             className="gap-1 mb-6"
           >
             <ArrowLeft className="h-4 w-4" /> Back to Blog
