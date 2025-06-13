@@ -214,8 +214,8 @@ const BlogDetail = () => {
             </div>
             
             {relatedPosts.length > 0 && (
-              <div className="rounded-sm shadow-sm border border-gray-200 p-6 mb-6">
-                <h3 className="text-xl font-bold mb-4 text-[#1a1a1a]">Related Articles</h3>
+              <div className="mb-6">
+                <h3 className="text-xl font-bold mb-6 text-[#1a1a1a]">Related Articles</h3>
                 
                 <div className="mb-6">
                   <AdSense slot="9803570345" format="auto" className="py-3" />
