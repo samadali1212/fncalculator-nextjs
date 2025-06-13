@@ -74,7 +74,7 @@ const TrafficOffence = () => {
           <h2 className="text-2xl font-bold text-gray-900 mb-6">How to Use This Tool & Road Safety Guide</h2>
           
           {/* Search Methods Guide */}
-          <Collapsible open>
+          <Collapsible defaultOpen>
             <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
               <div className="flex items-center gap-3">
                 <Car className="h-5 w-5 text-blue-600" />
@@ -136,7 +136,7 @@ const TrafficOffence = () => {
           </Collapsible>
 
           {/* Understanding Results */}
-          <Collapsible open>
+          <Collapsible defaultOpen>
             <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
               <div className="flex items-center gap-3">
                 <FileText className="h-5 w-5 text-green-600" />
@@ -163,7 +163,7 @@ const TrafficOffence = () => {
           </Collapsible>
 
           {/* Payment and Next Steps */}
-          <Collapsible open>
+          <Collapsible defaultOpen>
             <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
               <div className="flex items-center gap-3">
                 <AlertTriangle className="h-5 w-5 text-orange-600" />
@@ -238,7 +238,7 @@ const TrafficOffence = () => {
           </Collapsible>
 
           {/* Best Driving Practices */}
-          <Collapsible open>
+          <Collapsible defaultOpen>
             <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
               <div className="flex items-center gap-3">
                 <Shield className="h-5 w-5 text-blue-600" />
@@ -301,7 +301,7 @@ const TrafficOffence = () => {
           </Collapsible>
 
           {/* Emergency Information */}
-          <Collapsible open>
+          <Collapsible defaultOpen>
             <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-red-600" />
