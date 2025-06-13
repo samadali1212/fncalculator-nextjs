@@ -215,12 +215,7 @@ const BlogDetail = () => {
             
             {relatedPosts.length > 0 && (
               <div className="mb-6">
-                <h3 className="text-xl font-bold mb-6 text-[#1a1a1a]">Related Articles</h3>
-                
-                <div className="mb-6">
-                  <AdSense slot="9803570345" format="auto" className="py-3" />
-                </div>
-                
+                <h3 className="text-xl font-bold mb-6 text-[#1a1a1a]">Related Articles</h3>                
                 <div className="flex flex-col space-y-4">
                   {relatedPosts.map((post, index) => (
                     <motion.div 
