@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
@@ -12,16 +11,7 @@ import AdSense from "../components/AdSense";
 import { findBlogPostBySlug, getRecentPosts, formatBlogDate, BlogPost } from "../utils/blogData";
 import BlogSchema from "../components/BlogSchema";
 import { Card, CardContent } from "@/components/ui/card";
-
-// Function to limit text to a specific number of words
-const limitWords = (text: string, wordLimit: number): string => {
-  if (!text) return "";
-  
-  const words = text.trim().split(/\s+/);
-  if (words.length <= wordLimit) return text;
-  
-  return words.slice(0, wordLimit).join(' ') + '...';
-};
+import { stripHtmlTags, limitWords } from "../utils/blogUtils";
 
 const BlogDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -260,7 +250,7 @@ const BlogDetail = () => {
                             </h2>
                            
                             <p className="text-gray-600 text-sm mb-4">
-                              {limitWords(post.content, 30)}
+                              {limitWords(stripHtmlTags(post.content), 30)}
                             </p>
                             
                             <div className="mt-auto">
