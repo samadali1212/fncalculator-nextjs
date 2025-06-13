@@ -214,7 +214,7 @@ const BlogDetail = () => {
             </div>
             
             {relatedPosts.length > 0 && (
-              <div className="bg-white rounded-sm shadow-sm border border-gray-200 p-6 mb-6">
+              <div className="rounded-sm shadow-sm border border-gray-200 p-6 mb-6">
                 <h3 className="text-xl font-bold mb-4 text-[#1a1a1a]">Related Articles</h3>
                 
                 <div className="mb-6">
@@ -296,7 +296,7 @@ const BlogDetail = () => {
       <footer className="border-t border-gray-200 py-6 sm:py-8 bg-white">
         <div className="container mx-auto px-4 md:px-6 text-center text-gray-600 text-sm">
           <p>
-            &copy; {new Date().getFullYear()} Sassa Insider. All rights reserved.
+            &copy; {new Date().getFullYear()} denilagari. All rights reserved.
           </p>
         </div>
       </footer>
