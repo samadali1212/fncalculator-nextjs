@@ -16,7 +16,7 @@ interface BlogListSchemaProps {
 }
 
 const BlogListSchema = ({ blogPosts }: BlogListSchemaProps) => {
-  const siteUrl = "https://sassainsider.co.za";
+  const siteUrl = "https://denilagari.com";
   
   // Convert date to ISO 8601 format with timezone
   const formatDateForSchema = (dateString: string) => {
