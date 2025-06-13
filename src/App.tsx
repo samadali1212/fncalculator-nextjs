@@ -7,6 +7,8 @@ import NotFound from "./pages/NotFound";
 import Events from "./pages/Events";
 import EventPage from "./pages/EventPage";
 import YearPage from "./pages/YearPage";
+import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 import MonthPageWrapper from "./components/MonthPageWrapper";
 
 const App = () => {
@@ -35,6 +37,10 @@ const App = () => {
           
           {/* SEO-friendly month routes like /january-2025 */}
           <Route path="/:monthYear" element={<MonthPageWrapper />} />
+
+            {/* Blog Routes */}
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogDetail />} />
                         
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
