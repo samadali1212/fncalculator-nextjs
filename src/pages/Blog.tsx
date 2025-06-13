@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, CalendarDays, User, ArrowRight, Plus } from "lucide-react";
@@ -11,16 +10,7 @@ import { Button } from "@/components/ui/button";
 import { getAllBlogPosts, formatBlogDate, getAllCategories, BlogPost } from "../utils/blogData";
 import { Card, CardContent } from "@/components/ui/card";
 import AdSense from "../components/AdSense";
-
-// Function to limit text to a specific number of words
-const limitWords = (text: string, wordLimit: number): string => {
-  if (!text) return "";
-  
-  const words = text.trim().split(/\s+/);
-  if (words.length <= wordLimit) return text;
-  
-  return words.slice(0, wordLimit).join(' ') + '...';
-};
+import { stripHtmlTags, limitWords } from "../utils/blogUtils";
 
 const Blog = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -56,9 +46,11 @@ const Blog = () => {
   
   // Filter blog posts based on search query and selected category
   const filteredPosts = blogPosts.filter(post => {
+    const plainTextContent = stripHtmlTags(post.content);
     const matchesSearch = searchQuery 
       ? post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        plainTextContent.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.category.toLowerCase().includes(searchQuery.toLowerCase())
       : true;
       
@@ -202,7 +194,7 @@ const Blog = () => {
                           </h2>
                          
                           <p className="text-gray-600 text-sm mb-4">
-                            {limitWords(post.content, 30)}
+                            {limitWords(stripHtmlTags(post.content), 30)}
                           </p>
                           
                           <div className="mt-auto">
