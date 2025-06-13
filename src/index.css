@@ -231,6 +231,14 @@
   @apply mb-4 pl-6 text-base text-gray-700;
 }
 
+.blog-content-detail ul {
+  @apply list-disc;
+}
+
+.blog-content-detail ol {
+  @apply list-decimal;
+}
+
 .blog-content-detail li {
   @apply mb-1 leading-relaxed;
 }
