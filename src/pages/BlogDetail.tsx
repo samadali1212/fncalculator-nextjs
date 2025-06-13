@@ -141,18 +141,6 @@ const BlogDetail = () => {
       
       <main className="container mx-auto pt-20 sm:pt-24 px-4 md:px-6 pb-12 sm:pb-16 max-w-4xl">
         <div className="mb-6">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => window.history.back()}
-            className="gap-1 mb-6"
-          >
-            <ArrowLeft className="h-4 w-4" /> Back to Blog
-          </Button>
-
-          <div className="my-6">
-            <AdSense slot="9803570345" format="auto" className="py-3" />
-          </div>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -161,9 +149,6 @@ const BlogDetail = () => {
           >
             <div className="mb-8">
               <div className="flex flex-col">
-                <div className="flex flex-wrap gap-2 mb-2">
-                  <Badge className="bg-white text-gray-700 border border-gray-200">{blogPost.category}</Badge>
-                </div>
                 <h1 className="text-2xl sm:text-3xl font-bold mb-3 text-[#1a1a1a]">{blogPost.title}</h1>
                 <div className="flex flex-wrap items-center text-sm text-gray-600 mb-6 gap-4">
                   <div className="flex items-center">
