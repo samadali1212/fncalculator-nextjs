@@ -202,7 +202,7 @@ const Blog = () => {
                           </h2>
                          
                           <p className="text-gray-600 text-sm mb-4">
-                            {limitWords(post.excerpt, 30)}
+                            {limitWords(post.content, 30)}
                           </p>
                           
                           <div className="mt-auto">
