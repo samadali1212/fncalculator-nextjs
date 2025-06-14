@@ -1,4 +1,3 @@
-
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { formatCurrency, CrdbTimeFrame } from "../utils/loanCalculator";
 
@@ -76,7 +75,7 @@ const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }:
         if (!acc[yearIndex]) {
           acc[yearIndex] = {
             period: yearIndex + 1,
-            paymentDate: entry.paymentDate, // Use the last month's date for the year
+            paymentDate: entry.paymentDate,
             payment: 0,
             principal: 0,
             interest: 0,
@@ -104,30 +103,32 @@ const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }:
         This table shows how your {timeFrame === "monthly" ? "monthly" : "annual"} payments are split between principal and interest over the life of your loan.
       </p>
       
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Payment Date</TableHead>
-            <TableHead className="text-right">Payment (TSh)</TableHead>
-            <TableHead className="text-right">Principal (TSh)</TableHead>
-            <TableHead className="text-right">Interest (TSh)</TableHead>
-            <TableHead className="text-right">Total Interest (TSh)</TableHead>
-            <TableHead className="text-right">Balance (TSh)</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {displayData.map((entry) => (
-            <TableRow key={entry.period}>
-              <TableCell className="font-medium">{entry.paymentDate}</TableCell>
-              <TableCell className="text-right">{formatCurrencyValue(Math.round(entry.payment))}</TableCell>
-              <TableCell className="text-right">{formatCurrencyValue(Math.round(entry.principal))}</TableCell>
-              <TableCell className="text-right">{formatCurrencyValue(Math.round(entry.interest))}</TableCell>
-              <TableCell className="text-right">{formatCurrencyValue(Math.round(entry.totalInterest))}</TableCell>
-              <TableCell className="text-right">{formatCurrencyValue(Math.round(entry.balance))}</TableCell>
+      <div className="w-full overflow-x-auto">
+        <Table className="min-w-full table-fixed">
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[15%]">Payment Date</TableHead>
+              <TableHead className="text-right w-[17%]">Payment (TSh)</TableHead>
+              <TableHead className="text-right w-[17%]">Principal (TSh)</TableHead>
+              <TableHead className="text-right w-[17%]">Interest (TSh)</TableHead>
+              <TableHead className="text-right w-[17%]">Total Interest (TSh)</TableHead>
+              <TableHead className="text-right w-[17%]">Balance (TSh)</TableHead>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {displayData.map((entry) => (
+              <TableRow key={entry.period}>
+                <TableCell className="font-medium whitespace-nowrap">{entry.paymentDate}</TableCell>
+                <TableCell className="text-right whitespace-nowrap">{formatCurrencyValue(Math.round(entry.payment))}</TableCell>
+                <TableCell className="text-right whitespace-nowrap">{formatCurrencyValue(Math.round(entry.principal))}</TableCell>
+                <TableCell className="text-right whitespace-nowrap">{formatCurrencyValue(Math.round(entry.interest))}</TableCell>
+                <TableCell className="text-right whitespace-nowrap">{formatCurrencyValue(Math.round(entry.totalInterest))}</TableCell>
+                <TableCell className="text-right whitespace-nowrap">{formatCurrencyValue(Math.round(entry.balance))}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 };
