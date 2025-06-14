@@ -5,6 +5,7 @@ import About from "./pages/About";
 import TrafficOffence from "./pages/TrafficOffence";
 import Insurance from "./pages/Insurance";
 import Bmi from "./pages/Bmi";
+import Edd from "./pages/Edd";
 import NotFound from "./pages/NotFound";
 import Events from "./pages/Events";
 import EventPage from "./pages/EventPage";
@@ -40,6 +41,9 @@ const App = () => {
 
           {/* BMI Calculator Route */}
           <Route path="/bmi" element={<Bmi />} />
+
+          {/* EDD Calculator Route */}
+          <Route path="/edd" element={<Edd />} />
 
           {/* Events routes */}
           <Route path="/events" element={<Events />} />
