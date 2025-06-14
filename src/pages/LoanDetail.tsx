@@ -25,6 +25,11 @@ const LoanDetail = () => {
   const [currentInterestRate, setCurrentInterestRate] = useState(0);
   const [currentLoanTerm, setCurrentLoanTerm] = useState(0);
   
+  // Determine bank from URL
+  const isNmbBank = window.location.pathname.includes("/nmb");
+  const bankName = isNmbBank ? "NMB" : "CRDB";
+  const bankPath = isNmbBank ? "nmb" : "crdb";
+  
   // Determine timeframe from URL
   useEffect(() => {
     const path = window.location.pathname;
@@ -62,7 +67,7 @@ const LoanDetail = () => {
       } else if (timeFrame === "yearly" && value === "monthly") {
         convertedTerm = currentLoanTerm * 12;
       }
-      navigate(`/crdb/${value}/${currentLoanAmount}/${currentInterestRate}/${convertedTerm}`);
+      navigate(`/${bankPath}/${value}/${currentLoanAmount}/${currentInterestRate}/${convertedTerm}`);
     }
   };
 
@@ -112,9 +117,9 @@ const LoanDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`CRDB Loan Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${loanResult ? formatCurrency(loanResult.payment) : ""}`}
-        description={`Calculate your CRDB Bank personal loan of ${formatCurrency(currentLoanAmount)} at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
-        canonicalUrl={`/crdb/${timeFrame}/${currentLoanAmount}/${currentInterestRate}/${currentLoanTerm}`}
+        title={`${bankName} Loan Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${loanResult ? formatCurrency(loanResult.payment) : ""}`}
+        description={`Calculate your ${bankName} Bank personal loan of ${formatCurrency(currentLoanAmount)} at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
+        canonicalUrl={`/${bankPath}/${timeFrame}/${currentLoanAmount}/${currentInterestRate}/${currentLoanTerm}`}
       />
       <Header />
       
@@ -122,15 +127,15 @@ const LoanDetail = () => {
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="flex items-center justify-between mb-6">
             <Link 
-              to={`/crdb${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
+              to={`/${bankPath}${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
               className="inline-flex items-center text-sm text-[#000000] hover:underline"
             >
               <ChevronLeft className="h-4 w-4 mr-1" />
-              Back To CRDB Calculator
+              Back To {bankName} Calculator
             </Link>
             
             <ShareButton 
-              title={`CRDB Loan ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment - SalaryList`} 
+              title={`${bankName} Loan ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment - SalaryList`} 
               variant="outline"
             />
           </div>
@@ -138,7 +143,7 @@ const LoanDetail = () => {
           {/* Title Section - No Background */}
           <div className="mb-6">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
-              CRDB Loan Calculator On {formatCurrency(currentLoanAmount)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Payment
+              {bankName} Loan Calculator On {formatCurrency(currentLoanAmount)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Payment
             </h1>
           </div>
 
@@ -228,7 +233,7 @@ const LoanDetail = () => {
           )}
 
           <p className="text-sm text-gray-500 text-center">
-            <em><strong>Interest rates may vary based on your credit profile and loan terms. Contact CRDB Bank for personalized rates.</strong></em>
+            <em><strong>Interest rates may vary based on your credit profile and loan terms. Contact {bankName} Bank for personalized rates.</strong></em>
           </p>
         </div>
       </main>
