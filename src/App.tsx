@@ -18,7 +18,6 @@ import Nbc from "./pages/Nbc";
 import Absa from "./pages/Absa";
 import Azania from "./pages/Azania";
 import LoanDetail from "./pages/LoanDetail";
-import InternalLoanCalculator from "./pages/InternalLoanCalculator";
 import MonthPageWrapper from "./components/MonthPageWrapper";
 
 const App = () => {
@@ -37,9 +36,6 @@ const App = () => {
 
           {/* New Insurance Page Route */}
           <Route path="/insurance" element={<Insurance />} />
-
-          {/* Internal Loan Calculator Route */}
-          <Route path="/loan-calculator" element={<InternalLoanCalculator />} />
 
           {/* Events routes */}
           <Route path="/events" element={<Events />} />
