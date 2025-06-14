@@ -68,7 +68,7 @@ const PayeDetailCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: P
     }
   };
 
-  const viewDetailedCalculation = () => {
+  const calculateAnother = () => {
     if (customTaxResult) {
       navigate(`/paye/${timeFrame}/${customTaxResult.grossIncome}`);
     }
@@ -81,7 +81,6 @@ const PayeDetailCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: P
       transition={{ duration: 0.5 }}
       className="space-y-6"
     >
-
       {/* Income Input */}
       <div className="space-y-2">
         <Label htmlFor="custom-income" className="text-sm font-medium text-gray-700">
@@ -133,7 +132,6 @@ const PayeDetailCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: P
             transition={{ duration: 0.3 }}
             className="space-y-3"
           >
-            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <div className="text-center p-3 bg-white rounded border border-gray-100">
                 <div className="text-xs text-gray-500 mb-1">Gross Income</div>
@@ -164,17 +162,16 @@ const PayeDetailCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: P
           {/* Dynamic Paragraph */}
           <div className="text-sm text-gray-600 leading-relaxed">
             <p>
-              Your {timeFrame} income of {formatTanzaniaCurrency(customTaxResult.grossIncome)} falls under the {customTaxResult.marginalTaxRate}% tax bracket, resulting in an effective tax rate of {customTaxResult.effectiveTaxRate.toFixed(1)}%. 
-              Click below to see the complete breakdown of your tax calculation including all applicable deductions and bracket details.
+              Your {timeFrame} income of {formatTanzaniaCurrency(customTaxResult.grossIncome)} falls under the {customTaxResult.marginalTaxRate}% tax bracket, resulting in an effective tax rate of {customTaxResult.effectiveTaxRate.toFixed(1)}%.
             </p>
           </div>
           
-          {/* View Details Button */}
+          {/* Calculate Another Button */}
           <Button 
-            onClick={viewDetailedCalculation} 
+            onClick={calculateAnother} 
             className="w-full bg-primary hover:bg-primary/90 text-white text-sm py-2"
           >
-            View Detailed Breakdown
+            Calculate Another Income
           </Button>
         </>
       )}
