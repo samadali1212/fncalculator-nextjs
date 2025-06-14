@@ -32,6 +32,7 @@ const ensureDirectoryExists = (filePath) => {
 ;(async () => {
   for (const url of routesToPrerender) {
     try {
+      console.log(`Pre-rendering: ${url}`)
       const appHtml = render(url);
       const html = template.replace(`<!--app-html-->`, appHtml)
 
@@ -42,9 +43,11 @@ const ensureDirectoryExists = (filePath) => {
       ensureDirectoryExists(absoluteFilePath)
       
       fs.writeFileSync(absoluteFilePath, html)
-      console.log('pre-rendered:', filePath)
+      console.log('✅ Pre-rendered:', filePath)
     } catch (error) {
-      console.error(`Error pre-rendering ${url}:`, error)
+      console.error(`❌ Error pre-rendering ${url}:`, error)
+      // Continue with other routes even if one fails
     }
   }
+  console.log('🎉 Pre-rendering complete!')
 })()
