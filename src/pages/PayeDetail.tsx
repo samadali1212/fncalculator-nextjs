@@ -12,6 +12,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { usePageReload } from "../hooks/usePageReload";
 import { 
   getTanzaniaTaxCalculation, 
   formatTanzaniaCurrency, 
@@ -26,11 +27,13 @@ const PayeDetail = () => {
   const location = useLocation();
   const pathname = location.pathname;
   
+  // Use the page reload hook
+  const { pageKey, isLoading, setIsLoading } = usePageReload();
+  
   // Determine timeFrame from URL path
   const timeFrame: TanzaniaTimeFrame = pathname.includes("/yearly/") ? "yearly" : "monthly";
   
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
   
   const income = incomeId ? parseInt(incomeId) : 0;
   const taxDetails = useMemo(() => 
@@ -57,17 +60,6 @@ const PayeDetail = () => {
       .sort((a, b) => Math.abs(a.grossIncome - income) - Math.abs(b.grossIncome - income))
       .slice(0, 10);
   }, [income, allCalculations]);
-  
-  // Simulate loading from API
-  useEffect(() => {
-    setIsLoading(true);
-    // Simulate network delay
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
-    
-    return () => clearTimeout(timer);
-  }, [incomeId, timeFrame]);
 
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
@@ -125,6 +117,7 @@ const PayeDetail = () => {
 
   return (
     <motion.div
+      key={pageKey}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
