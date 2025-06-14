@@ -77,7 +77,7 @@ Get clear {timeFrame === "monthly" ? "monthly" : "yearly"} payment projections b
         />
 
         <p className="text-gray-600 mb-8">
-          <em><strong>Interest rates may vary based on your credit profile and loan terms. Contact NBC Bank for personalized rates.</strong></em>
+          <em>Interest rates may vary based on your credit profile and loan terms. Contact NBC Bank for personalized rates.</em>
         </p>
         
         {/* Time Frame Toggle */}
