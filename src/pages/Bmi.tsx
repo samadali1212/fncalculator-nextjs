@@ -264,9 +264,9 @@ const Bmi = () => {
             {/* AdSense */}
             <div className="mt-12">
               <AdSense 
-                adSlot="1234567890"
-                adFormat="auto"
-                fullWidthResponsive={true}
+                slot="1234567890"
+                format="auto"
+                responsive={true}
               />
             </div>
 
