@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import About from "./pages/About";
 import TrafficOffence from "./pages/TrafficOffence";
 import Insurance from "./pages/Insurance";
+import Bmi from "./pages/Bmi";
 import NotFound from "./pages/NotFound";
 import Events from "./pages/Events";
 import EventPage from "./pages/EventPage";
@@ -36,6 +37,9 @@ const App = () => {
 
           {/* New Insurance Page Route */}
           <Route path="/insurance" element={<Insurance />} />
+
+          {/* BMI Calculator Route */}
+          <Route path="/bmi" element={<Bmi />} />
 
           {/* Events routes */}
           <Route path="/events" element={<Events />} />
