@@ -18,11 +18,16 @@ const routesToPrerender = fs
 
 ;(async () => {
   for (const url of routesToPrerender) {
-    const appHtml = render(url);
-    const html = template.replace(`<!--app-html-->`, appHtml)
+    const { html, helmet } = render(url);
+    
+    let finalHtml = template.replace(`<!--app-html-->`, html)
+    
+    // Insert helmet data
+    finalHtml = finalHtml.replace('<title></title>', helmet.title.toString())
+    finalHtml = finalHtml.replace('</head>', `${helmet.meta.toString()}${helmet.link.toString()}</head>`)
 
     const filePath = `dist${url === '/' ? '/index' : url}.html`
-    fs.writeFileSync(toAbsolute(filePath), html)
+    fs.writeFileSync(toAbsolute(filePath), finalHtml)
     console.log('pre-rendered:', filePath)
   }
 })()
