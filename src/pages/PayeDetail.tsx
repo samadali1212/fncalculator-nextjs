@@ -178,9 +178,6 @@ const PayeDetail = () => {
                 income={income} 
               />
             </div>
-
-            {/* Dynamic Paragraph */}
-            <DynamicTaxParagraph taxResult={taxDetails} timeFrame={timeFrame} />
             
             <Table>
               <TableHeader>
