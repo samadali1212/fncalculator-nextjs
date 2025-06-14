@@ -20,7 +20,7 @@ const Bmi = () => {
   return (
     <>
       <Helmet>
-        <title>BMI Calculator - Body Mass Index Calculator | Deni La Gari</title>
+        <title>BMI Calculator</title>
         <meta name="description" content="Free BMI calculator to check your Body Mass Index. Calculate BMI using metric or imperial units and understand your weight category." />
         <meta name="keywords" content="BMI calculator, body mass index, weight calculator, health calculator, fitness calculator" />
         <link rel="canonical" href="https://denilagari.com/bmi" />
@@ -30,7 +30,7 @@ const Bmi = () => {
         <Header />
         
         <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-          <h1 className="text-3xl font-bold mb-2">BMI Calculator</h1>
+          <h1 className="text-3xl font-bold mb-2">Body Mass Index Calculator</h1>
           <p className="text-gray-600 mb-8">
             Calculate your Body Mass Index (BMI) to understand your weight category and maintain a healthy lifestyle. 
             Use our free BMI calculator with both metric and imperial units for accurate health assessments.
