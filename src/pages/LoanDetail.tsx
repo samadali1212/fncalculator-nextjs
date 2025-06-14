@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -7,6 +6,7 @@ import Header from "../components/Header";
 import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
 import LoanDetailCalculator from "../components/LoanDetailCalculator";
+import AmortizationSchedule from "../components/AmortizationSchedule";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -213,6 +213,16 @@ const LoanDetail = () => {
                     )}
                   </TableBody>
                 </Table>
+              </div>
+
+              {/* Amortization Schedule Section */}
+              <div className="mb-8">
+                <AmortizationSchedule 
+                  loanAmount={currentLoanAmount}
+                  interestRate={currentInterestRate}
+                  loanTerm={currentLoanTerm}
+                  timeFrame={timeFrame}
+                />
               </div>
             </>
           )}
