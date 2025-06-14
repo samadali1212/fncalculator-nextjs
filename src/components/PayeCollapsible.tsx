@@ -76,7 +76,7 @@ const PayeCollapsible = () => {
         </CollapsibleContent>
       </Collapsible>
 
-      <Collapsible>
+      <Collapsible defaultOpen>
         <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
           <div className="flex items-center gap-3">
             <FileText className="h-5 w-5 text-indigo-600" />
@@ -108,7 +108,7 @@ const PayeCollapsible = () => {
         </CollapsibleContent>
       </Collapsible>
 
-      <Collapsible>
+      <Collapsible defaultOpen>
         <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
           <div className="flex items-center gap-3">
             <Calendar className="h-5 w-5 text-red-600" />
@@ -147,7 +147,7 @@ const PayeCollapsible = () => {
         </CollapsibleContent>
       </Collapsible>
 
-      <Collapsible>
+      <Collapsible defaultOpen>
         <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
           <div className="flex items-center gap-3">
             <FolderOpen className="h-5 w-5 text-teal-600" />
@@ -176,7 +176,7 @@ const PayeCollapsible = () => {
         </CollapsibleContent>
       </Collapsible>
 
-      <Collapsible>
+      <Collapsible defaultOpen>
         <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
           <div className="flex items-center gap-3">
             <Send className="h-5 w-5 text-purple-600" />
