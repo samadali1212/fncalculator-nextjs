@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -6,6 +7,7 @@ import Header from "../components/Header";
 import SEO from "../components/SEO";
 import PayeCalculator from "../components/PayeCalculator";
 import PayeCollapsible from "../components/PayeCollapsible";
+import ToolStructuredData from "../components/StructuredData/ToolStructuredData";
 import { Button } from "@/components/ui/button";
 import { 
   generateTanzaniaTaxCalculations, 
@@ -58,6 +60,7 @@ const Paye = () => {
         description="Calculate your PAYE tax in Tanzania Mainland with our 2024/2025 tax calculator. Monthly and annual income tax calculations based on current tax brackets."
         canonicalUrl={`/paye${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
       />
+      <ToolStructuredData toolType="paye" />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">

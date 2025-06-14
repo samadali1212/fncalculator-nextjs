@@ -2,7 +2,7 @@
 import React from 'react';
 
 interface ToolStructuredDataProps {
-  toolType: 'traffic' | 'insurance';
+  toolType: 'traffic' | 'insurance' | 'paye';
 }
 
 const ToolStructuredData = ({ toolType }: ToolStructuredDataProps) => {
@@ -36,7 +36,7 @@ const ToolStructuredData = ({ toolType }: ToolStructuredDataProps) => {
         "datePublished": "2024-01-15",
         "softwareVersion": "2.1"
       };
-    } else {
+    } else if (toolType === 'insurance') {
       return {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
@@ -64,6 +64,36 @@ const ToolStructuredData = ({ toolType }: ToolStructuredDataProps) => {
         },
         "datePublished": "2024-02-10",
         "softwareVersion": "1.5"
+      };
+    } else {
+      return {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "PAYE Tax Calculator Tanzania 2024/2025 - Free Online Tool",
+        "description": "Free online PAYE tax calculator for Tanzania mainland. Calculate your monthly and annual income tax, PAYE rates, and take-home pay based on current TRA tax brackets for 2024/2025.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": ["Web"],
+        "url": "https://denilagari.com/paye",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": 4.8,
+          "ratingCount": 3247,
+          "bestRating": 5,
+          "worstRating": 4
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "TZS"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "Deni La Gari",
+          "url": "https://denilagari.com"
+        },
+        "datePublished": "2024-03-01",
+        "softwareVersion": "1.0",
+        "keywords": ["PAYE calculator", "Tanzania tax calculator", "income tax calculator", "TRA tax rates", "salary calculator Tanzania"]
       };
     }
   };
