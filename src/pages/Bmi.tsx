@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
@@ -6,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import AdSense from "@/components/AdSense";
 import BmiCalculator from "@/components/BmiCalculator";
+import BmiCollapsible from "@/components/BmiCollapsible";
 
 const Bmi = () => {
   const location = useLocation();
@@ -54,6 +54,9 @@ const Bmi = () => {
               responsive={true}
             />
           </div>
+
+          {/* BMI Information Collapsibles */}
+          <BmiCollapsible />
 
           {/* Information Section */}
           <div className="bg-white rounded-sm shadow-sm border border-gray-200 p-6">
