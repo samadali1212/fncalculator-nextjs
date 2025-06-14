@@ -7,10 +7,11 @@
  # Allow crawling of important directories
  User-agent: Googlebot
  Allow: /
+ Allow: /paye/
  Allow: /insurance/
  Allow: /events/
- Allow: /year/2025
- Allow: /year/2026
+ Allow: /blog/
+ Allow: /about/
 
  User-agent: Bingbot
  Allow: /
