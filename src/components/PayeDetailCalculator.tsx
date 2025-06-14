@@ -68,12 +68,6 @@ const PayeDetailCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: P
     }
   };
 
-  const calculateAnother = () => {
-    if (customTaxResult) {
-      navigate(`/paye/${timeFrame}/${customTaxResult.grossIncome}`);
-    }
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -165,14 +159,6 @@ const PayeDetailCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: P
               Your {timeFrame} income of {formatTanzaniaCurrency(customTaxResult.grossIncome)} falls under the {customTaxResult.marginalTaxRate}% tax bracket, resulting in an effective tax rate of {customTaxResult.effectiveTaxRate.toFixed(1)}%.
             </p>
           </div>
-          
-          {/* Calculate Another Button */}
-          <Button 
-            onClick={calculateAnother} 
-            className="w-full bg-primary hover:bg-primary/90 text-white text-sm py-2"
-          >
-            Calculate Another Income
-          </Button>
         </>
       )}
     </motion.div>
