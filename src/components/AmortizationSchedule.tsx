@@ -108,22 +108,22 @@ const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }:
           <TableHeader>
             <TableRow>
               <TableHead className="w-[15%]">Payment Date</TableHead>
-              <TableHead className="text-right w-[17%]">Payment (TSh)</TableHead>
-              <TableHead className="text-right w-[17%]">Principal (TSh)</TableHead>
-              <TableHead className="text-right w-[17%]">Interest (TSh)</TableHead>
-              <TableHead className="text-right w-[17%]">Total Interest (TSh)</TableHead>
-              <TableHead className="text-right w-[17%]">Balance (TSh)</TableHead>
+              <TableHead className="text-right w-[17%]">Payment</TableHead>
+              <TableHead className="text-right w-[17%]">Principal</TableHead>
+              <TableHead className="text-right w-[17%]">Interest</TableHead>
+              <TableHead className="text-right w-[17%]">Total Interest</TableHead>
+              <TableHead className="text-right w-[17%]">Balance</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {displayData.map((entry) => (
               <TableRow key={entry.period}>
                 <TableCell className="font-medium whitespace-nowrap">{entry.paymentDate}</TableCell>
-                <TableCell className="text-right whitespace-nowrap">{formatCurrencyValue(Math.round(entry.payment))}</TableCell>
-                <TableCell className="text-right whitespace-nowrap">{formatCurrencyValue(Math.round(entry.principal))}</TableCell>
-                <TableCell className="text-right whitespace-nowrap">{formatCurrencyValue(Math.round(entry.interest))}</TableCell>
-                <TableCell className="text-right whitespace-nowrap">{formatCurrencyValue(Math.round(entry.totalInterest))}</TableCell>
-                <TableCell className="text-right whitespace-nowrap">{formatCurrencyValue(Math.round(entry.balance))}</TableCell>
+                <TableCell className="text-right whitespace-nowrap">{formatCurrency(Math.round(entry.payment))}</TableCell>
+                <TableCell className="text-right whitespace-nowrap">{formatCurrency(Math.round(entry.principal))}</TableCell>
+                <TableCell className="text-right whitespace-nowrap">{formatCurrency(Math.round(entry.interest))}</TableCell>
+                <TableCell className="text-right whitespace-nowrap">{formatCurrency(Math.round(entry.totalInterest))}</TableCell>
+                <TableCell className="text-right whitespace-nowrap">{formatCurrency(Math.round(entry.balance))}</TableCell>
               </TableRow>
             ))}
           </TableBody>
