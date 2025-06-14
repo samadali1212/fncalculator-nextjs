@@ -21,7 +21,7 @@ const Edd = () => {
   return (
     <>
       <Helmet>
-        <title>EDD Calculator - Expected Due Date Calculator | Deni La Gari</title>
+        <title>EDD (Expected Due Date) Calculator</title>
         <meta name="description" content="Free EDD calculator to determine your expected due date. Calculate pregnancy due date using last menstrual period or conception date." />
         <meta name="keywords" content="EDD calculator, due date calculator, pregnancy calculator, expected delivery date, Tanzania pregnancy" />
         <link rel="canonical" href="https://denilagari.com/edd" />
@@ -31,10 +31,10 @@ const Edd = () => {
         <Header />
         
         <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-          <h1 className="text-3xl font-bold mb-2">EDD Calculator</h1>
+          <h1 className="text-3xl font-bold mb-2">Pregnancy Due Dates Calculator</h1>
           <p className="text-gray-600 mb-8">
             Calculate your Expected Due Date (EDD) to plan for your baby's arrival. 
-            Use our free pregnancy calculator with both last menstrual period and conception date methods for accurate delivery estimates.
+            Use our free pregnancy calculator with both last menstrual period and conception date methods for accurate delivery estimates. Gestational age estimates how far along you are in your pregnancy. Your health care provider uses the gestational age in weeks (rather than months) to plan your care during pregnancy. Most pregnancies last about 40 weeks from the first day of the last menstrual period.
           </p>
 
           {/* EDD Calculator Component */}
