@@ -65,9 +65,8 @@ const Azania = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <h1 className="text-3xl font-bold mb-2">Azania Bank Personal Loan Calculator</h1>
         <p className="text-gray-600 mb-8">
-          Calculate your Azania Bank personal loan payments with our comprehensive loan calculator. 
-          Get accurate {timeFrame === "monthly" ? "monthly" : "annual"} payment estimates at competitive interest rates. 
-          Perfect for planning your personal loan with Azania Bank Tanzania, featuring flexible terms and transparent calculations.
+Use our Azania Bank loan calculator to estimate your personal loan payments with precision.
+Get fast and reliable {timeFrame === "monthly" ? "monthly" : "yearly"} payment breakdowns based on current interest rates. Ideal for anyone planning a personal loan with Azania Bank—featuring flexible repayment terms, clear figures, and an easy-to-use interface for smart financial planning.
         </p>
 
         {/* Custom Loan Calculator */}
