@@ -105,7 +105,7 @@ const PayeCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeCal
       
       {/* Time Frame Toggle - Matching Insurance/Offence Style */}
       <div className="space-y-2">
-        <Label className="text-sm font-medium text-gray-700">Time Frame</Label>
+        
         <div className="flex gap-2">
           <Button
             variant={timeFrame === "monthly" ? "default" : "outline"}
