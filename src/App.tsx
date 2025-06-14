@@ -6,6 +6,7 @@ import TrafficOffence from "./pages/TrafficOffence";
 import Insurance from "./pages/Insurance";
 import Bmi from "./pages/Bmi";
 import Edd from "./pages/Edd";
+import Ovulation from "./pages/Ovulation";
 import NotFound from "./pages/NotFound";
 import Events from "./pages/Events";
 import EventPage from "./pages/EventPage";
