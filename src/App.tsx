@@ -14,6 +14,7 @@ import Paye from "./pages/Paye";
 import PayeDetail from "./pages/PayeDetail";
 import Crdb from "./pages/Crdb";
 import Nmb from "./pages/Nmb";
+import Nbc from "./pages/Nbc";
 import LoanDetail from "./pages/LoanDetail";
 import MonthPageWrapper from "./components/MonthPageWrapper";
 
@@ -71,6 +72,14 @@ const App = () => {
           <Route path="/nmb/monthly/:amount/:rate/:term" element={<LoanDetail />} />
           <Route path="/nmb/yearly/:amount/:rate/:term" element={<LoanDetail />} />
           <Route path="/nmb/:amount/:rate/:term" element={<LoanDetail />} />
+
+          {/* NBC Bank Personal Loan Calculator Routes */}
+          <Route path="/nbc" element={<Nbc />} />
+          <Route path="/nbc/monthly" element={<Nbc />} />
+          <Route path="/nbc/yearly" element={<Nbc />} />
+          <Route path="/nbc/monthly/:amount/:rate/:term" element={<LoanDetail />} />
+          <Route path="/nbc/yearly/:amount/:rate/:term" element={<LoanDetail />} />
+          <Route path="/nbc/:amount/:rate/:term" element={<LoanDetail />} />
                         
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

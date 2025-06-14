@@ -27,8 +27,9 @@ const LoanDetail = () => {
   
   // Determine bank from URL
   const isNmbBank = window.location.pathname.includes("/nmb");
-  const bankName = isNmbBank ? "NMB" : "CRDB";
-  const bankPath = isNmbBank ? "nmb" : "crdb";
+  const isNbcBank = window.location.pathname.includes("/nbc");
+  const bankName = isNbcBank ? "NBC" : (isNmbBank ? "NMB" : "CRDB");
+  const bankPath = isNbcBank ? "nbc" : (isNmbBank ? "nmb" : "crdb");
   
   // Determine timeframe from URL
   useEffect(() => {
