@@ -33,7 +33,6 @@ const App = () => {
           
           {/* Keep existing traffic offence routes for backward compatibility */}
           <Route path="/traffic-offence" element={<Navigate to="/" replace />} />
-          <Route path="/traffic-offence-checker" element={<Navigate to="/" replace />} />
           
           <Route path="/about" element={<About />} />
 
@@ -45,6 +44,9 @@ const App = () => {
 
           {/* EDD Calculator Route */}
           <Route path="/edd" element={<Edd />} />
+
+          {/* Ovulation Calculator Route */}
+          <Route path="/ovulation" element={<Ovulation />} />
 
           {/* Events routes */}
           <Route path="/events" element={<Events />} />
