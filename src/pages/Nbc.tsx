@@ -65,9 +65,8 @@ const Nbc = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <h1 className="text-3xl font-bold mb-2">NBC Bank Personal Loan Calculator 2024/2025</h1>
         <p className="text-gray-600 mb-8">
-          Calculate your NBC Bank personal loan payments with our comprehensive loan calculator. 
-          Get accurate {timeFrame === "monthly" ? "monthly" : "annual"} payment estimates at competitive interest rates. 
-          Perfect for planning your personal loan with NBC Bank Tanzania, featuring flexible terms and transparent calculations.
+Estimate your NBC Bank personal loan payments quickly with our reliable loan calculator.
+Get clear {timeFrame === "monthly" ? "monthly" : "yearly"} payment projections based on competitive interest rates. Designed for easy loan planning with NBC Bank—featuring adjustable terms, fast results, and complete transparency for smarter financial decisions.
         </p>
 
         {/* Custom Loan Calculator */}
