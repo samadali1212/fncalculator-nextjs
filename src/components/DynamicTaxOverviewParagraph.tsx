@@ -22,7 +22,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
           ` This equals an annual income of ${formatTanzaniaCurrency(income * 12)} with annual take-home pay of ${formatTanzaniaCurrency(taxResult.netIncome * 12)}.` : 
           ` This equals a monthly income of ${formatTanzaniaCurrency(Math.round(income / 12))} with monthly take-home pay of ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))}.`
         }
-        Your effective tax rate is {taxResult.effectiveTaxRate.toFixed(1)}%, while your marginal tax rate is {taxResult.marginalTaxRate}%.
+         Your effective tax rate is {taxResult.effectiveTaxRate.toFixed(1)}%, while your marginal tax rate is {taxResult.marginalTaxRate}%.
         Please note that PAYE is calculated after deducting NSSF or PSSSF contributions from your gross income.
       </p>
     ),
@@ -36,7 +36,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
           ` Over a full year, your total gross earnings would be ${formatTanzaniaCurrency(income * 12)}, with net earnings of ${formatTanzaniaCurrency(taxResult.netIncome * 12)}.` : 
           ` On a monthly basis, this works out to ${formatTanzaniaCurrency(Math.round(income / 12))} gross income and ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} net income.`
         }
-        The effective tax burden stands at {taxResult.effectiveTaxRate.toFixed(1)}%, with your income falling within the {taxResult.marginalTaxRate}% tax bracket.
+         The effective tax burden stands at {taxResult.effectiveTaxRate.toFixed(1)}%, with your income falling within the {taxResult.marginalTaxRate}% tax bracket.
         These calculations assume standard NSSF/PSSSF deductions are applied before PAYE computation.
       </p>
     ),
@@ -62,7 +62,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
           ` Scaling up to annual figures: ${formatTanzaniaCurrency(income * 12)} gross income yields ${formatTanzaniaCurrency(taxResult.netIncome * 12)} net income.` : 
           ` On a monthly scale: ${formatTanzaniaCurrency(Math.round(income / 12))} gross becomes ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} net.`
         }
-        This taxation scenario results in an effective rate of {taxResult.effectiveTaxRate.toFixed(1)}% and places you in the {taxResult.marginalTaxRate}% marginal tax category.
+         This taxation scenario results in an effective rate of {taxResult.effectiveTaxRate.toFixed(1)}% and places you in the {taxResult.marginalTaxRate}% marginal tax category.
         Social security deductions are applied before PAYE calculations, reducing your taxable income base.
       </p>
     ),
@@ -75,7 +75,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
           ` Extrapolated annually: gross income of ${formatTanzaniaCurrency(income * 12)} produces net income of ${formatTanzaniaCurrency(taxResult.netIncome * 12)}.` : 
           ` Divided monthly: gross income of ${formatTanzaniaCurrency(Math.round(income / 12))} yields net income of ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))}.`
         }
-        This computation reflects an effective tax burden of {taxResult.effectiveTaxRate.toFixed(1)}% and places you in the {taxResult.marginalTaxRate}% marginal tax category.
+         This computation reflects an effective tax burden of {taxResult.effectiveTaxRate.toFixed(1)}% and places you in the {taxResult.marginalTaxRate}% marginal tax category.
         Statutory deductions for social security are applied before determining taxable income for PAYE purposes.
       </p>
     ),
@@ -89,7 +89,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
           ` On an annual basis, this translates to ${formatTanzaniaCurrency(income * 12)} gross income and ${formatTanzaniaCurrency(taxResult.netIncome * 12)} net income.` : 
           ` Breaking this down monthly, you'll earn ${formatTanzaniaCurrency(Math.round(income / 12))} gross and take home ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))}.`
         }
-        Your income falls within the {taxResult.marginalTaxRate}% marginal tax bracket, with pension contributions reducing your overall tax liability.
+         Your income falls within the {taxResult.marginalTaxRate}% marginal tax bracket, with pension contributions reducing your overall tax liability.
       </p>
     ),
     
@@ -115,7 +115,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
           ` Annually, your net income totals ${formatTanzaniaCurrency(taxResult.netIncome * 12)} from gross annual earnings of ${formatTanzaniaCurrency(income * 12)}.` : 
           ` Monthly, your net income averages ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} from gross monthly earnings of ${formatTanzaniaCurrency(Math.round(income / 12))}.`
         }
-        This calculation places you in the {taxResult.marginalTaxRate}% marginal tax bracket, with mandatory pension contributions reducing your taxable base.
+         This calculation places you in the {taxResult.marginalTaxRate}% marginal tax bracket, with mandatory pension contributions reducing your taxable base.
       </p>
     ),
     
@@ -128,7 +128,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
           ` Annual tax efficiency: ${formatTanzaniaCurrency(taxResult.netTax * 12)} in taxes from ${formatTanzaniaCurrency(income * 12)} gross income.` : 
           ` Monthly tax efficiency: ${formatTanzaniaCurrency(Math.round(taxResult.netTax / 12))} in taxes from ${formatTanzaniaCurrency(Math.round(income / 12))} gross income.`
         }
-        The {taxResult.marginalTaxRate}% marginal rate applies to income increases, with social security contributions optimizing your overall tax position.
+         The {taxResult.marginalTaxRate}% marginal rate applies to income increases, with social security contributions optimizing your overall tax position.
       </p>
     ),
     
@@ -141,7 +141,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
           ` Annual conversion: ${formatTanzaniaCurrency(income * 12)} gross converts to ${formatTanzaniaCurrency(taxResult.netIncome * 12)} net income.` : 
           ` Monthly conversion: ${formatTanzaniaCurrency(Math.round(income / 12))} gross converts to ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} net income.`
         }
-        Your income level positions you in the {taxResult.marginalTaxRate}% marginal bracket, with pension fund contributions reducing your taxable income.
+         Your income level positions you in the {taxResult.marginalTaxRate}% marginal bracket, with pension fund contributions reducing your taxable income.
       </p>
     ),
     
@@ -154,7 +154,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
           ` Annual tax obligations: ${formatTanzaniaCurrency(taxResult.netTax * 12)} from total earnings of ${formatTanzaniaCurrency(income * 12)}.` : 
           ` Monthly tax obligations: ${formatTanzaniaCurrency(Math.round(taxResult.netTax / 12))} from monthly earnings of ${formatTanzaniaCurrency(Math.round(income / 12))}.`
         }
-        The effective tax obligation rate of {taxResult.effectiveTaxRate.toFixed(1)}% places you in the {taxResult.marginalTaxRate}% marginal category, with social security deductions providing tax base reduction.
+         The effective tax obligation rate of {taxResult.effectiveTaxRate.toFixed(1)}% places you in the {taxResult.marginalTaxRate}% marginal category, with social security deductions providing tax base reduction.
       </p>
     ),
     
@@ -167,7 +167,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
           ` Under this tax structure, annual figures show ${formatTanzaniaCurrency(income * 12)} gross and ${formatTanzaniaCurrency(taxResult.netIncome * 12)} net.` : 
           ` Under this tax structure, monthly figures show ${formatTanzaniaCurrency(Math.round(income / 12))} gross and ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} net.`
         }
-        Your position in the {taxResult.marginalTaxRate}% marginal bracket reflects the progressive nature of Tanzania's tax structure, with pension contributions integrated into the calculation.
+         Your position in the {taxResult.marginalTaxRate}% marginal bracket reflects the progressive nature of Tanzania's tax structure, with pension contributions integrated into the calculation.
       </p>
     ),
     
@@ -180,7 +180,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
           ` Calculation results scale to annual tax of ${formatTanzaniaCurrency(taxResult.netTax * 12)} and net income of ${formatTanzaniaCurrency(taxResult.netIncome * 12)}.` : 
           ` Calculation results break down to monthly tax of ${formatTanzaniaCurrency(Math.round(taxResult.netTax / 12))} and net income of ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))}.`
         }
-        The results place you in the {taxResult.marginalTaxRate}% marginal tax bracket, with social security contributions factored into the tax base calculation.
+         The results place you in the {taxResult.marginalTaxRate}% marginal tax bracket, with social security contributions factored into the tax base calculation.
       </p>
     ),
     
@@ -193,7 +193,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
           ` Annual assessment totals: ${formatTanzaniaCurrency(taxResult.netTax * 12)} in tax liability from ${formatTanzaniaCurrency(income * 12)} gross income.` : 
           ` Monthly assessment averages: ${formatTanzaniaCurrency(Math.round(taxResult.netTax / 12))} in tax liability from ${formatTanzaniaCurrency(Math.round(income / 12))} gross income.`
         }
-        Your tax assessment positions you in the {taxResult.marginalTaxRate}% marginal rate category, with mandatory pension contributions reducing the assessable income.
+         Your tax assessment positions you in the {taxResult.marginalTaxRate}% marginal rate category, with mandatory pension contributions reducing the assessable income.
       </p>
     ),
     
@@ -206,7 +206,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
           ` Annual after-tax analysis: ${formatTanzaniaCurrency(taxResult.netIncome * 12)} from ${formatTanzaniaCurrency(income * 12)} gross annual income.` : 
           ` Monthly after-tax analysis: ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} from ${formatTanzaniaCurrency(Math.round(income / 12))} gross monthly income.`
         }
-        The analysis confirms your {taxResult.marginalTaxRate}% marginal tax rate position, with social security contributions providing beneficial tax treatment in the calculation.
+         The analysis confirms your {taxResult.marginalTaxRate}% marginal tax rate position, with social security contributions providing beneficial tax treatment in the calculation.
       </p>
     )
   ];
