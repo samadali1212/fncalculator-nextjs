@@ -140,7 +140,7 @@ const PayeDetail = () => {
               className="inline-flex items-center text-sm text-[#000000] hover:underline"
             >
               <ChevronLeft className="h-4 w-4 mr-1" />
-              All PAYE Calculations
+              Back To PAYE Calculator
             </Link>
             
             <ShareButton 
@@ -152,7 +152,7 @@ const PayeDetail = () => {
           {/* Title Section - No Background */}
           <div className="mb-6">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
-              PAYE Tax On {formatTanzaniaCurrency(taxDetails.grossIncome)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Salary
+              PAYE Calculator On {formatTanzaniaCurrency(taxDetails.grossIncome)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Salary
             </h1>
           </div>
 
