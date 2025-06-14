@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
 import PayeDetailCalculator from "../components/PayeDetailCalculator";
+import DynamicTaxOverviewParagraph from "../components/DynamicTaxOverviewParagraph";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Calendar, ArrowRight } from "lucide-react";
@@ -181,17 +182,11 @@ const PayeDetail = () => {
             <h2 className="text-xl font-semibold mb-4">PAYE Tax Overview & Breakdown</h2>
             
             <div className="prose prose-sm sm:prose max-w-none mb-6">
-              <p className="text-gray-700 leading-relaxed">
-                With a {timeFrame === "monthly" ? "monthly" : "yearly"} income of {formatTanzaniaCurrency(taxDetails.grossIncome)} in Tanzania Mainland, your PAYE tax would be approximately 
-                {" "}{formatTanzaniaCurrency(taxDetails.netTax)} per {timeFrame === "yearly" ? "year" : "month"}, leaving you with a take-home pay of 
-                {" "}{formatTanzaniaCurrency(taxDetails.netIncome)} per {timeFrame === "yearly" ? "year" : "month"}.
-                {timeFrame === "monthly" ? 
-                  ` This equals an annual income of ${formatTanzaniaCurrency(currentIncome * 12)} with annual take-home pay of ${formatTanzaniaCurrency(taxDetails.netIncome * 12)}.` : 
-                  ` This equals a monthly income of ${formatTanzaniaCurrency(Math.round(currentIncome / 12))} with monthly take-home pay of ${formatTanzaniaCurrency(Math.round(taxDetails.netIncome / 12))}.`
-                }
-                Your effective tax rate is {taxDetails.effectiveTaxRate.toFixed(1)}%, while your marginal tax rate is {taxDetails.marginalTaxRate}%.
-                Please note that PAYE is calculated after deducting NSSF or PSSSF contributions from your gross income.
-              </p>
+              <DynamicTaxOverviewParagraph 
+                taxResult={taxDetails}
+                timeFrame={timeFrame}
+                income={currentIncome}
+              />
             </div>
             
             <Table>
