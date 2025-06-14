@@ -6,8 +6,6 @@
  
  # Allow crawling of important directories
  User-agent: Googlebot
- Allow: /
- Allow: /paye/
  Allow: /insurance/
  Allow: /events/
  Allow: /blog/
