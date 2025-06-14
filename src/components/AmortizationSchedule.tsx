@@ -1,5 +1,3 @@
-
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { formatCurrency, CrdbTimeFrame } from "../utils/loanCalculator";
 
@@ -82,30 +80,28 @@ const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }:
         This table shows how your {timeFrame === "monthly" ? "monthly" : "annual"} payments are split between principal and interest over the life of your loan.
       </p>
       
-      <ScrollArea className="h-96">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>{timeFrame === "monthly" ? "Month" : "Year"}</TableHead>
-              <TableHead className="text-right">Payment</TableHead>
-              <TableHead className="text-right">Principal</TableHead>
-              <TableHead className="text-right">Interest</TableHead>
-              <TableHead className="text-right">Balance</TableHead>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>{timeFrame === "monthly" ? "Month" : "Year"}</TableHead>
+            <TableHead className="text-right">Payment</TableHead>
+            <TableHead className="text-right">Principal</TableHead>
+            <TableHead className="text-right">Interest</TableHead>
+            <TableHead className="text-right">Balance</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {displayData.map((entry) => (
+            <TableRow key={entry.period}>
+              <TableCell className="font-medium">{entry.period}</TableCell>
+              <TableCell className="text-right">{formatCurrency(Math.round(entry.payment))}</TableCell>
+              <TableCell className="text-right">{formatCurrency(Math.round(entry.principal))}</TableCell>
+              <TableCell className="text-right">{formatCurrency(Math.round(entry.interest))}</TableCell>
+              <TableCell className="text-right">{formatCurrency(Math.round(entry.balance))}</TableCell>
             </TableRow>
-          </TableHeader>
-          <TableBody>
-            {displayData.map((entry) => (
-              <TableRow key={entry.period}>
-                <TableCell className="font-medium">{entry.period}</TableCell>
-                <TableCell className="text-right">{formatCurrency(Math.round(entry.payment))}</TableCell>
-                <TableCell className="text-right">{formatCurrency(Math.round(entry.principal))}</TableCell>
-                <TableCell className="text-right">{formatCurrency(Math.round(entry.interest))}</TableCell>
-                <TableCell className="text-right">{formatCurrency(Math.round(entry.balance))}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </ScrollArea>
+          ))}
+        </TableBody>
+      </Table>
     </div>
   );
 };
