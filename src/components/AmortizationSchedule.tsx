@@ -107,11 +107,11 @@ const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }:
         <Table className="min-w-full table-fixed">
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[15%]">Payment Date</TableHead>
+              <TableHead className="w-[15%]">Date</TableHead>
               <TableHead className="text-right w-[17%]">Payment</TableHead>
               <TableHead className="text-right w-[17%]">Principal</TableHead>
               <TableHead className="text-right w-[17%]">Interest</TableHead>
-              <TableHead className="text-right w-[17%]">Total Interest</TableHead>
+              <TableHead className="text-right w-[17%]">Interest</TableHead>
               <TableHead className="text-right w-[17%]">Balance</TableHead>
             </TableRow>
           </TableHeader>
