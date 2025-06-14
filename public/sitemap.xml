@@ -55,4 +55,19 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+            <url>
+    <loc>https://denilagari.com/ovulation</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+            <url>
+    <loc>https://denilagari.com/bmi</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+            <url>
+    <loc>https://denilagari.com/edd</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
 </urlset>
