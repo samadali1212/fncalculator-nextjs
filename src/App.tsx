@@ -13,6 +13,7 @@ import BlogDetail from "./pages/BlogDetail";
 import Paye from "./pages/Paye";
 import PayeDetail from "./pages/PayeDetail";
 import Crdb from "./pages/Crdb";
+import CrdbDetail from "./pages/CrdbDetail";
 import MonthPageWrapper from "./components/MonthPageWrapper";
 
 const App = () => {
@@ -58,6 +59,9 @@ const App = () => {
           <Route path="/crdb" element={<Crdb />} />
           <Route path="/crdb/monthly" element={<Crdb />} />
           <Route path="/crdb/yearly" element={<Crdb />} />
+          <Route path="/crdb/monthly/:amount/:rate/:term" element={<CrdbDetail />} />
+          <Route path="/crdb/yearly/:amount/:rate/:term" element={<CrdbDetail />} />
+          <Route path="/crdb/:amount/:rate/:term" element={<CrdbDetail />} />
                         
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
