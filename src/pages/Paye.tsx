@@ -63,8 +63,12 @@ const Paye = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <h1 className="text-3xl font-bold mb-2">PAYE Tax Calculator In Tanzania For 2024/2025</h1>
         <p className="text-gray-600 mb-8">
-          Our PAYE calculator tool helps you easily calculate PAYE in Tanzania with accurate TRA PAYE calculator rates. Estimate your tax in seconds, whether you're checking PAYE rates in Tanzania or looking for a PAYE calculator {timeFrame === "monthly" ? "monthly" : "annual"} update. Ideal for anyone needing a PAYE calculator for Tanzania mainland or simply learning how to calculate PAYE in Tanzania. From PAYE tax breakdowns to personalized figures, the calculator gives you everything you need.Note that PAYE is calculated after deducting NSSF or PSSSF contributions from your gross income.
+          Our PAYE calculator tool helps you easily calculate PAYE in Tanzania with accurate TRA PAYE calculator rates. 
+          Estimate your tax in seconds, whether you're checking PAYE rates in Tanzania or looking for a PAYE calculator {timeFrame === "monthly" ? "monthly" : "annual"} update. 
+          Ideal for anyone needing a PAYE calculator for Tanzania mainland or simply learning how to calculate PAYE in Tanzania. 
+          From PAYE tax breakdowns to personalized figures, the calculator gives you everything you need. 
         </p>
+        <p><em><strong>Note that PAYE is calculated after deducting NSSF or PSSSF contributions from your gross income.</strong></em></p>
 
         {/* Custom Income Calculator */}
         <PayeCalculator 
