@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import DynamicTaxParagraph from "./DynamicTaxParagraph";
 import { 
   getTanzaniaTaxCalculation,
   formatTanzaniaCurrency,
@@ -154,11 +155,7 @@ const PayeDetailCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: P
           </motion.div>
 
           {/* Dynamic Paragraph */}
-          <div className="text-sm text-gray-600 leading-relaxed">
-            <p>
-              Your {timeFrame} income of {formatTanzaniaCurrency(customTaxResult.grossIncome)} falls under the {customTaxResult.marginalTaxRate}% tax bracket, resulting in an effective tax rate of {customTaxResult.effectiveTaxRate.toFixed(1)}%.
-            </p>
-          </div>
+          <DynamicTaxParagraph taxResult={customTaxResult} timeFrame={timeFrame} />
         </>
       )}
     </motion.div>
