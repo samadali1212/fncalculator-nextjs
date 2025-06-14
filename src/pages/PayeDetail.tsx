@@ -1,3 +1,4 @@
+
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
@@ -156,8 +157,8 @@ const PayeDetail = () => {
             />
           </div>
           
-          {/* Title Section */}
-          <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-6">
+          {/* Title Section - No Background */}
+          <div className="mb-6">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
               PAYE Tax On {formatTanzaniaCurrency(taxDetails.grossIncome)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Salary
             </h1>
@@ -186,6 +187,19 @@ const PayeDetail = () => {
                 </ToggleGroup>
               </div>
             </div>
+          </div>
+
+          {/* Tax Information Paragraph */}
+          <div className="mb-6 text-sm text-gray-700 leading-relaxed">
+            <p className="mb-2">
+              <strong>Tax Information</strong>
+            </p>
+            <p className="mb-2">
+              <strong>Effective Tax Rate:</strong> {taxDetails.effectiveTaxRate.toFixed(1)}% of your total income goes to PAYE tax
+            </p>
+            <p>
+              <strong>Marginal Tax Rate:</strong> For each additional Tanzanian Shilling earned, you'll pay {taxDetails.marginalTaxRate}% in PAYE tax
+            </p>
           </div>
 
           {/* Calculator Section - No Background */}
@@ -278,24 +292,6 @@ const PayeDetail = () => {
                 )}
               </TableBody>
             </Table>
-            
-            <div className="bg-[#fff9e6] p-5 rounded-md mt-6">
-              <h3 className="font-medium mb-3">Tax Information</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <h4 className="text-sm font-medium mb-2">Effective Tax Rate</h4>
-                  <p className="text-sm text-gray-700">
-                    {taxDetails.effectiveTaxRate.toFixed(1)}% of your total income goes to PAYE tax
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-sm font-medium mb-2">Marginal Tax Rate</h4>
-                  <p className="text-sm text-gray-700">
-                    For each additional Tanzanian Shilling earned, you'll pay {taxDetails.marginalTaxRate}% in PAYE tax
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
           
           {/* Similar Incomes Section */}
