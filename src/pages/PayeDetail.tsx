@@ -1,9 +1,11 @@
+
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
+import PayeCalculator from "../components/PayeCalculator";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Calendar, ArrowRight } from "lucide-react";
@@ -155,12 +157,13 @@ const PayeDetail = () => {
             />
           </div>
           
-          <article className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
+          {/* Title Section */}
+          <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-6">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
               PAYE Tax On {formatTanzaniaCurrency(taxDetails.grossIncome)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Salary
             </h1>
             
-            <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-[#666] mb-6 pb-6 border-b border-gray-200">
+            <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-[#666] pb-6 border-b border-gray-200">
               <div className="flex items-center">
                 <Calendar className="h-4 w-4 mr-1 text-[#999]" />
                 <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
@@ -184,6 +187,21 @@ const PayeDetail = () => {
                 </ToggleGroup>
               </div>
             </div>
+          </div>
+
+          {/* Calculator Section */}
+          <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-6">
+            <h2 className="text-xl font-semibold mb-4">PAYE Calculator</h2>
+            <PayeCalculator 
+              timeFrame={timeFrame}
+              onTimeFrameChange={handleTimeFrameChange}
+              initialAmount={income.toString()}
+            />
+          </div>
+          
+          {/* PAYE Tax Overview Section */}
+          <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-6">
+            <h2 className="text-xl font-semibold mb-4">PAYE Tax Overview</h2>
             
             <div className="bg-gray-50 p-4 rounded-md mb-6">
               <div className="grid md:grid-cols-3 gap-2">
@@ -205,8 +223,7 @@ const PayeDetail = () => {
               </div>
             </div>
             
-            <div className="prose prose-sm sm:prose max-w-none mb-8">
-              <h2 className="text-xl font-semibold mb-3">PAYE Tax Overview</h2>
+            <div className="prose prose-sm sm:prose max-w-none">
               <p className="text-gray-700 leading-relaxed">
                 With a {timeFrame === "monthly" ? "monthly" : "yearly"} income of {formatTanzaniaCurrency(taxDetails.grossIncome)} in Tanzania Mainland, your PAYE tax would be approximately 
                 {" "}{formatTanzaniaCurrency(taxDetails.netTax)} per {timeFrame === "yearly" ? "year" : "month"}, leaving you with a take-home pay of 
@@ -219,50 +236,51 @@ const PayeDetail = () => {
                 Please note that PAYE is calculated after deducting NSSF or PSSSF contributions from your gross income.
               </p>
             </div>
+          </div>
+          
+          {/* Detailed Breakdown Section */}
+          <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
+            <h2 className="text-xl font-semibold mb-4">Detailed Breakdown</h2>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Description</TableHead>
+                  <TableHead className="text-right">Amount</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>{timeFrame === "yearly" ? "Annual" : "Monthly"} Gross Income</TableCell>
+                  <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.grossIncome)}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Taxable Income</TableCell>
+                  <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.taxableIncome)}</TableCell>
+                </TableRow>
+                <TableRow className="font-medium">
+                  <TableCell>PAYE Tax Payable</TableCell>
+                  <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.netTax)}</TableCell>
+                </TableRow>
+                <TableRow className="bg-gray-50 font-medium">
+                  <TableCell>{timeFrame === "yearly" ? "Annual" : "Monthly"} Take-home Pay</TableCell>
+                  <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.netIncome)}</TableCell>
+                </TableRow>
+                {timeFrame === "yearly" && (
+                  <TableRow className="bg-gray-50">
+                    <TableCell>Monthly Take-home Pay</TableCell>
+                    <TableCell className="text-right">{formatTanzaniaCurrency(Math.round(taxDetails.netIncome / 12))}</TableCell>
+                  </TableRow>
+                )}
+                {timeFrame === "monthly" && (
+                  <TableRow className="bg-gray-50">
+                    <TableCell>Annual Take-home Pay</TableCell>
+                    <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.netIncome * 12)}</TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
             
-            <div className="mb-8">
-              <h3 className="font-semibold text-lg mb-3">Detailed Breakdown</h3>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Description</TableHead>
-                    <TableHead className="text-right">Amount</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell>{timeFrame === "yearly" ? "Annual" : "Monthly"} Gross Income</TableCell>
-                    <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.grossIncome)}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Taxable Income</TableCell>
-                    <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.taxableIncome)}</TableCell>
-                  </TableRow>
-                  <TableRow className="font-medium">
-                    <TableCell>PAYE Tax Payable</TableCell>
-                    <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.netTax)}</TableCell>
-                  </TableRow>
-                  <TableRow className="bg-gray-50 font-medium">
-                    <TableCell>{timeFrame === "yearly" ? "Annual" : "Monthly"} Take-home Pay</TableCell>
-                    <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.netIncome)}</TableCell>
-                  </TableRow>
-                  {timeFrame === "yearly" && (
-                    <TableRow className="bg-gray-50">
-                      <TableCell>Monthly Take-home Pay</TableCell>
-                      <TableCell className="text-right">{formatTanzaniaCurrency(Math.round(taxDetails.netIncome / 12))}</TableCell>
-                    </TableRow>
-                  )}
-                  {timeFrame === "monthly" && (
-                    <TableRow className="bg-gray-50">
-                      <TableCell>Annual Take-home Pay</TableCell>
-                      <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.netIncome * 12)}</TableCell>
-                    </TableRow>
-                  )}
-                </TableBody>
-              </Table>
-            </div>
-            
-            <div className="bg-[#fff9e6] p-5 rounded-md">
+            <div className="bg-[#fff9e6] p-5 rounded-md mt-6">
               <h3 className="font-medium mb-3">Tax Information</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
@@ -279,7 +297,7 @@ const PayeDetail = () => {
                 </div>
               </div>
             </div>
-          </article>
+          </div>
           
           {/* Similar Incomes Section */}
           {nearbyIncomes.length > 0 && (
