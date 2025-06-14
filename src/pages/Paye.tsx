@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ChevronDown, Info, Calculator, Receipt, Building2 } from "lucide-react";
@@ -206,14 +205,14 @@ const Paye = () => {
           </Collapsible>
         </motion.div>
         
-        {/* Time Frame Toggle - Matching Calculator Style */}
+        {/* Time Frame Toggle - Full Width */}
         <motion.div 
-          className="mb-6 flex justify-center"
+          className="mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex gap-2">
+          <div className="flex gap-2 w-full">
             <Button
               variant={timeFrame === "monthly" ? "default" : "outline"}
               onClick={() => handleTimeFrameChange("monthly")}
