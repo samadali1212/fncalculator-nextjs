@@ -56,14 +56,14 @@ const Crdb = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="CRDB Bank Personal Loan Calculator 2024/2025 - Calculate Monthly Payments" 
-        description="Calculate your CRDB Bank personal loan payments with our 2024/2025 calculator. Monthly and annual payment calculations at 13% interest rate with customizable terms."
+        title="CRDB Bank Personal Loan Calculator" 
+        description="Calculate your CRDB Bank personal loan payments with our calculator. Monthly and annual payment calculations at the current interest rate with customizable terms."
         canonicalUrl={`/crdb${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
       />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <h1 className="text-3xl font-bold mb-2">CRDB Bank Personal Loan Calculator 2024/2025</h1>
+        <h1 className="text-3xl font-bold mb-2">CRDB Bank Personal Loan Calculator</h1>
         <p className="text-gray-600 mb-8">
           Calculate your CRDB Bank personal loan payments with our comprehensive loan calculator. 
           Get accurate {timeFrame === "monthly" ? "monthly" : "annual"} payment estimates at competitive interest rates. 
@@ -78,7 +78,7 @@ const Crdb = () => {
         />
 
         <p className="text-gray-600 mb-8">
-          <em><strong>Interest rates may vary based on your credit profile and loan terms. Contact CRDB Bank for personalized rates.</strong></em>
+          <em>Interest rates may vary based on your credit profile and loan terms. Contact CRDB Bank for personalized rates.</em>
         </p>
         
         {/* Time Frame Toggle */}
