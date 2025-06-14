@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { 
   getTanzaniaTaxCalculation,
   formatTanzaniaCurrency,
@@ -81,108 +80,99 @@ const PayeCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeCal
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="mb-8"
+      className="mb-8 space-y-6"
     >
-      <div className="mb-8">
-        <div className="flex items-center gap-2 mb-4">
-  
-          <h2 className="text-lg font-semibold text-gray-800">Quick PAYE Calculator</h2>
-        </div>
-        
-        <p className="text-sm text-gray-600 mb-8">
-          Enter your {timeFrame} income to calculate your PAYE tax instantly
-        </p>
 
-        <div className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="custom-income" className="text-sm font-medium text-gray-700">
-                {timeFrame === "monthly" ? "Monthly" : "Annual"} Income (TSh)
-              </Label>
-              <div className="relative">
-                <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm">
-                  TSh
-                </span>
-                <Input
-                  id="custom-income"
-                  type="text"
-                  placeholder={`Enter your ${timeFrame} income...`}
-                  value={formatNumberWithSeparators(customIncome)}
-                  onChange={handleCustomIncomeChange}
-                  className="pl-12 h-10 border-gray-300 focus:border-primary"
-                />
+      {/* Income Input */}
+      <div className="space-y-2">
+        <Label htmlFor="custom-income" className="text-sm font-medium text-gray-700">
+          {timeFrame === "monthly" ? "Monthly" : "Annual"} Income (TSh)
+        </Label>
+        <div className="relative">
+          <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm">
+            TSh
+          </span>
+          <Input
+            id="custom-income"
+            type="text"
+            placeholder={`Enter your ${timeFrame} income...`}
+            value={formatNumberWithSeparators(customIncome)}
+            onChange={handleCustomIncomeChange}
+            className="pl-12 h-10 border-gray-300 focus:border-primary"
+          />
+        </div>
+      </div>
+      
+      {/* Time Frame Toggle - Matching Insurance/Offence Style */}
+      <div className="space-y-2">
+        <Label className="text-sm font-medium text-gray-700">Time Frame</Label>
+        <div className="flex gap-2">
+          <Button
+            variant={timeFrame === "monthly" ? "default" : "outline"}
+            onClick={() => handleTimeFrameChangeInternal("monthly")}
+            size="sm"
+            className="flex-1 text-sm"
+          >
+            Monthly
+          </Button>
+          <Button
+            variant={timeFrame === "yearly" ? "default" : "outline"}
+            onClick={() => handleTimeFrameChangeInternal("yearly")}
+            size="sm"
+            className="flex-1 text-sm"
+          >
+            Yearly
+          </Button>
+        </div>
+      </div>
+
+      {customTaxResult && (
+        <>
+          {/* Tax Calculation Results */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-3"
+          >
+            <h4 className="font-medium text-gray-800 text-sm">Tax Calculation Results</h4>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div className="text-center p-3 bg-white rounded border border-gray-100">
+                <div className="text-xs text-gray-500 mb-1">Gross Income</div>
+                <div className="font-semibold text-sm text-gray-800">{formatTanzaniaCurrency(customTaxResult.grossIncome)}</div>
+              </div>
+              <div className="text-center p-3 bg-white rounded border-2 border-primary">
+                <div className="text-xs text-gray-500 mb-1">Take-home Pay</div>
+                <div className="font-semibold text-sm text-primary">{formatTanzaniaCurrency(customTaxResult.netIncome)}</div>
+              </div>
+              <div className="text-center p-3 bg-white rounded border border-gray-100">
+                <div className="text-xs text-gray-500 mb-1">PAYE Tax</div>
+                <div className="font-semibold text-sm text-red-600">{formatTanzaniaCurrency(customTaxResult.netTax)}</div>
               </div>
             </div>
             
-            <div className="space-y-2">
-              <Label className="text-sm font-medium text-gray-700">Time Frame</Label>
-              <ToggleGroup 
-                type="single" 
-                value={timeFrame}
-                onValueChange={handleTimeFrameChangeInternal}
-                className="w-full border border-gray-300 rounded-md bg-gray-50"
-              >
-                <ToggleGroupItem 
-                  value="monthly" 
-                  className="flex-1 data-[state=on]:bg-white data-[state=on]:shadow-sm text-sm"
-                >
-                  Monthly
-                </ToggleGroupItem>
-                <ToggleGroupItem 
-                  value="yearly" 
-                  className="flex-1 data-[state=on]:bg-white data-[state=on]:shadow-sm text-sm"
-                >
-                  Yearly
-                </ToggleGroupItem>
-              </ToggleGroup>
+            <div className="flex flex-wrap gap-2">
+              <div className="px-3 py-1 bg-white rounded border border-gray-200 text-xs">
+                <span className="text-gray-600">Effective Rate: </span>
+                <span className="font-medium text-gray-800">{customTaxResult.effectiveTaxRate.toFixed(1)}%</span>
+              </div>
+              <div className="px-3 py-1 bg-white rounded border border-gray-200 text-xs">
+                <span className="text-gray-600">Marginal Rate: </span>
+                <span className="font-medium text-gray-800">{customTaxResult.marginalTaxRate}%</span>
+              </div>
             </div>
-          </div>
-
-          {customTaxResult && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
-              className="mt-6 p-4 bg-gray-50 rounded-md border border-gray-200"
-            >
-              <h4 className="font-medium text-gray-800 mb-3 text-sm">Tax Calculation Results</h4>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
-                <div className="text-center p-3 bg-white rounded border border-gray-100">
-                  <div className="text-xs text-gray-500 mb-1">Gross Income</div>
-                  <div className="font-semibold text-sm text-gray-800">{formatTanzaniaCurrency(customTaxResult.grossIncome)}</div>
-                </div>
-                <div className="text-center p-3 bg-white rounded border-2 border-primary">
-                  <div className="text-xs text-gray-500 mb-1">Take-home Pay</div>
-                  <div className="font-semibold text-sm text-primary">{formatTanzaniaCurrency(customTaxResult.netIncome)}</div>
-                </div>
-                <div className="text-center p-3 bg-white rounded border border-gray-100">
-                  <div className="text-xs text-gray-500 mb-1">PAYE Tax</div>
-                  <div className="font-semibold text-sm text-red-600">{formatTanzaniaCurrency(customTaxResult.netTax)}</div>
-                </div>
-              </div>
-              
-              <div className="flex flex-wrap gap-2 mb-4">
-                <div className="px-3 py-1 bg-white rounded border border-gray-200 text-xs">
-                  <span className="text-gray-600">Effective Rate: </span>
-                  <span className="font-medium text-gray-800">{customTaxResult.effectiveTaxRate.toFixed(1)}%</span>
-                </div>
-                <div className="px-3 py-1 bg-white rounded border border-gray-200 text-xs">
-                  <span className="text-gray-600">Marginal Rate: </span>
-                  <span className="font-medium text-gray-800">{customTaxResult.marginalTaxRate}%</span>
-                </div>
-              </div>
-              
-              <Button 
-                onClick={viewDetailedCalculation} 
-                className="w-full bg-primary hover:bg-primary/90 text-white text-sm py-2"
-              >
-                View Detailed Breakdown
-              </Button>
-            </motion.div>
-          )}
-        </div>
-      </div>
+          </motion.div>
+          
+          {/* View Details Button */}
+          <Button 
+            onClick={viewDetailedCalculation} 
+            className="w-full bg-primary hover:bg-primary/90 text-white text-sm py-2"
+          >
+            View Detailed Breakdown
+          </Button>
+        </>
+      )}
     </motion.div>
   );
 };
