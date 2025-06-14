@@ -125,8 +125,8 @@ const PayeDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`PAYE Tax on ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary in Tanzania`}
-        description={`Calculate your PAYE tax for ${formatTanzaniaCurrency(income)} ${timeFrame === "monthly" ? "monthly" : "annual"} income in Tanzania Mainland. After tax income: ${formatTanzaniaCurrency(taxDetails.netIncome)}. Effective tax rate: ${taxDetails.effectiveTaxRate.toFixed(1)}%.`}
+        title={`PAYE Calculator on ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary in Tanzania`}
+        description={`Calculate your PAYE tax for ${formatTanzaniaCurrency(income)} ${timeFrame === "monthly" ? "monthly" : "annual"} income in Tanzania. After tax income: ${formatTanzaniaCurrency(taxDetails.netIncome)}. Effective tax rate: ${taxDetails.effectiveTaxRate.toFixed(1)}%.`}
         canonicalUrl={`/paye/${timeFrame}/${income}`}
       />
       
