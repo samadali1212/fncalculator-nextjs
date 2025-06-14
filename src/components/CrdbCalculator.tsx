@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
@@ -182,7 +181,7 @@ const CrdbCalculator = ({ timeFrame, onTimeFrameChange, initialAmount, initialRa
 
       {loanResult && (
         <>
-          {/* Loan Calculation Results */}
+          {/* Simplified Loan Calculation Results */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -203,36 +202,23 @@ const CrdbCalculator = ({ timeFrame, onTimeFrameChange, initialAmount, initialRa
                 <div className="font-semibold text-sm text-red-600">{formatCurrency(loanResult.totalInterest)}</div>
               </div>
             </div>
-            
-            <div className="flex flex-wrap gap-2">
-              <div className="px-3 py-1 bg-white rounded border border-gray-200 text-xs">
-                <span className="text-gray-600">Total Repayment: </span>
-                <span className="font-medium text-gray-800">{formatCurrency(loanResult.totalRepayment)}</span>
-              </div>
-              <div className="px-3 py-1 bg-white rounded border border-gray-200 text-xs">
-                <span className="text-gray-600">Interest Rate: </span>
-                <span className="font-medium text-gray-800">{loanResult.interestRate}%</span>
-              </div>
-            </div>
           </motion.div>
-
-          {/* View Detailed Breakdown Button */}
-          <div className="flex justify-center">
-            <Button 
-              onClick={handleViewDetails}
-              className="bg-primary hover:bg-primary/90 text-white px-6 py-2 text-sm"
-            >
-              View Detailed Breakdown
-            </Button>
-          </div>
 
           {/* Dynamic Paragraph */}
           <div className="text-sm text-gray-600 leading-relaxed">
             <p>
               Your loan of {formatCurrency(loanResult.loanAmount)} at {loanResult.interestRate}% interest rate for {loanResult.termDisplay} will require {timeFrame === "monthly" ? "monthly" : "annual"} payments of {formatCurrency(loanResult.payment)}. 
-              The total interest you'll pay over the life of the loan is {formatCurrency(loanResult.totalInterest)}.
+              Click below to see the complete breakdown of your loan calculation including total repayment and detailed terms.
             </p>
           </div>
+          
+          {/* View Details Button */}
+          <Button 
+            onClick={handleViewDetails}
+            className="w-full bg-primary hover:bg-primary/90 text-white text-sm py-2"
+          >
+            View Detailed Breakdown
+          </Button>
         </>
       )}
     </motion.div>
