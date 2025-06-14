@@ -1,4 +1,3 @@
-
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
@@ -163,28 +162,12 @@ const PayeDetail = () => {
               PAYE Tax On {formatTanzaniaCurrency(taxDetails.grossIncome)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Salary
             </h1>
             
-            <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-[#666] pb-6 border-b border-gray-200">
+            <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] pb-6 border-b border-gray-200">
               <div className="flex items-center">
                 <Calendar className="h-4 w-4 mr-1 text-[#999]" />
                 <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
                   Tanzania Mainland 2024/25
                 </span>
-              </div>
-              
-              <div className="flex items-center space-x-2">
-                <ToggleGroup 
-                  type="single" 
-                  value={timeFrame}
-                  onValueChange={handleTimeFrameChange}
-                  className="border rounded-md"
-                >
-                  <ToggleGroupItem value="monthly" className="text-xs px-3 py-1">
-                    Monthly
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="yearly" className="text-xs px-3 py-1">
-                    Yearly
-                  </ToggleGroupItem>
-                </ToggleGroup>
               </div>
             </div>
           </div>
