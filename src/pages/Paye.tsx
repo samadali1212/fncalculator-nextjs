@@ -1,6 +1,7 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Info, Calculator, Receipt, Building2 } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
@@ -16,7 +17,6 @@ import {
   PaginationContent,
   PaginationItem,
 } from "@/components/ui/pagination";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 const Paye = () => {
@@ -85,6 +85,7 @@ const Paye = () => {
           <Collapsible defaultOpen>
             <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
               <div className="flex items-center gap-3">
+                <Info className="h-5 w-5 text-blue-600" />
                 <span className="font-medium text-left">What is PAYE in Tanzania?</span>
               </div>
               <ChevronDown className="h-4 w-4" />
@@ -107,6 +108,7 @@ const Paye = () => {
           <Collapsible defaultOpen>
             <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
               <div className="flex items-center gap-3">
+                <Calculator className="h-5 w-5 text-green-600" />
                 <span className="font-medium text-left">Tanzania PAYE Tax Brackets 2024/2025</span>
               </div>
               <ChevronDown className="h-4 w-4" />
@@ -146,6 +148,7 @@ const Paye = () => {
           <Collapsible defaultOpen>
             <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
               <div className="flex items-center gap-3">
+                <Receipt className="h-5 w-5 text-purple-600" />
                 <span className="font-medium text-left">PAYE Deductions and Allowances</span>
               </div>
               <ChevronDown className="h-4 w-4" />
@@ -174,6 +177,7 @@ const Paye = () => {
           <Collapsible defaultOpen>
             <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
               <div className="flex items-center gap-3">
+                <Building2 className="h-5 w-5 text-orange-600" />
                 <span className="font-medium text-left">Employer PAYE Obligations</span>
               </div>
               <ChevronDown className="h-4 w-4" />
@@ -202,26 +206,31 @@ const Paye = () => {
           </Collapsible>
         </motion.div>
         
-        {/* Time Frame Toggle */}
+        {/* Time Frame Toggle - Matching Calculator Style */}
         <motion.div 
           className="mb-6 flex justify-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <ToggleGroup 
-            type="single" 
-            value={timeFrame}
-            onValueChange={handleTimeFrameChange}
-            className="border rounded-md"
-          >
-            <ToggleGroupItem value="monthly" className="text-xs px-6 py-2">
+          <div className="flex gap-2">
+            <Button
+              variant={timeFrame === "monthly" ? "default" : "outline"}
+              onClick={() => handleTimeFrameChange("monthly")}
+              size="sm"
+              className="flex-1 text-sm"
+            >
               Monthly
-            </ToggleGroupItem>
-            <ToggleGroupItem value="yearly" className="text-xs px-6 py-2">
+            </Button>
+            <Button
+              variant={timeFrame === "yearly" ? "default" : "outline"}
+              onClick={() => handleTimeFrameChange("yearly")}
+              size="sm"
+              className="flex-1 text-sm"
+            >
               Yearly
-            </ToggleGroupItem>
-          </ToggleGroup>
+            </Button>
+          </div>
         </motion.div>
 
         <div className="bg-white rounded-sm shadow-sm border border-gray-200">
