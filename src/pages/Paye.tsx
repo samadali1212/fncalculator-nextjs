@@ -1,7 +1,6 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
@@ -18,12 +17,7 @@ import {
   PaginationItem,
 } from "@/components/ui/pagination";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 const Paye = () => {
   const [itemsToShow, setItemsToShow] = useState(50);
@@ -79,19 +73,24 @@ const Paye = () => {
           onTimeFrameChange={handleTimeFrameChange}
         />
 
-        {/* PAYE Information Accordion */}
+        {/* PAYE Information Collapsibles */}
         <motion.div 
-          className="mb-8"
+          className="mb-8 space-y-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Accordion type="single" collapsible className="w-full space-y-2">
-            <AccordionItem value="what-is-paye" className="bg-white border border-gray-200 rounded-lg px-4">
-              <AccordionTrigger className="text-left hover:no-underline py-4">
-                <span className="font-medium text-gray-900">What is PAYE in Tanzania?</span>
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600 pb-4">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Understanding PAYE in Tanzania</h2>
+          
+          <Collapsible defaultOpen>
+            <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
+              <div className="flex items-center gap-3">
+                <span className="font-medium text-left">What is PAYE in Tanzania?</span>
+              </div>
+              <ChevronDown className="h-4 w-4" />
+            </CollapsibleTrigger>
+            <CollapsibleContent className="mt-2 p-6 bg-white rounded-lg border">
+              <div className="text-gray-600">
                 <p className="mb-3">
                   Pay As You Earn (PAYE) is a system of income tax collection in Tanzania where employers deduct tax from employees' salaries before paying them. This ensures continuous tax collection throughout the year.
                 </p>
@@ -101,14 +100,19 @@ const Paye = () => {
                 <p>
                   All employers in Tanzania are required to register for PAYE and deduct tax from their employees' salaries before remitting it to the Tanzania Revenue Authority (TRA).
                 </p>
-              </AccordionContent>
-            </AccordionItem>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
 
-            <AccordionItem value="tax-brackets" className="bg-white border border-gray-200 rounded-lg px-4">
-              <AccordionTrigger className="text-left hover:no-underline py-4">
-                <span className="font-medium text-gray-900">Tanzania PAYE Tax Brackets 2024/2025</span>
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600 pb-4">
+          <Collapsible defaultOpen>
+            <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
+              <div className="flex items-center gap-3">
+                <span className="font-medium text-left">Tanzania PAYE Tax Brackets 2024/2025</span>
+              </div>
+              <ChevronDown className="h-4 w-4" />
+            </CollapsibleTrigger>
+            <CollapsibleContent className="mt-2 p-6 bg-white rounded-lg border">
+              <div className="text-gray-600">
                 <p className="mb-3">Tanzania uses a progressive tax system with the following monthly brackets:</p>
                 <div className="space-y-2 mb-3">
                   <div className="flex justify-between p-2 bg-gray-50 rounded">
@@ -135,14 +139,19 @@ const Paye = () => {
                 <p className="text-sm">
                   Note: These are monthly brackets. Annual brackets are calculated by multiplying by 12.
                 </p>
-              </AccordionContent>
-            </AccordionItem>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
 
-            <AccordionItem value="deductions" className="bg-white border border-gray-200 rounded-lg px-4">
-              <AccordionTrigger className="text-left hover:no-underline py-4">
-                <span className="font-medium text-gray-900">PAYE Deductions and Allowances</span>
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600 pb-4">
+          <Collapsible defaultOpen>
+            <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
+              <div className="flex items-center gap-3">
+                <span className="font-medium text-left">PAYE Deductions and Allowances</span>
+              </div>
+              <ChevronDown className="h-4 w-4" />
+            </CollapsibleTrigger>
+            <CollapsibleContent className="mt-2 p-6 bg-white rounded-lg border">
+              <div className="text-gray-600">
                 <p className="mb-3">
                   Before calculating PAYE tax, certain deductions are made from gross income:
                 </p>
@@ -158,14 +167,19 @@ const Paye = () => {
                 <p>
                   PAYE tax is then calculated on the income remaining after these deductions.
                 </p>
-              </AccordionContent>
-            </AccordionItem>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
 
-            <AccordionItem value="employer-obligations" className="bg-white border border-gray-200 rounded-lg px-4">
-              <AccordionTrigger className="text-left hover:no-underline py-4">
-                <span className="font-medium text-gray-900">Employer PAYE Obligations</span>
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600 pb-4">
+          <Collapsible defaultOpen>
+            <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
+              <div className="flex items-center gap-3">
+                <span className="font-medium text-left">Employer PAYE Obligations</span>
+              </div>
+              <ChevronDown className="h-4 w-4" />
+            </CollapsibleTrigger>
+            <CollapsibleContent className="mt-2 p-6 bg-white rounded-lg border">
+              <div className="text-gray-600">
                 <p className="mb-3">
                   Employers in Tanzania have several PAYE-related responsibilities:
                 </p>
@@ -183,9 +197,9 @@ const Paye = () => {
                 <p>
                   Employers must keep proper records of all PAYE transactions for audit purposes.
                 </p>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
         </motion.div>
         
         {/* Time Frame Toggle */}
