@@ -83,13 +83,13 @@ const PayeCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeCal
       transition={{ duration: 0.5 }}
       className="mb-8"
     >
-
+      <div className="mb-8">
         <div className="flex items-center gap-2 mb-4">
-          <Calculator className="h-5 w-5 text-primary" />
+  
           <h2 className="text-lg font-semibold text-gray-800">Quick PAYE Calculator</h2>
         </div>
         
-        <p className="text-sm text-gray-600 mb-6">
+        <p className="text-sm text-gray-600 mb-8">
           Enter your {timeFrame} income to calculate your PAYE tax instantly
         </p>
 
