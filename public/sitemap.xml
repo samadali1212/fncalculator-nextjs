@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -5,29 +6,59 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-    <url>
+  <url>
     <loc>https://denilagari.com/insurance</loc>
     <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <priority>0.9</priority>
   </url>
-      <url>
+  <url>
     <loc>https://denilagari.com/paye</loc>
     <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <priority>0.9</priority>
   </url>
-      <url>
+  <url>
+    <loc>https://denilagari.com/paye/monthly</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://denilagari.com/paye/yearly</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://denilagari.com/paye/monthly/500000</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://denilagari.com/paye/monthly/1000000</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://denilagari.com/paye/yearly/6000000</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://denilagari.com/paye/yearly/12000000</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://denilagari.com/blog</loc>
     <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <priority>0.8</priority>
   </url>
-      <url>
+  <url>
     <loc>https://denilagari.com/events</loc>
     <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <priority>0.8</priority>
   </url>
-        <url>
+  <url>
     <loc>https://denilagari.com/about</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

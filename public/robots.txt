@@ -1,25 +1,36 @@
-# Denilagari Robots.txt
- User-agent: *
- Allow: /
- 
- Sitemap: https://denilagari.com/sitemap.xml
- 
- # Allow crawling of important directories
- User-agent: Googlebot
- Allow: /
- Allow: /paye/
- Allow: /insurance/
- Allow: /events/
- Allow: /blog/
- Allow: /about/
 
- User-agent: Bingbot
- Allow: /
- User-agent: Yandexbot
- Allow: /
- User-agent: Slurp
- Allow: /
- User-agent: Baiduspider
- Allow: /
- User-agent: DuckDuckBot
- Allow: /
+# Denilagari Robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://denilagari.com/sitemap.xml
+
+# Allow crawling of important directories
+User-agent: Googlebot
+Allow: /
+Allow: /paye/
+Allow: /paye/monthly/
+Allow: /paye/yearly/
+Allow: /insurance/
+Allow: /events/
+Allow: /blog/
+Allow: /about/
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandexbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Crawl-delay for less aggressive crawlers
+User-agent: *
+Crawl-delay: 1
