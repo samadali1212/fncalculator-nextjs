@@ -207,7 +207,7 @@ const PayeDetail = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                <TableRow>
+                <TableRow className="border-b border-gray-200">
                   <TableCell>{timeFrame === "yearly" ? "Annual" : "Monthly"} Gross Income</TableCell>
                   <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.grossIncome)}</TableCell>
                 </TableRow>
@@ -215,7 +215,7 @@ const PayeDetail = () => {
                   <TableCell>Taxable Income</TableCell>
                   <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.taxableIncome)}</TableCell>
                 </TableRow>
-                <TableRow className="font-medium">
+                <TableRow className="font-medium border-b border-gray-200">
                   <TableCell>PAYE Tax Payable</TableCell>
                   <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.netTax)}</TableCell>
                 </TableRow>
