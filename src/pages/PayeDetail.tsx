@@ -1,11 +1,10 @@
-
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
-import PayeCalculator from "../components/PayeCalculator";
+import PayeDetailCalculator from "../components/PayeDetailCalculator";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Calendar, ArrowRight } from "lucide-react";
@@ -192,7 +191,7 @@ const PayeDetail = () => {
           {/* Calculator Section */}
           <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-6">
             <h2 className="text-xl font-semibold mb-4">PAYE Calculator</h2>
-            <PayeCalculator 
+            <PayeDetailCalculator 
               timeFrame={timeFrame}
               onTimeFrameChange={handleTimeFrameChange}
               initialAmount={income.toString()}
