@@ -2,11 +2,14 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Calculator } from "lucide-react";
+import { ChevronLeft, Calculator } from "lucide-react";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
+import ShareButton from "../components/ShareButton";
 import CrdbCalculator from "../components/CrdbCalculator";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { 
   getCrdbLoanCalculation, 
   formatCurrency,
@@ -59,23 +62,30 @@ const CrdbDetail = () => {
         className="min-h-screen bg-[#f6f6f0]"
       >
         <Header />
-        <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-          <div className="text-center py-12">
-            <h1 className="text-2xl font-bold mb-4">Invalid Loan Parameters</h1>
-            <p className="text-gray-600 mb-6">
-              The loan parameters provided are invalid. Please return to the calculator.
-            </p>
-            <Link to="/crdb">
-              <Button>
-                <Calculator className="mr-2 h-4 w-4" />
-                Back to Calculator
-              </Button>
-            </Link>
+        <main className="pt-20 pb-16">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <Card>
+              <CardContent className="p-6 text-center">
+                <h1 className="text-2xl font-bold mb-4">Invalid Loan Parameters</h1>
+                <p className="text-gray-600 mb-6">
+                  The loan parameters provided are invalid. Please return to the calculator.
+                </p>
+                <Link to="/crdb">
+                  <Button>
+                    <Calculator className="mr-2 h-4 w-4" />
+                    Back to Calculator
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
           </div>
         </main>
       </motion.div>
     );
   }
+
+  // Format currency for the title without spaces
+  const formattedCurrencyForTitle = formatCurrency(loanAmount).replace(/\s/g, "");
 
   return (
     <motion.div
@@ -84,134 +94,114 @@ const CrdbDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`CRDB Loan ${formatCurrency(loanAmount)} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${formatCurrency(loanResult.payment)}`}
+        title={`CRDB Loan Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${formatCurrency(loanResult.payment)}`}
         description={`Calculate your CRDB Bank personal loan of ${formatCurrency(loanAmount)} at ${interestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}.`}
         canonicalUrl={`/crdb/${timeFrame}/${loanAmount}/${interestRate}/${loanTerm}`}
       />
       <Header />
       
-      <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        {/* Back Navigation */}
-        <Link 
-          to={`/crdb${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
-          className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-6 text-sm"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to CRDB Calculator
-        </Link>
+      <main className="pt-20 pb-16">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <div className="flex items-center justify-between mb-6">
+            <Link 
+              to={`/crdb${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
+              className="inline-flex items-center text-sm text-[#000000] hover:underline"
+            >
+              <ChevronLeft className="h-4 w-4 mr-1" />
+              Back To CRDB Calculator
+            </Link>
+            
+            <ShareButton 
+              title={`CRDB Loan ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment - SalaryList`} 
+              variant="outline"
+            />
+          </div>
 
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">
-            CRDB Loan Calculator - {formatCurrency(loanAmount)}
-          </h1>
-          <p className="text-gray-600">
-            Detailed breakdown for your CRDB Bank personal loan of {formatCurrency(loanAmount)} at {interestRate}% interest rate over {loanResult.termDisplay}.
+          {/* Title Section - No Background */}
+          <div className="mb-6">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
+              CRDB Loan Calculator On {formatCurrency(loanResult.loanAmount)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Payment
+            </h1>
+          </div>
+
+          {/* Calculator Section - No Background */}
+          <div className="mb-6">
+            <CrdbCalculator 
+              timeFrame={timeFrame}
+              onTimeFrameChange={handleTimeFrameChange}
+              initialAmount={loanAmount.toString()}
+              initialRate={interestRate.toString()}
+              initialTerm={loanTerm.toString()}
+            />
+          </div>
+
+          {/* Combined Loan Overview and Detailed Breakdown Section */}
+          <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
+            <h2 className="text-xl font-semibold mb-4">Loan Overview & Breakdown</h2>
+            
+            <div className="prose prose-sm sm:prose max-w-none mb-6">
+              <p>
+                Your loan of {formatCurrency(loanResult.loanAmount)} at {loanResult.interestRate}% interest rate for {loanResult.termDisplay} will require {timeFrame === "monthly" ? "monthly" : "annual"} payments of {formatCurrency(loanResult.payment)}. 
+                The total interest you'll pay over the life of the loan is {formatCurrency(loanResult.totalInterest)}, making your total repayment {formatCurrency(loanResult.totalRepayment)}.
+              </p>
+            </div>
+            
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Description</TableHead>
+                  <TableHead className="text-right">Amount</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow className="border-b border-gray-200">
+                  <TableCell>Loan Amount</TableCell>
+                  <TableCell className="text-right">{formatCurrency(loanResult.loanAmount)}</TableCell>
+                </TableRow>
+                <TableRow className="border-b border-gray-200">
+                  <TableCell>Interest Rate</TableCell>
+                  <TableCell className="text-right">{loanResult.interestRate}%</TableCell>
+                </TableRow>
+                <TableRow className="border-b border-gray-200">
+                  <TableCell>Loan Term</TableCell>
+                  <TableCell className="text-right">{loanResult.termDisplay}</TableCell>
+                </TableRow>
+                <TableRow className="font-medium border-b border-gray-200">
+                  <TableCell>{timeFrame === "monthly" ? "Monthly" : "Annual"} Payment</TableCell>
+                  <TableCell className="text-right">{formatCurrency(loanResult.payment)}</TableCell>
+                </TableRow>
+                <TableRow className="border-b border-gray-200">
+                  <TableCell>Total Interest</TableCell>
+                  <TableCell className="text-right">{formatCurrency(loanResult.totalInterest)}</TableCell>
+                </TableRow>
+                <TableRow className="bg-gray-50 font-medium border-b border-gray-200">
+                  <TableCell>Total Repayment</TableCell>
+                  <TableCell className="text-right">{formatCurrency(loanResult.totalRepayment)}</TableCell>
+                </TableRow>
+                {timeFrame === "yearly" && (
+                  <TableRow className="bg-gray-50">
+                    <TableCell>Monthly Payment</TableCell>
+                    <TableCell className="text-right">{formatCurrency(Math.round(loanResult.payment / 12))}</TableCell>
+                  </TableRow>
+                )}
+                {timeFrame === "monthly" && (
+                  <TableRow className="bg-gray-50">
+                    <TableCell>Annual Payment</TableCell>
+                    <TableCell className="text-right">{formatCurrency(loanResult.payment * 12)}</TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </div>
+
+          <p className="text-sm text-gray-500 text-center">
+            <em><strong>Interest rates may vary based on your credit profile and loan terms. Contact CRDB Bank for personalized rates.</strong></em>
           </p>
         </div>
-
-        {/* Loan Summary Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="bg-white p-6 rounded-lg shadow-sm border"
-          >
-            <div className="text-sm text-gray-500 mb-1">Loan Amount</div>
-            <div className="text-xl font-bold text-gray-900">{formatCurrency(loanResult.loanAmount)}</div>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="bg-white p-6 rounded-lg shadow-sm border-2 border-primary"
-          >
-            <div className="text-sm text-gray-500 mb-1">{timeFrame === "monthly" ? "Monthly" : "Annual"} Payment</div>
-            <div className="text-xl font-bold text-primary">{formatCurrency(loanResult.payment)}</div>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="bg-white p-6 rounded-lg shadow-sm border"
-          >
-            <div className="text-sm text-gray-500 mb-1">Total Interest</div>
-            <div className="text-xl font-bold text-red-600">{formatCurrency(loanResult.totalInterest)}</div>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="bg-white p-6 rounded-lg shadow-sm border"
-          >
-            <div className="text-sm text-gray-500 mb-1">Total Repayment</div>
-            <div className="text-xl font-bold text-gray-900">{formatCurrency(loanResult.totalRepayment)}</div>
-          </motion.div>
-        </div>
-
-        {/* Loan Details */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="bg-white p-6 rounded-lg shadow-sm border mb-8"
-        >
-          <h2 className="text-xl font-semibold mb-4">Loan Details</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600">Loan Amount:</span>
-              <span className="font-medium">{formatCurrency(loanResult.loanAmount)}</span>
-            </div>
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600">Interest Rate:</span>
-              <span className="font-medium">{loanResult.interestRate}%</span>
-            </div>
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600">Loan Term:</span>
-              <span className="font-medium">{loanResult.termDisplay}</span>
-            </div>
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600">{timeFrame === "monthly" ? "Monthly" : "Annual"} Payment:</span>
-              <span className="font-medium text-primary">{formatCurrency(loanResult.payment)}</span>
-            </div>
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600">Total Interest:</span>
-              <span className="font-medium text-red-600">{formatCurrency(loanResult.totalInterest)}</span>
-            </div>
-            <div className="flex justify-between py-2 border-b border-gray-100">
-              <span className="text-gray-600">Total Repayment:</span>
-              <span className="font-medium">{formatCurrency(loanResult.totalRepayment)}</span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Calculator */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="bg-white p-6 rounded-lg shadow-sm border mb-8"
-        >
-          <h2 className="text-xl font-semibold mb-4">Adjust Your Loan</h2>
-          <CrdbCalculator 
-            timeFrame={timeFrame}
-            onTimeFrameChange={handleTimeFrameChange}
-            initialAmount={loanAmount.toString()}
-            initialRate={interestRate.toString()}
-            initialTerm={loanTerm.toString()}
-          />
-        </motion.div>
-
-        <p className="text-sm text-gray-500 text-center">
-          <em><strong>Interest rates may vary based on your credit profile and loan terms. Contact CRDB Bank for personalized rates.</strong></em>
-        </p>
       </main>
 
-      <footer className="border-t border-gray-300 py-8 bg-white">
-        <div className="container mx-auto px-4 md:px-6 text-center text-[#828282] text-sm">
+      <footer className="border-t border-gray-300 py-6 bg-white">
+        <div className="container mx-auto px-4 text-center text-[#828282] text-sm">
           <p>
             &copy; {new Date().getFullYear()} SalaryList. All rights reserved.
           </p>
