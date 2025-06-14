@@ -92,65 +92,61 @@ const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }:
     : amortizationData;
 
   return (
-    <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-md shadow-sm">
+    <div className="mb-8">
       <h2 className="text-lg sm:text-xl font-semibold mb-4">Amortization Schedule</h2>
       <p className="text-sm text-gray-600 mb-4">
         This table shows how your {timeFrame === "monthly" ? "monthly" : "annual"} payments are split between principal and interest over the life of your loan.
       </p>
       
-      <div className="w-full overflow-x-auto -mx-4 sm:mx-0">
-        <div className="min-w-full inline-block align-middle">
-          <div className="overflow-hidden border border-gray-200 sm:rounded-lg">
-            <Table className="min-w-full divide-y divide-gray-200">
-              <TableHeader className="bg-gray-50">
-                <TableRow>
-                  <TableHead className="px-2 sm:px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-20 sm:w-24">
-                    Date
-                  </TableHead>
-                  <TableHead className="px-2 sm:px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider w-24 sm:w-28">
-                    Payment
-                  </TableHead>
-                  <TableHead className="px-2 sm:px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider w-24 sm:w-28">
-                    Principal
-                  </TableHead>
-                  <TableHead className="px-2 sm:px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider w-24 sm:w-28">
-                    Interest
-                  </TableHead>
-                  <TableHead className="px-2 sm:px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider w-24 sm:w-32">
-                    Total Interest
-                  </TableHead>
-                  <TableHead className="px-2 sm:px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider w-24 sm:w-28">
-                    Balance
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody className="bg-white divide-y divide-gray-200">
-                {displayData.map((entry, index) => (
-                  <TableRow key={entry.period} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                    <TableCell className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium text-gray-900">
-                      <div className="truncate">{entry.paymentDate}</div>
-                    </TableCell>
-                    <TableCell className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-gray-900 text-right">
-                      <div className="truncate">{formatCurrency(Math.round(entry.payment))}</div>
-                    </TableCell>
-                    <TableCell className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-gray-900 text-right">
-                      <div className="truncate">{formatCurrency(Math.round(entry.principal))}</div>
-                    </TableCell>
-                    <TableCell className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-gray-900 text-right">
-                      <div className="truncate">{formatCurrency(Math.round(entry.interest))}</div>
-                    </TableCell>
-                    <TableCell className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-gray-900 text-right">
-                      <div className="truncate">{formatCurrency(Math.round(entry.totalInterest))}</div>
-                    </TableCell>
-                    <TableCell className="px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-gray-900 text-right">
-                      <div className="truncate">{formatCurrency(Math.round(entry.balance))}</div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </div>
+      <div className="w-full overflow-x-auto">
+        <Table className="w-full">
+          <TableHeader className="bg-gray-50">
+            <TableRow>
+              <TableHead className="px-2 sm:px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Date
+              </TableHead>
+              <TableHead className="px-2 sm:px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Payment
+              </TableHead>
+              <TableHead className="px-2 sm:px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Principal
+              </TableHead>
+              <TableHead className="px-2 sm:px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Interest
+              </TableHead>
+              <TableHead className="px-2 sm:px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Total Interest
+              </TableHead>
+              <TableHead className="px-2 sm:px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Balance
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody className="bg-white divide-y divide-gray-200">
+            {displayData.map((entry, index) => (
+              <TableRow key={entry.period} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                <TableCell className="px-2 sm:px-3 py-2 text-xs sm:text-sm font-medium text-gray-900">
+                  {entry.paymentDate}
+                </TableCell>
+                <TableCell className="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-900 text-right">
+                  {formatCurrency(Math.round(entry.payment))}
+                </TableCell>
+                <TableCell className="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-900 text-right">
+                  {formatCurrency(Math.round(entry.principal))}
+                </TableCell>
+                <TableCell className="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-900 text-right">
+                  {formatCurrency(Math.round(entry.interest))}
+                </TableCell>
+                <TableCell className="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-900 text-right">
+                  {formatCurrency(Math.round(entry.totalInterest))}
+                </TableCell>
+                <TableCell className="px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-900 text-right">
+                  {formatCurrency(Math.round(entry.balance))}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </div>
     </div>
   );
