@@ -30,4 +30,29 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+          <url>
+    <loc>https://denilagari.com/crdb</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+          <url>
+    <loc>https://denilagari.com/nbc</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+          <url>
+    <loc>https://denilagari.com/nmb</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+          <url>
+    <loc>https://denilagari.com/absa</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+          <url>
+    <loc>https://denilagari.com/azania</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
 </urlset>
