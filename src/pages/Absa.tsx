@@ -65,9 +65,8 @@ const Absa = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <h1 className="text-3xl font-bold mb-2">ABSA Bank Personal Loan Calculator Tanzania</h1>
         <p className="text-gray-600 mb-8">
-          Calculate your ABSA Bank personal loan payments with our comprehensive loan calculator. 
-          Get accurate {timeFrame === "monthly" ? "monthly" : "annual"} payment estimates at competitive interest rates. 
-          Perfect for planning your personal loan with ABSA Bank Tanzania, featuring flexible terms and transparent calculations.
+Easily calculate your ABSA Bank Tanzania personal loan payments using our accurate loan calculator.
+Get clear {timeFrame === "monthly" ? "monthly" : "yearly"} payment estimates based on current interest rates. Plan your ABSA personal loan with confidence—this tool supports flexible loan terms, fast estimates, and full transparency to help you make informed decisions.
         </p>
 
         {/* Custom Loan Calculator */}
