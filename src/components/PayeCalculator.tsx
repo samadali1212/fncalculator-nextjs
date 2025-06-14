@@ -83,7 +83,7 @@ const PayeCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeCal
       transition={{ duration: 0.5 }}
       className="mb-8"
     >
-      <div className="bg-white p-6 rounded-md shadow-sm border border-gray-200">
+
         <div className="flex items-center gap-2 mb-4">
           <Calculator className="h-5 w-5 text-primary" />
           <h2 className="text-lg font-semibold text-gray-800">Quick PAYE Calculator</h2>
