@@ -188,9 +188,8 @@ const PayeDetail = () => {
             </div>
           </div>
 
-          {/* Calculator Section */}
-          <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-6">
-            <h2 className="text-xl font-semibold mb-4">PAYE Calculator</h2>
+          {/* Calculator Section - No Background */}
+          <div className="mb-6">
             <PayeDetailCalculator 
               timeFrame={timeFrame}
               onTimeFrameChange={handleTimeFrameChange}
@@ -240,6 +239,7 @@ const PayeDetail = () => {
           {/* Detailed Breakdown Section */}
           <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
             <h2 className="text-xl font-semibold mb-4">Detailed Breakdown</h2>
+            
             <Table>
               <TableHeader>
                 <TableRow>
