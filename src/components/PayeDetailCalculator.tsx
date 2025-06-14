@@ -159,6 +159,18 @@ const PayeDetailCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: P
               Your {timeFrame} income of {formatTanzaniaCurrency(customTaxResult.grossIncome)} falls under the {customTaxResult.marginalTaxRate}% tax bracket, resulting in an effective tax rate of {customTaxResult.effectiveTaxRate.toFixed(1)}%.
             </p>
           </div>
+                    {/* Tax Information Paragraph */}
+          <div className="mb-6 text-sm text-gray-700 leading-relaxed">
+            <p className="mb-2">
+              <strong>Tax Information</strong>
+            </p>
+            <p className="mb-2">
+              <strong>Effective Tax Rate:</strong> {taxDetails.effectiveTaxRate.toFixed(1)}% of your total income goes to PAYE tax
+            </p>
+            <p>
+              <strong>Marginal Tax Rate:</strong> For each additional Tanzanian Shilling earned, you'll pay {taxDetails.marginalTaxRate}% in PAYE tax
+            </p>
+          </div>
         </>
       )}
     </motion.div>
