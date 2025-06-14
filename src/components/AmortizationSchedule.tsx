@@ -107,7 +107,6 @@ const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }:
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>{timeFrame === "monthly" ? "Month" : "Year"}</TableHead>
             <TableHead>Payment Date</TableHead>
             <TableHead className="text-right">Payment (TSh)</TableHead>
             <TableHead className="text-right">Principal (TSh)</TableHead>
@@ -119,8 +118,7 @@ const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }:
         <TableBody>
           {displayData.map((entry) => (
             <TableRow key={entry.period}>
-              <TableCell className="font-medium">{entry.period}</TableCell>
-              <TableCell>{entry.paymentDate}</TableCell>
+              <TableCell className="font-medium">{entry.paymentDate}</TableCell>
               <TableCell className="text-right">{formatCurrencyValue(Math.round(entry.payment))}</TableCell>
               <TableCell className="text-right">{formatCurrencyValue(Math.round(entry.principal))}</TableCell>
               <TableCell className="text-right">{formatCurrencyValue(Math.round(entry.interest))}</TableCell>
