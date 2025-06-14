@@ -1,11 +1,14 @@
+
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { formatCurrency, CrdbTimeFrame } from "../utils/loanCalculator";
 
 interface AmortizationEntry {
   period: number;
+  paymentDate: string;
   payment: number;
   principal: number;
   interest: number;
+  totalInterest: number;
   balance: number;
 }
 
@@ -29,17 +32,30 @@ const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }:
         (Math.pow(1 + monthlyRate, termInMonths) - 1);
     
     let remainingBalance = loanAmount;
+    let cumulativeInterest = 0;
+    const startDate = new Date();
     
     for (let period = 1; period <= termInMonths; period++) {
       const interestPayment = remainingBalance * monthlyRate;
       const principalPayment = monthlyPayment - interestPayment;
       remainingBalance = Math.max(0, remainingBalance - principalPayment);
+      cumulativeInterest += interestPayment;
+      
+      // Calculate payment date
+      const paymentDate = new Date(startDate);
+      paymentDate.setMonth(startDate.getMonth() + period);
       
       schedule.push({
         period,
+        paymentDate: paymentDate.toLocaleDateString('en-US', { 
+          year: 'numeric', 
+          month: 'short', 
+          day: 'numeric' 
+        }),
         payment: monthlyPayment,
         principal: principalPayment,
         interest: interestPayment,
+        totalInterest: cumulativeInterest,
         balance: remainingBalance
       });
     }
@@ -56,17 +72,21 @@ const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }:
         if (!acc[yearIndex]) {
           acc[yearIndex] = {
             period: yearIndex + 1,
+            paymentDate: entry.paymentDate, // Use the last month's date for the year
             payment: 0,
             principal: 0,
             interest: 0,
+            totalInterest: 0,
             balance: entry.balance
           };
         }
         acc[yearIndex].payment += entry.payment;
         acc[yearIndex].principal += entry.principal;
         acc[yearIndex].interest += entry.interest;
-        // Use the last month's balance for the year
+        // Use the last month's values for the year
         if ((index + 1) % 12 === 0 || index === amortizationData.length - 1) {
+          acc[yearIndex].paymentDate = entry.paymentDate;
+          acc[yearIndex].totalInterest = entry.totalInterest;
           acc[yearIndex].balance = entry.balance;
         }
         return acc;
@@ -84,9 +104,11 @@ const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }:
         <TableHeader>
           <TableRow>
             <TableHead>{timeFrame === "monthly" ? "Month" : "Year"}</TableHead>
+            <TableHead>Payment Date</TableHead>
             <TableHead className="text-right">Payment</TableHead>
             <TableHead className="text-right">Principal</TableHead>
             <TableHead className="text-right">Interest</TableHead>
+            <TableHead className="text-right">Total Interest</TableHead>
             <TableHead className="text-right">Balance</TableHead>
           </TableRow>
         </TableHeader>
@@ -94,9 +116,11 @@ const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }:
           {displayData.map((entry) => (
             <TableRow key={entry.period}>
               <TableCell className="font-medium">{entry.period}</TableCell>
+              <TableCell>{entry.paymentDate}</TableCell>
               <TableCell className="text-right">{formatCurrency(Math.round(entry.payment))}</TableCell>
               <TableCell className="text-right">{formatCurrency(Math.round(entry.principal))}</TableCell>
               <TableCell className="text-right">{formatCurrency(Math.round(entry.interest))}</TableCell>
+              <TableCell className="text-right">{formatCurrency(Math.round(entry.totalInterest))}</TableCell>
               <TableCell className="text-right">{formatCurrency(Math.round(entry.balance))}</TableCell>
             </TableRow>
           ))}
