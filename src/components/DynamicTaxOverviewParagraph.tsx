@@ -9,10 +9,10 @@ interface DynamicTaxOverviewParagraphProps {
 
 const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTaxOverviewParagraphProps) => {
   // Generate a variation index based on the income to ensure consistency for the same income
-  const variationIndex = Math.abs(income) % 20;
+  const variationIndex = Math.abs(income) % 15;
   
   const variations = [
-    // Variation 1 - Standard format
+    // Variation 1 - Standard tax calculation format
     () => (
       <p className="text-gray-700 leading-relaxed">
         With a {timeFrame === "monthly" ? "monthly" : "yearly"} income of {formatTanzaniaCurrency(taxResult.grossIncome)} in Tanzania Mainland, your PAYE tax would be approximately 
@@ -27,21 +27,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
       </p>
     ),
     
-    // Variation 2 - Focus on take-home pay first
-    () => (
-      <p className="text-gray-700 leading-relaxed">
-        Based on your {timeFrame === "monthly" ? "monthly" : "annual"} gross salary of {formatTanzaniaCurrency(taxResult.grossIncome)}, you can expect to take home {formatTanzaniaCurrency(taxResult.netIncome)} after PAYE tax deductions. 
-        The Tanzania Revenue Authority will collect {formatTanzaniaCurrency(taxResult.netTax)} in PAYE tax from your {timeFrame} earnings.
-        {timeFrame === "monthly" ? 
-          ` On an annual basis, this translates to ${formatTanzaniaCurrency(income * 12)} gross income and ${formatTanzaniaCurrency(taxResult.netIncome * 12)} net income.` : 
-          ` Breaking this down monthly, you'll earn ${formatTanzaniaCurrency(Math.round(income / 12))} gross and take home ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))}.`
-        }
-        This calculation reflects an effective tax rate of {taxResult.effectiveTaxRate.toFixed(1)}% and places you in the {taxResult.marginalTaxRate}% marginal tax bracket.
-        Remember that social security contributions are deducted before calculating PAYE.
-      </p>
-    ),
-    
-    // Variation 3 - Tax-focused approach
+    // Variation 2 - Tax liability focused
     () => (
       <p className="text-gray-700 leading-relaxed">
         Your PAYE tax liability on a {timeFrame === "monthly" ? "monthly" : "yearly"} income of {formatTanzaniaCurrency(taxResult.grossIncome)} amounts to {formatTanzaniaCurrency(taxResult.netTax)}. 
@@ -55,11 +41,11 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
       </p>
     ),
     
-    // Variation 4 - Percentage-focused
+    // Variation 3 - Tax rate focused
     () => (
       <p className="text-gray-700 leading-relaxed">
         At an effective tax rate of {taxResult.effectiveTaxRate.toFixed(1)}%, your {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} will generate a PAYE tax obligation of {formatTanzaniaCurrency(taxResult.netTax)}. 
-        Your marginal tax rate of {taxResult.marginalTaxRate}% determines how additional income will be taxed. After meeting your tax obligations, your disposable income becomes {formatTanzaniaCurrency(taxResult.netIncome)}.
+        Your marginal tax rate of {taxResult.marginalTaxRate}% determines how additional income will be taxed. After meeting your tax obligations, your net income becomes {formatTanzaniaCurrency(taxResult.netIncome)}.
         {timeFrame === "monthly" ? 
           ` Annually, this represents ${formatTanzaniaCurrency(income * 12)} in gross earnings and ${formatTanzaniaCurrency(taxResult.netIncome * 12)} in net earnings.` : 
           ` Monthly, this breaks down to ${formatTanzaniaCurrency(Math.round(income / 12))} gross and ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} net.`
@@ -68,72 +54,20 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
       </p>
     ),
     
-    // Variation 5 - Practical approach
+    // Variation 4 - Detailed tax breakdown
     () => (
       <p className="text-gray-700 leading-relaxed">
-        For practical budgeting purposes, your {formatTanzaniaCurrency(taxResult.grossIncome)} {timeFrame} salary translates to {formatTanzaniaCurrency(taxResult.netIncome)} in actual spending power after PAYE deductions of {formatTanzaniaCurrency(taxResult.netTax)}.
-        {timeFrame === "monthly" ? 
-          ` This means your annual financial capacity is ${formatTanzaniaCurrency(taxResult.netIncome * 12)} from a total gross income of ${formatTanzaniaCurrency(income * 12)}.` : 
-          ` Monthly, you can plan with ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} in available funds from ${formatTanzaniaCurrency(Math.round(income / 12))} gross monthly income.`
-        }
-        Your income is taxed at an effective rate of {taxResult.effectiveTaxRate.toFixed(1)}%, positioning you in the {taxResult.marginalTaxRate}% marginal bracket.
-        These figures account for mandatory pension contributions that reduce your taxable base.
-      </p>
-    ),
-    
-    // Variation 6 - Detailed breakdown focus
-    () => (
-      <p className="text-gray-700 leading-relaxed">
-        Breaking down your {timeFrame} compensation of {formatTanzaniaCurrency(taxResult.grossIncome)}: the government claims {formatTanzaniaCurrency(taxResult.netTax)} through PAYE taxation, while you keep {formatTanzaniaCurrency(taxResult.netIncome)} for personal use.
+        Breaking down your {timeFrame} compensation of {formatTanzaniaCurrency(taxResult.grossIncome)}: the Tanzania Revenue Authority collects {formatTanzaniaCurrency(taxResult.netTax)} through PAYE taxation, while you keep {formatTanzaniaCurrency(taxResult.netIncome)} as net income.
         {timeFrame === "monthly" ? 
           ` Scaling up to annual figures: ${formatTanzaniaCurrency(income * 12)} gross income yields ${formatTanzaniaCurrency(taxResult.netIncome * 12)} net income.` : 
           ` On a monthly scale: ${formatTanzaniaCurrency(Math.round(income / 12))} gross becomes ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} net.`
         }
-        This taxation scenario results in an effective rate of {taxResult.effectiveTaxRate.toFixed(1)}% and places you in the {taxResult.marginalTaxRate}% marginal category.
-        Social security deductions are applied before PAYE calculations, reducing your taxable income.
+        This taxation scenario results in an effective rate of {taxResult.effectiveTaxRate.toFixed(1)}% and places you in the {taxResult.marginalTaxRate}% marginal tax category.
+        Social security deductions are applied before PAYE calculations, reducing your taxable income base.
       </p>
     ),
     
-    // Variation 7 - Future planning approach
-    () => (
-      <p className="text-gray-700 leading-relaxed">
-        Planning your finances around a {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} requires understanding that {formatTanzaniaCurrency(taxResult.netTax)} will be allocated to PAYE tax, leaving {formatTanzaniaCurrency(taxResult.netIncome)} for your personal financial goals.
-        {timeFrame === "monthly" ? 
-          ` Over the course of a year, you'll earn ${formatTanzaniaCurrency(income * 12)} gross and have ${formatTanzaniaCurrency(taxResult.netIncome * 12)} available for savings and expenses.` : 
-          ` Month by month, this translates to ${formatTanzaniaCurrency(Math.round(income / 12))} gross income and ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} net income.`
-        }
-        Your {taxResult.effectiveTaxRate.toFixed(1)}% effective tax rate and {taxResult.marginalTaxRate}% marginal rate should inform your financial planning decisions.
-        Remember that pension fund contributions reduce your PAYE liability by lowering taxable income.
-      </p>
-    ),
-    
-    // Variation 8 - Comparative approach
-    () => (
-      <p className="text-gray-700 leading-relaxed">
-        Compared to other income levels, your {timeFrame} earnings of {formatTanzaniaCurrency(taxResult.grossIncome)} generate a moderate PAYE burden of {formatTanzaniaCurrency(taxResult.netTax)}, preserving {formatTanzaniaCurrency(taxResult.netIncome)} for personal use.
-        {timeFrame === "monthly" ? 
-          ` This monthly arrangement scales to ${formatTanzaniaCurrency(income * 12)} annual gross income and ${formatTanzaniaCurrency(taxResult.netIncome * 12)} annual net income.` : 
-          ` This annual structure breaks down to ${formatTanzaniaCurrency(Math.round(income / 12))} monthly gross and ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} monthly net.`
-        }
-        With an effective tax rate of {taxResult.effectiveTaxRate.toFixed(1)}% and marginal rate of {taxResult.marginalTaxRate}%, you're positioned favorably within Tanzania's tax structure.
-        Social insurance contributions are deducted before PAYE calculations, providing some tax relief.
-      </p>
-    ),
-    
-    // Variation 9 - Economic context
-    () => (
-      <p className="text-gray-700 leading-relaxed">
-        Within Tanzania's economic framework, your {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} contributes {formatTanzaniaCurrency(taxResult.netTax)} to public revenues through PAYE taxation, while securing {formatTanzaniaCurrency(taxResult.netIncome)} for your household economy.
-        {timeFrame === "monthly" ? 
-          ` Annually, this represents a contribution of ${formatTanzaniaCurrency(taxResult.netTax * 12)} to national development from total earnings of ${formatTanzaniaCurrency(income * 12)}.` : 
-          ` Monthly, this means ${formatTanzaniaCurrency(Math.round(taxResult.netTax / 12))} in tax contributions from ${formatTanzaniaCurrency(Math.round(income / 12))} gross monthly income.`
-        }
-        Your tax efficiency stands at {taxResult.effectiveTaxRate.toFixed(1)}% effective rate with a {taxResult.marginalTaxRate}% marginal bracket positioning.
-        The tax calculation incorporates pension contributions that reduce your overall tax burden.
-      </p>
-    ),
-    
-    // Variation 10 - Calculation methodology
+    // Variation 5 - Tax calculation methodology
     () => (
       <p className="text-gray-700 leading-relaxed">
         The PAYE calculation methodology applied to your {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} determines a tax liability of {formatTanzaniaCurrency(taxResult.netTax)}, resulting in net earnings of {formatTanzaniaCurrency(taxResult.netIncome)}.
@@ -146,133 +80,133 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
       </p>
     ),
     
-    // Variation 11 - Benefits focus
+    // Variation 6 - Income and tax comparison
     () => (
       <p className="text-gray-700 leading-relaxed">
-        Your {timeFrame} compensation package of {formatTanzaniaCurrency(taxResult.grossIncome)} provides substantial benefits: after fulfilling your {formatTanzaniaCurrency(taxResult.netTax)} PAYE obligation, you retain {formatTanzaniaCurrency(taxResult.netIncome)} for personal financial management.
+        Your {timeFrame === "monthly" ? "monthly" : "annual"} gross salary of {formatTanzaniaCurrency(taxResult.grossIncome)} translates to {formatTanzaniaCurrency(taxResult.netIncome)} in take-home pay after PAYE tax deductions of {formatTanzaniaCurrency(taxResult.netTax)}. 
+        The Tanzania tax system applies an effective rate of {taxResult.effectiveTaxRate.toFixed(1)}% to your income level.
         {timeFrame === "monthly" ? 
-          ` The annual benefit amounts to ${formatTanzaniaCurrency(taxResult.netIncome * 12)} in disposable income from ${formatTanzaniaCurrency(income * 12)} total earnings.` : 
-          ` The monthly benefit equals ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} in disposable income from ${formatTanzaniaCurrency(Math.round(income / 12))} monthly earnings.`
+          ` On an annual basis, this translates to ${formatTanzaniaCurrency(income * 12)} gross income and ${formatTanzaniaCurrency(taxResult.netIncome * 12)} net income.` : 
+          ` Breaking this down monthly, you'll earn ${formatTanzaniaCurrency(Math.round(income / 12))} gross and take home ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))}.`
         }
-        Your favorable tax position includes an effective rate of {taxResult.effectiveTaxRate.toFixed(1)}% and marginal rate of {taxResult.marginalTaxRate}%.
-        Social security contributions provide additional value by reducing your PAYE tax base while building retirement benefits.
+        Your income falls within the {taxResult.marginalTaxRate}% marginal tax bracket, with pension contributions reducing your overall tax liability.
       </p>
     ),
     
-    // Variation 12 - Professional context
+    // Variation 7 - Tax burden analysis
     () => (
       <p className="text-gray-700 leading-relaxed">
-        Professional tax planning for your {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} reveals a PAYE liability of {formatTanzaniaCurrency(taxResult.netTax)} and net professional earnings of {formatTanzaniaCurrency(taxResult.netIncome)}.
+        The tax burden on your {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} amounts to {formatTanzaniaCurrency(taxResult.netTax)} in PAYE obligations, preserving {formatTanzaniaCurrency(taxResult.netIncome)} as your net income.
+        This represents an effective tax rate of {taxResult.effectiveTaxRate.toFixed(1)}% on your gross earnings.
         {timeFrame === "monthly" ? 
-          ` Professional annual earnings total ${formatTanzaniaCurrency(income * 12)} gross with ${formatTanzaniaCurrency(taxResult.netIncome * 12)} available for professional development and personal goals.` : 
-          ` Professional monthly earnings average ${formatTanzaniaCurrency(Math.round(income / 12))} gross with ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} for monthly professional and personal expenses.`
+          ` Over a full year, your tax burden totals ${formatTanzaniaCurrency(taxResult.netTax * 12)} from gross earnings of ${formatTanzaniaCurrency(income * 12)}.` : 
+          ` Monthly, this tax burden averages ${formatTanzaniaCurrency(Math.round(taxResult.netTax / 12))} from monthly gross income of ${formatTanzaniaCurrency(Math.round(income / 12))}.`
         }
-        Your professional tax profile shows an effective rate of {taxResult.effectiveTaxRate.toFixed(1)}% and positions you in the {taxResult.marginalTaxRate}% marginal bracket.
-        Professional benefits include reduced taxable income through mandatory pension contributions.
+        Your marginal tax rate of {taxResult.marginalTaxRate}% determines the tax on any additional income, with social security contributions providing some tax relief.
       </p>
     ),
     
-    // Variation 13 - Lifestyle implications
+    // Variation 8 - Net income focused
     () => (
       <p className="text-gray-700 leading-relaxed">
-        Your lifestyle is supported by a {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)}, which after accounting for {formatTanzaniaCurrency(taxResult.netTax)} in PAYE taxes, provides {formatTanzaniaCurrency(taxResult.netIncome)} for lifestyle expenses and savings.
+        Based on your {timeFrame === "monthly" ? "monthly" : "annual"} gross income of {formatTanzaniaCurrency(taxResult.grossIncome)}, you can expect to receive {formatTanzaniaCurrency(taxResult.netIncome)} as net income after PAYE deductions. 
+        The tax calculation removes {formatTanzaniaCurrency(taxResult.netTax)} from your gross earnings, representing an effective tax rate of {taxResult.effectiveTaxRate.toFixed(1)}%.
         {timeFrame === "monthly" ? 
-          ` This lifestyle is sustained by annual earnings of ${formatTanzaniaCurrency(income * 12)} gross, delivering ${formatTanzaniaCurrency(taxResult.netIncome * 12)} in net annual income.` : 
-          ` This lifestyle is maintained through monthly earnings of ${formatTanzaniaCurrency(Math.round(income / 12))} gross, providing ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} monthly.`
+          ` Annually, your net income totals ${formatTanzaniaCurrency(taxResult.netIncome * 12)} from gross annual earnings of ${formatTanzaniaCurrency(income * 12)}.` : 
+          ` Monthly, your net income averages ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} from gross monthly earnings of ${formatTanzaniaCurrency(Math.round(income / 12))}.`
         }
-        The lifestyle implications include an effective tax rate of {taxResult.effectiveTaxRate.toFixed(1)}% and marginal tax considerations at {taxResult.marginalTaxRate}%.
-        Lifestyle planning benefits from the tax advantages of mandatory retirement savings contributions.
+        This calculation places you in the {taxResult.marginalTaxRate}% marginal tax bracket, with mandatory pension contributions reducing your taxable base.
       </p>
     ),
     
-    // Variation 14 - Investment perspective
+    // Variation 9 - Tax efficiency analysis  
     () => (
       <p className="text-gray-700 leading-relaxed">
-        From an investment perspective, your {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} generates investable surplus of {formatTanzaniaCurrency(taxResult.netIncome)} after satisfying PAYE obligations of {formatTanzaniaCurrency(taxResult.netTax)}.
+        Tax efficiency analysis of your {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} shows PAYE tax of {formatTanzaniaCurrency(taxResult.netTax)} and net income of {formatTanzaniaCurrency(taxResult.netIncome)}.
+        Your tax efficiency rate stands at {taxResult.effectiveTaxRate.toFixed(1)}%, indicating the portion of income allocated to tax obligations.
         {timeFrame === "monthly" ? 
-          ` Investment planning can work with annual gross income of ${formatTanzaniaCurrency(income * 12)} and net investable income of ${formatTanzaniaCurrency(taxResult.netIncome * 12)}.` : 
-          ` Investment planning can utilize monthly gross income of ${formatTanzaniaCurrency(Math.round(income / 12))} and net monthly surplus of ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))}.`
+          ` Annual tax efficiency: ${formatTanzaniaCurrency(taxResult.netTax * 12)} in taxes from ${formatTanzaniaCurrency(income * 12)} gross income.` : 
+          ` Monthly tax efficiency: ${formatTanzaniaCurrency(Math.round(taxResult.netTax / 12))} in taxes from ${formatTanzaniaCurrency(Math.round(income / 12))} gross income.`
         }
-        Investment tax planning should consider your {taxResult.effectiveTaxRate.toFixed(1)}% effective rate and {taxResult.marginalTaxRate}% marginal tax bracket.
-        Investment opportunities benefit from the tax-efficient nature of pension contributions that reduce current tax liability.
+        The {taxResult.marginalTaxRate}% marginal rate applies to income increases, with social security contributions optimizing your overall tax position.
       </p>
     ),
     
-    // Variation 15 - Family financial planning
+    // Variation 10 - Gross to net conversion
     () => (
       <p className="text-gray-700 leading-relaxed">
-        Family financial planning with a {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} requires budgeting around {formatTanzaniaCurrency(taxResult.netIncome)} in available family resources after {formatTanzaniaCurrency(taxResult.netTax)} in PAYE deductions.
+        Converting your gross {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} to net income involves deducting {formatTanzaniaCurrency(taxResult.netTax)} in PAYE tax, resulting in {formatTanzaniaCurrency(taxResult.netIncome)} available income.
+        This gross-to-net conversion reflects Tanzania's progressive tax system with your effective rate at {taxResult.effectiveTaxRate.toFixed(1)}%.
         {timeFrame === "monthly" ? 
-          ` Family annual financial planning works with ${formatTanzaniaCurrency(income * 12)} gross family income and ${formatTanzaniaCurrency(taxResult.netIncome * 12)} net family resources.` : 
-          ` Family monthly financial planning utilizes ${formatTanzaniaCurrency(Math.round(income / 12))} gross monthly income and ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} net monthly resources.`
+          ` Annual conversion: ${formatTanzaniaCurrency(income * 12)} gross converts to ${formatTanzaniaCurrency(taxResult.netIncome * 12)} net income.` : 
+          ` Monthly conversion: ${formatTanzaniaCurrency(Math.round(income / 12))} gross converts to ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} net income.`
         }
-        Family tax planning incorporates an effective tax rate of {taxResult.effectiveTaxRate.toFixed(1)}% and marginal considerations at {taxResult.marginalTaxRate}%.
-        Family financial security benefits from the retirement savings that reduce current tax obligations.
+        Your income level positions you in the {taxResult.marginalTaxRate}% marginal bracket, with pension fund contributions reducing your taxable income.
       </p>
     ),
     
-    // Variation 16 - Career progression context
+    // Variation 11 - Tax obligation summary
     () => (
       <p className="text-gray-700 leading-relaxed">
-        Career progression analysis of your {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} shows career advancement value of {formatTanzaniaCurrency(taxResult.netIncome)} after career-related tax obligations of {formatTanzaniaCurrency(taxResult.netTax)}.
+        Your tax obligations on a {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} total {formatTanzaniaCurrency(taxResult.netTax)} in PAYE contributions to Tanzania's revenue system.
+        After fulfilling these tax obligations, your disposable income becomes {formatTanzaniaCurrency(taxResult.netIncome)}.
         {timeFrame === "monthly" ? 
-          ` Career annual progression represents ${formatTanzaniaCurrency(income * 12)} in gross career value with ${formatTanzaniaCurrency(taxResult.netIncome * 12)} in net career advancement.` : 
-          ` Career monthly progression delivers ${formatTanzaniaCurrency(Math.round(income / 12))} gross monthly value with ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} net monthly advancement.`
+          ` Annual tax obligations: ${formatTanzaniaCurrency(taxResult.netTax * 12)} from total earnings of ${formatTanzaniaCurrency(income * 12)}.` : 
+          ` Monthly tax obligations: ${formatTanzaniaCurrency(Math.round(taxResult.netTax / 12))} from monthly earnings of ${formatTanzaniaCurrency(Math.round(income / 12))}.`
         }
-        Career tax implications include an effective rate of {taxResult.effectiveTaxRate.toFixed(1)}% and positioning in the {taxResult.marginalTaxRate}% marginal bracket.
-        Career development benefits from pension contributions that optimize current tax efficiency.
+        The effective tax obligation rate of {taxResult.effectiveTaxRate.toFixed(1)}% places you in the {taxResult.marginalTaxRate}% marginal category, with social security deductions providing tax base reduction.
       </p>
     ),
     
-    // Variation 17 - Economic contribution
+    // Variation 12 - Income tax structure
     () => (
       <p className="text-gray-700 leading-relaxed">
-        Your economic contribution through a {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} includes {formatTanzaniaCurrency(taxResult.netTax)} in public revenue generation while maintaining {formatTanzaniaCurrency(taxResult.netIncome)} for personal economic activity.
+        Tanzania's income tax structure applies to your {timeFrame} earnings of {formatTanzaniaCurrency(taxResult.grossIncome)}, generating {formatTanzaniaCurrency(taxResult.netTax)} in PAYE tax and {formatTanzaniaCurrency(taxResult.netIncome)} in net income.
+        The tax structure creates an effective rate of {taxResult.effectiveTaxRate.toFixed(1)}% for your income level.
         {timeFrame === "monthly" ? 
-          ` Annual economic contribution totals ${formatTanzaniaCurrency(taxResult.netTax * 12)} in public revenues from ${formatTanzaniaCurrency(income * 12)} gross economic activity.` : 
-          ` Monthly economic contribution averages ${formatTanzaniaCurrency(Math.round(taxResult.netTax / 12))} in public revenues from ${formatTanzaniaCurrency(Math.round(income / 12))} gross monthly activity.`
+          ` Under this tax structure, annual figures show ${formatTanzaniaCurrency(income * 12)} gross and ${formatTanzaniaCurrency(taxResult.netIncome * 12)} net.` : 
+          ` Under this tax structure, monthly figures show ${formatTanzaniaCurrency(Math.round(income / 12))} gross and ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} net.`
         }
-        Economic efficiency reflects an effective tax rate of {taxResult.effectiveTaxRate.toFixed(1)}% and marginal economic positioning at {taxResult.marginalTaxRate}%.
-        Economic planning leverages pension contribution benefits that enhance overall tax efficiency.
+        Your position in the {taxResult.marginalTaxRate}% marginal bracket reflects the progressive nature of Tanzania's tax structure, with pension contributions integrated into the calculation.
       </p>
     ),
     
-    // Variation 18 - Savings and expenses
+    // Variation 13 - Tax calculation results
     () => (
       <p className="text-gray-700 leading-relaxed">
-        Savings and expense planning for your {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} allocates {formatTanzaniaCurrency(taxResult.netTax)} to tax expenses while preserving {formatTanzaniaCurrency(taxResult.netIncome)} for savings and living expenses.
+        Tax calculation results for your {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} show PAYE tax of {formatTanzaniaCurrency(taxResult.netTax)} and resulting net income of {formatTanzaniaCurrency(taxResult.netIncome)}.
+        These calculation results demonstrate an effective tax rate of {taxResult.effectiveTaxRate.toFixed(1)}% applied to your gross earnings.
         {timeFrame === "monthly" ? 
-          ` Annual savings potential reaches ${formatTanzaniaCurrency(taxResult.netIncome * 12)} from total gross income of ${formatTanzaniaCurrency(income * 12)}.` : 
-          ` Monthly savings and expenses work with ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} from gross monthly income of ${formatTanzaniaCurrency(Math.round(income / 12))}.`
+          ` Calculation results scale to annual tax of ${formatTanzaniaCurrency(taxResult.netTax * 12)} and net income of ${formatTanzaniaCurrency(taxResult.netIncome * 12)}.` : 
+          ` Calculation results break down to monthly tax of ${formatTanzaniaCurrency(Math.round(taxResult.netTax / 12))} and net income of ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))}.`
         }
-        Savings tax optimization benefits from your {taxResult.effectiveTaxRate.toFixed(1)}% effective rate and {taxResult.marginalTaxRate}% marginal tax position.
-        Savings strategies should leverage pension contributions that provide immediate tax advantages.
+        The results place you in the {taxResult.marginalTaxRate}% marginal tax bracket, with social security contributions factored into the tax base calculation.
       </p>
     ),
     
-    // Variation 19 - Financial security
+    // Variation 14 - PAYE tax assessment
     () => (
       <p className="text-gray-700 leading-relaxed">
-        Financial security planning around your {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} ensures {formatTanzaniaCurrency(taxResult.netIncome)} remains available for security building after meeting {formatTanzaniaCurrency(taxResult.netTax)} in tax obligations.
+        PAYE tax assessment on your {timeFrame} income of {formatTanzaniaCurrency(taxResult.grossIncome)} results in tax liability of {formatTanzaniaCurrency(taxResult.netTax)} and take-home pay of {formatTanzaniaCurrency(taxResult.netIncome)}.
+        This assessment reflects the current PAYE tax rates with an effective rate of {taxResult.effectiveTaxRate.toFixed(1)}% for your income bracket.
         {timeFrame === "monthly" ? 
-          ` Financial security scales to ${formatTanzaniaCurrency(taxResult.netIncome * 12)} annually from ${formatTanzaniaCurrency(income * 12)} gross annual income.` : 
-          ` Financial security provides ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} monthly from ${formatTanzaniaCurrency(Math.round(income / 12))} gross monthly income.`
+          ` Annual assessment totals: ${formatTanzaniaCurrency(taxResult.netTax * 12)} in tax liability from ${formatTanzaniaCurrency(income * 12)} gross income.` : 
+          ` Monthly assessment averages: ${formatTanzaniaCurrency(Math.round(taxResult.netTax / 12))} in tax liability from ${formatTanzaniaCurrency(Math.round(income / 12))} gross income.`
         }
-        Security planning incorporates an effective tax rate of {taxResult.effectiveTaxRate.toFixed(1)}% and marginal tax implications at {taxResult.marginalTaxRate}%.
-        Financial security benefits significantly from pension contributions that reduce immediate tax burden while building long-term security.
+        Your tax assessment positions you in the {taxResult.marginalTaxRate}% marginal rate category, with mandatory pension contributions reducing the assessable income.
       </p>
     ),
     
-    // Variation 20 - Comprehensive overview
+    // Variation 15 - Income after tax analysis
     () => (
       <p className="text-gray-700 leading-relaxed">
-        A comprehensive overview of your {timeFrame} financial position shows {formatTanzaniaCurrency(taxResult.grossIncome)} in gross income supporting {formatTanzaniaCurrency(taxResult.netIncome)} in net financial capacity after comprehensive tax planning that includes {formatTanzaniaCurrency(taxResult.netTax)} in PAYE obligations.
+        Income after tax analysis of your {timeFrame} earnings of {formatTanzaniaCurrency(taxResult.grossIncome)} shows {formatTanzaniaCurrency(taxResult.netIncome)} remaining after {formatTanzaniaCurrency(taxResult.netTax)} in PAYE deductions.
+        This after-tax income represents {(100 - taxResult.effectiveTaxRate).toFixed(1)}% of your gross earnings, with {taxResult.effectiveTaxRate.toFixed(1)}% allocated to tax obligations.
         {timeFrame === "monthly" ? 
-          ` Comprehensive annual financial position: ${formatTanzaniaCurrency(income * 12)} gross income supporting ${formatTanzaniaCurrency(taxResult.netIncome * 12)} net annual capacity.` : 
-          ` Comprehensive monthly financial position: ${formatTanzaniaCurrency(Math.round(income / 12))} gross income supporting ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} net monthly capacity.`
+          ` Annual after-tax analysis: ${formatTanzaniaCurrency(taxResult.netIncome * 12)} from ${formatTanzaniaCurrency(income * 12)} gross annual income.` : 
+          ` Monthly after-tax analysis: ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} from ${formatTanzaniaCurrency(Math.round(income / 12))} gross monthly income.`
         }
-        Comprehensive tax analysis reveals an effective rate of {taxResult.effectiveTaxRate.toFixed(1)}% and strategic positioning in the {taxResult.marginalTaxRate}% marginal bracket.
-        Comprehensive financial planning maximizes the benefits of pension contributions that enhance overall tax efficiency and retirement preparedness.
+        The analysis confirms your {taxResult.marginalTaxRate}% marginal tax rate position, with social security contributions providing beneficial tax treatment in the calculation.
       </p>
     )
   ];
