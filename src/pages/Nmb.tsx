@@ -74,6 +74,7 @@ const Nmb = () => {
         <CrdbCalculator 
           timeFrame={timeFrame}
           onTimeFrameChange={handleTimeFrameChange}
+          bankPath="nmb"
         />
 
         <p className="text-gray-600 mb-8">

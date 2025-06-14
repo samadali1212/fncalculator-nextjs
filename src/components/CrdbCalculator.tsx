@@ -16,9 +16,17 @@ interface CrdbCalculatorProps {
   initialAmount?: string;
   initialRate?: string;
   initialTerm?: string;
+  bankPath?: string; // Add bankPath prop
 }
 
-const CrdbCalculator = ({ timeFrame, onTimeFrameChange, initialAmount, initialRate, initialTerm }: CrdbCalculatorProps) => {
+const CrdbCalculator = ({ 
+  timeFrame, 
+  onTimeFrameChange, 
+  initialAmount, 
+  initialRate, 
+  initialTerm,
+  bankPath = "crdb" // Default to "crdb" for backward compatibility
+}: CrdbCalculatorProps) => {
   const navigate = useNavigate();
   const [loanAmount, setLoanAmount] = useState(initialAmount || "5000000");
   const [interestRate, setInterestRate] = useState(initialRate || "13");
@@ -91,7 +99,7 @@ const CrdbCalculator = ({ timeFrame, onTimeFrameChange, initialAmount, initialRa
 
   const handleViewDetails = () => {
     if (loanResult) {
-      navigate(`/crdb/${timeFrame}/${numericLoanAmount}/${numericInterestRate}/${numericLoanTerm}`);
+      navigate(`/${bankPath}/${timeFrame}/${numericLoanAmount}/${numericInterestRate}/${numericLoanTerm}`);
     }
   };
 
