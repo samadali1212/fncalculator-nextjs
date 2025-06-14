@@ -31,7 +31,7 @@ const Paye = () => {
   
   const taxResults = generateTanzaniaTaxCalculations(
     timeFrame === "monthly" ? 270000 : 3240000,    // Min: TSh 100,000 monthly / TSh 1,200,000 yearly
-    timeFrame === "monthly" ? 3500000 : 42000000,  // Max: TSh 2,000,000 monthly / TSh 24,000,000 yearly
+    timeFrame === "monthly" ? 2070000 : 24840000,  // Max: TSh 2,000,000 monthly / TSh 24,000,000 yearly
     timeFrame === "monthly" ? 100000 : 1200000,      // Step: TSh 10,000 monthly / TSh 120,000 yearly
     timeFrame
   );
