@@ -162,6 +162,14 @@ const PayeCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeCal
               </div>
             </div>
           </motion.div>
+
+          {/* Dynamic Paragraph */}
+          <div className="text-sm text-gray-600 leading-relaxed">
+            <p>
+              Your {timeFrame} income of {formatTanzaniaCurrency(customTaxResult.grossIncome)} falls under the {customTaxResult.marginalTaxRate}% tax bracket, resulting in an effective tax rate of {customTaxResult.effectiveTaxRate.toFixed(1)}%. 
+              Click below to see the complete breakdown of your tax calculation including all applicable deductions and bracket details.
+            </p>
+          </div>
           
           {/* View Details Button */}
           <Button 
