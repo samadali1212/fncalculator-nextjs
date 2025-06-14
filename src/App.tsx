@@ -16,6 +16,7 @@ import Crdb from "./pages/Crdb";
 import Nmb from "./pages/Nmb";
 import Nbc from "./pages/Nbc";
 import Absa from "./pages/Absa";
+import Azania from "./pages/Azania";
 import LoanDetail from "./pages/LoanDetail";
 import MonthPageWrapper from "./components/MonthPageWrapper";
 
@@ -89,6 +90,14 @@ const App = () => {
           <Route path="/absa/monthly/:amount/:rate/:term" element={<LoanDetail />} />
           <Route path="/absa/yearly/:amount/:rate/:term" element={<LoanDetail />} />
           <Route path="/absa/:amount/:rate/:term" element={<LoanDetail />} />
+
+          {/* Azania Bank Personal Loan Calculator Routes */}
+          <Route path="/azania" element={<Azania />} />
+          <Route path="/azania/monthly" element={<Azania />} />
+          <Route path="/azania/yearly" element={<Azania />} />
+          <Route path="/azania/monthly/:amount/:rate/:term" element={<LoanDetail />} />
+          <Route path="/azania/yearly/:amount/:rate/:term" element={<LoanDetail />} />
+          <Route path="/azania/:amount/:rate/:term" element={<LoanDetail />} />
                         
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

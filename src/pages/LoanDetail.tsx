@@ -29,8 +29,9 @@ const LoanDetail = () => {
   const isNmbBank = window.location.pathname.includes("/nmb");
   const isNbcBank = window.location.pathname.includes("/nbc");
   const isAbsaBank = window.location.pathname.includes("/absa");
-  const bankName = isAbsaBank ? "ABSA" : (isNbcBank ? "NBC" : (isNmbBank ? "NMB" : "CRDB"));
-  const bankPath = isAbsaBank ? "absa" : (isNbcBank ? "nbc" : (isNmbBank ? "nmb" : "crdb"));
+  const isAzaniaBank = window.location.pathname.includes("/azania");
+  const bankName = isAzaniaBank ? "Azania" : (isAbsaBank ? "ABSA" : (isNbcBank ? "NBC" : (isNmbBank ? "NMB" : "CRDB")));
+  const bankPath = isAzaniaBank ? "azania" : (isAbsaBank ? "absa" : (isNbcBank ? "nbc" : (isNmbBank ? "nmb" : "crdb")));
   
   // Determine timeframe from URL
   useEffect(() => {
