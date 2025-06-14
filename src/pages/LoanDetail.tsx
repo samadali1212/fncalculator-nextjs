@@ -15,10 +15,12 @@ import {
   formatCurrency,
   CrdbTimeFrame 
 } from "../utils/loanCalculator";
+import { usePageReload } from "../hooks/usePageReload";
 
 const LoanDetail = () => {
   const { amount, rate, term } = useParams();
   const navigate = useNavigate();
+  const { pageKey, isLoading } = usePageReload();
   
   const [timeFrame, setTimeFrame] = useState<CrdbTimeFrame>("monthly");
   const [currentLoanAmount, setCurrentLoanAmount] = useState(0);
@@ -83,6 +85,7 @@ const LoanDetail = () => {
   if (!amount || !rate || !term || loanAmount <= 0 || interestRate <= 0 || loanTerm <= 0) {
     return (
       <motion.div
+        key={pageKey}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="min-h-screen bg-[#f6f6f0]"
@@ -113,8 +116,25 @@ const LoanDetail = () => {
   // Format currency for the title without spaces
   const formattedCurrencyForTitle = formatCurrency(currentLoanAmount).replace(/\s/g, "");
 
+  if (isLoading) {
+    return (
+      <motion.div
+        key={pageKey}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="min-h-screen bg-[#f6f6f0] flex items-center justify-center"
+      >
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
+      key={pageKey}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
