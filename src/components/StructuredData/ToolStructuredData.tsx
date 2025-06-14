@@ -69,8 +69,8 @@ const ToolStructuredData = ({ toolType }: ToolStructuredDataProps) => {
       return {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "PAYE Tax Calculator Tanzania 2024/2025 - Free Online Tool",
-        "description": "Free online PAYE tax calculator for Tanzania mainland. Calculate your monthly and annual income tax, PAYE rates, and take-home pay based on current TRA tax brackets for 2024/2025.",
+        "name": "PAYE Tax Calculator Tanzania",
+        "description": "Free online PAYE tax calculator in Tanzania. Calculate your monthly and annual income tax, PAYE rates, and take-home pay based on current TRA tax brackets for 2024/2025.",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": ["Web"],
         "url": "https://denilagari.com/paye",
