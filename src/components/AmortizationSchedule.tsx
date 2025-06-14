@@ -1,3 +1,4 @@
+
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { formatCurrency, CrdbTimeFrame } from "../utils/loanCalculator";
 
@@ -45,9 +46,8 @@ const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }:
       remainingBalance = Math.max(0, remainingBalance - principalPayment);
       cumulativeInterest += interestPayment;
       
-      // Calculate payment date
-      const paymentDate = new Date(startDate);
-      paymentDate.setMonth(startDate.getMonth() + period);
+      // Calculate payment date - fix the date calculation
+      const paymentDate = new Date(startDate.getFullYear(), startDate.getMonth() + period, startDate.getDate());
       
       schedule.push({
         period,
