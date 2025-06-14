@@ -68,9 +68,6 @@ const Paye = () => {
           Ideal for anyone needing a PAYE calculator for Tanzania mainland or simply learning how to calculate PAYE in Tanzania. 
           From PAYE tax breakdowns to personalized figures, the calculator gives you everything you need. 
         </p>
-        <p className="text-gray-600 mb-8">
-        <em><strong>Note that PAYE is calculated after deducting NSSF or PSSSF contributions from your gross income.</strong></em>
-        </p>
 
         {/* Custom Income Calculator */}
         <PayeCalculator 
@@ -210,6 +207,9 @@ const Paye = () => {
             </CollapsibleContent>
           </Collapsible>
         </motion.div>
+      <p className="text-gray-600 mb-8">
+        <em><strong>Note that PAYE is calculated after deducting NSSF or PSSSF contributions from your gross income.</strong></em>
+        </p>
         
         {/* Time Frame Toggle - Full Width */}
         <motion.div 
