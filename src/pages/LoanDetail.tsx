@@ -6,7 +6,7 @@ import { ChevronLeft, Calculator } from "lucide-react";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
-import CrdbCalculator from "../components/CrdbCalculator";
+import LoanDetailCalculator from "../components/LoanDetailCalculator";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -16,11 +16,14 @@ import {
   CrdbTimeFrame 
 } from "../utils/loanCalculator";
 
-const CrdbDetail = () => {
+const LoanDetail = () => {
   const { amount, rate, term } = useParams();
   const navigate = useNavigate();
   
   const [timeFrame, setTimeFrame] = useState<CrdbTimeFrame>("monthly");
+  const [currentLoanAmount, setCurrentLoanAmount] = useState(0);
+  const [currentInterestRate, setCurrentInterestRate] = useState(0);
+  const [currentLoanTerm, setCurrentLoanTerm] = useState(0);
   
   // Determine timeframe from URL
   useEffect(() => {
@@ -37,21 +40,36 @@ const CrdbDetail = () => {
   const interestRate = parseFloat(rate || "0");
   const loanTerm = parseInt(term || "0");
 
-  // Calculate loan details
-  const loanResult = getCrdbLoanCalculation(loanAmount, interestRate, loanTerm, timeFrame);
+  // Set initial values
+  useEffect(() => {
+    setCurrentLoanAmount(loanAmount);
+    setCurrentInterestRate(interestRate);
+    setCurrentLoanTerm(loanTerm);
+  }, [loanAmount, interestRate, loanTerm]);
+
+  // Calculate loan details using current values
+  const loanResult = currentLoanAmount > 0 && currentInterestRate > 0 && currentLoanTerm > 0
+    ? getCrdbLoanCalculation(currentLoanAmount, currentInterestRate, currentLoanTerm, timeFrame)
+    : null;
 
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
       setTimeFrame(value as CrdbTimeFrame);
       // Convert term when switching timeframes
-      let convertedTerm = loanTerm;
+      let convertedTerm = currentLoanTerm;
       if (timeFrame === "monthly" && value === "yearly") {
-        convertedTerm = Math.round(loanTerm / 12);
+        convertedTerm = Math.round(currentLoanTerm / 12);
       } else if (timeFrame === "yearly" && value === "monthly") {
-        convertedTerm = loanTerm * 12;
+        convertedTerm = currentLoanTerm * 12;
       }
-      navigate(`/crdb/${value}/${loanAmount}/${interestRate}/${convertedTerm}`);
+      navigate(`/crdb/${value}/${currentLoanAmount}/${currentInterestRate}/${convertedTerm}`);
     }
+  };
+
+  const handleLoanChange = (newLoanAmount: number, newInterestRate: number, newLoanTerm: number) => {
+    setCurrentLoanAmount(newLoanAmount);
+    setCurrentInterestRate(newInterestRate);
+    setCurrentLoanTerm(newLoanTerm);
   };
 
   if (!amount || !rate || !term || loanAmount <= 0 || interestRate <= 0 || loanTerm <= 0) {
@@ -85,7 +103,7 @@ const CrdbDetail = () => {
   }
 
   // Format currency for the title without spaces
-  const formattedCurrencyForTitle = formatCurrency(loanAmount).replace(/\s/g, "");
+  const formattedCurrencyForTitle = formatCurrency(currentLoanAmount).replace(/\s/g, "");
 
   return (
     <motion.div
@@ -94,9 +112,9 @@ const CrdbDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`CRDB Loan Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${formatCurrency(loanResult.payment)}`}
-        description={`Calculate your CRDB Bank personal loan of ${formatCurrency(loanAmount)} at ${interestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}.`}
-        canonicalUrl={`/crdb/${timeFrame}/${loanAmount}/${interestRate}/${loanTerm}`}
+        title={`CRDB Loan Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${loanResult ? formatCurrency(loanResult.payment) : ""}`}
+        description={`Calculate your CRDB Bank personal loan of ${formatCurrency(currentLoanAmount)} at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
+        canonicalUrl={`/crdb/${timeFrame}/${currentLoanAmount}/${currentInterestRate}/${currentLoanTerm}`}
       />
       <Header />
       
@@ -120,79 +138,84 @@ const CrdbDetail = () => {
           {/* Title Section - No Background */}
           <div className="mb-6">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
-              CRDB Loan Calculator On {formatCurrency(loanResult.loanAmount)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Payment
+              CRDB Loan Calculator On {formatCurrency(currentLoanAmount)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Payment
             </h1>
           </div>
 
           {/* Calculator Section - No Background */}
           <div className="mb-6">
-            <CrdbCalculator 
+            <LoanDetailCalculator 
               timeFrame={timeFrame}
               onTimeFrameChange={handleTimeFrameChange}
               initialAmount={loanAmount.toString()}
               initialRate={interestRate.toString()}
               initialTerm={loanTerm.toString()}
+              onLoanChange={handleLoanChange}
             />
           </div>
 
-          {/* Combined Loan Overview and Detailed Breakdown Section */}
-          <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
-            <h2 className="text-xl font-semibold mb-4">Loan Overview & Breakdown</h2>
-            
-            <div className="prose prose-sm sm:prose max-w-none mb-6">
-              <p>
-                Your loan of {formatCurrency(loanResult.loanAmount)} at {loanResult.interestRate}% interest rate for {loanResult.termDisplay} will require {timeFrame === "monthly" ? "monthly" : "annual"} payments of {formatCurrency(loanResult.payment)}. 
-                The total interest you'll pay over the life of the loan is {formatCurrency(loanResult.totalInterest)}, making your total repayment {formatCurrency(loanResult.totalRepayment)}.
-              </p>
-            </div>
-            
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Description</TableHead>
-                  <TableHead className="text-right">Amount</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow className="border-b border-gray-200">
-                  <TableCell>Loan Amount</TableCell>
-                  <TableCell className="text-right">{formatCurrency(loanResult.loanAmount)}</TableCell>
-                </TableRow>
-                <TableRow className="border-b border-gray-200">
-                  <TableCell>Interest Rate</TableCell>
-                  <TableCell className="text-right">{loanResult.interestRate}%</TableCell>
-                </TableRow>
-                <TableRow className="border-b border-gray-200">
-                  <TableCell>Loan Term</TableCell>
-                  <TableCell className="text-right">{loanResult.termDisplay}</TableCell>
-                </TableRow>
-                <TableRow className="font-medium border-b border-gray-200">
-                  <TableCell>{timeFrame === "monthly" ? "Monthly" : "Annual"} Payment</TableCell>
-                  <TableCell className="text-right">{formatCurrency(loanResult.payment)}</TableCell>
-                </TableRow>
-                <TableRow className="border-b border-gray-200">
-                  <TableCell>Total Interest</TableCell>
-                  <TableCell className="text-right">{formatCurrency(loanResult.totalInterest)}</TableCell>
-                </TableRow>
-                <TableRow className="bg-gray-50 font-medium border-b border-gray-200">
-                  <TableCell>Total Repayment</TableCell>
-                  <TableCell className="text-right">{formatCurrency(loanResult.totalRepayment)}</TableCell>
-                </TableRow>
-                {timeFrame === "yearly" && (
-                  <TableRow className="bg-gray-50">
-                    <TableCell>Monthly Payment</TableCell>
-                    <TableCell className="text-right">{formatCurrency(Math.round(loanResult.payment / 12))}</TableCell>
-                  </TableRow>
-                )}
-                {timeFrame === "monthly" && (
-                  <TableRow className="bg-gray-50">
-                    <TableCell>Annual Payment</TableCell>
-                    <TableCell className="text-right">{formatCurrency(loanResult.payment * 12)}</TableCell>
-                  </TableRow>
-                )}
-              </TableBody>
-            </Table>
-          </div>
+          {loanResult && (
+            <>
+              {/* Combined Loan Overview and Detailed Breakdown Section */}
+              <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
+                <h2 className="text-xl font-semibold mb-4">Loan Overview & Breakdown</h2>
+                
+                <div className="prose prose-sm sm:prose max-w-none mb-6">
+                  <p>
+                    Your loan of {formatCurrency(loanResult.loanAmount)} at {loanResult.interestRate}% interest rate for {loanResult.termDisplay} will require {timeFrame === "monthly" ? "monthly" : "annual"} payments of {formatCurrency(loanResult.payment)}. 
+                    The total interest you'll pay over the life of the loan is {formatCurrency(loanResult.totalInterest)}, making your total repayment {formatCurrency(loanResult.totalRepayment)}.
+                  </p>
+                </div>
+                
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Description</TableHead>
+                      <TableHead className="text-right">Amount</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow className="border-b border-gray-200">
+                      <TableCell>Loan Amount</TableCell>
+                      <TableCell className="text-right">{formatCurrency(loanResult.loanAmount)}</TableCell>
+                    </TableRow>
+                    <TableRow className="border-b border-gray-200">
+                      <TableCell>Interest Rate</TableCell>
+                      <TableCell className="text-right">{loanResult.interestRate}%</TableCell>
+                    </TableRow>
+                    <TableRow className="border-b border-gray-200">
+                      <TableCell>Loan Term</TableCell>
+                      <TableCell className="text-right">{loanResult.termDisplay}</TableCell>
+                    </TableRow>
+                    <TableRow className="font-medium border-b border-gray-200">
+                      <TableCell>{timeFrame === "monthly" ? "Monthly" : "Annual"} Payment</TableCell>
+                      <TableCell className="text-right">{formatCurrency(loanResult.payment)}</TableCell>
+                    </TableRow>
+                    <TableRow className="border-b border-gray-200">
+                      <TableCell>Total Interest</TableCell>
+                      <TableCell className="text-right">{formatCurrency(loanResult.totalInterest)}</TableCell>
+                    </TableRow>
+                    <TableRow className="bg-gray-50 font-medium border-b border-gray-200">
+                      <TableCell>Total Repayment</TableCell>
+                      <TableCell className="text-right">{formatCurrency(loanResult.totalRepayment)}</TableCell>
+                    </TableRow>
+                    {timeFrame === "yearly" && (
+                      <TableRow className="bg-gray-50">
+                        <TableCell>Monthly Payment</TableCell>
+                        <TableCell className="text-right">{formatCurrency(Math.round(loanResult.payment / 12))}</TableCell>
+                      </TableRow>
+                    )}
+                    {timeFrame === "monthly" && (
+                      <TableRow className="bg-gray-50">
+                        <TableCell>Annual Payment</TableCell>
+                        <TableCell className="text-right">{formatCurrency(loanResult.payment * 12)}</TableCell>
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+              </div>
+            </>
+          )}
 
           <p className="text-sm text-gray-500 text-center">
             <em><strong>Interest rates may vary based on your credit profile and loan terms. Contact CRDB Bank for personalized rates.</strong></em>
@@ -211,4 +234,4 @@ const CrdbDetail = () => {
   );
 };
 
-export default CrdbDetail;
+export default LoanDetail;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
@@ -10,15 +10,23 @@ import {
   CrdbTimeFrame
 } from "../utils/loanCalculator";
 
-interface CrdbCalculatorProps {
+interface LoanDetailCalculatorProps {
   timeFrame: CrdbTimeFrame;
   onTimeFrameChange: (value: string) => void;
   initialAmount?: string;
   initialRate?: string;
   initialTerm?: string;
+  onLoanChange?: (loanAmount: number, interestRate: number, loanTerm: number) => void;
 }
 
-const CrdbCalculator = ({ timeFrame, onTimeFrameChange, initialAmount, initialRate, initialTerm }: CrdbCalculatorProps) => {
+const LoanDetailCalculator = ({ 
+  timeFrame, 
+  onTimeFrameChange, 
+  initialAmount, 
+  initialRate, 
+  initialTerm,
+  onLoanChange 
+}: LoanDetailCalculatorProps) => {
   const navigate = useNavigate();
   const [loanAmount, setLoanAmount] = useState(initialAmount || "5000000");
   const [interestRate, setInterestRate] = useState(initialRate || "13");
@@ -48,6 +56,13 @@ const CrdbCalculator = ({ timeFrame, onTimeFrameChange, initialAmount, initialRa
   const loanResult = numericLoanAmount > 0 && numericInterestRate > 0 && numericLoanTerm > 0
     ? getCrdbLoanCalculation(numericLoanAmount, numericInterestRate, numericLoanTerm, timeFrame)
     : null;
+
+  // Call onLoanChange whenever the loan parameters change
+  useEffect(() => {
+    if (onLoanChange && numericLoanAmount > 0 && numericInterestRate > 0 && numericLoanTerm > 0) {
+      onLoanChange(numericLoanAmount, numericInterestRate, numericLoanTerm);
+    }
+  }, [numericLoanAmount, numericInterestRate, numericLoanTerm, onLoanChange]);
 
   const handleLoanAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/[^0-9]/g, '');
@@ -94,7 +109,7 @@ const CrdbCalculator = ({ timeFrame, onTimeFrameChange, initialAmount, initialRa
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="mb-8 space-y-6"
+      className="space-y-6"
     >
       {/* Loan Amount Input */}
       <div className="space-y-2">
@@ -212,8 +227,7 @@ const CrdbCalculator = ({ timeFrame, onTimeFrameChange, initialAmount, initialRa
           {/* Dynamic Paragraph */}
           <div className="text-sm text-gray-600 leading-relaxed">
             <p>
-              Your loan of {formatCurrency(loanResult.loanAmount)} at {loanResult.interestRate}% interest rate for {loanResult.termDisplay} will require {timeFrame === "monthly" ? "monthly" : "annual"} payments of {formatCurrency(loanResult.payment)}. 
-              The total interest you'll pay over the life of the loan is {formatCurrency(loanResult.totalInterest)}.
+              Your loan of {formatCurrency(loanResult.loanAmount)} at {loanResult.interestRate}% interest rate for {loanResult.termDisplay} will require {timeFrame === "monthly" ? "monthly" : "annual"} payments of {formatCurrency(loanResult.payment)}.
             </p>
           </div>
         </>
@@ -222,4 +236,4 @@ const CrdbCalculator = ({ timeFrame, onTimeFrameChange, initialAmount, initialRa
   );
 };
 
-export default CrdbCalculator;
+export default LoanDetailCalculator;
