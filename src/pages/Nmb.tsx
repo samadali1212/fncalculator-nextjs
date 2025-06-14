@@ -56,18 +56,17 @@ const Nmb = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="NMB Bank Personal Loan Calculator 2024/2025 - Calculate Monthly Payments" 
-        description="Calculate your NMB Bank personal loan payments with our 2024/2025 calculator. Monthly and annual payment calculations at 15% interest rate with customizable terms."
+        title="NMB Bank Personal Loan Calculator" 
+        description="Calculate your NMB Bank personal loan payments with our calculator. Monthly and annual payment calculations at the current interest rate with customizable terms."
         canonicalUrl={`/nmb${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
       />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <h1 className="text-3xl font-bold mb-2">NMB Bank Personal Loan Calculator 2024/2025</h1>
+        <h1 className="text-3xl font-bold mb-2">NMB Bank Personal Loan Calculator</h1>
         <p className="text-gray-600 mb-8">
-          Calculate your NMB Bank personal loan payments with our comprehensive loan calculator. 
-          Get accurate {timeFrame === "monthly" ? "monthly" : "annual"} payment estimates at competitive interest rates. 
-          Perfect for planning your personal loan with NMB Bank Tanzania, featuring flexible terms and transparent calculations.
+    Quickly estimate your NMB Bank personal loan payments with our user-friendly loan calculator.
+Get accurate {timeFrame === "monthly" ? "monthly" : "yearly"} payment estimates using the latest interest rates. Ideal for planning your loan with NMB—offering flexible repayment options, instant results, and full transparency to support informed borrowing.
         </p>
 
         {/* Custom Loan Calculator */}
