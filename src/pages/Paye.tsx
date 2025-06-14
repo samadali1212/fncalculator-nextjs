@@ -1,8 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Search, ArrowUpRight } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { ArrowUpRight } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
@@ -19,9 +18,14 @@ import {
   PaginationItem,
 } from "@/components/ui/pagination";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const Paye = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const [itemsToShow, setItemsToShow] = useState(50);
   const location = useLocation();
   const navigate = useNavigate();
@@ -36,15 +40,9 @@ const Paye = () => {
     timeFrame === "monthly" ? 10000 : 120000,      // Step: TSh 10,000 monthly / TSh 120,000 yearly
     timeFrame
   );
-  
-  const filteredResults = searchQuery
-    ? taxResults.filter(result => 
-        result.grossIncome.toString().includes(searchQuery) ||
-        result.netIncome.toString().includes(searchQuery))
-    : taxResults;
     
-  const displayedResults = filteredResults.slice(0, itemsToShow);
-  const hasMoreResults = displayedResults.length < filteredResults.length;
+  const displayedResults = taxResults.slice(0, itemsToShow);
+  const hasMoreResults = displayedResults.length < taxResults.length;
   
   const loadMore = () => {
     setItemsToShow(prevItemsToShow => prevItemsToShow + 50);
@@ -80,118 +78,205 @@ const Paye = () => {
           timeFrame={timeFrame}
           onTimeFrameChange={handleTimeFrameChange}
         />
-        
+
+        {/* PAYE Information Accordion */}
         <motion.div 
-          className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4"
+          className="mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-4 w-4 text-gray-400" />
-            </div>
-            <Input
-              type="text"
-              placeholder={`Search ${timeFrame} income...`}
-              className="pl-10"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-          
-          <div>
-            <ToggleGroup 
-              type="single" 
-              value={timeFrame}
-              onValueChange={handleTimeFrameChange}
-              className="w-full border rounded-md"
-            >
-              <ToggleGroupItem value="monthly" className="text-xs px-3 py-1 flex-1">
-                Monthly
-              </ToggleGroupItem>
-              <ToggleGroupItem value="yearly" className="text-xs px-3 py-1 flex-1">
-                Yearly
-              </ToggleGroupItem>
-            </ToggleGroup>
-          </div>
+          <Accordion type="single" collapsible className="w-full space-y-2">
+            <AccordionItem value="what-is-paye" className="bg-white border border-gray-200 rounded-lg px-4">
+              <AccordionTrigger className="text-left hover:no-underline py-4">
+                <span className="font-medium text-gray-900">What is PAYE in Tanzania?</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600 pb-4">
+                <p className="mb-3">
+                  Pay As You Earn (PAYE) is a system of income tax collection in Tanzania where employers deduct tax from employees' salaries before paying them. This ensures continuous tax collection throughout the year.
+                </p>
+                <p className="mb-3">
+                  PAYE applies to employment income including salaries, wages, bonuses, overtime pay, and other benefits. The tax is calculated based on progressive tax brackets, meaning higher earners pay higher rates.
+                </p>
+                <p>
+                  All employers in Tanzania are required to register for PAYE and deduct tax from their employees' salaries before remitting it to the Tanzania Revenue Authority (TRA).
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="tax-brackets" className="bg-white border border-gray-200 rounded-lg px-4">
+              <AccordionTrigger className="text-left hover:no-underline py-4">
+                <span className="font-medium text-gray-900">Tanzania PAYE Tax Brackets 2024/2025</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600 pb-4">
+                <p className="mb-3">Tanzania uses a progressive tax system with the following monthly brackets:</p>
+                <div className="space-y-2 mb-3">
+                  <div className="flex justify-between p-2 bg-gray-50 rounded">
+                    <span>TSh 0 - 270,000</span>
+                    <span className="font-medium">0%</span>
+                  </div>
+                  <div className="flex justify-between p-2 bg-gray-50 rounded">
+                    <span>TSh 270,001 - 520,000</span>
+                    <span className="font-medium">9%</span>
+                  </div>
+                  <div className="flex justify-between p-2 bg-gray-50 rounded">
+                    <span>TSh 520,001 - 760,000</span>
+                    <span className="font-medium">20%</span>
+                  </div>
+                  <div className="flex justify-between p-2 bg-gray-50 rounded">
+                    <span>TSh 760,001 - 1,000,000</span>
+                    <span className="font-medium">25%</span>
+                  </div>
+                  <div className="flex justify-between p-2 bg-gray-50 rounded">
+                    <span>Above TSh 1,000,000</span>
+                    <span className="font-medium">30%</span>
+                  </div>
+                </div>
+                <p className="text-sm">
+                  Note: These are monthly brackets. Annual brackets are calculated by multiplying by 12.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="deductions" className="bg-white border border-gray-200 rounded-lg px-4">
+              <AccordionTrigger className="text-left hover:no-underline py-4">
+                <span className="font-medium text-gray-900">PAYE Deductions and Allowances</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600 pb-4">
+                <p className="mb-3">
+                  Before calculating PAYE tax, certain deductions are made from gross income:
+                </p>
+                <ul className="list-disc list-inside space-y-2 mb-3">
+                  <li><strong>NSSF Contributions:</strong> National Social Security Fund contributions (worker's portion)</li>
+                  <li><strong>PSSSF Contributions:</strong> Public Service Social Security Fund (for public servants)</li>
+                  <li><strong>LAPF Contributions:</strong> Local Authorities Provident Fund (for local government employees)</li>
+                  <li><strong>Other approved pension schemes</strong></li>
+                </ul>
+                <p className="mb-3">
+                  The standard NSSF contribution rate is 10% of basic salary (5% employee + 5% employer), with a maximum monthly contribution ceiling.
+                </p>
+                <p>
+                  PAYE tax is then calculated on the income remaining after these deductions.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="employer-obligations" className="bg-white border border-gray-200 rounded-lg px-4">
+              <AccordionTrigger className="text-left hover:no-underline py-4">
+                <span className="font-medium text-gray-900">Employer PAYE Obligations</span>
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600 pb-4">
+                <p className="mb-3">
+                  Employers in Tanzania have several PAYE-related responsibilities:
+                </p>
+                <ul className="list-disc list-inside space-y-2 mb-3">
+                  <li>Register for PAYE with Tanzania Revenue Authority (TRA)</li>
+                  <li>Deduct correct amount of PAYE tax from employee salaries</li>
+                  <li>Remit PAYE tax to TRA by the 15th of the following month</li>
+                  <li>Submit monthly PAYE returns</li>
+                  <li>Issue P9A forms (tax deduction cards) to employees</li>
+                  <li>Submit annual returns and reconciliation</li>
+                </ul>
+                <p className="mb-3">
+                  <strong>Penalties:</strong> Late payment or non-compliance attracts penalties and interest charges from TRA.
+                </p>
+                <p>
+                  Employers must keep proper records of all PAYE transactions for audit purposes.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </motion.div>
+        
+        {/* Time Frame Toggle */}
+        <motion.div 
+          className="mb-6 flex justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <ToggleGroup 
+            type="single" 
+            value={timeFrame}
+            onValueChange={handleTimeFrameChange}
+            className="border rounded-md"
+          >
+            <ToggleGroupItem value="monthly" className="text-xs px-6 py-2">
+              Monthly
+            </ToggleGroupItem>
+            <ToggleGroupItem value="yearly" className="text-xs px-6 py-2">
+              Yearly
+            </ToggleGroupItem>
+          </ToggleGroup>
         </motion.div>
 
         <div className="bg-white rounded-sm shadow-sm border border-gray-200">
-          {filteredResults.length === 0 ? (
-            <div className="p-6 text-center text-gray-500">
-              No tax calculations found matching "{searchQuery}"
+          <div className="p-4 border-b border-gray-100 bg-gray-50">
+            <div className="grid grid-cols-12 text-xs font-medium text-gray-600">
+              <div className="col-span-4 md:col-span-3">{timeFrame === "monthly" ? "Monthly" : "Annual"} Income</div>
+              <div className="col-span-4 md:col-span-3">After Tax</div>
+              <div className="hidden md:block md:col-span-2">Tax Amount</div>
+              <div className="col-span-3 md:col-span-2">Tax Rate</div>
+              <div className="hidden md:block md:col-span-2">Marginal Rate</div>
             </div>
-          ) : (
-            <>
-              <div className="p-4 border-b border-gray-100 bg-gray-50">
-                <div className="grid grid-cols-12 text-xs font-medium text-gray-600">
-                  <div className="col-span-4 md:col-span-3">{timeFrame === "monthly" ? "Monthly" : "Annual"} Income</div>
-                  <div className="col-span-4 md:col-span-3">After Tax</div>
-                  <div className="hidden md:block md:col-span-2">Tax Amount</div>
-                  <div className="col-span-3 md:col-span-2">Tax Rate</div>
-                  <div className="hidden md:block md:col-span-2">Marginal Rate</div>
+          </div>
+          
+          {displayedResults.map((result, index) => (
+            <motion.div 
+              key={result.grossIncome}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              className={`group px-4 py-3 ${index !== displayedResults.length - 1 ? 'border-b border-gray-100' : ''}`}
+            >
+              <div className="grid grid-cols-12 items-center">
+                <div className="col-span-4 md:col-span-3">
+                  <Link 
+                    to={`/paye/${timeFrame}/${result.grossIncome}`}
+                    className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
+                  >
+                    {formatTanzaniaCurrency(result.grossIncome)}
+                    <ArrowUpRight 
+                      className="h-3.5 w-3.5 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
+                    />
+                  </Link>
+                </div>
+                
+                <div className="col-span-4 md:col-span-3">
+                  <span className="text-sm">{formatTanzaniaCurrency(result.netIncome)}</span>
+                </div>
+                
+                <div className="hidden md:block md:col-span-2">
+                  <span className="text-sm">{formatTanzaniaCurrency(result.netTax)}</span>
+                </div>
+                
+                <div className="col-span-3 md:col-span-2">
+                  <span className="px-1.5 py-0.5 bg-gray-100 rounded text-[#666] text-xs">
+                    {result.effectiveTaxRate.toFixed(1)}%
+                  </span>
+                </div>
+                
+                <div className="hidden md:block md:col-span-2">
+                  <span className="text-sm">{result.marginalTaxRate}%</span>
                 </div>
               </div>
-              
-              {displayedResults.map((result, index) => (
-                <motion.div 
-                  key={result.grossIncome}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className={`group px-4 py-3 ${index !== displayedResults.length - 1 ? 'border-b border-gray-100' : ''}`}
-                >
-                  <div className="grid grid-cols-12 items-center">
-                    <div className="col-span-4 md:col-span-3">
-                      <Link 
-                        to={`/paye/${timeFrame}/${result.grossIncome}`}
-                        className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
-                      >
-                        {formatTanzaniaCurrency(result.grossIncome)}
-                        <ArrowUpRight 
-                          className="h-3.5 w-3.5 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
-                        />
-                      </Link>
-                    </div>
-                    
-                    <div className="col-span-4 md:col-span-3">
-                      <span className="text-sm">{formatTanzaniaCurrency(result.netIncome)}</span>
-                    </div>
-                    
-                    <div className="hidden md:block md:col-span-2">
-                      <span className="text-sm">{formatTanzaniaCurrency(result.netTax)}</span>
-                    </div>
-                    
-                    <div className="col-span-3 md:col-span-2">
-                      <span className="px-1.5 py-0.5 bg-gray-100 rounded text-[#666] text-xs">
-                        {result.effectiveTaxRate.toFixed(1)}%
-                      </span>
-                    </div>
-                    
-                    <div className="hidden md:block md:col-span-2">
-                      <span className="text-sm">{result.marginalTaxRate}%</span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-              
-              {hasMoreResults && (
-                <Pagination className="py-5">
-                  <PaginationContent>
-                    <PaginationItem className="w-full">
-                      <Button 
-                        variant="outline" 
-                        onClick={loadMore} 
-                        className="w-full"
-                      >
-                        Load More Results
-                      </Button>
-                    </PaginationItem>
-                  </PaginationContent>
-                </Pagination>
-              )}
-            </>
+            </motion.div>
+          ))}
+          
+          {hasMoreResults && (
+            <Pagination className="py-5">
+              <PaginationContent>
+                <PaginationItem className="w-full">
+                  <Button 
+                    variant="outline" 
+                    onClick={loadMore} 
+                    className="w-full"
+                  >
+                    Load More Results
+                  </Button>
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
           )}
         </div>
       </main>
