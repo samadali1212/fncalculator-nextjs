@@ -181,29 +181,9 @@ const PayeDetail = () => {
             />
           </div>
           
-          {/* PAYE Tax Overview Section */}
+          {/* PAYE Tax Overview Section - Only Dynamic Paragraph */}
           <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-6">
             <h2 className="text-xl font-semibold mb-4">PAYE Tax Overview</h2>
-            
-            <div className="bg-gray-50 p-4 rounded-md mb-6">
-              <div className="grid md:grid-cols-3 gap-2">
-                <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
-                  <div className="text-gray-600 text-sm mb-1">Gross Income</div>
-                  <div className="text-xl font-bold">{formatTanzaniaCurrency(taxDetails.grossIncome)}</div>
-                  <div className="text-gray-500 text-xs mt-1">{timeFrame === "yearly" ? "Annual" : "Monthly"} before tax</div>
-                </div>
-                <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100 shadow-sm">
-                  <div className="text-gray-600 text-sm mb-1">After Tax Income</div>
-                  <div className="text-2xl font-bold text-primary">{formatTanzaniaCurrency(taxDetails.netIncome)}</div>
-                  <div className="text-gray-500 text-xs mt-1">Take-home pay per {timeFrame === "yearly" ? "year" : "month"}</div>
-                </div>
-                <div className="flex flex-col items-center bg-white p-4 rounded border border-gray-100">
-                  <div className="text-gray-600 text-sm mb-1">PAYE Tax</div>
-                  <div className="text-xl font-bold">{formatTanzaniaCurrency(taxDetails.netTax)}</div>
-                  <div className="text-gray-500 text-xs mt-1">{timeFrame === "yearly" ? "Annual" : "Monthly"} tax amount</div>
-                </div>
-              </div>
-            </div>
             
             <div className="prose prose-sm sm:prose max-w-none">
               <p className="text-gray-700 leading-relaxed">
