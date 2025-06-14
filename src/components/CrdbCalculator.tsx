@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
@@ -86,6 +87,12 @@ const CrdbCalculator = ({ timeFrame, onTimeFrameChange, initialAmount, initialRa
       }
       
       onTimeFrameChange(value);
+    }
+  };
+
+  const handleViewDetails = () => {
+    if (loanResult) {
+      navigate(`/crdb/${timeFrame}/${numericLoanAmount}/${numericInterestRate}/${numericLoanTerm}`);
     }
   };
 
@@ -208,6 +215,16 @@ const CrdbCalculator = ({ timeFrame, onTimeFrameChange, initialAmount, initialRa
               </div>
             </div>
           </motion.div>
+
+          {/* View Detailed Breakdown Button */}
+          <div className="flex justify-center">
+            <Button 
+              onClick={handleViewDetails}
+              className="bg-primary hover:bg-primary/90 text-white px-6 py-2 text-sm"
+            >
+              View Detailed Breakdown
+            </Button>
+          </div>
 
           {/* Dynamic Paragraph */}
           <div className="text-sm text-gray-600 leading-relaxed">
