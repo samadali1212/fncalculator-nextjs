@@ -35,8 +35,8 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
         {timeFrame === "monthly" ? 
           ` Over a full year, your total gross earnings would be ${formatTanzaniaCurrency(income * 12)}, with net earnings of ${formatTanzaniaCurrency(taxResult.netIncome * 12)}.` : 
           ` On a monthly basis, this works out to ${formatTanzaniaCurrency(Math.round(income / 12))} gross income and ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} net income.`
-        }
-         The effective tax burden stands at {taxResult.effectiveTaxRate.toFixed(1)}%, with your income falling within the {taxResult.marginalTaxRate}% tax bracket.
+        } 
+        The effective tax burden stands at {taxResult.effectiveTaxRate.toFixed(1)}%, with your income falling within the {taxResult.marginalTaxRate}% tax bracket.
         These calculations assume standard NSSF/PSSSF deductions are applied before PAYE computation.
       </p>
     ),
@@ -49,7 +49,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
         {timeFrame === "monthly" ? 
           ` Annually, this represents ${formatTanzaniaCurrency(income * 12)} in gross earnings and ${formatTanzaniaCurrency(taxResult.netIncome * 12)} in net earnings.` : 
           ` Monthly, this breaks down to ${formatTanzaniaCurrency(Math.round(income / 12))} gross and ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} net.`
-        }
+        } 
         Social security contributions are factored into these calculations as they reduce taxable income for PAYE purposes.
       </p>
     ),
@@ -61,7 +61,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
         {timeFrame === "monthly" ? 
           ` Scaling up to annual figures: ${formatTanzaniaCurrency(income * 12)} gross income yields ${formatTanzaniaCurrency(taxResult.netIncome * 12)} net income.` : 
           ` On a monthly scale: ${formatTanzaniaCurrency(Math.round(income / 12))} gross becomes ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))} net.`
-        }
+        } 
          This taxation scenario results in an effective rate of {taxResult.effectiveTaxRate.toFixed(1)}% and places you in the {taxResult.marginalTaxRate}% marginal tax category.
         Social security deductions are applied before PAYE calculations, reducing your taxable income base.
       </p>
