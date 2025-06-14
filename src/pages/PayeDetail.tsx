@@ -181,11 +181,11 @@ const PayeDetail = () => {
             />
           </div>
           
-          {/* PAYE Tax Overview Section - Only Dynamic Paragraph */}
-          <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-6">
-            <h2 className="text-xl font-semibold mb-4">PAYE Tax Overview</h2>
+          {/* Combined PAYE Tax Overview and Detailed Breakdown Section */}
+          <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
+            <h2 className="text-xl font-semibold mb-4">PAYE Tax Overview & Breakdown</h2>
             
-            <div className="prose prose-sm sm:prose max-w-none">
+            <div className="prose prose-sm sm:prose max-w-none mb-6">
               <p className="text-gray-700 leading-relaxed">
                 With a {timeFrame === "monthly" ? "monthly" : "yearly"} income of {formatTanzaniaCurrency(taxDetails.grossIncome)} in Tanzania Mainland, your PAYE tax would be approximately 
                 {" "}{formatTanzaniaCurrency(taxDetails.netTax)} per {timeFrame === "yearly" ? "year" : "month"}, leaving you with a take-home pay of 
@@ -198,11 +198,6 @@ const PayeDetail = () => {
                 Please note that PAYE is calculated after deducting NSSF or PSSSF contributions from your gross income.
               </p>
             </div>
-          </div>
-          
-          {/* Detailed Breakdown Section */}
-          <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
-            <h2 className="text-xl font-semibold mb-4">Detailed Breakdown</h2>
             
             <Table>
               <TableHeader>
