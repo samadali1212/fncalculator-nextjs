@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import About from "./pages/About";
@@ -11,6 +12,7 @@ import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 import Paye from "./pages/Paye";
 import PayeDetail from "./pages/PayeDetail";
+import Crdb from "./pages/Crdb";
 import MonthPageWrapper from "./components/MonthPageWrapper";
 
 const App = () => {
@@ -40,9 +42,9 @@ const App = () => {
           {/* SEO-friendly month routes like /january-2025 */}
           <Route path="/:monthYear" element={<MonthPageWrapper />} />
 
-            {/* Blog Routes */}
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogDetail />} />
+          {/* Blog Routes */}
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogDetail />} />
 
           {/* Tanzania PAYE Calculator Routes */}
           <Route path="/paye" element={<Paye />} />
@@ -51,6 +53,11 @@ const App = () => {
           <Route path="/paye/monthly/:incomeId" element={<PayeDetail />} />
           <Route path="/paye/yearly/:incomeId" element={<PayeDetail />} />
           <Route path="/paye/:incomeId" element={<PayeDetail />} />
+
+          {/* CRDB Bank Personal Loan Calculator Routes */}
+          <Route path="/crdb" element={<Crdb />} />
+          <Route path="/crdb/monthly" element={<Crdb />} />
+          <Route path="/crdb/yearly" element={<Crdb />} />
                         
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

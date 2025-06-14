@@ -9,7 +9,7 @@ import {
   getCrdbLoanCalculation,
   formatCurrency,
   CrdbTimeFrame
-} from "../utils/crdbLoanCalculator";
+} from "../utils/loanCalculator";
 
 interface CrdbCalculatorProps {
   timeFrame: CrdbTimeFrame;

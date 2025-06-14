@@ -30,6 +30,7 @@ const Header = () => {
     { path: "/", label: "TMS Check" },
     { path: "/insurance", label: "Insurance Check" },
     { path: "/paye", label: "PAYE Calculator" },
+    { path: "/crdb", label: "CRDB Loan Calculator" },
     { path: "/events", label: "Holidays" },
     { path: "/blog", label: "Blog" },
     { path: "/about", label: "About" }

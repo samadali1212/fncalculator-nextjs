@@ -11,7 +11,7 @@ import {
   generateCrdbLoanCalculations, 
   formatCurrency,
   CrdbTimeFrame
-} from "../utils/crdbLoanCalculator";
+} from "../utils/loanCalculator";
 import {
   Pagination,
   PaginationContent,
