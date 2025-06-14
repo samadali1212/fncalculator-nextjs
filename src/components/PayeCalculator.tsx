@@ -135,7 +135,6 @@ const PayeCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeCal
             transition={{ duration: 0.3 }}
             className="space-y-3"
           >
-            <h4 className="font-medium text-gray-800 text-sm">Tax Calculation Results</h4>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <div className="text-center p-3 bg-white rounded border border-gray-100">
