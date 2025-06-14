@@ -1,3 +1,4 @@
+
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
@@ -5,6 +6,7 @@ import Header from "../components/Header";
 import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
 import PayeDetailCalculator from "../components/PayeDetailCalculator";
+import DynamicTaxParagraph from "../components/DynamicTaxParagraph";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Calendar, ArrowRight } from "lucide-react";
@@ -182,6 +184,9 @@ const PayeDetail = () => {
                 Please note that PAYE is calculated after deducting NSSF or PSSSF contributions from your gross income.
               </p>
             </div>
+
+            {/* Dynamic Paragraph */}
+            <DynamicTaxParagraph taxResult={taxDetails} timeFrame={timeFrame} />
             
             <Table>
               <TableHeader>
