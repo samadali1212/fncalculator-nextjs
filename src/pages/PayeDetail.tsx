@@ -209,6 +209,14 @@ const PayeDetail = () => {
                   <TableCell>PAYE Tax Payable</TableCell>
                   <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.netTax)}</TableCell>
                 </TableRow>
+                <TableRow className="border-b border-gray-200">
+                  <TableCell>Effective Tax Rate</TableCell>
+                  <TableCell className="text-right">{taxDetails.effectiveTaxRate.toFixed(1)}%</TableCell>
+                </TableRow>
+                <TableRow className="border-b border-gray-200">
+                  <TableCell>Marginal Tax Rate</TableCell>
+                  <TableCell className="text-right">{taxDetails.marginalTaxRate}%</TableCell>
+                </TableRow>
                 <TableRow className="bg-gray-50 font-medium border-b border-gray-200">
                   <TableCell>{timeFrame === "yearly" ? "Annual" : "Monthly"} Take-home Pay</TableCell>
                   <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.netIncome)}</TableCell>
