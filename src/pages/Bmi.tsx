@@ -3,7 +3,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Header from "@/components/Header";
 import AdSense from "@/components/AdSense";
 import BmiCalculator from "@/components/BmiCalculator";
@@ -38,22 +37,10 @@ const Bmi = () => {
           </p>
 
           {/* BMI Calculator Component */}
-          <Card className="bg-white shadow-lg mb-8">
-            <CardHeader>
-              <CardTitle className="text-xl font-semibold text-gray-900">
-                Calculate Your BMI
-              </CardTitle>
-              <CardDescription>
-                Enter your height and weight to calculate your Body Mass Index
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <BmiCalculator 
-                unit={unit}
-                onUnitChange={handleUnitChange}
-              />
-            </CardContent>
-          </Card>
+          <BmiCalculator 
+            unit={unit}
+            onUnitChange={handleUnitChange}
+          />
 
           <p className="text-gray-600 mb-8">
             <em>BMI is a screening tool and may not be accurate for athletes, elderly, or pregnant women. Consult healthcare professionals for personalized advice.</em>
@@ -69,13 +56,12 @@ const Bmi = () => {
           </div>
 
           {/* Information Section */}
-          <Card className="bg-white shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-xl font-semibold text-gray-900">
-                About BMI Calculator
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="prose prose-sm max-w-none">
+          <div className="bg-white rounded-sm shadow-sm border border-gray-200 p-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+              About BMI Calculator
+            </h2>
+            
+            <div className="prose prose-sm max-w-none">
               <p className="text-gray-600 mb-4">
                 Body Mass Index (BMI) is a measure of body fat based on height and weight. It's a screening tool 
                 to identify whether an adult is underweight, normal weight, overweight, or obese.
@@ -101,8 +87,8 @@ const Bmi = () => {
                 and may not be accurate for athletes, elderly, or pregnant women. Always consult healthcare 
                 professionals for personalized advice.
               </p>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </main>
 
         <footer className="border-t border-gray-300 py-8 bg-white">

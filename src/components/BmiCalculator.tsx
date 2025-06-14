@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
@@ -17,12 +18,6 @@ const BmiCalculator = ({ unit, onUnitChange }: BmiCalculatorProps) => {
     category: string;
     description: string;
   } | null>(null);
-
-  // Format number with thousand separators (keeping consistency with other calculators)
-  const formatNumberWithSeparators = (value: string): string => {
-    const numericValue = value.replace(/[^0-9.]/g, '');
-    return numericValue;
-  };
 
   const calculateBMI = () => {
     const weightNum = parseFloat(weight);
