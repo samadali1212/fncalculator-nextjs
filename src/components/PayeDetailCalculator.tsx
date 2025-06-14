@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
@@ -14,9 +14,10 @@ interface PayeDetailCalculatorProps {
   timeFrame: TanzaniaTimeFrame;
   onTimeFrameChange: (value: string) => void;
   initialAmount?: string;
+  onIncomeChange?: (income: number) => void;
 }
 
-const PayeDetailCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeDetailCalculatorProps) => {
+const PayeDetailCalculator = ({ timeFrame, onTimeFrameChange, initialAmount, onIncomeChange }: PayeDetailCalculatorProps) => {
   const navigate = useNavigate();
   const [customIncome, setCustomIncome] = useState(initialAmount || (timeFrame === "yearly" ? "6000000" : "500000"));
   
@@ -36,6 +37,13 @@ const PayeDetailCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: P
   const customTaxResult = numericCustomIncome > 0 
     ? getTanzaniaTaxCalculation(numericCustomIncome, timeFrame)
     : null;
+
+  // Call onIncomeChange whenever the income changes
+  useEffect(() => {
+    if (onIncomeChange && numericCustomIncome > 0) {
+      onIncomeChange(numericCustomIncome);
+    }
+  }, [numericCustomIncome, onIncomeChange]);
 
   const handleCustomIncomeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/[^0-9]/g, ''); // Only allow numbers

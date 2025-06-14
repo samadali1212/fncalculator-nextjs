@@ -35,13 +35,18 @@ const PayeDetail = () => {
   
   const navigate = useNavigate();
   
-  const income = incomeId ? parseInt(incomeId) : 0;
+  const initialIncome = incomeId ? parseInt(incomeId) : 0;
+  
+  // Add state for current income that can be updated by the calculator
+  const [currentIncome, setCurrentIncome] = useState(initialIncome);
+  
+  // Use currentIncome for tax calculations instead of the URL income
   const taxDetails = useMemo(() => 
-    getTanzaniaTaxCalculation(income, timeFrame), 
-    [income, timeFrame]
+    getTanzaniaTaxCalculation(currentIncome, timeFrame), 
+    [currentIncome, timeFrame]
   );
   
-  // Get nearby incomes for comparison
+  // Get nearby incomes for comparison (still use initial income from URL)
   const allCalculations = useMemo(() => 
     generateTanzaniaTaxCalculations(
       timeFrame === "monthly" ? 200000 : 2400000,   // Min: TSh 200,000 monthly, TSh 2,400,000 yearly
@@ -53,19 +58,24 @@ const PayeDetail = () => {
   );
   
   const nearbyIncomes = useMemo(() => {
-    if (!income) return [];
+    if (!initialIncome) return [];
     
     return allCalculations
-      .filter(calc => calc.grossIncome !== income)
-      .sort((a, b) => Math.abs(a.grossIncome - income) - Math.abs(b.grossIncome - income))
+      .filter(calc => calc.grossIncome !== initialIncome)
+      .sort((a, b) => Math.abs(a.grossIncome - initialIncome) - Math.abs(b.grossIncome - initialIncome))
       .slice(0, 10);
-  }, [income, allCalculations]);
+  }, [initialIncome, allCalculations]);
 
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
       // Navigate to the same income but with different timeframe
-      navigate(`/paye/${value}/${income}`);
+      navigate(`/paye/${value}/${currentIncome}`);
     }
+  };
+  
+  // Callback function to handle income changes from the calculator
+  const handleIncomeChange = (newIncome: number) => {
+    setCurrentIncome(newIncome);
   };
   
   if (isLoading) {
@@ -113,7 +123,7 @@ const PayeDetail = () => {
   }
 
   // Format currency for the title without spaces
-  const formattedCurrencyForTitle = formatTanzaniaCurrency(income).replace(/\s/g, "");
+  const formattedCurrencyForTitle = formatTanzaniaCurrency(initialIncome).replace(/\s/g, "");
 
   return (
     <motion.div
@@ -126,8 +136,8 @@ const PayeDetail = () => {
     >
       <SEO 
         title={`PAYE Calculator on ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary in Tanzania`}
-        description={`Calculate your PAYE tax for ${formatTanzaniaCurrency(income)} ${timeFrame === "monthly" ? "monthly" : "annual"} income in Tanzania. After tax income: ${formatTanzaniaCurrency(taxDetails.netIncome)}. Effective tax rate: ${taxDetails.effectiveTaxRate.toFixed(1)}%.`}
-        canonicalUrl={`/paye/${timeFrame}/${income}`}
+        description={`Calculate your PAYE tax for ${formatTanzaniaCurrency(initialIncome)} ${timeFrame === "monthly" ? "monthly" : "annual"} income in Tanzania. After tax income: ${formatTanzaniaCurrency(taxDetails.netIncome)}. Effective tax rate: ${taxDetails.effectiveTaxRate.toFixed(1)}%.`}
+        canonicalUrl={`/paye/${timeFrame}/${initialIncome}`}
       />
       
       <Header />
@@ -161,7 +171,8 @@ const PayeDetail = () => {
             <PayeDetailCalculator 
               timeFrame={timeFrame}
               onTimeFrameChange={handleTimeFrameChange}
-              initialAmount={income.toString()}
+              initialAmount={initialIncome.toString()}
+              onIncomeChange={handleIncomeChange}
             />
           </div>
           
@@ -175,8 +186,8 @@ const PayeDetail = () => {
                 {" "}{formatTanzaniaCurrency(taxDetails.netTax)} per {timeFrame === "yearly" ? "year" : "month"}, leaving you with a take-home pay of 
                 {" "}{formatTanzaniaCurrency(taxDetails.netIncome)} per {timeFrame === "yearly" ? "year" : "month"}.
                 {timeFrame === "monthly" ? 
-                  ` This equals an annual income of ${formatTanzaniaCurrency(income * 12)} with annual take-home pay of ${formatTanzaniaCurrency(taxDetails.netIncome * 12)}.` : 
-                  ` This equals a monthly income of ${formatTanzaniaCurrency(Math.round(income / 12))} with monthly take-home pay of ${formatTanzaniaCurrency(Math.round(taxDetails.netIncome / 12))}.`
+                  ` This equals an annual income of ${formatTanzaniaCurrency(currentIncome * 12)} with annual take-home pay of ${formatTanzaniaCurrency(taxDetails.netIncome * 12)}.` : 
+                  ` This equals a monthly income of ${formatTanzaniaCurrency(Math.round(currentIncome / 12))} with monthly take-home pay of ${formatTanzaniaCurrency(Math.round(taxDetails.netIncome / 12))}.`
                 }
                 Your effective tax rate is {taxDetails.effectiveTaxRate.toFixed(1)}%, while your marginal tax rate is {taxDetails.marginalTaxRate}%.
                 Please note that PAYE is calculated after deducting NSSF or PSSSF contributions from your gross income.
