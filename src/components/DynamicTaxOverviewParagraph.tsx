@@ -20,7 +20,7 @@ const DynamicTaxOverviewParagraph = ({ taxResult, timeFrame, income }: DynamicTa
         {" "}{formatTanzaniaCurrency(taxResult.netIncome)} per {timeFrame === "yearly" ? "year" : "month"}.
         {timeFrame === "monthly" ? 
           ` This equals an annual income of ${formatTanzaniaCurrency(income * 12)} with annual take-home pay of ${formatTanzaniaCurrency(taxResult.netIncome * 12)}.` : 
-          ` This equals a monthly income of ${formatTanzaniaCurrency(Math.round(income / 12))} with monthly take-home pay of ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))}.`
+          ` This equals a monthly income of ${formatTanzaniaCurrency(Math.round(income / 12))} with monthly take-home pay of ${formatTanzaniaCurrency(Math.round(taxResult.netIncome / 12))}.` 
         }
          Your effective tax rate is {taxResult.effectiveTaxRate.toFixed(1)}%, while your marginal tax rate is {taxResult.marginalTaxRate}%.
         Please note that PAYE is calculated after deducting NSSF or PSSSF contributions from your gross income.
