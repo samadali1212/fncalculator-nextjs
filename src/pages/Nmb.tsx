@@ -77,7 +77,7 @@ Get accurate {timeFrame === "monthly" ? "monthly" : "yearly"} payment estimates 
         />
 
         <p className="text-gray-600 mb-8">
-          <em><strong>Interest rates may vary based on your credit profile and loan terms. Contact NMB Bank for personalized rates.</strong></em>
+          <em>Interest rates may vary based on your credit profile and loan terms. Contact NMB Bank for personalized rates.</em>
         </p>
         
         {/* Time Frame Toggle */}
