@@ -154,15 +154,6 @@ const PayeDetail = () => {
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
               PAYE Tax On {formatTanzaniaCurrency(taxDetails.grossIncome)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Salary
             </h1>
-            
-            <div className="flex flex-wrap items-center gap-3 text-sm text-[#666] pb-6 border-b border-gray-200">
-              <div className="flex items-center">
-                <Calendar className="h-4 w-4 mr-1 text-[#999]" />
-                <span className="px-2 py-1 bg-gray-100 rounded text-[#666] text-xs">
-                  Tanzania Mainland 2024/25
-                </span>
-              </div>
-            </div>
           </div>
 
           {/* Calculator Section - No Background */}
@@ -204,7 +195,7 @@ const PayeDetail = () => {
                   <TableCell>{timeFrame === "yearly" ? "Annual" : "Monthly"} Gross Income</TableCell>
                   <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.grossIncome)}</TableCell>
                 </TableRow>
-                <TableRow>
+                <TableRow className="border-b border-gray-200">
                   <TableCell>Taxable Income</TableCell>
                   <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.taxableIncome)}</TableCell>
                 </TableRow>
@@ -212,7 +203,7 @@ const PayeDetail = () => {
                   <TableCell>PAYE Tax Payable</TableCell>
                   <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.netTax)}</TableCell>
                 </TableRow>
-                <TableRow className="bg-gray-50 font-medium">
+                <TableRow className="bg-gray-50 font-medium border-b border-gray-200">
                   <TableCell>{timeFrame === "yearly" ? "Annual" : "Monthly"} Take-home Pay</TableCell>
                   <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.netIncome)}</TableCell>
                 </TableRow>
