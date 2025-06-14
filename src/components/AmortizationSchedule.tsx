@@ -1,4 +1,3 @@
-
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { formatCurrency, CrdbTimeFrame } from "../utils/loanCalculator";
 
@@ -18,6 +17,11 @@ interface AmortizationScheduleProps {
   loanTerm: number;
   timeFrame: CrdbTimeFrame;
 }
+
+// Helper function to format currency without the TSh prefix
+const formatCurrencyValue = (amount: number): string => {
+  return amount.toLocaleString('en-US');
+};
 
 const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }: AmortizationScheduleProps) => {
   const generateAmortizationSchedule = (): AmortizationEntry[] => {
@@ -105,11 +109,11 @@ const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }:
           <TableRow>
             <TableHead>{timeFrame === "monthly" ? "Month" : "Year"}</TableHead>
             <TableHead>Payment Date</TableHead>
-            <TableHead className="text-right">Payment</TableHead>
-            <TableHead className="text-right">Principal</TableHead>
-            <TableHead className="text-right">Interest</TableHead>
-            <TableHead className="text-right">Total Interest</TableHead>
-            <TableHead className="text-right">Balance</TableHead>
+            <TableHead className="text-right">Payment (TSh)</TableHead>
+            <TableHead className="text-right">Principal (TSh)</TableHead>
+            <TableHead className="text-right">Interest (TSh)</TableHead>
+            <TableHead className="text-right">Total Interest (TSh)</TableHead>
+            <TableHead className="text-right">Balance (TSh)</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -117,11 +121,11 @@ const AmortizationSchedule = ({ loanAmount, interestRate, loanTerm, timeFrame }:
             <TableRow key={entry.period}>
               <TableCell className="font-medium">{entry.period}</TableCell>
               <TableCell>{entry.paymentDate}</TableCell>
-              <TableCell className="text-right">{formatCurrency(Math.round(entry.payment))}</TableCell>
-              <TableCell className="text-right">{formatCurrency(Math.round(entry.principal))}</TableCell>
-              <TableCell className="text-right">{formatCurrency(Math.round(entry.interest))}</TableCell>
-              <TableCell className="text-right">{formatCurrency(Math.round(entry.totalInterest))}</TableCell>
-              <TableCell className="text-right">{formatCurrency(Math.round(entry.balance))}</TableCell>
+              <TableCell className="text-right">{formatCurrencyValue(Math.round(entry.payment))}</TableCell>
+              <TableCell className="text-right">{formatCurrencyValue(Math.round(entry.principal))}</TableCell>
+              <TableCell className="text-right">{formatCurrencyValue(Math.round(entry.interest))}</TableCell>
+              <TableCell className="text-right">{formatCurrencyValue(Math.round(entry.totalInterest))}</TableCell>
+              <TableCell className="text-right">{formatCurrencyValue(Math.round(entry.balance))}</TableCell>
             </TableRow>
           ))}
         </TableBody>
