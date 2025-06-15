@@ -1,6 +1,7 @@
+
 import React, { useState } from 'react';
 import { motion } from "framer-motion";
-import { Shield, FileText, Users, AlertTriangle, ChevronDown, Car, CreditCard, Receipt, Phone } from 'lucide-react';
+import { Shield, FileText, Users, AlertTriangle, ChevronDown, Car, CreditCard, Receipt, Phone, Wrench } from 'lucide-react';
 import SearchForm, { SearchData } from '../components/SearchForm';
 import SearchResults from '../components/SearchResults';
 import Header from '../components/Header';
@@ -121,9 +122,9 @@ function Insurance() {
                     Find your vehicle registration number on your vehicle's registration card or license plate.
                   </p>
                   <ol className="text-sm text-gray-700 space-y-1 list-decimal list-inside">
-                    <li>Click on the "Vehicle Registration" tab above</li>
+                    <li>Click on the "Registration Number" tab above</li>
                     <li>Enter your complete vehicle registration number (e.g., T123ABC)</li>
-                    <li>Click "Verify Insurance"</li>
+                    <li>Click "Verify Insurance Policy"</li>
                     <li>View insurance coverage details, validity dates, and company information</li>
                   </ol>
                 </div>
@@ -131,15 +132,15 @@ function Insurance() {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
                     <FileText className="h-4 w-4" />
-                    By Policy/Cover Note Number
+                    By Cover Note Reference Number
                   </h4>
                   <p className="text-sm text-gray-600 mb-3">
-                    Find your policy number on your insurance certificate or cover note.
+                    Find your cover note reference number on your insurance certificate or cover note.
                   </p>
                   <ol className="text-sm text-gray-700 space-y-1 list-decimal list-inside">
-                    <li>Click on the "Policy/Cover Note" tab</li>
-                    <li>Enter your policy number exactly as shown on your certificate</li>
-                    <li>Click "Verify Insurance"</li>
+                    <li>Click on the "Cover Note Reference" tab</li>
+                    <li>Enter your cover note reference number exactly as shown on your certificate</li>
+                    <li>Click "Verify Insurance Policy"</li>
                     <li>View detailed policy information and coverage status</li>
                   </ol>
                 </div>
@@ -150,13 +151,29 @@ function Insurance() {
                     By Sticker Number
                   </h4>
                   <p className="text-sm text-gray-600 mb-3">
-                    Use the sticker number from your vehicle's insurance sticker.
+                    Use the sticker number from your vehicle's insurance sticker displayed on the windscreen.
                   </p>
                   <ol className="text-sm text-gray-700 space-y-1 list-decimal list-inside">
                     <li>Click on the "Sticker Number" tab</li>
-                    <li>Enter the sticker number accurately</li>
-                    <li>Click "Verify Insurance"</li>
+                    <li>Enter the sticker number accurately as shown on your windscreen sticker</li>
+                    <li>Click "Verify Insurance Policy"</li>
                     <li>View insurance details linked to that sticker</li>
+                  </ol>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                    <Wrench className="h-4 w-4" />
+                    By Chassis Number
+                  </h4>
+                  <p className="text-sm text-gray-600 mb-3">
+                    Use the chassis number (VIN) found on your vehicle registration document or vehicle body.
+                  </p>
+                  <ol className="text-sm text-gray-700 space-y-1 list-decimal list-inside">
+                    <li>Click on the "Chassis Number" tab</li>
+                    <li>Enter your vehicle's chassis number (VIN) - usually 17 characters long</li>
+                    <li>Click "Verify Insurance Policy"</li>
+                    <li>View insurance coverage associated with that specific vehicle chassis</li>
                   </ol>
                 </div>
               </div>
