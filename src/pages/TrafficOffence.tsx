@@ -75,7 +75,7 @@ const TrafficOffence = () => {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
                     <Car className="h-4 w-4" />
-                    By Vehicle Registration Number
+                    TMS Check By Vehicle Registration Number
                   </h4>
                   <p className="text-sm text-gray-600 mb-3">
                     Find your vehicle registration number on your vehicle's registration card or license plate.
@@ -91,7 +91,7 @@ const TrafficOffence = () => {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
                     <CreditCard className="h-4 w-4" />
-                    By Driving License Number
+                    TMS Check By Driving License Number
                   </h4>
                   <p className="text-sm text-gray-600 mb-3">
                     Find your license ID on your driving license card.
@@ -107,7 +107,7 @@ const TrafficOffence = () => {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
                     <Receipt className="h-4 w-4" />
-                    By Reference Number
+                    TMS Check By Reference Number
                   </h4>
                   <p className="text-sm text-gray-600 mb-3">
                     Use the reference number from your traffic ticket, SMS notification, or official citation.
