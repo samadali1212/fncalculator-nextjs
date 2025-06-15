@@ -207,17 +207,13 @@ const EventPage = () => {
 
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mb-6">
-          <div className="flex items-center justify-between mb-6">
+          <div className="mb-6">
             <a href="/events" className="inline-flex">
               <Button variant="ghost" className="pl-0 hover:pl-1 transition-all">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Events
               </Button>
             </a>
-            <ShareButton 
-              title={`${event.title} - denilagari`} 
-              variant="outline"
-            />
           </div>
         </motion.div>
 
