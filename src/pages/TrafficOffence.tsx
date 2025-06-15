@@ -78,7 +78,7 @@ const TrafficOffence = () => {
                     TMS Check By Vehicle Registration Number
                   </h4>
                   <p className="text-sm text-gray-600 mb-3">
-                    Find your vehicle registration number on your vehicle's registration card or license plate.
+                    Do a TMS Check by vehicle registration number on your vehicle's registration card or license plate.
                   </p>
                   <ol className="text-sm text-gray-700 space-y-1 list-decimal list-inside">
                     <li>Click on the "Vehicle" tab above</li>
@@ -94,7 +94,7 @@ const TrafficOffence = () => {
                     TMS Check By Driving License Number
                   </h4>
                   <p className="text-sm text-gray-600 mb-3">
-                    Find your license ID on your driving license card.
+                  TMS Check by your license ID on your driving license card.
                   </p>
                   <ol className="text-sm text-gray-700 space-y-1 list-decimal list-inside">
                     <li>Click on the "License" tab</li>
@@ -110,7 +110,7 @@ const TrafficOffence = () => {
                     TMS Check By Reference Number
                   </h4>
                   <p className="text-sm text-gray-600 mb-3">
-                    Use the reference number from your traffic ticket, SMS notification, or official citation.
+                    TMS Check by reference number from your traffic ticket, SMS notification, or official citation.
                   </p>
                   <ol className="text-sm text-gray-700 space-y-1 list-decimal list-inside">
                     <li>Click on the "Reference" tab</li>
