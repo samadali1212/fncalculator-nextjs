@@ -242,14 +242,6 @@ export const events2025: Event[] = [
     category: 'observance'
   },
   {
-    id: 'father-s-day-tanzania-2026',
-    title: 'Father’s Day Tanzania 2026',
-    date: '2026-06-21',
-    location: 'Tanzania',
-    description: 'Father’s Day is a special observance in Tanzania, celebrated annually on the third Sunday of June, which falls on June 21st in 2026. This day is dedicated to honouring fathers, grandfathers, stepfathers, and other paternal figures for their significant roles, guidance, and contributions to their children\'s lives and families. While not a public holiday, it is widely observed with great affection and appreciation across the country. Families typically celebrate Father’s Day by expressing gratitude through gifts, cards, and special meals, often prepared by family members. Many people take their fathers out for lunch or dinner, or spend quality time engaging in activities their fathers enjoy, such as sports or outdoor excursions. It is a day to acknowledge the vital role fathers play in nurturing, supporting, and raising children, and to recognize their impact on family well-being and development. The observance fosters a sense of familial warmth and provides an opportunity for children and partners to show their love and respect for the paternal figures in their lives, reinforcing strong family bonds and celebrating fatherhood with appreciation and joy.',
-    category: 'observance'
-  },
-  {
     id: 'international-youth-day-tanzania-2026',
     title: 'International Youth Day Tanzania 2026',
     date: '2026-08-12',
