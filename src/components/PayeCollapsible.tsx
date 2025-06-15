@@ -1,12 +1,7 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown, Info, Calculator, Receipt, Building2, FileText, Calendar, FolderOpen, Send } from "lucide-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 const PayeCollapsible = () => {
   return (
@@ -18,15 +13,16 @@ const PayeCollapsible = () => {
     >
       <h2 className="text-2xl font-bold text-gray-900 mb-6">Understanding PAYE in Tanzania</h2>
       
-      <Accordion type="multiple" defaultValue={["item-1", "item-2", "item-3", "item-4", "item-5", "item-6", "item-7", "item-8"]} className="w-full space-y-4">
-        <AccordionItem value="item-1" className="bg-white rounded-lg border">
-          <AccordionTrigger className="px-4 py-4 hover:bg-gray-50 rounded-t-lg [&[data-state=open]]:rounded-b-none">
+      <div className="space-y-4">
+        <Collapsible defaultOpen>
+          <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
             <div className="flex items-center gap-3">
               <Info className="h-5 w-5 text-blue-600" />
               <span className="font-medium text-left">What is PAYE in Tanzania?</span>
             </div>
-          </AccordionTrigger>
-          <AccordionContent className="px-4 pb-4 pt-2">
+            <ChevronDown className="h-4 w-4" />
+          </CollapsibleTrigger>
+          <CollapsibleContent className="mt-2 p-6 bg-white rounded-lg border">
             <div className="text-gray-600">
               <p className="mb-3">
                 Pay As You Earn (PAYE) is a system of income tax collection in Tanzania where employers deduct tax from employees' salaries before paying them. This ensures continuous tax collection throughout the year.
@@ -38,17 +34,18 @@ const PayeCollapsible = () => {
                 All employers in Tanzania are required to register for PAYE and deduct tax from their employees' salaries before remitting it to the Tanzania Revenue Authority (TRA).
               </p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
+          </CollapsibleContent>
+        </Collapsible>
 
-        <AccordionItem value="item-2" className="bg-white rounded-lg border">
-          <AccordionTrigger className="px-4 py-4 hover:bg-gray-50 rounded-t-lg [&[data-state=open]]:rounded-b-none">
+        <Collapsible defaultOpen>
+          <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
             <div className="flex items-center gap-3">
               <Calculator className="h-5 w-5 text-green-600" />
               <span className="font-medium text-left">Tanzania PAYE Tax Brackets 2024/2025</span>
             </div>
-          </AccordionTrigger>
-          <AccordionContent className="px-4 pb-4 pt-2">
+            <ChevronDown className="h-4 w-4" />
+          </CollapsibleTrigger>
+          <CollapsibleContent className="mt-2 p-6 bg-white rounded-lg border">
             <div className="text-gray-600">
               <p className="mb-3">Tanzania uses a progressive tax system with the following monthly brackets for Tanzania Mainland:</p>
               <div className="space-y-2 mb-3">
@@ -77,17 +74,18 @@ const PayeCollapsible = () => {
                 Note: Annual income threshold of TSh 3,240,000 is not taxable (equivalent to TSh 270,000 monthly).
               </p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
+          </CollapsibleContent>
+        </Collapsible>
 
-        <AccordionItem value="item-3" className="bg-white rounded-lg border">
-          <AccordionTrigger className="px-4 py-4 hover:bg-gray-50 rounded-t-lg [&[data-state=open]]:rounded-b-none">
+        <Collapsible defaultOpen>
+          <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
             <div className="flex items-center gap-3">
               <FileText className="h-5 w-5 text-indigo-600" />
               <span className="font-medium text-left">Individual Traders Tax Requirements</span>
             </div>
-          </AccordionTrigger>
-          <AccordionContent className="px-4 pb-4 pt-2">
+            <ChevronDown className="h-4 w-4" />
+          </CollapsibleTrigger>
+          <CollapsibleContent className="mt-2 p-6 bg-white rounded-lg border">
             <div className="text-gray-600">
               <p className="mb-3">
                 <strong>Individual traders who are not under presumptive tax regime</strong> must comply with specific requirements:
@@ -108,17 +106,18 @@ const PayeCollapsible = () => {
                 </p>
               </div>
             </div>
-          </AccordionContent>
-        </AccordionItem>
+          </CollapsibleContent>
+        </Collapsible>
 
-        <AccordionItem value="item-4" className="bg-white rounded-lg border">
-          <AccordionTrigger className="px-4 py-4 hover:bg-gray-50 rounded-t-lg [&[data-state=open]]:rounded-b-none">
+        <Collapsible defaultOpen>
+          <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
             <div className="flex items-center gap-3">
               <Calendar className="h-5 w-5 text-red-600" />
               <span className="font-medium text-left">Tax Filing and Payment Schedule</span>
             </div>
-          </AccordionTrigger>
-          <AccordionContent className="px-4 pb-4 pt-2">
+            <ChevronDown className="h-4 w-4" />
+          </CollapsibleTrigger>
+          <CollapsibleContent className="mt-2 p-6 bg-white rounded-lg border">
             <div className="text-gray-600">
               <div className="mb-4">
                 <h4 className="font-semibold mb-2">Provisional Returns (Form ITX200.01.E)</h4>
@@ -146,17 +145,18 @@ const PayeCollapsible = () => {
                 </p>
               </div>
             </div>
-          </AccordionContent>
-        </AccordionItem>
+          </CollapsibleContent>
+        </Collapsible>
 
-        <AccordionItem value="item-5" className="bg-white rounded-lg border">
-          <AccordionTrigger className="px-4 py-4 hover:bg-gray-50 rounded-t-lg [&[data-state=open]]:rounded-b-none">
+        <Collapsible defaultOpen>
+          <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
             <div className="flex items-center gap-3">
               <FolderOpen className="h-5 w-5 text-teal-600" />
               <span className="font-medium text-left">Record Keeping Requirements</span>
             </div>
-          </AccordionTrigger>
-          <AccordionContent className="px-4 pb-4 pt-2">
+            <ChevronDown className="h-4 w-4" />
+          </CollapsibleTrigger>
+          <CollapsibleContent className="mt-2 p-6 bg-white rounded-lg border">
             <div className="text-gray-600">
               <p className="mb-3">
                 The Income Tax Act requires every individual liable for tax to maintain comprehensive documentation:
@@ -174,17 +174,18 @@ const PayeCollapsible = () => {
                 </p>
               </div>
             </div>
-          </AccordionContent>
-        </AccordionItem>
+          </CollapsibleContent>
+        </Collapsible>
 
-        <AccordionItem value="item-6" className="bg-white rounded-lg border">
-          <AccordionTrigger className="px-4 py-4 hover:bg-gray-50 rounded-t-lg [&[data-state=open]]:rounded-b-none">
+        <Collapsible defaultOpen>
+          <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
             <div className="flex items-center gap-3">
               <Send className="h-5 w-5 text-purple-600" />
               <span className="font-medium text-left">Return Submission Guidelines</span>
             </div>
-          </AccordionTrigger>
-          <AccordionContent className="px-4 pb-4 pt-2">
+            <ChevronDown className="h-4 w-4" />
+          </CollapsibleTrigger>
+          <CollapsibleContent className="mt-2 p-6 bg-white rounded-lg border">
             <div className="text-gray-600">
               <h4 className="font-semibold mb-2">Return Form Components</h4>
               <p className="mb-3">The return form consists of seven pages plus supplementary pages for:</p>
@@ -212,17 +213,18 @@ const PayeCollapsible = () => {
                 </p>
               </div>
             </div>
-          </AccordionContent>
-        </AccordionItem>
+          </CollapsibleContent>
+        </Collapsible>
 
-        <AccordionItem value="item-7" className="bg-white rounded-lg border">
-          <AccordionTrigger className="px-4 py-4 hover:bg-gray-50 rounded-t-lg [&[data-state=open]]:rounded-b-none">
+        <Collapsible defaultOpen>
+          <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
             <div className="flex items-center gap-3">
               <Receipt className="h-5 w-5 text-orange-600" />
               <span className="font-medium text-left">PAYE Deductions and Allowances</span>
             </div>
-          </AccordionTrigger>
-          <AccordionContent className="px-4 pb-4 pt-2">
+            <ChevronDown className="h-4 w-4" />
+          </CollapsibleTrigger>
+          <CollapsibleContent className="mt-2 p-6 bg-white rounded-lg border">
             <div className="text-gray-600">
               <p className="mb-3">
                 Before calculating PAYE tax, certain deductions are made from gross income:
@@ -240,17 +242,18 @@ const PayeCollapsible = () => {
                 PAYE tax is then calculated on the income remaining after these deductions.
               </p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
+          </CollapsibleContent>
+        </Collapsible>
 
-        <AccordionItem value="item-8" className="bg-white rounded-lg border">
-          <AccordionTrigger className="px-4 py-4 hover:bg-gray-50 rounded-t-lg [&[data-state=open]]:rounded-b-none">
+        <Collapsible defaultOpen>
+          <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-white rounded-lg border hover:bg-gray-50">
             <div className="flex items-center gap-3">
               <Building2 className="h-5 w-5 text-amber-600" />
               <span className="font-medium text-left">Employer PAYE Obligations</span>
             </div>
-          </AccordionTrigger>
-          <AccordionContent className="px-4 pb-4 pt-2">
+            <ChevronDown className="h-4 w-4" />
+          </CollapsibleTrigger>
+          <CollapsibleContent className="mt-2 p-6 bg-white rounded-lg border">
             <div className="text-gray-600">
               <p className="mb-3">
                 Employers in Tanzania have several PAYE-related responsibilities:
@@ -270,9 +273,9 @@ const PayeCollapsible = () => {
                 Employers must keep proper records of all PAYE transactions for audit purposes.
               </p>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          </CollapsibleContent>
+        </Collapsible>
+      </div>
     </motion.div>
   );
 };
