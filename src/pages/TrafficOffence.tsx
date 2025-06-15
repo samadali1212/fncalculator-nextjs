@@ -1,8 +1,6 @@
-
 import React from 'react';
 import { motion } from "framer-motion";
 import OffenceChecker from '../components/OffenceChecker';
-import ShareButton from '../components/ShareButton';
 import Header from '../components/Header';
 import SEO from '../components/SEO';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -19,26 +17,16 @@ const TrafficOffence = () => {
      <ToolStructuredData toolType="traffic" />
        <SEO 
         title="TMS Traffic Fines Check: Kuangalia Deni La Gari" 
-        description="TMS check makes it easy to know your deni la gari, view traffic fines, and confirm car ownership in Tanzania. Instantly check deni la gari via denilagari.com and get accurate updates on your vehicle’s status."
+        description="TMS check makes it easy to know your deni la gari, view traffic fines, and confirm car ownership in Tanzania. Instantly check deni la gari via denilagari.com and get accurate updates on your vehicle's status."
         canonicalUrl="/"
       />
       <Header />
 <div className="container mx-auto px-4 md:px-6 py-8 max-w-4xl pt-24">
         <div className="mb-8">
-          {/* Header row with title and share button */}
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 gap-4">
-            <div>
-              <h1 className="text-3xl font-bold mb-2 text-gray-900">
-                Tanzania Road Traffic Offence Check (TMS Check)
-              </h1>
-            </div>
-            <div className="flex-shrink-0">
-              <ShareButton
-                title="Tanzania Traffic Offence Checker"
-                text="Check your traffic violations and fines in Tanzania with this free online tool"
-                className="shadow-sm"
-              />
-            </div>
+          <div className="mb-4">
+            <h1 className="text-3xl font-bold mb-2 text-gray-900">
+              Tanzania Road Traffic Offence Check (TMS Check)
+            </h1>
           </div>
           
           {/* Description paragraph */}
@@ -337,12 +325,12 @@ const TrafficOffence = () => {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-3">Emergency Numbers</h4>
                   <ul className="text-sm text-gray-700 space-y-1">
- 	<li><strong>Kuzuia uhalifu</strong>: 111</li>
- 	<li><strong>Polisi</strong>: 112</li>
- 	<li><strong>Takukuru</strong>: 113</li>
- 	<li><strong>Zimamoto</strong>: 114</li>
- 	<li><strong>Gari ya wagonjwa</strong>: 115</li>
- 	<li><strong>Msaada kwa mtoto</strong>: 116</li>
+ 	<li><strong>Kuzuia uhalifu</strong>: 111</li>
+ 	<li><strong>Polisi</strong>: 112</li>
+ 	<li><strong>Takukuru</strong>: 113</li>
+ 	<li><strong>Zimamoto</strong>: 114</li>
+ 	<li><strong>Gari ya wagonjwa</strong>: 115</li>
+ 	<li><strong>Msaada kwa mtoto</strong>: 116</li>
                   </ul>
                 </div>
 

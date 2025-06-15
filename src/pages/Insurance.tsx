@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Shield, FileText, Users, AlertTriangle, ChevronDown, Car, CreditCard, Receipt, Phone } from 'lucide-react';
 import SearchForm, { SearchData } from '../components/SearchForm';
 import SearchResults from '../components/SearchResults';
-import ShareButton from '../components/ShareButton';
 import Header from '../components/Header';
 import SEO from '../components/SEO';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -59,18 +58,10 @@ function Insurance() {
       
       <div className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <div className="mb-8">
-          {/* Header row with title and share button */}
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 gap-4">
+          <div className="mb-4">
             <h1 className="text-3xl font-bold">
               TIRA MIS Free Insurance Sticker Check Online In Tanzania
             </h1>
-            <div className="flex-shrink-0">
-              <ShareButton
-                title="Tanzania Insurance Verification Portal"
-                text="Verify your insurance coverage status with official TIRA data"
-                className="shadow-sm"
-              />
-            </div>
           </div>
           
           {/* Description paragraph */}
@@ -348,5 +339,3 @@ function Insurance() {
 }
 
 export default Insurance;
-
-
