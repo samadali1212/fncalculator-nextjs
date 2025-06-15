@@ -27,7 +27,7 @@ interface SEOProps {
 
 const SEO = ({
   title, // Remove default value
-  description = "Check your traffic violations and outstanding fines in Tanzania. Search using your vehicle registration, driving license, or violation reference number.",
+  description = "TMS check is the easiest way to know deni la gari in Tanzania, including traffic fines and penalties. Whether you want to check deni la gari before buying a vehicle or need to confirm if your car has any traffic fines, Denilagari.com provides quick and accurate results.",
   canonicalUrl,
   ogImage = "/denilagarifavicon.png", 
   ogType = "website",
@@ -36,7 +36,7 @@ const SEO = ({
   socialMedia
 }: SEOProps) => {
   const siteUrl = "https://denilagari.com";
-  const defaultTitle = "Deni La Gari - Tanzania Traffic Offence Checker";
+  const defaultTitle = "Kuangalia Deni La Gari (TMS Check)";
   
   // Use the passed title or fall back to default
   const pageTitle = title || defaultTitle;
