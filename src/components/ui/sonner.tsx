@@ -1,10 +1,20 @@
+
 import { useTheme } from "next-themes"
 import { Toaster as Sonner } from "sonner"
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
+  // Default to "system" if useTheme is not available (SSR safe)
+  let theme = "system";
+  
+  try {
+    const themeHook = useTheme();
+    theme = themeHook.theme || "system";
+  } catch (error) {
+    // useTheme might not be available during SSR, use default
+    console.warn("Theme hook not available, using default theme");
+  }
 
   return (
     <Sonner
