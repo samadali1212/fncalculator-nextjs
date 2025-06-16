@@ -1,43 +1,39 @@
 
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useTheme } from "next-themes"
+import { Toaster as Sonner } from "sonner"
 
-/**
- * Custom hook to handle page reloads and ad refreshing when navigating between pages
- * @returns An object containing the pageKey and a setIsLoading function
- */
-export const usePageReload = () => {
-  const [pageKey, setPageKey] = useState(Date.now());
-  const [isLoading, setIsLoading] = useState(false);
-  const location = useLocation();
+type ToasterProps = React.ComponentProps<typeof Sonner>
 
-  // Reset component state and force reload when location changes
-  useEffect(() => {
-    // Set loading state to true
-    setIsLoading(true);
-    
-    // Generate a new key to force component remount
-    setPageKey(Date.now());
-    
-    // Small timeout for loading state
-    const timer = setTimeout(() => {
-      // Scroll to top of the page
-      window.scrollTo(0, 0);
-      
-      // Force refresh of ad units
-      if (typeof window !== 'undefined' && window.adsbygoogle) {
-        try {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (e) {
-          console.error('Error refreshing ads:', e);
-        }
-      }
-      
-      setIsLoading(false);
-    }, 500);
-    
-    return () => clearTimeout(timer);
-  }, [location.pathname]);
+const Toaster = ({ ...props }: ToasterProps) => {
+  // Default to "system" if useTheme is not available (SSR safe)
+  let theme = "system";
+  
+  try {
+    const themeHook = useTheme();
+    theme = themeHook.theme || "system";
+  } catch (error) {
+    // useTheme might not be available during SSR, use default
+    console.warn("Theme hook not available, using default theme");
+  }
 
-  return { pageKey, isLoading, setIsLoading };
-};
+  return (
+    <Sonner
+      theme={theme as ToasterProps["theme"]}
+      className="toaster group"
+      toastOptions={{
+        classNames: {
+          toast:
+            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg",
+          description: "group-[.toast]:text-muted-foreground",
+          actionButton:
+            "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
+          cancelButton:
+            "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
+        },
+      }}
+      {...props}
+    />
+  )
+}
+
+export { Toaster }
