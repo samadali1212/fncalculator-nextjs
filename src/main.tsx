@@ -1,4 +1,5 @@
-
+// This file is now replaced by entry-client.tsx for SSR
+// Keeping it for backward compatibility, but it won't be used in SSR mode
 import { createRoot } from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
