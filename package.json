@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "node server",
-    "build:client": "vite build --outDir dist/client",
-    "build:server": "vite build --outDir dist/server --ssr src/entry-server.js",
+   - "build:client": "vite build --outDir dist/client",
+   + "build:client": "vite build --outDir dist/client --ssrManifest",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
