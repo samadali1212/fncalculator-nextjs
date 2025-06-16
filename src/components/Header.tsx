@@ -16,8 +16,10 @@ const Header = () => {
     setIsOpen(false);
   }, [location.pathname]);
 
-  // Add scroll listener
+  // Add scroll listener - only on client side
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
