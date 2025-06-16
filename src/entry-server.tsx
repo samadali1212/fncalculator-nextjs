@@ -7,7 +7,15 @@ import App from './App';
 
 export async function render(url: string) {
   // Create a fresh query client for each request
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 60 * 1000,
+        retry: false,
+      },
+    },
+  });
+  
   const helmetContext = {};
 
   const html = renderToString(
@@ -20,5 +28,16 @@ export async function render(url: string) {
     </HelmetProvider>
   );
 
-  return html;
+  const { helmet } = helmetContext as any;
+
+  return {
+    html,
+    head: helmet ? [
+      helmet.title.toString(),
+      helmet.priority.toString(),
+      helmet.meta.toString(),
+      helmet.link.toString(),
+      helmet.script.toString(),
+    ].join('\n') : '',
+  };
 }
