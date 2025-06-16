@@ -1,3 +1,4 @@
+
 import fs from 'node:fs/promises'
 import express from 'express'
 
@@ -33,13 +34,13 @@ if (!isProduction) {
 }
 
 // Serve HTML
-app.use('*all', async (req, res) => {
+app.use('*', async (req, res) => {
   try {
     const url = req.originalUrl.replace(base, '')
 
     /** @type {string} */
     let template
-    /** @type {import('./src/entry-server.ts').render} */
+    /** @type {import('./src/entry-server.tsx').render} */
     let render
     if (!isProduction) {
       // Always read fresh template in development
@@ -54,8 +55,8 @@ app.use('*all', async (req, res) => {
     const rendered = await render(url)
 
     const html = template
-      .replace(`<!--app-head-->`, rendered.head ?? '')
-      .replace(`<!--app-html-->`, rendered.html ?? '')
+      .replace(`<!--app-head-->`, rendered.head || '')
+      .replace(`<!--app-html-->`, rendered.html || '')
 
     res.status(200).set({ 'Content-Type': 'text/html' }).send(html)
   } catch (e) {
