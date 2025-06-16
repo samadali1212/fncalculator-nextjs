@@ -1,4 +1,3 @@
-
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from "react-router-dom/server";
 import { HelmetProvider } from 'react-helmet-async';
@@ -18,6 +17,7 @@ export async function render(url: string) {
   
   const helmetContext = {};
 
+  // Render the complete app with routing
   const html = renderToString(
     <HelmetProvider context={helmetContext}>
       <QueryClientProvider client={queryClient}>
@@ -30,6 +30,7 @@ export async function render(url: string) {
 
   const { helmet } = helmetContext as any;
 
+  // Return the complete rendered HTML and head content
   return {
     html,
     head: helmet ? [
