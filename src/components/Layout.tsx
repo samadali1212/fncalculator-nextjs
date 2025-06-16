@@ -13,17 +13,14 @@ const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
 
   useEffect(() => {
-    // Only run client-side code when window is available
-    if (typeof window !== "undefined") {
-      // Try to push a new ad on every pathname change
-      if (window.adsbygoogle) {
-        try {
-          // It's possible there are multiple ins.adsbygoogle in the DOM: this just triggers AdSense for all of them.
-          window.adsbygoogle.push({});
-          console.log("AdSense reload triggered from Layout for:", location.pathname);
-        } catch (e) {
-          console.error("AdSense reload error in Layout effect:", e);
-        }
+    // Try to push a new ad on every pathname change
+    if (typeof window !== "undefined" && window.adsbygoogle) {
+      try {
+        // It's possible there are multiple ins.adsbygoogle in the DOM: this just triggers AdSense for all of them.
+        window.adsbygoogle.push({});
+        console.log("AdSense reload triggered from Layout for:", location.pathname);
+      } catch (e) {
+        console.error("AdSense reload error in Layout effect:", e);
       }
     }
   }, [location.pathname]);
