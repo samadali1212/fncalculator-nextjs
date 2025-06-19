@@ -16,6 +16,8 @@ import Nbc from "./pages/Nbc";
 import Absa from "./pages/Absa";
 import Azania from "./pages/Azania";
 import LoanDetail from "./pages/LoanDetail";
+import HomeLoan from "./pages/HomeLoan";
+import HomeLoanDetail from "./pages/HomeLoanDetail";
 
 const App = () => {
   return (
@@ -92,6 +94,14 @@ const App = () => {
           <Route path="/azania/monthly/:amount/:rate/:term" element={<LoanDetail />} />
           <Route path="/azania/yearly/:amount/:rate/:term" element={<LoanDetail />} />
           <Route path="/azania/:amount/:rate/:term" element={<LoanDetail />} />
+
+          {/* South Africa Home Loan Calculator Routes */}
+          <Route path="/home-loan" element={<HomeLoan />} />
+          <Route path="/home-loan/monthly" element={<HomeLoan />} />
+          <Route path="/home-loan/yearly" element={<HomeLoan />} />
+          <Route path="/home-loan/monthly/:loanAmount/:downPayment/:loanTerm/:interestRate" element={<HomeLoanDetail />} />
+          <Route path="/home-loan/yearly/:loanAmount/:downPayment/:loanTerm/:interestRate" element={<HomeLoanDetail />} />
+          <Route path="/home-loan/:loanAmount/:downPayment/:loanTerm/:interestRate" element={<HomeLoanDetail />} />
                         
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
