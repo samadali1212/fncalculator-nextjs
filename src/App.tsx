@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import About from "./pages/About";
@@ -14,6 +15,7 @@ import Nmb from "./pages/Nmb";
 import Nbc from "./pages/Nbc";
 import Absa from "./pages/Absa";
 import Azania from "./pages/Azania";
+import Capitec from "./pages/Capitec";
 import Loan from "./pages/Loan";
 import LoanDetail from "./pages/LoanDetail";
 import BusinessLoan from "./pages/BusinessLoan";
@@ -126,6 +128,14 @@ const App = () => {
           <Route path="/azania/monthly/:amount/:rate/:term" element={<LoanDetail />} />
           <Route path="/azania/yearly/:amount/:rate/:term" element={<LoanDetail />} />
           <Route path="/azania/:amount/:rate/:term" element={<LoanDetail />} />
+
+          {/* Capitec Bank Home Loan Calculator Routes */}
+          <Route path="/capitec" element={<Capitec />} />
+          <Route path="/capitec/monthly" element={<Capitec />} />
+          <Route path="/capitec/yearly" element={<Capitec />} />
+          <Route path="/capitec/monthly/:loanAmount/:downPayment/:loanTerm/:interestRate" element={<HomeLoanDetail />} />
+          <Route path="/capitec/yearly/:loanAmount/:downPayment/:loanTerm/:interestRate" element={<HomeLoanDetail />} />
+          <Route path="/capitec/:loanAmount/:downPayment/:loanTerm/:interestRate" element={<HomeLoanDetail />} />
 
           {/* South Africa Home Loan Calculator Routes */}
           <Route path="/home-loan" element={<HomeLoan />} />
