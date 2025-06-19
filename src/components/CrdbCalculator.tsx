@@ -100,7 +100,7 @@ const CrdbCalculator = ({
 
   const handleViewDetails = () => {
     if (loanResult) {
-      navigate(`/${bankPath}/${timeFrame}/${numericLoanAmount}/${numericInterestRate}/${numericLoanTerm}`);
+      navigate(`/${bankPath}/${numericLoanAmount}/${numericInterestRate}/${numericLoanTerm}`);
     }
   };
 
