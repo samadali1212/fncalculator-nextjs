@@ -6,6 +6,14 @@ import Header from "@/components/Header";
 import APSCalculator from "@/components/APSCalculator";
 import AdSense from "@/components/AdSense";
 import { southAfricanUniversities } from "@/utils/universitiesData";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 const Aps = () => {
   return (
@@ -92,6 +100,84 @@ const Aps = () => {
             </p>
             <APSCalculator />
           </div>
+
+          {/* All Universities Table */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8"
+          >
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">All South African Universities</h2>
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>University</TableHead>
+                    <TableHead>Location</TableHead>
+                    <TableHead>APS Scale</TableHead>
+                    <TableHead>Life Orientation</TableHead>
+                    <TableHead>Medicine</TableHead>
+                    <TableHead>Engineering</TableHead>
+                    <TableHead>Commerce</TableHead>
+                    <TableHead>Law</TableHead>
+                    <TableHead>Action</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {southAfricanUniversities.map((university) => (
+                    <TableRow key={university.id}>
+                      <TableCell className="font-medium">
+                        <div>
+                          <div className="font-semibold">{university.name}</div>
+                          <div className="text-sm text-gray-600">{university.fullName}</div>
+                        </div>
+                      </TableCell>
+                      <TableCell>{university.location}</TableCell>
+                      <TableCell>
+                        <span className={`px-2 py-1 rounded text-xs ${
+                          university.apsScale === "standard" 
+                            ? "bg-green-100 text-green-800" 
+                            : "bg-blue-100 text-blue-800"
+                        }`}>
+                          {university.apsScale === "standard" ? "7-point" : "8-point"}
+                        </span>
+                      </TableCell>
+                      <TableCell>
+                        <span className={`px-2 py-1 rounded text-xs ${
+                          university.includesLifeOrientation 
+                            ? "bg-yellow-100 text-yellow-800" 
+                            : "bg-gray-100 text-gray-800"
+                        }`}>
+                          {university.includesLifeOrientation ? "Required" : "Optional"}
+                        </span>
+                      </TableCell>
+                      <TableCell className="text-center font-medium">
+                        {university.minApsRequirements.Medicine}
+                      </TableCell>
+                      <TableCell className="text-center font-medium">
+                        {university.minApsRequirements.Engineering}
+                      </TableCell>
+                      <TableCell className="text-center font-medium">
+                        {university.minApsRequirements.Commerce}
+                      </TableCell>
+                      <TableCell className="text-center font-medium">
+                        {university.minApsRequirements.Law}
+                      </TableCell>
+                      <TableCell>
+                        <a
+                          href={`/aps/${university.id}`}
+                          className="text-primary hover:underline text-sm font-medium"
+                        >
+                          Calculate
+                        </a>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </motion.div>
 
           {/* AdSense */}
           <div className="my-8">
