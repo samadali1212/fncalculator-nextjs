@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "build:dev": "vite build --mode development",
-    "lint": "eslint .",
+    "dev:ssr": "node server/ssr-dev.js",
+    "build:client": "vite build",
+    "build:server": "vite build --ssr client/src/entry-server.tsx --outDir dist/server",
+    "build:ssr": "npm run build:client && npm run build:server",
+    "preview:ssr": "NODE_ENV=production node server/ssr-prod.js",
     "preview": "vite preview"
   },
   "dependencies": {
