@@ -9,6 +9,7 @@ import HomeLoan from "@/pages/HomeLoan";
 import VAT from "@/pages/Vat";
 import Bmi from "@/pages/Bmi";
 import Aps from "@/pages/Aps";
+import UniversityAps from "@/pages/UniversityAps";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/vat" element={<VAT />} />
           <Route path="/bmi" element={<Bmi />} />
           <Route path="/aps" element={<Aps />} />
+          <Route path="/aps/:universityId" element={<UniversityAps />} />
         </Routes>
       </Layout>
     </BrowserRouter>

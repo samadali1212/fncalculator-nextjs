@@ -1,9 +1,11 @@
+
 import { motion } from "framer-motion";
-import { Calculator, GraduationCap, BookOpen } from "lucide-react";
+import { Calculator, GraduationCap, BookOpen, ArrowRight } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import APSCalculator from "@/components/APSCalculator";
 import AdSense from "@/components/AdSense";
+import { southAfricanUniversities } from "@/utils/universitiesData";
 
 const Aps = () => {
   return (
@@ -41,8 +43,55 @@ const Aps = () => {
             </p>
           </div>
 
-          {/* Calculator Section */}
-          <APSCalculator />
+          {/* University-specific calculators */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mb-8"
+          >
+            <h2 className="text-xl font-semibold text-gray-900 mb-4 text-center">University-Specific APS Calculators</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+              {southAfricanUniversities.map((university) => (
+                <a
+                  key={university.id}
+                  href={`/aps/${university.id}`}
+                  className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md transition-shadow group"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-semibold text-gray-900">{university.name}</h3>
+                    <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-primary transition-colors" />
+                  </div>
+                  <p className="text-sm text-gray-600 mb-2">{university.fullName}</p>
+                  <div className="flex gap-2 text-xs">
+                    <span className={`px-2 py-1 rounded ${
+                      university.apsScale === "standard" 
+                        ? "bg-green-100 text-green-800" 
+                        : "bg-blue-100 text-blue-800"
+                    }`}>
+                      {university.apsScale === "standard" ? "7-point" : "8-point"}
+                    </span>
+                    <span className={`px-2 py-1 rounded ${
+                      university.includesLifeOrientation 
+                        ? "bg-yellow-100 text-yellow-800" 
+                        : "bg-gray-100 text-gray-800"
+                    }`}>
+                      {university.includesLifeOrientation ? "+LO" : "No LO"}
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* General Calculator Section */}
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4 text-center">General APS Calculator</h2>
+            <p className="text-sm text-gray-600 text-center mb-6">
+              Use this calculator if you want to compare different scales or if your university isn't listed above.
+            </p>
+            <APSCalculator />
+          </div>
 
           {/* AdSense */}
           <div className="my-8">
