@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import About from "./pages/About";
@@ -73,11 +74,13 @@ const App = () => {
           <Route path="/paye/yearly/:incomeId/:ageGroup" element={<PayeDetail />} />
           <Route path="/paye/:incomeId" element={<PayeDetail />} />
 
-          {/* General Personal Loan Calculator Routes - Simplified */}
+          {/* General Personal Loan Calculator Routes */}
           <Route path="/loan" element={<Loan />} />
           <Route path="/loan/monthly" element={<Loan />} />
           <Route path="/loan/yearly" element={<Loan />} />
-          <Route path="/loan-detail" element={<LoanDetail />} />
+          <Route path="/loan/monthly/:amount/:rate/:term" element={<LoanDetail />} />
+          <Route path="/loan/yearly/:amount/:rate/:term" element={<LoanDetail />} />
+          <Route path="/loan/:amount/:rate/:term" element={<LoanDetail />} />
 
           {/* Business Loan Calculator Routes */}
           <Route path="/business-loan" element={<BusinessLoan />} />
