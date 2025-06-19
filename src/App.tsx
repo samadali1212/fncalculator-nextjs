@@ -17,6 +17,8 @@ import Absa from "./pages/Absa";
 import Azania from "./pages/Azania";
 import Loan from "./pages/Loan";
 import LoanDetail from "./pages/LoanDetail";
+import BusinessLoan from "./pages/BusinessLoan";
+import BusinessLoanDetail from "./pages/BusinessLoanDetail";
 import HomeLoan from "./pages/HomeLoan";
 import HomeLoanDetail from "./pages/HomeLoanDetail";
 import CarLoan from "./pages/CarLoan";
@@ -73,6 +75,14 @@ const App = () => {
           <Route path="/loan/monthly/:amount/:rate/:term" element={<LoanDetail />} />
           <Route path="/loan/yearly/:amount/:rate/:term" element={<LoanDetail />} />
           <Route path="/loan/:amount/:rate/:term" element={<LoanDetail />} />
+
+          {/* Business Loan Calculator Routes */}
+          <Route path="/business-loan" element={<BusinessLoan />} />
+          <Route path="/business-loan/monthly" element={<BusinessLoan />} />
+          <Route path="/business-loan/yearly" element={<BusinessLoan />} />
+          <Route path="/business-loan/monthly/:amount/:rate/:term" element={<BusinessLoanDetail />} />
+          <Route path="/business-loan/yearly/:amount/:rate/:term" element={<BusinessLoanDetail />} />
+          <Route path="/business-loan/:amount/:rate/:term" element={<BusinessLoanDetail />} />
 
           {/* CRDB Bank Personal Loan Calculator Routes */}
           <Route path="/crdb" element={<Crdb />} />
