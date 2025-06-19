@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { 
@@ -17,7 +17,7 @@ interface CrdbCalculatorProps {
   initialAmount?: string;
   initialRate?: string;
   initialTerm?: string;
-  bankPath?: string; // Add bankPath prop
+  bankPath?: string;
 }
 
 const CrdbCalculator = ({ 
@@ -26,12 +26,13 @@ const CrdbCalculator = ({
   initialAmount, 
   initialRate, 
   initialTerm,
-  bankPath = "crdb" // Default to "crdb" for backward compatibility
+  bankPath = "crdb"
 }: CrdbCalculatorProps) => {
   const navigate = useNavigate();
-  const [loanAmount, setLoanAmount] = useState(initialAmount || "50000");
-  const [interestRate, setInterestRate] = useState(initialRate || "13");
-  const [loanTerm, setLoanTerm] = useState(initialTerm || (timeFrame === "yearly" ? "3" : "36"));
+  const location = useLocation();
+  const [amount, setAmount] = useState(initialAmount || "100000");
+  const [rate, setRate] = useState(initialRate || "13");
+  const [term, setTerm] = useState(initialTerm || "36");
   
   // Format number with thousand separators
   const formatNumberWithSeparators = (value: string): string => {
@@ -50,57 +51,37 @@ const CrdbCalculator = ({
   };
   
   // Calculate loan details if user enters values
-  const numericLoanAmount = getNumericValue(loanAmount);
-  const numericInterestRate = getNumericRate(interestRate);
-  const numericLoanTerm = parseInt(loanTerm) || 0;
+  const numericAmount = getNumericValue(amount);
+  const numericRate = getNumericRate(rate);
+  const numericTerm = parseInt(term) || 0;
   
-  const loanResult = numericLoanAmount > 0 && numericInterestRate > 0 && numericLoanTerm > 0
-    ? getCrdbLoanCalculation(numericLoanAmount, numericInterestRate, numericLoanTerm, timeFrame)
+  const loanResult = numericAmount > 0 && numericRate > 0 && numericTerm > 0
+    ? getCrdbLoanCalculation(numericAmount, numericRate, numericTerm, timeFrame)
     : null;
 
-  const handleLoanAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/[^0-9]/g, '');
-    setLoanAmount(value);
+    setAmount(value);
   };
 
-  const handleInterestRateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleRateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/[^0-9.]/g, '');
-    setInterestRate(value);
+    setRate(value);
   };
 
-  const handleLoanTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/[^0-9]/g, '');
-    setLoanTerm(value);
+    setTerm(value);
   };
 
   const handleTimeFrameChangeInternal = (value: string) => {
-    if (value === "yearly" || value === "monthly") {
-      // Convert loan term when switching timeframes
-      const currentTerm = parseInt(loanTerm) || 0;
-      if (currentTerm > 0) {
-        let convertedTerm;
-        
-        if (timeFrame === "monthly" && value === "yearly") {
-          // Converting from months to years
-          convertedTerm = Math.round(currentTerm / 12);
-        } else if (timeFrame === "yearly" && value === "monthly") {
-          // Converting from years to months
-          convertedTerm = currentTerm * 12;
-        } else {
-          // Same timeframe, keep the term
-          convertedTerm = currentTerm;
-        }
-        
-        setLoanTerm(convertedTerm.toString());
-      }
-      
-      onTimeFrameChange(value);
-    }
+    onTimeFrameChange(value);
   };
 
   const handleViewDetails = () => {
     if (loanResult) {
-      navigate(`/${bankPath}/${timeFrame}/${numericLoanAmount}/${numericInterestRate}/${numericLoanTerm}`);
+      // Navigate to the simple loan detail route
+      navigate("/loan-detail");
     }
   };
 
@@ -111,10 +92,10 @@ const CrdbCalculator = ({
       transition={{ duration: 0.5 }}
       className="mb-8 space-y-6"
     >
-      {/* Loan Amount Input */}
+      {/* Amount Input */}
       <div className="space-y-2">
         <Label htmlFor="loan-amount" className="text-sm font-medium text-gray-700">
-          Loan Amount (R)
+          Loan Amount
         </Label>
         <div className="relative">
           <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm">
@@ -123,9 +104,9 @@ const CrdbCalculator = ({
           <Input
             id="loan-amount"
             type="text"
-            placeholder="Enter loan amount..."
-            value={formatNumberWithSeparators(loanAmount)}
-            onChange={handleLoanAmountChange}
+            placeholder="100000"
+            value={formatNumberWithSeparators(amount)}
+            onChange={handleAmountChange}
             className="pl-8 h-10 border-gray-300 focus:border-primary"
           />
         </div>
@@ -141,8 +122,8 @@ const CrdbCalculator = ({
             id="interest-rate"
             type="text"
             placeholder="13"
-            value={interestRate}
-            onChange={handleInterestRateChange}
+            value={rate}
+            onChange={handleRateChange}
             className="pr-8 h-10 border-gray-300 focus:border-primary"
           />
           <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm">
@@ -154,14 +135,14 @@ const CrdbCalculator = ({
       {/* Loan Term Input */}
       <div className="space-y-2">
         <Label htmlFor="loan-term" className="text-sm font-medium text-gray-700">
-          Loan Term ({timeFrame === "monthly" ? "Months" : "Years"})
+          Loan Term ({timeFrame === "monthly" ? "months" : "years"})
         </Label>
         <Input
           id="loan-term"
           type="text"
           placeholder={timeFrame === "monthly" ? "36" : "3"}
-          value={loanTerm}
-          onChange={handleLoanTermChange}
+          value={term}
+          onChange={handleTermChange}
           className="h-10 border-gray-300 focus:border-primary"
         />
       </div>
@@ -197,7 +178,7 @@ const CrdbCalculator = ({
             transition={{ duration: 0.3 }}
             className="space-y-3"
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
               <div className="text-center p-3 bg-white rounded border border-gray-100">
                 <div className="text-xs text-gray-500 mb-1">Loan Amount</div>
                 <div className="font-semibold text-sm text-gray-800">{formatCurrency(loanResult.loanAmount)}</div>
@@ -210,6 +191,10 @@ const CrdbCalculator = ({
                 <div className="text-xs text-gray-500 mb-1">Total Interest</div>
                 <div className="font-semibold text-sm text-red-600">{formatCurrency(loanResult.totalInterest)}</div>
               </div>
+              <div className="text-center p-3 bg-white rounded border border-gray-100">
+                <div className="text-xs text-gray-500 mb-1">Total Repayment</div>
+                <div className="font-semibold text-sm text-gray-800">{formatCurrency(loanResult.totalRepayment)}</div>
+              </div>
             </div>
           </motion.div>
 
@@ -217,7 +202,7 @@ const CrdbCalculator = ({
           <div className="text-sm text-gray-600 leading-relaxed">
             <p>
               Your loan of {formatCurrency(loanResult.loanAmount)} at {loanResult.interestRate}% interest rate for {loanResult.termDisplay} will require {timeFrame === "monthly" ? "monthly" : "annual"} payments of {formatCurrency(loanResult.payment)}. 
-              Click below to see the complete breakdown of your loan calculation including total repayment and detailed terms.
+              Click below to see the complete breakdown of your loan calculation including total repayment and amortization schedule.
             </p>
           </div>
           
