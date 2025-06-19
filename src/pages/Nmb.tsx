@@ -31,7 +31,7 @@ const Nmb = () => {
     timeFrame === "monthly" ? 10000 : 10000,      // Min: R10,000
     timeFrame === "monthly" ? 500000 : 500000,    // Max: R500,000
     timeFrame === "monthly" ? 10000 : 10000,      // Step: R10,000
-    15, // NMB default interest rate (slightly higher than CRDB)
+    15, // NMB South Africa default interest rate
     timeFrame === "monthly" ? 36 : 3,             // 36 months or 3 years
     timeFrame
   );
@@ -56,17 +56,17 @@ const Nmb = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="NMB Bank Personal Loan Calculator" 
-        description="Calculate your NMB Bank personal loan payments with our calculator. Monthly and annual payment calculations at the current interest rate with customizable terms."
+        title="NMB Bank South Africa Personal Loan Calculator" 
+        description="Calculate your NMB Bank South Africa personal loan payments with our calculator. Monthly and annual payment calculations at competitive interest rates with customizable terms."
         canonicalUrl={`/nmb${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
       />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <h1 className="text-3xl font-bold mb-2">NMB Bank Personal Loan Calculator</h1>
+        <h1 className="text-3xl font-bold mb-2">NMB Bank South Africa Personal Loan Calculator</h1>
         <p className="text-gray-600 mb-8">
-          Quickly estimate your NMB Bank personal loan payments with our user-friendly loan calculator.
-          Get accurate {timeFrame === "monthly" ? "monthly" : "yearly"} payment estimates using the latest interest rates. Ideal for planning your loan with NMB South Africa—offering flexible repayment options, instant results, and full transparency to support informed borrowing.
+          Quickly estimate your NMB Bank South Africa personal loan payments with our user-friendly loan calculator.
+          Get accurate {timeFrame === "monthly" ? "monthly" : "yearly"} payment estimates using the latest interest rates. Ideal for planning your loan with NMB Bank South Africa—offering flexible repayment options, instant results, and full transparency to support informed borrowing.
         </p>
 
         {/* Custom Loan Calculator */}
@@ -77,7 +77,7 @@ const Nmb = () => {
         />
 
         <p className="text-gray-600 mb-8">
-          <em>Interest rates may vary based on your credit profile and loan terms. Contact NMB Bank for personalized rates.</em>
+          <em>Interest rates may vary based on your credit profile and loan terms. Contact NMB Bank South Africa for personalized rates.</em>
         </p>
         
         {/* Time Frame Toggle */}

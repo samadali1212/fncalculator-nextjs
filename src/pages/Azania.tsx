@@ -31,7 +31,7 @@ const Azania = () => {
     timeFrame === "monthly" ? 10000 : 10000,      // Min: R10,000
     timeFrame === "monthly" ? 500000 : 500000,    // Max: R500,000
     timeFrame === "monthly" ? 10000 : 10000,      // Step: R10,000
-    17, // Azania default interest rate (highest among all banks)
+    17, // Azania Bank South Africa default interest rate
     timeFrame === "monthly" ? 36 : 3,             // 36 months or 3 years
     timeFrame
   );
@@ -56,16 +56,16 @@ const Azania = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Azania Bank Personal Loan Calculator South Africa" 
-        description="Calculate your Azania Bank personal loan payments with our calculator. Monthly and annual payment calculations at the current interest rate with customizable terms."
+        title="Azania Bank South Africa Personal Loan Calculator" 
+        description="Calculate your Azania Bank South Africa personal loan payments with our calculator. Monthly and annual payment calculations at competitive interest rates with customizable terms."
         canonicalUrl={`/azania${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
       />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <h1 className="text-3xl font-bold mb-2">Azania Bank Personal Loan Calculator</h1>
+        <h1 className="text-3xl font-bold mb-2">Azania Bank South Africa Personal Loan Calculator</h1>
         <p className="text-gray-600 mb-8">
-          Use our Azania Bank loan calculator to estimate your personal loan payments with precision.
+          Use our Azania Bank South Africa loan calculator to estimate your personal loan payments with precision.
           Get fast and reliable {timeFrame === "monthly" ? "monthly" : "yearly"} payment breakdowns based on current interest rates. Ideal for anyone planning a personal loan with Azania Bank South Africa—featuring flexible repayment terms, clear figures, and an easy-to-use interface for smart financial planning.
         </p>
 
@@ -77,7 +77,7 @@ const Azania = () => {
         />
 
         <p className="text-gray-600 mb-8">
-          <em>Interest rates may vary based on your credit profile and loan terms. Contact Azania Bank for personalized rates.</em>
+          <em>Interest rates may vary based on your credit profile and loan terms. Contact Azania Bank South Africa for personalized rates.</em>
         </p>
         
         {/* Time Frame Toggle */}

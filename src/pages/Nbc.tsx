@@ -31,7 +31,7 @@ const Nbc = () => {
     timeFrame === "monthly" ? 10000 : 10000,      // Min: R10,000
     timeFrame === "monthly" ? 500000 : 500000,    // Max: R500,000
     timeFrame === "monthly" ? 10000 : 10000,      // Step: R10,000
-    14, // NBC default interest rate (between CRDB and NMB)
+    14, // NBC South Africa default interest rate
     timeFrame === "monthly" ? 36 : 3,             // 36 months or 3 years
     timeFrame
   );
@@ -56,16 +56,16 @@ const Nbc = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="NBC Bank Personal Loan Calculator" 
-        description="Calculate your NBC Bank personal loan payments with our 2024/2025 calculator. Monthly and annual payment calculations at 14% interest rate with customizable terms."
+        title="NBC Bank South Africa Personal Loan Calculator" 
+        description="Calculate your NBC Bank South Africa personal loan payments with our 2024/2025 calculator. Monthly and annual payment calculations at competitive interest rates with customizable terms."
         canonicalUrl={`/nbc${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
       />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <h1 className="text-3xl font-bold mb-2">NBC Bank Personal Loan Calculator</h1>
+        <h1 className="text-3xl font-bold mb-2">NBC Bank South Africa Personal Loan Calculator</h1>
         <p className="text-gray-600 mb-8">
-          Estimate your NBC Bank personal loan payments quickly with our reliable loan calculator.
+          Estimate your NBC Bank South Africa personal loan payments quickly with our reliable loan calculator.
           Get clear {timeFrame === "monthly" ? "monthly" : "yearly"} payment projections based on competitive interest rates. Designed for easy loan planning with NBC Bank South Africa—featuring adjustable terms, fast results, and complete transparency for smarter financial decisions.
         </p>
 
@@ -77,7 +77,7 @@ const Nbc = () => {
         />
 
         <p className="text-gray-600 mb-8">
-          <em>Interest rates may vary based on your credit profile and loan terms. Contact NBC Bank for personalized rates.</em>
+          <em>Interest rates may vary based on your credit profile and loan terms. Contact NBC Bank South Africa for personalized rates.</em>
         </p>
         
         {/* Time Frame Toggle */}
