@@ -96,7 +96,6 @@ const APSCalculator = () => {
     >
       {/* Calculator Type Selection */}
       <div className="space-y-2">
-        <Label className="text-sm font-medium text-gray-700">APS Calculation Type</Label>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Button
             variant={calculationType === "standard" ? "default" : "outline"}
@@ -124,84 +123,75 @@ const APSCalculator = () => {
       {/* Subject Inputs */}
       <div className="space-y-4">
         {/* Home Language */}
-        <div className="space-y-2">
-          <Label className="text-sm font-medium text-gray-700">Home Language (Required)</Label>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Select value={homeLanguage} onValueChange={setHomeLanguage}>
-              <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
-                <SelectValue placeholder="Select Home Language" />
-              </SelectTrigger>
-              <SelectContent>
-                {homeLanguages.map((lang) => (
-                  <SelectItem key={lang} value={lang}>{lang}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Select value={homeLanguageMark} onValueChange={setHomeLanguageMark}>
-              <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
-                <SelectValue placeholder="Select Mark Range" />
-              </SelectTrigger>
-              <SelectContent>
-                {markOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Select value={homeLanguage} onValueChange={setHomeLanguage}>
+            <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+              <SelectValue placeholder="Select Home Language (Required)" />
+            </SelectTrigger>
+            <SelectContent>
+              {homeLanguages.map((lang) => (
+                <SelectItem key={lang} value={lang}>{lang}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select value={homeLanguageMark} onValueChange={setHomeLanguageMark}>
+            <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+              <SelectValue placeholder="Select Mark Range" />
+            </SelectTrigger>
+            <SelectContent>
+              {markOptions.map((option) => (
+                <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         {/* First Additional Language */}
-        <div className="space-y-2">
-          <Label className="text-sm font-medium text-gray-700">First Additional Language (Required)</Label>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Select value={fal} onValueChange={setFal}>
-              <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
-                <SelectValue placeholder="Select First Additional Language" />
-              </SelectTrigger>
-              <SelectContent>
-                {firstAdditionalLanguages.map((lang) => (
-                  <SelectItem key={lang} value={lang}>{lang}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Select value={falMark} onValueChange={setFalMark}>
-              <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
-                <SelectValue placeholder="Select Mark Range" />
-              </SelectTrigger>
-              <SelectContent>
-                {markOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Select value={fal} onValueChange={setFal}>
+            <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+              <SelectValue placeholder="Select First Additional Language (Required)" />
+            </SelectTrigger>
+            <SelectContent>
+              {firstAdditionalLanguages.map((lang) => (
+                <SelectItem key={lang} value={lang}>{lang}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select value={falMark} onValueChange={setFalMark}>
+            <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+              <SelectValue placeholder="Select Mark Range" />
+            </SelectTrigger>
+            <SelectContent>
+              {markOptions.map((option) => (
+                <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Mathematics */}
-        <div className="space-y-2">
-          <Label className="text-sm font-medium text-gray-700">Mathematics (Required)</Label>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Select value={mathematics} onValueChange={setMathematics}>
-              <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
-                <SelectValue placeholder="Select Mathematics Type" />
-              </SelectTrigger>
-              <SelectContent>
-                {mathematicsTypes.map((type) => (
-                  <SelectItem key={type} value={type}>{type}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Select value={mathematicsMark} onValueChange={setMathematicsMark}>
-              <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
-                <SelectValue placeholder="Select Mark Range" />
-              </SelectTrigger>
-              <SelectContent>
-                {markOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Select value={mathematics} onValueChange={setMathematics}>
+            <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+              <SelectValue placeholder="Select Mathematics Type (Required)" />
+            </SelectTrigger>
+            <SelectContent>
+              {mathematicsTypes.map((type) => (
+                <SelectItem key={type} value={type}>{type}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select value={mathematicsMark} onValueChange={setMathematicsMark}>
+            <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+              <SelectValue placeholder="Select Mark Range" />
+            </SelectTrigger>
+            <SelectContent>
+              {markOptions.map((option) => (
+                <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Elective Subjects */}
@@ -210,37 +200,32 @@ const APSCalculator = () => {
           { value: elective2, setValue: setElective2, mark: elective2Mark, setMark: setElective2Mark, number: 2 },
           { value: elective3, setValue: setElective3, mark: elective3Mark, setMark: setElective3Mark, number: 3 }
         ].map((elective, index) => (
-          <div key={index} className="space-y-2">
-            <Label className="text-sm font-medium text-gray-700">
-              Elective Subject {elective.number} (Required)
-            </Label>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Select value={elective.value} onValueChange={elective.setValue}>
-                <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
-                  <SelectValue placeholder="Select Subject" />
-                </SelectTrigger>
-                <SelectContent>
-                  {electiveSubjects.map((subject) => (
-                    <SelectItem key={subject} value={subject}>{subject}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <Select value={elective.mark} onValueChange={elective.setMark}>
-                <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
-                  <SelectValue placeholder="Select Mark Range" />
-                </SelectTrigger>
-                <SelectContent>
-                  {markOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+          <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Select value={elective.value} onValueChange={elective.setValue}>
+              <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+                <SelectValue placeholder={`Select Elective Subject ${elective.number} (Required)`} />
+              </SelectTrigger>
+              <SelectContent>
+                {electiveSubjects.map((subject) => (
+                  <SelectItem key={subject} value={subject}>{subject}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Select value={elective.mark} onValueChange={elective.setMark}>
+              <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+                <SelectValue placeholder="Select Mark Range" />
+              </SelectTrigger>
+              <SelectContent>
+                {markOptions.map((option) => (
+                  <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         ))}
 
         {/* Life Orientation */}
-        <div className="space-y-2">
+        <div className="space-y-3">
           <div className="flex items-center space-x-2">
             <input
               type="checkbox"
@@ -249,9 +234,9 @@ const APSCalculator = () => {
               onChange={(e) => setIncludeLO(e.target.checked)}
               className="h-4 w-4"
             />
-            <Label htmlFor="includeLO" className="text-sm font-medium text-gray-700">
+            <label htmlFor="includeLO" className="text-sm font-medium text-gray-700">
               Include Life Orientation
-            </Label>
+            </label>
           </div>
           <p className="text-xs text-gray-500">
             Some universities include Life Orientation in APS calculation, others don't.
@@ -278,56 +263,54 @@ const APSCalculator = () => {
       </div>
 
       {apsResult && (
-        <>
-          {/* APS Calculation Results */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
-            className="space-y-4"
-          >
-            
-            {/* Subject Breakdown */}
-            <div className="space-y-3">
-              <div className="text-sm font-medium text-gray-700 mb-3">APS Calculation Breakdown:</div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                {apsResult.subjects.map((subject, index) => (
-                  <div key={index} className="text-center p-3 border border-gray-200 rounded">
-                    <div className="text-xs text-gray-500 mb-1">{subject.name}</div>
-                    <div className="font-semibold text-sm text-gray-800">{subject.points} points</div>
-                    <div className="text-xs text-gray-500">{getAPSRange(subject.mark, calculationType)}</div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3 }}
+          className="mt-8 p-6 bg-gradient-to-br from-blue-50 to-green-50 border-2 border-primary/20 rounded-lg shadow-lg"
+        >
+          {/* Total APS - Featured at the top */}
+          <div className="text-center mb-6 p-4 bg-white rounded-lg shadow-sm border-2 border-primary">
+            <div className="text-sm text-gray-600 mb-2">Your Total APS Score</div>
+            <div className="text-4xl font-bold text-primary mb-2">{apsResult.totalAPS}</div>
+            <div className="flex justify-center gap-4 text-xs text-gray-600">
+              <span>Scale: {calculationType === "standard" ? "8-point" : "7-point"}</span>
+              <span>•</span>
+              <span>Subjects: {apsResult.subjects.length}</span>
+              {apsResult.includesLifeOrientation && (
+                <>
+                  <span>•</span>
+                  <span>Includes Life Orientation</span>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* Subject Breakdown */}
+          <div className="space-y-3">
+            <h3 className="text-lg font-semibold text-gray-800 text-center">Subject Breakdown</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+              {apsResult.subjects.map((subject, index) => (
+                <div key={index} className="bg-white p-3 rounded-lg shadow-sm border border-gray-200 text-center">
+                  <div className="text-xs font-medium text-gray-700 mb-1 truncate" title={subject.name}>
+                    {subject.name.length > 12 ? `${subject.name.substring(0, 12)}...` : subject.name}
                   </div>
-                ))}
-              </div>
+                  <div className="text-2xl font-bold text-primary mb-1">{subject.points}</div>
+                  <div className="text-xs text-gray-500">{getAPSRange(subject.mark, calculationType)}</div>
+                </div>
+              ))}
             </div>
+          </div>
 
-            {/* Total APS */}
-            <div className="text-center p-3 border-2 border-primary rounded">
-              <div className="text-sm text-gray-600 mb-1">Total APS Score</div>
-              <div className="text-2xl font-bold text-primary">{apsResult.totalAPS}</div>
-            </div>
-            
-            <div className="flex flex-wrap gap-2">
-              <div className="px-3 py-1 border border-gray-200 rounded text-xs">
-                <span className="text-gray-600">Scale: </span>
-                <span className="font-medium text-gray-800">{calculationType === "standard" ? "8-point" : "7-point"}</span>
-              </div>
-              <div className="px-3 py-1 border border-gray-200 rounded text-xs">
-                <span className="text-gray-600">Subjects: </span>
-                <span className="font-medium text-gray-800">{apsResult.subjects.length}</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Dynamic Paragraph */}
-          <div className="text-sm text-gray-600 leading-relaxed">
-            <p>
-              Your total APS score is {apsResult.totalAPS} points using the {calculationType === "standard" ? "standard 8-point" : "university-specific 7-point"} scale. 
+          {/* Summary paragraph */}
+          <div className="mt-6 p-4 bg-white/70 rounded-lg border border-gray-200">
+            <p className="text-sm text-gray-700 leading-relaxed text-center">
+              Your total APS score is <span className="font-semibold text-primary">{apsResult.totalAPS} points</span> using the {calculationType === "standard" ? "standard 8-point" : "university-specific 7-point"} scale. 
               This calculation includes {apsResult.subjects.length} subjects{apsResult.includesLifeOrientation ? ", including Life Orientation" : ""}. 
               Different universities have varying APS requirements, so check your preferred university's specific admission requirements.
             </p>
           </div>
-        </>
+        </motion.div>
       )}
     </motion.div>
   );
