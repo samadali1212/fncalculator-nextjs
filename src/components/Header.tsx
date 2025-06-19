@@ -60,7 +60,7 @@ const Header = () => {
           href="/" 
           className="flex items-center gap-2 font-bold text-2xl"
         >
-          <img src="/fncalculatorlogo.png" alt="fncalculator" className="h-4" />
+          <img src="/fncalculatorlogo.png" alt="fncalculator" className="h-5" />
         </a>
 
         {/* Desktop Navigation */}
