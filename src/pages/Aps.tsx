@@ -26,7 +26,7 @@ const Aps = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-2xl mx-auto"
         >
           {/* Hero Section */}
           <div className="text-center mb-8">
@@ -36,9 +36,8 @@ const Aps = () => {
                 APS Calculator
               </h1>
             </div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Calculate your Admission Point Score (APS) for South African universities. 
-              Choose between standard or university-specific calculation methods.
+            <p className="text-lg text-gray-600">
+              Calculate your Admission Point Score for South African universities
             </p>
           </div>
 
@@ -52,73 +51,34 @@ const Aps = () => {
             <AdSense slot="9889084223" />
           </div>
 
-          {/* Information Section */}
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <GraduationCap className="h-6 w-6 text-primary" />
-                <h2 className="text-xl font-semibold text-gray-900">What is APS?</h2>
-              </div>
-              <p className="text-gray-600 leading-relaxed">
-                The Admission Point Score (APS) is used by South African universities to assess 
-                whether students meet the minimum requirements for admission to specific programs. 
-                It's calculated based on your best six matric subject results.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <BookOpen className="h-6 w-6 text-primary" />
-                <h2 className="text-xl font-semibold text-gray-900">Required Subjects</h2>
-              </div>
-              <ul className="text-gray-600 space-y-2">
-                <li>• Home Language (compulsory)</li>
-                <li>• First Additional Language (compulsory)</li>
-                <li>• Mathematics or Mathematical Literacy (compulsory)</li>
-                <li>• Three elective subjects</li>
-                <li>• Life Orientation (optional for some universities)</li>
-              </ul>
-            </motion.div>
-          </div>
-
-          {/* Important Notes */}
+          {/* What is APS */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8"
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6"
           >
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Important Notes</h3>
-            <ul className="text-blue-800 space-y-2 text-sm">
-              <li>• Different universities may use different APS calculation methods</li>
-              <li>• Some universities use a 7-point scale instead of the standard 8-point scale</li>
-              <li>• Life Orientation may or may not be included depending on the university</li>
-              <li>• Always check your preferred university's specific admission requirements</li>
-              <li>• APS requirements vary by faculty and degree program</li>
-            </ul>
-          </motion.div>
-
-          {/* University Examples */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
-          >
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">APS Requirements Examples</h3>
+            <div className="flex items-center gap-3 mb-4">
+              <GraduationCap className="h-6 w-6 text-primary" />
+              <h2 className="text-xl font-semibold text-gray-900">What is APS?</h2>
+            </div>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              The Admission Point Score (APS) is used by South African universities to assess 
+              whether students meet the minimum requirements for admission to specific programs. 
+              It's calculated based on your best six matric subject results.
+            </p>
             <div className="grid md:grid-cols-2 gap-4 text-sm">
               <div>
-                <h4 className="font-medium text-gray-800 mb-2">Common APS Requirements:</h4>
+                <h4 className="font-medium text-gray-800 mb-2">Required Subjects:</h4>
+                <ul className="text-gray-600 space-y-1">
+                  <li>• Home Language (compulsory)</li>
+                  <li>• First Additional Language (compulsory)</li>
+                  <li>• Mathematics or Mathematical Literacy (compulsory)</li>
+                  <li>• Three elective subjects</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-medium text-gray-800 mb-2">Common Requirements:</h4>
                 <ul className="text-gray-600 space-y-1">
                   <li>• Medicine: 35+ APS</li>
                   <li>• Engineering: 30+ APS</li>
@@ -126,15 +86,23 @@ const Aps = () => {
                   <li>• Humanities: 20+ APS</li>
                 </ul>
               </div>
-              <div>
-                <h4 className="font-medium text-gray-800 mb-2">Note:</h4>
-                <p className="text-gray-600">
-                  These are general examples. Actual requirements vary by university 
-                  and specific program. Always consult official university prospectuses 
-                  for accurate requirements.
-                </p>
-              </div>
             </div>
+          </motion.div>
+
+          {/* Important Notes */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="bg-blue-50 border border-blue-200 rounded-lg p-6"
+          >
+            <h3 className="text-lg font-semibold text-blue-900 mb-3">Important Notes</h3>
+            <ul className="text-blue-800 space-y-2 text-sm">
+              <li>• Different universities may use different APS calculation methods</li>
+              <li>• Some universities use a 7-point scale instead of the standard 8-point scale</li>
+              <li>• Life Orientation may or may not be included depending on the university</li>
+              <li>• Always check your preferred university's specific admission requirements</li>
+            </ul>
           </motion.div>
         </motion.div>
       </main>
