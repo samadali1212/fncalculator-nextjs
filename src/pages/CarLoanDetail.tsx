@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -86,7 +85,7 @@ const CarLoanDetail = () => {
     if (value === "yearly" || value === "monthly") {
       setTimeFrame(value as CarLoanTimeFrame);
       const basePath = bankInfo.backLink === "/car-loan" ? "/car-loan" : bankInfo.backLink;
-      navigate(`${basePath}/${value}/${currentVehiclePrice}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}/${currentBalloonPayment}`);
+      navigate(`${basePath}/${currentVehiclePrice}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}/${currentBalloonPayment}`);
     }
   };
 
@@ -158,7 +157,7 @@ const CarLoanDetail = () => {
       <SEO 
         title={`${bankInfo.bankName} Car Finance Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${loanResult ? formatCurrency(loanResult.payment) : ""}`}
         description={`Calculate your ${bankInfo.bankName} car finance of ${formatCurrency(currentVehiclePrice)} with ${formatCurrency(currentDownPayment)} down payment at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
-        canonicalUrl={`${bankInfo.backLink}/${timeFrame}/${currentVehiclePrice}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}/${currentBalloonPayment}`}
+        canonicalUrl={`${bankInfo.backLink}/${currentVehiclePrice}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}/${currentBalloonPayment}`}
       />
       <Header />
       

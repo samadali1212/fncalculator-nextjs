@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
@@ -100,7 +99,7 @@ const CarLoanCalculator = ({
       const isCapitecPage = location.pathname.includes('/capitec-car-finance');
       const baseRoute = isCapitecPage ? '/capitec-car-finance' : '/car-loan';
       
-      navigate(`${baseRoute}/${timeFrame}/${numericVehiclePrice}/${numericDownPayment}/${numericLoanTerm}/${numericInterestRate}/${numericBalloonPayment}`);
+      navigate(`${baseRoute}/${numericVehiclePrice}/${numericDownPayment}/${numericLoanTerm}/${numericInterestRate}/${numericBalloonPayment}`);
     }
   };
 
