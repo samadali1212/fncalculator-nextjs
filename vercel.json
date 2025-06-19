@@ -1,8 +1,18 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/client",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "vite",
+  "functions": {
+    "server/api/[...path].js": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://tiramis.tira.go.tz/$1"
+      "destination": "/server/api/$1"
     },
     {
       "source": "/(.*)",
