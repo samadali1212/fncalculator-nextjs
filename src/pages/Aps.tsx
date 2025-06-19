@@ -52,7 +52,7 @@ const Aps = () => {
           </div>
 
           {/* General Calculator Section */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
+          <div className="mb-8">
             <h2 className="text-xl font-semibold text-gray-900 mb-4 text-center">General APS Calculator</h2>
             <p className="text-sm text-gray-600 text-center mb-6">
               Use this calculator if you want to compare different scales or if your university isn't listed above.
