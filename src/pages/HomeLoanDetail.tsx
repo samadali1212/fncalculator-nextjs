@@ -29,15 +29,33 @@ const HomeLoanDetail = () => {
   const [currentInterestRate, setCurrentInterestRate] = useState(0);
   const [currentLoanTerm, setCurrentLoanTerm] = useState(0);
   
+  // Determine bank name and timeframe from URL
+  const path = window.location.pathname;
+  const getBankInfo = () => {
+    if (path.includes("/capitec")) {
+      return {
+        bankName: "Capitec Bank",
+        backLink: "/capitec",
+        displayName: "Capitec"
+      };
+    }
+    return {
+      bankName: "South Africa",
+      backLink: "/home-loan",
+      displayName: "South Africa"
+    };
+  };
+
+  const bankInfo = getBankInfo();
+  
   // Determine timeframe from URL
   useEffect(() => {
-    const path = window.location.pathname;
     if (path.includes("/yearly/")) {
       setTimeFrame("yearly");
     } else {
       setTimeFrame("monthly");
     }
-  }, []);
+  }, [path]);
 
   // Parse parameters
   const homeLoanAmount = parseInt(loanAmount || "0");
@@ -61,7 +79,8 @@ const HomeLoanDetail = () => {
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
       setTimeFrame(value as HomeLoanTimeFrame);
-      navigate(`/home-loan/${value}/${currentLoanAmount}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}`);
+      const basePath = bankInfo.backLink === "/home-loan" ? "/home-loan" : "/capitec";
+      navigate(`${basePath}/${value}/${currentLoanAmount}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}`);
     }
   };
 
@@ -89,10 +108,10 @@ const HomeLoanDetail = () => {
                 <p className="text-gray-600 mb-6">
                   The home loan parameters provided are invalid. Please return to the calculator.
                 </p>
-                <Link to="/home-loan">
+                <Link to={bankInfo.backLink}>
                   <Button>
                     <Calculator className="mr-2 h-4 w-4" />
-                    Back to Home Loan Calculator
+                    Back to {bankInfo.bankName} Home Loan Calculator
                   </Button>
                 </Link>
               </CardContent>
@@ -130,9 +149,9 @@ const HomeLoanDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`South Africa Home Loan Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${loanResult ? formatCurrency(loanResult.payment) : ""}`}
-        description={`Calculate your South African home loan of ${formatCurrency(currentLoanAmount)} with ${formatCurrency(currentDownPayment)} down payment at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
-        canonicalUrl={`/home-loan/${timeFrame}/${currentLoanAmount}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}`}
+        title={`${bankInfo.bankName} Home Loan Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${loanResult ? formatCurrency(loanResult.payment) : ""}`}
+        description={`Calculate your ${bankInfo.bankName} home loan of ${formatCurrency(currentLoanAmount)} with ${formatCurrency(currentDownPayment)} down payment at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
+        canonicalUrl={`${bankInfo.backLink}/${timeFrame}/${currentLoanAmount}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}`}
       />
       <Header />
       
@@ -140,15 +159,15 @@ const HomeLoanDetail = () => {
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="flex items-center justify-between mb-6">
             <Link 
-              to={`/home-loan${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
+              to={`${bankInfo.backLink}${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
               className="inline-flex items-center text-sm text-[#000000] hover:underline"
             >
               <ChevronLeft className="h-4 w-4 mr-1" />
-              Back To Home Loan Calculator
+              Back To {bankInfo.bankName} Home Loan Calculator
             </Link>
             
             <ShareButton 
-              title={`South Africa Home Loan ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment - SalaryList`} 
+              title={`${bankInfo.bankName} Home Loan ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment - SalaryList`} 
               variant="outline"
             />
           </div>
@@ -156,7 +175,7 @@ const HomeLoanDetail = () => {
           {/* Title Section */}
           <div className="mb-6">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
-              South Africa Home Loan Calculator On {formatCurrency(currentLoanAmount)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Payment
+              {bankInfo.bankName} Home Loan Calculator On {formatCurrency(currentLoanAmount)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Payment
             </h1>
           </div>
 
@@ -181,7 +200,7 @@ const HomeLoanDetail = () => {
                 
                 <div className="prose prose-sm sm:prose max-w-none mb-6">
                   <p>
-                    Your home loan of {formatCurrency(loanResult.loanAmount)} with a down payment of {formatCurrency(loanResult.downPayment)} at {loanResult.interestRate}% interest rate for {loanResult.termDisplay} will require {timeFrame === "monthly" ? "monthly" : "annual"} payments of {formatCurrency(loanResult.payment)}. 
+                    Your {bankInfo.displayName} home loan of {formatCurrency(loanResult.loanAmount)} with a down payment of {formatCurrency(loanResult.downPayment)} at {loanResult.interestRate}% interest rate for {loanResult.termDisplay} will require {timeFrame === "monthly" ? "monthly" : "annual"} payments of {formatCurrency(loanResult.payment)}. 
                     The total interest you'll pay over the life of the loan is {formatCurrency(loanResult.totalInterest)}, making your total repayment {formatCurrency(loanResult.totalRepayment)}.
                   </p>
                 </div>
@@ -256,7 +275,7 @@ const HomeLoanDetail = () => {
           )}
 
           <p className="text-sm text-gray-500 text-center">
-            <em><strong>Interest rates may vary based on your credit profile, loan terms, and market conditions. Contact your preferred lender for personalized rates.</strong></em>
+            <em><strong>{bankInfo.bankName === "Capitec Bank" ? "Capitec Bank interest rates may vary based on your credit profile, loan terms, and market conditions. Contact Capitec Bank for personalized rates." : "Interest rates may vary based on your credit profile, loan terms, and market conditions. Contact your preferred lender for personalized rates."}</strong></em>
           </p>
         </div>
       </main>
