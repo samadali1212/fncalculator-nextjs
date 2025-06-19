@@ -28,26 +28,63 @@ const LoanDetail = () => {
   const [currentInterestRate, setCurrentInterestRate] = useState(0);
   const [currentLoanTerm, setCurrentLoanTerm] = useState(0);
   
-  // Determine bank from URL
+  // Determine bank from URL path
   const path = window.location.pathname;
-  const isLoanCalculator = path.includes("/loan/");
-  const isNmbBank = path.includes("/nmb");
-  const isNbcBank = path.includes("/nbc");
-  const isAbsaBank = path.includes("/absa");
-  const isAzaniaBank = path.includes("/azania");
-  const isCrdbBank = path.includes("/crdb");
-  
-  const bankName = isLoanCalculator ? "Personal" : 
-                   isAzaniaBank ? "Azania" : 
-                   isAbsaBank ? "ABSA" : 
-                   isNbcBank ? "NBC" : 
-                   isNmbBank ? "NMB" : "CRDB";
-  
-  const bankPath = isLoanCalculator ? "loan" :
-                   isAzaniaBank ? "azania" : 
-                   isAbsaBank ? "absa" : 
-                   isNbcBank ? "nbc" : 
-                   isNmbBank ? "nmb" : "crdb";
+  const getBankInfo = () => {
+    if (path.includes("/loan/")) {
+      return {
+        bankName: "Personal",
+        bankPath: "loan",
+        displayName: "Personal",
+        backLink: "/loan"
+      };
+    } else if (path.includes("/azania/")) {
+      return {
+        bankName: "Azania Bank",
+        bankPath: "azania",
+        displayName: "Azania",
+        backLink: "/azania"
+      };
+    } else if (path.includes("/absa/")) {
+      return {
+        bankName: "ABSA Bank",
+        bankPath: "absa",
+        displayName: "ABSA",
+        backLink: "/absa"
+      };
+    } else if (path.includes("/nbc/")) {
+      return {
+        bankName: "NBC Bank South Africa",
+        bankPath: "nbc",
+        displayName: "NBC",
+        backLink: "/nbc"
+      };
+    } else if (path.includes("/nmb/")) {
+      return {
+        bankName: "NMB Bank",
+        bankPath: "nmb",
+        displayName: "NMB",
+        backLink: "/nmb"
+      };
+    } else if (path.includes("/crdb/")) {
+      return {
+        bankName: "CRDB Bank",
+        bankPath: "crdb",
+        displayName: "CRDB",
+        backLink: "/crdb"
+      };
+    }
+    
+    // Default fallback
+    return {
+      bankName: "Personal",
+      bankPath: "loan",
+      displayName: "Personal",
+      backLink: "/loan"
+    };
+  };
+
+  const bankInfo = getBankInfo();
 
   // Parse parameters
   const loanAmount = parseInt(amount || "0");
@@ -76,7 +113,7 @@ const LoanDetail = () => {
       } else if (timeFrame === "yearly" && value === "monthly") {
         convertedTerm = currentLoanTerm * 12;
       }
-      navigate(`/${bankPath}/${currentLoanAmount}/${currentInterestRate}/${convertedTerm}`);
+      navigate(`${bankInfo.backLink}/${currentLoanAmount}/${currentInterestRate}/${convertedTerm}`);
     }
   };
 
@@ -103,10 +140,10 @@ const LoanDetail = () => {
                 <p className="text-gray-600 mb-6">
                   The loan parameters provided are invalid. Please return to the calculator.
                 </p>
-                <Link to={`/${bankPath}`}>
+                <Link to={bankInfo.backLink}>
                   <Button>
                     <Calculator className="mr-2 h-4 w-4" />
-                    Back to Calculator
+                    Back to {bankInfo.bankName} Calculator
                   </Button>
                 </Link>
               </CardContent>
@@ -144,9 +181,9 @@ const LoanDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`${bankName} Loan Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${loanResult ? formatCurrency(loanResult.payment) : ""}`}
-        description={`Calculate your ${bankName} ${isLoanCalculator ? "" : "Bank"} personal loan of ${formatCurrency(currentLoanAmount)} at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
-        canonicalUrl={`/${bankPath}/${currentLoanAmount}/${currentInterestRate}/${currentLoanTerm}`}
+        title={`${bankInfo.bankName} Loan Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${loanResult ? formatCurrency(loanResult.payment) : ""}`}
+        description={`Calculate your ${bankInfo.bankName} ${bankInfo.bankPath === "loan" ? "" : "Bank"} personal loan of ${formatCurrency(currentLoanAmount)} at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
+        canonicalUrl={`${bankInfo.backLink}/${currentLoanAmount}/${currentInterestRate}/${currentLoanTerm}`}
       />
       <Header />
       
@@ -154,15 +191,15 @@ const LoanDetail = () => {
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="flex items-center justify-between mb-6">
             <Link 
-              to={`/${bankPath}`}
+              to={bankInfo.backLink}
               className="inline-flex items-center text-sm text-[#000000] hover:underline"
             >
               <ChevronLeft className="h-4 w-4 mr-1" />
-              Back To {bankName} Calculator
+              Back To {bankInfo.bankName} Calculator
             </Link>
             
             <ShareButton 
-              title={`${bankName} Loan ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment - SalaryList`} 
+              title={`${bankInfo.bankName} Loan ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment - SalaryList`} 
               variant="outline"
             />
           </div>
@@ -170,7 +207,7 @@ const LoanDetail = () => {
           {/* Title Section - No Background */}
           <div className="mb-6">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
-              {bankName} Loan Calculator On {formatCurrency(currentLoanAmount)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Payment
+              {bankInfo.bankName} Loan Calculator On {formatCurrency(currentLoanAmount)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Payment
             </h1>
           </div>
 
@@ -190,11 +227,11 @@ const LoanDetail = () => {
             <>
               {/* Combined Loan Overview and Detailed Breakdown Section */}
               <div className="bg-white p-6 sm:p-8 rounded-md shadow-sm mb-8">
-                <h2 className="text-xl font-semibold mb-4">Loan Overview & Breakdown</h2>
+                <h2 className="text-xl font-semibold mb-4">{bankInfo.bankName} Loan Overview & Breakdown</h2>
                 
                 <div className="prose prose-sm sm:prose max-w-none mb-6">
                   <p>
-                    Your loan of {formatCurrency(loanResult.loanAmount)} at {loanResult.interestRate}% interest rate for {loanResult.termDisplay} will require {timeFrame === "monthly" ? "monthly" : "annual"} payments of {formatCurrency(loanResult.payment)}. 
+                    Your {bankInfo.displayName} {bankInfo.bankPath === "loan" ? "personal" : "bank"} loan of {formatCurrency(loanResult.loanAmount)} at {loanResult.interestRate}% interest rate for {loanResult.termDisplay} will require {timeFrame === "monthly" ? "monthly" : "annual"} payments of {formatCurrency(loanResult.payment)}. 
                     The total interest you'll pay over the life of the loan is {formatCurrency(loanResult.totalInterest)}, making your total repayment {formatCurrency(loanResult.totalRepayment)}.
                   </p>
                 </div>
@@ -260,7 +297,7 @@ const LoanDetail = () => {
           )}
 
           <p className="text-sm text-gray-500 text-center">
-            <em><strong>Interest rates may vary based on your credit profile and loan terms. Contact {isLoanCalculator ? "your preferred lender" : `${bankName} Bank`} for personalized rates.</strong></em>
+            <em><strong>Interest rates may vary based on your credit profile and loan terms. Contact {bankInfo.bankPath === "loan" ? "your preferred lender" : `${bankInfo.bankName}`} for personalized rates.</strong></em>
           </p>
         </div>
       </main>
