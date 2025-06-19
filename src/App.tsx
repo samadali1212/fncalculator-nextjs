@@ -18,6 +18,8 @@ import Azania from "./pages/Azania";
 import LoanDetail from "./pages/LoanDetail";
 import HomeLoan from "./pages/HomeLoan";
 import HomeLoanDetail from "./pages/HomeLoanDetail";
+import CarLoan from "./pages/CarLoan";
+import CarLoanDetail from "./pages/CarLoanDetail";
 
 const App = () => {
   return (
@@ -102,6 +104,14 @@ const App = () => {
           <Route path="/home-loan/monthly/:loanAmount/:downPayment/:loanTerm/:interestRate" element={<HomeLoanDetail />} />
           <Route path="/home-loan/yearly/:loanAmount/:downPayment/:loanTerm/:interestRate" element={<HomeLoanDetail />} />
           <Route path="/home-loan/:loanAmount/:downPayment/:loanTerm/:interestRate" element={<HomeLoanDetail />} />
+
+          {/* South Africa Car Loan Calculator Routes */}
+          <Route path="/car-loan" element={<CarLoan />} />
+          <Route path="/car-loan/monthly" element={<CarLoan />} />
+          <Route path="/car-loan/yearly" element={<CarLoan />} />
+          <Route path="/car-loan/monthly/:vehiclePrice/:downPayment/:loanTerm/:interestRate/:balloonPayment" element={<CarLoanDetail />} />
+          <Route path="/car-loan/yearly/:vehiclePrice/:downPayment/:loanTerm/:interestRate/:balloonPayment" element={<CarLoanDetail />} />
+          <Route path="/car-loan/:vehiclePrice/:downPayment/:loanTerm/:interestRate/:balloonPayment" element={<CarLoanDetail />} />
                         
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
