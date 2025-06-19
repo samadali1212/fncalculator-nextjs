@@ -1,3 +1,4 @@
+
 import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
@@ -15,16 +16,16 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { usePageReload } from "../hooks/usePageReload";
 import { 
-  getTanzaniaTaxCalculation, 
-  formatTanzaniaCurrency, 
-  generateTanzaniaTaxCalculations,
-  TanzaniaTaxCalculationResult,
-  TanzaniaTimeFrame,
-  convertTanzaniaIncome
-} from "../utils/tanzaniaTaxCalculator";
+  getSouthAfricaTaxCalculation, 
+  formatSouthAfricaCurrency, 
+  generateSouthAfricaTaxCalculations,
+  SouthAfricaTaxCalculationResult,
+  SouthAfricaTimeFrame,
+  AgeGroup
+} from "../utils/southAfricaTaxCalculator";
 
 const PayeDetail = () => {
-  const { incomeId } = useParams<{ incomeId: string }>();
+  const { incomeId, ageGroup: urlAgeGroup } = useParams<{ incomeId: string; ageGroup?: AgeGroup }>();
   const location = useLocation();
   const pathname = location.pathname;
   
@@ -32,30 +33,33 @@ const PayeDetail = () => {
   const { pageKey, isLoading, setIsLoading } = usePageReload();
   
   // Determine timeFrame from URL path
-  const timeFrame: TanzaniaTimeFrame = pathname.includes("/yearly/") ? "yearly" : "monthly";
+  const timeFrame: SouthAfricaTimeFrame = pathname.includes("/yearly/") ? "yearly" : "monthly";
   
   const navigate = useNavigate();
   
   const initialIncome = incomeId ? parseInt(incomeId) : 0;
+  const initialAgeGroup: AgeGroup = (urlAgeGroup as AgeGroup) || "below65";
   
-  // Add state for current income that can be updated by the calculator
+  // Add state for current income and age group that can be updated by the calculator
   const [currentIncome, setCurrentIncome] = useState(initialIncome);
+  const [currentAgeGroup, setCurrentAgeGroup] = useState<AgeGroup>(initialAgeGroup);
   
-  // Use currentIncome for tax calculations instead of the URL income
+  // Use currentIncome and currentAgeGroup for tax calculations instead of the URL values
   const taxDetails = useMemo(() => 
-    getTanzaniaTaxCalculation(currentIncome, timeFrame), 
-    [currentIncome, timeFrame]
+    getSouthAfricaTaxCalculation(currentIncome, currentAgeGroup, timeFrame), 
+    [currentIncome, currentAgeGroup, timeFrame]
   );
   
   // Get nearby incomes for comparison (still use initial income from URL)
   const allCalculations = useMemo(() => 
-    generateTanzaniaTaxCalculations(
-      timeFrame === "monthly" ? 200000 : 2400000,   // Min: TSh 200,000 monthly, TSh 2,400,000 yearly
-      timeFrame === "monthly" ? 1500000 : 18000000, // Max: TSh 1,500,000 monthly, TSh 18,000,000 yearly
-      timeFrame === "monthly" ? 50000 : 600000,     // Step: TSh 50,000 monthly, TSh 600,000 yearly
+    generateSouthAfricaTaxCalculations(
+      timeFrame === "monthly" ? 4000 : 48000,     // Min: R4,000 monthly, R48,000 yearly
+      timeFrame === "monthly" ? 100000 : 1200000, // Max: R100,000 monthly, R1,200,000 yearly
+      timeFrame === "monthly" ? 1000 : 12000,     // Step: R1,000 monthly, R12,000 yearly
+      initialAgeGroup,
       timeFrame
     ), 
-    [timeFrame]
+    [timeFrame, initialAgeGroup]
   );
   
   const nearbyIncomes = useMemo(() => {
@@ -70,13 +74,19 @@ const PayeDetail = () => {
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
       // Navigate to the same income but with different timeframe
-      navigate(`/paye/${value}/${currentIncome}`);
+      const ageGroupPath = currentAgeGroup !== "below65" ? `/${currentAgeGroup}` : "";
+      navigate(`/paye/${value}/${currentIncome}${ageGroupPath}`);
     }
   };
   
   // Callback function to handle income changes from the calculator
   const handleIncomeChange = (newIncome: number) => {
     setCurrentIncome(newIncome);
+  };
+
+  // Callback function to handle age group changes from the calculator
+  const handleAgeGroupChange = (newAgeGroup: AgeGroup) => {
+    setCurrentAgeGroup(newAgeGroup);
   };
   
   if (isLoading) {
@@ -124,7 +134,7 @@ const PayeDetail = () => {
   }
 
   // Format currency for the title without spaces
-  const formattedCurrencyForTitle = formatTanzaniaCurrency(initialIncome).replace(/\s/g, "");
+  const formattedCurrencyForTitle = formatSouthAfricaCurrency(initialIncome).replace(/\s/g, "");
 
   return (
     <motion.div
@@ -136,9 +146,9 @@ const PayeDetail = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title={`PAYE Calculator on ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary in Tanzania`}
-        description={`Calculate your PAYE tax for ${formatTanzaniaCurrency(initialIncome)} ${timeFrame === "monthly" ? "monthly" : "annual"} income in Tanzania. After tax income: ${formatTanzaniaCurrency(taxDetails.netIncome)}. Effective tax rate: ${taxDetails.effectiveTaxRate.toFixed(1)}%.`}
-        canonicalUrl={`/paye/${timeFrame}/${initialIncome}`}
+        title={`PAYE Calculator on ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary in South Africa`}
+        description={`Calculate your PAYE tax for ${formatSouthAfricaCurrency(initialIncome)} ${timeFrame === "monthly" ? "monthly" : "annual"} income in South Africa. After tax income: ${formatSouthAfricaCurrency(taxDetails.netIncome)}. Effective tax rate: ${taxDetails.effectiveTaxRate.toFixed(1)}%.`}
+        canonicalUrl={`/paye/${timeFrame}/${initialIncome}${initialAgeGroup !== "below65" ? `/${initialAgeGroup}` : ""}`}
       />
       
       <Header />
@@ -155,7 +165,7 @@ const PayeDetail = () => {
             </Link>
             
             <ShareButton 
-              title={`PAYE Tax on ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary in Tanzania - SalaryList`} 
+              title={`PAYE Tax on ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary in South Africa - SalaryList`} 
               variant="outline"
             />
           </div>
@@ -163,7 +173,7 @@ const PayeDetail = () => {
           {/* Title Section - No Background */}
           <div className="mb-6">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
-              PAYE Calculator On {formatTanzaniaCurrency(taxDetails.grossIncome)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Salary
+              PAYE Calculator On {formatSouthAfricaCurrency(taxDetails.grossIncome)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Salary
             </h1>
           </div>
 
@@ -173,7 +183,9 @@ const PayeDetail = () => {
               timeFrame={timeFrame}
               onTimeFrameChange={handleTimeFrameChange}
               initialAmount={initialIncome.toString()}
+              initialAgeGroup={initialAgeGroup}
               onIncomeChange={handleIncomeChange}
+              onAgeGroupChange={handleAgeGroupChange}
             />
           </div>
           
@@ -199,15 +211,15 @@ const PayeDetail = () => {
               <TableBody>
                 <TableRow className="border-b border-gray-200">
                   <TableCell>{timeFrame === "yearly" ? "Annual" : "Monthly"} Gross Income</TableCell>
-                  <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.grossIncome)}</TableCell>
+                  <TableCell className="text-right">{formatSouthAfricaCurrency(taxDetails.grossIncome)}</TableCell>
                 </TableRow>
                 <TableRow className="border-b border-gray-200">
                   <TableCell>Taxable Income</TableCell>
-                  <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.taxableIncome)}</TableCell>
+                  <TableCell className="text-right">{formatSouthAfricaCurrency(taxDetails.taxableIncome)}</TableCell>
                 </TableRow>
                 <TableRow className="font-medium border-b border-gray-200">
                   <TableCell>PAYE Tax Payable</TableCell>
-                  <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.netTax)}</TableCell>
+                  <TableCell className="text-right">{formatSouthAfricaCurrency(taxDetails.netTax)}</TableCell>
                 </TableRow>
                 <TableRow className="border-b border-gray-200">
                   <TableCell>Effective Tax Rate</TableCell>
@@ -215,22 +227,22 @@ const PayeDetail = () => {
                 </TableRow>
                 <TableRow className="border-b border-gray-200">
                   <TableCell>Marginal Tax Rate</TableCell>
-                  <TableCell className="text-right">{taxDetails.marginalTaxRate}%</TableCell>
+                  <TableCell className="text-right">{taxDetails.marginalTaxRate.toFixed(1)}%</TableCell>
                 </TableRow>
                 <TableRow className="bg-gray-50 font-medium border-b border-gray-200">
                   <TableCell>{timeFrame === "yearly" ? "Annual" : "Monthly"} Take-home Pay</TableCell>
-                  <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.netIncome)}</TableCell>
+                  <TableCell className="text-right">{formatSouthAfricaCurrency(taxDetails.netIncome)}</TableCell>
                 </TableRow>
                 {timeFrame === "yearly" && (
                   <TableRow className="bg-gray-50">
                     <TableCell>Monthly Take-home Pay</TableCell>
-                    <TableCell className="text-right">{formatTanzaniaCurrency(Math.round(taxDetails.netIncome / 12))}</TableCell>
+                    <TableCell className="text-right">{formatSouthAfricaCurrency(Math.round(taxDetails.netIncome / 12))}</TableCell>
                   </TableRow>
                 )}
                 {timeFrame === "monthly" && (
                   <TableRow className="bg-gray-50">
                     <TableCell>Annual Take-home Pay</TableCell>
-                    <TableCell className="text-right">{formatTanzaniaCurrency(taxDetails.netIncome * 12)}</TableCell>
+                    <TableCell className="text-right">{formatSouthAfricaCurrency(taxDetails.netIncome * 12)}</TableCell>
                   </TableRow>
                 )}
               </TableBody>
@@ -262,14 +274,14 @@ const PayeDetail = () => {
                       </div>
                       <div className="flex-1">
                         <Link 
-                          to={`/paye/${timeFrame}/${calcResult.grossIncome}`}
+                          to={`/paye/${timeFrame}/${calcResult.grossIncome}${initialAgeGroup !== "below65" ? `/${initialAgeGroup}` : ""}`}
                           className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent"
                         >
-                          {formatTanzaniaCurrency(calcResult.grossIncome)} {timeFrame === "monthly" ? "monthly" : "annual"} income
+                          {formatSouthAfricaCurrency(calcResult.grossIncome)} {timeFrame === "monthly" ? "monthly" : "annual"} income
                         </Link>
                         
                         <div className="flex items-center text-xs text-[#828282]">
-                          <span>{formatTanzaniaCurrency(calcResult.netIncome)} take-home</span>
+                          <span>{formatSouthAfricaCurrency(calcResult.netIncome)} take-home</span>
                           <span className="mx-1">•</span>
                           <span className="font-medium text-[#555]">{calcResult.effectiveTaxRate.toFixed(1)}% effective rate</span>
                         </div>
