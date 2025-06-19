@@ -6,7 +6,7 @@ import Paye from "@/pages/Paye";
 import Blog from "@/pages/Blog";
 import About from "@/pages/About";
 import HomeLoan from "@/pages/HomeLoan";
-import VAT from "@/pages/VAT";
+import VAT from "@/pages/Vat";
 import Bmi from "@/pages/Bmi";
 import Aps from "@/pages/Aps";
 
