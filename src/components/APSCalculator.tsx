@@ -267,10 +267,9 @@ const APSCalculator = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}
-          className="mt-8 p-6 bg-gradient-to-br from-blue-50 to-green-50 border-2 border-primary/20 rounded-lg shadow-lg"
         >
           {/* Total APS - Featured at the top */}
-          <div className="text-center mb-6 p-4 bg-white rounded-lg shadow-sm border-2 border-primary">
+          <div className="text-center mb-8 p-4 bg-white rounded-lg shadow-sm border-2 border-primary">
             <div className="text-sm text-gray-600 mb-2">Your Total APS Score</div>
             <div className="text-4xl font-bold text-primary mb-2">{apsResult.totalAPS}</div>
             <div className="flex justify-center gap-4 text-xs text-gray-600">
