@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Calculator } from "lucide-react";
@@ -94,28 +93,24 @@ const APSCalculator = () => {
       transition={{ duration: 0.5 }}
       className="mb-8 space-y-6"
     >
-      {/* Calculator Type Selection - Fixed labels */}
+      {/* Calculator Type Selection - Compact toggle style */}
       <div className="space-y-2">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex gap-2">
           <Button
             variant={calculationType === "university" ? "default" : "outline"}
             onClick={() => setCalculationType("university")}
-            className="h-auto p-4 text-left justify-start"
+            size="sm"
+            className="flex-1 text-sm"
           >
-            <div>
-              <div className="font-medium">Standard Scale</div>
-              <div className="text-sm opacity-70">7-point scale (Most universities)</div>
-            </div>
+            Standard Scale (7-point)
           </Button>
           <Button
             variant={calculationType === "standard" ? "default" : "outline"}
             onClick={() => setCalculationType("standard")}
-            className="h-auto p-4 text-left justify-start"
+            size="sm"
+            className="flex-1 text-sm"
           >
-            <div>
-              <div className="font-medium">University Scale</div>
-              <div className="text-sm opacity-70">8-point scale (Some universities)</div>
-            </div>
+            University Scale (8-point)
           </Button>
         </div>
       </div>
