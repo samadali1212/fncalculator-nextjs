@@ -22,6 +22,7 @@ import HomeLoanDetail from "./pages/HomeLoanDetail";
 import CarLoan from "./pages/CarLoan";
 import CarLoanDetail from "./pages/CarLoanDetail";
 import Vat from "./pages/Vat";
+import Uif from "./pages/Uif";
 
 const App = () => {
   return (
@@ -47,6 +48,9 @@ const App = () => {
 
           {/* VAT Calculator Route */}
           <Route path="/vat" element={<Vat />} />
+
+          {/* UIF Calculator Route */}
+          <Route path="/uif" element={<Uif />} />
 
           {/* Blog Routes */}
           <Route path="/blog" element={<Blog />} />
