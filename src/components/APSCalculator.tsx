@@ -284,28 +284,37 @@ const APSCalculator = () => {
 
       {apsResult && (
         <>
-          {/* APS Results */}
+          {/* Clean Results Layout - matching UIF Calculator style */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
-            className="space-y-3"
+            className="space-y-4"
           >
-            <div className="text-center p-3 bg-white rounded border-2 border-primary">
-              <div className="text-xs text-gray-500 mb-1">Total APS Score</div>
-              <div className="font-semibold text-2xl text-primary">{apsResult.totalAPS}</div>
-            </div>
-            
-            <div className="bg-white rounded border border-gray-100 p-4">
-              <div className="text-sm font-medium text-gray-700 mb-3">Subject Breakdown:</div>
-              <div className="space-y-2">
-                {apsResult.subjects.map((subject, index) => (
-                  <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
-                    <span className="text-sm text-gray-700">{subject.name}</span>
-                    <span className="text-sm font-medium">{subject.points} points</span>
-                  </div>
-                ))}
+            {/* Calculation Breakdown */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div className="text-center p-3 bg-gray-50 rounded border border-gray-100">
+                <div className="text-xs text-gray-500 mb-1">Total Subjects</div>
+                <div className="font-semibold text-sm text-gray-800">{apsResult.subjects.length}</div>
               </div>
+              <div className="text-center p-3 bg-gray-50 rounded border border-gray-100">
+                <div className="text-xs text-gray-500 mb-1">Calculation Type</div>
+                <div className="font-semibold text-sm text-blue-600">{calculationType === "standard" ? "8-point" : "7-point"}</div>
+              </div>
+              <div className="text-center p-3 bg-gray-50 rounded border border-gray-100">
+                <div className="text-xs text-gray-500 mb-1">Includes Life Orientation</div>
+                <div className="font-semibold text-sm text-green-600">{apsResult.includesLifeOrientation ? "Yes" : "No"}</div>
+              </div>
+              <div className="text-center p-3 bg-gray-50 rounded border border-gray-100">
+                <div className="text-xs text-gray-500 mb-1">Best Six Subjects</div>
+                <div className="font-semibold text-sm text-gray-800">Calculated</div>
+              </div>
+            </div>
+
+            {/* Total APS Score */}
+            <div className="text-center p-4 bg-white rounded border-2 border-primary">
+              <div className="text-sm text-gray-600 mb-1">Total APS Score</div>
+              <div className="text-2xl font-bold text-primary">{apsResult.totalAPS}</div>
             </div>
           </motion.div>
 
