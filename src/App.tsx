@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import About from "./pages/About";
@@ -25,6 +24,7 @@ import CarLoan from "./pages/CarLoan";
 import CarLoanDetail from "./pages/CarLoanDetail";
 import Vat from "./pages/Vat";
 import Uif from "./pages/Uif";
+import CompoundInterest from "./pages/CompoundInterest";
 
 const App = () => {
   return (
@@ -53,6 +53,9 @@ const App = () => {
 
           {/* UIF Calculator Route */}
           <Route path="/uif" element={<Uif />} />
+
+          {/* Compound Interest Calculator Route */}
+          <Route path="/compound-interest" element={<CompoundInterest />} />
 
           {/* Blog Routes */}
           <Route path="/blog" element={<Blog />} />
