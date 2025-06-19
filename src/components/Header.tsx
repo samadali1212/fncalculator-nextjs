@@ -28,6 +28,7 @@ const Header = () => {
 
   const menuItems = [
     { path: "/paye", label: "PAYE Calculator" },
+    { path: "/aps", label: "APS Calculator" },
     { path: "/blog", label: "Blog" },
     { path: "/about", label: "About" }
   ];
