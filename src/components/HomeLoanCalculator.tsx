@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { 
@@ -29,6 +29,7 @@ const HomeLoanCalculator = ({
   initialInterestRate
 }: HomeLoanCalculatorProps) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [loanAmount, setLoanAmount] = useState(initialLoanAmount || "300000");
   const [downPayment, setDownPayment] = useState(initialDownPayment || "0");
   const [loanTerm, setLoanTerm] = useState(initialLoanTerm || "30");
@@ -86,7 +87,11 @@ const HomeLoanCalculator = ({
 
   const handleViewDetails = () => {
     if (loanResult) {
-      navigate(`/home-loan/${timeFrame}/${numericLoanAmount}/${numericDownPayment}/${numericLoanTerm}/${numericInterestRate}`);
+      // Determine the base route based on current location
+      const isCapitecPage = location.pathname.includes('/capitec');
+      const baseRoute = isCapitecPage ? '/capitec' : '/home-loan';
+      
+      navigate(`${baseRoute}/${timeFrame}/${numericLoanAmount}/${numericDownPayment}/${numericLoanTerm}/${numericInterestRate}`);
     }
   };
 

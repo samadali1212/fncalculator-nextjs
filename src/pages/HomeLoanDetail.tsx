@@ -24,7 +24,7 @@ const HomeLoanDetail = () => {
   const { pageKey, isLoading } = usePageReload();
   
   const [timeFrame, setTimeFrame] = useState<HomeLoanTimeFrame>("monthly");
-  const [currentLoanAmount, setCurrentLoanAmount] = useState(0);
+  const [currentHomePrice, setCurrentHomePrice] = useState(0);
   const [currentDownPayment, setCurrentDownPayment] = useState(0);
   const [currentInterestRate, setCurrentInterestRate] = useState(0);
   const [currentLoanTerm, setCurrentLoanTerm] = useState(0);
@@ -68,41 +68,41 @@ const HomeLoanDetail = () => {
     }
   }, [path]);
 
-  // Parse parameters
-  const homeLoanAmount = parseInt(loanAmount || "0");
+  // Parse parameters - loanAmount here represents the home price
+  const homePrice = parseInt(loanAmount || "0");
   const homeDownPayment = parseInt(downPayment || "0");
   const homeInterestRate = parseFloat(interestRate || "0");
   const homeLoanTerm = parseInt(loanTerm || "0");
 
   // Set initial values
   useEffect(() => {
-    setCurrentLoanAmount(homeLoanAmount);
+    setCurrentHomePrice(homePrice);
     setCurrentDownPayment(homeDownPayment);
     setCurrentInterestRate(homeInterestRate);
     setCurrentLoanTerm(homeLoanTerm);
-  }, [homeLoanAmount, homeDownPayment, homeInterestRate, homeLoanTerm]);
+  }, [homePrice, homeDownPayment, homeInterestRate, homeLoanTerm]);
 
   // Calculate loan details using current values
-  const loanResult = currentLoanAmount > 0 && currentInterestRate > 0 && currentLoanTerm > 0
-    ? getHomeLoanCalculation(currentLoanAmount, currentDownPayment, currentInterestRate, currentLoanTerm, timeFrame)
+  const loanResult = currentHomePrice > 0 && currentInterestRate > 0 && currentLoanTerm > 0
+    ? getHomeLoanCalculation(currentHomePrice, currentDownPayment, currentInterestRate, currentLoanTerm, timeFrame)
     : null;
 
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
       setTimeFrame(value as HomeLoanTimeFrame);
       const basePath = bankInfo.backLink === "/home-loan" ? "/home-loan" : bankInfo.backLink;
-      navigate(`${basePath}/${value}/${currentLoanAmount}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}`);
+      navigate(`${basePath}/${value}/${currentHomePrice}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}`);
     }
   };
 
-  const handleLoanChange = (newLoanAmount: number, newDownPayment: number, newInterestRate: number, newLoanTerm: number) => {
-    setCurrentLoanAmount(newLoanAmount);
+  const handleLoanChange = (newHomePrice: number, newDownPayment: number, newInterestRate: number, newLoanTerm: number) => {
+    setCurrentHomePrice(newHomePrice);
     setCurrentDownPayment(newDownPayment);
     setCurrentInterestRate(newInterestRate);
     setCurrentLoanTerm(newLoanTerm);
   };
 
-  if (!loanAmount || !downPayment || !loanTerm || !interestRate || homeLoanAmount <= 0 || homeInterestRate <= 0 || homeLoanTerm <= 0) {
+  if (!loanAmount || !downPayment || !loanTerm || !interestRate || homePrice <= 0 || homeInterestRate <= 0 || homeLoanTerm <= 0) {
     return (
       <motion.div
         key={pageKey}
@@ -134,7 +134,7 @@ const HomeLoanDetail = () => {
   }
 
   // Format currency for the title without spaces
-  const formattedCurrencyForTitle = formatCurrency(currentLoanAmount).replace(/\s/g, "");
+  const formattedCurrencyForTitle = formatCurrency(currentHomePrice).replace(/\s/g, "");
 
   if (isLoading) {
     return (
@@ -161,8 +161,8 @@ const HomeLoanDetail = () => {
     >
       <SEO 
         title={`${bankInfo.bankName} Home Loan Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${loanResult ? formatCurrency(loanResult.payment) : ""}`}
-        description={`Calculate your ${bankInfo.bankName} home loan of ${formatCurrency(currentLoanAmount)} with ${formatCurrency(currentDownPayment)} down payment at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
-        canonicalUrl={`${bankInfo.backLink}/${timeFrame}/${currentLoanAmount}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}`}
+        description={`Calculate your ${bankInfo.bankName} home loan of ${formatCurrency(currentHomePrice)} with ${formatCurrency(currentDownPayment)} down payment at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
+        canonicalUrl={`${bankInfo.backLink}/${timeFrame}/${currentHomePrice}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}`}
       />
       <Header />
       
@@ -186,7 +186,7 @@ const HomeLoanDetail = () => {
           {/* Title Section */}
           <div className="mb-6">
             <h1 className="text-2xl sm:text-3xl font-bold text-[#333] mb-4">
-              {bankInfo.bankName} Home Loan Calculator On {formatCurrency(currentLoanAmount)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Payment
+              {bankInfo.bankName} Home Loan Calculator On {formatCurrency(currentHomePrice)} {timeFrame === "monthly" ? "Monthly" : "Annual"} Payment
             </h1>
           </div>
 
@@ -195,7 +195,7 @@ const HomeLoanDetail = () => {
             <HomeLoanDetailCalculator 
               timeFrame={timeFrame}
               onTimeFrameChange={handleTimeFrameChange}
-              initialLoanAmount={homeLoanAmount.toString()}
+              initialLoanAmount={homePrice.toString()}
               initialDownPayment={homeDownPayment.toString()}
               initialInterestRate={homeInterestRate.toString()}
               initialLoanTerm={homeLoanTerm.toString()}
@@ -275,7 +275,7 @@ const HomeLoanDetail = () => {
               {/* Amortization Schedule Section */}
               <div className="mb-8">
                 <HomeLoanAmortizationSchedule 
-                  homePrice={currentLoanAmount}
+                  homePrice={currentHomePrice}
                   downPayment={currentDownPayment}
                   interestRate={currentInterestRate}
                   loanTerm={currentLoanTerm}
