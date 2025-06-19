@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { 
@@ -31,6 +31,7 @@ const CarLoanCalculator = ({
   initialBalloonPayment
 }: CarLoanCalculatorProps) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [vehiclePrice, setVehiclePrice] = useState(initialVehiclePrice || "250000");
   const [downPayment, setDownPayment] = useState(initialDownPayment || "0");
   const [loanTerm, setLoanTerm] = useState(initialLoanTerm || "36");
@@ -95,7 +96,11 @@ const CarLoanCalculator = ({
 
   const handleViewDetails = () => {
     if (loanResult) {
-      navigate(`/car-loan/${timeFrame}/${numericVehiclePrice}/${numericDownPayment}/${numericLoanTerm}/${numericInterestRate}/${numericBalloonPayment}`);
+      // Determine the base route based on current location
+      const isCapitecPage = location.pathname.includes('/capitec-car-finance');
+      const baseRoute = isCapitecPage ? '/capitec-car-finance' : '/car-loan';
+      
+      navigate(`${baseRoute}/${timeFrame}/${numericVehiclePrice}/${numericDownPayment}/${numericLoanTerm}/${numericInterestRate}/${numericBalloonPayment}`);
     }
   };
 

@@ -16,6 +16,7 @@ import Nbc from "./pages/Nbc";
 import Absa from "./pages/Absa";
 import Azania from "./pages/Azania";
 import Capitec from "./pages/Capitec";
+import CapitecCarFinance from "./pages/CapitecCarFinance";
 import Loan from "./pages/Loan";
 import LoanDetail from "./pages/LoanDetail";
 import BusinessLoan from "./pages/BusinessLoan";
@@ -136,6 +137,14 @@ const App = () => {
           <Route path="/capitec/monthly/:loanAmount/:downPayment/:loanTerm/:interestRate" element={<HomeLoanDetail />} />
           <Route path="/capitec/yearly/:loanAmount/:downPayment/:loanTerm/:interestRate" element={<HomeLoanDetail />} />
           <Route path="/capitec/:loanAmount/:downPayment/:loanTerm/:interestRate" element={<HomeLoanDetail />} />
+
+          {/* Capitec Bank Car Finance Calculator Routes */}
+          <Route path="/capitec-car-finance" element={<CapitecCarFinance />} />
+          <Route path="/capitec-car-finance/monthly" element={<CapitecCarFinance />} />
+          <Route path="/capitec-car-finance/yearly" element={<CapitecCarFinance />} />
+          <Route path="/capitec-car-finance/monthly/:vehiclePrice/:downPayment/:loanTerm/:interestRate/:balloonPayment" element={<CarLoanDetail />} />
+          <Route path="/capitec-car-finance/yearly/:vehiclePrice/:downPayment/:loanTerm/:interestRate/:balloonPayment" element={<CarLoanDetail />} />
+          <Route path="/capitec-car-finance/:vehiclePrice/:downPayment/:loanTerm/:interestRate/:balloonPayment" element={<CarLoanDetail />} />
 
           {/* South Africa Home Loan Calculator Routes */}
           <Route path="/home-loan" element={<HomeLoan />} />
