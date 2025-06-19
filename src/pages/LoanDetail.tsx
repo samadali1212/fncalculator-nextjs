@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -28,22 +29,34 @@ const LoanDetail = () => {
   const [currentLoanTerm, setCurrentLoanTerm] = useState(0);
   
   // Determine bank from URL
-  const isNmbBank = window.location.pathname.includes("/nmb");
-  const isNbcBank = window.location.pathname.includes("/nbc");
-  const isAbsaBank = window.location.pathname.includes("/absa");
-  const isAzaniaBank = window.location.pathname.includes("/azania");
-  const bankName = isAzaniaBank ? "Azania" : (isAbsaBank ? "ABSA" : (isNbcBank ? "NBC" : (isNmbBank ? "NMB" : "CRDB")));
-  const bankPath = isAzaniaBank ? "azania" : (isAbsaBank ? "absa" : (isNbcBank ? "nbc" : (isNmbBank ? "nmb" : "crdb")));
+  const path = window.location.pathname;
+  const isLoanCalculator = path.includes("/loan/");
+  const isNmbBank = path.includes("/nmb");
+  const isNbcBank = path.includes("/nbc");
+  const isAbsaBank = path.includes("/absa");
+  const isAzaniaBank = path.includes("/azania");
+  const isCrdbBank = path.includes("/crdb");
+  
+  const bankName = isLoanCalculator ? "Personal" : 
+                   isAzaniaBank ? "Azania" : 
+                   isAbsaBank ? "ABSA" : 
+                   isNbcBank ? "NBC" : 
+                   isNmbBank ? "NMB" : "CRDB";
+  
+  const bankPath = isLoanCalculator ? "loan" :
+                   isAzaniaBank ? "azania" : 
+                   isAbsaBank ? "absa" : 
+                   isNbcBank ? "nbc" : 
+                   isNmbBank ? "nmb" : "crdb";
   
   // Determine timeframe from URL
   useEffect(() => {
-    const path = window.location.pathname;
     if (path.includes("/yearly/")) {
       setTimeFrame("yearly");
     } else {
       setTimeFrame("monthly");
     }
-  }, []);
+  }, [path]);
 
   // Parse parameters
   const loanAmount = parseInt(amount || "0");
@@ -99,7 +112,7 @@ const LoanDetail = () => {
                 <p className="text-gray-600 mb-6">
                   The loan parameters provided are invalid. Please return to the calculator.
                 </p>
-                <Link to="/crdb">
+                <Link to={`/${bankPath}`}>
                   <Button>
                     <Calculator className="mr-2 h-4 w-4" />
                     Back to Calculator
@@ -141,7 +154,7 @@ const LoanDetail = () => {
     >
       <SEO 
         title={`${bankName} Loan Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${loanResult ? formatCurrency(loanResult.payment) : ""}`}
-        description={`Calculate your ${bankName} Bank personal loan of ${formatCurrency(currentLoanAmount)} at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
+        description={`Calculate your ${bankName} ${isLoanCalculator ? "" : "Bank"} personal loan of ${formatCurrency(currentLoanAmount)} at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
         canonicalUrl={`/${bankPath}/${timeFrame}/${currentLoanAmount}/${currentInterestRate}/${currentLoanTerm}`}
       />
       <Header />
@@ -256,7 +269,7 @@ const LoanDetail = () => {
           )}
 
           <p className="text-sm text-gray-500 text-center">
-            <em><strong>Interest rates may vary based on your credit profile and loan terms. Contact {bankName} Bank for personalized rates.</strong></em>
+            <em><strong>Interest rates may vary based on your credit profile and loan terms. Contact {isLoanCalculator ? "your preferred lender" : `${bankName} Bank`} for personalized rates.</strong></em>
           </p>
         </div>
       </main>

@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import SEO from "../components/SEO";
-import LoanDetailCalculator from "../components/LoanDetailCalculator";
+import CrdbCalculator from "../components/CrdbCalculator";
 import { Button } from "@/components/ui/button";
 import { 
   generateCrdbLoanCalculations, 
@@ -70,9 +70,10 @@ const Loan = () => {
         </p>
 
         {/* Custom Loan Calculator */}
-        <LoanDetailCalculator 
+        <CrdbCalculator 
           timeFrame={timeFrame}
           onTimeFrameChange={handleTimeFrameChange}
+          bankPath="loan"
         />
 
         <p className="text-gray-600 mb-8">
