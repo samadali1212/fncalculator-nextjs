@@ -27,10 +27,7 @@ const Header = () => {
   }, []);
 
   const menuItems = [
-    { path: "/", label: "TMS Check" },
-    { path: "/insurance", label: "Insurance Check" },
     { path: "/paye", label: "PAYE Calculator" },
-    { path: "/events", label: "Holidays" },
     { path: "/blog", label: "Blog" },
     { path: "/about", label: "About" }
   ];
