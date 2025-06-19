@@ -24,7 +24,7 @@ import {
 } from "../utils/apsCalculator";
 
 const APSCalculator = () => {
-  const [calculationType, setCalculationType] = useState<APSCalculationType>("standard");
+  const [calculationType, setCalculationType] = useState<APSCalculationType>("university");
   const [homeLanguage, setHomeLanguage] = useState("");
   const [homeLanguageMark, setHomeLanguageMark] = useState("");
   const [fal, setFal] = useState("");
@@ -94,27 +94,27 @@ const APSCalculator = () => {
       transition={{ duration: 0.5 }}
       className="mb-8 space-y-6"
     >
-      {/* Calculator Type Selection */}
+      {/* Calculator Type Selection - Fixed labels */}
       <div className="space-y-2">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Button
-            variant={calculationType === "standard" ? "default" : "outline"}
-            onClick={() => setCalculationType("standard")}
-            className="h-auto p-4 text-left justify-start"
-          >
-            <div>
-              <div className="font-medium">Standard Scale</div>
-              <div className="text-sm opacity-70">8-point scale (Most universities)</div>
-            </div>
-          </Button>
           <Button
             variant={calculationType === "university" ? "default" : "outline"}
             onClick={() => setCalculationType("university")}
             className="h-auto p-4 text-left justify-start"
           >
             <div>
+              <div className="font-medium">Standard Scale</div>
+              <div className="text-sm opacity-70">7-point scale (Most universities)</div>
+            </div>
+          </Button>
+          <Button
+            variant={calculationType === "standard" ? "default" : "outline"}
+            onClick={() => setCalculationType("standard")}
+            className="h-auto p-4 text-left justify-start"
+          >
+            <div>
               <div className="font-medium">University Scale</div>
-              <div className="text-sm opacity-70">7-point scale (Some universities)</div>
+              <div className="text-sm opacity-70">8-point scale (Some universities)</div>
             </div>
           </Button>
         </div>
@@ -273,7 +273,7 @@ const APSCalculator = () => {
             <div className="text-sm text-gray-600 mb-2">Your Total APS Score</div>
             <div className="text-4xl font-bold text-primary mb-2">{apsResult.totalAPS}</div>
             <div className="flex justify-center gap-4 text-xs text-gray-600">
-              <span>Scale: {calculationType === "standard" ? "8-point" : "7-point"}</span>
+              <span>Scale: {calculationType === "university" ? "7-point" : "8-point"}</span>
               <span>•</span>
               <span>Subjects: {apsResult.subjects.length}</span>
               {apsResult.includesLifeOrientation && (
@@ -301,10 +301,10 @@ const APSCalculator = () => {
             </div>
           </div>
 
-          {/* Summary paragraph */}
+          {/* Summary paragraph - Updated text */}
           <div className="mt-6 p-4 bg-white/70 rounded-lg border border-gray-200">
             <p className="text-sm text-gray-700 leading-relaxed text-center">
-              Your total APS score is <span className="font-semibold text-primary">{apsResult.totalAPS} points</span> using the {calculationType === "standard" ? "standard 8-point" : "university-specific 7-point"} scale. 
+              Your total APS score is <span className="font-semibold text-primary">{apsResult.totalAPS} points</span> using the {calculationType === "university" ? "standard 7-point" : "university-specific 8-point"} scale. 
               This calculation includes {apsResult.subjects.length} subjects{apsResult.includesLifeOrientation ? ", including Life Orientation" : ""}. 
               Different universities have varying APS requirements, so check your preferred university's specific admission requirements.
             </p>
