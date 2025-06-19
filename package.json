@@ -4,12 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev:ssr": "node server/ssr-dev.js",
-    "build:client": "vite build",
-    "build:server": "vite build --ssr client/src/entry-server.tsx --outDir dist/server",
-    "build:ssr": "npm run build:client && npm run build:server",
-    "preview:ssr": "NODE_ENV=production node server/ssr-prod.js",
-    "preview": "vite preview"
+    "dev": "NODE_ENV=development tsx server/index.ts",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:vercel": "vite build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
