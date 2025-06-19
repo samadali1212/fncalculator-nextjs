@@ -21,6 +21,7 @@ import HomeLoan from "./pages/HomeLoan";
 import HomeLoanDetail from "./pages/HomeLoanDetail";
 import CarLoan from "./pages/CarLoan";
 import CarLoanDetail from "./pages/CarLoanDetail";
+import Vat from "./pages/Vat";
 
 const App = () => {
   return (
@@ -43,6 +44,9 @@ const App = () => {
 
           {/* Ovulation Calculator Route */}
           <Route path="/ovulation" element={<Ovulation />} />
+
+          {/* VAT Calculator Route */}
+          <Route path="/vat" element={<Vat />} />
 
           {/* Blog Routes */}
           <Route path="/blog" element={<Blog />} />
