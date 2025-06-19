@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -31,13 +32,24 @@ const HomeLoanDetail = () => {
   // Determine bank name and timeframe from URL
   const path = window.location.pathname;
   const getBankInfo = () => {
-    if (path.startsWith("/capitec")) {
+    // Check for bank-specific routes first
+    if (path.includes("/capitec/")) {
       return {
         bankName: "Capitec Bank",
         backLink: "/capitec",
         displayName: "Capitec"
       };
     }
+    // Add more banks here as needed
+    // if (path.includes("/fnb/")) {
+    //   return {
+    //     bankName: "FNB",
+    //     backLink: "/fnb",
+    //     displayName: "FNB"
+    //   };
+    // }
+    
+    // Default to general South Africa home loan
     return {
       bankName: "South Africa",
       backLink: "/home-loan",
@@ -78,7 +90,7 @@ const HomeLoanDetail = () => {
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
       setTimeFrame(value as HomeLoanTimeFrame);
-      const basePath = bankInfo.backLink === "/home-loan" ? "/home-loan" : "/capitec";
+      const basePath = bankInfo.backLink === "/home-loan" ? "/home-loan" : bankInfo.backLink;
       navigate(`${basePath}/${value}/${currentLoanAmount}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}`);
     }
   };
