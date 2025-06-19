@@ -9,11 +9,13 @@ import PayeCalculator from "../components/PayeCalculator";
 import PayeCollapsible from "../components/PayeCollapsible";
 import ToolStructuredData from "../components/StructuredData/ToolStructuredData";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
-  generateTanzaniaTaxCalculations, 
-  formatTanzaniaCurrency,
-  TanzaniaTimeFrame
-} from "../utils/tanzaniaTaxCalculator";
+  generateSouthAfricaTaxCalculations, 
+  formatSouthAfricaCurrency,
+  SouthAfricaTimeFrame,
+  AgeGroup
+} from "../utils/southAfricaTaxCalculator";
 import {
   Pagination,
   PaginationContent,
@@ -22,17 +24,19 @@ import {
 
 const Paye = () => {
   const [itemsToShow, setItemsToShow] = useState(50);
+  const [ageGroup, setAgeGroup] = useState<AgeGroup>("below65");
   const location = useLocation();
   const navigate = useNavigate();
   
-  const timeFrame: TanzaniaTimeFrame = location.pathname.includes("/yearly") 
+  const timeFrame: SouthAfricaTimeFrame = location.pathname.includes("/yearly") 
     ? "yearly" 
     : "monthly";
   
-  const taxResults = generateTanzaniaTaxCalculations(
-    timeFrame === "monthly" ? 270000 : 3240000,    // Min: TSh 100,000 monthly / TSh 1,200,000 yearly
-    timeFrame === "monthly" ? 2070000 : 24840000,  // Max: TSh 2,000,000 monthly / TSh 24,000,000 yearly
-    timeFrame === "monthly" ? 100000 : 1200000,      // Step: TSh 10,000 monthly / TSh 120,000 yearly
+  const taxResults = generateSouthAfricaTaxCalculations(
+    timeFrame === "monthly" ? 4000 : 48000,      // Min: R 4,000 monthly / R 48,000 yearly
+    timeFrame === "monthly" ? 650000 : 7800000,  // Max: R 650,000 monthly / R 7,800,000 yearly
+    timeFrame === "monthly" ? 5000 : 60000,      // Step: R 5,000 monthly / R 60,000 yearly
+    ageGroup,
     timeFrame
   );
     
@@ -56,20 +60,20 @@ const Paye = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="PAYE Calculator 2024/2025 For Tanzania Mainland Tax Rates" 
-        description="Calculate your PAYE tax in Tanzania Mainland with our 2024/2025 tax calculator. Monthly and annual income tax calculations based on current tax brackets."
+        title="PAYE Calculator 2024/2025 For South Africa Tax Rates" 
+        description="Calculate your PAYE tax in South Africa with our 2024/2025 tax calculator. Monthly and annual income tax calculations based on current tax brackets and rebates."
         canonicalUrl={`/paye${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
       />
       <ToolStructuredData toolType="paye" />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <h1 className="text-3xl font-bold mb-2">PAYE Tax Calculator In Tanzania For 2024/2025</h1>
+        <h1 className="text-3xl font-bold mb-2">PAYE Tax Calculator In South Africa For 2024/2025</h1>
         <p className="text-gray-600 mb-8">
-          Our PAYE calculator tool helps you easily calculate PAYE in Tanzania with accurate TRA PAYE calculator rates. 
-          Estimate your tax in seconds, whether you're checking PAYE rates in Tanzania or looking for a PAYE calculator {timeFrame === "monthly" ? "monthly" : "annual"} update. 
-          Ideal for anyone needing a PAYE calculator for Tanzania mainland or simply learning how to calculate PAYE in Tanzania. 
-          From PAYE tax breakdowns to personalized figures, the calculator gives you everything you need. 
+          Our PAYE calculator tool helps you easily calculate PAYE in South Africa with accurate SARS PAYE calculator rates. 
+          Estimate your tax in seconds, whether you're checking PAYE rates in South Africa or looking for a PAYE calculator {timeFrame === "monthly" ? "monthly" : "annual"} update. 
+          Ideal for anyone needing a PAYE calculator for South Africa or simply learning how to calculate PAYE in South Africa. 
+          From PAYE tax breakdowns to personalized figures with age-based rebates, the calculator gives you everything you need. 
         </p>
 
         {/* Custom Income Calculator */}
@@ -82,16 +86,17 @@ const Paye = () => {
         <PayeCollapsible />
 
         <p className="text-gray-600 mb-8">
-          <em><strong>Note that PAYE is calculated after deducting NSSF or PSSSF contributions from your gross income.</strong></em>
+          <em><strong>Note that PAYE is calculated based on your gross income with applicable rebates for different age groups.</strong></em>
         </p>
         
-        {/* Time Frame Toggle - Full Width */}
+        {/* Controls Row - Time Frame and Age Group */}
         <motion.div 
-          className="mb-6"
+          className="mb-6 space-y-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
+          {/* Time Frame Toggle */}
           <div className="flex gap-2 w-full">
             <Button
               variant={timeFrame === "monthly" ? "default" : "outline"}
@@ -109,6 +114,20 @@ const Paye = () => {
             >
               Yearly
             </Button>
+          </div>
+
+          {/* Age Group Selection */}
+          <div className="w-full">
+            <Select value={ageGroup} onValueChange={(value: AgeGroup) => setAgeGroup(value)}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select age group for rebates" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="below65">Below 65 (Primary rebate only)</SelectItem>
+                <SelectItem value="age65to75">65 to 75 (Primary + Secondary rebate)</SelectItem>
+                <SelectItem value="above75">Above 75 (Primary + Secondary + Tertiary rebate)</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </motion.div>
 
@@ -134,10 +153,10 @@ const Paye = () => {
               <div className="grid grid-cols-12 items-center">
                 <div className="col-span-4 md:col-span-3">
                   <Link 
-                    to={`/paye/${timeFrame}/${result.grossIncome}`}
+                    to={`/paye/${timeFrame}/${result.grossIncome}/${ageGroup}`}
                     className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                   >
-                    {formatTanzaniaCurrency(result.grossIncome)}
+                    {formatSouthAfricaCurrency(result.grossIncome)}
                     <ArrowUpRight 
                       className="h-3.5 w-3.5 ml-1 text-blog-subtle opacity-0 group-hover:opacity-100 transition-opacity"
                     />
@@ -145,11 +164,11 @@ const Paye = () => {
                 </div>
                 
                 <div className="col-span-4 md:col-span-3">
-                  <span className="text-sm">{formatTanzaniaCurrency(result.netIncome)}</span>
+                  <span className="text-sm">{formatSouthAfricaCurrency(result.netIncome)}</span>
                 </div>
                 
                 <div className="hidden md:block md:col-span-2">
-                  <span className="text-sm">{formatTanzaniaCurrency(result.netTax)}</span>
+                  <span className="text-sm">{formatSouthAfricaCurrency(result.netTax)}</span>
                 </div>
                 
                 <div className="col-span-3 md:col-span-2">
@@ -159,7 +178,7 @@ const Paye = () => {
                 </div>
                 
                 <div className="hidden md:block md:col-span-2">
-                  <span className="text-sm">{result.marginalTaxRate}%</span>
+                  <span className="text-sm">{result.marginalTaxRate.toFixed(1)}%</span>
                 </div>
               </div>
             </motion.div>

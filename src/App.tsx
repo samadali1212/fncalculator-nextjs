@@ -43,12 +43,14 @@ const App = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
 
-          {/* Tanzania PAYE Calculator Routes */}
+          {/* South Africa PAYE Calculator Routes */}
           <Route path="/paye" element={<Paye />} />
           <Route path="/paye/monthly" element={<Paye />} />
           <Route path="/paye/yearly" element={<Paye />} />
           <Route path="/paye/monthly/:incomeId" element={<PayeDetail />} />
           <Route path="/paye/yearly/:incomeId" element={<PayeDetail />} />
+          <Route path="/paye/monthly/:incomeId/:ageGroup" element={<PayeDetail />} />
+          <Route path="/paye/yearly/:incomeId/:ageGroup" element={<PayeDetail />} />
           <Route path="/paye/:incomeId" element={<PayeDetail />} />
 
           {/* CRDB Bank Personal Loan Calculator Routes */}

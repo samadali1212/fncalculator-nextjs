@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Calculator } from "lucide-react";
@@ -5,26 +6,29 @@ import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
-  getTanzaniaTaxCalculation,
-  formatTanzaniaCurrency,
-  TanzaniaTimeFrame
-} from "../utils/tanzaniaTaxCalculator";
+  getSouthAfricaTaxCalculation,
+  formatSouthAfricaCurrency,
+  SouthAfricaTimeFrame,
+  AgeGroup
+} from "../utils/southAfricaTaxCalculator";
 
 interface PayeCalculatorProps {
-  timeFrame: TanzaniaTimeFrame;
+  timeFrame: SouthAfricaTimeFrame;
   onTimeFrameChange: (value: string) => void;
   initialAmount?: string;
 }
 
 const PayeCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeCalculatorProps) => {
   const navigate = useNavigate();
-  const [customIncome, setCustomIncome] = useState(initialAmount || (timeFrame === "yearly" ? "6000000" : "500000"));
+  const [customIncome, setCustomIncome] = useState(initialAmount || (timeFrame === "yearly" ? "600000" : "50000"));
+  const [ageGroup, setAgeGroup] = useState<AgeGroup>("below65");
   
   // Format number with thousand separators
   const formatNumberWithSeparators = (value: string): string => {
     const numericValue = value.replace(/[^0-9]/g, '');
-    return numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   };
 
   // Get numeric value from formatted string
@@ -35,7 +39,7 @@ const PayeCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeCal
   // Calculate custom income tax if user enters an amount
   const numericCustomIncome = getNumericValue(customIncome);
   const customTaxResult = numericCustomIncome > 0 
-    ? getTanzaniaTaxCalculation(numericCustomIncome, timeFrame)
+    ? getSouthAfricaTaxCalculation(numericCustomIncome, ageGroup, timeFrame)
     : null;
 
   const handleCustomIncomeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,7 +75,7 @@ const PayeCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeCal
 
   const viewDetailedCalculation = () => {
     if (customTaxResult) {
-      navigate(`/paye/${timeFrame}/${customTaxResult.grossIncome}`);
+      navigate(`/paye/${timeFrame}/${customTaxResult.grossIncome}/${ageGroup}`);
     }
   };
 
@@ -86,11 +90,11 @@ const PayeCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeCal
       {/* Income Input */}
       <div className="space-y-2">
         <Label htmlFor="custom-income" className="text-sm font-medium text-gray-700">
-          {timeFrame === "monthly" ? "Monthly" : "Annual"} Income (TSh)
+          {timeFrame === "monthly" ? "Monthly" : "Annual"} Income (ZAR)
         </Label>
         <div className="relative">
           <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm">
-            TSh
+            R
           </span>
           <Input
             id="custom-income"
@@ -101,6 +105,21 @@ const PayeCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeCal
             className="pl-12 h-10 border-gray-300 focus:border-primary"
           />
         </div>
+      </div>
+
+      {/* Age Group Selection */}
+      <div className="space-y-2">
+        <Label className="text-sm font-medium text-gray-700">Age Group</Label>
+        <Select value={ageGroup} onValueChange={(value: AgeGroup) => setAgeGroup(value)}>
+          <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+            <SelectValue placeholder="Select age group" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="below65">Below 65</SelectItem>
+            <SelectItem value="age65to75">65 to 75</SelectItem>
+            <SelectItem value="above75">Above 75</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
       
       {/* Time Frame Toggle - Matching Insurance/Offence Style */}
@@ -139,15 +158,15 @@ const PayeCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeCal
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <div className="text-center p-3 bg-white rounded border border-gray-100">
                 <div className="text-xs text-gray-500 mb-1">Gross Income</div>
-                <div className="font-semibold text-sm text-gray-800">{formatTanzaniaCurrency(customTaxResult.grossIncome)}</div>
+                <div className="font-semibold text-sm text-gray-800">{formatSouthAfricaCurrency(customTaxResult.grossIncome)}</div>
               </div>
               <div className="text-center p-3 bg-white rounded border-2 border-primary">
                 <div className="text-xs text-gray-500 mb-1">Take-home Pay</div>
-                <div className="font-semibold text-sm text-primary">{formatTanzaniaCurrency(customTaxResult.netIncome)}</div>
+                <div className="font-semibold text-sm text-primary">{formatSouthAfricaCurrency(customTaxResult.netIncome)}</div>
               </div>
               <div className="text-center p-3 bg-white rounded border border-gray-100">
                 <div className="text-xs text-gray-500 mb-1">PAYE Tax</div>
-                <div className="font-semibold text-sm text-red-600">{formatTanzaniaCurrency(customTaxResult.netTax)}</div>
+                <div className="font-semibold text-sm text-red-600">{formatSouthAfricaCurrency(customTaxResult.netTax)}</div>
               </div>
             </div>
             
@@ -158,7 +177,11 @@ const PayeCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeCal
               </div>
               <div className="px-3 py-1 bg-white rounded border border-gray-200 text-xs">
                 <span className="text-gray-600">Marginal Rate: </span>
-                <span className="font-medium text-gray-800">{customTaxResult.marginalTaxRate}%</span>
+                <span className="font-medium text-gray-800">{customTaxResult.marginalTaxRate.toFixed(1)}%</span>
+              </div>
+              <div className="px-3 py-1 bg-white rounded border border-gray-200 text-xs">
+                <span className="text-gray-600">Tax Rebates: </span>
+                <span className="font-medium text-gray-800">{formatSouthAfricaCurrency(customTaxResult.taxRebates)}</span>
               </div>
             </div>
           </motion.div>
@@ -166,7 +189,8 @@ const PayeCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeCal
           {/* Dynamic Paragraph */}
           <div className="text-sm text-gray-600 leading-relaxed">
             <p>
-              Your {timeFrame} income of {formatTanzaniaCurrency(customTaxResult.grossIncome)} falls under the {customTaxResult.marginalTaxRate}% tax bracket, resulting in an effective tax rate of {customTaxResult.effectiveTaxRate.toFixed(1)}%. 
+              Your {timeFrame} income of {formatSouthAfricaCurrency(customTaxResult.grossIncome)} falls under the {customTaxResult.marginalTaxRate.toFixed(1)}% tax bracket, resulting in an effective tax rate of {customTaxResult.effectiveTaxRate.toFixed(1)}%. 
+              After applying tax rebates of {formatSouthAfricaCurrency(customTaxResult.taxRebates)}, your net PAYE tax is {formatSouthAfricaCurrency(customTaxResult.netTax)}.
               Click below to see the complete breakdown of your tax calculation including all applicable deductions and bracket details.
             </p>
           </div>
