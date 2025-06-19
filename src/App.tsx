@@ -70,10 +70,10 @@ const App = () => {
           {/* Legacy redirects for backward compatibility */}
           <Route path="/paye/monthly" element={<Navigate to="/paye" replace />} />
           <Route path="/paye/yearly" element={<Navigate to="/paye" replace />} />
-          <Route path="/paye/monthly/:incomeId" element={<Navigate to="/paye/$1" replace />} />
-          <Route path="/paye/yearly/:incomeId" element={<Navigate to="/paye/$1" replace />} />
-          <Route path="/paye/monthly/:incomeId/:ageGroup" element={<Navigate to="/paye/$1/$2" replace />} />
-          <Route path="/paye/yearly/:incomeId/:ageGroup" element={<Navigate to="/paye/$1/$2" replace />} />
+          <Route path="/paye/monthly/:incomeId" element={<Navigate to="/paye/:incomeId" replace />} />
+          <Route path="/paye/yearly/:incomeId" element={<Navigate to="/paye/:incomeId" replace />} />
+          <Route path="/paye/monthly/:incomeId/:ageGroup" element={<Navigate to="/paye/:incomeId/:ageGroup" replace />} />
+          <Route path="/paye/yearly/:incomeId/:ageGroup" element={<Navigate to="/paye/:incomeId/:ageGroup" replace />} />
           
           {/* New simplified PAYE detail routes */}
           <Route path="/paye/:incomeId" element={<PayeDetail />} />
@@ -85,8 +85,8 @@ const App = () => {
           {/* Legacy redirects for backward compatibility */}
           <Route path="/loan/monthly" element={<Navigate to="/loan" replace />} />
           <Route path="/loan/yearly" element={<Navigate to="/loan" replace />} />
-          <Route path="/loan/monthly/:amount/:rate/:term" element={<Navigate to="/loan/$1/$2/$3" replace />} />
-          <Route path="/loan/yearly/:amount/:rate/:term" element={<Navigate to="/loan/$1/$2/$3" replace />} />
+          <Route path="/loan/monthly/:amount/:rate/:term" element={<Navigate to="/loan/:amount/:rate/:term" replace />} />
+          <Route path="/loan/yearly/:amount/:rate/:term" element={<Navigate to="/loan/:amount/:rate/:term" replace />} />
           
           {/* New simplified Loan detail routes */}
           <Route path="/loan/:amount/:rate/:term" element={<LoanDetail />} />
@@ -105,8 +105,8 @@ const App = () => {
           {/* Legacy redirects for backward compatibility */}
           <Route path="/crdb/monthly" element={<Navigate to="/crdb" replace />} />
           <Route path="/crdb/yearly" element={<Navigate to="/crdb" replace />} />
-          <Route path="/crdb/monthly/:amount/:rate/:term" element={<Navigate to="/crdb/$1/$2/$3" replace />} />
-          <Route path="/crdb/yearly/:amount/:rate/:term" element={<Navigate to="/crdb/$1/$2/$3" replace />} />
+          <Route path="/crdb/monthly/:amount/:rate/:term" element={<Navigate to="/crdb/:amount/:rate/:term" replace />} />
+          <Route path="/crdb/yearly/:amount/:rate/:term" element={<Navigate to="/crdb/:amount/:rate/:term" replace />} />
           
           {/* New simplified CRDB detail routes */}
           <Route path="/crdb/:amount/:rate/:term" element={<LoanDetail />} />
@@ -117,8 +117,8 @@ const App = () => {
           {/* Legacy redirects for backward compatibility */}
           <Route path="/nmb/monthly" element={<Navigate to="/nmb" replace />} />
           <Route path="/nmb/yearly" element={<Navigate to="/nmb" replace />} />
-          <Route path="/nmb/monthly/:amount/:rate/:term" element={<Navigate to="/nmb/$1/$2/$3" replace />} />
-          <Route path="/nmb/yearly/:amount/:rate/:term" element={<Navigate to="/nmb/$1/$2/$3" replace />} />
+          <Route path="/nmb/monthly/:amount/:rate/:term" element={<Navigate to="/nmb/:amount/:rate/:term" replace />} />
+          <Route path="/nmb/yearly/:amount/:rate/:term" element={<Navigate to="/nmb/:amount/:rate/:term" replace />} />
           
           {/* New simplified NMB detail routes */}
           <Route path="/nmb/:amount/:rate/:term" element={<LoanDetail />} />
@@ -129,8 +129,8 @@ const App = () => {
           {/* Legacy redirects for backward compatibility */}
           <Route path="/nbc/monthly" element={<Navigate to="/nbc" replace />} />
           <Route path="/nbc/yearly" element={<Navigate to="/nbc" replace />} />
-          <Route path="/nbc/monthly/:amount/:rate/:term" element={<Navigate to="/nbc/$1/$2/$3" replace />} />
-          <Route path="/nbc/yearly/:amount/:rate/:term" element={<Navigate to="/nbc/$1/$2/$3" replace />} />
+          <Route path="/nbc/monthly/:amount/:rate/:term" element={<Navigate to="/nbc/:amount/:rate/:term" replace />} />
+          <Route path="/nbc/yearly/:amount/:rate/:term" element={<Navigate to="/nbc/:amount/:rate/:term" replace />} />
           
           {/* New simplified NBC detail routes */}
           <Route path="/nbc/:amount/:rate/:term" element={<LoanDetail />} />
@@ -141,8 +141,8 @@ const App = () => {
           {/* Legacy redirects for backward compatibility */}
           <Route path="/absa/monthly" element={<Navigate to="/absa" replace />} />
           <Route path="/absa/yearly" element={<Navigate to="/absa" replace />} />
-          <Route path="/absa/monthly/:amount/:rate/:term" element={<Navigate to="/absa/$1/$2/$3" replace />} />
-          <Route path="/absa/yearly/:amount/:rate/:term" element={<Navigate to="/absa/$1/$2/$3" replace />} />
+          <Route path="/absa/monthly/:amount/:rate/:term" element={<Navigate to="/absa/:amount/:rate/:term" replace />} />
+          <Route path="/absa/yearly/:amount/:rate/:term" element={<Navigate to="/absa/:amount/:rate/:term" replace />} />
           
           {/* New simplified ABSA detail routes */}
           <Route path="/absa/:amount/:rate/:term" element={<LoanDetail />} />
@@ -153,8 +153,8 @@ const App = () => {
           {/* Legacy redirects for backward compatibility */}
           <Route path="/azania/monthly" element={<Navigate to="/azania" replace />} />
           <Route path="/azania/yearly" element={<Navigate to="/azania" replace />} />
-          <Route path="/azania/monthly/:amount/:rate/:term" element={<Navigate to="/azania/$1/$2/$3" replace />} />
-          <Route path="/azania/yearly/:amount/:rate/:term" element={<Navigate to="/azania/$1/$2/$3" replace />} />
+          <Route path="/azania/monthly/:amount/:rate/:term" element={<Navigate to="/azania/:amount/:rate/:term" replace />} />
+          <Route path="/azania/yearly/:amount/:rate/:term" element={<Navigate to="/azania/:amount/:rate/:term" replace />} />
           
           {/* New simplified Azania detail routes */}
           <Route path="/azania/:amount/:rate/:term" element={<LoanDetail />} />
