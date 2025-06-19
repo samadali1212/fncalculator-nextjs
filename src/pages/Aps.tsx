@@ -40,7 +40,6 @@ const Aps = () => {
           {/* Hero Section */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Calculator className="h-8 w-8 text-primary" />
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
                 APS Calculator
               </h1>
