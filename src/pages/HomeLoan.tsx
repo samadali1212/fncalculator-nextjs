@@ -129,7 +129,7 @@ const HomeLoan = () => {
               <div className="grid grid-cols-12 items-center">
                 <div className="col-span-4 md:col-span-3">
                   <Link 
-                    to={`/home-loan/${timeFrame}/${result.loanAmount}/${result.downPayment}/${result.loanTerm}/${result.interestRate}`}
+                    to={`/home-loan/${result.loanAmount}/${result.downPayment}/${result.loanTerm}/${result.interestRate}`}
                     className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                   >
                     {formatCurrency(result.loanAmount)}

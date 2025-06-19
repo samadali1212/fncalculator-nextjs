@@ -91,7 +91,7 @@ const HomeLoanCalculator = ({
       const isCapitecPage = location.pathname.includes('/capitec');
       const baseRoute = isCapitecPage ? '/capitec' : '/home-loan';
       
-      navigate(`${baseRoute}/${timeFrame}/${numericLoanAmount}/${numericDownPayment}/${numericLoanTerm}/${numericInterestRate}`);
+      navigate(`${baseRoute}/${numericLoanAmount}/${numericDownPayment}/${numericLoanTerm}/${numericInterestRate}`);
     }
   };
 

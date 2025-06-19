@@ -91,7 +91,7 @@ const HomeLoanDetail = () => {
     if (value === "yearly" || value === "monthly") {
       setTimeFrame(value as HomeLoanTimeFrame);
       const basePath = bankInfo.backLink === "/home-loan" ? "/home-loan" : bankInfo.backLink;
-      navigate(`${basePath}/${value}/${currentHomePrice}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}`);
+      navigate(`${basePath}/${currentHomePrice}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}`);
     }
   };
 

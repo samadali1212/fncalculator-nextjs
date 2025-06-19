@@ -130,7 +130,7 @@ const CapitecCarFinance = () => {
               <div className="grid grid-cols-12 items-center">
                 <div className="col-span-4 md:col-span-3">
                   <Link 
-                    to={`/capitec-car-finance/${timeFrame}/${result.vehiclePrice}/${result.downPayment}/${result.loanTerm}/${result.interestRate}/${result.balloonPayment}`}
+                    to={`/capitec-car-finance/${result.vehiclePrice}/${result.downPayment}/${result.loanTerm}/${result.interestRate}/${result.balloonPayment}`}
                     className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                   >
                     {formatCurrency(result.vehiclePrice)}
