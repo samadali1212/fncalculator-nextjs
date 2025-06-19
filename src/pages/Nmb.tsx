@@ -45,7 +45,7 @@ const Nmb = () => {
 
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
-      navigate(`/nmb${value !== "monthly" ? "/" + value : ""}`);
+      navigate(`/nmb`);
     }
   };
 
@@ -58,7 +58,7 @@ const Nmb = () => {
       <SEO 
         title="NMB Bank South Africa Personal Loan Calculator" 
         description="Calculate your NMB Bank South Africa personal loan payments with our calculator. Monthly and annual payment calculations at competitive interest rates with customizable terms."
-        canonicalUrl={`/nmb${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
+        canonicalUrl="/nmb"
       />
       <Header />
       
@@ -129,7 +129,7 @@ const Nmb = () => {
               <div className="grid grid-cols-12 items-center">
                 <div className="col-span-4 md:col-span-3">
                   <Link 
-                    to={`/nmb/${timeFrame}/${result.loanAmount}/${result.interestRate}/${result.loanTerm}`}
+                    to={`/nmb/${result.loanAmount}/${result.interestRate}/${result.loanTerm}`}
                     className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                   >
                     {formatCurrency(result.loanAmount)}
