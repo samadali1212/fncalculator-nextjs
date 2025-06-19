@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -32,7 +31,7 @@ const HomeLoanDetail = () => {
   // Determine bank name and timeframe from URL
   const path = window.location.pathname;
   const getBankInfo = () => {
-    if (path.includes("/capitec")) {
+    if (path.startsWith("/capitec")) {
       return {
         bankName: "Capitec Bank",
         backLink: "/capitec",
