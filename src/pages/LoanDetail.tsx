@@ -48,15 +48,6 @@ const LoanDetail = () => {
                    isAbsaBank ? "absa" : 
                    isNbcBank ? "nbc" : 
                    isNmbBank ? "nmb" : "crdb";
-  
-  // Determine timeframe from URL
-  useEffect(() => {
-    if (path.includes("/yearly/")) {
-      setTimeFrame("yearly");
-    } else {
-      setTimeFrame("monthly");
-    }
-  }, [path]);
 
   // Parse parameters
   const loanAmount = parseInt(amount || "0");
@@ -85,7 +76,7 @@ const LoanDetail = () => {
       } else if (timeFrame === "yearly" && value === "monthly") {
         convertedTerm = currentLoanTerm * 12;
       }
-      navigate(`/${bankPath}/${value}/${currentLoanAmount}/${currentInterestRate}/${convertedTerm}`);
+      navigate(`/${bankPath}/${currentLoanAmount}/${currentInterestRate}/${convertedTerm}`);
     }
   };
 
@@ -155,7 +146,7 @@ const LoanDetail = () => {
       <SEO 
         title={`${bankName} Loan Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${loanResult ? formatCurrency(loanResult.payment) : ""}`}
         description={`Calculate your ${bankName} ${isLoanCalculator ? "" : "Bank"} personal loan of ${formatCurrency(currentLoanAmount)} at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
-        canonicalUrl={`/${bankPath}/${timeFrame}/${currentLoanAmount}/${currentInterestRate}/${currentLoanTerm}`}
+        canonicalUrl={`/${bankPath}/${currentLoanAmount}/${currentInterestRate}/${currentLoanTerm}`}
       />
       <Header />
       
@@ -163,7 +154,7 @@ const LoanDetail = () => {
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="flex items-center justify-between mb-6">
             <Link 
-              to={`/${bankPath}${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
+              to={`/${bankPath}`}
               className="inline-flex items-center text-sm text-[#000000] hover:underline"
             >
               <ChevronLeft className="h-4 w-4 mr-1" />

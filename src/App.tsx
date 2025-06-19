@@ -79,12 +79,16 @@ const App = () => {
           <Route path="/paye/:incomeId" element={<PayeDetail />} />
           <Route path="/paye/:incomeId/:ageGroup" element={<PayeDetail />} />
 
-          {/* General Personal Loan Calculator Routes */}
+          {/* General Personal Loan Calculator Routes - Simplified Structure */}
           <Route path="/loan" element={<Loan />} />
-          <Route path="/loan/monthly" element={<Loan />} />
-          <Route path="/loan/yearly" element={<Loan />} />
-          <Route path="/loan/monthly/:amount/:rate/:term" element={<LoanDetail />} />
-          <Route path="/loan/yearly/:amount/:rate/:term" element={<LoanDetail />} />
+          
+          {/* Legacy redirects for backward compatibility */}
+          <Route path="/loan/monthly" element={<Navigate to="/loan" replace />} />
+          <Route path="/loan/yearly" element={<Navigate to="/loan" replace />} />
+          <Route path="/loan/monthly/:amount/:rate/:term" element={<Navigate to="/loan/$1/$2/$3" replace />} />
+          <Route path="/loan/yearly/:amount/:rate/:term" element={<Navigate to="/loan/$1/$2/$3" replace />} />
+          
+          {/* New simplified Loan detail routes */}
           <Route path="/loan/:amount/:rate/:term" element={<LoanDetail />} />
 
           {/* Business Loan Calculator Routes */}
@@ -95,44 +99,64 @@ const App = () => {
           <Route path="/business-loan/yearly/:amount/:rate/:term" element={<BusinessLoanDetail />} />
           <Route path="/business-loan/:amount/:rate/:term" element={<BusinessLoanDetail />} />
 
-          {/* CRDB Bank Personal Loan Calculator Routes */}
+          {/* CRDB Bank Personal Loan Calculator Routes - Simplified Structure */}
           <Route path="/crdb" element={<Crdb />} />
-          <Route path="/crdb/monthly" element={<Crdb />} />
-          <Route path="/crdb/yearly" element={<Crdb />} />
-          <Route path="/crdb/monthly/:amount/:rate/:term" element={<LoanDetail />} />
-          <Route path="/crdb/yearly/:amount/:rate/:term" element={<LoanDetail />} />
+          
+          {/* Legacy redirects for backward compatibility */}
+          <Route path="/crdb/monthly" element={<Navigate to="/crdb" replace />} />
+          <Route path="/crdb/yearly" element={<Navigate to="/crdb" replace />} />
+          <Route path="/crdb/monthly/:amount/:rate/:term" element={<Navigate to="/crdb/$1/$2/$3" replace />} />
+          <Route path="/crdb/yearly/:amount/:rate/:term" element={<Navigate to="/crdb/$1/$2/$3" replace />} />
+          
+          {/* New simplified CRDB detail routes */}
           <Route path="/crdb/:amount/:rate/:term" element={<LoanDetail />} />
 
-          {/* NMB Bank Personal Loan Calculator Routes */}
+          {/* NMB Bank Personal Loan Calculator Routes - Simplified Structure */}
           <Route path="/nmb" element={<Nmb />} />
-          <Route path="/nmb/monthly" element={<Nmb />} />
-          <Route path="/nmb/yearly" element={<Nmb />} />
-          <Route path="/nmb/monthly/:amount/:rate/:term" element={<LoanDetail />} />
-          <Route path="/nmb/yearly/:amount/:rate/:term" element={<LoanDetail />} />
+          
+          {/* Legacy redirects for backward compatibility */}
+          <Route path="/nmb/monthly" element={<Navigate to="/nmb" replace />} />
+          <Route path="/nmb/yearly" element={<Navigate to="/nmb" replace />} />
+          <Route path="/nmb/monthly/:amount/:rate/:term" element={<Navigate to="/nmb/$1/$2/$3" replace />} />
+          <Route path="/nmb/yearly/:amount/:rate/:term" element={<Navigate to="/nmb/$1/$2/$3" replace />} />
+          
+          {/* New simplified NMB detail routes */}
           <Route path="/nmb/:amount/:rate/:term" element={<LoanDetail />} />
 
-          {/* NBC Bank Personal Loan Calculator Routes */}
+          {/* NBC Bank Personal Loan Calculator Routes - Simplified Structure */}
           <Route path="/nbc" element={<Nbc />} />
-          <Route path="/nbc/monthly" element={<Nbc />} />
-          <Route path="/nbc/yearly" element={<Nbc />} />
-          <Route path="/nbc/monthly/:amount/:rate/:term" element={<LoanDetail />} />
-          <Route path="/nbc/yearly/:amount/:rate/:term" element={<LoanDetail />} />
+          
+          {/* Legacy redirects for backward compatibility */}
+          <Route path="/nbc/monthly" element={<Navigate to="/nbc" replace />} />
+          <Route path="/nbc/yearly" element={<Navigate to="/nbc" replace />} />
+          <Route path="/nbc/monthly/:amount/:rate/:term" element={<Navigate to="/nbc/$1/$2/$3" replace />} />
+          <Route path="/nbc/yearly/:amount/:rate/:term" element={<Navigate to="/nbc/$1/$2/$3" replace />} />
+          
+          {/* New simplified NBC detail routes */}
           <Route path="/nbc/:amount/:rate/:term" element={<LoanDetail />} />
 
-          {/* ABSA Bank Personal Loan Calculator Routes */}
+          {/* ABSA Bank Personal Loan Calculator Routes - Simplified Structure */}
           <Route path="/absa" element={<Absa />} />
-          <Route path="/absa/monthly" element={<Absa />} />
-          <Route path="/absa/yearly" element={<Absa />} />
-          <Route path="/absa/monthly/:amount/:rate/:term" element={<LoanDetail />} />
-          <Route path="/absa/yearly/:amount/:rate/:term" element={<LoanDetail />} />
+          
+          {/* Legacy redirects for backward compatibility */}
+          <Route path="/absa/monthly" element={<Navigate to="/absa" replace />} />
+          <Route path="/absa/yearly" element={<Navigate to="/absa" replace />} />
+          <Route path="/absa/monthly/:amount/:rate/:term" element={<Navigate to="/absa/$1/$2/$3" replace />} />
+          <Route path="/absa/yearly/:amount/:rate/:term" element={<Navigate to="/absa/$1/$2/$3" replace />} />
+          
+          {/* New simplified ABSA detail routes */}
           <Route path="/absa/:amount/:rate/:term" element={<LoanDetail />} />
 
-          {/* Azania Bank Personal Loan Calculator Routes */}
+          {/* Azania Bank Personal Loan Calculator Routes - Simplified Structure */}
           <Route path="/azania" element={<Azania />} />
-          <Route path="/azania/monthly" element={<Azania />} />
-          <Route path="/azania/yearly" element={<Azania />} />
-          <Route path="/azania/monthly/:amount/:rate/:term" element={<LoanDetail />} />
-          <Route path="/azania/yearly/:amount/:rate/:term" element={<LoanDetail />} />
+          
+          {/* Legacy redirects for backward compatibility */}
+          <Route path="/azania/monthly" element={<Navigate to="/azania" replace />} />
+          <Route path="/azania/yearly" element={<Navigate to="/azania" replace />} />
+          <Route path="/azania/monthly/:amount/:rate/:term" element={<Navigate to="/azania/$1/$2/$3" replace />} />
+          <Route path="/azania/yearly/:amount/:rate/:term" element={<Navigate to="/azania/$1/$2/$3" replace />} />
+          
+          {/* New simplified Azania detail routes */}
           <Route path="/azania/:amount/:rate/:term" element={<LoanDetail />} />
 
           {/* Capitec Bank Home Loan Calculator Routes */}

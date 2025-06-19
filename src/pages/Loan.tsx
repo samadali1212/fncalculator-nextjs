@@ -45,7 +45,7 @@ const Loan = () => {
 
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
-      navigate(`/loan${value !== "monthly" ? "/" + value : ""}`);
+      navigate(`/loan`);
     }
   };
 
@@ -58,7 +58,7 @@ const Loan = () => {
       <SEO 
         title="Personal Loan Calculator - Monthly & Annual Payments" 
         description="Calculate your personal loan payments with our comprehensive calculator. Get accurate monthly and annual payment estimates with customizable loan terms, interest rates, and repayment periods."
-        canonicalUrl={`/loan${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
+        canonicalUrl="/loan"
       />
       <Header />
       
@@ -129,7 +129,7 @@ const Loan = () => {
               <div className="grid grid-cols-12 items-center">
                 <div className="col-span-4 md:col-span-3">
                   <Link 
-                    to={`/loan/${timeFrame}/${result.loanAmount}/${result.interestRate}/${result.loanTerm}`}
+                    to={`/loan/${result.loanAmount}/${result.interestRate}/${result.loanTerm}`}
                     className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                   >
                     {formatCurrency(result.loanAmount)}
