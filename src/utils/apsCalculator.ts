@@ -1,4 +1,3 @@
-
 export type APSCalculationType = "standard" | "university";
 
 export interface APSSubject {
@@ -94,7 +93,7 @@ export const calculateAPS = (
   return {
     totalAPS,
     subjects: apsSubjects,
-    includesLifeOrientation,
+    includesLifeOrientation: includeLifeOrientation,
     calculationType
   };
 };

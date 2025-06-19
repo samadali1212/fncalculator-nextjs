@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Calculator, GraduationCap, BookOpen } from "lucide-react";
 import { Helmet } from "react-helmet-async";
@@ -49,11 +48,7 @@ const Aps = () => {
 
           {/* AdSense */}
           <div className="my-8">
-            <AdSense 
-              adSlot="1234567890"
-              adFormat="auto"
-              fullWidthResponsive={true}
-            />
+            <AdSense />
           </div>
 
           {/* Information Section */}
