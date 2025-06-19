@@ -18,7 +18,6 @@ import Azania from "./pages/Azania";
 import LoanDetail from "./pages/LoanDetail";
 import HomeLoan from "./pages/HomeLoan";
 import HomeLoanDetail from "./pages/HomeLoanDetail";
-import VehicleFinance from "./pages/VehicleFinance";
 
 const App = () => {
   return (
@@ -103,11 +102,6 @@ const App = () => {
           <Route path="/home-loan/monthly/:loanAmount/:downPayment/:loanTerm/:interestRate" element={<HomeLoanDetail />} />
           <Route path="/home-loan/yearly/:loanAmount/:downPayment/:loanTerm/:interestRate" element={<HomeLoanDetail />} />
           <Route path="/home-loan/:loanAmount/:downPayment/:loanTerm/:interestRate" element={<HomeLoanDetail />} />
-
-          {/* South Africa Vehicle Finance Calculator Routes */}
-          <Route path="/vehicle-finance" element={<VehicleFinance />} />
-          <Route path="/vehicle-finance/monthly" element={<VehicleFinance />} />
-          <Route path="/vehicle-finance/yearly" element={<VehicleFinance />} />
                         
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
