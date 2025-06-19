@@ -15,6 +15,7 @@ import Nmb from "./pages/Nmb";
 import Nbc from "./pages/Nbc";
 import Absa from "./pages/Absa";
 import Azania from "./pages/Azania";
+import Loan from "./pages/Loan";
 import LoanDetail from "./pages/LoanDetail";
 import HomeLoan from "./pages/HomeLoan";
 import HomeLoanDetail from "./pages/HomeLoanDetail";
@@ -56,6 +57,14 @@ const App = () => {
           <Route path="/paye/monthly/:incomeId/:ageGroup" element={<PayeDetail />} />
           <Route path="/paye/yearly/:incomeId/:ageGroup" element={<PayeDetail />} />
           <Route path="/paye/:incomeId" element={<PayeDetail />} />
+
+          {/* General Personal Loan Calculator Routes */}
+          <Route path="/loan" element={<Loan />} />
+          <Route path="/loan/monthly" element={<Loan />} />
+          <Route path="/loan/yearly" element={<Loan />} />
+          <Route path="/loan/monthly/:amount/:rate/:term" element={<LoanDetail />} />
+          <Route path="/loan/yearly/:amount/:rate/:term" element={<LoanDetail />} />
+          <Route path="/loan/:amount/:rate/:term" element={<LoanDetail />} />
 
           {/* CRDB Bank Personal Loan Calculator Routes */}
           <Route path="/crdb" element={<Crdb />} />
