@@ -45,7 +45,7 @@ const Nbc = () => {
 
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
-      navigate(`/nbc${value !== "monthly" ? "/" + value : ""}`);
+      navigate(`/nbc`);
     }
   };
 
@@ -58,7 +58,7 @@ const Nbc = () => {
       <SEO 
         title="NBC Bank South Africa Personal Loan Calculator" 
         description="Calculate your NBC Bank South Africa personal loan payments with our 2024/2025 calculator. Monthly and annual payment calculations at competitive interest rates with customizable terms."
-        canonicalUrl={`/nbc${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
+        canonicalUrl="/nbc"
       />
       <Header />
       
@@ -129,7 +129,7 @@ const Nbc = () => {
               <div className="grid grid-cols-12 items-center">
                 <div className="col-span-4 md:col-span-3">
                   <Link 
-                    to={`/nbc/${timeFrame}/${result.loanAmount}/${result.interestRate}/${result.loanTerm}`}
+                    to={`/nbc/${result.loanAmount}/${result.interestRate}/${result.loanTerm}`}
                     className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                   >
                     {formatCurrency(result.loanAmount)}
