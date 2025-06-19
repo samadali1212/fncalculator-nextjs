@@ -288,11 +288,11 @@ const APSCalculator = () => {
           >
             
             {/* Subject Breakdown */}
-            <div className="bg-white rounded border border-gray-100 p-4">
+            <div className="space-y-3">
               <div className="text-sm font-medium text-gray-700 mb-3">APS Calculation Breakdown:</div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {apsResult.subjects.map((subject, index) => (
-                  <div key={index} className="text-center p-3 bg-gray-50 rounded border border-gray-100">
+                  <div key={index} className="text-center p-3 bg-white rounded border border-gray-100">
                     <div className="text-xs text-gray-500 mb-1">{subject.name}</div>
                     <div className="font-semibold text-sm text-gray-800">{subject.points} points</div>
                     <div className="text-xs text-gray-500">{getAPSRange(subject.mark, calculationType)}</div>
@@ -302,11 +302,9 @@ const APSCalculator = () => {
             </div>
 
             {/* Total APS */}
-            <div className="bg-white rounded border-2 border-primary p-4">
-              <div className="text-center">
-                <div className="text-sm text-gray-600 mb-1">Total APS Score</div>
-                <div className="text-2xl font-bold text-primary">{apsResult.totalAPS}</div>
-              </div>
+            <div className="text-center p-3 bg-white rounded border-2 border-primary">
+              <div className="text-sm text-gray-600 mb-1">Total APS Score</div>
+              <div className="text-2xl font-bold text-primary">{apsResult.totalAPS}</div>
             </div>
             
             <div className="flex flex-wrap gap-2">
