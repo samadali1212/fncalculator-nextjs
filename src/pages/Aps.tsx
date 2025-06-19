@@ -117,10 +117,6 @@ const Aps = () => {
                     <TableHead>Location</TableHead>
                     <TableHead>APS Scale</TableHead>
                     <TableHead>Life Orientation</TableHead>
-                    <TableHead>Medicine</TableHead>
-                    <TableHead>Engineering</TableHead>
-                    <TableHead>Commerce</TableHead>
-                    <TableHead>Law</TableHead>
                     <TableHead>Action</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -151,18 +147,6 @@ const Aps = () => {
                         }`}>
                           {university.includesLifeOrientation ? "Required" : "Optional"}
                         </span>
-                      </TableCell>
-                      <TableCell className="text-center font-medium">
-                        {university.minApsRequirements.Medicine}
-                      </TableCell>
-                      <TableCell className="text-center font-medium">
-                        {university.minApsRequirements.Engineering}
-                      </TableCell>
-                      <TableCell className="text-center font-medium">
-                        {university.minApsRequirements.Commerce}
-                      </TableCell>
-                      <TableCell className="text-center font-medium">
-                        {university.minApsRequirements.Law}
                       </TableCell>
                       <TableCell>
                         <a
