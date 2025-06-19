@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
@@ -28,7 +29,7 @@ const LoanDetailCalculator = ({
   onLoanChange 
 }: LoanDetailCalculatorProps) => {
   const navigate = useNavigate();
-  const [loanAmount, setLoanAmount] = useState(initialAmount || "5000000");
+  const [loanAmount, setLoanAmount] = useState(initialAmount || "50000");
   const [interestRate, setInterestRate] = useState(initialRate || "13");
   const [loanTerm, setLoanTerm] = useState(initialTerm || (timeFrame === "yearly" ? "3" : "36"));
   
@@ -114,11 +115,11 @@ const LoanDetailCalculator = ({
       {/* Loan Amount Input */}
       <div className="space-y-2">
         <Label htmlFor="loan-amount" className="text-sm font-medium text-gray-700">
-          Loan Amount (TSh)
+          Loan Amount (R)
         </Label>
         <div className="relative">
           <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm">
-            TSh
+            R
           </span>
           <Input
             id="loan-amount"
@@ -126,7 +127,7 @@ const LoanDetailCalculator = ({
             placeholder="Enter loan amount..."
             value={formatNumberWithSeparators(loanAmount)}
             onChange={handleLoanAmountChange}
-            className="pl-12 h-10 border-gray-300 focus:border-primary"
+            className="pl-8 h-10 border-gray-300 focus:border-primary"
           />
         </div>
       </div>
