@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ChevronLeft, Calculator } from "lucide-react";
 import Header from "../components/Header";
@@ -19,61 +19,19 @@ import {
 import { usePageReload } from "../hooks/usePageReload";
 
 const LoanDetail = () => {
-  const { amount, rate, term } = useParams();
   const navigate = useNavigate();
   const { pageKey, isLoading } = usePageReload();
   
   const [timeFrame, setTimeFrame] = useState<CrdbTimeFrame>("monthly");
-  const [currentLoanAmount, setCurrentLoanAmount] = useState(0);
-  const [currentInterestRate, setCurrentInterestRate] = useState(0);
-  const [currentLoanTerm, setCurrentLoanTerm] = useState(0);
+  const [currentLoanAmount, setCurrentLoanAmount] = useState(100000);
+  const [currentInterestRate, setCurrentInterestRate] = useState(13);
+  const [currentLoanTerm, setCurrentLoanTerm] = useState(36);
   
-  // Determine bank from URL
-  const path = window.location.pathname;
-  const isLoanCalculator = path.includes("/loan/");
-  const isNmbBank = path.includes("/nmb");
-  const isNbcBank = path.includes("/nbc");
-  const isAbsaBank = path.includes("/absa");
-  const isAzaniaBank = path.includes("/azania");
-  const isCrdbBank = path.includes("/crdb");
+  const bankName = "Personal";
+  const bankPath = "loan";
   
-  const bankName = isLoanCalculator ? "Personal" : 
-                   isAzaniaBank ? "Azania" : 
-                   isAbsaBank ? "ABSA" : 
-                   isNbcBank ? "NBC" : 
-                   isNmbBank ? "NMB" : "CRDB";
-  
-  const bankPath = isLoanCalculator ? "loan" :
-                   isAzaniaBank ? "azania" : 
-                   isAbsaBank ? "absa" : 
-                   isNbcBank ? "nbc" : 
-                   isNmbBank ? "nmb" : "crdb";
-  
-  // Determine timeframe from URL
-  useEffect(() => {
-    if (path.includes("/yearly/")) {
-      setTimeFrame("yearly");
-    } else {
-      setTimeFrame("monthly");
-    }
-  }, [path]);
-
-  // Parse parameters
-  const loanAmount = parseInt(amount || "0");
-  const interestRate = parseFloat(rate || "0");
-  const loanTerm = parseInt(term || "0");
-
-  // Set initial values
-  useEffect(() => {
-    setCurrentLoanAmount(loanAmount);
-    setCurrentInterestRate(interestRate);
-    setCurrentLoanTerm(loanTerm);
-  }, [loanAmount, interestRate, loanTerm]);
-
   // Calculate loan details using current values
-  const loanResult = currentLoanAmount > 0 && currentInterestRate > 0 && currentLoanTerm > 0
-    ? getCrdbLoanCalculation(currentLoanAmount, currentInterestRate, currentLoanTerm, timeFrame)
-    : null;
+  const loanResult = getCrdbLoanCalculation(currentLoanAmount, currentInterestRate, currentLoanTerm, timeFrame);
 
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
@@ -85,7 +43,7 @@ const LoanDetail = () => {
       } else if (timeFrame === "yearly" && value === "monthly") {
         convertedTerm = currentLoanTerm * 12;
       }
-      navigate(`/${bankPath}/${value}/${currentLoanAmount}/${currentInterestRate}/${convertedTerm}`);
+      setCurrentLoanTerm(convertedTerm);
     }
   };
 
@@ -94,37 +52,6 @@ const LoanDetail = () => {
     setCurrentInterestRate(newInterestRate);
     setCurrentLoanTerm(newLoanTerm);
   };
-
-  if (!amount || !rate || !term || loanAmount <= 0 || interestRate <= 0 || loanTerm <= 0) {
-    return (
-      <motion.div
-        key={pageKey}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="min-h-screen bg-[#f6f6f0]"
-      >
-        <Header />
-        <main className="pt-20 pb-16">
-          <div className="container mx-auto px-4 max-w-3xl">
-            <Card>
-              <CardContent className="p-6 text-center">
-                <h1 className="text-2xl font-bold mb-4">Invalid Loan Parameters</h1>
-                <p className="text-gray-600 mb-6">
-                  The loan parameters provided are invalid. Please return to the calculator.
-                </p>
-                <Link to={`/${bankPath}`}>
-                  <Button>
-                    <Calculator className="mr-2 h-4 w-4" />
-                    Back to Calculator
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          </div>
-        </main>
-      </motion.div>
-    );
-  }
 
   // Format currency for the title without spaces
   const formattedCurrencyForTitle = formatCurrency(currentLoanAmount).replace(/\s/g, "");
@@ -154,8 +81,8 @@ const LoanDetail = () => {
     >
       <SEO 
         title={`${bankName} Loan Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${loanResult ? formatCurrency(loanResult.payment) : ""}`}
-        description={`Calculate your ${bankName} ${isLoanCalculator ? "" : "Bank"} personal loan of ${formatCurrency(currentLoanAmount)} at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
-        canonicalUrl={`/${bankPath}/${timeFrame}/${currentLoanAmount}/${currentInterestRate}/${currentLoanTerm}`}
+        description={`Calculate your ${bankName} personal loan of ${formatCurrency(currentLoanAmount)} at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
+        canonicalUrl="/loan-detail"
       />
       <Header />
       
@@ -163,7 +90,7 @@ const LoanDetail = () => {
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="flex items-center justify-between mb-6">
             <Link 
-              to={`/${bankPath}${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
+              to="/loan"
               className="inline-flex items-center text-sm text-[#000000] hover:underline"
             >
               <ChevronLeft className="h-4 w-4 mr-1" />
@@ -188,9 +115,9 @@ const LoanDetail = () => {
             <LoanDetailCalculator 
               timeFrame={timeFrame}
               onTimeFrameChange={handleTimeFrameChange}
-              initialAmount={loanAmount.toString()}
-              initialRate={interestRate.toString()}
-              initialTerm={loanTerm.toString()}
+              initialAmount={currentLoanAmount.toString()}
+              initialRate={currentInterestRate.toString()}
+              initialTerm={currentLoanTerm.toString()}
               onLoanChange={handleLoanChange}
             />
           </div>
@@ -269,7 +196,7 @@ const LoanDetail = () => {
           )}
 
           <p className="text-sm text-gray-500 text-center">
-            <em><strong>Interest rates may vary based on your credit profile and loan terms. Contact {isLoanCalculator ? "your preferred lender" : `${bankName} Bank`} for personalized rates.</strong></em>
+            <em><strong>Interest rates may vary based on your credit profile and loan terms. Contact your preferred lender for personalized rates.</strong></em>
           </p>
         </div>
       </main>
