@@ -28,11 +28,11 @@ const Crdb = () => {
     : "monthly";
   
   const loanResults = generateCrdbLoanCalculations(
-    timeFrame === "monthly" ? 1000000 : 1000000,    // Min: TSh 1,000,000
-    timeFrame === "monthly" ? 50000000 : 50000000,  // Max: TSh 50,000,000
-    timeFrame === "monthly" ? 1000000 : 1000000,    // Step: TSh 1,000,000
+    timeFrame === "monthly" ? 10000 : 10000,      // Min: R10,000
+    timeFrame === "monthly" ? 500000 : 500000,    // Max: R500,000
+    timeFrame === "monthly" ? 10000 : 10000,      // Step: R10,000
     13, // Default interest rate
-    timeFrame === "monthly" ? 36 : 3,               // 36 months or 3 years
+    timeFrame === "monthly" ? 36 : 3,             // 36 months or 3 years
     timeFrame
   );
     
@@ -67,7 +67,7 @@ const Crdb = () => {
         <p className="text-gray-600 mb-8">
           Calculate your CRDB Bank personal loan payments with our comprehensive loan calculator. 
           Get accurate {timeFrame === "monthly" ? "monthly" : "annual"} payment estimates at competitive interest rates. 
-          Perfect for planning your personal loan with CRDB Bank Tanzania, featuring flexible terms and transparent calculations.
+          Perfect for planning your personal loan with CRDB Bank South Africa, featuring flexible terms and transparent calculations.
         </p>
 
         {/* Custom Loan Calculator */}

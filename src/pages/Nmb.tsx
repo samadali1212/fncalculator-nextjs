@@ -28,11 +28,11 @@ const Nmb = () => {
     : "monthly";
   
   const loanResults = generateCrdbLoanCalculations(
-    timeFrame === "monthly" ? 1000000 : 1000000,    // Min: TSh 1,000,000
-    timeFrame === "monthly" ? 50000000 : 50000000,  // Max: TSh 50,000,000
-    timeFrame === "monthly" ? 1000000 : 1000000,    // Step: TSh 1,000,000
+    timeFrame === "monthly" ? 10000 : 10000,      // Min: R10,000
+    timeFrame === "monthly" ? 500000 : 500000,    // Max: R500,000
+    timeFrame === "monthly" ? 10000 : 10000,      // Step: R10,000
     15, // NMB default interest rate (slightly higher than CRDB)
-    timeFrame === "monthly" ? 36 : 3,               // 36 months or 3 years
+    timeFrame === "monthly" ? 36 : 3,             // 36 months or 3 years
     timeFrame
   );
     
@@ -65,8 +65,8 @@ const Nmb = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <h1 className="text-3xl font-bold mb-2">NMB Bank Personal Loan Calculator</h1>
         <p className="text-gray-600 mb-8">
-    Quickly estimate your NMB Bank personal loan payments with our user-friendly loan calculator.
-Get accurate {timeFrame === "monthly" ? "monthly" : "yearly"} payment estimates using the latest interest rates. Ideal for planning your loan with NMB—offering flexible repayment options, instant results, and full transparency to support informed borrowing.
+          Quickly estimate your NMB Bank personal loan payments with our user-friendly loan calculator.
+          Get accurate {timeFrame === "monthly" ? "monthly" : "yearly"} payment estimates using the latest interest rates. Ideal for planning your loan with NMB South Africa—offering flexible repayment options, instant results, and full transparency to support informed borrowing.
         </p>
 
         {/* Custom Loan Calculator */}

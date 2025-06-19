@@ -28,11 +28,11 @@ const Absa = () => {
     : "monthly";
   
   const loanResults = generateCrdbLoanCalculations(
-    timeFrame === "monthly" ? 1000000 : 1000000,    // Min: TSh 1,000,000
-    timeFrame === "monthly" ? 50000000 : 50000000,  // Max: TSh 50,000,000
-    timeFrame === "monthly" ? 1000000 : 1000000,    // Step: TSh 1,000,000
+    timeFrame === "monthly" ? 10000 : 10000,      // Min: R10,000
+    timeFrame === "monthly" ? 500000 : 500000,    // Max: R500,000
+    timeFrame === "monthly" ? 10000 : 10000,      // Step: R10,000
     16, // ABSA default interest rate (highest among the banks)
-    timeFrame === "monthly" ? 36 : 3,               // 36 months or 3 years
+    timeFrame === "monthly" ? 36 : 3,             // 36 months or 3 years
     timeFrame
   );
     
@@ -56,17 +56,17 @@ const Absa = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="ABSA Bank Personal Loan Calculator Tanzania" 
+        title="ABSA Bank Personal Loan Calculator South Africa" 
         description="Calculate your ABSA Bank personal loan payments with our calculator. Monthly and annual payment calculations at the current interest rate with customizable terms."
         canonicalUrl={`/absa${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
       />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <h1 className="text-3xl font-bold mb-2">ABSA Bank Personal Loan Calculator Tanzania</h1>
+        <h1 className="text-3xl font-bold mb-2">ABSA Bank Personal Loan Calculator South Africa</h1>
         <p className="text-gray-600 mb-8">
-Easily calculate your ABSA Bank Tanzania personal loan payments using our accurate loan calculator.
-Get clear {timeFrame === "monthly" ? "monthly" : "yearly"} payment estimates based on current interest rates. Plan your ABSA personal loan with confidence—this tool supports flexible loan terms, fast estimates, and full transparency to help you make informed decisions.
+          Easily calculate your ABSA Bank South Africa personal loan payments using our accurate loan calculator.
+          Get clear {timeFrame === "monthly" ? "monthly" : "yearly"} payment estimates based on current interest rates. Plan your ABSA personal loan with confidence—this tool supports flexible loan terms, fast estimates, and full transparency to help you make informed decisions.
         </p>
 
         {/* Custom Loan Calculator */}

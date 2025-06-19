@@ -28,11 +28,11 @@ const Nbc = () => {
     : "monthly";
   
   const loanResults = generateCrdbLoanCalculations(
-    timeFrame === "monthly" ? 1000000 : 1000000,    // Min: TSh 1,000,000
-    timeFrame === "monthly" ? 50000000 : 50000000,  // Max: TSh 50,000,000
-    timeFrame === "monthly" ? 1000000 : 1000000,    // Step: TSh 1,000,000
+    timeFrame === "monthly" ? 10000 : 10000,      // Min: R10,000
+    timeFrame === "monthly" ? 500000 : 500000,    // Max: R500,000
+    timeFrame === "monthly" ? 10000 : 10000,      // Step: R10,000
     14, // NBC default interest rate (between CRDB and NMB)
-    timeFrame === "monthly" ? 36 : 3,               // 36 months or 3 years
+    timeFrame === "monthly" ? 36 : 3,             // 36 months or 3 years
     timeFrame
   );
     
@@ -65,8 +65,8 @@ const Nbc = () => {
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
         <h1 className="text-3xl font-bold mb-2">NBC Bank Personal Loan Calculator</h1>
         <p className="text-gray-600 mb-8">
-Estimate your NBC Bank personal loan payments quickly with our reliable loan calculator.
-Get clear {timeFrame === "monthly" ? "monthly" : "yearly"} payment projections based on competitive interest rates. Designed for easy loan planning with NBC Bank—featuring adjustable terms, fast results, and complete transparency for smarter financial decisions.
+          Estimate your NBC Bank personal loan payments quickly with our reliable loan calculator.
+          Get clear {timeFrame === "monthly" ? "monthly" : "yearly"} payment projections based on competitive interest rates. Designed for easy loan planning with NBC Bank South Africa—featuring adjustable terms, fast results, and complete transparency for smarter financial decisions.
         </p>
 
         {/* Custom Loan Calculator */}
