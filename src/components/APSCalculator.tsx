@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { 
   Select,
@@ -88,15 +89,10 @@ const APSCalculator = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="mb-8 space-y-6"
-    >
+    <div className="space-y-6">
       {/* Calculator Type Selection */}
       <div className="space-y-2">
-        <Label className="text-sm font-medium text-gray-700">APS Calculation Type</Label>
+        <Label className="text-sm font-medium">APS Calculation Type</Label>
         <div className="flex gap-2">
           <button
             type="button"
@@ -126,9 +122,9 @@ const APSCalculator = () => {
       {/* Home Language */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label className="text-sm font-medium text-gray-700">Home Language</Label>
+          <Label className="text-sm font-medium">Home Language</Label>
           <Select value={homeLanguage} onValueChange={setHomeLanguage}>
-            <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+            <SelectTrigger>
               <SelectValue placeholder="Select Home Language" />
             </SelectTrigger>
             <SelectContent>
@@ -139,9 +135,9 @@ const APSCalculator = () => {
           </Select>
         </div>
         <div className="space-y-2">
-          <Label className="text-sm font-medium text-gray-700">Mark</Label>
+          <Label className="text-sm font-medium">Mark</Label>
           <Select value={homeLanguageMark} onValueChange={setHomeLanguageMark}>
-            <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+            <SelectTrigger>
               <SelectValue placeholder="Select Mark" />
             </SelectTrigger>
             <SelectContent>
@@ -156,9 +152,9 @@ const APSCalculator = () => {
       {/* First Additional Language */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label className="text-sm font-medium text-gray-700">First Additional Language</Label>
+          <Label className="text-sm font-medium">First Additional Language</Label>
           <Select value={fal} onValueChange={setFal}>
-            <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+            <SelectTrigger>
               <SelectValue placeholder="Select First Additional Language" />
             </SelectTrigger>
             <SelectContent>
@@ -169,9 +165,9 @@ const APSCalculator = () => {
           </Select>
         </div>
         <div className="space-y-2">
-          <Label className="text-sm font-medium text-gray-700">Mark</Label>
+          <Label className="text-sm font-medium">Mark</Label>
           <Select value={falMark} onValueChange={setFalMark}>
-            <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+            <SelectTrigger>
               <SelectValue placeholder="Select Mark" />
             </SelectTrigger>
             <SelectContent>
@@ -186,9 +182,9 @@ const APSCalculator = () => {
       {/* Mathematics */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label className="text-sm font-medium text-gray-700">Mathematics Type</Label>
+          <Label className="text-sm font-medium">Mathematics Type</Label>
           <Select value={mathematics} onValueChange={setMathematics}>
-            <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+            <SelectTrigger>
               <SelectValue placeholder="Select Mathematics Type" />
             </SelectTrigger>
             <SelectContent>
@@ -199,9 +195,9 @@ const APSCalculator = () => {
           </Select>
         </div>
         <div className="space-y-2">
-          <Label className="text-sm font-medium text-gray-700">Mark</Label>
+          <Label className="text-sm font-medium">Mark</Label>
           <Select value={mathematicsMark} onValueChange={setMathematicsMark}>
-            <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+            <SelectTrigger>
               <SelectValue placeholder="Select Mark" />
             </SelectTrigger>
             <SelectContent>
@@ -223,9 +219,9 @@ const APSCalculator = () => {
         return (
           <div key={num} className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label className="text-sm font-medium text-gray-700">Elective Subject {num}</Label>
+              <Label className="text-sm font-medium">Elective Subject {num}</Label>
               <Select value={subjectValue} onValueChange={setSubject}>
-                <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+                <SelectTrigger>
                   <SelectValue placeholder="Select Subject" />
                 </SelectTrigger>
                 <SelectContent>
@@ -236,9 +232,9 @@ const APSCalculator = () => {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label className="text-sm font-medium text-gray-700">Mark</Label>
+              <Label className="text-sm font-medium">Mark</Label>
               <Select value={markValue} onValueChange={setMark}>
-                <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+                <SelectTrigger>
                   <SelectValue placeholder="Select Mark" />
                 </SelectTrigger>
                 <SelectContent>
@@ -260,16 +256,16 @@ const APSCalculator = () => {
             checked={includeLO}
             onCheckedChange={handleIncludeLOChange}
           />
-          <Label htmlFor="includeLO" className="text-sm font-medium text-gray-700">
+          <Label htmlFor="includeLO" className="text-sm font-medium">
             Include Life Orientation (optional for some universities)
           </Label>
         </div>
         
         {includeLO && (
           <div className="space-y-2">
-            <Label className="text-sm font-medium text-gray-700">Life Orientation Mark</Label>
+            <Label className="text-sm font-medium">Life Orientation Mark</Label>
             <Select value={lifeOrientationMark} onValueChange={setLifeOrientationMark}>
-              <SelectTrigger className="h-10 border-gray-300 focus:border-primary">
+              <SelectTrigger>
                 <SelectValue placeholder="Select Mark" />
               </SelectTrigger>
               <SelectContent>
@@ -282,53 +278,24 @@ const APSCalculator = () => {
         )}
       </div>
 
+      {/* Results */}
       {apsResult && (
-        <>
-          {/* Clean Results Layout - matching UIF Calculator style */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
-            className="space-y-4"
-          >
-            {/* Calculation Breakdown */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-              <div className="text-center p-3 bg-gray-50 rounded border border-gray-100">
-                <div className="text-xs text-gray-500 mb-1">Total Subjects</div>
-                <div className="font-semibold text-sm text-gray-800">{apsResult.subjects.length}</div>
-              </div>
-              <div className="text-center p-3 bg-gray-50 rounded border border-gray-100">
-                <div className="text-xs text-gray-500 mb-1">Calculation Type</div>
-                <div className="font-semibold text-sm text-blue-600">{calculationType === "standard" ? "8-point" : "7-point"}</div>
-              </div>
-              <div className="text-center p-3 bg-gray-50 rounded border border-gray-100">
-                <div className="text-xs text-gray-500 mb-1">Includes Life Orientation</div>
-                <div className="font-semibold text-sm text-green-600">{apsResult.includesLifeOrientation ? "Yes" : "No"}</div>
-              </div>
-              <div className="text-center p-3 bg-gray-50 rounded border border-gray-100">
-                <div className="text-xs text-gray-500 mb-1">Best Six Subjects</div>
-                <div className="font-semibold text-sm text-gray-800">Calculated</div>
-              </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="pt-6 border-t border-gray-200"
+        >
+          <div className="text-center">
+            <div className="text-3xl font-bold text-primary mb-2">{apsResult.totalAPS}</div>
+            <div className="text-sm text-gray-600">
+              Your APS score using the {calculationType} calculation method
+              {apsResult.includesLifeOrientation ? ' (including Life Orientation)' : ''}
             </div>
-
-            {/* Total APS Score */}
-            <div className="text-center p-4 bg-white rounded border-2 border-primary">
-              <div className="text-sm text-gray-600 mb-1">Total APS Score</div>
-              <div className="text-2xl font-bold text-primary">{apsResult.totalAPS}</div>
-            </div>
-          </motion.div>
-
-          {/* Dynamic Paragraph */}
-          <div className="text-sm text-gray-600 leading-relaxed">
-            <p>
-              Your APS score is {apsResult.totalAPS} points using the {calculationType} calculation method. 
-              This score is based on your best six matric subjects{apsResult.includesLifeOrientation ? ' including Life Orientation' : ''}. 
-              Different universities may have different minimum APS requirements for their programs.
-            </p>
           </div>
-        </>
+        </motion.div>
       )}
-    </motion.div>
+    </div>
   );
 };
 
