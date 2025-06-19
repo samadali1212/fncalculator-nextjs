@@ -27,13 +27,12 @@ import {
 const PayeDetail = () => {
   const { incomeId, ageGroup: urlAgeGroup } = useParams<{ incomeId: string; ageGroup?: AgeGroup }>();
   const location = useLocation();
-  const pathname = location.pathname;
   
   // Use the page reload hook
   const { pageKey, isLoading, setIsLoading } = usePageReload();
   
-  // Determine timeFrame from URL path
-  const timeFrame: SouthAfricaTimeFrame = pathname.includes("/yearly/") ? "yearly" : "monthly";
+  // Default to monthly timeframe (no longer determined from URL)
+  const [timeFrame, setTimeFrame] = useState<SouthAfricaTimeFrame>("monthly");
   
   const navigate = useNavigate();
   
@@ -73,9 +72,13 @@ const PayeDetail = () => {
 
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
-      // Navigate to the same income but with different timeframe
-      const ageGroupPath = currentAgeGroup !== "below65" ? `/${currentAgeGroup}` : "";
-      navigate(`/paye/${value}/${currentIncome}${ageGroupPath}`);
+      setTimeFrame(value);
+      // Convert income when switching timeframes
+      if (value === "yearly" && timeFrame === "monthly") {
+        setCurrentIncome(currentIncome * 12);
+      } else if (value === "monthly" && timeFrame === "yearly") {
+        setCurrentIncome(Math.round(currentIncome / 12));
+      }
     }
   };
   
@@ -148,7 +151,7 @@ const PayeDetail = () => {
       <SEO 
         title={`PAYE Calculator on ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary in South Africa`}
         description={`Calculate your PAYE tax for ${formatSouthAfricaCurrency(initialIncome)} ${timeFrame === "monthly" ? "monthly" : "annual"} income in South Africa. After tax income: ${formatSouthAfricaCurrency(taxDetails.netIncome)}. Effective tax rate: ${taxDetails.effectiveTaxRate.toFixed(1)}%.`}
-        canonicalUrl={`/paye/${timeFrame}/${initialIncome}${initialAgeGroup !== "below65" ? `/${initialAgeGroup}` : ""}`}
+        canonicalUrl={`/paye/${initialIncome}${initialAgeGroup !== "below65" ? `/${initialAgeGroup}` : ""}`}
       />
       
       <Header />
@@ -157,7 +160,7 @@ const PayeDetail = () => {
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="flex items-center justify-between mb-6">
             <Link 
-              to={`/paye${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
+              to="/paye"
               className="inline-flex items-center text-sm text-[#000000] hover:underline"
             >
               <ChevronLeft className="h-4 w-4 mr-1" />
@@ -274,7 +277,7 @@ const PayeDetail = () => {
                       </div>
                       <div className="flex-1">
                         <Link 
-                          to={`/paye/${timeFrame}/${calcResult.grossIncome}${initialAgeGroup !== "below65" ? `/${initialAgeGroup}` : ""}`}
+                          to={`/paye/${calcResult.grossIncome}${initialAgeGroup !== "below65" ? `/${initialAgeGroup}` : ""}`}
                           className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent"
                         >
                           {formatSouthAfricaCurrency(calcResult.grossIncome)} {timeFrame === "monthly" ? "monthly" : "annual"} income
@@ -296,7 +299,7 @@ const PayeDetail = () => {
                 <Button 
                   variant="outline" 
                   className="w-full"
-                  onClick={() => navigate(`/paye${timeFrame !== "monthly" ? "/" + timeFrame : ""}`)}
+                  onClick={() => navigate("/paye")}
                 >
                   View All PAYE Calculations
                 </Button>

@@ -75,7 +75,8 @@ const PayeCalculator = ({ timeFrame, onTimeFrameChange, initialAmount }: PayeCal
 
   const viewDetailedCalculation = () => {
     if (customTaxResult) {
-      navigate(`/paye/${timeFrame}/${customTaxResult.grossIncome}/${ageGroup}`);
+      // Use simplified URL structure
+      navigate(`/paye/${customTaxResult.grossIncome}${ageGroup !== "below65" ? `/${ageGroup}` : ""}`);
     }
   };
 

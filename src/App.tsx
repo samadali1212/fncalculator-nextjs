@@ -64,15 +64,20 @@ const App = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
 
-          {/* South Africa PAYE Calculator Routes */}
+          {/* South Africa PAYE Calculator Routes - Simplified Structure */}
           <Route path="/paye" element={<Paye />} />
-          <Route path="/paye/monthly" element={<Paye />} />
-          <Route path="/paye/yearly" element={<Paye />} />
-          <Route path="/paye/monthly/:incomeId" element={<PayeDetail />} />
-          <Route path="/paye/yearly/:incomeId" element={<PayeDetail />} />
-          <Route path="/paye/monthly/:incomeId/:ageGroup" element={<PayeDetail />} />
-          <Route path="/paye/yearly/:incomeId/:ageGroup" element={<PayeDetail />} />
+          
+          {/* Legacy redirects for backward compatibility */}
+          <Route path="/paye/monthly" element={<Navigate to="/paye" replace />} />
+          <Route path="/paye/yearly" element={<Navigate to="/paye" replace />} />
+          <Route path="/paye/monthly/:incomeId" element={<Navigate to="/paye/$1" replace />} />
+          <Route path="/paye/yearly/:incomeId" element={<Navigate to="/paye/$1" replace />} />
+          <Route path="/paye/monthly/:incomeId/:ageGroup" element={<Navigate to="/paye/$1/$2" replace />} />
+          <Route path="/paye/yearly/:incomeId/:ageGroup" element={<Navigate to="/paye/$1/$2" replace />} />
+          
+          {/* New simplified PAYE detail routes */}
           <Route path="/paye/:incomeId" element={<PayeDetail />} />
+          <Route path="/paye/:incomeId/:ageGroup" element={<PayeDetail />} />
 
           {/* General Personal Loan Calculator Routes */}
           <Route path="/loan" element={<Loan />} />
