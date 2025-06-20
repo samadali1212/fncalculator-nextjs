@@ -4,7 +4,6 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ChevronLeft, Calculator } from "lucide-react";
 import Header from "../components/Header";
-import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
 import LoanDetailCalculator from "../components/LoanDetailCalculator";
 import AmortizationSchedule from "../components/AmortizationSchedule";
@@ -131,11 +130,6 @@ const BusinessLoanDetail = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
-      <SEO 
-        title={`Business Loan Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${loanResult ? formatCurrency(loanResult.payment) : ""}`}
-        description={`Calculate your business loan of ${formatCurrency(currentLoanAmount)} at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
-        canonicalUrl={`/business-loan/${timeFrame}/${currentLoanAmount}/${currentInterestRate}/${currentLoanTerm}`}
-      />
       <Header />
       
       <main className="pt-20 pb-16">
