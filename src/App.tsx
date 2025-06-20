@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from "@/components/Layout";
@@ -28,6 +27,7 @@ import LoanDetail from "@/pages/LoanDetail";
 import Nbc from "@/pages/Nbc";
 import Nmb from "@/pages/Nmb";
 import PayeDetail from "@/pages/PayeDetail";
+import NedbankLoanCalculator from "@/pages/NedbankLoanCalculator";
 
 function App() {
   return (
@@ -81,6 +81,9 @@ function App() {
           
           <Route path="/nmb" element={<Nmb />} />
           <Route path="/nmb/:amount/:rate/:term" element={<LoanDetail />} />
+
+          <Route path="/nedbank-loan-calculator" element={<NedbankLoanCalculator />} />
+          <Route path="/nedbank-loan-calculator/:amount/:rate/:term" element={<LoanDetail />} />
 		  
           <Route path="/aps" element={<Aps />} />
           <Route path="/aps/:universityId" element={<UniversityAps />} />
@@ -93,3 +96,4 @@ function App() {
 }
 
 export default App;
+
