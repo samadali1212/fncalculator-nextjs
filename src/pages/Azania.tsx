@@ -18,7 +18,7 @@ import {
   PaginationItem,
 } from "@/components/ui/pagination";
 
-const Azania = () => {
+const Nedbank = () => {
   const [itemsToShow, setItemsToShow] = useState(50);
   const location = useLocation();
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const Azania = () => {
     timeFrame === "monthly" ? 10000 : 10000,      // Min: R10,000
     timeFrame === "monthly" ? 500000 : 500000,    // Max: R500,000
     timeFrame === "monthly" ? 10000 : 10000,      // Step: R10,000
-    17, // Azania Bank South Africa default interest rate
+    17, // Nedbank Bank South Africa default interest rate
     timeFrame === "monthly" ? 36 : 3,             // 36 months or 3 years
     timeFrame
   );
@@ -45,7 +45,7 @@ const Azania = () => {
 
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
-      navigate(`/azania${value !== "monthly" ? "/" + value : ""}`);
+      navigate(`/nedbank-personal-loan-calculator{value !== "monthly" ? "/" + value : ""}`);
     }
   };
 
@@ -58,7 +58,7 @@ const Azania = () => {
       <SEO 
         title="Azania Bank South Africa Personal Loan Calculator" 
         description="Calculate your Azania Bank South Africa personal loan payments with our calculator. Monthly and annual payment calculations at competitive interest rates with customizable terms."
-        canonicalUrl={`/azania${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
+        canonicalUrl={`/nedbank-personal-loan-calculator${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
       />
       <Header />
       
@@ -73,7 +73,7 @@ const Azania = () => {
         <CrdbCalculator 
           timeFrame={timeFrame}
           onTimeFrameChange={handleTimeFrameChange}
-          bankPath="azania"
+          bankPath="nedbank-personal-loan-calculator"
         />
 
         <p className="text-gray-600 mb-8">
@@ -129,7 +129,7 @@ const Azania = () => {
               <div className="grid grid-cols-12 items-center">
                 <div className="col-span-4 md:col-span-3">
                   <Link 
-                    to={`/azania/${timeFrame}/${result.loanAmount}/${result.interestRate}/${result.loanTerm}`}
+                    to={`/nedbank-personal-loan-calculator/${timeFrame}/${result.loanAmount}/${result.interestRate}/${result.loanTerm}`}
                     className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                   >
                     {formatCurrency(result.loanAmount)}
