@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ import {
   PaginationItem,
 } from "@/components/ui/pagination";
 
-const Crdb = () => {
+const CapitecLoanCalculator = () => {
   const [itemsToShow, setItemsToShow] = useState(50);
   const location = useLocation();
   const navigate = useNavigate();
@@ -28,11 +28,11 @@ const Crdb = () => {
     : "monthly";
   
   const loanResults = generateCrdbLoanCalculations(
-    timeFrame === "monthly" ? 10000 : 10000,      // Min: R10,000
-    timeFrame === "monthly" ? 500000 : 500000,    // Max: R500,000
-    timeFrame === "monthly" ? 10000 : 10000,      // Step: R10,000
-    13, // Default interest rate
-    timeFrame === "monthly" ? 36 : 3,             // 36 months or 3 years
+    50000,    // Min: R50,000
+    1000000,  // Max: R1,000,000
+    50000,    // Step: R50,000
+    14.5,     // Nedbank default interest rate (slightly higher than generic)
+    timeFrame === "yearly" ? 3 : 36, // 3 years / 36 months
     timeFrame
   );
     
@@ -45,7 +45,7 @@ const Crdb = () => {
 
   const handleTimeFrameChange = (value: string) => {
     if (value === "yearly" || value === "monthly") {
-      navigate(`/crdb${value !== "monthly" ? "/" + value : ""}`);
+      navigate(`/capitec-loan-calculator`);
     }
   };
 
@@ -56,29 +56,28 @@ const Crdb = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="CRDB Bank Personal Loan Calculator" 
-        description="Calculate your CRDB Bank personal loan payments with our calculator. Monthly and annual payment calculations at the current interest rate with customizable terms."
-        canonicalUrl={`/crdb${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
+        title="Nedbank Loan Calculator - Monthly & Annual Payments" 
+        description="Calculate your Nedbank personal loan payments with our comprehensive calculator. Get accurate monthly and annual payment estimates with competitive Nedbank interest rates, flexible loan terms, and transparent repayment schedules."
+        canonicalUrl="/capitec-loan-calculator"
       />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <h1 className="text-3xl font-bold mb-2">CRDB Bank Personal Loan Calculator</h1>
+        <h1 className="text-3xl font-bold mb-2">Nedbank Loan Calculator</h1>
         <p className="text-gray-600 mb-8">
-          Calculate your CRDB Bank personal loan payments with our comprehensive loan calculator. 
-          Get accurate {timeFrame === "monthly" ? "monthly" : "annual"} payment estimates at competitive interest rates. 
-          Perfect for planning your personal loan with CRDB Bank South Africa, featuring flexible terms and transparent calculations.
+          Calculate your Nedbank personal loan payments with our comprehensive calculator.
+          Get accurate {timeFrame === "monthly" ? "monthly" : "yearly"} payment estimates based on competitive Nedbank interest rates, loan amount, and repayment term. Perfect for planning your personal financing needs with South Africa's trusted banking partner—featuring flexible parameters, instant results, and complete transparency for informed decision-making.
         </p>
 
         {/* Custom Loan Calculator */}
         <CrdbCalculator 
           timeFrame={timeFrame}
           onTimeFrameChange={handleTimeFrameChange}
-          bankPath="crdb"
+          bankPath="capitec-loan-calculator"
         />
 
         <p className="text-gray-600 mb-8">
-          <em>Interest rates may vary based on your credit profile and loan terms. Contact CRDB Bank for personalized rates.</em>
+          <em>Interest rates may vary based on your credit profile, loan terms, and market conditions. Contact Nedbank for personalized rates and terms specific to your financial situation.</em>
         </p>
         
         {/* Time Frame Toggle */}
@@ -130,7 +129,7 @@ const Crdb = () => {
               <div className="grid grid-cols-12 items-center">
                 <div className="col-span-4 md:col-span-3">
                   <Link 
-                    to={`/crdb/${timeFrame}/${result.loanAmount}/${result.interestRate}/${result.loanTerm}`}
+                    to={`/capitec-loan-calculator/${result.loanAmount}/${result.interestRate}/${result.loanTerm}`}
                     className="text-[#333] hover:underline text-base font-medium transition-colors group-hover:text-blog-accent flex items-center"
                   >
                     {formatCurrency(result.loanAmount)}
@@ -190,4 +189,4 @@ const Crdb = () => {
   );
 };
 
-export default Crdb;
+export default NedbankLoanCalculator;
