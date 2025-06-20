@@ -1,7 +1,6 @@
 
 import { motion } from "framer-motion";
 import { Calculator, GraduationCap, BookOpen, ArrowRight } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import APSCalculator from "@/components/APSCalculator";
 import AdSense from "@/components/AdSense";
@@ -18,15 +17,6 @@ import {
 const Aps = () => {
   return (
     <div className="min-h-screen bg-[#f6f6f0]">
-      <Helmet>
-        <title>APS Calculator South Africa | Calculate Your Admission Point Score</title>
-        <meta 
-          name="description" 
-          content="Calculate your APS (Admission Point Score) for South African universities. Support for both standard and university-specific point scales. Essential for matric students applying to university." 
-        />
-        <meta name="keywords" content="APS calculator, admission point score, South Africa, university admission, matric results, education calculator" />
-        <link rel="canonical" href="https://fncalculator.com/aps" />
-      </Helmet>
 
       <Header />
 
