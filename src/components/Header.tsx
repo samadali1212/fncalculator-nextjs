@@ -30,7 +30,6 @@ const Header = () => {
     { path: "/paye", label: "PAYE Calculator" },
     { path: "/aps", label: "APS Calculator" },
     { path: "/blog", label: "Blog" },
-    { path: "/about", label: "About" }
   ];
 
   const isActive = (path: string) => {
