@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import AdSense from "@/components/AdSense";
 import EddCalculator from "@/components/EddCalculator";
@@ -20,12 +19,6 @@ const Edd = () => {
 
   return (
     <>
-      <Helmet>
-        <title>EDD (Expected Due Date) Calculator</title>
-        <meta name="description" content="Free EDD calculator to determine your expected due date. Calculate pregnancy due date using last menstrual period or conception date." />
-        <meta name="keywords" content="EDD calculator, due date calculator, pregnancy calculator, expected delivery date, Tanzania pregnancy" />
-        <link rel="canonical" href="https://denilagari.com/edd" />
-      </Helmet>
 
       <div className="min-h-screen bg-[#f6f6f0]">
         <Header />

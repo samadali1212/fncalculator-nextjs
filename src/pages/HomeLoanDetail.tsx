@@ -4,7 +4,6 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ChevronLeft, Calculator } from "lucide-react";
 import Header from "../components/Header";
-import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
 import HomeLoanDetailCalculator from "../components/HomeLoanDetailCalculator";
 import HomeLoanAmortizationSchedule from "../components/HomeLoanAmortizationSchedule";
@@ -159,11 +158,6 @@ const HomeLoanDetail = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
-      <SEO 
-        title={`${bankInfo.bankName} Home Loan Calculator ${formattedCurrencyForTitle} - ${timeFrame === "monthly" ? "Monthly" : "Annual"} Payment ${loanResult ? formatCurrency(loanResult.payment) : ""}`}
-        description={`Calculate your ${bankInfo.bankName} home loan of ${formatCurrency(currentHomePrice)} with ${formatCurrency(currentDownPayment)} down payment at ${currentInterestRate}% interest rate. ${timeFrame === "monthly" ? "Monthly" : "Annual"} payment ${loanResult ? `of ${formatCurrency(loanResult.payment)} over ${loanResult.termDisplay}` : ""}.`}
-        canonicalUrl={`${bankInfo.backLink}/${timeFrame}/${currentHomePrice}/${currentDownPayment}/${currentLoanTerm}/${currentInterestRate}`}
-      />
       <Header />
       
       <main className="pt-20 pb-16">

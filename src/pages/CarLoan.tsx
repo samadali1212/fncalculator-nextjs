@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import SEO from "../components/SEO";
 import CarLoanCalculator from "../components/CarLoanCalculator";
 import { Button } from "@/components/ui/button";
 import { 
@@ -57,11 +56,6 @@ const CarLoan = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
-      <SEO 
-        title="South Africa Car Loan Calculator - Monthly & Annual Payments" 
-        description="Calculate your South African car loan payments with our comprehensive calculator. Get accurate monthly and annual payment estimates with customizable loan terms, down payments, interest rates, and balloon payments."
-        canonicalUrl={`/car-loan${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
-      />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">

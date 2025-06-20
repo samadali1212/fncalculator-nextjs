@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import SEO from "../components/SEO";
 import CrdbCalculator from "../components/CrdbCalculator";
 import { Button } from "@/components/ui/button";
 import { 
@@ -55,11 +54,6 @@ const Loan = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
-      <SEO 
-        title="Personal Loan Calculator - Monthly & Annual Payments" 
-        description="Calculate your personal loan payments with our comprehensive calculator. Get accurate monthly and annual payment estimates with customizable loan terms, interest rates, and repayment periods."
-        canonicalUrl="/loan"
-      />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">

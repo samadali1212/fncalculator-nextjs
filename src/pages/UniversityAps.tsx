@@ -2,7 +2,6 @@
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Calculator, GraduationCap, BookOpen, ExternalLink } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import UniversityAPSCalculator from "@/components/UniversityAPSCalculator";
 import AdSense from "@/components/AdSense";
@@ -26,15 +25,6 @@ const UniversityAps = () => {
 
   return (
     <div className="min-h-screen bg-[#f6f6f0]">
-      <Helmet>
-        <title>{university.fullName} APS Calculator | Calculate Your Admission Point Score</title>
-        <meta 
-          name="description" 
-          content={`Calculate your APS (Admission Point Score) for ${university.fullName}. Customized for ${university.name}'s specific requirements and ${university.apsScale === "standard" ? "7-point" : "8-point"} scale.`}
-        />
-        <meta name="keywords" content={`${university.name} APS calculator, ${university.fullName}, admission point score, South Africa, university admission, matric results`} />
-        <link rel="canonical" href={`https://fncalculator.com/aps/${university.id}`} />
-      </Helmet>
 
       <Header />
 

@@ -3,7 +3,6 @@ import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useParams, useNavigate, Link, useLocation } from "react-router-dom";
 import Header from "../components/Header";
-import SEO from "../components/SEO";
 import ShareButton from "../components/ShareButton";
 import PayeDetailCalculator from "../components/PayeDetailCalculator";
 import DynamicTaxOverviewParagraph from "../components/DynamicTaxOverviewParagraph";
@@ -148,11 +147,6 @@ const PayeDetail = () => {
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
-      <SEO 
-        title={`PAYE Calculator on ${formattedCurrencyForTitle} ${timeFrame === "monthly" ? "Monthly" : "Annual"} Salary in South Africa`}
-        description={`Calculate your PAYE tax for ${formatSouthAfricaCurrency(initialIncome)} ${timeFrame === "monthly" ? "monthly" : "annual"} income in South Africa. After tax income: ${formatSouthAfricaCurrency(taxDetails.netIncome)}. Effective tax rate: ${taxDetails.effectiveTaxRate.toFixed(1)}%.`}
-        canonicalUrl={`/paye/${initialIncome}${initialAgeGroup !== "below65" ? `/${initialAgeGroup}` : ""}`}
-      />
       
       <Header />
       

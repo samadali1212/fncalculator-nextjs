@@ -1,7 +1,6 @@
 
 import { motion } from "framer-motion";
 import Header from "../components/Header";
-import SEO from "../components/SEO";
 import CompoundInterestCalculator from "../components/CompoundInterestCalculator";
 
 const CompoundInterest = () => {
@@ -11,11 +10,6 @@ const CompoundInterest = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
-      <SEO 
-        title="Compound Interest Calculator South Africa - Investment Growth Calculator" 
-        description="Calculate compound interest and investment growth with our comprehensive calculator. See how your money grows over time with regular deposits and compound interest."
-        canonicalUrl="/compound-interest"
-      />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">

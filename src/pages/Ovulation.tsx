@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import AdSense from "@/components/AdSense";
 import OvulationCalculator from "@/components/OvulationCalculator";
@@ -13,12 +12,6 @@ const Ovulation = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Ovulation Calculator - Track Your Fertile Days</title>
-        <meta name="description" content="Free ovulation calculator to track your fertile days and ovulation period. Calculate your most fertile days for conception planning in Tanzania." />
-        <meta name="keywords" content="ovulation calculator, fertile days, conception planning, fertility tracker, menstrual cycle, Tanzania fertility" />
-        <link rel="canonical" href="https://denilagari.com/ovulation" />
-      </Helmet>
 
       <div className="min-h-screen bg-[#f6f6f0]">
         <Header />

@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Header from "../components/Header";
-import SEO from "../components/SEO";
 import UIFCalculator from "../components/UIFCalculator";
 import { Button } from "@/components/ui/button";
 import { 
@@ -39,11 +38,6 @@ const Uif = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
-      <SEO 
-        title="UIF Calculator South Africa 2024/2025 - Unemployment Insurance Fund" 
-        description="Calculate UIF benefits in South Africa with our 2024/2025 UIF calculator. Calculate unemployment insurance benefits based on your salary and employment duration."
-        canonicalUrl="/uif"
-      />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">

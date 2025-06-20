@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import SEO from "../components/SEO";
 import PayeCalculator from "../components/PayeCalculator";
 import PayeCollapsible from "../components/PayeCollapsible";
 import ToolStructuredData from "../components/StructuredData/ToolStructuredData";
@@ -59,11 +58,6 @@ const Paye = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
-      <SEO 
-        title="PAYE Calculator 2024/2025 For South Africa Tax Rates" 
-        description="Calculate your PAYE tax in South Africa with our 2024/2025 tax calculator. Monthly and annual income tax calculations based on current tax brackets and rebates."
-        canonicalUrl={`/paye${timeFrame !== "monthly" ? "/" + timeFrame : ""}`}
-      />
       <ToolStructuredData toolType="paye" />
       <Header />
       

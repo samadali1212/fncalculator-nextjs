@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import SEO from "../components/SEO";
 import CrdbCalculator from "../components/CrdbCalculator";
 import { Button } from "@/components/ui/button";
 import { 
@@ -55,11 +54,6 @@ const Nmb = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
-      <SEO 
-        title="NMB Bank South Africa Personal Loan Calculator" 
-        description="Calculate your NMB Bank South Africa personal loan payments with our calculator. Monthly and annual payment calculations at competitive interest rates with customizable terms."
-        canonicalUrl="/nmb"
-      />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">

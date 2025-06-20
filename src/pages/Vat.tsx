@@ -3,7 +3,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Header from "../components/Header";
-import SEO from "../components/SEO";
 import VATCalculator from "../components/VATCalculator";
 import { Button } from "@/components/ui/button";
 import { 
@@ -39,11 +38,6 @@ const Vat = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
-      <SEO 
-        title="VAT Calculator South Africa 2024/2025 - 15% VAT Rate" 
-        description="Calculate VAT in South Africa with our 2024/2025 VAT calculator. Calculate VAT inclusive and exclusive amounts with current 15% VAT rates."
-        canonicalUrl="/vat"
-      />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
