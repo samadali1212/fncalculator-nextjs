@@ -16,7 +16,6 @@ import Uif from "@/pages/Uif";
 import Loan from "@/pages/Loan";
 import NotFound from "@/pages/NotFound";
 import Absa from "@/pages/Absa";
-import BlogDetail from "@/pages/BlogDetail";
 import BusinessLoan from "@/pages/BusinessLoan";
 import BusinessLoanDetail from "@/pages/BusinessLoanDetail";
 import Capitec from "@/pages/Capitec";
