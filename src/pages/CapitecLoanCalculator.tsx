@@ -56,17 +56,17 @@ const CapitecLoanCalculator = () => {
       className="min-h-screen bg-[#f6f6f0]"
     >
       <SEO 
-        title="Nedbank Loan Calculator - Monthly & Annual Payments" 
-        description="Calculate your Nedbank personal loan payments with our comprehensive calculator. Get accurate monthly and annual payment estimates with competitive Nedbank interest rates, flexible loan terms, and transparent repayment schedules."
+        title="Capitec Loan Calculator - Monthly & Annual Payments" 
+        description="Calculate your Capitec personal loan payments with our comprehensive calculator. Get accurate monthly and annual payment estimates with competitive Capitec interest rates, flexible loan terms, and transparent repayment schedules."
         canonicalUrl="/capitec-loan-calculator"
       />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
-        <h1 className="text-3xl font-bold mb-2">Nedbank Loan Calculator</h1>
+        <h1 className="text-3xl font-bold mb-2">Capitec Loan Calculator</h1>
         <p className="text-gray-600 mb-8">
-          Calculate your Nedbank personal loan payments with our comprehensive calculator.
-          Get accurate {timeFrame === "monthly" ? "monthly" : "yearly"} payment estimates based on competitive Nedbank interest rates, loan amount, and repayment term. Perfect for planning your personal financing needs with South Africa's trusted banking partner—featuring flexible parameters, instant results, and complete transparency for informed decision-making.
+          Calculate your Capitec personal loan payments with our comprehensive calculator.
+          Get accurate {timeFrame === "monthly" ? "monthly" : "yearly"} payment estimates based on competitive Capitec interest rates, loan amount, and repayment term. Perfect for planning your personal financing needs with South Africa's trusted banking partner—featuring flexible parameters, instant results, and complete transparency for informed decision-making.
         </p>
 
         {/* Custom Loan Calculator */}
@@ -77,7 +77,7 @@ const CapitecLoanCalculator = () => {
         />
 
         <p className="text-gray-600 mb-8">
-          <em>Interest rates may vary based on your credit profile, loan terms, and market conditions. Contact Nedbank for personalized rates and terms specific to your financial situation.</em>
+          <em>Interest rates may vary based on your credit profile, loan terms, and market conditions. Contact Capitec for personalized rates and terms specific to your financial situation.</em>
         </p>
         
         {/* Time Frame Toggle */}
@@ -189,4 +189,4 @@ const CapitecLoanCalculator = () => {
   );
 };
 
-export default NedbankLoanCalculator;
+export default CapitecLoanCalculator;
