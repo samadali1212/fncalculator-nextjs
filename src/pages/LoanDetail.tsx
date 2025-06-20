@@ -72,12 +72,12 @@ const LoanDetail = () => {
         displayName: "NMB",
         backLink: "/nmb"
       };
-    } else if (path.includes("/crdb/")) {
+    } else if (path.includes("/capitec-loan-calculator/")) {
       return {
-        bankName: "CRDB Bank",
-        bankPath: "crdb",
-        displayName: "CRDB",
-        backLink: "/crdb"
+        bankName: "Capitec",
+        bankPath: "capitec-loan-calculator",
+        displayName: "Capitec",
+        backLink: "/capitec-loan-calculator"
       };
     }
     
