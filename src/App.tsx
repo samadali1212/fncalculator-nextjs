@@ -39,9 +39,7 @@ function App() {
         <Routes>
           {/* PAYE as homepage */}
           <Route path="/" element={<Paye />} />
-          
-          {/* Keep existing PAYE routes for backward compatibility */}
-          <Route path="/paye" element={<Navigate to="/" replace />} />
+          <Route path="/paye" element={<Paye />} />
          
           {/* New simplified PAYE detail routes */}
           <Route path="/paye/:incomeId" element={<PayeDetail />} />
