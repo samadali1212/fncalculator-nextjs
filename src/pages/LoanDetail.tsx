@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -37,6 +36,13 @@ const LoanDetail = () => {
         bankPath: "loan",
         displayName: "Personal",
         backLink: "/loan"
+      };
+    } else if (path.includes("/nedbank-loan-calculator/")) {
+      return {
+        bankName: "Nedbank",
+        bankPath: "nedbank-loan-calculator",
+        displayName: "Nedbank",
+        backLink: "/nedbank-loan-calculator"
       };
     } else if (path.includes("/azania/")) {
       return {
