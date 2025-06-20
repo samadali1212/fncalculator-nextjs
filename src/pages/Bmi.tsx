@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
-import AdSense from "@/components/AdSense";
 import BmiCalculator from "@/components/BmiCalculator";
 import BmiCollapsible from "@/components/BmiCollapsible";
 
@@ -19,12 +17,6 @@ const Bmi = () => {
 
   return (
     <>
-      <Helmet>
-        <title>BMI Calculator</title>
-        <meta name="description" content="Free BMI calculator to check your Body Mass Index. Calculate BMI using metric or imperial units and understand your weight category." />
-        <meta name="keywords" content="BMI calculator, body mass index, weight calculator, health calculator, fitness calculator" />
-        <link rel="canonical" href="https://denilagari.com/bmi" />
-      </Helmet>
 
       <div className="min-h-screen bg-[#f6f6f0]">
         <Header />
