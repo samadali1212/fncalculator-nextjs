@@ -16,7 +16,6 @@ import Uif from "@/pages/Uif";
 import Loan from "@/pages/Loan";
 import NotFound from "@/pages/NotFound";
 import Absa from "@/pages/Absa";
-import Azania from "@/pages/Azania";
 import BlogDetail from "@/pages/BlogDetail";
 import BusinessLoan from "@/pages/BusinessLoan";
 import BusinessLoanDetail from "@/pages/BusinessLoanDetail";
@@ -72,9 +71,6 @@ function App() {
           <Route path="/absa" element={<Absa />} />
           <Route path="/absa/:amount/:rate/:term" element={<LoanDetail />} />
           
-          <Route path="/nedbank-personal-loan-calculator" element={<Azania />} />
-          <Route path="/nedbank-personal-loan-calculator/:amount/:rate/:term" element={<LoanDetail />} />
-          
           <Route path="/capitec" element={<Capitec />} />
           <Route path="/capitec-car-finance" element={<CapitecCarFinance />} />
           
@@ -87,7 +83,7 @@ function App() {
           <Route path="/nmb" element={<Nmb />} />
           <Route path="/nmb/:amount/:rate/:term" element={<LoanDetail />} />
 		  
-		  <Route path="/aps" element={<Aps />} />
+          <Route path="/aps" element={<Aps />} />
           <Route path="/aps/:universityId" element={<UniversityAps />} />
           
           <Route path="*" element={<NotFound />} />
