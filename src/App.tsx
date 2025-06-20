@@ -37,12 +37,15 @@ function App() {
     <BrowserRouter>
       <Layout>
         <Routes>
+          {/* PAYE as homepage */}
           <Route path="/" element={<Paye />} />
-          <Route path="/paye" element={<Paye />} />
-          <Route path="/paye/yearly" element={<Paye />} />
+          
+          {/* Keep existing PAYE routes for backward compatibility */}
+          <Route path="/paye" element={<Navigate to="/" replace />} />
+         
+          {/* New simplified PAYE detail routes */}
           <Route path="/paye/:incomeId" element={<PayeDetail />} />
           <Route path="/paye/:incomeId/:ageGroup" element={<PayeDetail />} />
-          <Route path="/paye/yearly/:incomeId/:ageGroup" element={<PayeDetail />} />
           
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
