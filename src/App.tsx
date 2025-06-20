@@ -76,8 +76,8 @@ function App() {
           <Route path="/absa" element={<Absa />} />
           <Route path="/absa/:amount/:rate/:term" element={<LoanDetail />} />
           
-          <Route path="/nedbank-personal-loan-calculator" element={<Azania />} />
-          <Route path="/nedbank-personal-loan-calculator/:amount/:rate/:term" element={<LoanDetail />} />
+          <Route path="/azania" element={<Azania />} />
+          <Route path="/azania/:amount/:rate/:term" element={<LoanDetail />} />
           
           <Route path="/capitec" element={<Capitec />} />
           <Route path="/capitec-car-finance" element={<CapitecCarFinance />} />
