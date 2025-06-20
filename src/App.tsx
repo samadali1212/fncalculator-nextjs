@@ -3,7 +3,6 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from "@/components/Layout";
 import Paye from "@/pages/Paye";
-import Blog from "@/pages/Blog";
 import About from "@/pages/About";
 import HomeLoan from "@/pages/HomeLoan";
 import VAT from "@/pages/Vat";
@@ -44,9 +43,6 @@ function App() {
           {/* New simplified PAYE detail routes */}
           <Route path="/paye/:incomeId" element={<PayeDetail />} />
           <Route path="/paye/:incomeId/:ageGroup" element={<PayeDetail />} />
-          
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogDetail />} />
           
           <Route path="/about" element={<About />} />
           
