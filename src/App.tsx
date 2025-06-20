@@ -21,7 +21,7 @@ import Capitec from "@/pages/Capitec";
 import CapitecCarFinance from "@/pages/CapitecCarFinance";
 import CarLoan from "@/pages/CarLoan";
 import CarLoanDetail from "@/pages/CarLoanDetail";
-import Crdb from "@/pages/Crdb";
+import CapitecLoanCalculator from "@/pages/CapitecLoanCalculator";
 import HomeLoanDetail from "@/pages/HomeLoanDetail";
 import LoanDetail from "@/pages/LoanDetail";
 import Nbc from "@/pages/Nbc";
@@ -73,8 +73,8 @@ function App() {
           <Route path="/capitec" element={<Capitec />} />
           <Route path="/capitec-car-finance" element={<CapitecCarFinance />} />
           
-          <Route path="/crdb" element={<Crdb />} />
-          <Route path="/crdb/:amount/:rate/:term" element={<LoanDetail />} />
+          <Route path="/capitec-loan-calculator" element={<CapitecLoanCalculator />} />
+          <Route path="/capitec-loan-calculator/:amount/:rate/:term" element={<LoanDetail />} />
           
           <Route path="/nbc" element={<Nbc />} />
           <Route path="/nbc/:amount/:rate/:term" element={<LoanDetail />} />
