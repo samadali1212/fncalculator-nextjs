@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import Header from "../components/Header";
-import SEO from "../components/SEO";
 
 const About = () => {
   return (
@@ -9,11 +8,6 @@ const About = () => {
       animate={{ opacity: 1 }}
       className="min-h-screen bg-[#f6f6f0]"
     >
-      <SEO 
-        title="Denilagari" 
-        description="Deni La gari is a free online tool to helps drivers in Tanzania check their traffic violations and outstanding fines. You can search using your vehicle registration number, driving license number, or violation reference number."
-        canonicalUrl="/about"
-      />
       <Header />
       
       <main className="container mx-auto pt-24 px-4 md:px-6 pb-16 max-w-4xl">
