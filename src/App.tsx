@@ -36,10 +36,10 @@ const App = () => {
     <BrowserRouter>
       <Layout>
         <Routes>
-          {/* Traffic offence checker as homepage */}
+          {/* Paye as homepage */}
           <Route path="/" element={<Paye />} />
           
-          {/* Keep existing traffic offence routes for backward compatibility */}
+          {/* Keep existing Paye routes for backward compatibility */}
           <Route path="/paye" element={<Navigate to="/" replace />} />
           
           <Route path="/about" element={<About />} />
@@ -68,14 +68,6 @@ const App = () => {
 
           {/* South Africa PAYE Calculator Routes - Simplified Structure */}
           <Route path="/paye" element={<Paye />} />
-          
-          {/* Legacy redirects for backward compatibility */}
-          <Route path="/paye/monthly" element={<Navigate to="/paye" replace />} />
-          <Route path="/paye/yearly" element={<Navigate to="/paye" replace />} />
-          <Route path="/paye/monthly/:incomeId" element={<Navigate to="/paye/:incomeId" replace />} />
-          <Route path="/paye/yearly/:incomeId" element={<Navigate to="/paye/:incomeId" replace />} />
-          <Route path="/paye/monthly/:incomeId/:ageGroup" element={<Navigate to="/paye/:incomeId/:ageGroup" replace />} />
-          <Route path="/paye/yearly/:incomeId/:ageGroup" element={<Navigate to="/paye/:incomeId/:ageGroup" replace />} />
           
           {/* New simplified PAYE detail routes */}
           <Route path="/paye/:incomeId" element={<PayeDetail />} />
